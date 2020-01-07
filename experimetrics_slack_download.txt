@@ -1,0 +1,212 @@
+daaronr [6:08 PM]
+joined #experimetrics.
+
+daaronr [6:11 PM]
+Markdown (raw)
+notesatheyimbensexperimetrics.md
+Markdown (raw) from Dropbox
+
+daaronr [9:53 PM]
+I need to get the actual handbook article; I expect a few things have been clarified
+
+hannes [5:28 PM]
+joined #experimetrics.
+
+daaronr [4:06 PM]
+stumped our 4 econometricians with this nonlinearity question
+
+daaronr [9:44 PM]
+Finished reading the relevant parts of Athey-Imbens (” Econometrics of Randomized Experiments). [WP version] Not as many practical tips as I would have hoped. Not much talking you through random forests or Lasso procedure. (edited)
+
+daaronr [9:46 PM]
+They also don’t seem to directly address the nonlinearity/heterogeneity issue, although I suppose nonparametric approaches may be less vulnerable to that
+Not sure how much *inference* one gets out of these search and fit procedures
+
+daaronr [11:21 AM]
+@gerhard I want to read about model fitting (lasso etc) for the *controls* not interactions. What can I read (papers and stata docs), and what work of yours should I look at?
+@gerhard Give me your thoughts on my nonlinear work when you’ve a moment
+
+gerhard [11:21 AM]
+joined #experimetrics by invitation from daaronr.
+
+gerhard [12:07 PM]
+look at the commando lars in stata. I run into the problem that when adding too many categorical variabels, it runs into memory problems, so I could never add more than three variables, which is definitely not satisfying.
+
+daaronr [1:20 PM]
+good read perhaps: Varian, “Big Data: New Tricks for Econometrics”
+
+daaronr [5:53 PM]
+Winfried Pohlmeier suggested reading “Hastie, T., R. Tibshirani, and M. Wainwright (2015): Statistical Learning with Sparisty The Lasso
+and Generalizations, Monographs on Statistics and Probability, CRC Press.”
+all pages available on google books, I think: https://books.google.co.uk/books?hl=en&lr=&id=f-A_CQAAQBAJ&oi=fnd&pg=PP1&ots=G4RMC-gZU-&sig=u_EoI3-ZcX0phwsZgLt2Ux7DXyc#v=onepage&q&f=false
+Google Books
+Statistical Learning with Sparsity
+Discover New Methods for Dealing with High-Dimensional Data A sparse statistical model has only a small number of nonzero parameters or weights; therefore, it is much easier to estimate and interpret than a dense model. Statistical Learning with Sparsity: The Lasso and Generalizations presents methods that exploit sparsity to help recover the underlying signal in a set of data. Top experts in this rapidly evolving field, the authors describe the lasso for linear regression and a simple coordinate descent algorithm for its computation. They discuss the application of l1 penalties to generalized linear models and support vector machines, cover generalized penalties such as the elastic net and… Show more
+
+daaronr [10:39 AM]
+Oh good, found the pdf here: https://web.stanford.edu/~hastie/StatLearnSparsity_files/SLS_corrected_1.4.16.pdf
+@gerhard
+
+davidhughjones [10:57 AM]
+joined #experimetrics.
+
+daaronr [11:00 AM]
+My notes on the Hastie sparsity book (markdown format) (edited)
+Markdown (raw)
+notes_hastie_statlearning.md
+Markdown (raw) from Dropbox
+
+daaronr [12:05 PM]
+OFFICIAL “Control variable selection for prediction/reducing noise to enable better inference of treatment effects” thread
+
+daaronr [1:52 PM]
+David Reinstein
+“the optimal value of λ does occur at one of the LARS steps” , but its not clear to me how we know which one (without doing the cross-validation)
+From a thread in #analysisAug 23rd, 2017
+
+daaronr [4:41 PM]
+replied to a thread:
+@gerhard, I think we may be able to deal with fitting the controls and estimating the Treatment Effect in a single step: with “glmnet” in R. See “Penalty factors” [here](https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html).
+… if we set the penalty to 0 for the treatment and 1 for all others, this should get what we want … I think
+
+gerhard [10:06 PM]
+Estimating heterogeneous treatment effects https://projecteuclid.org/euclid.aoas/1365527206  and https://cran.r-project.org/web/packages/FindIt/index.html
+projecteuclid.org
+Imai , Ratkovic : Estimating treatment effect heterogeneity in randomized program evaluation
+Project Euclid - mathematics and statistics online
+
+daaronr [5:52 PM]
+Penalisation methodology ANOTHER thread:
+
+daaronr [5:55 PM]
+replied to a thread:
+I think many people are using Lasso/penalisation *wrongly*; you shouldn’t just use it to *select* control variables and then run OLS with these controls. Lasso (etc) optimises to produce the best prediction by downweighting the coefficients for variables it does not drop. (Thus in our cases of interest it ‘reduces noise’). You need to *use* these predictions, i.e., keep the downweighted coefficients.  Do you agree? @davidhughjones
+
+daaronr [11:35 AM]
+@gerhard Can you find a particular quote or section in Athey/Imbens that directly justifies our centered interactions?
+
+> In general the least squares estimates based on these regression functions are not unbiased for the average treatment effects over the randomization distribution given the finite population. [Unless] the covariates are all indicators and they partition the population, and we estimate the model with a full set of interactions
+
+But I think the *this* is referring to a regression *with* interactions; I am not sure it refers to the regression without interactions.  I don’t see where it says there is a bias for the standard estimator without interactions
+My only argument is that OLS estimators BLUE estimators of  a *homogenous* effect, and thus they (over)weight observations with more conditional variance in the treatment and less variance in the outcomes. With heterogeneous treatment effects this yields an estimate that does not represent the *average* treatment effect for the overall source population. However, I am not 100% sure that using the decentered interactions solves this problem and recovers the ATE’s. (This is the same issue we are facing with our Dutch admin data, it turns out). What do you think?
+
+daaronr [11:55 AM]
+OK, working on some language here. @gerhard Let me know what you think please!
+> We pool our data across all of our experiments to perform a meta-analysis, allowing greater statistical power. For statistical inference, we consider this as a draw from a population composed of likely participants in each of our experiments, with shares corresponding to our relative sample sizes of UK students, German students, and UK nonstudents.
+
+daaronr [12:01 PM]
+…
+>All regressions (except where noted) include de-meaned dummies for each experiment, and the interactions of these with the \textit{Before} treatment. This estimator recovers the \textit{average} treatment effect (ATE) for our source population in the presence of heterogeneity. In contrast, OLS estimators are more efficient if effects are homogenous, but they achieve this efficiency by (over)weighting observations (relative to shares of the source population) with higher conditional variance in the treatment and less residual variance in the outcome variable. With heterogeneous treatment effects this yields an arbitrarily weighted estimate of treatment effects (\citealp{angristpischkemhe}, p. 58), while the “fully interacted” estimator recovers the ATE (see \citealp{AtheyImbens2017}, equation 5.4).  However, our results are similar with or without these interactions, as well as with additional interactions by specific pre-determined variables (table \ref{tab:OLSDonationsPooledGender}).
+(edited)
+
+gerhard [9:50 AM]
+Hi david, this sounds pretty convincing. Will read the A&P MHE p58  before commenting further
+
+Nick [2:04 AM]
+joined #experimetrics along with 2 others.
+
+daaronr [9:49 AM]
+@gerhard Read through “Tidy Data” (Wickham) and took notes and comments/questions. Would be nice to chat on it.
+I’m now reading the “Review of Meta-Analysis packages in R”. Very cool. Will be useful for both our papers, and for the IIF evidence project too.
+
+daaronr [5:01 PM]
+Meta-analysis reading recommendations: Card and Krueger 1995; newer Stanlet and Doucouliagos
+
+daaronr [5:10 PM]
+Ada Gonzales is teaching a course at the EUI; I’ll ask for the finalised syllabus
+
+daaronr [10:37 AM]
+Something to use more in our analyses where there are multiple (and ordinal/likert..?) outcomes: “Use first component of polychoric principle component analysis as the dependent variable” Cronbach’s-alpha measure of ?cohesiveness of this. … Used in Seetha Menon’s paper https://docs.wixstatic.com/ugd/de08e8_121976c3255c4d4cae51fa6419e4f299.pdf
+@gerhard
+
+daaronr [12:11 PM]
+@gerhard @davidhughjones @hannes See the new "critiques" table here: https://airtable.com/tblRKTrQq2YUbHhiD/viwJm1cEoDxWt4KnZ ... might be a useful resource in our own research and even for the community "common mistakes economists publish" (edited)
+
+daaronr [3:56 PM]
+@gerhard In fitting the ‘noise’ variables I think Ridge regression has something to say for itself:
+> Ridge regression improves prediction error by shrinking large regression coefficients in order to reduce overfitting, but it does not perform covariate selection and therefore does not help to make the model more interpretable.
+If that is the only issue it is fine; we are not trying to *interpret* these control variables
+
+daaronr [8:05 PM]
+@gerhard @Toby J @hannes @davidhughjones “Sequential analyses”: http://datacolada.org/wp-content/uploads/2015/12/5367-Lakens-EJSP-2014-Performing-high-power.pdf
+
+One can preregister either a specific stopping rule for peeking at pre-defined intervals or a plan for doing peeking and stopping using a “spending function” for ‘using alpha’ (prob of type-1 error).
+
+Either way, you can compute the p-values for each test that yield the appropriate net probability of a type-1 error.
+
+Toby J [8:05 PM]
+joined #experimetrics by invitation from daaronr.
+
+daaronr [8:19 PM]
+“Null hypothesis significance testing” — http://journals.sagepub.com/doi/abs/10.1177/1948550617697177 This also seems helpful
+
+daaronr [11:55 AM]
+@Toby J This may also/instead be helpful in formulating our design, deciding on a stopping rule, and formulating  and preregistering a “critical value”: http://www.paugmented.com/
+
+daaronr [3:18 PM]
+Ugh, a new robust standard error we may have to switch to at some point: https://www.researchgate.net/profile/Michal_Kolesar/publication/256037347_Robust_Standard_Errors_in_Small_Samples_Some_Practical_Advice/links/5512c27c0cf270fd7e336add.pdf @gerhard
+
+daaronr [2:00 PM]
+@gerhard Vis a vis our discussion on blocking/stratification — Athey and Imbens (“The econometrics of randomised experiments”) make a strong case for “stratification” (i.e., ‘block-randomisation’) @Toby J
+
+> capture the gains from ex post regression adjustment without the potential costs of linear regression, and the potential costs of linear regression…
+
+daaronr [1:34 PM]
+I’m just finishing Lee (2009), ReStud on bounding estimates in the presence of attrition. Very well written and useful for bounded estimates in experiments that have attrition *as well* as things like ‘impact on wage conditional on entering the labor force’ … and (maybe?) on ‘amount donated conditional on donating’
+
+daaronr [11:47 AM]
+@gerhard  By the way,   for future work and  preregistration,  I am most attracted to Sagarin’s “p_crit” approach ( we discussed this on page 95).  It seems fairly intuitive and feasible/realistic.  The idea that (e.g.,) “we will collect in batches of 150, and we will not stop until we attain p>p_crit or (for futility) whenever p>.5"  seems like something that could be a credible commitment,  if preregistered.   At the point of submitting the paper with this plan preregistered, one  could check whether they indeed did collect data in these batches (assuming they can’t hide data)  and could check whether they followed this plan.  @Toby J maybe the best approach to the  sponsorship experiment?
+
+daaronr [2:56 PM]
+May be very helpful with PaP, making these more robust to unexpected occurances ( and providing a shortcut) ….
+
+> Standard Operating Procedures: A Safety Net for Pre-Analysis Plans
+> Winston Lin* and Donald P. Green† August 13, 2015 Abstract: Across the social sciences, growing concerns about research transparency have led to calls for pre-analysis plans, documents that lay out in advance how researchers intend to analyze the data they are about to gather. Such plans help readers to distinguish between exploratory and confirmatory analysis, thereby improving the credibility of the reported results. Pre-analysis plans, however, impose costs on researchers. They are time-consuming to write, especially if researchers attempt to describe in detail how they would handle the many contingencies that may arise in the course of data collection. In this article, we make the case for “standard operating procedures,” default practices that researchers can fall back on in the event that their pre-analysis plan fails to address these contingencies. We offer an example of a documented set of standard operating procedures that may be adapted by other researchers seeking to place a safety net beneath their pre-analysis plans.
+(edited)
+
+daaronr [2:57 PM]
+See also their lab’s version at https://github.com/acoppock/Green-Lab-SOP/blob/master/Green_Lab_SOP.pdf @Miguel Fonseca
+https://github.com/acoppock/Green-Lab-SOP/blob/master/Green_Lab_SOP.pdf (edited)
+GitHub
+acoppock/Green-Lab-SOP
+Green-Lab-SOP - Standard Operating Procedures for Don Green's Lab at Columbia
+
+daaronr [12:31 PM]
+My notes on sections 1-3 of the Lee bounds paper, with comments for substitution paper (and for a separate paper)… @gerhard
+PDF
+leepapernotes.pdf
+63 kB PDF from Dropbox
+Markdown (raw)
+leepapernotes.md
+26 kB Markdown (raw) from Dropbox
+
+daaronr [1:19 PM]
+@gerhard Has anyone combined the intuitive Lee approach with nonparametric techniques/regressions? Should be easy enough to:
+i. Estimate the amount of over-censoring (attrition or hurdle thing) in the treatment (or control)
+ii. Remove this share of the top (or bottom) individuals from the other ‘less-censored’ group (if we are using controls as part of this its a bit more complicated)
+iii. Run the basic procedure
+iv. Bootstrap the entire above process to estimate confidence intervals on these bounds
+
+What do you think? (edited)
+
+daaronr [11:08 AM]
+Kirchcamp’s response on ESA suggests that as long as one preregisters each hypothesis and reports  all results, no (Bonferroni style) ‘correction’ is needed. But intuitively, this seems wrong to me-- I can merely pre-register 1000 hypotheses and report  all results, and I can make meaningful inference from the 50 that come out as ‘significant at  p<.05?’
+
+gerhard [11:18 AM]
+I agree with you on that..when I read this today  I felt a bit puzzeled. Preregistration does not fix this type of problem
+do you want to write back?  (I can not as Oliver is one of my letter writers, and aI still have no job :-)
+
+daaronr [11:19 AM]
+I will write him directly
+
+gerhard [11:20 AM]
+(and I managed with the devtools package
+
+daaronr [11:22 AM]
+devtools?
+
+gerhard [11:26 AM]
+the library you need to install stuff directly from github
+
+daaronr [4:34 PM]
+Advantage of AEA preregistry over Aspredicted: the latter allows one to ‘bury’ as many preregistrations as desired ,while AEA records the title/author of all preregistrations publicly. (However, it’s more cumbersome) (edited)

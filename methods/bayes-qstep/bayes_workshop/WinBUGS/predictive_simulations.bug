@@ -1,0 +1,27 @@
+model { 
+for (i in 1:N) { # Model: Linear modelfo the change in share prices
+
+y[i] <- 100*(Price[i+1]-Price[i])/Price[i]
+y[i] ~ dnorm(mu[i],tau)
+u[i] ~ dnorm(0,1) I(0,)
+mu[i] <- Mu+lam*u[i]
+yrank[i] <- ranked(y[],i) # Rank the observed data to compare the skewness
+}
+
+for (i in 1:N) { # Generate predicted values
+yrep[i]  ~ dnorm(mu[i],tau) 
+yreprank[i] <- ranked(yrep[],i) # Rank the observed data to compare the skewness
+
+}
+
+skewrep <- (mean(yrep[])-yreprank[25])/sd(yrep[]) #Replicated skewnes
+skewobs <- (mean(y[])-yrank[25])/sd(y[]) #Observed skewnes
+PPC <- step(skewrep-skewobs)  #Statistic: Proportion of simulations with predicted skewness > observed skewness
+
+tau ~ dgamma(1,0.001) 
+Mu ~ dnorm(0,1)
+lam ~ dnorm(0,1)
+sig <- 1/sqrt(tau
+
+)
+}

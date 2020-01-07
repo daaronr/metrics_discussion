@@ -1,0 +1,22 @@
+model {
+
+for (j in 1:n) {
+# Probability model for y: normal distribution with 
+# mean mu and sigma2=1/precision
+
+y[j]~dnorm(mu[j], precision)
+mu[j]<-beta[1]+beta[2]*x[j]
+}
+
+# Priors for parameters
+for (j in 1:2) {
+beta[j]~dnorm(0,.001)
+}
+
+precision~dgamma(0.01,0.01)
+sigma2<-(1/precision)
+
+}
+
+
+

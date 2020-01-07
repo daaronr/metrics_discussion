@@ -1,0 +1,127 @@
+---
+title: "multilevel models, qstep, Gabriel KAtz"
+output: html_document
+---
+
+#INtroduction
+
+- Came from test scores modeling, education literature
+
+- Determinants at multiple levels ... e.g,. students' own characteristics and school characteristics
+
+
+Standard response: clustered standard errors; this is essentially the same as the 'random intercept model'
+
+There is not necessarily a hierarchy; school versus neighborhood... may overlap $\rightarrow$ 'cross-nested'/'cross-classified'; can have a hierarchy within some levels, not others
+
+Panel/longitudinal (time/individual)
+
+Accounts for heterogeneity and dependence
+
+- correlated behaviors within the same group (??)
+
+# Some basic theory
+
+Example: student i, score $y_i$, i=1,...l
+
+Characteristics of i $X_i$ and of school j
+
+## Level 1 model
+
+$y_i = \alpha_j + \beta x_i + \epsilon_i$
+
+
+Intercept varies across schools
+
+New approach allows you to make the random effect term as much of a function of ?? to give it more flexibility
+
+
+## Level 2
+
+$\alpha_j=\lambda + \delta z_j + v_j$
+
+Together with the level-1 term, a mlm
+
+'Bias-adjusted FE' is that other fancier approach that Sebastian does; requires stronger assumptions
+
+The $v_j$ term allows an explicit heterogeneity of the effect
+
+Total variation in y_i unexplained by observed factors is $\sigma^2_\epsilon + \sigma^2_v$
+
+Proportion of variation in outcome accounted for by 'unobserved contextual factors' (the level-2 stuff): 'Intra-class correlation coefficient'
+
+Any mlm can be written as a sungle level model with a bunch of random effects ... it's a 'variance component model'
+
+Estimating a MLE with only an intercept is like a standard model with clustered se
+
+... the basic mlm allows **correlation ****** between students in the same classroom
+
+Even without a 'measured' second level we still have an mlm
+
+
+Suppose schools only have an impact on the *average* student score...
+Could also have a 'random slope' model; the model with heterogeneity
+
+
+Could affect the impact of student effort; could affect students' average marks, or both
+
+## Alternative/Naive approaches
+
+1. Could also do 'one regression per school'
+
+- some will have very few obs
+- In contrast, schools with few obs will have an estimated RE very close to the mean; those further will have a larger RE estimated
+
+2. School-level predictors in the single-level regression
+
+... this assumes the schools influence is merfectly measured by z_j terms
+
+3. Add both? no, these are perfectly collinear (although there are some attempts to relax this)
+
+## 'old way': two-stage regression
+
+- i. school dummies in individual regression
+- ii. regress dummies on school covariates
+
+Problems:
+
+- few students/school, imprecise estimates;
+- ignoring error terms of dummy estimates $\rightarrow$ spurious significance
+
+
+## How many higher-level units do you need?
+
+- Debate in the literature ... conventional answers ask for 25; this only pertains to frequentist work, not Bayesian
+... because it is not based on asymptotics
+
+?can't you also use simulation in frequentist models (bootstrap the MSE)...?
+
+
+## Other names: Random effects hierarchical, etc.
+
+# Fitting mlm in practicce
+
+R and Stata good for simple standard models
+
+Winbugs enables complicated models (there is a package that derives the posteriors for you)
+
+# The data on schools and performance
+
+See other page of notes 
+The between-school variation explains about 19\% of the total variation in test scores
+
+The models we run here allows bivariate normal distribution of the random terms
+
+M4 adds in a school-level covariate
+
+You can fit some *generalised* linear model hierarchical models (e.g., multi-level logit)
+
+Binary logit, Poisson, etc...
+
+
+
+# Stata notes
+
+'xtreg, re' is random intercept
+... there is also 'mreg'
+

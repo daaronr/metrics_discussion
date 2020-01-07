@@ -1,0 +1,64 @@
+model { 
+
+for (i in 1:n) {
+
+# Model for missing covariates 
+X.1[i] ~ dnorm(mu[i,1],tau[1])
+mu[i,1] <- th1[1]+th1[2]*X.3[i]
+
+X.2[i] ~ dnorm(mu[i,2],tau[2])
+mu[i,2] <- th2[1]+th2[2]*X.1[i]+th2[3]*X.3[i]
+
+# model for response 
+Y[i]~dbern(pY[i])
+pY[i]<-max(0,min(piY[i],1))
+logit(piY[i]) <- beta[1]+beta[2]*X.3[i]+beta[3]*X.1[i]+beta[4]*X.2[i]
+
+
+R.X1[i]~dbern(p1[i])
+p1[i]<-max(0,min(pR1[i],1))
+logit(pR1[i]) <- eta1[1]+eta1[2]*X.1[i]+eta1[3]*X.2[i]+eta1[4]*X.3[i]
+
+R.X2[i] ~ dbern(p2[i])
+p2[i]<-max(0,min(pR2[i],1))
+logit(pR2[i]) <- eta2[1]+eta2[2]*X.3[i]+eta2[3]*X.1[i]+eta2[4]*X.2[i]+eta2[5]*R.X1[i]
+
+
+R.Y[i] ~ dbern(pmY[i])
+pmY[i]<-max(0,min(pRY[i],1))
+logit(pRY[i]) <- etaY[1]+etaY[2]*Y[i]+etaY[3]*R.X1[i]+etaY[4]*R.X2[i]
+}
+
+
+
+for (j in 1:4) {
+beta[j] ~ dnorm(0,1)
+}
+
+for (j in 1:2) {
+tau[j]~dgamma(1,1)
+}
+
+for (j in 1:2) {
+th1[j]~dnorm(0,1)
+}
+
+for (j in 1:3) {
+th2[j]~dnorm(0,1)
+}
+
+for (j in 1:4) {
+eta1[j]~dnorm(0,.1)
+}
+
+for (j in 1:5) {
+eta2[j]~dnorm(0,.1)
+}
+
+for (j in 1:4) {
+etaY[j]~dnorm(0,.1)
+}
+
+}
+
+

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554993280804.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1494444109",
+    "id" : "1923D771",
+    "lastKnownWriteTime" : 1554732178,
+    "last_content_update" : 1554732178,
+    "path" : "~/Dropbox/seminar notes and notes on econ papers/methods/bayes-qstep/bayes_workshop/R (MCMCpack)/Linear regression in MCMCpack.R",
+    "project_path" : "bayes_workshop/R (MCMCpack)/Linear regression in MCMCpack.R",
+    "properties" : {
+        "cursorPosition" : "13,22",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

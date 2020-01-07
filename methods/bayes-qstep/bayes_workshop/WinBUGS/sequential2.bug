@@ -1,0 +1,24 @@
+model{
+
+## Estimate parameters in sample 1, which that goes from obs. 1 to M
+for (i in 1:M) {  
+Y[i]~dbin(p[i],1)
+p[i]<-phi(X[i])
+X[i]<-beta[1]+beta[2]*x[i]
+}
+
+# Update parameters using sample 2, which goes from obs (M+1) to n
+for (i in (M+1):n) { 
+Y[i]~dbin(p[i],1)
+p[i]<- phi(X[i])
+X[i]<-beta[1]+beta[2]*x[i]
+}
+
+
+# Priors 
+for (j in 1:2) {
+beta[j]~dnorm(0,.001)
+}
+
+}
+

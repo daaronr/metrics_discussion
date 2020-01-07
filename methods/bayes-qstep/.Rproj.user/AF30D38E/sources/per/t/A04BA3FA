@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554980969343.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2815162356",
+    "id" : "A04BA3FA",
+    "lastKnownWriteTime" : 1554983770,
+    "last_content_update" : 1554983770077,
+    "path" : "~/Dropbox/seminar notes and notes on econ papers/methods/bayes-qstep/bayes_workshop/R MCMC/Probit.R",
+    "project_path" : "bayes_workshop/R MCMC/Probit.R",
+    "properties" : {
+        "cursorPosition" : "60,1",
+        "marks" : "<:60,0\n>:60,1",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

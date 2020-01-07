@@ -1,0 +1,18 @@
+model  {   
+  for (i in 1:n)  {  #Model
+  y[i] <- log(z[i]); # Normalize z
+  y[i]  ~ dnorm(mu,tau) # Fit a linear regression model for y
+}
+
+
+# Priors
+   tau ~ dgamma(1,0.001);
+    sig2 <- 1/tau
+    mu ~ dnorm(0,0.001);
+
+# Prediction: generate a new observation #note, he is doing one per iteration, but since these are convergent it would be basically the same if you just chose a random iteration and did all the draws from that one
+  ynew ~ dnorm(mu,tau);
+
+  above150 <- step(ynew-log(150)) # How many simulations are larger than 150
+
+}

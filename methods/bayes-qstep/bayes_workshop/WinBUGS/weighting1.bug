@@ -1,0 +1,13 @@
+model {
+ for ( i in 1:N) {
+ pobs[i] ~ dnorm(theta[i], E[i])
+ E[i] <- SAMPn[i]/(theta[i]*(1-theta[i])*DEFF_kish[i])
+ logit(theta[i])<-u+v[i]
+ v[i]~dnorm(0, tau)
+
+D[i]<-1/E[i]
+ }
+ u~dflat()
+ tau~dgamma(0.001, 0.001)
+ sigma_v2<-1/tau
+ } 

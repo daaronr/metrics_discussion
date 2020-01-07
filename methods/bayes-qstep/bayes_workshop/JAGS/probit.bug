@@ -1,0 +1,25 @@
+model {
+
+for (i in 1:n) {
+# Probability model for y: normal distribution with 
+# mean mu and sigma2=1/precision
+
+y[i]~dbern(mu[i])
+probit(mu[i])<-beta[1]+beta[2]*x[i]
+
+#Alternative
+#mu[i]<-phi(beta[1]+beta[2]*x[i])
+
+
+}
+
+# Priors for parameters
+for (j in 1:2) {
+beta[j]~dnorm(0,.001)
+}
+
+
+}
+
+
+

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554889341317.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4179489503",
+    "id" : "9096D2C7",
+    "lastKnownWriteTime" : 1554895147,
+    "last_content_update" : 1554895147816,
+    "path" : "~/Dropbox/Data and code to Send/multilevel_models_qstep.Rmd",
+    "project_path" : "multilevel_models_qstep.Rmd",
+    "properties" : {
+        "cursorPosition" : "118,29",
+        "marks" : "<:110,4\n>:110,4",
+        "scrollLine" : "108"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

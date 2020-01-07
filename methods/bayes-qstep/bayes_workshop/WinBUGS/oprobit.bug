@@ -1,0 +1,41 @@
+	model{
+
+	for( i in 1:n){
+
+                            y[i] ~ dcat( p[i,] )
+
+                            p[i, 1] <- phi( cut[1] - mu[i] )
+
+                            p[i, 2] <- phi( cut[2] - mu[i] ) - phi( cut[1] - mu[i] )
+
+                            p[i, 3] <- phi( cut[3] - mu[i] ) - phi( cut[2] - mu[i] )
+
+                            p[i, 4] <- 1 - phi( cut[3] - mu[i] )
+
+                            mu[i]   <- beta[1]*x1[i]+beta[2]*x2[i]
+
+              }
+
+    for (j in 1:2) {
+    beta[j] ~ dnorm(0, 0.01)
+	}
+
+   		 cut[1] <- g[1]              
+
+              cut[2] <- g[1] + g[2]       
+
+              cut[3] <- g[1] + g[2] + g[3]
+
+                                         
+
+             g[1] ~ dnorm(0, 0.001)
+
+              g[2] ~ dgamma(0.001, 0.001)
+
+              g[3] ~ dgamma(0.001, 0.001)
+
+
+          
+
+       
+}

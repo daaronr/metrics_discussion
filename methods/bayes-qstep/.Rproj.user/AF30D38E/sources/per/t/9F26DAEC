@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554993315099.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2381585835",
+    "id" : "9F26DAEC",
+    "lastKnownWriteTime" : 1554664574,
+    "last_content_update" : 1554664574,
+    "path" : "~/Dropbox/seminar notes and notes on econ papers/methods/bayes-qstep/bayes_workshop/R (MCMCpack)/Binary choice models in MCMCpack.R",
+    "project_path" : "bayes_workshop/R (MCMCpack)/Binary choice models in MCMCpack.R",
+    "properties" : {
+        "cursorPosition" : "16,17",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,30 @@
+model {
+
+for (i in 1:N) {
+y[i]~dnorm(mu[i], tau.student)
+
+mu[i]<-beta[School[i]]*x[i]+alpha[School[i]]
+
+}
+
+
+for (j in 1:N.school) {
+alpha[j]~dnorm(delta,tau.intercept.school)
+beta[j]~dnorm(lambda,tau.slope.school)
+
+}
+
+
+
+delta~dnorm(0,.1)
+lambda~dnorm(0,.1)
+
+tau.intercept.school~dgamma(0.001, 0.001)
+sigma2.intercept.school<-1/tau.intercept.school
+tau.slope.school~dgamma(0.001, 0.001)
+sigma2.slope.school<-1/tau.slope.school
+tau.student~dgamma(0.001, 0.001)
+sigma2.student<-1/tau.student
+
+
+}

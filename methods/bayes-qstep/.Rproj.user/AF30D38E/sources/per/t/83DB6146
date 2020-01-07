@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554971114345.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3299601489",
+    "id" : "83DB6146",
+    "lastKnownWriteTime" : 1555013873,
+    "last_content_update" : 1555013873790,
+    "path" : "~/Dropbox/seminar notes and notes on econ papers/methods/bayes-qstep/bayes_notes.Rmd",
+    "project_path" : "bayes_notes.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "marks" : "<:202,-1\n>:202,0\na:187,41",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

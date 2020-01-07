@@ -1,0 +1,26 @@
+model { 
+
+for (i in 1:n) {
+y[i] ~ dcat(p[i,1:4])
+
+for (j in 1:4) { 
+p[i,j]  <- phi[i,j] / sum(phi[i,])
+log(phi[i,j]) <- beta[j,1]+beta[j,2]*x1[i]+beta[j,3]*x2[i]  
+
+ }
+}
+
+
+# Priors
+beta[1,1] <- 0
+beta[1,2] <- 0
+beta[1,3] <- 0
+
+for (j in 2:4) {
+for (k in 1:3) {
+beta[j,k] ~ dnorm(0,0.01)
+}
+}
+
+
+}

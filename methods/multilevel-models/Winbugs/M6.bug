@@ -1,0 +1,35 @@
+model {
+
+for (i in 1:N) {
+y[i]~dbern(mu[i])
+
+mu[i]<-phi(beta[School[i]]*x[i]+alpha[School[i]])
+
+}
+
+
+for (j in 1:N.school) {
+alpha[j]~dnorm(mu.alpha[j],tau.intercept.school)
+mu.alpha[j]<-delta+gamma*z[j]
+
+beta[j]~dnorm(mu.beta[j],tau.slope.school)
+mu.beta[j]<-lambda+psi*z[j]
+
+}
+
+
+
+
+
+delta~dnorm(0,.1)
+lambda~dnorm(0,.1)
+psi~dnorm(0,.1)
+gamma~dnorm(0,.1)
+
+tau.intercept.school~dgamma(0.001, 0.001)
+sigma2.intercept.school<-1/tau.intercept.school
+tau.slope.school~dgamma(0.001, 0.001)
+sigma2.slope.school<-1/tau.slope.school
+
+
+}
