@@ -1,0 +1,4 @@
+[submodule "ml-reading-group"]
+	path = ml-reading-group
+	url = https://github.com/daaronr/ml-reading-group
+	branch = ml-reading-group
