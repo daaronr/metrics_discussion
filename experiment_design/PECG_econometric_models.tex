@@ -36,11 +36,11 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
-\newlength{\lyxlabelwidth}      % auxiliary length 
+\newlength{\lyxlabelwidth}      % auxiliary length
 
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\usepackage{graphicx} 
+\usepackage{graphicx}
 \usepackage{hyperref}
   \hypersetup{colorlinks=true,citecolor=blue,linkcolor=blue}
 
@@ -85,25 +85,25 @@ We will analyze the impact of our treatment on several outcomes, principally
 focusing on it's impact on {*}total{*} contributions (excluding our
 treatment contribution), but also analyzing the time-distribution
 of these and the nature of the peer-effects, and examining heterogeneity
-in was specified in our pre-analysis plan (PaP). 
+in was specified in our pre-analysis plan (PaP).
 
 \section{\label{sec:EMs}Econometric Models}
 
 We exogenously assign whether we add an anonymous small donation $(D=s)$,
 an anonymous large donation $(D=l)$, or no donation $(D=0)$ to a
 page (the proposed exogenous assignment procedure is described in
-section {[}ref{]} below). 
+section {[}ref{]} below).
 
 \emph{A simple model of a single treatment is proposed below, by Eirini
 Tatsi.}
 
-Suppose our sample consists of treated and control pages. 
+Suppose our sample consists of treated and control pages.
 
 We model the donation of subsequent donors, as well as the total amount
-raised by the page. 
+raised by the page.
 
 A standard model, following \citet{Bursztynetal2014}, for donor $i=1,...,n$
-is: 
+is:
 
 \begin{equation}
 y_{i}=\alpha+I_{i}\beta+x_{i}\gamma+\varepsilon_{i},\label{eq:donor_i}
@@ -130,7 +130,7 @@ to the person who started the charity page{*}\footnote{DR: do we observe the soc
 usually friends, family or colleagues of the person who started the
 charity page); it can also include an indicator variable taking value
 $1$ if the donor was anonymous.{*}\footnote{DR: Careful-{}-the decision to be anonymous is likely to be affected
-by the treatment here} 
+by the treatment here}
 
 In reality, donors to the same page might share common unobserved
 characteristics, e.g., preferences to contribute to an animal-rights
@@ -167,7 +167,7 @@ Y_{n}=\alpha_{n}+I_{n}\beta+X_{n}\gamma+u_{n},\label{eq:donor_n_page_fe_sem}
 u_{n}=\rho W_{n}u_{n}+\varepsilon_{n},
 \end{equation}
 in which $W_{n}$ is a block-diagonal weights matrix with non-zero
-elements if two donations were made at the same page. 
+elements if two donations were made at the same page.
 
 When visiting the charity webpage, one can see immediately the previous
 five donations. Assuming for expositional purposes that our assigned
@@ -176,20 +176,20 @@ is as follows:\\
 
 {\scriptsize{}}%
 \begin{tabular}{|c|c|c|c|c|c|c|}
-\hline 
+\hline
 {\scriptsize{}$t=1$} & {\scriptsize{}$t=2$} & {\scriptsize{}$t=3$} & {\scriptsize{}$t=4$} & {\scriptsize{}$t=5$} & {\scriptsize{}$t=6$} & {\scriptsize{}$t=7$}\tabularnewline
-\hline 
-\hline 
+\hline
+\hline
 {\scriptsize{}-} & {\scriptsize{}-} & {\scriptsize{}-} & {\scriptsize{}-} & {\scriptsize{}Donation 5} & {\scriptsize{}Donation 6} & {\scriptsize{}Donation 7}\tabularnewline
-\hline 
+\hline
 {\scriptsize{}-} & {\scriptsize{}-} & {\scriptsize{}-} & {\scriptsize{}Donation 4} & {\scriptsize{}Donation 4} & {\scriptsize{}Donation 5} & {\scriptsize{}Donation 6}\tabularnewline
-\hline 
+\hline
 {\scriptsize{}-} & {\scriptsize{}-} & \textbf{\scriptsize{}Donation 3} & \textbf{\scriptsize{}Donation 3} & \textbf{\scriptsize{}Donation 3} & {\scriptsize{}Donation 4} & {\scriptsize{}Donation 5}\tabularnewline
-\hline 
+\hline
 {\scriptsize{}-} & {\scriptsize{}Donation 2} & {\scriptsize{}Donation 2} & {\scriptsize{}Donation 2} & {\scriptsize{}Donation 2} & \textbf{\scriptsize{}Donation 3} & {\scriptsize{}Donation 4}\tabularnewline
-\hline 
+\hline
 {\scriptsize{}Donation 1} & {\scriptsize{}Donation 1} & {\scriptsize{}Donation 1} & {\scriptsize{}Donation 1} & {\scriptsize{}Donation 1} & {\scriptsize{}Donation 2} & \textbf{\scriptsize{}Donation 3}\tabularnewline
-\hline 
+\hline
 \end{tabular}{\scriptsize{}}\\
 {\scriptsize \par}
 
@@ -209,11 +209,11 @@ Although for the treated pages it is clear who donates directly after
 us, the timing does not coincide with donations in the control-pages.
 Therefore, we need to construct a rule on the order of donation after
 us for the control-group pages.{*}\footnote{DR: Perhaps our model could examine 'size of the k'th donation', where
-the count k excludes our own donation. 
+the count k excludes our own donation.
 
 Alternatively, all donations could be in the same regression, with
 flexible controls for 'time elapsed since page founding' and perhaps
-dummies for 'count of previous donations excluding our treatment.' 
+dummies for 'count of previous donations excluding our treatment.'
 
 At the same time, we could differentiate the treatment effect by 'time
 since treatment' and 'donation order since treatment'; I think this
@@ -226,7 +226,7 @@ observed history of donations''. Through our field experiment we
 can base identification on \textit{definitely} exogenous variation,
 as we will induce this variation ourselves (via our treatments). Using
 only observations from the treated pages, we can estimate the linear-in-means
-econometric model of \citet{Smithetal2013}:{*}\footnote{DR: This needs further clarification. 
+econometric model of \citet{Smithetal2013}:{*}\footnote{DR: This needs further clarification.
 
 1. If we merely estimate this model on the treated pages, including
 all donations, this will combine exogenous and endogenous variation,
@@ -247,7 +247,7 @@ donations {[}define the variables here{]}:
 \begin{equation}
 y_{pi}=\alpha+T_{pi}\delta+z_{pi}\theta+\varepsilon_{pi},\label{eq:donor_i_smith}
 \end{equation}
-where $T_{pi}$ is our randomly assigned donation treatment. 
+where $T_{pi}$ is our randomly assigned donation treatment.
 
 Comparison, especially using model \eqref{eq:donor_i_smith}, allows
 us to test the appropriateness of the exogeneity assumption without
@@ -264,7 +264,7 @@ in which $y_{p}$ denotes some distributional feature of the page,
 e.g., the mean amount donated (mode, min, max, etc.), or an indicator
 variable taking value $1$ if the target was reached or the time needed
 to reach the target.{*}\footnote{DR: This is attractive -{}- we were working on estimating this for
-our blocking procedure anyway} 
+our blocking procedure anyway}
 
 \section{More general notation for treatment assignment and design and scoping
 \textendash{} moving this to .Rmd file}
@@ -279,215 +279,10 @@ will be designed to determine the optimal seed size for maximizing
 future donations, following techniques proposed by Kasy's ``Dynamic
 experimental design for policy choice''.}
 
-\subsection{Treatment assignment}
 
-Our principal ``Main Hypotheses 1'' is to estimate each of the three
-Average Treatment Effects on total subsequent donations, for SEED-H
-and SEED-L relative to the control (no seed) and relative to each
-other.\footnote{We also aim to estimate effects on individual subsequent donations
-and other measures, as discussed in our pre-registration. } We have several constraints: our funding (a total of £5000), our
-time (we need to implement this over a period of at most 4 weeks),
-and the number of pages we expect to arise. Given this will assign
-our treatments (both the \emph{share} \emph{of treatments/controls
-}and the ``stratification''\emph{ }to minimize the expected mean
-squared error (MSE) of the aforementioned estimates, weighting each
-of the three equally.\emph{ (Is this equivalent to maximising the
-power to detect an effect of a given size?)}. 
-
-Our treatment assignment is influenced by Kasy (2016) and Barrios
-(2014?). 
-
-There are two important differences between our environment and those
-discussed in these papers. 
-\begin{enumerate}
-\item In the previous papers, all baseline characteristics of the sample
-are known in advance of the assignment process. In our case, we will
-only observe these as new pages are generated over time. As each page
-arises (and its initial characteristics are observed), we must decide
-which treatment or control to assign. (However, we have a substantial
-history of previous pages which we may use to infer the likely distribution
-of future pages). 
-\item The previous papers considered identically and independently distributed
-potential outcomes, without clustering or bunching. In contrast, our
-experiment will be implemented over a period of weeks or months. Outcomes
-may be correlated during particular time periods, because of common
-unobservable variables.\footnote{E.g., a news event may spur the creation of a particular series of
-fundraising likely to attract particularly high/low donations.}\linebreak{}
-\end{enumerate}
-\uline{Kasy's setup: }
-
-1. Sample observations $i$ from the population... collect baseline
-covariates $X_{i}$. 
-
-2. Using ... X and {[}possible randomization{]} ... allocate units
-i to treatments $D_{i}$. 
-
-3. {[}Post-experiment{]} collect ... outcomes $Y_{i}$ ... {[}use{]}
-to calculate estimators $\hat{{\beta}}$ of the ... $\beta$ that
-we are interested in {[}esp ATE{]}. 
-
-4. ... Loss , $L(\hat{\beta},\beta)$ ... commonly $(\hat{\beta}-\beta)^{2}$.\linebreak{}
-
-\uline{Our setup, written in Kasy's terminology}
-
-0.1. Observe outcomes $Y_{it}$ (e.g., total amount raised) for a
-``history'' of pages , where $t$ indexes the order of start date/time
-of the page, $t<0$. Observe baseline (pre-hypothetical-treatment)
-covariates $X_{it}$ including exact date/time of page foundation
-$\tau$. Observe ``pseudo-treatment'' variables$\tilde{D_{it}}$(e.g.,
-early donations before hypothetical treatment time). 
-
-0.2. Observe or estimate parameters (e.g., $\hat{V}(\beta|X)$ based
-on non-experimental data (our own analysis, Smith et-al)
-
-1. Define rule for assigning treatments and controls using the above,
-as a function of time and baseline covariates. (Should this rule dynamically
-adjust to outcome variation?)
-
-2. After officially starting experiment ($t=0$), treatable pages
-arise at some rate $\rho(\tau)$, revealing baseline covariates $X_{it}$
-including exact date/time of page foundation $\tau$.
-
-3. As each page arises, assign it to the treatment(s)/control as a
-function of baseline covariates (and a possible randomisation device,
-and possibly previously collected measures: outcome variance by treatment,
-etc). Implement this treatment. 
-
-4. Continue experiment until pre-specified stopping rule (see below).
-Collect $j$ outcome measures $Y_{ij}$ for each page.
-
-5. Calculate estimators$\hat{{\beta}}$ of the ... $\beta$ that we
-are interested in (\emph{which estimators?})
-
-6. Loss , $L(\hat{\beta},\beta)$ ... defined as $(\hat{\beta}-\beta)^{2}$
-(this cannot be computed from realized data, of course`)
-
-\subsubsection{Proposed randomization procedure I (a Barrios spin-off)}
-
-\emph{(If we adopt this procedure)} We will estimate a \emph{predictive}
-(ridge regression) model of the total amount raised based on pre-experiment
-``historical'' data, fitted on variables (``baseline covariates'')
-that can be observed at the time the page is created and started and
-before it is potentially treated. 
-
-For each new page we will use this model to predict the expected total
-revenue, categorizing the page by ``quantile of the distribution
-of similar previous pages'' (again from pre-experiment data, but
-perhaps adjusting as pages come in?). Within each predicted quantile,
-we will essentially alternate between treatment and control (select
-from an urn with two balls without replacement). The initial treatment
-for all bins will be chosen randomly, according to a pre-registered
-public randomisation device.
-
-We will choose the size of the aforementioned quantiles (e.g., quartiles
-or deciles) to trade off between efficiency with respect to balancing
-the size of predicted donation between treatment and control, and
-to achieve a balance between treatment and control within small time
-intervals. We can calibrate this using our ``historical'' data.
-using Monte-carlo simulations to determine which procedures consistently
-yields the lowest mean-squared error. (In doing this we might want
-to separate a fitting and a testing sample to avoid overfitting? \footnote{I suspect that a succession of treatments or controls in the same
-time period may make our estimates vulnerable to unobservable time-specific
-shocks; as this would be hard to diagnose using standard techniques
-and simulations without a very long history. Intuitively, we would
-like an approximate balance of control and treatment observations
-within each 4 hours. However, let us explore whether we can find a
-more systematic approach.}
-
-In doing the above we should also consider that the share of pages
-in each ``expected revenue'' quantile as predicted from \emph{previous
-data} will not be equal, as the baseline variables will change over
-time; we should consider trends, and seasonality, and unobservable
-time-specific shocks to this.
-
-\subsubsection{Proposed randomization procedure II (Max Kasy to propose, presumably
-with a Bayesian framework )}
-
-\textbf{Pre-determined variables}
-
-\subsection{Sample size and stopping rule}
-
-Following Sagarin's ``p\_crit'' approach,\footnote{DR: This approach seems fairly intuitive and feasible/realistic. The
-idea that (e.g.,) \textquotedblleft we will collect in batches of
-150, and we will not stop until we attain p>p\_crit or (for futility)
-whenever p>.5\textquotedbl{} seems like something that could be a
-credible commitment, if preregistered. At the point of submitting
-the paper with this plan preregistered, one could check whether they
-indeed did collect data in these batches (assuming they can\textquoteright t
-hide data) and could check whether they followed this plan. } we can continue to collect in batches, with prespecified stopping
-rules, stopping either when
-\begin{enumerate}
-\item We find a treatment-control differential that is statistically significant
-above some nominal p-value ``p\_crit''
-\item For ``futility'', after the p-value exceeds some value. 
-\end{enumerate}
-The precise value of p\_crit can be calibrated so that the procedure
-above yields less than an (e.g.) 5\% rate of false-positive. 
-
-However, I would like to adapt this to more useful stopping ``targets''
-involving achieving reasonable confidence intervals. 
-
-We want to run the experiment until we have sufficient statistical
-power both to assess the Smith et al results and to provide evidence
-on whether giving on social fundraising pages is an effective strategy
-for those in the EA movement. We aim to continue collecting data until
-we attain \emph{both} of the below:
-\begin{itemize}
-\item Considering Smith et al's result that an increase in the mean contribution
-by one unit increase subsequent contributions by 1/4 of a unit...
-For the impact on \emph{donations while this donation is visible on
-the page}, we will collect data until the 95\% CI of our estimate
-(of the impact of a change in the mean contribution on a later contribution)
-either does \emph{not} include 0.25, or it includes 0.25 and has less
-than a width below 0.25 (i.e., within {[}0.125, 0.375{]}). 
-\item Considering our 'EA policy' implications... For the \emph{total subsequent
-donation} we aim to gather enough data so that the 95\% confidence
-interval on the impact of our treatment allows either
-\begin{itemize}
-\item If the effect appears null or negative, to rule out a (positive) effect
-greater than 15\% of the size of our average (large) seed contribution 
-\item to find a significant positive effect that is bounded within 50\%
-of the size of our average (large) seed
-\end{itemize}
-\end{itemize}
-Before the main experiment, we will re-evaluate this and re-report
-our proposed sample size/stopping rule, as well as reporting our ex-ante
-power estimates.\medskip{}
-
-\uline{Details}
-
-We have committed £5000 of our own funds for this purpose.
-
-Note that we have collected \textquotedbl{}Historical Data\textquotedbl{}
-since we created our R plugin close to the start of year-2018. Our
-analysis of this data suggests that the average ``early'' donations
-in this category were around £20, implying that our average ``Large''
-seed size will be around £40. (And the ``small'' seed size will
-typically be £10). This would imply our funds will yield an expected
-sample size of {[}see ``scoping'' work. (We aimed at 150 treatment
-pages and 150 control pages from a previous calculation.)
-
-However, after these funds are exhausted, if we still have not attained
-the power we seek, we will look for additional funding sources. It
-is not reasonable for us as researchers to specify a stopping rule
-based on cost\textendash{} realistically, the project will always
-continue as long as funds can be raised (and it would be difficult
-to verify that one 'would have stopped). 
-
-...
-
-\uline{Max}
-
-``greedy algorithm''
-
-Bayesian: posterior variance 
-
-Stopping with a narrow CI\textendash{} with the CI based on the \emph{prior
-}estimation
-
-Thompson sampling
-
+MOVED: discussion of treatment assignment
 \pagebreak{}
+
 
 \bibliographystyle{econometrica}
 \phantomsection\addcontentsline{toc}{section}{\refname}\bibliography{bibliography}
