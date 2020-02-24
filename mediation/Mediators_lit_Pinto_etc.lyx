@@ -1,0 +1,1406 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch Formally
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Mediators, selection, Roy models: review focused on issues relevant to Parey
+ et al
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+DR initial thoughts:
+\end_layout
+
+\begin_layout Standard
+Suppose we observe treatment 
+\begin_inset Formula $T$
+\end_inset
+
+ (e.g., allowed to enter first-choice institution and course), intermediate
+ outcome 
+\begin_inset Formula $M$
+\end_inset
+
+ (e.g., completion of degree in first-choice course and institution), and
+ final outcome 
+\begin_inset Formula $Y$
+\end_inset
+
+ (e.g., lifetime income.)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Treatment 
+\begin_inset Formula $T$
+\end_inset
+
+ directly affects final outcome 
+\begin_inset Formula $Y$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\ensuremath{T\rightarrow Y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T$
+\end_inset
+
+ also affects intermediate outcome 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T\rightarrow M
+\]
+
+\end_inset
+
+Intermediate outcome also affects final outcome 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+M\ensuremath{\rightarrow}Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With exogenous variation in 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+ (or identified instruments for each of these), we should be able to estimate
+ each of these three relationships as functions.
+\end_layout
+
+\begin_layout Standard
+With homogeneous (and in a simplest case linear) effects and separate we
+ can use the functions estimated above to compute the total (direct plus
+ indirect) effect of 
+\begin_inset Formula $T$
+\end_inset
+
+ on 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ We could also compute the share of this effect that occurs 
+\emph on
+via
+\emph default
+ the intermediate effect, i.e., 
+\begin_inset Formula $T\text{\ensuremath{\rightarrow} }M\text{\ensuremath{\rightarrow} }Y$
+\end_inset
+
+.
+ This should be merely the composition of these two functions, or, in the
+ linear case, the product of the slope coefficients.
+\end_layout
+
+\begin_layout Standard
+However, there are two major challenges to this estimation.
+\end_layout
+
+\begin_layout Enumerate
+We (may) have a valid instrument for (exogenous variation in) 
+\begin_inset Formula $T$
+\end_inset
+
+ only, and 
+\begin_inset Formula $M$
+\end_inset
+
+ may arise through a process involving selection on unobserved variables.
+\end_layout
+
+\begin_layout Enumerate
+Each of the three above relationships (as well as the selection equation)
+ may involve heterogeneous functions; i.e., differential treatment effects.
+\end_layout
+
+\begin_layout Section
+Econometric Mediation Analyses (Heckman and Pinto)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Econometric Mediation Analyses: Identifying the Sources of Treatment Effects
+ from Experimentally Estimated Production Technologies with Unmeasured and
+ Mismeasured Inputs 
+\end_layout
+
+\begin_layout Subsection*
+Relevance to Parey et al
+\end_layout
+
+\begin_layout Standard
+We have an instrument for admission to one's first-choice institution (and
+ course).
+ Our result show an impact of this admission on future income, for at least
+ some groups.
+ However, this effect could come through any of a number of channels.
+ We observe some of these 'intermediate outcomes', including course enrollment,
+ course completion, medical specialization, and location of residence, but
+ we do not have specific instruments for each of these (a lot of work might
+ yield an instrument for specialization; I hear there is a lottery).
+\end_layout
+
+\begin_layout Subsection
+Summary and key modeling
+\end_layout
+
+\begin_layout Standard
+There is a 'production function' (cf income as a function of human capital,
+ opportunities, etc).
+ Treatments (e.g., RCTs) may affect outcomes through the following channels:
+\end_layout
+
+\begin_layout Enumerate
+observable or proxied inputs (cf degree obtained, specialization entered,
+ years of study, moving away from parents, location of residence as proxy
+ for job opportunities)
+\end_layout
+
+\begin_layout Enumerate
+unobservable/unmeasured inputs (cf human capital, social connections...)
+\end_layout
+
+\begin_layout Enumerate
+the production function itself, the 'map between inputs and outputs for
+ treatment group members' (cf does the institution itself directly shift
+ the income?, does it change the impact of entering a specialization, does
+ human capital 'matter more' at some institutions?)
+\end_layout
+
+\begin_layout Standard
+If treatments affect unmeasured inputs in a way not statistically independent
+ of measured inputs, this biases estimates of the effect of measured inputs.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+RCTs unaided by additional assumptions do not allow the analyst to identify
+ the causal effect of increases in measured inputs on outputs ...
+ [nor distinguish effects from changes in production functions].
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here 
+\begin_inset Quotes eld
+\end_inset
+
+ we can test some of the strong assumptions implicitly invoked
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+Direct effects
+\begin_inset Quotes erd
+\end_inset
+
+ as commonly stated refer to the impact of both channels 2 and 3 above.
+ [DR: Channel 2 isn't really a direct effect imho]
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Standard potential outcomes framework:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y=DY_{1}+(1-D)Y_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ATE=E(Y_{1}-Y_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Production function
+\begin_inset Formula 
+\[
+Y_{d}=f_{d}(\mathbf{\mathbf{{\theta}}}_{d}^{p},\mathbf{\mathbf{{\theta}}}_{d}^{u},\mathbf{{X}}),d\in\left\{ 0,1\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+ the function under treatment 
+\begin_inset Formula $d$
+\end_inset
+
+; of proxied and unobserved inputs that occur under state 
+\begin_inset Formula $d$
+\end_inset
+
+, and baseline variables.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The production function implies:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ATE=E\Big(f_{1}(\mathbf{\mathbf{{\theta}}}_{1}^{p},\mathbf{\mathbf{{\theta}}}_{1}^{u},\mathbf{{X}})-f_{0}(\mathbf{\mathbf{{\theta}}}_{0}^{p},\mathbf{\mathbf{{\theta}}}_{0}^{u},\mathbf{{X}})
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also consider counterfactual outputs, fixing treatment status and proxied
+ inputs: 
+\begin_inset Formula 
+\[
+Y_{d,\bar{\theta_{d}}^{p}}=f_{d}(\mathbf{\mathbf{{\bar{{\theta}}}}}_{d}^{p},\mathbf{\mathbf{{\theta}}}_{d}^{u},\mathbf{{X}}),d\in\left\{ 0,1\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This allows us to decompose ('as in the mediation literature'
+\emph on
+):
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+ATE(d)=IE(d)+DE(d)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+IE, Indirect
+\emph default
+ 
+\emph on
+effect
+\emph default
+: allows only the proxied inputs to vary with the treatment (holds the rest
+ fixed at one of the two treatment statuses)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DE, Direct
+\emph default
+ 
+\emph on
+effect
+\emph default
+: allows technology and the distribution of unobservables to vary with the
+ treatment (holds proxied inputs fixed at one of the two treatment statuses)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+HP further decompose the direct effect into: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $DE'(d,d')$
+\end_inset
+
+: The impact of letting the treatment vary the map only (fixing the rest
+ at one of the two appropriate values)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $DE''(d,d')$
+\end_inset
+
+: The impact of letting the treatment vary the unmeasured inputs only (fixing
+ the rest at one of the two appropriate values)
+\end_layout
+
+\begin_layout Standard
+They use this to give two further ways of decomposing the ATE.
+ 
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Common assumptions
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+The 
+\bar under
+standard literature
+\bar default
+ on mediation analysis in psychology regresses outputs on mediator inputs
+\begin_inset Quotes erd
+\end_inset
+
+ ...
+ often adopts the strongs assumption of:
+\end_layout
+
+\begin_layout Enumerate
+no variation in unmeasured inputs conditional on the treatment (implying
+ the effects of these are summarized by a treatment dummy) and
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Cf 'winning institution' impacts human capital, social networks, etc identically
+ for everyone; e.g., not a greater effect for men then for women, nor a greater
+ effect for those entering particular specializations.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+full invariance of the production function: 
+\begin_inset Formula $f_{1}=f_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+...
+ which implies 
+\begin_inset Formula $Y_{d}=f(\mathbf{\theta}_{d}^{p},d,\mathbf{X})$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Sequential ignorability (Imai et al, 10, '11)
+\bar default
+:  Essentially, independent randomization of both treatment status and measured
+ inputs.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Cf 'winning institution' does not effect the specialization entered nor
+ the location of residence, nor are both determined by a third factor.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+This sentence is hard to follow:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+In other words, input 
+\begin_inset Formula $\theta_{d'}^{p}$
+\end_inset
+
+ is statistically independent of potential outputs when treatment is fixed
+ at 
+\begin_inset Formula $D=d$
+\end_inset
+
+ and measured inputs are fixed at 
+\begin_inset Formula $\bar{\theta_{d'}^{p}}$
+\end_inset
+
+ conditional on treatment assignment 
+\begin_inset Formula $D$
+\end_inset
+
+ and same preprogram characteristics 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Formally
+status open
+
+\begin_layout Standard
+
+\series bold
+A-1 Sequential Ignorability:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{aligned}(i)\end{aligned}
+ & \Big(Y_{d,\bar{\theta_{d'}^{p}}}\bar{,\:\theta_{d'}^{p}}\Big)\perp D|\mathbf{X};\:d,d'\in\left\{ 0,1\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Essentially, (i) implies that the treatment (conditionally on X) is assigned
+ orthogonally to the potential outcomes including the (counterfactual) measured
+ inputs and the unobserved measured inputs (the latter will enter into 
+\begin_inset Formula $Y_{d,\bar{\theta_{d'}^{p}}}$
+\end_inset
+
+).
+ An RCT achieves this.
+ (This does 
+\emph on
+not
+\emph default
+ imply the treatment has no impact on inputs.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{aligned}(ii)\end{aligned}
+ & Y_{d,\bar{\theta_{d}^{p}}}\perp\theta_{d'}^{p}|D,\mathbf{X};\:d,d'\in\left\{ 0,1\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+As if a second RCT were implemented for each treatment group such that measured
+ inputs are randomized through a ...
+ protocol conditional on preprogram variables X and treatment status D ...
+ equivalent to assuming that 
+\begin_inset Formula $\theta_{d}^{p}\perp\theta_{d'}^{0}$
+\end_inset
+
+ for all 
+\begin_inset Formula $d$
+\end_inset
+
+ and 
+\begin_inset Formula $d'$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+[??is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\theta_{d'}^{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ a typo??? was 
+\begin_inset Formula $\theta_{d'}^{p}$
+\end_inset
+
+intended?]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(iii)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(iii) is a support condition I'm ignoring for now
+\end_layout
+
+\begin_layout Standard
+DR: I believe the above implies the independence of the observable and unobserva
+ble inputs 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This assumption yields the 'mediation formulas':
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E(IE(d)|X)= & \int E(Y|\theta^{p}=t,D=d,X)\underbrace{\Big(dF_{(\theta^{p}|D=1,X)}(t)-dF_{(\theta^{p}|D=1,X)}(t)\Big)}_{{\text{Difference in distribution of proxy inputs}}} & (9)\\
+E(DE(d)|X)= & \int\underbrace{\Big(E(Y|\theta^{p}=t,D=1,X)-E(Y|\theta^{p}=t,D=0,X)\Big)}_{\text{Dfc in expectations (unobservables, function) between treatments given proxy inputs  }}expe\underbrace{{dF_{(\theta^{p}|D=1,X)}(t)}}_{\text{Distn proxy inputs for D=1}} & (10)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+(??F is presumably the distribution over the observables; where did the
+ unobservables go? They are in the expectations, I guess.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\emph default
+\bar under
+Difference from RCT
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+What RCT doesn't do:
+\end_layout
+
+\begin_layout Quotation
+[sequential ignorability] translates into ...
+ 
+\bar under
+no confounding effects
+\bar default
+ on both treatments and measured inputs ...
+ does not follow from a randomized assignment of treatment ...[which] ensures
+ independence between treatment status and counterfactual inputs/outputs
+ ...
+ [but 
+\emph on
+not
+\emph default
+] between proxied inputs 
+\begin_inset Formula $\theta_{d}^{p}$
+\end_inset
+
+ and unmeasured inputs 
+\begin_inset Formula $\theta_{d}^{u}$
+\end_inset
+
+.
+ [Thus 
+\emph on
+not
+\emph default
+ between counterfactual outputs and measured inputs is assumed in condition
+ (ii).]
+\end_layout
+
+\begin_layout Standard
+Cf, randomizing 'win first-choice institution' does not guarantee that the
+ choice (potential choice under winning/losing institution) to enter a particula
+r specialty is independent of (potential after winning/losing institution)
+ unobserved human capital gains at an institution.
+ The (potential) choiceof specialty is alsonot guaranteed choice independent
+ of potential incomes (holding proxy inputs like specialty constant) if
+ winning/losing institution.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+What RCT 
+\bar under
+does
+\bar default
+ do:
+\end_layout
+
+\begin_layout Standard
+RCT ensures 
+\begin_inset Quotes eld
+\end_inset
+
+independence between treatment status and counterfactual inputs/outputs
+\begin_inset Quotes erd
+\end_inset
+
+, thus identifying 'treatment effects for proxied inputs and for outputs.
+ 
+\end_layout
+
+\begin_layout Standard
+CF, we can identify the impact of the treatment 'win first chosen institution'
+ on proxied input like 'enters a specialization' and on outputs like 'income
+ in observed years.'
+\end_layout
+
+\begin_layout Section
+Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving
+ to Opportunity
+\end_layout
+
+\begin_layout Subsection*
+Summary
+\end_layout
+
+\begin_layout Itemize
+...
+ 4000+ families targeted, incentive to relocate from projects to better
+ neighbourhoods.
+ 
+\end_layout
+
+\begin_layout Itemize
+Easy to identify impact of vouchers 
+\end_layout
+
+\begin_layout Itemize
+Challenge (here) is to assess impact of 
+\emph on
+neighborhoods
+\emph default
+ on outcomes.
+ 
+\end_layout
+
+\begin_layout Itemize
+Method here to decompose the TEOT into unambiguously interpreted effects.
+ Method applicable to 'unordered choice models with categorical instrumental
+ variables and multiple treatments'
+\end_layout
+
+\begin_layout Itemize
+Finds significant causal effect on labour market outcomes
+\end_layout
+
+\begin_layout Subsection*
+Relevance to Parey et al
+\end_layout
+
+\begin_layout Enumerate
+We also have an instrument (DUO lottery numbers) cleanly identifying the
+ effect of the 'opportunity to do something' (in our case, to enter the
+ course at your preferred institution).
+ However, we also want to measure the impact of choices 'encouraged' by
+ the instrument, such as (i) attending the first choice course and institution
+ and (ii) completing this course.
+ We also deal with unordered choices (i.
+ enter course and institution, enter course at other institution, enter
+ other course at institution, enter neither) (ii.
+ choice of medical specialisation)
+\end_layout
+
+\begin_layout Enumerate
+The geographic outcome is relevant to our second paper (impact on 'lives
+ close to home')
+\end_layout
+
+\begin_layout Subsection*
+Introduction 
+\end_layout
+
+\begin_layout Standard
+The causal link between neighborhood characteristics and resident's outcomes
+ has seldom been assessed.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Treatments:
+\end_layout
+
+\begin_layout Itemize
+Control (no voucher) 
+\end_layout
+
+\begin_layout Itemize
+Experimental: could use voucher to lease in low-poverty neighborhood 
+\end_layout
+
+\begin_layout Itemize
+Section 8: Could use voucher in any () neighborhood
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Many papers evaluate the ITT or TOT effects of MTO.
+\end_layout
+
+\begin_layout Itemize
+ITT: effect of being 
+\emph on
+offered
+\emph default
+ voucher 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+estimated as difference in average outcome of experimental vs control families
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+TOT: effect for 'voucher compliers' (assuming no effect of simply being
+ 
+\emph on
+offered
+\emph default
+ voucher on those who don't use it) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+estimated as ITT/compliance rate
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+[ITT and TOT] are the most useful parameters to investigate the effects
+ of 
+\emph on
+offering
+\emph default
+ [EA] rent subsidising vouchers to families.
+\end_layout
+
+\begin_layout Subsection*
+Identification strategy brief
+\end_layout
+
+\begin_layout Itemize
+Vouchers as IVs for choice among 3 neighborhood alternatives (no relocation,
+ relocate bad, relocate good) 
+\emph on
+[Cf: enter course and fp-institution, enter course at other institution,
+ do not enter course]
+\end_layout
+
+\begin_layout Itemize
+Neighborhood causal effects as difference in counterfactual outcomes among
+ 3 categories
+\end_layout
+
+\begin_layout Itemize
+Challenge: 
+\begin_inset Quotes eld
+\end_inset
+
+MTO vouchers are insufficient to identify the expected outcomes for all
+ possible counterfactual relocation decisions
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+...
+ 
+\begin_inset Quotes eld
+\end_inset
+
+compliance with the terms of the program was highly selective [Clampet-Lundquist
+ and M, 08]
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Solution: Uses theory and 'tools of causal inference.
+ Invokes SARP to identify 'set of counterfactual relocation choices that
+ are economically justifiable'
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Identifying assumption
+\bar default
+: 
+\begin_inset Quotes eld
+\end_inset
+
+the overall quality of the neighborhood is not directly caused by the unobserved
+ family variables even though neighborhood quality correlates with these
+ unobserved family variables due to network sorting
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+'Partition sample ...
+ into unobserved subsets associated with economically justified counterfactual
+ relocation choices and estimate the causal effect of neighborhood relocation
+ conditioned on these partition sets.' [
+\emph on
+what does this mean?]
+\end_layout
+
+\begin_layout Subsection*
+Results in brief
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+Relocating from housing projects to low poverty neighborhoods generates
+ statistically significant results on labor market outcomes ...
+ 65% higher than the TOT effect for adult earnings.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Framework: first for binary/binary (simplification)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+First, for binary outcomes (simplified)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Z_{\omega}$
+\end_inset
+
+: whether family 
+\begin_inset Formula $\omega$
+\end_inset
+
+ receives a voucher 
+\emph on
+(cf institution-winning lottery number)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\omega}$
+\end_inset
+
+: whether family 
+\begin_inset Formula $\omega$
+\end_inset
+
+ relocates (
+\emph on
+cf enters first choice institution and course)
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Counterfactuals
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T_{\omega}(z)$
+\end_inset
+
+: relocation decision 
+\begin_inset Formula $\omega$
+\end_inset
+
+ would choose if it had been assigned voucher 
+\begin_inset Formula $z\in{0,1}$
+\end_inset
+
+': vector of potential relocation decisions (
+\emph on
+cf education choices) 
+\emph default
+for each voucher assignment (
+\emph on
+cf lottery number)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can partition into never-takers, compliers, always takers, and defiers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $(Y_{\omega}(0);Y_{\omega}(1$
+\end_inset
+
+)): (Potential counterfactual) outcomes (
+\emph on
+cf income, residence, etc
+\emph default
+) when relocation decision is fixed at 0 and 1, respectively
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Key ( standard) identification assumption: instrument independent of counterfact
+ual variables
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(Y_{\omega}(0),Y_{\omega}(1),T_{\omega}(0),T_{\omega}(1))\perp Z_{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Standard result 1: ITT
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ITT=E(Y_{\omega}|Z_{\omega}=1)-(Y_{\omega}|Z_{\omega}=0)\\
+=E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')P(S_{\omega}=[0,1])+E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[1,0]')P(S_{\omega}=[0,1])
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+i.e., ITT computation yields the sum of the 'causal effect for compliers'
+ and the 'causal effect for defiers, weighted by the probability of each.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Standard result 2: LATE
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+LATE=\frac{{ITT}}{P(T_{\omega}=1|Z_{\omega}=1)-P(T_{\omega}=1|Z_{\omega}=0)}= &  & E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')\\
+if\:P(S_{\omega}=[0,1])=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+i.e., the LATE, computed as the ITT divided by the 'first stage' impact of
+ the instrument, is the causal effect for compliers if there are no defiers.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Framework for MTO – multiple treatment groups, multiple choices
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Z_{\omega}\in\{z_{1,}z_{2,}z_{3}\}$
+\end_inset
+
+ for no voucher, experimental voucher, and section 8 voucher, respectively
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T_{\omega}\in\{1,2,3\}$
+\end_inset
+
+ ...
+ no relocation, low poverty neighborhood relocation, high poverty relocation
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T_{\omega}(z)$
+\end_inset
+
+: relocation decision for family 
+\begin_inset Formula $\omega$
+\end_inset
+
+ if assigned voucher 
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+Response type for each family 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is that a three-dimensional vector: 
+\begin_inset Formula $S_{\omega}=[T_{\omega}(z_{1}),T_{\omega}(z_{2}),T_{\omega}(z_{3})]$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+ 
+\series bold
+ITT 
+\series default
+computation now measures a weighted sum of effects across a subset of those
+ response types whose responses vary between the assignments being compared.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Cf: 
+\end_layout
+
+\begin_layout Itemize
+Considering the 'treatments': '1: enter other course at fp-inst, '2: enter
+ course at fp-inst', '3: enter course at non-fp inst' 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(I ignore other course at other institution for now)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Looking among those who won the course lottery (so we have a binary instrument:
+ wininst 
+\begin_inset Formula $Z_{\omega}\in{0,1\}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Our reduced-form estimates (regressions on the 'lottery number wins institution'
+ dummy) measures the probablility-weighted sum of: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+impact of institution within course (
+\begin_inset Formula $T_{\omega}=$
+\end_inset
+
+2 versus 3); for those who would 'fully comply' (enter course at institution
+ if 
+\begin_inset Formula $Z_{\omega}=1$
+\end_inset
+
+, enter course at other institution if 0)
+\end_layout
+
+\begin_layout Itemize
+impact of the course at fp-institution versus second-best course at fp-instituti
+on for 'institution-loving' noncompliers; those who would enter the course
+ 
+\emph on
+only 
+\emph default
+if they get the fp-institution and otherwise another course at the same
+ institution 
+\end_layout
+
+\begin_layout Itemize
+effects for perverse defiers
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

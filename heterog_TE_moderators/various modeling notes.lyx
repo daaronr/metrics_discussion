@@ -1,0 +1,2753 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\setcounter{MaxMatrixCols}{30}
+\usepackage{booktabs}
+\usepackage{marvosym}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{multirow}
+\newtheorem{prediction}{Prediction}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposit}{Proposition}
+\usepackage{lscape}
+\usepackage{rotating}
+\newtheorem{result}{Result}
+\makeatother
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\branch model1
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch kula
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch online_appendices
+\selected 0
+\filename_suffix 0
+\color #ecfaf8
+\end_branch
+\branch oldermodeling
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 256362285 "david"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+NL Education project: Key Economic questions and modeling notes
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Starting from peerquestions.md
+\end_layout
+
+\begin_layout Section
+Research question 1: Returns to 'being allowed to enter preferred institution'
+ (the 
+\begin_inset Quotes eld
+\end_inset
+
+treatment
+\begin_inset Quotes erd
+\end_inset
+
+ and policy variable)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+What are the returns (academic, early income, lifetime income, etc) to winning
+ one's first-preferred institution, (and how do these returns differ by
+ demographics and the characteristics of that institution?)
+\end_layout
+
+\begin_layout Standard
+We first aim to measure the impact of a student being 
+\emph on
+admitted
+\emph default
+ to his or her preferred institution, conditional on being admitted to the
+ course.
+ We can consider this the treatment effect of the variable the policymaker
+ has direct control over.
+ While we will consider a range of outcomes, we will focus on ``income in
+ year t'' for the present discussion.
+ Consider the effect of an 
+\emph on
+exogenous shift 
+\emph default
+in the treatment from 
+\begin_inset Quotes eld
+\end_inset
+
+Treatment = 0: attains permission to attend course in an institution not
+ of first preference
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Treatment=1: attains permission to attend course in institution of first-prefere
+nce.
+\begin_inset Quotes erd
+\end_inset
+
+ We aim to measure the difference in hypothetical outcomes for a person
+ with particular characteristics assigned to Treatment=1 relative to the
+ same person assigned to Treatment=0.
+\end_layout
+
+\begin_layout Standard
+We will use the familiar potential outcomes framework [RUBIN].
+ Let 
+\begin_inset Formula $Y_{i}(A=1,C=1)$
+\end_inset
+
+ denote individual i's potential income (at some time 
+\begin_inset Formula $t$
+\end_inset
+
+; we leave off this superscript for now) if she were exogenously assigned
+ to be 
+\emph on
+admitted
+\emph default
+ to the institution of her first choice 
+\begin_inset Formula $(A=1)$
+\end_inset
+
+ and the course of her first choice 
+\begin_inset Formula $(C=1)$
+\end_inset
+
+.
+ Similarly, we can consider the potential income outcome 
+\begin_inset Formula $Y_{i}(A=0,C=1)$
+\end_inset
+
+, where she is admitted to her first choice course but 
+\emph on
+not
+\emph default
+ her first-choice institution.
+ If we consider 'able to attend to first-choice institution' as the treatment
+ of interest, the effect we are interested in will be simply: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ATE(X)=E\Big(Y_{i}(A=1,C=1)|X_{i}=X\Big)-E\Big(Y_{i}(A=0,C=1)|X_{i}=X\Big),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for some group with relevant covariates 
+\begin_inset Formula $X$
+\end_inset
+
+, for some outcome 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ The policy relevance of this is clear: this tells us the benefit those
+ in this group get (in terms of outcome Y) from being given the 
+\emph on
+opportunity
+\emph default
+ to attend their preferred institution and their first-preferred course,
+ relative to having been given the opportunity to attend their first-choice
+ course but not their first-choice institution.
+ If policymakers can give more individuals 
+\begin_inset Quotes eld
+\end_inset
+
+like those in this group
+\begin_inset Quotes erd
+\end_inset
+
+ the opportunity to attend their first choice institution, this is the benefit
+ they may be expected to get.
+ (This presumes that the institution is not changed in any way by the admission
+ of more such students; i.e., the Stable Unit Treatment Value Assumption (SUTVA;
+ Rubin, 1980,1990)).
+\end_layout
+
+\begin_layout Standard
+The above objects define treatment effects and differences that may come
+ through a variety of channels.
+ For example, if we have 
+\begin_inset Formula $ATE(X=m)=10$
+\end_inset
+
+ this does not tell us that males gain 10 from 
+\emph on
+completing a particular degree
+\emph default
+ at their first-choice institution.
+ Compliance is an issue: a student admitted to his first-choice institution
+ and course may not actually 
+\emph on
+attend
+\emph default
+ this institution, nor even this course.
+ Students 
+\emph on
+not
+\emph default
+ admitted to the preferred institution (in their preferred course) may choose
+ not to attend the course at all, and may be more likely to 'drop the course'
+ than the institution-winners.
+ Even given compliance in terms of attendance, academic success and degree
+ completion may vary by institution.
+ Thus, the effects of winning first-choice institution may come from several
+ channels, including the impact on entering the course, on academic outcomes
+ conditional on entering, and possible signalling and human capital benefits
+ conditional on completing the course.
+\end_layout
+
+\begin_layout Standard
+However, no matter which channels these effects occur through, they are
+ still of policy interest.
+ If males gain 10 in income from getting their first-choice institution
+ (all else equal), it is still a clear benefit to them conferred by the
+ admissions process.
+\end_layout
+
+\begin_layout Standard
+We will also be interested in the differences in this between groups with
+ distinct observable characteristics, e.g., for males versus females:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ATE(X=m)-ATE(X=f)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are further issues when comparing the relevant benefits between groups.
+ If 
+\begin_inset Formula $ATE(X=m)-ATE(X=f)=10-5=5$
+\end_inset
+
+, this would not tell us that males gain 5 more than females from attending
+ any particular institution (or set of institutions) relative to any other
+ particular institution(s).
+ While the distribution of institutional preferences should be similar between
+ lottery winners and losers (because of the random draw), they need not
+ be similar along other characteristics like gender.
+ Still, the estimate of the differential benefits are relevant: they tell
+ us which groups gain more along which dimensions from being given admissions
+ preference.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q1
+\series default
+: We observe instruments 
+\begin_inset Formula $Z_{A}\in\{0,1\}$
+\end_inset
+
+ representing a (noisy in a particular way?) measure of 'win institution
+ through lottery' and we also observe the above mentioned assignment 
+\begin_inset Formula $A$
+\end_inset
+
+ representing 'able to attend institution after swaps'.
+  We need to show that we can identify the above ATE's using our IV strategy.
+\end_layout
+
+\begin_layout Standard
+...
+ (while also showing why we need to use these IV's rather than a simple
+ reduced form ols on the instruments or a regression of the censored sample
+ of 'non-swappers').
+\end_layout
+
+\begin_layout Standard
+(We also observe instruments 
+\begin_inset Formula $Z_{c}$
+\end_inset
+
+ representing a measure of 'win course through lottery')
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A(0),A(1)$
+\end_inset
+
+ represent the values of the 'able to attend to institution of first preference
+ after swaps' outcome for an individual that would be attained given the
+ intruments 
+\begin_inset Formula $Z_{A}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{A}=1$
+\end_inset
+
+ respectively.
+ In the present context, we can assume that 
+\begin_inset Formula $A(1)=1;$
+\end_inset
+
+ those win the institutional lottery have the opportunity to attend their
+ first-preference university (although they may choose not to).
+ However 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $A(0)\in\{0,1\}$
+\end_inset
+
+ as some who lose this lottery may nonetheless swap in.
+ (Notation largely from Imbens and Rubin, 1997)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\series bold
+Issues to address
+\end_layout
+
+\begin_layout Enumerate
+Basic identification problem above; connect with our estimator
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+'Effect for the compliers', why this identifies the effect of 'being able
+ to attend' even though we include swappers.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Identification for comparisons between groups 
+\end_layout
+
+\begin_layout Enumerate
+Specify policy interpretation more carefully; is 'able to enter first choice
+ relative to 
+\begin_inset Quotes eld
+\end_inset
+
+some other non-first choice
+\begin_inset Quotes erd
+\end_inset
+
+' an object of general interest, or do we need to narrow this down?
+\end_layout
+
+\begin_layout Enumerate
+Overall (also relevant for below): Noise in our IV
+\end_layout
+
+\begin_layout Enumerate
+Overall: Specification of outcome variables/functional form to represent
+ 'lifetime income', specification of interactions, et.
+ 
+\end_layout
+
+\begin_layout Section
+Research question 2: Returns to 
+\emph on
+actually attending
+\emph default
+ first choice institution (in first-preferred course)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+What are the returns (academic, early income, lifetime income, etc) to 
+\bar under
+entering
+\bar default
+ (attending) one's first-preferred institution, (and how do these returns
+ differ...)?
+\end_layout
+
+\begin_layout Standard
+Consider the effect of an 
+\emph on
+exogenous shift 
+\emph default
+in the treatment from 
+\begin_inset Quotes eld
+\end_inset
+
+E=0: enters course in an institution not of first preference
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+E=1: enters course in institution of first-preference.
+\begin_inset Quotes erd
+\end_inset
+
+ Difference in hypothetical outcomes for a person with particular characteristic
+s assigned to E=1 relative to the same person assigned to E=0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\series bold
+Q2
+\series default
+: Under what conditions can we identify the impact of 
+\emph on
+entering
+\emph default
+ the institution of first preference in the course, relative to attending
+ another institution (which 'other institution?') 
+\end_layout
+
+\begin_layout Section
+RQ3: Mediators/channels of above effects 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+In particular, 'what are the returns to admission/entering first-choice
+ institution that occur 
+\begin_inset Quotes eld
+\end_inset
+
+holding academic/specialization outcome constant
+\begin_inset Quotes erd
+\end_inset
+
+, and what are the returns that occur via these channels?'
+\end_layout
+
+\begin_layout Section
+RQ4: Returns to the particular characteristics of the institution one attends
+\end_layout
+
+\begin_layout Standard
+Consider the treatment effect of an 
+\emph on
+exogenous shift 
+\emph default
+in these characteristics.
+ Difference in hypothetical outcomes with, e.g., 'high-WOS program' vs 'low-WOS
+ program' for a person with particular characteristics.
+\end_layout
+
+\begin_layout Standard
+DR: I do not see a strong identification strategy for this at the moment,
+ so I will not focus on it yet.
+ 
+\end_layout
+
+\begin_layout Section*
+Key readings:
+\end_layout
+
+\begin_layout Standard
+Imbens and Rubin, 1997
+\end_layout
+
+\begin_layout Itemize
+- K & Mogstad (updated version) on meaning of treatment effect
+\end_layout
+
+\begin_layout Itemize
+- Ketel et al (and citations) (a) on identifying effect of attendance from
+ lottery instrument (b) On using early years’ income to make inferences
+ about lifetime income
+\end_layout
+
+\begin_layout Itemize
+- ?Machin on using weights to impute lifetime income, considering cohort
+ and time effects etc.
+ (Also Bhuller et al?)
+\end_layout
+
+\begin_layout Itemize
+- Deming et al; Cullen et al; interpretation of a highly comparable lottery
+\end_layout
+
+\begin_layout Itemize
+- Possibly: ?Carneiro, Heckman and Vytlacil ...
+ on policy interpretations of IV, Hastings et al on differentiating treatment
+ effect ?by observable
+\end_layout
+
+\begin_layout Itemize
+- And Pinto on 'moving to opportunity'; mediators and selection/Roy models
+\end_layout
+
+\begin_layout Title
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+OLDER STUFF BELOW, POSSIBLY INTEGRATE IT IN (branch excluded)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+See also extended_litreview.md, mogstadmodeling.lyx, 0_impactofeducation_paper_Ins
+titutions_WIP_commentdoc.tex 0_impactofeducation_paper_Institutions_WIP.tex
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch oldermodeling
+status open
+
+\begin_layout Section
+Identification 
+\end_layout
+
+\begin_layout Standard
+We first assume a homogenous (linear or proportional) treatment effect of
+ program attributes on individual outcomes.
+\end_layout
+
+\begin_layout Standard
+We are broadly interested in understanding the effect of university attributes
+ on labor market outcomes.
+ We estimate the following equation.
+ 
+\begin_inset Formula 
+\begin{equation}
+Y_{icjt}=\beta_{0}+\beta_{1}Q_{jc}+\beta_{2}X_{i}+\mbox{LotteryFirstPreferenceFE}+\mbox{OtherFE}+u_{ijt}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $Y_{icjt}$
+\end_inset
+
+ is the labor market outcome in period 
+\begin_inset Formula $t$
+\end_inset
+
+ of individual 
+\begin_inset Formula $i$
+\end_inset
+
+ from cohort 
+\begin_inset Formula $c$
+\end_inset
+
+ (e.g., year of entry) in university-course (henceforth 
+\begin_inset Quotes eld
+\end_inset
+
+program
+\begin_inset Quotes erd
+\end_inset
+
+) 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are other individual-specific characteristics.
+ 
+\begin_inset Formula $Q_{jc}$
+\end_inset
+
+ are program attributes for the cohort 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\begin_inset Formula $\underset{ci}{rank}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The program attended is largely self-selected ; hence 
+\begin_inset Formula $Q_{jc}$
+\end_inset
+
+ may be correlated with 
+\begin_inset Formula $u_{ijt}$
+\end_inset
+
+, so 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ may be biased in an OLS regression.
+ (Furthermore, observable elements of 
+\begin_inset Formula $Q_{jc}$
+\end_inset
+
+ may be correlated to unobservable attributes of the program.)
+\end_layout
+
+\begin_layout Standard
+We can instrument for 
+\begin_inset Formula $Q_{jc}$
+\end_inset
+
+ using the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+allocated attributes
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\series bold
+
+\begin_inset Formula $\tilde{Q}_{jc}$
+\end_inset
+
+ 
+\series default
+For lottery winners (and for those in open-enrollment programs), the allocated
+ attributes pertain to the first-chosen program.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This may not be the first preference, as in some lotteries some students
+ may find it strategically preferable to indicate a program other than this
+ as their first choice.
+ 
+\end_layout
+
+\end_inset
+
+ For losers, the allocated attributes are those of the individual's most
+ preferred program other than those that 
+\begin_inset Quotes eld
+\end_inset
+
+fill up
+\begin_inset Quotes erd
+\end_inset
+
+ in the first round.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+There are different versions of this possible in terms of constructing this
+ variable for the losers, in terms of weighting the alternatives or bringing
+ in characteristics of other degree programs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q_{jc}=\gamma_{0}+\gamma_{1}\tilde{Q}_{jc}+\beta_{2}X_{i}+\mbox{LotteryFirstPreferenceFE}+\mbox{OtherFE}+\epsilon_{ijt}
+\end{equation}
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\series bold
+DR: Why do you switch from the 'jc' to the 'jt' subscript?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The binary outcome of the lottery (win/lose) is independent of all other
+ characteristics
+\emph on
+, conditioning on the mark category
+\emph default
+.
+ Conditional on the lottery preference, the allocated attributes are a function
+ of the lottery outcome (and the lottery preference).
+ 
+\series bold
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR: Do you need to say 'lottery preference' twice?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This strategy requires 
+\begin_inset Formula $Q_{jc}$
+\end_inset
+
+ to be observed for each individual.
+ Thus losers who switch subject in response to the lottery outcome are fine,
+ but losers who do not attend Higher Education at all are more difficult.
+ Possible ways of addressing this would be (i) to use selected sample of
+ those who end up in HE, and argue this does not bias our results substantially,
+ potentially using a bounds type analysis (?), (ii) restricting analysis
+ to those lotteries where people tend not to drop out of HE altogether.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: If losers do not go to higher ed we observe their education outcome
+ as 'no higher ed.' However, inference will be difficult if people retry
+ next year.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some identification approaches: 
+\end_layout
+
+\begin_layout Itemize
+Hastings/Kane/Staiger (2008).
+ High school admissions.
+ Estimate effect of attending first choice, and interaction with estimated
+ academic preference parameter.
+ Then instrument with winning, and winning*preference parameter.
+ 
+\end_layout
+
+\begin_layout Itemize
+Deming (2011): Reduced form of winning on crime outcomes.
+ Also interacted model with pre-estimated risk of arrest quintile.
+ 
+\end_layout
+
+\begin_layout Itemize
+Dale/Krueger: OLS model with controls for ability and admissions set.
+ 
+\end_layout
+
+\begin_layout Itemize
+Milla (2012, Canadian JMP paper): Estimates a specification similar to (1),
+ without preference fixed effects, but cannot instrument.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Deming et all, Crit of RD:
+\end_layout
+
+\begin_layout Quotation
+Because these RD studies necessarily compare the highest scoring students
+ in a lower-ranked school to the lowest s students in a higher ranked school,
+ they identify peer effects (and responses to resources and other school-level
+ differences) at a particular margin.
+ These impacts will not necessarily generalize to the range of applicants
+ in a school choice lottery...
+\end_layout
+
+\begin_layout Subsection*
+Self-selection of institutions (see work in mogstadmodeling.lyx for an updated
+ version)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(Mogstad) Kirkebøen et al (2014); 
+\begin_inset Quotes eld
+\end_inset
+
+Field of Study, Earnings, and Self-Selection
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Also an RD strategy.
+ Norway.
+ "Based on a generalised Roy model where individuals can choose between
+ multiple fields of study." Know students' rankings of fields!
+\emph on
+ 
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Students "tend to choose fields in which they have comparative advantage."
+ 
+\end_layout
+
+\begin_layout Quotation
+
+\emph on
+– – Think about how they identify this.
+\end_layout
+
+\begin_layout Quotation
+A simple choice model with only one factor ability-as-IQ "is inconsistent
+ with the pattern of selection we estimate ." – suggests we need to seriously
+ consider self-selection on unobservables, at least at the subject level.
+ 
+\end_layout
+
+\begin_layout Quotation
+
+\emph on
+– Maybe an open question at the institutional level? 
+\end_layout
+
+\begin_layout Quotation
+Consider choice between 3 fields, potential earnings 
+\begin_inset Formula $Y_{j}$
+\end_inset
+
+, observed 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Formula 
+\begin{eqnarray*}
+Y & = & Y_{1}+\mathbf{1_{\mathbf{[D=2]}}}(Y_{2}\text{-}Y_{1})+\mathbf{1}_{[D=3]}(Y_{3}-Y_{1})\\
+E[Y|D=3]-E[Y|D=1]= & E[Y_{3}-Y_{1}|D=3]+E[Y_{1}|D=3]\text{-}E[Y_{1}|D=1]
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+Challenge 1:
+\begin_inset Quotes erd
+\end_inset
+
+ Selection bias because 
+\begin_inset Formula $E[Y_{1}|D=3]\neq E[Y_{1}|D=1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+Challenge 2: 'get the counterfactual right'
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Expanding the 'average benefit of 3 relative to 1 for those admitted to
+ 3':
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Formula 
+\begin{eqnarray*}
+ & E[Y_{3}-Y_{1}|D=3]=E[Y_{3}-Y_{1}|D=3,D_{/3}=1]Pr(D_{/3}=1|D=3)+\\
+ & E[Y_{3}-Y_{1}|D=3,D_{/3}=2]Pr(D_{/3}=2|D=3)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+where 
+\begin_inset Formula $D_{/3}$
+\end_inset
+
+ gives the individual’s next best alternative to 3.
+ 
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+Because the weights on next best alternatives may vary by chosen field,
+ it could actually be that 
+\begin_inset Formula $E[Y_{3}-Y_{1}|D=3]>E[Y_{2}-Y_{1}|D=2]\mbox{ even when }E[Y_{3}-Y_{1}|D=3,D/3=1]\leq[Y_{2}-Y_{1}|D=2,D/2=1].$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+...
+ i.e., the average benefit (relative to 1) of 3 for those admitted to 3 exceeds
+ the average benefit of 2 for those admitted to 2, even though the average
+ benefit is greater for 2 then for 3 for those whose second choice is 1.
+\end_layout
+
+\begin_layout Quotation
+...
+\end_layout
+
+\begin_layout Quotation
+They claim to be able to make the latter comparison, 'which institution
+ adds more value?' for those with a common second preference.
+ 
+\emph on
+But why is that the relevant measure, as these two groups presumably have
+ a distinct first-preference?
+\emph default
+ 
+\end_layout
+
+\begin_layout Quotation
+
+\series bold
+More generally
+\series default
+, the gains to admission relative to the next best alternative are :
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Formula 
+\begin{eqnarray*}
+\Delta_{j,J\backslash j} & = & Y_{j}-Y_{J\backslash j}\\
+=\sum_{k\in J\backslash j}D_{J\backslash j}\Delta_{j,k}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+where 
+\begin_inset Formula $\Delta_{j,k}:=Y_{j}-Y_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Formula $\Delta_{j,J\backslash j}$
+\end_inset
+
+ is heterogeneous, both because of heterogeneity in unobserved ability –>
+ 
+\begin_inset Formula $\Delta_{j,k}$
+\end_inset
+
+ varies, and because of different NBA's .
+ 
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+A standard IV estimand allows us recover the average effect of choosing
+ field j versus next best alternative 
+\begin_inset Formula $I_{J/j}$
+\end_inset
+
+ for individuals who would select j at 
+\begin_inset Formula $Z=\bar{z}$
+\end_inset
+
+ but would choose 
+\begin_inset Formula $I_{J/j}$
+\end_inset
+
+ at 
+\begin_inset Formula $Z=\underbar{z}$
+\end_inset
+
+ (called compliers).
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dale and Kreuger (2012) on self selection and self-revelation
+\end_layout
+
+\begin_layout Standard
+Log linear earnings equation in students' attributes.
+ Note equation 1.
+ They consider variables unobservable to researchers, which are partly observed
+ by admissions officers.
+\end_layout
+
+\begin_layout Standard
+They consider the "selection adjusted", "self-revelation model" from Dale
+ and Kreuger (2002).
+ This assumes "students signal their re potential ability, motivation, and
+ ambition by the choice of schools they apply to.
+ If students with greater unobserved earnings potential are more likely
+ to apply to more selective colleges ..." Can model one component of the error
+ term as a function of the average SAT of schools applied to.
+ If the residual error term is uncorrelated with this measure, can solve
+ a selection problem by including this in wage regression.
+ 
+\end_layout
+
+\begin_layout Standard
+D&K 2002 estimated a "matched applicant model" with dummies for groups of
+ students with the same admissions decisions from colleges.
+ "The self revelation model is a special case of the matched applicant model"
+ Why a special case?
+\end_layout
+
+\begin_layout Standard
+They note that either of their models, selection correction or matched applicant
+, may be biased if enrolment decisions (conditional on admission) depend
+ on unobserved attributes of the student.
+\end_layout
+
+\begin_layout Standard
+If there are heterogeneous effects, there may be self selection based on
+ perceived potential returns, as in the Roy model of occupational choice.
+ This can lead to a bias in either direction and a difficulty interpreting
+ the average slope.
+ `
+\series bold
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Differential assignment of losers of different lotteries
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+(How) 
+\emph default
+should we 'control for differential second choices
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsection*
+Hastings et al (Chile data); on threshold crossing vs mean earnings effects
+\end_layout
+
+\begin_layout Quotation
+
+\size small
+Our empirical approach has two parts.
+ First, we use a stacked regression discontinuity design to identify the
+ effect of crossing the threshold for admission to a given type of degree
+ on earnings outcomes.
+ Second, we use a simple model of earnings determination to outline the
+ assumptions needed to recover the earnings effects of admission by selectivity,
+ field of study and student characteristics relative to a common outside
+ option from the threshold- crossing estimates.
+\end_layout
+
+\begin_layout Quotation
+
+\size small
+Recall that students are admitted to at most one degree program.
+ Average annual earnings for individual i admitted to degree p are given
+ by: (1) 
+\begin_inset Formula $Y_{ip}=\theta_{p}+\mu_{i}+\phi_{ip}+\omega_{ip}$
+\end_inset
+
+ where 
+\begin_inset Formula $Y_{ip}$
+\end_inset
+
+ is average annual earnings, 
+\begin_inset Formula $\theta_{p}$
+\end_inset
+
+ is the mean earnings gain from admission to degree p in the population
+ (relative to not being admitted to any degree, the effect of which is normalize
+d to zero), 
+\begin_inset Formula $\mu_{i}$
+\end_inset
+
+ is an individual-specific component of earnings that accrues regardless
+ of admissions outcome, 
+\begin_inset Formula $\phi_{ip}$
+\end_inset
+
+ is an individual-specific return to degree p known to individual i at the
+ time of selecting a degree, and 
+\begin_inset Formula $\omega_{ip}$
+\end_inset
+
+_ is a mean-zero individual-specific return from attending degree p realized
+ after attending p.
+ While 
+\begin_inset Formula $\phi_{ip}$
+\end_inset
+
+ may play a role in degree choice; 
+\begin_inset Formula $\omega_{ip}$
+\end_inset
+
+ does not.
+\end_layout
+
+\begin_layout Quotation
+
+\size small
+The average effect of crossing the threshold for admission at degree p on
+ earnings is given by: 
+\end_layout
+
+\begin_layout Quotation
+
+\size small
+XXX
+\end_layout
+
+\begin_layout Quotation
+
+\size small
+...We are interested in estimating 
+\begin_inset Formula $\theta_{p}$
+\end_inset
+
+ in addition to the threshold-crossing effects
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Demings et al 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kirkeboen et al 
+\series default
+on keeping the counterfactual constant
+\end_layout
+
+\begin_layout Section
+Compliance and identification
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kirkeboen et al
+\series default
+ on completion rates 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Demings et al
+\series default
+; 2-stage
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ketel et al 
+\end_layout
+
+\begin_layout Quote
+we can identify separately the earnings returns for compliers by the maximum
+ number of lotteries in which they are willing to participate.
+ We interpret the latter as an indicator of the preference to work in the
+ medical profession.
+ We find that the earnings returns are largest for compliers who only want
+ to participate in a single admission lottery.
+ ..
+ This is due to those with the lowest preferences having worse outcomes
+ in their next-best occupations, indicating that preferences may also be
+ correlated to more general motivation for working.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+This is surprising as these would seem to be the ones perceiving the least
+ to gain.
+ I don't understand the last sentence in the above
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hastings et al (Deming et al?); Charlotte-Mecklenberg; 
+\begin_inset Quotes eld
+\end_inset
+
+School Choice, School Quality and Postsecondary Attainment
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+ER P&P paper?):
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+2sls
+\series default
+ They use 2sls because many who lose the lottery still find a way in to
+ their chosen school.
+ We might need to do this, depending on compliance; it is also not 
+\begin_inset Quotes eld
+\end_inset
+
+neutral
+\begin_inset Quotes erd
+\end_inset
+
+ for us to throw out the data where Reason~=1.
+\end_layout
+
+\begin_layout Standard
+They discuss in general the 'effects of school choice' on later outcomes;
+ we could motivate our 'reduced form' estimates as 'effects of getting one's
+ top choice'.
+ This may be interesting in itself.
+ 
+\end_layout
+
+\begin_layout Standard
+– 
+\emph on
+this is like our 'projection' of estimates onto the universities attributes.
+ However, they do not claim to have identified the *impact* of these attributes.
+\end_layout
+
+\begin_layout Standard
+They find a zero or negative effect for boys, and small effects overall
+ –> 
+\emph on
+this suggests that it is 
+\emph default
+not
+\emph on
+ obvious that getting one's first preference is beneficial, motivating our
+ work.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+...this is the first study to examine the impact of school choice on postsecondary
+ attainment using a lottery-based research design
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Leuven et al 
+\begin_inset Quotes eld
+\end_inset
+
+The effects of medical school on health outcomes: Evidence from admission
+ lotteries
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+?Estimating the payoff to schooling using the Vietnam-era draft lottery,
+ JD Angrist and A.B.
+ Kreuger - NBER working paper, 1992 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "angrist2011schooling"
+
+\end_inset
+
+ footnote 6 offers a formal definition of 
+\emph on
+compliers
+\emph default
+ in their context.
+ 
+\begin_inset Graphics
+	filename compliers_angrist.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename compliers_p2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Matching/weighting/control strategy
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Note: First priority is matching on preferences and chances of admission.
+ The remaining controls will serve to reduce noise.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kirkeboen et al on Treatment Effects 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Chevalier and Gordon
+\series default
+, UK, Propensity score matching
+\end_layout
+
+\begin_layout Section
+Refining and differentiating results 
+\end_layout
+
+\begin_layout Subsection
+Aggregated and disaggregated (treatment) effects
+\end_layout
+
+\begin_layout Standard
+Demings et al (differentiate by gender etc)
+\end_layout
+
+\begin_layout Standard
+The Effect of College Quality on Earnings: Results from the N B E R-Thorndike
+ Data Terence J.
+ Wales The Journal of Human Resources, Vol.
+ 8, No.
+ 3 (Summer, 1973), pp.
+ 306-317 
+\end_layout
+
+\begin_layout Standard
+Why Are the Returns to Schooling Higher for Women than for Men? Christopher
+ Dougherty The Journal of Human Resources, Vol.
+ 40, No.
+ 4 (Autumn, 2005), pp.
+ 969-988
+\end_layout
+
+\begin_layout Standard
+Harmon, C., V.Hogan and I.
+ Walker (2003) 'Dispersion in the Return to Education'.
+ Labour Economics, .
+ [Details] Denny, KJ; Harmon, CP; (2001) 
+\end_layout
+
+\begin_layout Standard
+Hastings, Kane and Staiger (School Choice)
+\end_layout
+
+\begin_layout Standard
+Black and Smith, 2005.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Quantiles of effect
+\end_layout
+
+\begin_layout Standard
+Ketel et al: Using the approach developed by Imbens and Rubin (1997), we
+ analyze the marginal distribution of earnings under different treatments
+\end_layout
+
+\begin_layout Subsection
+Mediating outcomes (e.g., specialization) and selection model
+\end_layout
+
+\begin_layout Standard
+Demings et al on HS mediating outcomes; 
+\end_layout
+
+\begin_layout Standard
+Hastings et al; 
+\begin_inset Quotes eld
+\end_inset
+
+Heterogeneous Preferences and the Efficacy of Public School Choice
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Angrist(1990), Angrist and Chen (2007)
+\end_layout
+
+\begin_layout Standard
+?Angrist and Lavy (2008)
+\end_layout
+
+\begin_layout Standard
+Angrist et al (2002) (vouchers in Colombia)
+\end_layout
+
+\begin_layout Standard
+Angrist and Kreuger (1992)
+\end_layout
+
+\begin_layout Standard
+[Kane 
+\end_layout
+
+\begin_layout Standard
+Cullen et al – 
+\begin_inset Quotes eld
+\end_inset
+
+The Effect of School Choice on Participants: Evidence from Randomized Lotteries
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aggregated and disaggregated (treatment) effects 
+\end_layout
+
+\begin_layout Standard
+Mediating outcomes (e.g., specialization) and selection model
+\end_layout
+
+\begin_layout Standard
+Differentiating the estimates (by observables, into quantiles of effect,
+ etc)
+\end_layout
+
+\begin_layout Section
+Clustering (at what level?)
+\end_layout
+
+\begin_layout Section
+Projection onto university attributes (but these may correlate with important
+ unobservables; how to identify effects?)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hastings et al
+\end_layout
+
+\begin_layout Standard
++ Regression of effect of winning on differences in uni characteristics,
+ on differences in 
+\begin_inset Quotes eld
+\end_inset
+
+mediating outcomes
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+we examine how the impact of choice varies with school characteristics ...
+ construct a measure of college 'value-added' ...
+ show that lottery winners with the largest gains in school quality experience
+ the largest gains in postsecondary attainment
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+– 
+\emph on
+this is like our 'projection' of estimates onto the universities attributes.
+ However, they do not claim to have identified the *impact* of these attributes.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dale and Krueger (2002), 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dale and Kreuger (2012)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Chetty et al (Star Project, 2011?)
+\series default
+ do a good job of explaining how to interpret their results:
+\end_layout
+
+\begin_layout Standard
+"Students randomly assigned to a KG teacher with more than 10 years of experienc
+e earn an extra $1, 093 (6.9% of mean income) on average at age 27 relative
+ to students with less experienced teachers.2"
+\end_layout
+
+\begin_layout Standard
+"FN: Because teacher experience is correlated with many other unobserved
+ attributes — such as attachment to the teaching profession — we cannot
+ conclude that increasing teacher experience would improve student outcomes.
+ This evidence simply establishes that a student’s KG teacher has e!ects
+ on his or her earnings as an adult".
+\end_layout
+
+\begin_layout Standard
+They also "use an analysis of variance approach analogous to that in the
+ teacher e!ects literature (summarized in Rocko! and Staiger 2010) to test
+ whether earnings are clustered by kindergarten classroom."
+\end_layout
+
+\begin_layout Section
+Inferences about lifetime income
+\end_layout
+
+\begin_layout Standard
+Dale and Kreuger, 2012
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bhuller2011life"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abstract: This paper uses a unique data set with nearly career-long earnings
+ histories to provide evidence on the returns to schooling in current and
+ lifetime earnings.
+ We use these results to assess the importance of life-cycle bias in earnings
+ regressions using current earnings as a proxy for lifetime earnings.
+ To account for the endogeneity of schooling, we apply three commonly used
+ identification strategies.
+ Our estimates demonstrate a strong life-cycle bias, often exceeding the
+ bias from assuming that schooling is exogenous.
+ We further explore the problems caused by life-cycle bias in research on
+ the economic returns to schooling, and discuss possible remedies.
+\end_layout
+
+\begin_layout Standard
+The life-cycle bias is minimized when individuals’ earnings are measured
+ in their early 30s, and there is a large positive (negative) life-cycle
+ bias with earnings measured after age 40 (before age 30).
+ A possible remedy for cross-sectional estimates of the returns to schooling
+ is to restrict the sample to individuals around age 32–33
+\end_layout
+
+\begin_layout Standard
+Consistent with a story of life-cycle bias, our analysis shows a strong
+ positive correlation between the mean age in the sample and the estimated
+ returns to schooling.
+ Our meta-analysis also reveals that the sample mean age generally exceeds
+ the age at which life-cycle bias in our estimates is minimized
+\end_layout
+
+\begin_layout Section
+Functional form
+\end_layout
+
+\begin_layout Standard
+Ketel et al, assumed (linear) model: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{it\tau}=\alpha_{t}+\gamma{}_{t-\tau}+\delta_{t-\tau}MS_{i}+X_{i}\beta+LC_{it}+U_{it\tau}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y_{it\tau}$
+\end_inset
+
+: Labour market outcome of individual i in year t who applied for the first
+ time in year 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $MS:$
+\end_inset
+
+ Completed med school
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X_{i}$
+\end_inset
+
+: vector of controls including gender, ethnicity, and age at first lottery
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $LC_{it}$
+\end_inset
+
+: interaction between lottery category and year of first lottery 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha_{t},$
+\end_inset
+
+
+\begin_inset Formula $\gamma_{t-\tau}$
+\end_inset
+
+: Fixed effects for year outcome observed and number of years since first
+ application 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\delta_{t-\tau}$
+\end_inset
+
+: Returns to completing medical school 
+\begin_inset Formula $t-\tau$
+\end_inset
+
+ years after applying
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ketel et al, second stage: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{it\tau}=\alpha_{t}+\gamma{}_{t-\tau}+\delta_{t-\tau}MS_{i}+X_{i}\beta_{t-\tau}+LC_{it}+U_{it\tau}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+!They estimate it 
+\emph on
+separately 
+\emph default
+for each number of years since the first application; thus all parameters
+ and the underlying error term are allowed to vary with this.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ketel et al, First stage: 
+\series default
+
+\begin_inset Formula 
+\begin{equation}
+MS_{i}=\kappa+\lambda LR_{1i}+X_{i}\theta+LC_{it}+V_{i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $LR_{1i}$
+\end_inset
+
+ is the binary result of the first lottery in whicn one participated.
+ They claim 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+describes the share of compliers
+\begin_inset Quotes erd
+\end_inset
+
+ but I think this is not exactly correct (it 
+\emph on
+reflects
+\emph default
+ both types of compliance).
+ 
+\end_layout
+
+\begin_layout Standard
+Identifying assumption: 
+\begin_inset Formula 
+\[
+E(LR_{1}\cdot U|X,LC)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Note: 
+\series default
+\emph default
+This is similar to the assumption we will need for identification of the
+ effect of entering/completing at an 
+\emph on
+institution.
+ 
+\emph default
+The analogous variables for us are:
+\end_layout
+
+\begin_layout Section*
+
+\series bold
+Other Instrumental variables and control strategies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Distance to college instrument: Card (1995), and many others subsequently
+\end_layout
+
+\begin_layout Plain Layout
+Tuition instrument: Kane and Rouse (1995), Cameron and Heckman (1998, 2001),
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(Innovations in) Local labor market conditions: Cameron and Heckman (1998),
+ Cameron and Taber (2004)
+\end_layout
+
+\begin_layout Plain Layout
+Policy changes, various instruments (at age 14: presence of a college; at
+ age 17: local log earnings, unemployment rate, tuition in four year public
+ colleges,): Carneiro et al (2010)
+\end_layout
+
+\begin_layout Plain Layout
+Gosling et al (2000), Schmitt (1995)
+\end_layout
+
+\begin_layout Plain Layout
+?Harmon and Walker (1995)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+Monotone Instrumental Variables: With an Application to the Returns to Schooling
+\begin_inset Quotes erd
+\end_inset
+
+ Charles F.
+ Manski, John V.
+ Pepper Econometrica, Vol.
+ 68, No.
+ 4 (Jul., 2000), pp.
+ 997-1010
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+?Selection models
+\series default
+: Willis and Rosen (1979), Bjorklund and Moffit (1987) [these are in a sense
+ analogous to IV models].
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Control stategies
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "blundell2000returns"
+
+\end_inset
+
+,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+Comparison of those who had chose to attend HE and those who had the opportunity
+ but did not based on matching on observables.
+ British cohort panel survey.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "black2004robust"
+
+\end_inset
+
+ find only weak satisfaction of common support assumption, 
+\begin_inset Quotes eld
+\end_inset
+
+Thus, the linear functional form plays an important role in regression-based
+ estimates
+\begin_inset Quotes erd
+\end_inset
+
+ ...
+ motivating matching (although these estimates have wide std errors).
+ However, this should be less of a concern for our lottery-based estimates.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "dale2011estimating"
+
+\end_inset
+
+ - returns to college selectivity
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "mcintosh2006further"
+
+\end_inset
+
+- ? focus on returns to the marginal student, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dearden1999qualifications"
+
+\end_inset
+
+(?)
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Difference in Difference
+\end_layout
+
+\begin_layout Plain Layout
+Twin studies: (Behrman et al, 1996) 
+\begin_inset Quotes eld
+\end_inset
+
+College Choice and Wages: Estimates Using Data on Female Twins
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Cross-state 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Returns to program of study:
+\end_layout
+
+\begin_layout Standard
+Black et al.
+ (2003b), Arcidiacono (2004) – Table 8
+\end_layout
+
+\begin_layout Subsection*
+Sheepskin effects
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Chevalier, A; Harmon, C; Walker, I; Zhu, Y; (2004) 'Does Education Raise
+ Productivity, or Just Reflect It?'.
+ Economic Journal, 114 (499):499-517.
+ [Details] Harmon, C Oosterbeek, H Walker, I (2003) 
+\end_layout
+
+\begin_layout Plain Layout
+Degrees Matter: New Evidence on Sheepskin Effects in the Returns to Education
+ David A.
+ Jaeger, Marianne E.
+ Page The Review of Economics and Statistics, Vol.
+ 78, No.
+ 4 (Nov., 1996), pp.
+ 733-740
+\end_layout
+
+\begin_layout Plain Layout
+'Testing for sheepskin effects in earnings equations: evidence for five
+ countries'.
+ Applied Economics Letters, 8 (9):635-637.
+ [Details] 
+\end_layout
+
+\begin_layout Plain Layout
+Semijn 
+\begin_inset Quotes eld
+\end_inset
+
+The role_of_education_and_selection_in_medical_field.pdf
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section*
+Reduced form impact of being lucky with getting in to University (David's
+ thoughts)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Does it matter which uni you go to? How important is it to be 'lucky'?
+\end_layout
+
+\begin_layout Standard
+We may want to focus on cleanest estimates.
+ Think of winning the lottery is a generic measure of success in higher
+ educational choice.
+ Those were successful in the lottery have a little better opportunity to
+ go where they wanted to go.
+ We might think about whether this has long-term consequences for range
+ of outcomes, without focusing too narrowly on what is driving these long
+ term consequences.
+\end_layout
+
+\begin_layout Standard
+This is a 
+\begin_inset Quotes eld
+\end_inset
+
+reduced form
+\begin_inset Quotes erd
+\end_inset
+
+ approach.
+ There may be many effects from winning the lottery including, getting to
+ live closer to home, going to a more elite institution, going to an institution
+ where you have friends,or where you have an idiosyncratic preference for
+ the institution or the city.
+\end_layout
+
+\begin_layout Standard
+The results can give us a sense of how important being able to choose your
+ program and institution is in the long run.
+ We want to of course compare like-for-like, but subject to this, we can
+ also differentiate for whom the choice is more important  (men/women, rich/poor
+, etc).
+ Does it have an effect on income over the long term? On where are you live?
+ Does it impact your family outcomes, number of children, etc? In some cases,
+ we may want to interpret the impact more narrowly.
+ In some categories of lottery it might be reasonable to assume the differences
+ in institutions are mainly or entirely geographic, or along some other
+ narrow margin.
+\end_layout
+
+\begin_layout Standard
+Suppose for example we argue that the effect of medical institution is mainly
+ or entirely through its effect on your medical specialisation and thus
+ your income and concurrent stress.
+ We can then see 
+\begin_inset Quotes eld
+\end_inset
+
+winning the institution lottery
+\begin_inset Quotes erd
+\end_inset
+
+ as an instrument for an individual's 
+\begin_inset Quotes eld
+\end_inset
+
+job power
+\begin_inset Quotes erd
+\end_inset
+
+ a vector along which income and stress increases.
+ It would then be fascinating to measure what effect this has on life outcomes.
+ Popular motivation: 
+\begin_inset Quotes eld
+\end_inset
+
+Is it worth going for the money, and does the money change you
+\begin_inset Quotes erd
+\end_inset
+
+? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\change_deleted 256362285 1406910660
+Notes on identification of subject-level effects (for additional paper,
+ perhaps)
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+[Incorporate from 
+\begin_inset Quotes eld
+\end_inset
+
+various modeling notes.lyx
+\begin_inset Quotes erd
+\end_inset
+
+]dfe
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+
+\series bold
+\size small
+Investigation and identification strategy
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+
+\size small
+Our econometric approach is closest to Angrist's (1990) work using the draft
+ lottery and the literature spawned by this as a broad methodological example
+ motivating our basic identification strategy.
+ However, our data suffers from far less 'noncompliance,' and thus the local
+ average treatment effect (LATE) comes closer to the true average treatment
+ effect [as our robustness checks show].
+ Our key observable outcome variables are income and wealth in particular
+ early-career years – in section XXX we use this to estimate permanent (lifetime
+) income effects.
+ The key endogenous independent “treatment” variable is the entrance into
+ (or completion of) an educational program, especially medicine.
+ The key instrumental variable will be whether a subject had a “winning”
+ lottery number (given their category) for the program they applied for
+ (in their first year, or in any of their attempts).
+ We provide evidence of the random assignment of our instrument through
+ demonstrating that within group of applicants to the same programs with
+ the same category of test scores, the pre-determined observables and recent
+ past histories are very similar.
+ We also support the 
+\begin_inset Quotes eld
+\end_inset
+
+exogeneity
+\begin_inset Quotes erd
+\end_inset
+
+ (in the sense of XXX) of our instruments through falsification tests, demonstra
+ting that the lottery success had no impact on outcomes other than through
+ its direct effect on the educational outcomes 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size small
+[HOW TO DO THIS? Are there two comparable groups with the same educational
+ experience but different lottery numbers?]
+\end_layout
+
+\end_inset
+
+.
+ regressions on previous values, and its exogeneity (lack of direct effect)
+ with regressions of outcomes on lottery numbers conditional on program
+ completion.
+ [Will we have scope for meaningful overidentification tests?].
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size small
+Note that the simplest identification would be based on comparisons for
+ 
+\begin_inset Quotes eld
+\end_inset
+
+final attempt
+\begin_inset Quotes erd
+\end_inset
+
+ people who won and lost but will might seriously limit our sample size.
+\end_layout
+
+\end_inset
+
+To reduce noise, we  include additional controls (e.g., test scores and previous
+ educational performance, demographics, years and cohort sizes), but these
+ are not necessary for the consistency of our estimates.
+ We also differentiate our estimates by exogenous observables (e.g., by subject,
+ grade category, gender, time period), as well as estimating the latent
+ heterogeneity of the effect using quantile treatment effect estimates.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Comparable groups: First attempt winners, First attempt losers “followed
+ to end” Second attempt winners, Second attempt losers “followed to end”
+ Final attempt winners, Final attempt losers … but this gets only a “reduced
+ form” estimate of impact of (e.g.) winning on first attempt, not the impact
+ of MD itself.
+\end_layout
+
+\begin_layout Plain Layout
+“Clean Instruments”: Will significantly impact completing medical school.
+ Among the subset of applicants (?) who applied to medical school X times
+ (see below), these should be unrelated to future income after controlling
+ for medical school attendance starting in a particular year (although the
+ latter will vary almost entirely through these instruments themselves).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+
+\emph on
+Let 
+\emph default
+ W1 = “win on first attempt” W2 = “win on second attempt” W3 = “win on third
+ attempt”…
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+L1 = 
+\begin_inset Quotes eld
+\end_inset
+
+Lose on first attempt,
+\begin_inset Quotes erd
+\end_inset
+
+ etc.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Regression for the group “applied at least once, (not decentralized)… Instrument
+ W1 = “win on first attempt” will be strongly correlated (with no “false
+ positives”) to “attend MD immediately.” Winners are the same as losers in
+ their latent characteristics (at the point of the lottery).
+ We should be able to have an unbiased 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Also: Want to differentiate our estimates by exogenous observables as well
+ as estimating the latent heterogeneity of the effect using quantile treatment
+ effect estimates.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+
+\series bold
+Consider (this model will need to be cleaned up, made simpler yet more general,
+ it's just a start)
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Compare the observed groups (hold age and year applied constant, all else
+ constant): 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+\begin_inset Formula $X_{1}$
+\end_inset
+
+.
+ 
+\series bold
+W1, completed MD
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+\begin_inset Formula $X_{2}$
+\end_inset
+
+.
+ L1 (lost on first attempt), chose non-MD immediately
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+\begin_inset Formula $X_{3}$
+\end_inset
+
+.
+ L1, tried once more, L2, then chose non-MD
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+\begin_inset Formula $X_{4}$
+\end_inset
+
+., L1, tried again once more, W2, completed MD
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Let 
+\begin_inset Formula $T_{1}...T_{4}$
+\end_inset
+
+ represent the hypothetical exogenously assigned 
+\begin_inset Quotes eld
+\end_inset
+
+treatments
+\begin_inset Quotes erd
+\end_inset
+
+ to to the four groups above.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Comparison 1 
+\begin_inset Quotes eld
+\end_inset
+
+income at age 30
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $Y_{30}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+Comparison 2 
+\begin_inset Quotes eld
+\end_inset
+
+income 12 years after starting university
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $Y_{T+12}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+
+\emph on
+Issues
+\emph default
+: 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+1.
+ Those who choose to try again (iii, iv; unknown for i) should tend to have
+ higher returns to MD (relative to their outside option.
+ They may also be more 
+\begin_inset Quotes eld
+\end_inset
+
+determined
+\begin_inset Quotes erd
+\end_inset
+
+, and this may be related to productive traits.
+ In other words (leaving off 'expected value' notation ...
+ we can add an error term later) 
+\begin_inset Formula $Y_{30}(X_{3},T_{1})-Y_{30}(X_{3},T_{2})$
+\end_inset
+
+>
+\begin_inset Formula $Y_{30}(X_{2},T_{1})-Y_{30}(X_{2},T_{2})$
+\end_inset
+
+.
+ Other such statements could be made.
+ Let 
+\begin_inset Formula $\Delta_{21}Y(X):=Y_{30}(X_{3},T_{1})-Y_{30}(X_{3},T_{2})$
+\end_inset
+
+.
+ This should allow us to state 
+\begin_inset Formula $\Delta_{21}Y(X_{4})>\Delta_{21}Y(X_{3})>\Delta_{21}Y(X_{1})>\Delta_{21}Y(X_{2})$
+\end_inset
+
+.
+ Extending this notation, we also expect 
+\begin_inset Formula $\Delta_{43}Y(X_{4})>\Delta_{43}Y(X_{3})>\Delta_{43}Y(X_{1})>\Delta_{43}Y(X_{2})$
+\end_inset
+
+.
+ In fact, we should expect the same ordering in the 
+\begin_inset Quotes eld
+\end_inset
+
+treatment effects
+\begin_inset Quotes erd
+\end_inset
+
+ of any MD completion, relative to non-MD completion.
+ We should also expect a similar orderings for analogous expressions for
+ 
+\begin_inset Formula $Y_{T+12}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+2.
+ Holding age constant, there should be some cost of delay, i.e., of one less
+ year of on-the-job experience.
+ Hence, for the same individual we may expect 
+\begin_inset Formula $Y_{30}(T_{1})$
+\end_inset
+
+>
+\begin_inset Formula $Y_{30}(T_{4})$
+\end_inset
+
+ for an individual in any of the groups 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{4}$
+\end_inset
+
+.
+ (we might make similar statements about T2 versus T3.)
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 256362285 1406910660
+3.
+ Holding 
+\begin_inset Quotes eld
+\end_inset
+
+years since starting (MD) university
+\begin_inset Quotes erd
+\end_inset
+
+ constant, there should be some benefit to an extra year of pre-university
+ experience (i.e., to an extra year of age).
+ Thus, we may expect 
+\begin_inset Formula $Y_{T+12}(T_{4})>Y_{T+12}(T_{1})$
+\end_inset
+
+ for an individual in any of the groups 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{4}$
+\end_inset
+
+.
+ (we might make similar statements about T2 versus T3.)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+References 
+\series medium
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/david/Dropbox/articlesandbibtex/All_refcs_wipG"
+options "chicago"
+
+\end_inset
+
+
+\change_deleted 256362285 1398245289
+
+\series default
+s
+\change_unchanged
+
+\end_layout
+
+\end_body
+\end_document
