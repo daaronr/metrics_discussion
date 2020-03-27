@@ -1,0 +1,414 @@
+%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amstext}
+\usepackage{esint}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{babel}
+\begin{document}
+
+\title{Mediators, selection, Roy models: review focused on issues relevant
+to Parey et al}
+
+\maketitle
+\textbf{\emph{DR initial thoughts:}}
+
+Suppose we observe treatment $T$ (e.g., allowed to enter first-choice
+institution and course), intermediate outcome $M$ (e.g., completion
+of degree in first-choice course and institution), and final outcome
+$Y$ (e.g., lifetime income.)\\
+
+Treatment $T$ directly affects final outcome $Y$
+\[
+\ensuremath{T\rightarrow Y}
+\]
+
+$T$ also affects intermediate outcome $M$.
+
+\[
+T\rightarrow M
+\]
+Intermediate outcome also affects final outcome $Y$.
+\[
+M\ensuremath{\rightarrow}Y
+\]
+
+With exogenous variation in $T$ and $M$ (or identified instruments
+for each of these), we should be able to estimate each of these three
+relationships as functions.
+
+With homogeneous (and in a simplest case linear) effects and separate
+we can use the functions estimated above to compute the total (direct
+plus indirect) effect of $T$ on $Y$. We could also compute the share
+of this effect that occurs \emph{via} the intermediate effect, i.e.,
+$T\text{\ensuremath{\rightarrow} }M\text{\ensuremath{\rightarrow} }Y$.
+This should be merely the composition of these two functions, or,
+in the linear case, the product of the slope coefficients.
+
+However, there are two major challenges to this estimation.
+\begin{enumerate}
+\item We (may) have a valid instrument for (exogenous variation in) $T$
+only, and $M$ may arise through a process involving selection on
+unobserved variables.
+\item Each of the three above relationships (as well as the selection equation)
+may involve heterogeneous functions; i.e., differential treatment
+effects.
+\end{enumerate}
+
+\section{Econometric Mediation Analyses (Heckman and Pinto)}
+
+\textbf{Econometric Mediation Analyses: Identifying the Sources of
+Treatment Effects from Experimentally Estimated Production Technologies
+with Unmeasured and Mismeasured Inputs }
+
+\subsection*{Relevance to Parey et al}
+
+We have an instrument for admission to one's first-choice institution
+(and course). Our result show an impact of this admission on future
+income, for at least some groups. However, this effect could come
+through any of a number of channels. We observe some of these 'intermediate
+outcomes', including course enrollment, course completion, medical
+specialization, and location of residence, but we do not have specific
+instruments for each of these (a lot of work might yield an instrument
+for specialization; I hear there is a lottery).
+
+\subsection{Summary and key modeling}
+
+There is a 'production function' (cf income as a function of human
+capital, opportunities, etc). Treatments (e.g., RCTs) may affect outcomes
+through the following channels:
+\begin{enumerate}
+\item observable or proxied inputs (cf degree obtained, specialization entered,
+years of study, moving away from parents, location of residence as
+proxy for job opportunities)
+\item unobservable/unmeasured inputs (cf human capital, social connections...)
+\item the production function itself, the 'map between inputs and outputs
+for treatment group members' (cf does the institution itself directly
+shift the income?, does it change the impact of entering a specialization,
+does human capital 'matter more' at some institutions?)
+\end{enumerate}
+If treatments affect unmeasured inputs in a way not statistically
+independent of measured inputs, this biases estimates of the effect
+of measured inputs. ``RCTs unaided by additional assumptions do not
+allow the analyst to identify the causal effect of increases in measured
+inputs on outputs ... {[}nor distinguish effects from changes in production
+functions{]}.''
+
+Here `` we can test some of the strong assumptions implicitly invoked''.
+
+``Direct effects'' as commonly stated refer to the impact of both
+channels 2 and 3 above. {[}DR: Channel 2 isn't really a direct effect
+imho{]}\\
+
+\textbf{Standard potential outcomes framework:}
+
+\[
+Y=DY_{1}+(1-D)Y_{0}
+\]
+
+\[
+ATE=E(Y_{1}-Y_{0})
+\]
+
+\textbf{Production function
+\[
+Y_{d}=f_{d}(\mathbf{\mathbf{{\theta}}}_{d}^{p},\mathbf{\mathbf{{\theta}}}_{d}^{u},\mathbf{{X}}),d\in\left\{ 0,1\right\}
+\]
+}
+
+... the function under treatment $d$; of proxied and unobserved inputs
+that occur under state $d$, and baseline variables.\\
+
+The production function implies:
+
+\[
+ATE=E\Big(f_{1}(\mathbf{\mathbf{{\theta}}}_{1}^{p},\mathbf{\mathbf{{\theta}}}_{1}^{u},\mathbf{{X}})-f_{0}(\mathbf{\mathbf{{\theta}}}_{0}^{p},\mathbf{\mathbf{{\theta}}}_{0}^{u},\mathbf{{X}})
+\]
+\\
+
+We also consider counterfactual outputs, fixing treatment status and
+proxied inputs:
+\[
+Y_{d,\bar{\theta_{d}}^{p}}=f_{d}(\mathbf{\mathbf{{\bar{{\theta}}}}}_{d}^{p},\mathbf{\mathbf{{\theta}}}_{d}^{u},\mathbf{{X}}),d\in\left\{ 0,1\right\}
+\]
+\\
+This allows us to decompose ('as in the mediation literature'\emph{):}
+
+\emph{ATE(d)=IE(d)+DE(d)}
+\begin{itemize}
+\item \emph{IE, Indirect} \emph{effect}: allows only the proxied inputs
+to vary with the treatment (holds the rest fixed at one of the two
+treatment statuses)
+\item \emph{DE, Direct} \emph{effect}: allows technology and the distribution
+of unobservables to vary with the treatment (holds proxied inputs
+fixed at one of the two treatment statuses)\\
+\end{itemize}
+HP further decompose the direct effect into:
+\begin{itemize}
+\item $DE'(d,d')$: The impact of letting the treatment vary the map only
+(fixing the rest at one of the two appropriate values)
+\item $DE''(d,d')$: The impact of letting the treatment vary the unmeasured
+inputs only (fixing the rest at one of the two appropriate values)
+\end{itemize}
+They use this to give two further ways of decomposing the ATE. \linebreak{}
+\\
+\textbf{Common assumptions}\\
+
+``The \uline{standard literature} on mediation analysis in psychology
+regresses outputs on mediator inputs'' ... often adopts the strongs
+assumption of:
+\begin{enumerate}
+\item no variation in unmeasured inputs conditional on the treatment (implying
+the effects of these are summarized by a treatment dummy) and\footnote{Cf 'winning institution' impacts human capital, social networks, etc
+identically for everyone; e.g., not a greater effect for men then
+for women, nor a greater effect for those entering particular specializations. }
+\item full invariance of the production function: $f_{1}=f_{0}$.
+\end{enumerate}
+... which implies $Y_{d}=f(\mathbf{\theta}_{d}^{p},d,\mathbf{X})$.\\
+
+\uline{Sequential ignorability (Imai et al, 10, '11)}:  Essentially,
+independent randomization of both treatment status and measured inputs.\footnote{Cf 'winning institution' does not effect the specialization entered
+nor the location of residence, nor are both determined by a third
+factor.}\\
+
+\emph{This sentence is hard to follow:}
+
+``In other words, input $\theta_{d'}^{p}$ is statistically independent
+of potential outputs when treatment is fixed at $D=d$ and measured
+inputs are fixed at $\bar{\theta_{d'}^{p}}$ conditional on treatment
+assignment $D$ and same preprogram characteristics $X$.''
+
+
+
+This assumption yields the 'mediation formulas':
+
+\begin{eqnarray*}
+E(IE(d)|X)= & \int E(Y|\theta^{p}=t,D=d,X)\underbrace{\Big(dF_{(\theta^{p}|D=1,X)}(t)-dF_{(\theta^{p}|D=1,X)}(t)\Big)}_{{\text{Difference in distribution of proxy inputs}}} & (9)\\
+E(DE(d)|X)= & \int\underbrace{\Big(E(Y|\theta^{p}=t,D=1,X)-E(Y|\theta^{p}=t,D=0,X)\Big)}_{\text{Dfc in expectations (unobservables, function) between treatments given proxy inputs }}expe\underbrace{{dF_{(\theta^{p}|D=1,X)}(t)}}_{\text{Distn proxy inputs for D=1}} & (10)
+\end{eqnarray*}
+
+\emph{(??F is presumably the distribution over the observables; where
+did the unobservables go? They are in the expectations, I guess.)}\\
+\emph{}\linebreak{}
+\uline{Difference from RCT}
+
+\emph{What RCT doesn't do:}
+\begin{quotation}
+{[}sequential ignorability{]} translates into ... \uline{no confounding
+effects} on both treatments and measured inputs ... does not follow
+from a randomized assignment of treatment ...{[}which{]} ensures independence
+between treatment status and counterfactual inputs/outputs ... {[}but
+\emph{not}{]} between proxied inputs $\theta_{d}^{p}$ and unmeasured
+inputs $\theta_{d}^{u}$. {[}Thus \emph{not} between counterfactual
+outputs and measured inputs is assumed in condition (ii).{]}
+\end{quotation}
+Cf, randomizing 'win first-choice institution' does not guarantee
+that the choice (potential choice under winning/losing institution)
+to enter a particular specialty is independent of (potential after
+winning/losing institution) unobserved human capital gains at an institution.
+The (potential) choiceof specialty is alsonot guaranteed choice independent
+of potential incomes (holding proxy inputs like specialty constant)
+if winning/losing institution.\linebreak{}
+
+\emph{What RCT }\emph{\uline{does}}\emph{ do:}
+
+RCT ensures ``independence between treatment status and counterfactual
+inputs/outputs'', thus identifying 'treatment effects for proxied
+inputs and for outputs.
+
+CF, we can identify the impact of the treatment 'win first chosen
+institution' on proxied input like 'enters a specialization' and on
+outputs like 'income in observed years.'
+
+\section{Pinto (2015), Selection Bias in a Controlled Experiment: The Case
+of Moving to Opportunity}
+
+\subsection*{Summary}
+\begin{itemize}
+\item ... 4000+ families targeted, incentive to relocate from projects to
+better neighbourhoods.
+\item Easy to identify impact of vouchers
+\item Challenge (here) is to assess impact of \emph{neighborhoods} on outcomes.
+\item Method here to decompose the TEOT into unambiguously interpreted effects.
+Method applicable to 'unordered choice models with categorical instrumental
+variables and multiple treatments'
+\item Finds significant causal effect on labour market outcomes
+\end{itemize}
+
+\subsection*{Relevance to Parey et al}
+\begin{enumerate}
+\item We also have an instrument (DUO lottery numbers) cleanly identifying
+the effect of the 'opportunity to do something' (in our case, to enter
+the course at your preferred institution). However, we also want to
+measure the impact of choices 'encouraged' by the instrument, such
+as (i) attending the first choice course and institution and (ii)
+completing this course. We also deal with unordered choices (i. enter
+course and institution, enter course at other institution, enter other
+course at institution, enter neither) (ii. choice of medical specialisation)
+\item The geographic outcome is relevant to our second paper (impact on
+'lives close to home')
+\end{enumerate}
+
+\subsection*{Introduction }
+
+The causal link between neighborhood characteristics and resident's
+outcomes has seldom been assessed.
+
+\textbf{Treatments:}
+\begin{itemize}
+\item Control (no voucher)
+\item Experimental: could use voucher to lease in low-poverty neighborhood
+\item Section 8: Could use voucher in any () neighborhood
+\end{itemize}
+\emph{Many papers evaluate the ITT or TOT effects of MTO.}
+\begin{itemize}
+\item ITT: effect of being \emph{offered} voucher
+\begin{itemize}
+\item estimated as difference in average outcome of experimental vs control
+families
+\end{itemize}
+\item TOT: effect for 'voucher compliers' (assuming no effect of simply
+being \emph{offered} voucher on those who don't use it)
+\begin{itemize}
+\item estimated as ITT/compliance rate
+\end{itemize}
+\end{itemize}
+\begin{quote}
+{[}ITT and TOT{]} are the most useful parameters to investigate the
+effects of \emph{offering} {[}EA{]} rent subsidising vouchers to families.
+\end{quote}
+
+\subsection*{Identification strategy brief}
+\begin{itemize}
+\item Vouchers as IVs for choice among 3 neighborhood alternatives (no relocation,
+relocate bad, relocate good) \emph{{[}Cf: enter course and fp-institution,
+enter course at other institution, do not enter course{]}}
+\item Neighborhood causal effects as difference in counterfactual outcomes
+among 3 categories
+\item Challenge: ``MTO vouchers are insufficient to identify the expected
+outcomes for all possible counterfactual relocation decisions''
+\begin{itemize}
+\item ... ``compliance with the terms of the program was highly selective
+{[}Clampet-Lundquist and M, 08{]}''
+\end{itemize}
+\item Solution: Uses theory and 'tools of causal inference. Invokes SARP
+to identify 'set of counterfactual relocation choices that are economically
+justifiable'
+\item \uline{Identifying assumption}: ``the overall quality of the neighborhood
+is not directly caused by the unobserved family variables even though
+neighborhood quality correlates with these unobserved family variables
+due to network sorting''
+\item 'Partition sample ... into unobserved subsets associated with economically
+justified counterfactual relocation choices and estimate the causal
+effect of neighborhood relocation conditioned on these partition sets.'
+{[}\emph{what does this mean?{]}}
+\end{itemize}
+
+\subsection*{Results in brief}
+
+``Relocating from housing projects to low poverty neighborhoods generates
+statistically significant results on labor market outcomes ... 65\%
+higher than the TOT effect for adult earnings.''
+
+\subsection*{Framework: first for binary/binary (simplification)}
+
+\textbf{First, for binary outcomes (simplified)}
+
+$Z_{\omega}$: whether family $\omega$ receives a voucher \emph{(cf
+institution-winning lottery number)}
+
+$T_{\omega}$: whether family $\omega$ relocates (\emph{cf enters
+first choice institution and course)}\\
+\bigskip
+
+\textbf{Counterfactuals}
+\begin{itemize}
+\item $T_{\omega}(z)$: relocation decision $\omega$ would choose if it
+had been assigned voucher $z\in{0,1}$': vector of potential relocation
+decisions (\emph{cf education choices) }for each voucher assignment
+(\emph{cf lottery number)}
+\begin{itemize}
+\item Can partition into never-takers, compliers, always takers, and defiers
+\end{itemize}
+\item $(Y_{\omega}(0);Y_{\omega}(1$)): (Potential counterfactual) outcomes
+(\emph{cf income, residence, etc}) when relocation decision is fixed
+at 0 and 1, respectively
+\end{itemize}
+\bigskip
+
+\textbf{Key ( standard) identification assumption: instrument independent
+of counterfactual variables}
+
+\[
+(Y_{\omega}(0),Y_{\omega}(1),T_{\omega}(0),T_{\omega}(1))\perp Z_{\omega}
+\]
+
+\textbf{Standard result 1: ITT}
+
+\begin{eqnarray*}
+ITT=E(Y_{\omega}|Z_{\omega}=1)-(Y_{\omega}|Z_{\omega}=0)\\
+=E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')P(S_{\omega}=[0,1])+E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[1,0]')P(S_{\omega}=[0,1])
+\end{eqnarray*}
+
+i.e., ITT computation yields the sum of the 'causal effect for compliers'
+and the 'causal effect for defiers, weighted by the probability of
+each.
+
+\bigskip
+
+\textbf{Standard result 2: LATE}
+
+\begin{eqnarray*}
+LATE=\frac{{ITT}}{P(T_{\omega}=1|Z_{\omega}=1)-P(T_{\omega}=1|Z_{\omega}=0)}= &  & E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')\\
+if\:P(S_{\omega}=[0,1])=0
+\end{eqnarray*}
+
+i.e., the LATE, computed as the ITT divided by the 'first stage' impact
+of the instrument, is the causal effect for compliers if there are
+no defiers.
+
+\subsection*{Framework for MTO \textendash{} multiple treatment groups, multiple
+choices}
+\begin{itemize}
+\item $Z_{\omega}\in\{z_{1,}z_{2,}z_{3}\}$ for no voucher, experimental
+voucher, and section 8 voucher, respectively
+\item $T_{\omega}\in\{1,2,3\}$ ... no relocation, low poverty neighborhood
+relocation, high poverty relocation
+\item $T_{\omega}(z)$: relocation decision for family $\omega$ if assigned
+voucher $z$
+\end{itemize}
+$\ensuremath{\rightarrow}$Response type for each family $\omega$
+is that a three-dimensional vector: $S_{\omega}=[T_{\omega}(z_{1}),T_{\omega}(z_{2}),T_{\omega}(z_{3})]$.
+\\
+
+$\ensuremath{\rightarrow}$ \textbf{ITT }computation now measures
+a weighted sum of effects across a subset of those response types
+whose responses vary between the assignments being compared. \\
+\\
+\emph{Cf: }
+\begin{itemize}
+\item Considering the 'treatments': '1: enter other course at fp-inst, '2:
+enter course at fp-inst', '3: enter course at non-fp inst'
+\begin{itemize}
+\item (I ignore other course at other institution for now)
+\end{itemize}
+\item Looking among those who won the course lottery (so we have a binary
+instrument: wininst $Z_{\omega}\in{0,1\}}$
+\item Our reduced-form estimates (regressions on the 'lottery number wins
+institution' dummy) measures the probablility-weighted sum of:
+\begin{itemize}
+\item impact of institution within course ($T_{\omega}=$2 versus 3); for
+those who would 'fully comply' (enter course at institution if $Z_{\omega}=1$,
+enter course at other institution if 0)
+\item impact of the course at fp-institution versus second-best course at
+fp-institution for 'institution-loving' noncompliers; those who would
+enter the course \emph{only }if they get the fp-institution and otherwise
+another course at the same institution
+\item effects for perverse defiers
+\end{itemize}
+\end{itemize}
+
+\end{document}
