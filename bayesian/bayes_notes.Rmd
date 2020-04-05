@@ -1,28 +1,60 @@
----
-title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
-output: html_document
----
+# Notes on Bayesian approaches -- David Reinstein
+
+
+# My uses for Bayesian approaches (brainstorm)
+
+## Meta-analysis of previous evidence
+
+- Of prior work, especially on motivators of (effective) charitable giving and responses to effectiveness information
+
+- Of my own series' of experiments (potentially joint with prior work)
+
+## Inference, particularly about 'null effects'
+
+When/what can we say about the 'absence of an effect'
+
+How to integrate into inferences from diagnostic testing (e.g., common-trend assumption)?
+
+## 'Policy' and business implications and recommendations
+
+- E.g., for 'which pages to seed'
+
+## Theory-driven inference about optimizing agents, esp. in strategic settings
+
+- Especially in 'predicted contributions to public goods' settings and 2nd order beliefs
+
+## Experimental design
+
+- Optimal treatment assignment, with previous observables and a track record
+
+- Sequential designs
+
+- Bayesian Power calculation
+\
+
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
+
 # Why and when use Bayesian (MCMC) methods?
 
-## Pros 
+## Pros
 1. No need for asymptotics ... good when sample sizes are small
 
-2. Incorporate previous information 
+2. Incorporate previous information
 
 You can consider the 'robustness to other priors'
 
 3. Fit complex nonstandard models
 ... e.g., with difficult functional forms or likelihood settings (more computation, less thinking)
 
-4. Easy to make predictions (e.g., simulate scenarios) after estimation  
+4. Easy to make predictions (e.g., simulate scenarios) after estimation
 
-5. Incorporate evidence, results, expert judgement 
+5. Incorporate evidence, results, expert judgement
 
 ('restrictions' with some lee-way?)
 
@@ -32,9 +64,9 @@ You can consider the 'robustness to other priors'
 
 ## Cons
 
-1. Must specify prior distributions ... allows subjective judgement 
+1. Must specify prior distributions ... allows subjective judgement
 
-2. Different way of thinking about stats and inference; probability distributions and simulations, not much about p-values, point estimates and standard errors ... path dependence 
+2. Different way of thinking about stats and inference; probability distributions and simulations, not much about p-values, point estimates and standard errors ... path dependence
 
 3. Computational cost
 
@@ -45,7 +77,7 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ## Why more popular today?
 
-- Starting from around 2005 in Political Science and Sociology 
+- Starting from around 2005 in Political Science and Sociology
 
 Computational revolution comes from Markov chain Monte Carlo (MCMC) methods ... don't need analytical solutions
 
@@ -54,7 +86,7 @@ Software implementations -- many in R, specialised software like EWinBugs, JAGS,
 
 # Theory
 
-Bayes theorem ... inverting conditional probability thing ... 'inversion' to make inferences about the parameters 
+Bayes theorem ... inverting conditional probability thing ... 'inversion' to make inferences about the parameters
 
 - In Bayesian stats the *parameters* (and sometimes missing values) are random variables, we make probability statements about them
 
@@ -85,15 +117,15 @@ $ p(\theta)$: prior distribution capturing beliefs about $\theta$
 
 In practice, step 2 is usually done via MCMC simulation rather than analytically.
 
-... via simulations, I approach the 'true' value on $\theta$ 
+... via simulations, I approach the 'true' value on $\theta$
 
 (Given 'regularity conditions')
 
-## Linear regression model example 
+## Linear regression model example
 
 $$Y = x'\beta+\epsilon$$ with n obs
 
-only random term is epsilon ... natural candidate is a normal distribution, so $Y \sim N(x'\beta,\sigma^2_e)$ 
+only random term is epsilon ... natural candidate is a normal distribution, so $Y \sim N(x'\beta,\sigma^2_e)$
 
 
 So we want to find $p(\beta, \sigma^2_\epsilon|Y,X)$. This depends on the choices of $p(\beta)$ and $p(\epsilon)$. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.
@@ -102,25 +134,25 @@ Can yield a joint posterior.
 
 Instead, let's assume that the latter (variance) parameter is known, you can show that the posterior for $\beta$ is also normally distributed. (Conjugate)
 
-Similarly, if we assume $\beta$ is known, if the variance term had an inverse gamma distribution (prior), so will the posterior. 
+Similarly, if we assume $\beta$ is known, if the variance term had an inverse gamma distribution (prior), so will the posterior.
 
 In these conjugate priors, the posterior mean will be a weighted average of the priors and the data.
 
 ## Gibbs
 
-Needs closed form conditional posterior for every parameter. 
+Needs closed form conditional posterior for every parameter.
 
 What Gibbs sampler does is break the parameter space into sets of parameters
 
-1. Choose starting values, $\theta^0_1,...\theta^0_k$ 
+1. Choose starting values, $\theta^0_1,...\theta^0_k$
 
 2. sample from the first parameter's distribution given the others
-... the second one, ... the k'th one . 
+... the second one, ... the k'th one .
 
 3. Repeat step 2 ... thousands of times (starting with the parameters from the previous iteration)
 Eventually 'we obtain samples of $p(\theta|y)$'
 
-*But if we don't have a closed form, we cannot simply sample from known distributions in each step* 
+*But if we don't have a closed form, we cannot simply sample from known distributions in each step*
 
 E.g., in case of Logit distribution.
 
@@ -143,7 +175,7 @@ Commonly used proposal: random walk sample: $\theta_t=\theta_{t-1}+z_t$, $z_t \s
 ## Assessing convergence
 
 - previous ... 'eyeballing'
-- formal: 
+- formal:
   - single-chain tests (Geweke/Heidel) ... is the last part of the chain stable (stationary)... compare simulation at middle and end, is there much variation?
   - multiple-chain test... (starting from different values), do they end similar ... Gelman-Rubin diagnosting $\hat{R}$
   - typically either a very long chain and use GH convergence, or multiple shorter chains and use $\hat{R}$
@@ -167,7 +199,7 @@ E.g.,   percent correct predictions (binary), whether the true data is within th
 
 For each replicate Choose statistic D, compare the replicated $D(y_s_{replicated})$ against $D(y_s_{observed})
 
-Quantify the discrepancy ... percent of correct predictions, proportion of times replicated y is below true y ... compute 'bayesian p-value's' 
+Quantify the discrepancy ... percent of correct predictions, proportion of times replicated y is below true y ... compute 'bayesian p-value's'
 
 Systematic differences between replicate and actual data indicate model limitations
 
@@ -201,7 +233,7 @@ Some Stata/R commands that make Bayesian look frequentist.
 
 In Jags and Winbugs, we only have to specify the prior... rest is done for us
 
-Jags is great ... you only need to do self-coding with lots of data and super complicated models as it can freeze up 
+Jags is great ... you only need to do self-coding with lots of data and super complicated models as it can freeze up
 
 We went through it the fancy way in Probit.R
 
@@ -209,7 +241,7 @@ Then the easy way with 'script probit Jags.R'
 
 # Generate predictions from a WinBUGS model
 
-You can just generate these outcomes ... 
+You can just generate these outcomes ...
 
 Prediction: generate a new observation #note, he is doing one per iteration, but since these are convergent it would be basically the same if you just chose a random iteration and did all the draws from that one
 
@@ -221,15 +253,15 @@ One solution -- multiple imputation
 - generate many copies of orig data set, imputing missibg value for each
 - 2 more steps here
 
-Need a model for X|alpha, because missing variables are random variables 
+Need a model for X|alpha, because missing variables are random variables
 
 # Stata
 
 Has some rather simple implementations; e.g., just using commands like ```bayes: regress y x '''
 
-# R mcmc pac 
+# R mcmc pac
 
-Also simple code; great for standard use 
+Also simple code; great for standard use
 
 Speedup with parallelization; see "script for parallel probit.R" and "parallelprobit.R"
 
@@ -239,3 +271,4 @@ More advanced: C++; can integrate it with Rcpp, or even use Exeter's ISCA cluste
 ``{r cars}
 summary(cars)
 ```
+
