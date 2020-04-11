@@ -1,5 +1,4 @@
-# Notes on Bayesian approaches -- David Reinstein
-
+ # Notes on Bayesian approaches -- David Reinstein
 
 # My uses for Bayesian approaches (brainstorm)
 
@@ -29,9 +28,8 @@ How to integrate into inferences from diagnostic testing (e.g., common-trend ass
 
 - Sequential designs
 
-- Bayesian Power calculation
+( Bayesian Power calculation
 \
-
 
 
 ```{r setup, include=FALSE}

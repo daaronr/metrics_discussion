@@ -1,5 +1,6 @@
 # Mediators (and selection and Roy models): a review, considering two research applications
 
+
 (Originally focused on issues relevant to Parey et al)
 
 
@@ -18,15 +19,16 @@ In the "substitution between charities" context...
 
 The treatment $T$ is
 
-1. 'asked to donate in the first round' (in Reinstein, Riener and Vance-McMullen, henceforth 'RRV' experiments, and perhaps in Schmitz   2019)',
-2. a greater incentive or a nudge to donate in round 1 (Heger and Slonim, 2020; others?),
-3. the inclusion of (an incentive to donate to) an additional charity in that same round (Reinstein 2006; Filiz-Ozbay and Uler; many others),
+- 'asked to donate in the first round' (in Reinstein, Riener and Vance-McMullen, henceforth 'RRV' experiments, and perhaps in Schmitz 2019)',
+- a greater incentive or a nudge to donate in round 1 (Heger and Slonim, 2020; others?),
+- the inclusion of (an incentive to donate to) an additional charity in that same round (Reinstein 2006; Filiz-Ozbay and Uler; many others),
 
 the intermediate outcome $M$ is the amount given to that (first-round) charity,
 
-and the final outcome $Y$ is the amount given to that charity (or other charities) in round 2 (experiments "3": other charities in that round ).
+and the final outcome $Y$ is the amount given to other charities/ charities in the second round.
 
 ```
+
 
 The treatment $T$ (may) directly affect the final outcome $Y$.
 
@@ -44,7 +46,7 @@ $$M \rightarrow Y$$
 
 \
 
-With exogenous variation in $T$ *and* $M$ (or identified instruments for each of these), we should be able to estimate each of these three relationships as functions.
+With exogenous variation in $T$ and $M$ (or identified instruments for each of these), we should be able to estimate each of these three relationships as functions.
 
 With homogeneous (and in a simplest case linear and separate) effects we can then use these functions to compute the total (direct plus indirect) effect of $T$ on $Y$.
 
@@ -59,7 +61,8 @@ However, there are two major challenges to this estimation.
 
 2.  Each of the three above relationships (as well as the selection equation) may involve heterogeneous functions; i.e., differential treatment effects.
 
-Thus we consult the relevant literature, discussed below.
+
+Thus we consult the relevant literature...
 
 ## Econometric Mediation Analyses (Heckman and Pinto)
 
@@ -69,16 +72,16 @@ Thus we consult the relevant literature, discussed below.
 
 ### Relevance to Parey et al {-}
 
-We have an instrument for admission to one's first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these 'intermediate outcomes', including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.^[a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well]
+We have an instrument for admission to one's first-choice institution (and course). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these 'intermediate outcomes', including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these (a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well).
 
 
 ## Summary and key modeling
 
 There is a 'production function'
 
-- cf income as a function of human capital, opportunities, etc.
+- cf income as a function of human capital, opportunities, etc
 
-- cf donation as a function of income, prices, mood, framing, etc.
+- cf donation as a function of income, prices, mood, framing, etc.)
 
 \
 
@@ -88,13 +91,13 @@ Treatments (e.g., RCTs) may affect outcomes through the following channels:
 
 - Cf degree obtained, specialization entered, years of study, moving away from parents, location of residence as proxy for job opportunities
 
-- Cf donation in first stage (to targeted charity), measured/self reported attitudes towards charities, self-reported mood
+<div class="marginnote">
+Cf charities in choice set, previous donation choices (?), previous choice sets, controlled nudges, observable demographics
+</div>
+
 \
 
-2.  unobservable/unmeasured inputs 
-
--  cf human capital, social connections
-- cf unobservable generosity, wealth, or temporary mood
+2.  unobservable/unmeasured inputs (cf human capital, social connections\...; unobservable generosity, wealth, or temporary mood)
 
 \
 
@@ -102,7 +105,9 @@ Treatments (e.g., RCTs) may affect outcomes through the following channels:
 
 - Cf does the institution itself directly shift the income?, does it change the impact of entering a specialization, does human capital 'matter more' at some institutions?
 
-- Cf Does he treatment affect the impact of having made the first donation on later donations , or the effect of mood on donating.. ; what else?
+<div class="marginnote">
+Cf the impact of having made the first donation on later donations; what else?
+</div>
 
 
 If treatments affect unmeasured inputs in a way not statistically independent of measured inputs, this biases estimates of the effect of measured inputs.
@@ -320,7 +325,9 @@ Identification strategy brief {#identification-strategy-brief .unnumbered}
 Results in brief {#results-in-brief .unnumbered}
 ----------------
 
-"Relocating from housing projects to low poverty neighborhoods generates statistically significant results on labor market outcomes \... 65% higher than the TOT effect for adult earnings."
+"Relocating from housing projects to low poverty neighborhoods generates
+statistically significant results on labor market outcomes \... 65%
+higher than the TOT effect for adult earnings."
 
 Framework: first for binary/binary (simplification) {#framework-first-for-binarybinary-simplification .unnumbered}
 ---------------------------------------------------
