@@ -2,17 +2,19 @@
 
 # Notes introduction
 
-- Focus on the practical tools I use and the challenges I face
+- Focus on the practical tools I use and the challenges I (David Reinstein) face
 
-- Where we can *add value*
+Microeconomics, behavioral economics, focus on charitable giving and 'returns to education' type of straightforward problems. (Limited to no focus on structural approaches.)
 
- Microeconomics, behavioral economics, focus on charitable giving and 'returns to education' type of straightforwad problems.
+- Where we can *add value* to real econometric practice??
 
- Data:
+\
 
- - Observational (esp. web data and national surveys.admin data_
+Data:
 
- - Experimental: esp. where with multiple crossed arms, and where the 'cleanest design' may not be possible
+- Observational (esp. web-scraped and API data and national surveys/admin data}
+
+- Experimental: esp. where with multiple crossed arms, and where the 'cleanest design' may not be possible
 
 \
 
@@ -279,7 +281,20 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 
 (Links back to power analyses)
 
-## 'Experimetrics' and measurement of treatment effects from Rcts
+## 'Experimetrics' and measurement of treatment effects from RCTs
+
+### Which error structure? Random effects?
+
+### Randomization inference?
+
+### Parametric and nonparametric tests of simple hypotheses
+
+### Adjustments for exogenous (but non-random) treatment assignment
+
+### IV in an experimental context to get at 'mediators'?
+
+### Heterogeneity in an experimental context
+
 
 
 ## Making inferences from previous work; Meta-analysis, combining studies
