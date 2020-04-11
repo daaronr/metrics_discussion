@@ -1,7 +1,7 @@
 # metrics_discussion
  Notes and writings on econometrics and statistics to weave into various content and serve as a discussion board.
 
-## [Outline file](metrics_outline.Rmd)
+## [Outline file](metrics_outline.md) (md for now; will swap for Rmd later)
 
 -- will be built into a Bookdown, with links to other notes files
 
