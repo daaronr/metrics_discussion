@@ -7,7 +7,6 @@
 'random impact rule'  as well as  'hot streaks period'
 
 
-
 Despite the frequent use of numerous quantitative indicators to gauge the professional impact of scientists, little is known about how scientific impact emerges and evolves in scientific careers. In this talk we present a series of findings from the analysis of a **large-scale dataset of scientific careers.** We tackle the following three questions:
 
 How does impact evolve in a career? What is the role of scientific chaperones in achieving high impact? How interdisciplinary is our award system?
