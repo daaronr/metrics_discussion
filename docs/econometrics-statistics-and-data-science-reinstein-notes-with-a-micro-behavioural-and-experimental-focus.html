@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus</title>
+  <meta name="description" content="Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="daaronr/metrics_discussion_work" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  
+  
+  
+
+<meta name="author" content="Dr. David Reinstein," />
+
+
+<meta name="date" content="2020-04-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="notes-introduction.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="book_assets/header-attrs-2.1/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<!-- <script src="js/hideOutput.js"></script> -->
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+
+
+<!-- open review block, in case we want it ever
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+-->
+
+<!-- Folding text box javascript thing -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Unfold</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Fold" ? "Unfold" : "Fold");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Global") elem.value = "Show Global";
+    else elem.value = "Hide Global";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148137970-3');
+</script>
+-->
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="econometrics-statistics-and-data-science-reinstein-notes-with-a-micro-behavioural-and-experimental-focus.html"><a href="econometrics-statistics-and-data-science-reinstein-notes-with-a-micro-behavioural-and-experimental-focus.html"><i class="fa fa-check"></i><b>1</b> Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioural, and Experimental focus</a></li>
+<li class="chapter" data-level="2" data-path="notes-introduction.html"><a href="notes-introduction.html"><i class="fa fa-check"></i><b>2</b> Notes introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="notes-introduction.html"><a href="notes-introduction.html#conceptual"><i class="fa fa-check"></i><b>2.1</b> Conceptual</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="notes-introduction.html"><a href="notes-introduction.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i><b>2.1.1</b> Bayesian vs. frequentist approaches</a></li>
+<li class="chapter" data-level="2.1.2" data-path="notes-introduction.html"><a href="notes-introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>2.1.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
+<li class="chapter" data-level="2.1.3" data-path="notes-introduction.html"><a href="notes-introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.1.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="notes-introduction.html"><a href="notes-introduction.html#getting-cleaning-and-using-data"><i class="fa fa-check"></i><b>2.2</b> Getting, cleaning and using data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="notes-introduction.html"><a href="notes-introduction.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>2.2.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="2.2.2" data-path="notes-introduction.html"><a href="notes-introduction.html#good-coding-practices"><i class="fa fa-check"></i><b>2.2.2</b> Good coding practices</a></li>
+<li class="chapter" data-level="2.2.3" data-path="notes-introduction.html"><a href="notes-introduction.html#new-tools-and-approaches-to-data-esp-tidyverse"><i class="fa fa-check"></i><b>2.2.3</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="notes-introduction.html"><a href="notes-introduction.html#data-sharing-and-integrity"><i class="fa fa-check"></i><b>2.2.4</b> Data sharing and integrity</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="notes-introduction.html"><a href="notes-introduction.html#control-strategies-and-prediction-machine-learning-approaches"><i class="fa fa-check"></i><b>2.3</b> Control strategies and prediction; Machine Learning approaches</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="notes-introduction.html"><a href="notes-introduction.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>2.3.1</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a></li>
+<li class="chapter" data-level="2.3.2" data-path="notes-introduction.html"><a href="notes-introduction.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>2.3.2</b> Limitations to inference from learning approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="notes-introduction.html"><a href="notes-introduction.html#basic-regression-and-statistical-inference-common-mistakes-and-issues"><i class="fa fa-check"></i><b>2.4</b> Basic regression and statistical inference: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="notes-introduction.html"><a href="notes-introduction.html#bad-control-colliders"><i class="fa fa-check"></i><b>2.4.1</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="notes-introduction.html"><a href="notes-introduction.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>2.4.2</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="notes-introduction.html"><a href="notes-introduction.html#functional-form"><i class="fa fa-check"></i><b>2.4.3</b> Functional form</a></li>
+<li class="chapter" data-level="2.4.4" data-path="notes-introduction.html"><a href="notes-introduction.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>2.4.4</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="2.4.5" data-path="notes-introduction.html"><a href="notes-introduction.html#null-effects"><i class="fa fa-check"></i><b>2.4.5</b> “Null effects”</a></li>
+<li class="chapter" data-level="2.4.6" data-path="notes-introduction.html"><a href="notes-introduction.html#multiple-hypothesis-testing-mht"><i class="fa fa-check"></i><b>2.4.6</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="2.4.7" data-path="notes-introduction.html"><a href="notes-introduction.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>2.4.7</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="2.4.8" data-path="notes-introduction.html"><a href="notes-introduction.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>2.4.8</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="2.4.9" data-path="notes-introduction.html"><a href="notes-introduction.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>2.4.9</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="2.4.10" data-path="notes-introduction.html"><a href="notes-introduction.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>2.4.10</b> Bayesian interpretations of results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="notes-introduction.html"><a href="notes-introduction.html#ldv-and-discrete-choice-modeling"><i class="fa fa-check"></i><b>2.5</b> LDV and discrete choice modeling</a></li>
+<li class="chapter" data-level="2.6" data-path="notes-introduction.html"><a href="notes-introduction.html#robustness-and-diagnostics-with-integrity"><i class="fa fa-check"></i><b>2.6</b> Robustness and diagnostics, with integrity</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="notes-introduction.html"><a href="notes-introduction.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>2.6.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="notes-introduction.html"><a href="notes-introduction.html#estimating-standard-errors"><i class="fa fa-check"></i><b>2.6.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="2.6.3" data-path="notes-introduction.html"><a href="notes-introduction.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>2.6.3</b> Sensitivity analysis: Interactive presentation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="notes-introduction.html"><a href="notes-introduction.html#iv-and-its-many-issues"><i class="fa fa-check"></i><b>2.7</b> IV and its many issues</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="notes-introduction.html"><a href="notes-introduction.html#instrument-validity"><i class="fa fa-check"></i><b>2.7.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="2.7.2" data-path="notes-introduction.html"><a href="notes-introduction.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>2.7.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="2.7.3" data-path="notes-introduction.html"><a href="notes-introduction.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>2.7.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="2.7.4" data-path="notes-introduction.html"><a href="notes-introduction.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>2.7.4</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="notes-introduction.html"><a href="notes-introduction.html#causal-pathways-mediation-hurdles-etc."><i class="fa fa-check"></i><b>2.8</b> Causal pathways: mediation, hurdles, etc.</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="notes-introduction.html"><a href="notes-introduction.html#mediation-modeling"><i class="fa fa-check"></i><b>2.8.1</b> Mediation modeling</a></li>
+<li class="chapter" data-level="2.8.2" data-path="notes-introduction.html"><a href="notes-introduction.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>2.8.2</b> ‘Corner solution’ or hurdle variables and ’Conditional on Positive</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="notes-introduction.html"><a href="notes-introduction.html#causal-pathways-mediation-hurdles-etc.-1"><i class="fa fa-check"></i><b>2.9</b> Causal pathways: mediation, hurdles, etc.</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="notes-introduction.html"><a href="notes-introduction.html#mediation-modeling-1"><i class="fa fa-check"></i><b>2.9.1</b> Mediation modeling</a></li>
+<li class="chapter" data-level="2.9.2" data-path="notes-introduction.html"><a href="notes-introduction.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-1"><i class="fa fa-check"></i><b>2.9.2</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="notes-introduction.html"><a href="notes-introduction.html#causal-pathways-mediation-hurdles-etc.-2"><i class="fa fa-check"></i><b>2.10</b> Causal pathways: mediation, hurdles, etc.</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="notes-introduction.html"><a href="notes-introduction.html#mediation-modeling-and-its-massive-limitations"><i class="fa fa-check"></i><b>2.10.1</b> Mediation modeling and its massive limitations</a></li>
+<li class="chapter" data-level="2.10.2" data-path="notes-introduction.html"><a href="notes-introduction.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-2"><i class="fa fa-check"></i><b>2.10.2</b> ‘Corner solution’ or hurdle variables and ’Conditional on Positive</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="notes-introduction.html"><a href="notes-introduction.html#other-paths-to-observational-identification"><i class="fa fa-check"></i><b>2.11</b> Other paths to observational identification</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="notes-introduction.html"><a href="notes-introduction.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>2.11.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="2.11.2" data-path="notes-introduction.html"><a href="notes-introduction.html#did"><i class="fa fa-check"></i><b>2.11.2</b> DiD</a></li>
+<li class="chapter" data-level="2.11.3" data-path="notes-introduction.html"><a href="notes-introduction.html#rd"><i class="fa fa-check"></i><b>2.11.3</b> RD</a></li>
+<li class="chapter" data-level="2.11.4" data-path="notes-introduction.html"><a href="notes-introduction.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>2.11.4</b> Time-series-ish panel approaches to micro</a></li>
+</ul></li>
+<li class="chapter" data-level="2.12" data-path="notes-introduction.html"><a href="notes-introduction.html#ex-ante-power-calculations"><i class="fa fa-check"></i><b>2.12</b> (Ex-ante) Power calculations</a>
+<ul>
+<li class="chapter" data-level="2.12.1" data-path="notes-introduction.html"><a href="notes-introduction.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point"><i class="fa fa-check"></i><b>2.12.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a></li>
+<li class="chapter" data-level="2.12.2" data-path="notes-introduction.html"><a href="notes-introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>2.12.2</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="2.12.3" data-path="notes-introduction.html"><a href="notes-introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>2.12.3</b> Power calculations using prior data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.13" data-path="notes-introduction.html"><a href="notes-introduction.html#experimental-study-design-identifying-meaningful-and-useful-causal-relationships-and-parameters"><i class="fa fa-check"></i><b>2.13</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<ul>
+<li class="chapter" data-level="2.13.1" data-path="notes-introduction.html"><a href="notes-introduction.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>2.13.1</b> Why run an experiment or study?</a></li>
+<li class="chapter" data-level="2.13.2" data-path="notes-introduction.html"><a href="notes-introduction.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>2.13.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="2.13.3" data-path="notes-introduction.html"><a href="notes-introduction.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups"><i class="fa fa-check"></i><b>2.13.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
+<li class="chapter" data-level="2.13.4" data-path="notes-introduction.html"><a href="notes-introduction.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>2.13.4</b> Generalizability (and heterogeneity)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.14" data-path="notes-introduction.html"><a href="notes-introduction.html#experimental-study-design-background-and-quantitative-issues"><i class="fa fa-check"></i><b>2.14</b> (Experimental) Study design: Background and quantitative issues</a>
+<ul>
+<li class="chapter" data-level="2.14.1" data-path="notes-introduction.html"><a href="notes-introduction.html#pre-registration-and-pre-analysis-plans"><i class="fa fa-check"></i><b>2.14.1</b> Pre-registration and Pre-analysis plans</a></li>
+<li class="chapter" data-level="2.14.2" data-path="notes-introduction.html"><a href="notes-introduction.html#sequential-and-adaptive-designs"><i class="fa fa-check"></i><b>2.14.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="2.14.3" data-path="notes-introduction.html"><a href="notes-introduction.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>2.14.3</b> Efficient assignment of treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.15" data-path="notes-introduction.html"><a href="notes-introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts"><i class="fa fa-check"></i><b>2.15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="2.15.1" data-path="notes-introduction.html"><a href="notes-introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>2.15.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="2.15.2" data-path="notes-introduction.html"><a href="notes-introduction.html#randomization-inference"><i class="fa fa-check"></i><b>2.15.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="2.15.3" data-path="notes-introduction.html"><a href="notes-introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>2.15.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
+<li class="chapter" data-level="2.15.4" data-path="notes-introduction.html"><a href="notes-introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>2.15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="2.15.5" data-path="notes-introduction.html"><a href="notes-introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>2.15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="2.15.6" data-path="notes-introduction.html"><a href="notes-introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>2.15.6</b> Heterogeneity in an experimental context</a></li>
+</ul></li>
+<li class="chapter" data-level="2.16" data-path="notes-introduction.html"><a href="notes-introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>2.16</b> Making inferences from previous work; Meta-analysis, combining studies</a>
+<ul>
+<li class="chapter" data-level="2.16.1" data-path="notes-introduction.html"><a href="notes-introduction.html#publication-bias"><i class="fa fa-check"></i><b>2.16.1</b> Publication bias</a></li>
+<li class="chapter" data-level="2.16.2" data-path="notes-introduction.html"><a href="notes-introduction.html#combining-a-few-your-own-studiesestimates"><i class="fa fa-check"></i><b>2.16.2</b> Combining a few (your own) studies/estimates</a></li>
+<li class="chapter" data-level="2.16.3" data-path="notes-introduction.html"><a href="notes-introduction.html#full-meta-analyses"><i class="fa fa-check"></i><b>2.16.3</b> Full meta-analyses</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus</h1>
+<p class="author"><em>Dr. David Reinstein,</em></p>
+<p class="date"><em>2020-04-15</em></p>
+<div class="abstract">
+<p class="abstract">Abstract</p>
+This ‘book’ organizes my notes and helps others understand it and learn from it
+</div>
+</div>
+<div id="econometrics-statistics-and-data-science-reinstein-notes-with-a-micro-behavioural-and-experimental-focus" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioural, and Experimental focus</h1>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="notes-introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
