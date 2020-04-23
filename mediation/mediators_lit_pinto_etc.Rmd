@@ -1,15 +1,9 @@
----
-bibliography: [support/giving_keywords.bib, support/packages.bib]
-biblio-style: apalike
-link-citations: yes
----
-
 # Mediators (and selection and Roy models): a review, considering two research applications
 
 (Originally focused on issues relevant to Parey et al)
 
 
-## DR initial thoughts for NL education paper
+## DR initial thoughts (for NL education paper)
 
 <div class="marginnote">
 Here were my initial thoughts as pertaining to our paper on the returns to university. </div>
@@ -70,7 +64,24 @@ However, there are two major challenges to this estimation.
 
 Thus we consult the relevant literature, discussed below.
 
-The most influential paper in Economics has been 
+The most influential paper in Economics has been [@Heckman2013].
+
+It is cited in more recent applied work such as Fagereng, 2018  (unfold).
+
+```{block2,  type='fold'}
+
+> ... We follow Heckman et al. (2013) and Heckman and Pinto (2015) in using mediation analysis. The goal of this analysis is to disentangle the average causal effect on outcomes that operate through two channels: a) Indirect effects arising from the effect of treatment on measured mediators, and b) direct effects that operate through channels other
+than changes in the measured mediators (including changes in mediators that are not observed by the analyst and changes in the mapping between mediators and outcomes).
+
+> It is therefore necessary to assume that the mediators we do not
+observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for all values of
+$D$. 
+```
+
+\
+
+Antonakis, coming from the Psychology and Leadership disciplines, considers the mediation question in a much simpler set of models.  
+
 
 ## Econometric Mediation Analyses (Heckman and Pinto)
 
@@ -80,8 +91,12 @@ The most influential paper in Economics has been
 
 ### Relevance to Parey et al {-}
 
-We have an instrument for admission to one's first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these 'intermediate outcomes', including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.^[a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well]
+We have an instrument for admission to one's first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these 'intermediate outcomes', including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.
 
+<div class="marginnote">
+a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well
+</div>
+ 
 
 ## Summary and key modeling
 

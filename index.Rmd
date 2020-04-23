@@ -7,7 +7,6 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
-    lib_dir: "book_assets"
     includes:
       in_header: https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html
     #css: https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css
@@ -36,7 +35,7 @@ output:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: ["support/giving_keywords.bib", support/packages.bib]
+bibliography: [./references.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
