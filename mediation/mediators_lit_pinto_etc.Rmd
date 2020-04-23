@@ -1,9 +1,18 @@
+---
+bibliography: [support/giving_keywords.bib, support/packages.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
 # Mediators (and selection and Roy models): a review, considering two research applications
 
 (Originally focused on issues relevant to Parey et al)
 
 
 ## DR initial thoughts for NL education paper
+
+<div class="marginnote">
+Here were my initial thoughts as pertaining to our paper on the returns to university. </div>
 
 Suppose we observe treatment $T$ (e.g., 'allowed to enter first-choice institution and course'),
 
@@ -12,7 +21,7 @@ intermediate outcome $M$ (e.g., completion of degree in first-choice course and 
 and final outcome $Y$ (e.g., lifetime income.)\
 
 
-In the "substitution between charities" context...
+*Alternately, in the "substitution between charities" context... (unfold)*
 
 ```{block2,  type='fold'}
 
@@ -55,11 +64,13 @@ This should be merely the composition of these two functions, or, in the linear 
 
 However, there are two major challenges to this estimation.
 
-1.  We (may) have a valid instrument for (exogenous variation in) $T$ only, and $M$ may arise through a process involving selection on unobserved variables.
+1. We (may) have a valid instrument for (exogenous variation in) $T$ only, and $M$ may arise through a process involving selection on unobserved variables.
 
-2.  Each of the three above relationships (as well as the selection equation) may involve heterogeneous functions; i.e., differential treatment effects.
+2. Each of the three above relationships (as well as the selection equation) may involve heterogeneous functions; i.e., differential treatment effects.
 
 Thus we consult the relevant literature, discussed below.
+
+The most influential paper in Economics has been 
 
 ## Econometric Mediation Analyses (Heckman and Pinto)
 

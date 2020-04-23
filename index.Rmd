@@ -36,7 +36,7 @@ output:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: [support/giving_keywords.bib, support/packages.bib]
+bibliography: ["support/giving_keywords.bib", support/packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work

@@ -1,4 +1,4 @@
-# Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioural, and Experimental focus
+ # Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioural, and Experimental focus
 
 # Notes introduction
 
@@ -20,6 +20,17 @@ Data:
 
 Assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied.
 
+
+causal_inference_general_notes/
+experimetrics_expt_design/
+heterog_TE_moderators/
+mediation/
+meta_anal_and_open_science/
+misc_tools/
+ml-and-mlreading-group/
+mostly-harmless-replication_and_notes/
+multilevel-models/
+sample_selection/
 
 ## Conceptual
 
@@ -65,28 +76,48 @@ Indenting, snake-case,etc
 
 ## Basic regression and statistical inference: Common mistakes and issues
 
-
+*Note: These are organized in an Airtable database [here](https://airtable.com/shr2NGHUmhW1hADGf). Many of these are also covered in my 'Research and Writing' book*
 
 Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)	Identification
+
 Random effects estimators show a lack of robustness	Specification	Clustering SE  is more standard practice
 
+
 OLS/IV estimators not 'mean effect' in presence of heterogeneity
+
 Power calculations/underpowered
+
 Selection bias due to attrition
+
 Selection bias due to missing variables -- impute these as a solution
+
 Signs of p-hacking and specification-hunting
+
 Weak diagnostic/identification tests
+
 Dropping zeroes in a "loglinear" model is problematic
 Random effects estimators show a lack of robustness
+
+
 Dropping zeroes in a "loglinear" model is problematic
+
 Random effects estimators show a lack of robustness
+
 With heterogeneity the simple OLS estimator is not the 'mean effect'
+
 P_augmented may *overstate* type-1 error rate
+
 Impact size from regression of "log 1+gift amount"
+
 Lagged dependent variable and fixed effects --> 'Nickel bias'
+
 Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)
+
 Weak IV bias
+
 Bias from selecting instruments and estimating using the same data
+
+
 
 ### "Bad control" ("colliders")
 
@@ -225,6 +256,7 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 ### RD
 
 ### Time-series-ish panel approaches to micro
+
 
 #### Lagged dependent variable and fixed effects --> 'Nickel bias'
 

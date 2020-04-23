@@ -1,10 +1,11 @@
-# Mediators (and selection and Roy models): a review
+# Mediators: an applied review {#mediators}
 
 
-(Originally focused on issues relevant to Parey et al)
+
+## Initial thoughts for Parey et al (NL education paper)
 
 
-## DR initial thoughts for NL education paper
+ 
 
 Suppose we observe treatment $T$ (e.g., 'allowed to enter first-choice institution and course'), intermediate outcome $M$ (e.g., completion of degree in first-choice course and institution), and final outcome $Y$ (e.g., lifetime income.)\
 
