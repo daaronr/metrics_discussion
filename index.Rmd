@@ -11,7 +11,7 @@ output:
       in_header: support/header.html
       #https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html
     #css: https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css
-      css: support/tufte_plus.css
+    css: support/tufte_plus.css
     config:
       toc:
         after: |
