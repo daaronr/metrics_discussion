@@ -1,0 +1,27 @@
+# IV and its many issues
+
+
+## Instrument validity
+
+- Exogeneity vs. exclusion
+- Very hard to 'powerfully test'
+
+IV not credible?	Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a *direct* effect on the outcome (only an indirect effect through the endogenous variable
+
+## Heterogeneity and LATE
+
+*Basic consideration: what does IV identify and when:*?
+
+Focusing on a binary endogenous 'treatment' variable
+
+- With heterogeneity
+- With imperfect compliance
+- With one-way compliance
+
+## Weak instruments, other issues
+
+- With a 'weak instrument' ... why does that matter?
+
+## Reference to the use of IV in experiments/mediation
+
+

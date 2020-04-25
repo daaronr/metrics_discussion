@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus</title>
+  <meta name="description" content="7 Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="daaronr/metrics_discussion_work" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus" />
+  
+  
+  
+
+<meta name="author" content="Dr. David Reinstein," />
+
+
+<meta name="date" content="2020-04-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"/>
+<link rel="next" href="notes-on-bayesian-approaches-david-reinstein.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<!-- <script src="js/hideOutput.js"></script> -->
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+
+
+<!-- open review block, in case we want it ever
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+-->
+
+<!-- Folding text box javascript thing -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Unfold</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Fold" ? "Unfold" : "Fold");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Global") elem.value = "Show Global";
+    else elem.value = "Hide Global";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148137970-3');
+</script>
+-->
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#conceptual"><i class="fa fa-check"></i><b>1.1</b> Conceptual</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i><b>1.1.1</b> Bayesian vs. frequentist approaches</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>1.1.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>1.1.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#getting-cleaning-and-using-data"><i class="fa fa-check"></i><b>1.2</b> Getting, cleaning and using data</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>1.2.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#good-coding-practices"><i class="fa fa-check"></i><b>1.2.2</b> Good coding practices</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#new-tools-and-approaches-to-data-esp-tidyverse"><i class="fa fa-check"></i><b>1.2.3</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#data-sharing-and-integrity"><i class="fa fa-check"></i><b>1.2.4</b> Data sharing and integrity</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#basic-regression-and-statistical-inference-common-mistakes-and-issues"><i class="fa fa-check"></i><b>1.3</b> Basic regression and statistical inference: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#bad-control-colliders"><i class="fa fa-check"></i><b>1.3.1</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>1.3.2</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#functional-form"><i class="fa fa-check"></i><b>1.3.3</b> Functional form</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>1.3.4</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introduction.html"><a href="introduction.html#null-effects"><i class="fa fa-check"></i><b>1.3.5</b> “Null effects”</a></li>
+<li class="chapter" data-level="1.3.6" data-path="introduction.html"><a href="introduction.html#multiple-hypothesis-testing-mht"><i class="fa fa-check"></i><b>1.3.6</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="1.3.7" data-path="introduction.html"><a href="introduction.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>1.3.7</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="1.3.8" data-path="introduction.html"><a href="introduction.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>1.3.8</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="1.3.9" data-path="introduction.html"><a href="introduction.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>1.3.9</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="1.3.10" data-path="introduction.html"><a href="introduction.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>1.3.10</b> Bayesian interpretations of results</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#ldv-and-discrete-choice-modeling"><i class="fa fa-check"></i><b>1.4</b> LDV and discrete choice modeling</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#robustness-and-diagnostics-with-integrity"><i class="fa fa-check"></i><b>1.5</b> Robustness and diagnostics, with integrity</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>1.5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction.html"><a href="introduction.html#estimating-standard-errors"><i class="fa fa-check"></i><b>1.5.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction.html"><a href="introduction.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>1.5.3</b> Sensitivity analysis: Interactive presentation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#control-strategies-and-prediction-machine-learning-approaches"><i class="fa fa-check"></i><b>1.6</b> <span>Control strategies and prediction; Machine Learning approaches</span></a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction.html"><a href="introduction.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>1.6.1</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction.html"><a href="introduction.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>1.6.2</b> Limitations to inference from learning approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#iv-and-its-many-issues"><i class="fa fa-check"></i><b>1.7</b> IV and its many issues</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introduction.html"><a href="introduction.html#instrument-validity"><i class="fa fa-check"></i><b>1.7.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introduction.html"><a href="introduction.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>1.7.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introduction.html"><a href="introduction.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>1.7.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introduction.html"><a href="introduction.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>1.7.4</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#causal-pathways-mediation-modeling-and-its-massive-limitations"><i class="fa fa-check"></i><b>1.8</b> Causal pathways: <span>Mediation modeling and its massive limitations</span></a></li>
+<li class="chapter" data-level="1.9" data-path="introduction.html"><a href="introduction.html#causal-pathways-selection-corners-hurdles-and-conditional-on-estimates"><i class="fa fa-check"></i><b>1.9</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="introduction.html"><a href="introduction.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>1.9.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="introduction.html"><a href="introduction.html#other-paths-to-observational-identification"><i class="fa fa-check"></i><b>1.10</b> Other paths to observational identification</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="introduction.html"><a href="introduction.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>1.10.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="1.10.2" data-path="introduction.html"><a href="introduction.html#did"><i class="fa fa-check"></i><b>1.10.2</b> DiD</a></li>
+<li class="chapter" data-level="1.10.3" data-path="introduction.html"><a href="introduction.html#rd"><i class="fa fa-check"></i><b>1.10.3</b> RD</a></li>
+<li class="chapter" data-level="1.10.4" data-path="introduction.html"><a href="introduction.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>1.10.4</b> Time-series-ish panel approaches to micro</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="introduction.html"><a href="introduction.html#ex-ante-power-calculations"><i class="fa fa-check"></i><b>1.11</b> (Ex-ante) Power calculations</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="introduction.html"><a href="introduction.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point"><i class="fa fa-check"></i><b>1.11.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a></li>
+<li class="chapter" data-level="1.11.2" data-path="introduction.html"><a href="introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>1.11.2</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="1.11.3" data-path="introduction.html"><a href="introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>1.11.3</b> Power calculations using prior data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="introduction.html"><a href="introduction.html#experimental-study-design-identifying-meaningful-and-useful-causal-relationships-and-parameters"><i class="fa fa-check"></i><b>1.12</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="introduction.html"><a href="introduction.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>1.12.1</b> Why run an experiment or study?</a></li>
+<li class="chapter" data-level="1.12.2" data-path="introduction.html"><a href="introduction.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>1.12.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="1.12.3" data-path="introduction.html"><a href="introduction.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups"><i class="fa fa-check"></i><b>1.12.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
+<li class="chapter" data-level="1.12.4" data-path="introduction.html"><a href="introduction.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>1.12.4</b> Generalizability (and heterogeneity)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="introduction.html"><a href="introduction.html#experimental-study-design-background-and-quantitative-issues"><i class="fa fa-check"></i><b>1.13</b> (Experimental) Study design: Background and quantitative issues</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="introduction.html"><a href="introduction.html#pre-registration-and-pre-analysis-plans"><i class="fa fa-check"></i><b>1.13.1</b> Pre-registration and Pre-analysis plans</a></li>
+<li class="chapter" data-level="1.13.2" data-path="introduction.html"><a href="introduction.html#sequential-and-adaptive-designs"><i class="fa fa-check"></i><b>1.13.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="1.13.3" data-path="introduction.html"><a href="introduction.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>1.13.3</b> Efficient assignment of treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts"><i class="fa fa-check"></i><b>1.14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="introduction.html"><a href="introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>1.14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="1.14.3" data-path="introduction.html"><a href="introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>1.14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
+<li class="chapter" data-level="1.14.4" data-path="introduction.html"><a href="introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>1.14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
+</ul></li>
+<li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#the-bayesian-approach"><i class="fa fa-check"></i><b>1.15</b> The Bayesian approach</a></li>
+<li class="chapter" data-level="1.16" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.16</b> Making inferences from previous work; Meta-analysis, combining studies</a>
+<ul>
+<li class="chapter" data-level="1.16.1" data-path="introduction.html"><a href="introduction.html#publication-bias"><i class="fa fa-check"></i><b>1.16.1</b> Publication bias</a></li>
+<li class="chapter" data-level="1.16.2" data-path="introduction.html"><a href="introduction.html#combining-a-few-your-own-studiesestimates"><i class="fa fa-check"></i><b>1.16.2</b> Combining a few (your own) studies/estimates</a></li>
+<li class="chapter" data-level="1.16.3" data-path="introduction.html"><a href="introduction.html#full-meta-analyses"><i class="fa fa-check"></i><b>1.16.3</b> Full meta-analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="1.17" data-path="introduction.html"><a href="introduction.html#some-key-resources-and-references"><i class="fa fa-check"></i><b>1.17</b> Some key resources and references</a>
+<ul>
+<li class="chapter" data-level="1.17.1" data-path="introduction.html"><a href="introduction.html#consider"><i class="fa fa-check"></i><b>1.17.1</b> Consider:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>2</b> Basic regression and statistical inference: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>2.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a></li>
+<li class="chapter" data-level="2.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>2.2</b> Bad control</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders-1"><i class="fa fa-check"></i><b>2.2.1</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables-1"><i class="fa fa-check"></i><b>2.2.2</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="2.2.3" data-path="reg-follies.html"><a href="reg-follies.html#functional-form-1"><i class="fa fa-check"></i><b>2.2.3</b> Functional form</a></li>
+<li class="chapter" data-level="2.2.4" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity-1"><i class="fa fa-check"></i><b>2.2.4</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="2.2.5" data-path="reg-follies.html"><a href="reg-follies.html#null-effects-1"><i class="fa fa-check"></i><b>2.2.5</b> “Null effects”</a></li>
+<li class="chapter" data-level="2.2.6" data-path="reg-follies.html"><a href="reg-follies.html#multiple-hypothesis-testing-mht-1"><i class="fa fa-check"></i><b>2.2.6</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="2.2.7" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls-1"><i class="fa fa-check"></i><b>2.2.7</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="2.2.8" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric-1"><i class="fa fa-check"></i><b>2.2.8</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="2.2.9" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests-1"><i class="fa fa-check"></i><b>2.2.9</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="2.2.10" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results-1"><i class="fa fa-check"></i><b>2.2.10</b> Bayesian interpretations of results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>3</b> Robustness and diagnostics, with integrity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1"><i class="fa fa-check"></i><b>3.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
+<li class="chapter" data-level="3.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors-1"><i class="fa fa-check"></i><b>3.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="3.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation-1"><i class="fa fa-check"></i><b>3.3</b> Sensitivity analysis: Interactive presentation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>4</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more-1"><i class="fa fa-check"></i><b>4.1</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches-1"><i class="fa fa-check"></i><b>4.1.1</b> Limitations to inference from learning approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>4.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>4.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>4.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="4.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>4.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="4.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>4.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>4.3</b> Notes: Mullainathan</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html"><i class="fa fa-check"></i><b>5</b> IV and its many issues</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#instrument-validity-1"><i class="fa fa-check"></i><b>5.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="5.2" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#heterogeneity-and-late-1"><i class="fa fa-check"></i><b>5.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="5.3" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#weak-instruments-other-issues-1"><i class="fa fa-check"></i><b>5.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="5.4" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#reference-to-the-use-of-iv-in-experimentsmediation-1"><i class="fa fa-check"></i><b>5.4</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><i class="fa fa-check"></i><b>6</b> Causal pathways: <span>Mediation modeling and its massive limitations</span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#mediators-and-selection-and-roy-models-a-review-considering-two-research-applications"><i class="fa fa-check"></i><b>6.1</b> Mediators (and selection and Roy models): a review, considering two research applications</a></li>
+<li class="chapter" data-level="6.2" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#dr-initial-thoughts-for-nl-education-paper"><i class="fa fa-check"></i><b>6.2</b> DR initial thoughts (for NL education paper)</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#econometric-mediation-analyses-heckman-and-pinto"><i class="fa fa-check"></i><b>6.3</b> Econometric Mediation Analyses (Heckman and Pinto)</a>
+<ul>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#relevance-to-parey-et-al"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#summary-and-key-modeling"><i class="fa fa-check"></i><b>6.4</b> Summary and key modeling</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity"><i class="fa fa-check"></i><b>6.5</b> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#relevance-to-parey-et-al-1"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#identification-strategy-brief"><i class="fa fa-check"></i>Identification strategy brief</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#results-in-brief"><i class="fa fa-check"></i>Results in brief</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#framework-first-for-binarybinary-simplification"><i class="fa fa-check"></i>Framework: first for binary/binary (simplification)</a></li>
+<li class="chapter" data-level="" data-path="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html"><a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html#framework-for-mto-multiple-treatment-groups-multiple-choices"><i class="fa fa-check"></i>Framework for MTO multiple treatment groups, multiple choices</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><i class="fa fa-check"></i><b>7</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-1"><i class="fa fa-check"></i><b>7.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+<li class="chapter" data-level="7.2" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#bounding-approaches-lee-manski-etc-1"><i class="fa fa-check"></i><b>7.2</b> Bounding approaches (Lee, Manski, etc)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>7.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html"><i class="fa fa-check"></i><b>8</b> Notes on Bayesian approaches – David Reinstein</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#my-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>8.1</b> My uses for Bayesian approaches (brainstorm)</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>8.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>8.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="8.1.3" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>8.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="8.1.4" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>8.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="8.1.5" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#experimental-design"><i class="fa fa-check"></i><b>8.1.5</b> Experimental design</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>8.2</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a></li>
+<li class="chapter" data-level="8.3" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>8.3</b> Why and when use Bayesian (MCMC) methods?</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#pros"><i class="fa fa-check"></i><b>8.3.1</b> Pros</a></li>
+<li class="chapter" data-level="8.3.2" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#cons"><i class="fa fa-check"></i><b>8.3.2</b> Cons</a></li>
+<li class="chapter" data-level="8.3.3" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#why-more-popular-today"><i class="fa fa-check"></i><b>8.3.3</b> Why more popular today?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#theory"><i class="fa fa-check"></i><b>8.4</b> Theory</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#so-how-do-we-estimate-it"><i class="fa fa-check"></i><b>8.4.1</b> So how do we estimate it?</a></li>
+<li class="chapter" data-level="8.4.2" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#linear-regression-model-example"><i class="fa fa-check"></i><b>8.4.2</b> Linear regression model example</a></li>
+<li class="chapter" data-level="8.4.3" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#gibbs"><i class="fa fa-check"></i><b>8.4.3</b> Gibbs</a></li>
+<li class="chapter" data-level="8.4.4" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#metropolis-hastings"><i class="fa fa-check"></i><b>8.4.4</b> Metropolis Hastings</a></li>
+<li class="chapter" data-level="8.4.5" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#assessing-convergence"><i class="fa fa-check"></i><b>8.4.5</b> Assessing convergence</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>8.5</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="8.6" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#on-choosing-priors"><i class="fa fa-check"></i><b>8.6</b> On choosing priors</a></li>
+<li class="chapter" data-level="8.7" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#implementation"><i class="fa fa-check"></i><b>8.7</b> Implementation</a></li>
+<li class="chapter" data-level="8.8" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>8.8</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="8.9" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#missing-data-case"><i class="fa fa-check"></i><b>8.9</b> Missing data case</a></li>
+<li class="chapter" data-level="8.10" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#stata"><i class="fa fa-check"></i><b>8.10</b> Stata</a></li>
+<li class="chapter" data-level="8.11" data-path="notes-on-bayesian-approaches-david-reinstein.html"><a href="notes-on-bayesian-approaches-david-reinstein.html#r-mcmc-pac"><i class="fa fa-check"></i><b>8.11</b> R mcmc pac</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</h1>
+<div id="corner-solution-or-hurdle-variables-and-conditional-on-positive-1" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</h2>
+<p>“Conditional on positive”/“intensive margin” analysis ignores selection</p>
+<p>“Conditional on positive”/“intensive margin” analysis ignores selection <em>identification issue</em> See Angrist and Pischke on “Good CoP, bad CoP”. See also bounding approaches such as <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lee2018"><strong>???</strong></span>)</span> AngristJ.D.2008a,</p>
+<p><br />
+</p>
+</div>
+<div id="bounding-approaches-lee-manski-etc-1" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Bounding approaches (Lee, Manski, etc)</h2>
+<p>See <a href="#notes_lee">Notes on Lee bounds</a></p>
+<div id="notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</h3>
+<p>Notes David Reinstein</p>
+<div id="introduction-2" class="section level5" number="7.2.1.0.1">
+<h5><span class="header-section-number">7.2.1.0.1</span> Introduction</h5>
+<blockquote>
+<p>even with the aid of a randomized experiment, the impact of a training program on wages is difficult to study because of sample selection, a pervasive problem in applied microeconometric research</p>
+</blockquote>
+<ul>
+<li><p>Intuitive trimming procedure for bounding average treatment effects in the presence of sample selection…</p></li>
+<li><p>Requires neither exclusion restrictions nor a bounded support for the outcome of interest."</p></li>
+<li><p>(Also) applicable to “nonrandom sample selection/attrition”, as well as to the ‘conditional on positive’/hurdle/mediation effect discussed here</p></li>
+</ul>
+<blockquote>
+<p>analyses and evaluations typically focus on "reduced form impacts on total earnings, a first-order issue for cost-benefit analysis. Unfortunately, exclusively studying the effect on total earnings leaves open the question of whether any earnings gains are achieved through raising individuals hypothesis wage rates (price affects or hours of work (quantity effects).</p>
+</blockquote>
+<p><em>Important methodological point to constantly bring up:</em> “even a randomized experiment cannot guarantee the treatment and control individuals will be comparable conditional on being employed.”</p>
+<p>Claims that standard “parametric or semi-parametric methods for correcting sample selection require exclusion restrictions that have little justification in this case.” Notes that most of the baseline variables could affect employment probabilities or have a direct impact on wage rates.</p>
+<p><br />
+</p>
+<p><em>Summary of the method</em>: “…amounts to first identifying the excess number of individuals who were induced to be selected (employed) because of the treatment and then trimming the upper and lower tails of the outcome… distribution by this number, yielding a worst-case scenario bound.”</p>
+<p>Uses same assumptions as in “conventional models for sample selection”</p>
+<ol style="list-style-type: decimal">
+<li><p>regressor of interest is independent of the errors in the outcome and selection models selection equations – this is ensured by random assignment.</p></li>
+<li><p>“the selection equation can be written as a standard latent variable binary response model”</p></li>
+</ol>
+<p>– what meaningful restriction does this impose?</p>
+<p>He proves this procedure “yields the tightest bounds for the average treatment effect that are consistent with the observed data.”</p>
+
+<div class="note">
+<p>The bounds estimator is shown to be <span class="math inline">\(\sqrt(n)\)</span> consistent and asymptotically normal with an intuitive expression for its asymptotic variance which depends on the variance of the trimmed outcome and the trimming threshold, an estimated quantifiable; (and an added term accounting for the estimation of which quantile to trim on)</p>
+</div>
+<p>Note for charity experiment (unfold) (@subst)</p>
+
+<div class="fold">
+<p>– <em>DR, Note, charity data: We can make confidence statements over the bounds themselves. Will this procedure be easy to bring into our code?</em>
+– In our (charity) experiment we in fact do have upper bounds on the outcome variable. Could this yield even greater efficiency?</p>
+</div>
+<p>Note for the Netherlands data: (unfold, @NL)</p>
+
+<div class="fold">
+<p>it is not immediately clear how this could be adapted to instrumental variables; we shall see. Can we recover something meaningful from the reduced form model they are? Can it be applied to the (instrumental variables) estimates to disentangle the impact of changing courses from the impact of the institution itself?</p>
+</div>
+<p>In Lee’s paper, the estimate seems to give very narrow and informative bounds even though they have a great many people who do not earn any wages as a share of the population, about 54%. These are much narrower than the bounds proposed by Horowitz and M then what those bounds produce.</p>
+<p>&lt;!- ask <span class="citation">(<span class="citeproc-not-found" data-reference-id="Gerhard"><strong>???</strong></span>)</span> whether his Horowitz/Manski estimator incorporated the natural bounds on the outcome. –&gt;</p>
+</div>
+<div id="the-national-job-corps-study-and-sample-selection-prior-approaches" class="section level5" number="7.2.1.0.2">
+<h5><span class="header-section-number">7.2.1.0.2</span> The National Job Corps Study and Sample Selection [prior approaches]</h5>
+<blockquote>
+<p>In the experiment discussed here those in the control group were embargoed from the program for three years but could join afterwards, thus “when I use the phrase ‘effect of the program’ I am referring to this reduced-form treatment effect”, i.e., the intent to treat effect.</p>
+</blockquote>
+<p>– “some subpopulations were randomized into the program group with differing, but known probabilities. Thus analyzing the data requires the use of design weights.”</p>
+<div class="marginnote">
+<p><em>Note:</em> (\<span class="citation">(<span class="citeproc-not-found" data-reference-id="NL"><strong>???</strong></span>)</span>) this bears some resemblance to our Dutch data situation, and we can probably use examples from analyses of these programs. We can check their code against ours.</p>
+</div>
+<p>– Note also that they impute means of the baseline variables with their means; this seems to be an accepted practice.</p>
+<div class="marginnote">
+<p>Lee notes that he focuses exclusively on the “sample selection on wages caused by employment” and not the attrition/nonresponse problem, to focus attention on this, but they could have used it for the other as well.</p>
+</div>
+<p>– <em>DR:</em> (@NL) Note again that their desire to separate the employment hours and wage effects of the program is very similar to our desire to separate out different margins of the impact of winning an institution. …Namely the impact on completing a course or starting a course versus other impacts and the impact of entering a specialization versus remaining impacts. …Similar decompositions for the geography outcomes.</p>
+<pre><code>– To do: check whether any papers cite Lee using an IV approach, extending the technique and the estimation of variance.</code></pre>
+<hr />
+<blockquote>
+<p>“the problem of nonrandom sample selection is well-understood in the training literature; … may be one of the reasons why most evaluations of job-training programs focus on total earnings, including zeros for those without a job, rather than on wages conditional on employment” “of the 24 studies referenced in a survey … (Heckman et al.)… Most examine annual, quarterly, or monthly earnings without discussing the sample selection problem examining rage rates.”</p>
+</blockquote>
+<p>– <em>DR:</em> (@NL)Note that this is relevant to our question of whether to exclude zeros in log models, etc. While there will be less unemployment in our data, it still may be a relevant influence made have a strong effect on the estimates.</p>
+<hr />
+<p><strong>…previous conventional approaches to the sample selection problem (skip if desired).</strong> One may explicitly model the process determining selection, such as in Heckman (1979) …</p>
+<p>Separate equations for the wage and the propensity to be employed, where employment occurs if the latter crosses a particular threshold, in which case a wage is observed. It is reasonable to think that the treatment variable can have effects on both terms..</p>
+<p>“sample selection bias can be seen as specification error in the conditional expectation…”</p>
+<p>The expected wage conditional on treatment exogenous variables and the selection into working (that is the underlying propensity to work variable exceeding zero) his status is equal to the true effect of the treatment an adjustment for the differences in the observable’s exogenous variables and a bias term representing the expectation of the idiosyncratic unobservables given the treatment and the exogenous variables exceeding the value necessary to induce work participation. The unobservable term needs to exceed the prediction based on the observable term for the entire term to exceed zero inducing labor force participation.</p>
+<p>One may assume the data are missing at random, perhaps conditional on a set of covariates (Rubin, 1976; essentially assuming the error terms in each equation are independent of one another, here “employment status is unrelated to the determination of wages”… This “is strictly inconsistent with standard models of labor supply that account for the participation decision (Heckman, 1974).”</p>
+<p>A more common assumption is that some exogenous variables “determine sample selection but do not have their own direct impact on the outcome of interest…. Exclusion restrictions are used in parametric and semi-parametric models…”</p>
+<p>but “there may not exist credible ’instruments… excluded from the outcome equation”</p>
+<hr />
+<p>– <em>DR, aside:</em> We can return to (our) previous papers to impose these Lee bounds! One example would be the Siskel and Ebert your reviews paper and perhaps incorporating us with subsequent approaches, considering the “selection to review” equation.</p>
+<hr />
+<p><strong>Second approach “the construction of worst-case scenario bounds of the treatment effect”</strong></p>
+<p>“Impute missing data with either the largest or smallest possible values to compute the largest and smallest possible treatment effects consistent with the data” as in Horwitz and Manski (2000a) who provide a general framework for this.</p>
+<ul>
+<li>Particularly useful with binary outcomes.</li>
+</ul>
+<p>This cannot be used when the support is unbounded. … note in their replication example they are actually using the equivalent of the bottom 5th percentile and the top 95th percentile. Strictly using a procedure would provide even wider bounds.</p>
+<p>Lee considers his approach to be a hybrid of the two previous general approaches.</p>
+<p>…end of section 2.. .a statement of the Horwitz upper bound for the treatment effect; very intuitive: “what if everyone in the treatment who dropped out would have had the largest possible wage and everyone in the control group that drop out would’ve had the smallest possible wage; this will give the upper bound.” Switching this the other way around will give a lower bound.</p>
+<hr />
+<p><em>DR, an aside thought:</em> (@NL) Something akin to the Horwitz and M approach (or maybe Lee bounds) could be applied to our issue of swapping into institutions directly. Suppose we only focus on those who <em>actually</em> complied: those assigned to an institution who also went to that institution. Our concern was that this would under-represent those who had particularly strong institutional preferences. Suppose you are interested in looking at the impact of winning the lottery (for once preferred institution) itself, as that was our most simply identifiable outcome.</p>
+<p>… Let’s consider evaluating a treatment effect for those who happened to swap in. Those who swapped in might be assigned a counter-factual outcome of the lowest value of the lifetime income among those who did not get their institution of choice. Similarly, the small group who swapped out might be assigned a counterfactual outcome (had they no swapped out) representing the highest outcome value for those who did get their institution of choice. This should give us an upper bound on the treatment effect for these two groups of what we might call non-compliers. Making the opposite assumptions, precisely that those who swapped <em>into</em> their institution of choice would’ve had a very good counterfactual outcome (if they had not got their institution of choice) that comes from the highest outcomes for those who didn’t get their institution of choice (and also reversing this for those who swapped out of their preferred institution) would give us a lower bound for the treatment effect for this group. We can then combine these bounded treatment effects for these non-compliers with the treatment effect for the compliers to get a measure of the average treatment effect with bounds for this sort of behavior.</p>
+<p>This will also allow us to come up with estimates with bounds <em>without</em> having to use the instrumental variable strategy which has issues of its own.</p>
+</div>
+<div id="section-3-identification-of-bounds-on-treatment-effects-the-main-meat-of-the-model" class="section level5" number="7.2.1.0.3">
+<h5><span class="header-section-number">7.2.1.0.3</span> Section 3: identification of bounds on treatment effects; the main meat of the model</h5>
+<p>He starts with a simple example. He begins with a model with a treatment indicator and no other covariates, and a continuous outcome variable, but notes that this will clearly apply to discrete outcome variables and will also apply conditional on controls.</p>
+<p>Nest, he brings forward the statement… from the earlier selection models. In each case the latent variable must overcome a hurdle for the outcome to be observed and in fact <em>the hurdle differs depending on the impact of the treatment itself</em>. In general <em>when the errors in the selection and outcome equations are correlated the difference in these means differs from the actual treatment effect</em>. In other words through a slightly complicated story, when those who have unobservables that make them more likely to work also tend to have unobservables that would make them likely to earn more the standard difference in outcomes between control and treatment will <em>not</em> describe the true treatment effect.</p>
+<p><br> </p>
+<p><em>A key insight</em> seems to be that we could identify the treatment effect if we could estimate the expected outcome given treatment <em>and</em> given that the unobservable component in the selection equation would lead to an observable outcome had the person <em>not</em> been given treatment. If so, we could subtract the observed mean control outcome from the above to yield the true treatment effect (for those who would be observed always). However, we obviously do not observe this because we only observe the outcomes for those who are treated where the selection equation <em>is</em> in fact positive and not “where the selection equation <em>would have</em> been positive had they not been treated.”</p>
+<p>However, the insight here is that this term can in fact be bounded. We <em>do</em> observe these outcomes for the treated people (note we are assuming without loss of generality that the treatment raises the probability of selection for this discussion) but we don’t know exactly which ones they are. In other words, we observe outcomes for more people in the treatment group than we need; we wish we could figure out what is the subset of these that would have <em>also</em> been observed had they not been treated, so we could compare like-to-like. The observed treatment mean is a weighted average of the thing we are seeking (to difference from the control) and “the mean for a subpopulation of marginal individuals… that are induced to be selected into the sample <em>because</em> of the treatment”</p>
+<p>This then gets us the upper bound for the term expressing the treatment outcome for those who would have been observed even if they had been in the control. The upper bound for this is the expected outcome for those in the treated group (who are observed of course) and who are in quantile-p or above of the outcome, where this <span class="math inline">\(p\)</span> is the share of the treated population that are in the marginal group we referred to that were only induced to be selected into the sample because of the treatment.</p>
+<p>In other words the worst case scenario is that the smallest share <span class="math inline">\(p\)</span> values of <span class="math inline">\(Y\)</span> are in the marginal group and the largest one (which is share 1-pone are in the inframarginal group. We don’t know which observations are inframarginal and which ones are marginal.</p>
+<p><span class="math inline">\(p\)</span>: the share of marginal individuals and (1-p) the share of inframarginal individuals (the latter is group we want the average outcome for). The highest could be would be the average outcomefor the largest (1-p) share of this group. We are looking for the expectation given that they are at or above at will at or above percentile p within this group.</p>
+<p>In other words we trim the lower tail of the Y distribution by the portion <span class="math inline">\(p\)</span>, (so what remains is the 1-p share) to get the upper bound for the inframarginal groups mean. We can then subtract the mean for the control group to get an upper bound for the treatment effect.</p>
+<p>To compute this “trimming proportion p”: this p is equal to the share of the treated group whose outcome is observed minus the share of the control group whose outcome is deserved is observed, divided by the share of the treatment group where the outcome is observed.
+Something like the <em>increased likelihood of observation that is driven by the treatment, as a share of the total number as a share of the probability of observation in the treatment group</em>.</p>
+<p>The average observed outcome for the treatment group is including too many observations; we need to difference out the share of observations that are observed only because the treatment caused them to be observed; this share is certainly no larger than the increased probability of observation in the treatment group as a share of the probability of observations the treatment group.</p>
+<p>Another much simpler way of saying this is “trimming the data by the known proportion of excess individuals” in the treatment group. (To gain bounds on the mean for the inframarginal group which we can then difference from the control-group mean get the treatment effect).</p>
+<p>Perhaps some intuition for why this improves on the Horwitz model: we don’t need to assume that those observed in the treatment group that wouldn’t have been observed in the control would’ve had the highest possible outcomes. No, we only need to assume (to get the upper bound) that these came from the highest <em>distribution</em> because they had to come from somewhere. These were the people in the upper tail of the relevant group but they couldn’t <em>all</em> have been the individual highest achiever.</p>
+<hr />
+<p>The model is extended to heterogeneity and heteroscedasticity. This begins with the independence of treatment assignment the “potential sample selection indicators” for either treatment or control, in other words whether that individual will have an observed outcome under treatment and whether that the individual would have an observed outcome under control, and the latent potential outcomes.</p>
+<p>Experimental or random assignment ensures that each of the potential outcomes (and the correspondence to observability under each treatment) is independent of the actual assigned treatment.</p>
+<p>The second assumption is monotonicity: treatment assignment can only affect sample selection in one direction.</p>
+<p>– DR: For our (substitution) experiments, it is in fact not clear to me whether this should necessarily be the case, as some (less generous?) people may be induced to leave because of having been asked to donate, while potentially other (more generous people) might be induced to return given that they were asked to donate. (This proposed nonmonotonicity implies that the ‘asked twice’ sample tends to weed out the less generous, which would lead to a bias <em>against</em> substitution, strengthening the case for our result.)
+- DR, aside: However, even though the paper doesn’t say it, I suspect this assumption could be weakened and you would still get some similar bounds.
+To put it another way, I would imagine that these bounds could be adjusted based on some reasonable ad hoc assumptions about the share of the population who is affected in either direction.</p>
+<p>– @NL: I’m coming to think that our Dutch data problems are more things involving “hurdle models”. Can this technique also be applied to such hurdle models?</p>
+<p>Next proposition 1a states that given these assumptions we can derive sharp lower and upper bounds for the average treatment effect (conditional on ‘would be observed in both states’). Note that for this estimator if the probability of observation is greater under the treatment we need to trim the treatment groups outcome distribution and if the probability of observation is greater under the control we need to trim the control group’s outcome distribution.</p>
+<ul>
+<li>DR, aside comment: we seem to be throwing out a bit of the data in these estimates, which would suggest that something more efficient could be generated.</li>
+</ul>
+<p>(The stated bounds you can estimate are exactly the same as the bounds from the previous specification, at least as I had interpreted the way they would be produced.)</p>
+<p>Their remark 2 notes that an implication is that as <span class="math inline">\(P_0\)</span>, that as the “difference between the relative probability of observation of an outcome under treatment versus control” tends to zero,
+i.e., as the probability of having an observed outcome (or the conditional probability of this) is the same for treatment and control) then there is no sample selection bias.</p>
+<p>Their estimate convergences to the estimate he calls an estimate for the “always takers subpopulation… except that taking… is selection into the [outcome-observed] sample.”</p>
+<p><em>So, a very vanilla estimator is acceptable if we find the same conditional probability of selection for each group, under monotonicity, which, for this case, we can test (see Remark 4 below).</em></p>
+<p>– (DR: To me this suggests that there might be something wrong going on here. Intuitively, If I simply observe the same rate of attrition in the treatment and control groups this <em>shouldn’t</em> be enough to tell me that attrition did not matter, as it could occur differentially for both groups, but it seems to be a result here; this is probably due to the assumption of monotonicity of the selection/observation term, as well as the random/exogenous assignment to each group.)</p>
+<hr />
+<p>Remark 3 discusses the importance of monotonicity for the bounds, saying this assumption is “minimally sufficient” (I think it would be better to say minimally sufficient for these particular bounds that he computed). To demonstrate this he gives an extreme example. Without monotonicity it could be (note: this would seem like a very unlikely outcome!) that every observation in the control group comes from the population in the treatment group that would <em>not</em> have been observed had they been treated and every observation in the treatment group happens to come from the set of people that would <em>not</em> have been observed had they been in the control group. These two “subpopulations do not overlap, so the difference in the means could not be interpreted as a causal effect.”</p>
+<p>– DR, aside : there must be some way to impose some restrictions on this even allowing for this non-monotonicity. (He notes that this can be improved upon somewhat by thinking about the total the idea that the total masses of unobserved that would’ve been observed in the other group can’t be greater than the share that is not observed in the other treatment group, but this doesn’t seem like a particularly fruitful route as it in most reasonable cases will still allow for very wide bounds.)</p>
+<hr />
+<p>Remark 4 suggests that if we can assume (or somehow observe?) that the conditional probabilities of selection are the same for treatment and control, we can <em>test whether monotonicity in fact holds</em> and the simple difference in means will be an appropriate estimate of the treatment effect. Here, the assumption implies that everyone in the treatment or control group would have been observed under the opposite treatment as well. This in fact implies that the distribution of the exogenous variables should be the same in the treatment and control groups conditional on being selected. This seems fairly intuitive, we look at whether selection seems to be occurring in different ways are on different margins for the two groups treatment versus control.</p>
+<p>Apparently for this test to have <em>power</em> we need that the subpopulations of “noncompliant errors in opposite directions” (quotation mine) must have <em>distinct</em> distributions of baselines exogenous characteristics. If these were the same then whether or not monotonicity holds the test doesn’t tell us anything.</p>
+<p>– DR: <em>I wonder if anyone uses this test for Monotonicity under non-differential selection?</em></p>
+<p>Another relevant note that he bundles in this remark is that the technique here only yields estimates <em>for those who would be with an observed outcome for either treatment or control.</em> One could <em>additionally</em> try to bound this as an estimate for the entire population using the Horwitz and Manski bounds for this latter thing. However, in many contexts there are reasons that the bounded estimates they mainly use are the relevant ones, such as “the impact of the program on wage rates for those whose employment status was not affected by the program.”</p>
+<ul>
+<li>DR: In our substitution experiment case, the substitution patterns for those for whom attrition was not affected by the first-round-charity treatment</li>
+<li>@NL: E.g., the impact of an institution on income for those whose choice to remain in the course was not affected by their institutional assignment</li>
+</ul>
+<hr />
+<p>“Narrowing bounds using covariates”</p>
+<p>All of the above could be done conditional on a particular set of baseline characteristics such as gender or race. The average treatment effect could be estimated separately for each. (Note: and perhaps combined in a fruitful way?)</p>
+<p>One can alternately use covariates to reduce the width of these bounds. To give intuition, we can imagine a baseline covariate that perfectly predicts an individual’s wage. Because treatments are randomly assigned the maintained assumptions will still hold conditionally on this X. The results the methods can be applied separately for each value of this covariate, and for each such value the trimming procedure will actually have no impact on the estimate.</p>
+<p>DR: I think this is the “estimate and sum things up in a weighted way” procedure I thought about a moment ago.</p>
+<p><br> </p>
+<p>Proposition 1B gives the balance estimator for a model involving exogenous variables. Essentially, this computes the corresponding bounds estimator at each X, where the differential selection probability is computed for that particular X, the upper quantile value of the outcome is given conditional on the same X and on being in the treatment group. These are then integrated (or summed up) weighted by the distribution or the cdf of this covariate in the control group. These bounds will necessarily be sharper than the balance without controls.</p>
+</div>
+<div id="section-4-estimation-and-inference" class="section level5" number="7.2.1.0.4">
+<h5><span class="header-section-number">7.2.1.0.4</span> Section 4: estimation and inference</h5>
+<p>The asymptotic variance depends on components reflecting the variance of the trimmed distribution, the variance of the estimated trimming threshold, and the variance in the estimate of “how much of the distribution to trim” (the relative selection probability differential).</p>
+<p>Equation 6 formally defines the estimator</p>
+<p>Estimated bounds consistent for ‘true bounds’ under standard conditions</p>
+<p>Two ways to compute CI’s – CI’s for the ‘true bounds’ or CI’s for the TE itself. A 95% CI for the former will contain the latter with even greater probability.</p>
+<p>Imbens and Manski ‘04 can be used to derive the latter which are ’more apppropriate here’ since the object of interest is the TA and not the ’region of all rationalizable treatment effects.
+These are built off of a transformation of the estimate UB and LB and max estimated sd of each of these.</p>
+<ul>
+<li>the latter are reported by the ‘cie’ option in ‘leebounds’</li>
+</ul>
+<p>Generalisation to monotonicity (without knowing direction of impact of treatment on selection)…</p>
+<blockquote>
+<p>As an overall procedure, it is asymptotically valid to estimate p, and if positive, trim the treatment group and conduct inference as discussed in Subsections 4.1 and 4.2. And if negative… [do similar]</p>
+</blockquote>
+<blockquote>
+<p>though coverage rates for confidence intervals are asymptotically correct, a large discontinuity in the asymptotic variance suggests coverage rates may be inaccurate when sample sizes are small and p0 is “close” to zero
+… A simple, conservative approach to combining the trimmed and untrimmed intervals is to compute their union</p>
+</blockquote>
+</div>
+<div id="section-5-empirical-results" class="section level5" number="7.2.1.0.5">
+<h5><span class="header-section-number">7.2.1.0.5</span> Section 5: Empirical Results</h5>
+<p>Table 4 gives a step-by-step that is a good way of seeing and understanding the construction of the estimator, and where the ‘action’ is, in treimming, in components of the SE, etc.</p>
+<p>Intervals are 1/14 the width of the equivalent Horowitz/Manski bounds</p>
+<div id="using-covariates-to-narrow-bounds" class="section level7" number="7.2.1.0.5.0.1">
+<p class="heading" number="7.2.1.0.5.0.1"><span class="header-section-number">7.2.1.0.5.0.1</span> 5.2 using covariates to narrow bounds</p>
+<blockquote>
+<p>Any baseline covariate will do, as will any function of all the baseline covariates. In the analysis here, a single baseline covariate—which is meant to be a proxy for the predicted wage potential for each individual—is constructed from a linear combination of all observed baseline characteristics. This single covariate is then discretized, so that effectively five groups are formed according to whether the predicted wage is within intervals defined by $6·75, $7, $7·50, and $8·50.</p>
+</blockquote>
+<ul>
+<li><span class="citation">(<span class="citeproc-not-found" data-reference-id="Substitution"><strong>???</strong></span>)</span>: this is essentially what I propose we do, but using Ridge Regressions or something similar</li>
+</ul>
+<blockquote>
+<p>To compute the bounds for the overall average…the group-specific bounds must be averaged, weighted by the proportion (sPr Group J|S0=1,S1=1)</p>
+</blockquote>
+<blockquote>
+<p>The estimated asymptotic variance for these overall averages is the sum of (1) a weighted average of the group-specific variances and (2) the (weighted-) mean squared deviation of the group-specific estimates from the overall mean. This second term takes into account the sampling variability of the weights</p>
+</blockquote>
+<p><span class="math inline">\(\rightarrow\)</span> result: 11% narrower bounds</p>
+<p><br> </p>
+<p><em>Interesting; possibly do similar for @NL-ed</em>:</p>
+<blockquote>
+<p>By statistically ruling out any effect more negative than −0·037, this suggests that after 4 years, the Job Corps enabled program group members to offset at least 35% (and perhaps more) of the potential 0·058 loss in wages due to lost labour market experience that could have been caused by the program</p>
+</blockquote>
+</div>
+</div>
+<div id="section-6-conclusions-implications-and-applications" class="section level4" number="7.2.1.1">
+<h4><span class="header-section-number">7.2.1.1</span> Section 6: Conclusions: implications and applications</h4>
+<p>Interesting intuitive argument:</p>
+<blockquote>
+<p>Another reason to interpret the evidence as pointing to positive wage effects is that the lower bound is based on an extreme and unintuitive assumption—that wage outcomes are perfectly negatively correlated with the propensity to be employed. From a purely theoretical standpoint, a simple labour supply model suggests that, all other things equal, those on the margin of being employed will have lowest wages not the highest wages (i.e., the “reservation wage” will be the smallest wage that draws the individual into the labour force). In addition, the empirical evidence in Table 2 suggests that there is positive selection into employment: those who are predicted to have higher wages are more likely to be employed (i.e., U and V are positively correlated). If this is true, it seems relatively more plausible to trim the lower rather than the upper tail of the distribution to get an estimate of the treatment effect.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="causal-pathways-mediation-modeling-and-its-massive-limitations-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="notes-on-bayesian-approaches-david-reinstein.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

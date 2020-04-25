@@ -1,4 +1,6 @@
-# Mediators (and selection and Roy models): a review, considering two research applications
+# Causal pathways: [Mediation modeling and its massive limitations](#mediators)
+
+## Mediators (and selection and Roy models): a review, considering two research applications
 
 (Originally focused on issues relevant to Parey et al)
 
@@ -32,6 +34,11 @@ and the final outcome $Y$ is the amount given to that charity (or other charitie
 ```
 
 The treatment $T$ (may) directly affect the final outcome $Y$.
+
+<div class="marginnote">
+Do: show a diagram here
+</div>
+ 
 
 $$T\rightarrow Y$$
 
@@ -133,7 +140,7 @@ Treatments (e.g., RCTs) may affect outcomes through the following channels:
 
 If treatments affect unmeasured inputs in a way not statistically independent of measured inputs, this biases estimates of the effect of measured inputs.
 
-> RCTs unaided by additional assumptions do not allow the analyst to identify the causal effect of increases in measured inputs on outputs \... \[nor distinguish effects from changes in production functions\].
+> RCTs unaided by additional assumptions do not allow the analyst to identify the causal effect of increases in measured inputs on outputs \... [nor distinguish effects from changes in production functions].
 
 \
 
@@ -162,7 +169,7 @@ $$Y_{d}=f_{d}(\mathbf{\mathbf{{\theta}}}_{d}^{p},\mathbf{\mathbf{{\theta}}}_{d}^
 
 The production function implies:
 
-$$ATE=E\Big(f_{1}(\mathbf{\mathbf{{\theta}}}_{1}^{p},\mathbf{\mathbf{{\theta}}}_{1}^{u},\mathbf{{X}})-f_{0}(\mathbf{\mathbf{{\theta}}}_{0}^{p},\mathbf{\mathbf{{\theta}}}_{0}^{u},\mathbf{{X}})$$\
+$$ATE=E\Big(f_{1}(\mathbf{\mathbf{{\theta}}}_{1}^{p},\mathbf{\mathbf{{\theta}}}_{1}^{u},\mathbf{{X}})-f_{0}(\mathbf{\mathbf{{\theta}}}_{0}^{p},\mathbf{\mathbf{{\theta}}}_{0}^{u},\mathbf{{X}})\Big)$$\
 
 We also consider counterfactual outputs, fixing treatment status and
 proxied inputs:

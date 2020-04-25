@@ -1,28 +1,28 @@
- # Notes on Bayesian approaches -- David Reinstein
+# Notes on Bayesian approaches -- David Reinstein
 
-# My uses for Bayesian approaches (brainstorm)
+## My uses for Bayesian approaches (brainstorm)
 
-## Meta-analysis of previous evidence
+### Meta-analysis of previous evidence
 
 - Of prior work, especially on motivators of (effective) charitable giving and responses to effectiveness information
 
 - Of my own series' of experiments (potentially joint with prior work)
 
-## Inference, particularly about 'null effects'
+### Inference, particularly about 'null effects'
 
 When/what can we say about the 'absence of an effect'
 
 How to integrate into inferences from diagnostic testing (e.g., common-trend assumption)?
 
-## 'Policy' and business implications and recommendations
+### 'Policy' and business implications and recommendations
 
 - E.g., for 'which pages to seed'
 
-## Theory-driven inference about optimizing agents, esp. in strategic settings
+### Theory-driven inference about optimizing agents, esp. in strategic settings
 
 - Especially in 'predicted contributions to public goods' settings and 2nd order beliefs
 
-## Experimental design
+### Experimental design
 
 - Optimal treatment assignment, with previous observables and a track record
 
@@ -36,11 +36,11 @@ How to integrate into inferences from diagnostic testing (e.g., common-trend ass
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
+## Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
 
-# Why and when use Bayesian (MCMC) methods?
+## Why and when use Bayesian (MCMC) methods?
 
-## Pros
+### Pros
 1. No need for asymptotics ... good when sample sizes are small
 
 2. Incorporate previous information
@@ -60,7 +60,7 @@ You can consider the 'robustness to other priors'
 
 6. Cleaner treatment/imputation of missing values ... these are just parameters
 
-## Cons
+### Cons
 
 1. Must specify prior distributions ... allows subjective judgement
 
@@ -73,7 +73,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
-## Why more popular today?
+### Why more popular today?
 
 - Starting from around 2005 in Political Science and Sociology
 
@@ -82,7 +82,7 @@ Computational revolution comes from Markov chain Monte Carlo (MCMC) methods ... 
 Software implementations -- many in R, specialised software like EWinBugs, JAGS, STAN; also increasingly in Stata
 
 
-# Theory
+## Theory
 
 Bayes theorem ... inverting conditional probability thing ... 'inversion' to make inferences about the parameters
 
@@ -107,7 +107,7 @@ $p(y|\theta)$ is what we max when we do ML
 
 $ p(\theta)$: prior distribution capturing beliefs about $\theta$
 
-## So how do we estimate it?
+### So how do we estimate it?
 
 1.  Specify a probability model, a distribution for Y (likelihood function) and the priors for $\theta$
 
@@ -119,7 +119,7 @@ In practice, step 2 is usually done via MCMC simulation rather than analytically
 
 (Given 'regularity conditions')
 
-## Linear regression model example
+### Linear regression model example
 
 $$Y = x'\beta+\epsilon$$ with n obs
 
@@ -136,7 +136,7 @@ Similarly, if we assume $\beta$ is known, if the variance term had an inverse ga
 
 In these conjugate priors, the posterior mean will be a weighted average of the priors and the data.
 
-## Gibbs
+### Gibbs
 
 Needs closed form conditional posterior for every parameter.
 
@@ -154,7 +154,7 @@ Eventually 'we obtain samples of $p(\theta|y)$'
 
 E.g., in case of Logit distribution.
 
-## Metropolis Hastings
+### Metropolis Hastings
 
 1. Choose 'proposal distribution' to sample parameter values (a candidate like normal, uniform)
 1. Start w a prelim guess for parameter values $\theta_0$
@@ -170,7 +170,7 @@ Commonly used proposal: random walk sample: $\theta_t=\theta_{t-1}+z_t$, $z_t \s
 
 - can combine Gibbs with Metropolis steps; relevant to some problems
 
-## Assessing convergence
+### Assessing convergence
 
 - previous ... 'eyeballing'
 - formal:
@@ -182,7 +182,7 @@ Gabriel: Gelman-Rubin is probably preferred; more conservative
 
 ?? What am I iterating towards? Converging on what?
 
-##Assesing 'fit' in Bayesian
+###Assesing 'fit' in Bayesian
 
 - No r-squared
 - Typical measure is 'posterior predictive comparisons'
@@ -203,13 +203,13 @@ Systematic differences between replicate and actual data indicate model limitati
 
 (?? what are reasonable values here??)
 
-# Comparing models ... Equivalent of 'likelihood'
+## Comparing models ... Equivalent of 'likelihood'
 
 'Deviance Information Criterion' (most used); specific for MCMC simulations: compares expected LL of the model (of the data given the estimated parameters; average here across much of the later points in the chain) against the llhd at the posterior parameter mean.   Always select model with lowest DIC.
 
 Bayes Factor (less used): Ratio of llhd of the models; higher BF means model is more supported; BF>10 seen to provide strong evidence for model w higher value
 
-# On choosing priors
+## On choosing priors
 
 Most social scientists use non-informative or vague priors; i.e., large variance... e.g., $\beta \sim N(0,1000)$
 
@@ -223,7 +223,7 @@ Conjugate priors (mentioned before)
 
 - Jeffrey's priors (??)
 
-# Implementation
+## Implementation
 
 If you don't need to do fancy things, and don't want to (?) generate the full posterior distribution (or something)
 
@@ -237,13 +237,13 @@ We went through it the fancy way in Probit.R
 
 Then the easy way with 'script probit Jags.R'
 
-# Generate predictions from a WinBUGS model
+## Generate predictions from a WinBUGS model
 
 You can just generate these outcomes ...
 
 Prediction: generate a new observation #note, he is doing one per iteration, but since these are convergent it would be basically the same if you just chose a random iteration and did all the draws from that one
 
-# Missing data case
+## Missing data case
 
 One solution -- multiple imputation
 
@@ -253,11 +253,11 @@ One solution -- multiple imputation
 
 Need a model for X|alpha, because missing variables are random variables
 
-# Stata
+## Stata
 
 Has some rather simple implementations; e.g., just using commands like ```bayes: regress y x '''
 
-# R mcmc pac
+## R mcmc pac
 
 Also simple code; great for standard use
 

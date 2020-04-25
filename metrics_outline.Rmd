@@ -1,6 +1,4 @@
-# Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioural, and Experimental focus
-
-# Notes introduction
+# Introduction
 
 - Focus on the practical tools I use and the challenges I (David Reinstein) face
 
@@ -20,9 +18,7 @@ Data:
 
 Assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied.
 
-
 ## Conceptual
-
 
 ### Bayesian vs. frequentist approaches
 
@@ -37,6 +33,8 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ## Getting, cleaning and using data
 
+This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.  
+
 ### Data: What/why/where/how
 
 ### Good coding practices
@@ -49,49 +47,19 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 #### Style and consistency
 
-Indenting, snake-case,etc
+Indenting, snake-case, etc
 
 #### Using functions, variable lists, etc., for clean, concise, readable code
 
 ### Data sharing and integrity
 
-## Control strategies and prediction; Machine Learning approaches
 
-'Identification' of causal effects with a control strategy not credible	Identification	Essentially a 'control strategy' is "control for all  or most of the reasonable determinants of the independent variable so as to make the  remaining unobservable component very small, minimizing the potential for bias in the coefficient of interest". All of the controls must still be exogenous, otherwise this itself can lead to a bias. There is some discussion of how to validate this approach; see, e.g., [@oster2019unobservable].
-
-### Machine Learning (statistical learning): Lasso, Ridge, and more
-
-### Limitations to inference from learning approaches
 
 ## Basic regression and statistical inference: Common mistakes and issues
-
-
-
-Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)	Identification
-Random effects estimators show a lack of robustness	Specification	Clustering SE  is more standard practice
-
-OLS/IV estimators not 'mean effect' in presence of heterogeneity
-Power calculations/underpowered
-Selection bias due to attrition
-Selection bias due to missing variables -- impute these as a solution
-Signs of p-hacking and specification-hunting
-Weak diagnostic/identification tests
-Dropping zeroes in a "loglinear" model is problematic
-Random effects estimators show a lack of robustness
-Dropping zeroes in a "loglinear" model is problematic
-Random effects estimators show a lack of robustness
-With heterogeneity the simple OLS estimator is not the 'mean effect'
-P_augmented may *overstate* type-1 error rate
-Impact size from regression of "log 1+gift amount"
-Lagged dependent variable and fixed effects --> 'Nickel bias'
-Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)
-Weak IV bias
-Bias from selecting instruments and estimating using the same data
 
 ### "Bad control" ("colliders")
 
 Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
-
 
 ### Choices of lhs and rhs variables
 
@@ -122,7 +90,6 @@ http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-bi
 
 ### "Null effects"
 
-
 "While the classical statistical framework is not terribly clear about when one should ""accept"" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ""zero or minimal effect"" one would want to find these closely bounded around zero under a variety of conditions for generalizability.
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks”."	Harms-lakens-18
@@ -146,16 +113,17 @@ Moderators: Heterogeneity mixed with nonlinearity/corners
 
 In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts' at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from 'the diminishing returns kicking in'.  Related to https://datacolada.org/57 [57] Interactions in Logit Regressions: Why Positive May Mean Negative
 
-
 #### MHT
 
 ### Choice of test statistics (including nonparametric)
 
-(Or get to this in the experimetrics section)
+<!-- (Or get to this in the experimetrics section) -->
 
 ### How to display and write about regression results and tests
 
 ### Bayesian interpretations of results
+
+(see 'the Bayesian Approach')
 
 ## LDV and discrete choice modeling
 
@@ -163,58 +131,60 @@ In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts'
 
 ### (How) can diagnostic tests make sense? Where is the burden of proof?
 
-Where a particular assumption is critical to identification and inference ...Failure to reject the violation of an assumptionis not sufficient to give us confidence that it is satisfied and the results are credible. At several points the authors cite insignificant statistical tests as evidence in support of a substantive model, or of evidence that they do not need to worry about certain confounds. Although the problem of induction is difficult, I find this approach inadequate. Where a negative finding is given as an important result, the authors should also show that their parameter estimate is tightly bounded around zero. Where it is cited as evidence they can ignore a confound, they should provide evidence that they can statistically bound that effect is small enough that it should not reasonably cause an issue (e.g., as using Lee or McNemar bounds for selective attrition/hurdles).
-
 
 ### Estimating standard errors
 
 ### Sensitivity analysis: Interactive presentation
 
+## [Control strategies and prediction; Machine Learning approaches](#control-ml)
+
+### Machine Learning (statistical learning): Lasso, Ridge, and more
+
+### Limitations to inference from learning approaches
 
 ## IV and its many issues
+
 
 ### Instrument validity
 
 - Exogeneity vs. exclusion
 - Very hard to 'powerfully test'
 
-IV not credible	Identification	Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a *direct* effect on the outcome (only an indirect effect through the endogenous variable
 
 ### Heterogeneity and LATE
 
+*Basic consideration: what does IV identify and when:*?
+
+Focusing on a binary endogenous 'treatment' variable 
+
+- With heterogeneity 
+- With imperfect compliance 
+- With one-way compliance
+
 ### Weak instruments, other issues
+
+- With a 'weak instrument' ... why does that matter?
 
 ### Reference to the use of IV in experiments/mediation
 
-## Causal pathways: mediation, hurdles, etc.
-
-### Mediation modeling
-
-
-### 'Corner solution' or hurdle variables and 'Conditional on Positive
-
-"Conditional on positive"/"intensive margin" analysis ignores selection
-
-
-"Conditional on positive"/"intensive margin" analysis ignores selection 	Identification	See Angrist and Pischke on "Good CoP, bad CoP".  See also bounding approaches such as [@Lee2018]	AngristJ.D.2008a,
-
-
-
-## Causal pathways: mediation, hurdles, etc.
-
-### Mediation modeling
-
-### 'Corner solution' or hurdle variables and 'Conditional on Positive'
-
-## Causal pathways: mediation, hurdles, etc.
-
-### [Mediation modeling and its massive limitations](#mediators)
+## Causal pathways: [Mediation modeling and its massive limitations](#mediators)
 
 An applied review
 
-### 'Corner solution' or hurdle variables and 'Conditional on Positive
+## Causal pathways: selection, corners, hurdles, and 'conditional on' estimates
+
+
+### 'Corner solution' or hurdle variables and 'Conditional on Positive'
+
+"Conditional on positive"/"intensive margin" analysis ignores selection
+
+"Conditional on positive"/"intensive margin" analysis ignores selection *identification issue* 	See Angrist and Pischke on "Good CoP, bad CoP".  See also bounding approaches such as [@Lee2018]	AngristJ.D.2008a,
+
+\
 
 #### Bounding approaches (Lee, Manski, etc)
+
+See [Notes on Lee bounds](#notes_lee)
 
 ## Other paths to observational identification
 
@@ -298,6 +268,7 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 ### Heterogeneity in an experimental context
 
 
+## The Bayesian approach
 
 ## Making inferences from previous work; Meta-analysis, combining studies
 
@@ -308,3 +279,38 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 ### Full meta-analyses
 
 - Models to address publication biases
+
+## Some key resources and references 
+
+[@AngristJ.D.2008a]
+
+'The Mixtape' (Cunningham)
+
+[@kennedyGuideEconometrics2003]
+
+[@Tibshirani]
+
+OSF guides
+
+Christensen ea "Transparent and Reproducable Social Science Research"
+
+[@Gentzkow2013; @wooldridgeEconometricAnalysisCross2002; @wooldridgeIntroductoryEconometricsModern2008]
+
+
+An Introduction to Statistical Learning with Applications in R
+
+R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org 
+
+Statistical Rethinking: A Bayesian Course with Examples in R and Stan
+
+### Consider: 
+
+Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017
+
+Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction .
+Cambridge University Press, 2015
+
+Judea Pearl
+
+
+Imbens: Potential Outcomes versus DAGs

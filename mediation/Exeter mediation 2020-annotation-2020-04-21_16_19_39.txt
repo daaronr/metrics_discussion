@@ -1,0 +1,70 @@
+# Reinstein notes and comments on Antonakis slides
+
+> There is a solution to this problem if the mediator cannot be manipulated:  Instrumental variable estimation
+
+DR: IV is a limited remedy. 1. We rarely can assert exclusion and 2. There is the LATE issue to deal with
+
+
+> the independent variable (X) is manipulated and the mediator (M) and dependent variable (Y) are measured, the usual analysis will be biased if unobserved causes of M are correlated with unobserved causes of Y- (p. 2).
+
+$$x  \rightarrow  m \rightarrow  y$$
+
+DR: note inconsistent capitalisation of 'm' here
+
+
+> Why? There could be a third unmeasured variable, q, that predicts both m and y. Or m could be endogenous for other reasons (i.e., measurement errors)
+
+DR: This is the key (obvious but apparently neglected) point... in my own work so if we regress stage 2 giving on stage 1 giving there is a bias... or if we regress income on degree attained there's a bias
+
+
+> challenge to all in the room: Can m ever be exogenous?
+
+DR: note that if m were exogenous you wouldn't have needed to do the experimental manipualtion in the first place
+
+
+> Suppose that the true model is as follows (and this model is reasonable and what we would usually find):
+
+(linear model of mediator m  in x and q... error term $\epsilon$)
+(linear model of outcome y in m and q ... error term $\theta$
+
+Suppose that the researcher has not measured q (remember q is a bunch of
+causes), and estimates instead, the following:
+
+(m as linear function of x) -- residual $u$ (eq 5)
+
+(y ... of m only) -- residual $o$ (eq 6)
+
+
+> The coefficient -1 will remain unaffected and will equal -1 in Eq. 3. Thus, there is no problem in Eq. 5 because x is random; but m is not. The problem is in Eq.  6, because both m and y correlate with q and the effect of q is pooled in o.
+
+
+Here he rearranges to show the bias in the OLS estimated 'mediator term';
+
+the bias is the product of
+
+1. the true slope of the 'shared term' $q$ in the mediator $m$ and
+2. the slope of y in q
+
+... intuitively, this third factor is related to the mediator and also shifts the outcome; so this part of the afffect would be falsely attributed to mediation
+
+
+The indirect (mediated effect) is -1 - -1. Because -1 - -1 the indirect effect is
+
+inconsistent
+-note-biased *and* inconsistent, no? I think you are focusing on the latter bc you want to introduce IV but you referred to bias  before
+
+
+time-2020-04-06 12:04
+-content-Sometimes researchers estimate a partial mediation model (Eq. 13), which also
+assumes m to be exogenous.
+- = -0 + -1- + - Eq. 5
+- = -0 + -1- + -2- + - Eq. 13
+Where the indirect (mediated effect) is -1 - -1
+-note- "partial mediation" model supposedly separates the direct and the indirect effect of the manipulated variable... but actually it doesn't
+
+
+time-2020-04-06 12:06
+-content- an exogenous source of variance (thus, by definition it does not
+correlate with e)
+-note-DR: you need to emphasize that it also must not have a direct *causal* impact on the outcome (or on other mediating variables that have a causal impat on the outcome). See the discussion of 'exogeneity' versus 'exclusion' in economics... a 'randomized' instrument need not be excluded.
+

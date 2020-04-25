@@ -2,6 +2,7 @@ book_filename: "metrics_and_tools"
 delete_merged_file: true
 output_dir: "docs"
 rmd_files:
-  html: ["index.Rmd", "metrics_outline.Rmd", "mediation/mediators_lit_pinto_etc.Rmd"]
+  html: ["index.Rmd", "metrics_outline.Rmd",  "regression_follies/regression_follies.Rmd", "meta_anal_and_open_science/robust_diagnos.Rmd", "ml-and-mlreading-group/control_prediction_ml.Rmd", "causal_inference_general_notes/iv-issues.Rmd",  "causal_inference_general_notes/iv-issues.Rmd", "mediation/mediators_lit_pinto_etc.Rmd", "sample_selection/selection_models_lee.Rmd", "bayesian/bayes_notes.Rmd"]
   #html: ["index.Rmd", "paper/introduction.Rmd", "paper/snippets.Rmd"]
 clean: ["support"]
+  
