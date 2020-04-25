@@ -1,5 +1,5 @@
 ---
-title: "Econometrics, statistics, and data science: Reinstein notes with a Micro, Behaviural, and Experimental focus"
+title: "Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus"
 author: "Dr. David Reinstein, "
 abstract: "This 'book' organizes my notes  and helps others understand it and learn from it"
 #cover-image: "images/cardcatalogue.JPG"
@@ -9,8 +9,6 @@ output:
   bookdown::gitbook:
     includes:
       in_header: support/header.html
-      #https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html
-    #css: https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css
     css: support/tufte_plus.css
     config:
       toc:
