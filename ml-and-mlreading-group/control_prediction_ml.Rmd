@@ -233,8 +233,7 @@ multiplied by a 'regularization weight' $\lambda>0$ which plays the same role (I
 
 ## Notes: Mullainathan
 
- **Page** 1
-The fundamental insight behind these breakthroughs is as much statistical as computational. Machine intelligence became possible once researchers
+> The fundamental insight behind these breakthroughs is as much statistical as computational. Machine intelligence became possible once researchers
 stopped approaching intelligence tasks procedurally and began tackling them
 empirically. Face recognition algorithms, for example, do not consist of hard-wired
 rules to scan for certain pixel combinations, based on human understanding of
@@ -242,81 +241,58 @@ what constitutes a face. Instead, these algorithms use a large dataset of photos
 labeled as having a face or not to estimate a function f (x) that predicts the presence y of a face from pixels x
 
 (p2)
-supervised- machine learning, the focus of this article) revolves around
-the problem of prediction: produce predictions of y from x
+> supervised- machine learning, the focus of this article) revolves around the problem of prediction: produce predictions of y from x
 
-(p2)
-manages to fit complex and very flexible functional forms to the data without simply overfitting; it finds functions that
-work well out-of-sample
+... 
 
-(p2)
-danger in using these tools is taking
-an algorithm built for y-, and presuming their β
-- have the properties we typically
-associate with estimation output
+> manages to fit complex and very flexible functional forms to the data without simply overfitting; it finds functions that work well out-of-sample 
 
-(p2)
-One category of such applications appears when using
-new kinds of data for traditional questions; for example, in measuring economic
-activity using satellite images or in classifying industries using corporate 10-K filings.
+> danger in using these tools is taking an algorithm built for [predicting $y$-] and presuming their [parameters $\beta$] - have the properties we typically associate with estimation output
+
+> One category of such applications appears when using new kinds of data for traditional questions; for example, in measuring economic activity using satellite images or in classifying industries using corporate 10-K filings.
 Making sense of complex data such as images and text often involves a prediction
 pre-processing step
 
-(p2)
--this is the most relevant for me
-In another category of applications, the key object of interest
-is actually a parameter -, but the inference procedures (often implicitly) contain a
-prediction task. For example, the first stage of a linear instrumental variables regression is effectively prediction. The same is true when estimating heterogeneous
-treatment effects, testing for effects on multiple outcomes in experiments, and
+<div class="marginnote">
+This middle category is most relevant for me
+</div>
+
+> In another category of applications, the key object of interest is actually a parameter ... but the inference procedures (often implicitly) contain a prediction task. For example, the first stage of a linear instrumental variables regression is effectively prediction. The same is true when estimating heterogeneous treatment effects, testing for effects on multiple outcomes in experiments, and
 flexibly controlling for observed confounders
 
-(p2)
-A final category is in direct policy
-applications. Deciding which teacher to hire implicitly involves a prediction task
-(what added value will a given teacher have?), one that is intimately tied to the
-causal question of the value of an additional teacher.
+> A final category is in direct policy applications. Deciding which teacher to hire implicitly involves a prediction task (what added value will a given teacher have?), one that is intimately tied to the causal question of the value of an additional teacher.
+
 
 (p3)
--useful example... interactive?
-We consider 10,000 randomly selected owner-occupied units
-from the 2011 metropolitan sample of the American Housing Survey. In addition
-to the values of each unit, we also include 150 variables that contain information
-about the unit and its location, such as the number of rooms, the base area, and
-the census region within the United States. To compare different prediction techniques, we evaluate how well each approach predicts (log) unit value on a separate
-hold-out set of 41,808 units from the same sample. All details on the sample and our
-empirical exercise can be found in an online appendix available with this paper at
-http://e-jep.org
 
-(p3)
- In-sample performance may overstate
-performance; this is especially true for certain machine learning algorithms like
-random forests that have a strong tendency to overfit. Second, on out-of-sample
-performance, machine learning algorithms such as random forests can do significantly better than ordinary least squares, even at moderate sample sizes and
-with a limited number of covariates
+**A useful (interactive?) example:**
+
+> We consider 10,000 randomly selected owner-occupied units from the 2011 metropolitan sample of the American Housing Survey. In addition to the values of each unit, we also include 150 variables that contain information about the unit and its location, such as the number of rooms, the base area, and the census region within the United States. To compare different prediction techniques, we evaluate how well each approach predicts (log) unit value on a separate hold-out set of 41,808 units from the same sample. All details on the sample and our empirical exercise can be found in an online appendix available with this paper at http://e-jep.org
+
+>  In-sample performance may overstate performance; this is especially true for certain machine learning algorithms like random forests that have a strong tendency to overfit. Second, on out-of-sample performance, machine learning algorithms such as random forests can do significantly better than ordinary least squares, even at moderate sample sizes and with a limited number of covariates
 
 (p4)
-algorithms are fitted on the same, randomly drawn training sample of 10,000 units and
-evaluated on the 41,808 remaining held-out units. The
 
-(p4)
-Simply including all pairwise
-interactions would be infeasible as it produces more regressors than data points
-(especially considering that some variables are categorical
+> algorithms are fitted on the same, randomly drawn training sample of 10,000 units and evaluated on the 41,808 remaining held-out units.
 
-(p4)
-Machine learning searches for these interactions automatically
+> Simply including all pairwise interactions would be infeasible as it produces more regressors than data points (especially considering that some variables are categorical
+
+> Machine learning searches for these interactions automatically
 
 (p5)
-Shallow Regression Tree Predicting House Values
 
-(p5)
--not sure what's going on here. is this the random forest thing?
-The prediction function takes the form of a tree that splits in two at every
+> Shallow Regression Tree Predicting House Values
+
+<div class="marginnote">
+not sure what's going on here. is this the random forest thing?
+</div>
+
+> The prediction function takes the form of a tree that splits in two at every
 node. At each node of the tree, the value of a single variable (say, number of bathrooms) determines whether the left (less than two bathrooms) or the right (two or
 more) child node is considered next. When a terminal node-a leaf—is reached, a
 prediction is returned. An
 
-(p5)
+
 So how
 does machine learning manage to do out-of-sample prediction?
 The first part of the solution is regularization. In the tree case, instead of

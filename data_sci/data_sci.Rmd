@@ -1,0 +1,59 @@
+# Getting, cleaning and using data {#data-sci}
+
+This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.
+
+## Data: What/why/where/how
+
+## Organizing a project
+
+## Dynamic documents (esp Rmd/bookdown)
+
+### Managing references/citations
+
+
+```{block2,  type='note'}
+A letter to my co-authors...
+
+Hi all.
+
+Hope you are doing well. I've just invited you to a shared Zotero group managing my bibliography/references. I think this should be useful. (I prefer Zotero to Mendeley because it's open source and... I forgot the other reason.)
+On my computer it synchronizes with a .bib (bibtex) file in a dropbox folder ...
+
+For latex files we just refer to this as normal. 
+In the Rmd files/bookdown (producing output like [EA barriers](#https://daaronr.github.io/ea_giving_barriers/outline.html) or Metrics notes (present book) this is referenced in the YAML header to the index.Rmd file as
+
+> bibliography: [reinstein_bibtex.bib]
+
+Then, to keep this file, I have a "download block" included in that same file (the first line with 'dropbox' is the key one).
+
+```  
+
+\
+
+The download code follows (remove the 'eval=FALSE' to get it to actually run)...
+
+```{r download-formatting-to-support-folder-example, eval=FALSE}
+
+tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does the thing *after* the braces, rather than crashing
+  {
+    download.file(url = "https://www.dropbox.com/s/24ndb3p9aa0tfv2/reinstein_references.bib?raw=1", destfile = "reinstein_references.bib") #download the bibtex database
+    download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plus.css")) #this downloads the style file
+    
+  }, error = function(e) {
+    print("you are not online, so we can't download")
+  }
+)
+```
+
+
+## Good coding practices
+
+
+### New tools and approaches to data (esp 'tidyverse')
+
+### Style and consistency
+
+Indenting, snake-case, etc
+
+### Using functions, variable lists, etc., for clean, concise, readable code
+

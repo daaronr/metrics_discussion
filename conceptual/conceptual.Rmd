@@ -1,0 +1,13 @@
+#  Conceptual: approaches to statistics/inference and causality {#conceptual}
+
+### Bayesian vs. frequentist approaches
+
+Folder: bayesian
+Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
+
+### Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
+
+#### DAGs and Potential outcomes
+
+### Theory, restrictions, and 'structural vs reduced form'
+

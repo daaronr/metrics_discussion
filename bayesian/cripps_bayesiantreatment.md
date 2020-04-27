@@ -59,7 +59,7 @@ Each period $x_t\in\chi$ is sampled, decide whether or not to treat
 
 Outcome $y_t$ of treating $x_t$ is random and depends on whether in the policy set
 
-- no tretmt $y_t=0$
+- no treatment $y_t=0$
 - treated, in treatment set, $y_t=y^j$ with prob \bar{\beta_j}
 - treated, not in treatment set, $y_t=y^j$ with prob \underline{\beta_j}
 

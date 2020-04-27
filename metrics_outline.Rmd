@@ -1,10 +1,10 @@
 # Introduction
 
-- Focus on the practical tools I use and the challenges I (David Reinstein) face
+- Focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face
 
 Microeconomics, behavioral economics, focus on charitable giving and 'returns to education' type of straightforward problems. (Limited to no focus on structural approaches.)
 
-- Where we can *add value* to real econometric practice??
+- Where we can *add value* to real econometric (and statistical and experimental design) practice??
 
 \
 
@@ -18,7 +18,7 @@ Data:
 
 Assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied.
 
-## Conceptual
+## (Conceptual: approaches to statistics/inference and causality)[#conceptual]
 
 ### Bayesian vs. frequentist approaches
 
@@ -31,19 +31,20 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Theory, restrictions, and 'structural vs reduced form'
 
-## Getting, cleaning and using data
+## Getting, cleaning and using data; project management and coding {#data-sci}
 
 This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.  
 
 ### Data: What/why/where/how
 
+### Organizing a project
+
+### Dynamic documents (esp Rmd/bookdown)
+
 ### Good coding practices
 
-#### Organizing a project
 
-#### Dynamic documents (esp Rmd/bookdown)
-
-### New tools and approaches to data (esp 'tidyverse')
+#### New tools and approaches to data (esp 'tidyverse')
 
 #### Style and consistency
 
@@ -52,7 +53,6 @@ Indenting, snake-case, etc
 #### Using functions, variable lists, etc., for clean, concise, readable code
 
 ### Data sharing and integrity
-
 
 
 ## Basic regression and statistical inference: Common mistakes and issues
@@ -229,7 +229,6 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 
 ### Generalizability (and heterogeneity)
 
-
 ## (Experimental) Study design: Background and quantitative issues
 
 ### Pre-registration and Pre-analysis plans
@@ -237,7 +236,6 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 #### The hazards of specification-searching
 
 ### Sequential and adaptive designs
-
 
 Needs to adjust significance tests for augmenting data/sequential analysis/peeking	Statistics/econometrics	new-statistics		sagarin_2014			http://www.paugmented.com/	resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
 
