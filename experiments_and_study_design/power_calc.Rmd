@@ -1,0 +1,17 @@
+# (Experimental) Study design: (Ex-ante) Power calculations {#power}
+
+## What sort of 'power calculations' make sense, and what is the point?
+
+### The 'harm to science' from running underpowered studies
+
+> "One worries about underpowered tests. Your result (may have)  relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+
+> Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects."	verkaik2016, metzger2015
+
+## Power calculations without real data
+
+## Power calculations using prior data
+
+Adapt example in 'scopingwork.Rmd' to this
+
+

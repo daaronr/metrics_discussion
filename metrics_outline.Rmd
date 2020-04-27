@@ -131,7 +131,6 @@ In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts'
 
 ### (How) can diagnostic tests make sense? Where is the burden of proof?
 
-
 ### Estimating standard errors
 
 ### Sensitivity analysis: Interactive presentation
@@ -167,6 +166,20 @@ Focusing on a binary endogenous 'treatment' variable
 
 ### Reference to the use of IV in experiments/mediation
 
+## [Other paths to observational identification](#other_paths)
+
+### Fixed effects and differencing
+
+### DiD
+
+FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
+
+### RD
+
+### Time-series-ish panel approaches to micro
+
+#### Lagged dependent variable and fixed effects --> 'Nickel bias'
+
 ## Causal pathways: [Mediation modeling and its massive limitations](#mediators)
 
 An applied review
@@ -186,21 +199,8 @@ An applied review
 
 See [Notes on Lee bounds](#notes_lee)
 
-## Other paths to observational identification
 
-### Fixed effects and differencing
-
-### DiD
-
-FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
-
-### RD
-
-### Time-series-ish panel approaches to micro
-
-#### Lagged dependent variable and fixed effects --> 'Nickel bias'
-
-## (Ex-ante) Power calculations
+## (Experimental) Study design: (Ex-ante) Power calculations 
 
 ### What sort of 'power calculations' make sense, and what is the point?
 
@@ -266,8 +266,6 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 ### Heterogeneity in an experimental context
 
 
-## The Bayesian approach
-
 ## Making inferences from previous work; Meta-analysis, combining studies
 
 ### Publication bias
@@ -277,6 +275,8 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 ### Full meta-analyses
 
 - Models to address publication biases
+
+## The Bayesian approach
 
 ## Some key resources and references 
 

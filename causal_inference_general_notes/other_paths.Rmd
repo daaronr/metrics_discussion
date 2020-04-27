@@ -1,0 +1,15 @@
+# [Other paths to observational identification]{#other_paths}
+
+
+## Fixed effects and differencing
+
+## DiD
+
+FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
+
+## RD
+
+## Time-series-ish panel approaches to micro
+
+
+### Lagged dependent variable and fixed effects --> 'Nickel bias'
