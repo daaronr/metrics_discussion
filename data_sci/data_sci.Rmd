@@ -36,8 +36,9 @@ The download code follows (remove the 'eval=FALSE' to get it to actually run)...
 
 tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does the thing *after* the braces, rather than crashing
   {
-    download.file(url = "https://www.dropbox.com/s/24ndb3p9aa0tfv2/reinstein_references.bib?raw=1", destfile = "reinstein_references.bib") #download the bibtex database
-    download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plus.css")) #this downloads the style file
+   download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", des tfile = "reinstein_bibtex.bib") #download the bibtex database
+
+        download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plus.css")) #this downloads the style file
     
   }, error = function(e) {
     print("you are not online, so we can't download")
@@ -48,12 +49,36 @@ tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does t
 
 ## Good coding practices
 
-
 ### New tools and approaches to data (esp 'tidyverse')
+
+From [Kurtz](https://bookdown.org/content/3890/small-worlds-and-large-worlds.html):
+
+> If you are new to tidyverse-style syntax, possibly the oddest component is the pipe (i.e., `%>%`). I'm not going to explain the `%>%` in this project, but you might learn more about in [this brief clip](https://www.youtube.com/watch?v=9yjhxvu-pDg), starting around [minute 21:25 in this talk by Wickham](https://www.youtube.com/watch?v=K-ss_ag2k9E&t=1285s), or in [section 5.6.1 from Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe). Really, all of Chapter 5 of *R4DS* is just great for new R and new tidyverse users. And *R4DS* Chapter 3 is a nice introduction to plotting with ggplot2. 
 
 ### Style and consistency
 
-Indenting, snake-case, etc
+#### lower_snake_case {-} 
+
+Use `lower_snake_case` to name *all* objects (that's my preference anyways) 
+unless there's a strong reason to do otherwise.
+
+\
+
+This includes:
+
+`file_names.txt`
+`folder_names`
+`function_names` (with few exceptions)
+`names_of_data_objects_like_vectors`
+`names_of_data_output_objects_like_correlation_coefficients`
+`ex_df1` In R you probably should keep data frame names short to avoid excessive typing
+
+\
+
+*And by all that is holy, never put spaces or slashes in file or object names!* This can make it very hard to process across systems... there are various ways of referring to spaces and other white space. 
+
+#### Indenting and spacing
+
 
 ### Using functions, variable lists, etc., for clean, concise, readable code
 

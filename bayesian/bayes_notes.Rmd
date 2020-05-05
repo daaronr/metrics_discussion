@@ -1,6 +1,15 @@
-# Notes on Bayesian approaches -- David Reinstein
+# Bayesian approaches
 
-## My uses for Bayesian approaches (brainstorm)
+
+
+
+```{block2,  type='note'}
+I take notes on several different resources/texts below. Ultimately I'll try to integrate these into a single set of notes.
+```  
+
+## My (David Reinstein's) uses for Bayesian approaches (brainstorm)
+
+
 
 ### Meta-analysis of previous evidence
 
@@ -12,7 +21,7 @@
 
 When/what can we say about the 'absence of an effect'
 
-How to integrate into inferences from diagnostic testing (e.g., common-trend assumption)?
+How to integrate into inferences from diagnostic testing (e.g., common-trend assumption)?  
 
 ### 'Policy' and business implications and recommendations
 
@@ -28,13 +37,284 @@ How to integrate into inferences from diagnostic testing (e.g., common-trend ass
 
 - Sequential designs
 
-( Bayesian Power calculation
+- Bayesian Power calculation
 \
 
+```{r}
+#sessionInfo()
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+Package loadings from Kurtz:
+```{r, echo = F, message = F, warning = F, results = "hide"}
+
+pacman::p_unload(pacman::p_loaded(), character.only = TRUE)
+ggplot2::theme_set(ggplot2::theme_grey())
+bayesplot::color_scheme_set("blue")
+
+library(tidyverse) #adds in next chapter
+
+```
+
+
+## 'Statistical thinking' (McElreath) and [AJ Kurtz 'recoded' (bookdown)](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded): highlights and notes 
+
+
+```{block2,  type='note'}
+
+McElreath's course and text looks great. I'm taking selective notes here; I'll try to incorporate content from both text and [youtube video lectures](https://www.youtube.com/watch?v=4WVelCswXo4&list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI).
+
+[AJ Kurtz has re-written the code](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded) using the `brms` package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?
+  
+I'm planning to through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
+```  
+
+<div class="marginnote">
+I've also forked Kurtz's repo [here](https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse), which I may play with.
+</div>
+ 
+### The Golem of Prague (Chapter 1)
+
+Don't let your model or approach turn into a Golem you can't control. Don't 'believe the model'; continuously validate it. The map is not the territory.
+
+'Statistical decision trees' lend a false sense of security... and almost never fit the actual case we are dealing with. (fig 1.1)
+
+\
+
+Statistical models are non-unique maps to 'Process models' which are non-unique maps to Hypotheses. ('Nuetral evolutionary selection' example.) This makes strict falsification impossible ... How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses? 
+
+\
+
+But this warning is at least as relevant for Bayesian analyses, which must be based on specifically defined (term) models of the DGP etc. Thus he recommends caution and continuous (?) interplay between the model and the data. (See next chapter ... 'small worlds and large worlds'.)
+\
+
+He also suggests we refer not to 'Confidence intervals' or even 'Credible intervals', but to 'Consistent intervals' ... as in 'these intervals are consistent with the model and data'.
+
+\
+
+And... 
+> [so you should] '...Explicitly compare predictions of more than one model'
+
+
+#### Rethinking: Is NHST falsificationist? 
+
+```{r failure_of_falsification.png, fig.cap='From McElreath video lecture 1', out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
+
+knitr::include_graphics("images/failure_of_falsification.png")
+
+```
+
+> Null hypothesis significance testing, NHST, is often identified with the falsificationist, or Popperian, philosophy of science. However, usually NHST is used to falsify a null hypothesis, not the actual research hypothesis. So the falsification is being done to something other than the explanatory model. This seems the reverse from Karl Popper’s philosophy.
+
+<div class="marginnote">
+ 
+I.e., scientists have turned things upside down; originally the idea was that you had substitute of hypotheses that you would want to falsify and now we try to falsify silly null hypotheses that “nothing is going on”. You should try to really build a hypothesis and test it not just reject that nothing is going on.
+
+</div>
+
+
+#### Book's foci
+
+1. Bayesian data analysis
+2. Multilevel modeling
+3. Model comparison using information criteria
+
+\
+
+### Small Worlds and Large Worlds (Ch 2)
+
+> ... The way that Bayesian models learn from evidence is arguably optimal in the small world. When their assumptions approximate reality, they also perform well in the large world. But large world performance has to be demonstrated rather than logically deduced. (p. 20)
+
+\
+
+We imagine a bag filled with four marbles, each of which is blue or white. 
+
+"So, if we're willing to code the marbles as 0 = "white" 1 = "blue", we can arrange the possibility data in a tibble as follows." I.e., we can consider the five possible worlds, in each of which the bag has a different number of white and blue marbles, and represent each of these worlds as a column vector:
+
+```{r, warning = F, message = F}
+d <-
+  tibble(p_1 = 0,
+         p_2 = rep(1:0, times = c(1, 3)),
+         p_3 = rep(1:0, times = c(2, 2)),
+         p_4 = rep(1:0, times = c(3, 1)),
+         p_5 = 1)
+
+d
+
+```
+
+\
+
+We visualize this in the plot below, where each column is one 'world':
+
+```{r,  out.width='50%'}
+d %>% 
+  gather() %>% #make it long, with an ket variable for the possibility 'world'
+  mutate(x = rep(1:4, times = 5), #an index for 'which ball'
+         possibility = rep(1:5, each = 4)) %>% #distributing the 'which world' index
+  ggplot(aes(x = x, y = possibility, 
+             fill = value %>% as.character())) +
+  geom_point(shape = 21, size = 5) +
+  scale_fill_manual(values = c("white", "navy")) +
+  scale_x_continuous(NULL, breaks = NULL) +
+  coord_cartesian(xlim = c(.75, 4.25),
+                  ylim = c(.75, 5.25)) +
+  theme(legend.position = "none")
+```
+
+\
+
+Simple combinatorics (permutations rule) tells us how many 'ways' we can draw 1, 2, and 3 marbles... Here we think about 'which' marble is drawn, and not just 'which color' it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time... so `possibilities=marbles ^ draw`.
+
+```{r}
+
+tibble(draw    = 1:3,
+       marbles = 4) %>% 
+  mutate(possibilities = marbles ^ draw) %>% 
+  knitr::kable()
+
+```
+
+```{block2,  type='note'}
+Next, there is a huge amount of code explaining how to make the 'garden of forking paths' diagrams. I'm basically going to skip all that code, and paste in a few images. You can find  all the code [HERE](https://bookdown.org/content/3890/small-worlds-and-large-worlds.html#the-garden-of-forking-data)
+
+```  
+\
+
+Suppose there is only one blue ball and three white balls, possibility '2' above. For this world, we see the full 'garden of forking paths' --- the number of ways to select 1, 2, and 3 balls (with replacement) --- below. 
+
+
+Every path starting from the center is a possible (sequence of) draws. 
+
+```{r, fig.cap='All possible draws of three balls', out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
+
+knitr::include_graphics("https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-13-1.png")
+
+```
+
+\
+
+Now the inferential exercise: we want to know (the likelihood) of each of the five possible 'worlds'. As we draw data we know we are  proceeding along one of some subset of the forking paths.
+\
+For example, under possible world 2,  if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):
+
+```{r, fig.cap='All possible draws of three balls', out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
+
+knitr::include_graphics("https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-14-1.png")
+
+```
+
+We see that under World 2 there are 3 ways of getting this sequence. 3 out of $4^3$ equally likely paths under World 2, or a $3/64$ chance  (about 5%).
+
+\
+
+We can do similar for the other possible worlds; multiplying the 'ways to produce each draw' in the path yields the 'total ways to produce the path', under each world.  
+
+```{r}
+# if we make two custom functions, here, it will simplify the code within `mutate()`, below
+n_blue <- function(x) {
+  rowSums(x == "b")
+}
+
+n_white <- function(x) {
+  rowSums(x == "w")
+}
+
+t <-
+  # for the first four columns, `p_` indexes position
+  tibble(p_1 = rep(c("w", "b"), times = c(1, 4)),
+         p_2 = rep(c("w", "b"), times = c(2, 3)),
+         p_3 = rep(c("w", "b"), times = c(3, 2)),
+         p_4 = rep(c("w", "b"), times = c(4, 1))) %>% 
+  mutate(`draw 1: blue`  = n_blue(.),
+         `draw 2: white` = n_white(.),
+         `draw 3: blue`  = n_blue(.)) %>% 
+  mutate(`ways to produce` = `draw 1: blue` * `draw 2: white` * `draw 3: blue`)
+
+t %>% 
+  knitr::kable()
+```
+
+Among of all possible worlds, we see the most number of ways to get B-W-B in a world 4; with three blues and one white -- here there are 9 ways in total to get B-W-B. Under world 4 this sequence occurs 9/64, or roughly 14% of the time. 
+
+
+\
+
+We can see this in the following plot. (We leave out the worlds with only one color ball, as these will have no paths that produce B-W-B). Below, each partitioned section represents one world, and the paths in that world that could produce B-W-B are shown.
+
+\ 
+
+```{r, fig.cap='All possible draws of three balls',  out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
+
+knitr::include_graphics("https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-20-1.png")
+
+```
+
+Three paths, versus 8 paths, versus nine paths...
+
+Does this reveal world 4 to be the most likely contents of the present bag? Not necessarily. Suppose we knew ex-ante, from the factory, that '99 bags out of 100 have equal numbers of whites and blues.' Then, it would be much more likely that this bag was from an equal-color bag (world 3), even though this *draw* is more likely conditional on the bag being from world 4. We need will to consider the base-rate probabilities as well. 
+
+<div class="marginnote">
+This in turn motivates the standard 'false positive/false negative HIV test' example.
+</div>
+ 
+
+### Using prior information 
+
+> We may have prior information about the relative plausibility of each conjecture. This prior information could arise from knowledge of how the contents of the bag were generated. It could also arise from previous data. Or we might want to act as if we had prior information, so we can build conservatism into the analysis. Whatever the source, it would help to have a way to use prior information. Luckily there is a natural solution: Just multiply the prior count by the new count. (p. 25)
+
+This seems to easy to be true, but our garden illustration helps us understand why it is the case. 
+
+
+#### "Multiply in" new information
+
+First consider, what if we had another draw from the bag, how would this adjust the 'number of paths' for each world? Remember, each draw is independent (replacement). We simply record the number of ways (permutations) that could lead to this draw in each world, and we *multiply* the previous count by this number. You can consider this visually in seeing how 'adding an additional fork at the end of each path' changes the count. 
+
+\
+
+This is given in the table below:
+
+```{r}
+t <-
+  t %>% 
+  rename(`previous counts` = `ways to produce`,
+         `ways to produce` = `draw 1: blue`) %>% 
+  select(p_1:p_4, `ways to produce`, `previous counts`) %>% 
+  mutate(`new count` = `ways to produce` * `previous counts`)
+
+t %>% 
+  knitr::kable()
+```
+\
+How to incorporate *prior* information about the probability of each world? 
+\
+
+Suppose your friend in the factory tells you (reliably) that 'we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues.
+
+We can think of the 'factory choosing which bag to produce' as another draw, thus another path.
+
+\
+Here the *sequence* in which the information is recieved shouldn't matter. The draws are independent (we presume).  
+
+We can thus multiply the number of paths for each marbles-in-bag world by the (relative) frequency with which the factory 'draws' that bag... as shown below:
+
+
+```{r}
+t <- t %>% 
+  select(p_1:p_4, `new count`) %>% 
+  rename(`prior count` = `new count`) %>% 
+  mutate(`factory count` = c(0, 3:0)) %>% 
+  mutate(`new count` = `prior count` * `factory count`)
+
+t %>% 
+  knitr::kable()
+```
+
+### From counts to probability.
+
 
 ## Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
 

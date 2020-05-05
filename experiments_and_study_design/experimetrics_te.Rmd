@@ -1,0 +1,14 @@
+# 'Experimetrics' and measurement of treatment effects from RCTs {#experimetrics_te}
+
+## Which error structure? Random effects?
+
+## Randomization inference?
+
+## Parametric and nonparametric tests of simple hypotheses
+
+## Adjustments for exogenous (but non-random) treatment assignment
+
+## IV in an experimental context to get at 'mediators'?
+
+## Heterogeneity in an experimental context
+

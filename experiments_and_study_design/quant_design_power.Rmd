@@ -1,0 +1,33 @@
+# (Experimental) Study design: Background and quantitative issues {#quant_design_power}
+
+## Pre-registration and Pre-analysis plans
+
+### The hazards of specification-searching
+
+## Sequential and adaptive designs;
+
+Needs to adjust significance tests for augmenting data/sequential analysis/peeking	Statistics/econometrics	new-statistics		sagarin_2014			http://www.paugmented.com/	resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
+
+Yet ...
+
+
+$P_{augmented}$ may *overstate* type-1 error rate	Statistics/econometrics	response to referees, new-statistics	"
+
+A process involving stopping "whenever the nominal $p < 0.05$" and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5\%. Even if the subsequent data suggested a "one in a million chance of arising under the null" the overall process yields a 5\%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the "likelihood of the null hypothesis" given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.
+
+Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmented}$ should \textit{overstate} the type-1 error of the process if there is a positive probability that after an initial experiment attains p$<0.05$, more data is collected.  A headline $p<0.05$ does \textit{not} imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded $p>0.05$, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though $p<0.05$. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine's experiment).  Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p<0.05, more data is collected, implying that $p_{augmented}$ as calculated above overstates the type I error rate that would arise  from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below $p=0.05$, in order to attain a type-1 error rate of 5% or less in our published corpus."
+
+## Efficient assignment of treatments
+
+(Links back to power analyses)
+
+
+### How many treatment arms can you 'afford'?
+
+
+<!--
+A guiding principle might be:
+"Will we have statistical power to identify a small true effect from this pairing? If not, we drop the pairing."
+
+A caveat to this is that we may be able to pool some of the pairings to answer certain questions, but then it is only worth having the distinct variations that are being pooled if that doing so gives us power to answer some other question.
+-->

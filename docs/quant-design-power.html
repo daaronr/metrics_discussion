@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="reg-follies.html"/>
-<link rel="next" href="control-ml.html"/>
+<link rel="prev" href="why-experiment-design.html"/>
+<link rel="next" href="power.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -509,17 +509,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="robust-diag" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Robustness and diagnostics, with integrity</h1>
-<div id="how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> (How) can diagnostic tests make sense? Where is the burden of proof?</h2>
-<p>Where a particular assumption is critical to identification and inference …Failure to reject the violation of an assumptionis not sufficient to give us confidence that it is satisfied and the results are credible. At several points the authors cite insignificant statistical tests as evidence in support of a substantive model, or of evidence that they do not need to worry about certain confounds. Although the problem of induction is difficult, I find this approach inadequate. Where a negative finding is given as an important result, the authors should also show that their parameter estimate is tightly bounded around zero. Where it is cited as evidence they can ignore a confound, they should provide evidence that they can statistically bound that effect is small enough that it should not reasonably cause an issue (e.g., as using Lee or McNemar bounds for selective attrition/hurdles).</p>
+<div id="quant_design_power" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> (Experimental) Study design: Background and quantitative issues</h1>
+<div id="pre-registration-and-pre-analysis-plans-1" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Pre-registration and Pre-analysis plans</h2>
+<div id="the-hazards-of-specification-searching-1" class="section level3" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> The hazards of specification-searching</h3>
 </div>
-<div id="estimating-standard-errors-1" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Estimating standard errors</h2>
 </div>
-<div id="sensitivity-analysis-interactive-presentation-1" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Sensitivity analysis: Interactive presentation</h2>
+<div id="sequential-and-adaptive-designs-1" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Sequential and adaptive designs</h2>
+<p>Needs to adjust significance tests for augmenting data/sequential analysis/peeking Statistics/econometrics new-statistics sagarin_2014 <a href="http://www.paugmented.com/" class="uri">http://www.paugmented.com/</a> resubmit_letterJpube.tex, <a href="http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/" class="uri">http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/</a></p>
+<p>Yet …</p>
+<p>P_augmented may <em>overstate</em> type-1 error rate Statistics/econometrics response to referees, new-statistics "
+A process involving stopping "“whenever the nominal <span class="math inline">\(p.0.5\)</span>”" and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5%. Even if the subsequent data suggested a "“one in a million chance of arising under the null”" the overall process yields a 5%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the "“likelihood of the null hypothesis”" given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.</p>
+<p>Considering the calculations in , it is clear that <span class="math inline">\(p_{augmented}\)</span> should  the type-1 error of the process if there is a positive probability that after an initial experiment attains p<span class="math inline">\(&lt;0.05\)</span>, more data is collected. A headline <span class="math inline">\(p&lt;0.05\)</span> does  imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded <span class="math inline">\(p&gt;0.05\)</span>, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though <span class="math inline">\(p&lt;0.05\)</span>. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine’s experiment). Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p&lt;0.05, more data is collected, implying that <span class="math inline">\(p_{augmented}\)</span> as calculated above overstates the type I error rate that would arise from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below <span class="math inline">\(p=0.05\)</span>, in order to attain a type-1 error rate of 5% or less in our published corpus."</p>
+</div>
+<div id="efficient-assignment-of-treatments-1" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Efficient assignment of treatments</h2>
+<p>(Links back to power analyses)</p>
 
 </div>
 </div>
@@ -528,8 +536,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="reg-follies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="control-ml.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="why-experiment-design.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="power.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

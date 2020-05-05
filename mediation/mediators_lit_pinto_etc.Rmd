@@ -1,9 +1,9 @@
-# Causal pathways {#mediators}
+# Causal pathways - mediators {#mediators}
 
 ## Mediators (and selection and Roy models): a review, considering two research applications
 
 <div class="marginnote">
-Originally focused on issues relevant to Parey et al project on 'returns to HE institution' using data from the Netherlands (flagged as \@NL); also relevant to Reinstein et al work on substitution in charitable giving (flagged as \@subst).  
+Originally focused on issues relevant to Parey et al project on 'returns to HE institution' using data from the Netherlands (flagged as \@NL); also relevant to Reinstein et al work on substitution in charitable giving (flagged as \@subst).
 </div>
 
 ## DR initial thoughts (for NL education paper)
@@ -41,7 +41,7 @@ The treatment $T$ (may) directly affect the final outcome $Y$.
 <div class="marginnote">
 Do: show a diagram here
 </div>
- 
+
 
 $$T\rightarrow Y$$
 
@@ -85,12 +85,12 @@ than changes in the measured mediators (including changes in mediators that are 
 
 > It is therefore necessary to assume that the mediators we do not
 observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for all values of
-$D$. 
+$D$.
 ```
 
 \
 
-Antonakis, coming from the Psychology and Leadership disciplines, considers the mediation question in a much simpler set of models.  
+Antonakis, coming from the Psychology and Leadership disciplines, considers the mediation question in a much simpler set of models.
 
 
 ## Econometric Mediation Analyses (Heckman and Pinto)
@@ -99,14 +99,14 @@ Antonakis, coming from the Psychology and Leadership disciplines, considers the 
 
 \
 
-### Relevance to Parey et al {-} 
+### Relevance to Parey et al {-}
 
 We have an instrument for admission to one's first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these 'intermediate outcomes', including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.
 
 <div class="marginnote">
 a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well
 </div>
- 
+
 
 ### Summary and key modeling
 
@@ -127,7 +127,7 @@ Treatments (e.g., RCTs) may affect outcomes through the following channels:
 - Cf donation in first stage (to targeted charity), measured/self reported attitudes towards charities, self-reported mood
 \
 
-2.  unobservable/unmeasured inputs 
+2.  unobservable/unmeasured inputs
 
 -  cf human capital, social connections
 - cf unobservable generosity, wealth, or temporary mood
@@ -320,14 +320,14 @@ outcomes has seldom been assessed.
 ### Identification strategy brief {-}
 
 -   Vouchers as IVs for choice among 3 neighborhood alternatives (no
-    relocation, relocate bad, relocate good) 
-    
+    relocation, relocate bad, relocate good)
+
 <div class="marginnote">
 Cf \@NL: enter course and
     fp-institution, enter course at other institution, do not enter
     course
 </div>
- 
+
 -   Neighborhood causal effects as difference in counterfactual outcomes
     among 3 categories
 
@@ -455,4 +455,4 @@ vary between the assignments being compared.\
     entered nor the location of residence, nor are both determined by a
     third factor.
 
-## Antonakis approaches 
+## Antonakis approaches

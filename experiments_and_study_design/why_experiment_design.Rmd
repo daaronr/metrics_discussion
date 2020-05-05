@@ -1,0 +1,14 @@
+# (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters  {#why_experiment_design}
+
+## Why run an experiment or study?
+
+- Sugden and Sitzia critique here, give more motivation
+
+## Causal channels and identification
+
+- Ruling out alternative hypotheses, etc
+
+## Types of experiments, 'demand effects' and more artifacts of artifical setups
+
+## Generalizability (and heterogeneity)
+
