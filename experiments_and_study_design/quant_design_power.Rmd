@@ -4,7 +4,7 @@
 
 ### The hazards of specification-searching
 
-## Sequential and adaptive designs;
+## Sequential and adaptive designs
 
 Needs to adjust significance tests for augmenting data/sequential analysis/peeking	Statistics/econometrics	new-statistics		sagarin_2014			http://www.paugmented.com/	resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
 

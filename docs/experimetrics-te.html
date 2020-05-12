@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="14 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-04-30" />
+<meta name="date" content="2020-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="power.html"/>
-<link rel="next" href="bayesian-approaches.html"/>
+<link rel="next" href="metaanalysis.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -219,9 +219,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#conceptual-approaches-to-statisticsinference-and-causalityconceptual"><i class="fa fa-check"></i><b>1.1</b> (Conceptual: approaches to statistics/inference and causality)[#conceptual]</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i><b>1.1.1</b> Bayesian vs. frequentist approaches</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>1.1.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>1.1.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i>Bayesian vs. frequentist approaches</a></li>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>1.1.1</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>1.1.2</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#data-sci"><i class="fa fa-check"></i><b>1.2</b> Getting, cleaning and using data; project management and coding</a>
 <ul>
@@ -303,7 +303,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
 </ul></li>
-<li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studiesmetaanalysis"><i class="fa fa-check"></i><b>1.15</b> (Making inferences from previous work; Meta-analysis, combining studies)[#metaanalysis]</a>
+<li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.15</b> <span>Making inferences from previous work; Meta-analysis, combining studies</span></a>
 <ul>
 <li class="chapter" data-level="1.15.1" data-path="introduction.html"><a href="introduction.html#publication-bias"><i class="fa fa-check"></i><b>1.15.1</b> Publication bias</a></li>
 <li class="chapter" data-level="1.15.2" data-path="introduction.html"><a href="introduction.html#combining-a-few-your-own-studiesestimates"><i class="fa fa-check"></i><b>1.15.2</b> Combining a few (your own) studies/estimates</a></li>
@@ -413,12 +413,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="mediators.html"><a href="mediators.html#antonakis-approaches"><i class="fa fa-check"></i><b>9.5</b> Antonakis approaches</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><i class="fa fa-check"></i><b>10</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<li class="chapter" data-level="10" data-path="selection-cop.html"><a href="selection-cop.html"><i class="fa fa-check"></i><b>10</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-1"><i class="fa fa-check"></i><b>10.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
-<li class="chapter" data-level="10.2" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#bounding-approaches-lee-manski-etc-1"><i class="fa fa-check"></i><b>10.2</b> Bounding approaches (Lee, Manski, etc)</a>
+<li class="chapter" data-level="10.1" data-path="selection-cop.html"><a href="selection-cop.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-1"><i class="fa fa-check"></i><b>10.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+<li class="chapter" data-level="10.2" data-path="selection-cop.html"><a href="selection-cop.html#bounding-approaches-lee-manski-etc-1"><i class="fa fa-check"></i><b>10.2</b> Bounding approaches (Lee, Manski, etc)</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html"><a href="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates-1.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>10.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
+<li class="chapter" data-level="10.2.1" data-path="selection-cop.html"><a href="selection-cop.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>10.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>11</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
@@ -435,7 +435,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.1</b> The hazards of specification-searching</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
-<li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a></li>
+<li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.1</b> How many treatment arms can you ‘afford’?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
 <ul>
@@ -454,39 +457,51 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
 <li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
-<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>14.7</b> Making inferences from previous work; Meta-analysis, combining studies</a>
+</ul></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Making inferences from previous work; Meta-analysis, combining studies</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>14.7.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a></li>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analsis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analsis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#bayesian-meta-analysis"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>15</b> Bayesian approaches</a>
+<li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>15.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<li class="chapter" data-level="16.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>16.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>15.1.1</b> Meta-analysis of previous evidence</a></li>
-<li class="chapter" data-level="15.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>15.1.2</b> Inference, particularly about ‘null effects’</a></li>
-<li class="chapter" data-level="15.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>15.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
-<li class="chapter" data-level="15.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>15.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
-<li class="chapter" data-level="15.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>15.1.5</b> Experimental design</a></li>
+<li class="chapter" data-level="16.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>16.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="16.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>16.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="16.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>16.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="16.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>16.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="16.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>16.1.5</b> Experimental design</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>15.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<li class="chapter" data-level="16.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>16.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>15.2.1</b> The Golem of Prague (Chapter 1)</a></li>
-<li class="chapter" data-level="15.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>15.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
-<li class="chapter" data-level="15.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>15.2.3</b> Using prior information</a></li>
-<li class="chapter" data-level="15.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>15.2.4</b> From counts to probability.</a></li>
+<li class="chapter" data-level="16.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>16.2.1</b> The Golem of Prague (Chapter 1)</a></li>
+<li class="chapter" data-level="16.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>16.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
+<li class="chapter" data-level="16.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>16.2.3</b> Using prior information</a></li>
+<li class="chapter" data-level="16.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>16.2.4</b> From counts to probability.</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>15.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<li class="chapter" data-level="16.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>16.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>15.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
-<li class="chapter" data-level="15.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>15.3.2</b> Theory</a></li>
-<li class="chapter" data-level="15.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>15.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
-<li class="chapter" data-level="15.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>15.3.4</b> On choosing priors</a></li>
-<li class="chapter" data-level="15.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>15.3.5</b> Implementation</a></li>
-<li class="chapter" data-level="15.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>15.3.6</b> Generate predictions from a WinBUGS model</a></li>
-<li class="chapter" data-level="15.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>15.3.7</b> Missing data case</a></li>
-<li class="chapter" data-level="15.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>15.3.8</b> Stata</a></li>
-<li class="chapter" data-level="15.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>15.3.9</b> R mcmc pac</a></li>
+<li class="chapter" data-level="16.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>16.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="16.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>16.3.2</b> Theory</a></li>
+<li class="chapter" data-level="16.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>16.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="16.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>16.3.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="16.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>16.3.5</b> Implementation</a></li>
+<li class="chapter" data-level="16.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>16.3.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="16.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>16.3.7</b> Missing data case</a></li>
+<li class="chapter" data-level="16.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>16.3.8</b> Stata</a></li>
+<li class="chapter" data-level="16.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>16.3.9</b> R mcmc pac</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -530,150 +545,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.6</span> Heterogeneity in an experimental context</h2>
 
 </div>
-<div id="making-inferences-from-previous-work-meta-analysis-combining-studies" class="section level2" number="14.7">
-<h2><span class="header-section-number">14.7</span> Making inferences from previous work; Meta-analysis, combining studies</h2>
-<p>My opinion on why this is so important (unfold):</p>
-
-<div class="fold">
-<p>it is lame how often I see ‘new experiments’ and ‘new studies’ that tread most of the ground as old studies, spend lots of money, get a publication and … ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called ‘ExpArchive’, later working with projects such as GESIS’ X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute’s “revolutionizing philanthropy research” (RPR) project.</p>
-</div>
-<div id="notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis" class="section level3" number="14.7.1">
-<h3><span class="header-section-number">14.7.1</span> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</h3>
-<blockquote>
-<p>how the research community can systematically collect, organize, and analyze a body of research work</p>
-</blockquote>
-<ul>
-<li>Limitations to the ‘narrative literature review’: subjectivity, too much info to narrate</li>
-</ul>
-<div id="the-origins-and-importance-of-study-pre-registration" class="section level4" number="14.7.1.1">
-<h4><span class="header-section-number">14.7.1.1</span> The origins [and importance] of study [pre-]registration</h4>
-<p>… Make details of planned and ongoing studies available to the community …. including those not (yet) published</p>
-<ul>
-<li><p>Required by FDA in 1997, many players in medical community followe d soon after</p></li>
-<li><p>Turner ea (08) and others documented massive publication bias and misrepresentation</p></li>
-</ul>
-<p>… but registration far from fully enforced (Mathieu ea ’09) found 46% clealy registered, and discrepancies between registered and published outcomes
-!</p>
-</div>
-<div id="social-science-study-registries" class="section level4" number="14.7.1.2">
-<h4><span class="header-section-number">14.7.1.2</span> Social science study registries</h4>
-<p>Jameel 2009, AEA 2013, 2100 registrations to date
-RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
-</div>
-<div id="meta-analsis" class="section level4" number="14.7.1.3">
-<h4><span class="header-section-number">14.7.1.3</span> Meta-analsis</h4>
-<p>Key references: Borenstein ea ’09, Cooper, Hedges, and V ’09</p>
-<div id="selecting-studies" class="section level5" number="14.7.1.3.1">
-<h5><span class="header-section-number">14.7.1.3.1</span> Selecting studies</h5>
-<p>"some scholarly discretion regarding which measures are ‘close enough’ to be included… contemperanous meta-analyses on the same topic finding opposit e conclusions</p>
-<p>‘asses the robustness… to diffrent inclusion conditions’… see Doucouliagos ea ’17 on inclusion options</p>
-<div class="marginnote">
-<p>My opinion: this is the key barrier to meta-analysis in social science! How do we weight studies using different methodologies and in different contexts? The Bayesian Random Effects approach seems to offer some help here (this not to be confused with the random effects panel-data models discussed in standard Econometrics texts).</p>
-</div>
-</div>
-<div id="assembling-estimates" class="section level5" number="14.7.1.3.2">
-<h5><span class="header-section-number">14.7.1.3.2</span> Assembling estimates</h5>
-<ul>
-<li>Which statistic to collect?</li>
-</ul>
-<p><br />
-</p>
-<p>Studies <span class="math inline">\(j \in J, j= 1..N_j\)</span></p>
-<p>Relevant estimate of stat from each study is <span class="math inline">\(\hat{ \beta_j}\)</span> with SE <span class="math inline">\(\hat{\sigma_j}\)</span></p>
-<ul>
-<li>Papers report several estimates (e.g., in robustness checks): which to choose, esp if author’s preferred approach differs from other scholars.</li>
-</ul>
-<p><br />
-</p>
-<p><em>Ex from Hsiang, B, Miguel, ’13</em>: links between extreme climate and violence</p>
-<ul>
-<li><p>how to classify outcomes… interpersonal and intergroup… normalised as pct changes wrt the meanoutcome in that dataset</p></li>
-<li><p>how to standardice climate varn measures… chose SD from local area mean
-(DR: this choice implicitly reflects a behavioural assumption)</p></li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> ‘pct change in a conflict outcome as a fncn of a 1 SD schock to local climate’</p>
-</div>
-</div>
-<div id="combining-estimates" class="section level4" number="14.7.1.4">
-<h4><span class="header-section-number">14.7.1.4</span> Combining estimates</h4>
-<p>‘Fixed-effect meta-analysis approach’: assumes a single true effect’</p>
-<div class="marginnote">
-<p>DR: I’m not sure I agree on theie assesment of <em>ehy</em> this is unlikely to be true in practice… ‘differences in measures’ (etc) seem to be a different issue</p>
-</div>
-<p><em>Equal weight approach</em>: (Simply the average across studies… ugh)</p>
-<p><br />
-</p>
-<p><em>Precision-weighted approach</em>:</p>
-<p><span class="math display">\[\hat{\beta}_{PW}=
-\sum_{j}p_j\hat{\beta}_j/
-\sum_{j}p_j\]</span></p>
-<p>where <span class="math inline">\(p_j\)</span> is the estimated precision for study <span class="math inline">\(j\)</span>: <span class="math inline">\(\frac{1}{\hat{\sigma_i}^2}\)</span></p>
-<p>Thus the weight <span class="math inline">\(\omega_j\)</span> placed on study <span class="math inline">\(j\)</span> is proportional to it’s precision.</p>
-<div class="marginnote">
-<p>‘implies weight in proportion to sample size’? I think that’s loosely worded, it must be nonlinear.</p>
-</div>
-<p><span class="math inline">\(\rightarrow\)</span> This minimises the variance in the resulting meta-analtical estimate:</p>
-<p><span class="math display">\[Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}\]</span></p>
-<p>‘inclusion of additional estimates always reduces the SE of <span class="math inline">\(\hat{\beta_{PW}}\)</span> [in expectation].’ … so more estimtes can’t hurt as long as you know their precision.</p>
-<p>(they give a numerical example here with 3 estimates)</p>
-<!-- Todo: add R code explicitly doing these calculations -->
-</div>
-<div id="heterogeneous-estimates" class="section level4" number="14.7.1.5">
-<h4><span class="header-section-number">14.7.1.5</span> Heterogeneous estimates…</h4>
-<div id="wls-estimate" class="section level5" number="14.7.1.5.1">
-<h5><span class="header-section-number">14.7.1.5.1</span> WLS estimate</h5>
-<p>(Stanley and Doucouliagos ’15)</p>
-<p>Interpreted as ‘an estimate of the average of potentially heterogenous estimates’</p>
-<p>This may feel like a more familiar to Economists but it is also seems to be far less useful than the Bayesian approach.</p>
-<p><br />
-</p>
-</div>
-<div id="random-effects-more-common" class="section level5" number="14.7.1.5.2">
-<h5><span class="header-section-number">14.7.1.5.2</span> Random-effects (more common)</h5>
-<p><em>Focus here on hierarchical Bayesian approach</em> (Gelman and Hill ’06; Gelman ea ’13)</p>
-<p>‘The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature’</p>
-<p>… continuing from above notation</p>
-<p>‘cross-study differences we observe might not be driven solely by sampling variability… [even with] infinite data, they would not converge to the exact same [estimate]’</p>
-<p>True Treatment Effect (TE) <span class="math inline">\(\beta_j\)</span> for study j drawn from a normal distribution…</p>
-<p><span class="math display">\[\beta_j \sim N(\mu, \tau^2)\]</span></p>
-<p>‘Hyperparameters’ <span class="math inline">\(\mu\)</span> determines central tendency of findings…
-<span class="math inline">\(\tau\)</span> the extent of hety across contexts.</p>
-<p>Considering <span class="math inline">\(\tau\)</span> vs <span class="math inline">\(\mu\)</span> is informative in itself.
-And a large <span class="math inline">\(\mu\)</span> may suggest looking into sample splits for hety on obsl lines.</p>
-<p><br />
-</p>
-<p>Uniform prior for <span class="math inline">\(\mu\)</span> <span class="math inline">\(\rightarrow\)</span> conditional posterior:</p>
-<p><span class="math display">\[\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})\]</span> where the estimated common effect <span class="math inline">\(\hat{\mu}\)</span> is
-$$=</p>
-<p><span class="math display">\[\hat{\mu}=
-\frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
-{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))}\]</span></p>
-<p>(Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)</p>
-<p>and where the estimated variance of the generalizable component <span class="math inline">\(V_\mu\)</span> is:
-$<span class="math inline">\(Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}\)</span></p>
-<div class="marginnote">
-<p>Confusion/correction? Is this the estimated variance or the variance of the estimate?</p>
-</div>
-<ul>
-<li>and how do we estimate some of the components of these, like <span class="math inline">\(\hat{\tau}\)</span>?</li>
-</ul>
-<blockquote>
-<p>Intuitively, if estimated [TE] in all studies are near one another and have relatively wide and overlapping [CI’s], then most of the difference in estimates is likely the result of sampling variation [and <span class="math inline">\(\tau\)</span>] is likely to be close to zero.</p>
-</blockquote>
-<div class="marginnote">
-<p>DR: But if the TE have wide CI’s, do we have power to idfy btwn-study hety? … I guess that’s what the ‘estimated TE are all near each other’ gives us?</p>
-</div>
-<p>… Alternatively, extensive varn in the estd ATEs but each is precise… <span class="math inline">\(\tau\)</span> is likely to be relvly large.</p>
-<p><em>TODO: some code exercises should be put or linked here</em></p>
-<p> The <span class="math inline">\(I^2\)</span> stat is a measure of the proportion of toatal varn attributed to cross-study varn; if <span class="math inline">\(\hat{\sigma}_j\)</span> is the same across all studies we have:
-<span class="math inline">\(I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)\)</span></p>
-<p>*DR: more detail would be welcome here. Material from <a href="">this syllabus</a> may be helpful.</p>
-<p><a href="https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk" class="uri">https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk</a></p>
-
-</div>
-</div>
-</div>
-</div>
 </div>
             </section>
 
@@ -681,7 +552,7 @@ $<span class="math inline">\(Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_
         </div>
       </div>
 <a href="power.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bayesian-approaches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="metaanalysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

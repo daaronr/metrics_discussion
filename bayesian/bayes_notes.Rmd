@@ -1,8 +1,6 @@
 # Bayesian approaches
 
 
-
-
 ```{block2,  type='note'}
 I take notes on several different resources/texts below. Ultimately I'll try to integrate these into a single set of notes.
 ```  

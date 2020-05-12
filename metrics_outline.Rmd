@@ -281,7 +281,7 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 
 ### Heterogeneity in an experimental context
 
-## (Making inferences from previous work; Meta-analysis, combining studies)[#metaanalysis]
+## [Making inferences from previous work; Meta-analysis, combining studies](#metaanalysis)
 
 ### Publication bias
 
@@ -319,7 +319,7 @@ Statistical Rethinking: A Bayesian Course with Examples in R and Stan
 ### Consider: 
 
 Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017
-
+  
 Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction .
 Cambridge University Press, 2015
 

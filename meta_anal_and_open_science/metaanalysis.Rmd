@@ -1,4 +1,4 @@
-# Making inferences from previous work; Meta-analysis, combining studies
+# Making inferences from previous work; Meta-analysis, combining studies {#metaanalysis}
 
 My opinion on why this is so important (unfold):
 
@@ -78,10 +78,9 @@ $\rightarrow$ 'pct  change in a conflict outcome as a fncn of a 1 SD schock to l
 
 'Fixed-effect meta-analysis approach': assumes a single true effect'
 
-
 <div class="marginnote">
 
-DR: I'm  not sure I agree on theie assesment of *ehy* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
+DR: I'm  not sure I agree on theis assesment of *why* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
 
 </div>
 
@@ -163,7 +162,7 @@ $$\hat{\mu}=
 (Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)
 
 and where the estimated variance  of the generalizable component $V_\mu$ is:
-$$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$
+$$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$$
 
 
 <div class="marginnote">
@@ -219,15 +218,17 @@ Some notes follow excerpting and commenting on
 
 ```{r, warning=FALSE, message=FALSE}
 
-#devtools::install_github("MathiasHarrer/dmetar")
+devtools::install_github("MathiasHarrer/dmetar")
 library(meta)
 
+# I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... 
 #install.packages("brms")
 library(brms)
 
 ```
+
 ### Pooling effect sizes
-FE model calculates weighted average:
+FE model calculates weighted average: 
 
 
 \begin{equation}
@@ -241,5 +242,56 @@ FE model calculates weighted average:
 Nor the Bayesian models, apparently (the use the same 'madata' dataset)
 
 ### Bayesian Meta-analysis
+
+Underlying RE model (as before)
+
+Study-specific estimate: 
+
+$$ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) $$
+
+True study-specific effects distributed: 
+
+$$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
+
+
+... simplified to the 'marginal' form:
+
+$$ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)$$
+
+\
+
+
+And now the Bayesian (priors)
+
+
+$$(\mu, \tau^2) \sim p(.)$$
+$$ \tau^2 > 0 $$
+\
+
+Estimation will...
+
+> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.
+
+\
+
+**Why use Bayesian?**
+
+- to  "directly model the uncertainty when estimating  [the between-study variance] $\tau^2$"
+
+- "have been found to be superior in estimating the between-study heterogeneity and pooled effect, particularly when the number of included studies is small"
+
+- "produce full posterior distributions for both $\mu$ and $\tau$" ... so we can make legitimate statements about the probabilities of true parameters
+
+- "allow us to integrate prior knowledge and assumptions when calculating meta-analyses" (including methodological uncertainty perhaps)
+
+\
+
+**Setting the priors** 
+
+> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]
+
+> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. c... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$:
+
+$$ \mu \sim \mathcal{N}(0,1)$$
 
 

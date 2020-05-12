@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>15 Making inferences from previous work; Meta-analysis, combining studies | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="15 Making inferences from previous work; Meta-analysis, combining studies | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="15 Making inferences from previous work; Meta-analysis, combining studies | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Robustness and diagnostics, with integrity | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="15 Making inferences from previous work; Meta-analysis, combining studies | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="reg-follies.html"/>
-<link rel="next" href="control-ml.html"/>
+<link rel="prev" href="experimetrics-te.html"/>
+<link rel="next" href="bayesian-approaches.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -524,18 +524,222 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="robust-diag" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Robustness and diagnostics, with integrity</h1>
-<div id="how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> (How) can diagnostic tests make sense? Where is the burden of proof?</h2>
-<p>Where a particular assumption is critical to identification and inference …Failure to reject the violation of an assumptionis not sufficient to give us confidence that it is satisfied and the results are credible. At several points the authors cite insignificant statistical tests as evidence in support of a substantive model, or of evidence that they do not need to worry about certain confounds. Although the problem of induction is difficult, I find this approach inadequate. Where a negative finding is given as an important result, the authors should also show that their parameter estimate is tightly bounded around zero. Where it is cited as evidence they can ignore a confound, they should provide evidence that they can statistically bound that effect is small enough that it should not reasonably cause an issue (e.g., as using Lee or McNemar bounds for selective attrition/hurdles).</p>
-</div>
-<div id="estimating-standard-errors-1" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Estimating standard errors</h2>
-</div>
-<div id="sensitivity-analysis-interactive-presentation-1" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Sensitivity analysis: Interactive presentation</h2>
+<div id="metaanalysis" class="section level1" number="15">
+<h1><span class="header-section-number">15</span> Making inferences from previous work; Meta-analysis, combining studies</h1>
+<p>My opinion on why this is so important (unfold):</p>
 
+<div class="fold">
+<p>it is lame how often I see ‘new experiments’ and ‘new studies’ that tread most of the ground as old studies, spend lots of money, get a publication and … ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called ‘ExpArchive’, later working with projects such as GESIS’ X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute’s “revolutionizing philanthropy research” (RPR) project.</p>
+</div>
+<div id="notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</h2>
+<blockquote>
+<p>how the research community can systematically collect, organize, and analyze a body of research work</p>
+</blockquote>
+<ul>
+<li>Limitations to the ‘narrative literature review’: subjectivity, too much info to narrate</li>
+</ul>
+<div id="the-origins-and-importance-of-study-pre-registration" class="section level3" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> The origins [and importance] of study [pre-]registration</h3>
+<p>… Make details of planned and ongoing studies available to the community …. including those not (yet) published</p>
+<ul>
+<li><p>Required by FDA in 1997, many players in medical community followe d soon after</p></li>
+<li><p>Turner ea (08) and others documented massive publication bias and misrepresentation</p></li>
+</ul>
+<p>… but registration far from fully enforced (Mathieu ea ’09) found 46% clealy registered, and discrepancies between registered and published outcomes
+!</p>
+</div>
+<div id="social-science-study-registries" class="section level3" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Social science study registries</h3>
+<p>Jameel 2009, AEA 2013, 2100 registrations to date
+RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
+</div>
+<div id="meta-analsis" class="section level3" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Meta-analsis</h3>
+<p>Key references: Borenstein ea ’09, Cooper, Hedges, and V ’09</p>
+<div id="selecting-studies" class="section level4" number="15.1.3.1">
+<h4><span class="header-section-number">15.1.3.1</span> Selecting studies</h4>
+<p>"some scholarly discretion regarding which measures are ‘close enough’ to be included… contemperanous meta-analyses on the same topic finding opposit e conclusions</p>
+<p>‘asses the robustness… to diffrent inclusion conditions’… see Doucouliagos ea ’17 on inclusion options</p>
+<div class="marginnote">
+<p>My opinion: this is the key barrier to meta-analysis in social science! How do we weight studies using different methodologies and in different contexts? The Bayesian Random Effects approach seems to offer some help here (this not to be confused with the random effects panel-data models discussed in standard Econometrics texts).</p>
+</div>
+</div>
+<div id="assembling-estimates" class="section level4" number="15.1.3.2">
+<h4><span class="header-section-number">15.1.3.2</span> Assembling estimates</h4>
+<ul>
+<li>Which statistic to collect?</li>
+</ul>
+<p><br />
+</p>
+<p>Studies <span class="math inline">\(j \in J, j= 1..N_j\)</span></p>
+<p>Relevant estimate of stat from each study is <span class="math inline">\(\hat{ \beta_j}\)</span> with SE <span class="math inline">\(\hat{\sigma_j}\)</span></p>
+<ul>
+<li>Papers report several estimates (e.g., in robustness checks): which to choose, esp if author’s preferred approach differs from other scholars.</li>
+</ul>
+<p><br />
+</p>
+<p><em>Ex from Hsiang, B, Miguel, ’13</em>: links between extreme climate and violence</p>
+<ul>
+<li><p>how to classify outcomes… interpersonal and intergroup… normalised as pct changes wrt the meanoutcome in that dataset</p></li>
+<li><p>how to standardice climate varn measures… chose SD from local area mean
+(DR: this choice implicitly reflects a behavioural assumption)</p></li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> ‘pct change in a conflict outcome as a fncn of a 1 SD schock to local climate’</p>
+</div>
+</div>
+<div id="combining-estimates" class="section level3" number="15.1.4">
+<h3><span class="header-section-number">15.1.4</span> Combining estimates</h3>
+<p>‘Fixed-effect meta-analysis approach’: assumes a single true effect’</p>
+<div class="marginnote">
+<p>DR: I’m not sure I agree on theis assesment of <em>why</em> this is unlikely to be true in practice… ‘differences in measures’ (etc) seem to be a different issue</p>
+</div>
+<p><em>Equal weight approach</em>: (Simply the average across studies… ugh)</p>
+<p><br />
+</p>
+<p><em>Precision-weighted approach</em>:</p>
+<p><span class="math display">\[\hat{\beta}_{PW}=
+\sum_{j}p_j\hat{\beta}_j/
+\sum_{j}p_j\]</span></p>
+<p>where <span class="math inline">\(p_j\)</span> is the estimated precision for study <span class="math inline">\(j\)</span>: <span class="math inline">\(\frac{1}{\hat{\sigma_i}^2}\)</span></p>
+<p>Thus the weight <span class="math inline">\(\omega_j\)</span> placed on study <span class="math inline">\(j\)</span> is proportional to it’s precision.</p>
+<div class="marginnote">
+<p>‘implies weight in proportion to sample size’? I think that’s loosely worded, it must be nonlinear.</p>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span> This minimises the variance in the resulting meta-analtical estimate:</p>
+<p><span class="math display">\[Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}\]</span></p>
+<p>‘inclusion of additional estimates always reduces the SE of <span class="math inline">\(\hat{\beta_{PW}}\)</span> [in expectation].’ … so more estimtes can’t hurt as long as you know their precision.</p>
+<p>(they give a numerical example here with 3 estimates)</p>
+<!-- Todo: add R code explicitly doing these calculations -->
+</div>
+<div id="heterogeneous-estimates" class="section level3" number="15.1.5">
+<h3><span class="header-section-number">15.1.5</span> Heterogeneous estimates…</h3>
+<div id="wls-estimate" class="section level4" number="15.1.5.1">
+<h4><span class="header-section-number">15.1.5.1</span> WLS estimate</h4>
+<p>(Stanley and Doucouliagos ’15)</p>
+<p>Interpreted as ‘an estimate of the average of potentially heterogenous estimates’</p>
+<p>This may feel like a more familiar to Economists but it is also seems to be far less useful than the Bayesian approach.</p>
+<p><br />
+</p>
+</div>
+<div id="random-effects-more-common" class="section level4" number="15.1.5.2">
+<h4><span class="header-section-number">15.1.5.2</span> Random-effects (more common)</h4>
+<p><em>Focus here on hierarchical Bayesian approach</em> (Gelman and Hill ’06; Gelman ea ’13)</p>
+<p>‘The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature’</p>
+<p>… continuing from above notation</p>
+<p>‘cross-study differences we observe might not be driven solely by sampling variability… [even with] infinite data, they would not converge to the exact same [estimate]’</p>
+<p>True Treatment Effect (TE) <span class="math inline">\(\beta_j\)</span> for study j drawn from a normal distribution…</p>
+<p><span class="math display">\[\beta_j \sim N(\mu, \tau^2)\]</span></p>
+<p>‘Hyperparameters’ <span class="math inline">\(\mu\)</span> determines central tendency of findings…
+<span class="math inline">\(\tau\)</span> the extent of hety across contexts.</p>
+<p>Considering <span class="math inline">\(\tau\)</span> vs <span class="math inline">\(\mu\)</span> is informative in itself.
+And a large <span class="math inline">\(\mu\)</span> may suggest looking into sample splits for hety on obsl lines.</p>
+<p><br />
+</p>
+<p>Uniform prior for <span class="math inline">\(\mu\)</span> <span class="math inline">\(\rightarrow\)</span> conditional posterior:</p>
+<p><span class="math display">\[\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})\]</span> where the estimated common effect <span class="math inline">\(\hat{\mu}\)</span> is
+$$=</p>
+<p><span class="math display">\[\hat{\mu}=
+\frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
+{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))}\]</span></p>
+<p>(Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)</p>
+<p>and where the estimated variance of the generalizable component <span class="math inline">\(V_\mu\)</span> is:
+<span class="math display">\[Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}\]</span></p>
+<div class="marginnote">
+<p>Confusion/correction? Is this the estimated variance or the variance of the estimate?</p>
+</div>
+<ul>
+<li>and how do we estimate some of the components of these, like <span class="math inline">\(\hat{\tau}\)</span>?</li>
+</ul>
+<blockquote>
+<p>Intuitively, if estimated [TE] in all studies are near one another and have relatively wide and overlapping [CI’s], then most of the difference in estimates is likely the result of sampling variation [and <span class="math inline">\(\tau\)</span>] is likely to be close to zero.</p>
+</blockquote>
+<div class="marginnote">
+<p>DR: But if the TE have wide CI’s, do we have power to idfy btwn-study hety? … I guess that’s what the ‘estimated TE are all near each other’ gives us?</p>
+</div>
+<p>… Alternatively, if there is extensive variation in the estimated ATEs but each is precise… <span class="math inline">\(\tau\)</span> is likely to be relatively large.</p>
+
+<div class="note">
+<p>Coding meta-analyses in R</p>
+<p>“A Review of Meta-Analysis Packages in R” offers a helpful guide to the various packages, such as <code>metafor</code>.</p>
+<p><a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/">Doing Meta-Analysis in R: A Hands-on Guide</a> appears extremely helpful; see, e.g., their chapter <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/bayesian-meta-analysis-in-r-using-the-brms-package.html">Bayesian Meta-Analysis in R using the brms package</a></p>
+</div>
+<!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? -->
+</div>
+<p> The <span class="math inline">\(I^2\)</span> stat is a measure of the proportion of toatal varn attributed to cross-study varn; if <span class="math inline">\(\hat{\sigma}_j\)</span> is the same across all studies we have:
+<span class="math inline">\(I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)\)</span></p>
+<!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
+
+https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
+
+-->
+</div>
+</div>
+</div>
+<div id="doing-meta" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</h2>
+<p>Some notes follow excerpting and commenting on</p>
+<p><a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/">Doing Meta-Analysis in R: A Hands-on Guide</a></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="metaanalysis.html#cb22-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;MathiasHarrer/dmetar&quot;</span>)</span>
+<span id="cb22-2"><a href="metaanalysis.html#cb22-2"></a><span class="kw">library</span>(meta)</span>
+<span id="cb22-3"><a href="metaanalysis.html#cb22-3"></a></span>
+<span id="cb22-4"><a href="metaanalysis.html#cb22-4"></a><span class="co"># I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... </span></span>
+<span id="cb22-5"><a href="metaanalysis.html#cb22-5"></a><span class="co">#install.packages(&quot;brms&quot;)</span></span>
+<span id="cb22-6"><a href="metaanalysis.html#cb22-6"></a><span class="kw">library</span>(brms)</span></code></pre></div>
+<div id="pooling-effect-sizes" class="section level3" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> Pooling effect sizes</h3>
+<p>FE model calculates weighted average:</p>
+<p><span class="math display">\[\begin{equation}
+\hat\theta_F = \frac{\sum\limits_{k=1}^K \hat\theta_k/ \hat\sigma^2_k}{\sum\limits_{k=1}^K 1/\hat\sigma^2_k}
+\end{equation}\]</span></p>
+<ul>
+<li>note that this process does not ‘dig in’ to the raw data, it just needs the summary statistics, neither does the “RE model” they refer to:</li>
+</ul>
+<blockquote>
+<p>Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.</p>
+</blockquote>
+<p>Nor the Bayesian models, apparently (the use the same ‘madata’ dataset)</p>
+</div>
+<div id="bayesian-meta-analysis" class="section level3" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> Bayesian Meta-analysis</h3>
+<p>Underlying RE model (as before)</p>
+<p>Study-specific estimate:</p>
+<p><span class="math display">\[ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) \]</span></p>
+<p>True study-specific effects distributed:</p>
+<p><span class="math display">\[ \theta_k \sim \mathcal{N}(\mu,\tau^2) \]</span></p>
+<p>… simplified to the ‘marginal’ form:</p>
+<p><span class="math display">\[ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)\]</span></p>
+<p><br />
+</p>
+<p>And now the Bayesian (priors)</p>
+<p><span class="math display">\[(\mu, \tau^2) \sim p(.)\]</span>
+<span class="math display">\[ \tau^2 &gt; 0 \]</span><br />
+</p>
+<p>Estimation will…</p>
+<blockquote>
+<p>involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.</p>
+</blockquote>
+<p><br />
+</p>
+<p><strong>Why use Bayesian?</strong></p>
+<ul>
+<li><p>to “directly model the uncertainty when estimating [the between-study variance] <span class="math inline">\(\tau^2\)</span>”</p></li>
+<li><p>“have been found to be superior in estimating the between-study heterogeneity and pooled effect, particularly when the number of included studies is small”</p></li>
+<li><p>“produce full posterior distributions for both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span>” … so we can make legitimate statements about the probabilities of true parameters</p></li>
+<li><p>“allow us to integrate prior knowledge and assumptions when calculating meta-analyses” (including methodological uncertainty perhaps)</p></li>
+</ul>
+<p><br />
+</p>
+<p><strong>Setting the priors</strong></p>
+<blockquote>
+<p>It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than ‘non-informative priors’!]</p>
+</blockquote>
+<blockquote>
+<p>include distributions which represent that we do indeed have <strong>some confidence that some values are more credible than others</strong>, while still not making any overly specific statements about the exact true value of the parameter. c… In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen’s <span class="math inline">\(d=-2.0\)</span> and <span class="math inline">\(d=2.0\)</span>, but will unlikely be hovering around <span class="math inline">\(d=50\)</span>. A good starting point for our <span class="math inline">\(\mu\)</span> prior may therefore be a normal distribution with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>. This means that we grant a 95% prior probability that the true pooled effect size <span class="math inline">\(\mu\)</span> lies between <span class="math inline">\(d=-2.0\)</span> and <span class="math inline">\(d=2.0\)</span>:</p>
+</blockquote>
+<p><span class="math display">\[ \mu \sim \mathcal{N}(0,1)\]</span></p>
+
+</div>
 </div>
 </div>
             </section>
@@ -543,8 +747,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="reg-follies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="control-ml.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="experimetrics-te.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-approaches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

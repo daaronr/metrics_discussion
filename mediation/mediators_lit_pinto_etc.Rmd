@@ -80,12 +80,13 @@ It is cited in more recent applied work such as Fagereng, 2018  (unfold).
 
 ```{block2,  type='fold'}
 
-> ... We follow Heckman et al. (2013) and Heckman and Pinto (2015) in using mediation analysis. The goal of this analysis is to disentangle the average causal effect on outcomes that operate through two channels: a) Indirect effects arising from the effect of treatment on measured mediators, and b) direct effects that operate through channels other
+ ... We follow Heckman et al. (2013) and Heckman and Pinto (2015) in using mediation analysis. The goal of this analysis is to disentangle the average causal effect on outcomes that operate through two channels: a) Indirect effects arising from the effect of treatment on measured mediators, and b) direct effects that operate through channels other
 than changes in the measured mediators (including changes in mediators that are not observed by the analyst and changes in the mapping between mediators and outcomes).
 
-> It is therefore necessary to assume that the mediators we do not
+ It is therefore necessary to assume that the mediators we do not
 observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for all values of
 $D$.
+
 ```
 
 \
@@ -207,14 +208,35 @@ They use this to give two further ways of decomposing the ATE.\
 "The [standard literature]{.underline} on mediation analysis in psychology regresses outputs on mediator inputs" \... often adopts the strong assumptions of:
 
 1.  no variation in unmeasured inputs conditional on the treatment (implying the effects of these are summarized by a treatment dummy)
-    and[^1]
+    and
+    
+<div class="marginnote">
+
+Cf 'winning institution' impacts human capital, social networks,
+    etc identically for everyone; e.g., not a greater effect for men
+    then for women, nor a greater effect for those entering particular
+    specializations.
+    
+</div>
 
 2.  full invariance of the production function: $f_{1}=f_{0}$.
 
 \... which implies $Y_{d}=f(\mathbf{\theta}_{d}^{p},d,\mathbf{X})$.\
 
 [Sequential ignorability (Imai et al, 10, '11)]{.underline}:
-Essentially, independent randomization of both treatment status and measured inputs.[^2]\
+Essentially, independent randomization of both treatment status and measured inputs.
+
+<div class="marginnote">
+Cf 'winning institution' does not effect the specialization
+    entered nor the location of residence, nor are both determined by a
+    third factor.
+    
+</div>
+
+
+
+\
+
 
 *This sentence is hard to follow:*
 
@@ -415,13 +437,15 @@ defiers.
 -   $T_{\omega}(z)$: relocation decision for family $\omega$ if assigned
     voucher $z$
 
-$\ensuremath{\rightarrow}$Response type for each family $\omega$ is that
-a three-dimensional vector:
-$S_{\omega}=[T_{\omega}(z_{1}),T_{\omega}(z_{2}),T_{\omega}(z_{3})]$.\
-$\ensuremath{\rightarrow}$ **ITT** computation now measures a weighted
-sum of effects across a subset of those response types whose responses
-vary between the assignments being compared.\
+$\rightarrow$ Response type for each family $\omega$ is  a three-dimensional vector:
+
+$$S_{\omega}=[T_{\omega}(z_{1}),T_{\omega}(z_{2}),T_{\omega}(z_{3})]$$.
+
+$\rightarrow$
+
+**ITT** computation now measures a weighted sum of effects across a subset of those response types whose responses vary between the assignments being compared.\
 \
+
 *Cf:*
 
 -   Considering the 'treatments': '1: enter other course at fp-inst, '2:
@@ -446,13 +470,7 @@ vary between the assignments being compared.\
 
     -   effects for perverse defiers
 
-[^1]: Cf 'winning institution' impacts human capital, social networks,
-    etc identically for everyone; e.g., not a greater effect for men
-    then for women, nor a greater effect for those entering particular
-    specializations.
-
-[^2]: Cf 'winning institution' does not effect the specialization
-    entered nor the location of residence, nor are both determined by a
-    third factor.
 
 ## Antonakis approaches
+
+Insert notes here

@@ -1,4 +1,4 @@
-# Causal pathways: selection, corners, hurdles, and 'conditional on' estimates
+# Causal pathways: selection, corners, hurdles, and 'conditional on' estimates {#selection_cop}
 
 ## 'Corner solution' or hurdle variables and 'Conditional on Positive'
 
