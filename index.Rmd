@@ -125,6 +125,8 @@ install.packages("tufte")
 
 ```{r packages}
 
+##TODO: this probably repeats the above -- check and integrate
+
 library(here)
 #library(checkpoint) #to avoid differential processing from different package versions
 library(pacman)

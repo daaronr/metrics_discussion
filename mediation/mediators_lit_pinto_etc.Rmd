@@ -84,8 +84,7 @@ It is cited in more recent applied work such as Fagereng, 2018  (unfold).
 than changes in the measured mediators (including changes in mediators that are not observed by the analyst and changes in the mapping between mediators and outcomes).
 
  It is therefore necessary to assume that the mediators we do not
-observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for all values of
-$D$.
+observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for all values of $D$.
 
 ```
 

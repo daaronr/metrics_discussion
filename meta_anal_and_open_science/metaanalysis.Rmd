@@ -153,7 +153,6 @@ And a large $\mu$ may suggest looking into sample splits for hety on obsl lines.
 Uniform prior for $\mu$ $\rightarrow$ conditional posterior:
 
 $$\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})$$ where the estimated common effect $\hat{\mu}$ is
-$$\hat{\mu}=
 
 $$\hat{\mu}=
 \frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
@@ -162,6 +161,7 @@ $$\hat{\mu}=
 (Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)
 
 and where the estimated variance  of the generalizable component $V_\mu$ is:
+
 $$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$$
 
 
@@ -200,7 +200,7 @@ Coding meta-analyses in R
 
 </div>
 
-\ The $I^2$ stat is a measure of the proportion of toatal varn attributed to cross-study varn; if $\hat{\sigma}_j$ is the same across all studies we have:
+\ The $I^2$ stat is a measure of the proportion of total variation attributed to cross-study variation; if $\hat{\sigma}_j$ is the same across all studies we have:
 $I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
 
 <!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
@@ -218,31 +218,46 @@ Some notes follow excerpting and commenting on
 
 ```{r, warning=FALSE, message=FALSE}
 
-devtools::install_github("MathiasHarrer/dmetar")
+#devtools::install_github("MathiasHarrer/dmetar")
+#install.packages("extraDistr")
+
 library(meta)
 
 # I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... 
 #install.packages("brms")
 library(brms)
+library(dmetar)
+
+library(extraDistr)
 
 ```
 
 ### Pooling effect sizes
 FE model calculates weighted average: 
 
+FIX THESE FORMULAS
 
-\begin{equation}
-\hat\theta_F = \frac{\sum\limits_{k=1}^K \hat\theta_k/ \hat\sigma^2_k}{\sum\limits_{k=1}^K 1/\hat\sigma^2_k}
-\end{equation}
+$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K \hat{\theta_k} $$ 
+$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
+
+
 
 - note that this process does not 'dig in' to the raw data, it just needs the summary statistics, neither does the "RE model" they refer to:
 
 > Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.
 
-Nor the Bayesian models, apparently (the use the same 'madata' dataset)
+Nor the Bayesian models, apparently (they use the same 'madata' dataset)
 
-### Bayesian Meta-analysis
+### Bayesian Meta-analysis {#doing-bayes-meta}
 
+
+```{block2,  type='note'}
+"The model we apply in Bayesian Meta-Analysis is a so-called Bayesian Hierarchical Model...
+every meta-analytical model inherently possesses a multilevel, and thus 'hierarchical', structure."
+
+```  
+
+#### The setup {-}
 Underlying RE model (as before)
 
 Study-specific estimate: 
@@ -253,7 +268,6 @@ True study-specific effects distributed:
 
 $$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
 
-
 ... simplified to the 'marginal' form:
 
 $$ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)$$
@@ -261,7 +275,7 @@ $$ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)$
 \
 
 
-And now the Bayesian (priors)
+And now we specify priors for these parameters, 'making it Bayesian'
 
 
 $$(\mu, \tau^2) \sim p(.)$$
@@ -274,9 +288,11 @@ Estimation will...
 
 \
 
+```{block2,  type='note'}
+
 **Why use Bayesian?**
 
-- to  "directly model the uncertainty when estimating  [the between-study variance] $\tau^2$"
+- to  "directly model the uncertainty when estimating [the between-study variance] $\tau^2$"
 
 - "have been found to be superior in estimating the between-study heterogeneity and pooled effect, particularly when the number of included studies is small"
 
@@ -284,14 +300,121 @@ Estimation will...
 
 - "allow us to integrate prior knowledge and assumptions when calculating meta-analyses" (including methodological uncertainty perhaps)
 
+```  
 \
 
-**Setting the priors** 
+#### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {-}
 
 > It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]
 
-> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. c... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$:
+
+**For $\mu$**: 
+
+> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$:
 
 $$ \mu \sim \mathcal{N}(0,1)$$
+
+**For  $\tau^2$**
+
+- must be non-negative, but might be very close to zero.
+
+- Recommended distribution for this case (for variances in general):  *Half-Cauchy prior* (a censored Cauchy)
+
+$\mathcal{HC}(x_0,s)$
+
+- with  *location parameter* $x_0$ (peak on x-axis)
+- and  $s$, scaling parameter 'how heavy-tailed'
+
+\
+
+Half-Cauchy distribution for varying $s$, with $x_0=0$:
+
+```{r, echo=FALSE, fig.width=6, fig.align='center'}
+library(png)
+library(grid)
+img <- readPNG(here("images", "half_cauchy.png"))
+grid.raster(img)
+```
+
+
+HC is 'heavy-tailed;... gives some probability to very high values but low values are still more likely.
+
+One might consider $s=0.3$ 
+
+<div class="marginnote">
+$s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size?
+</div>
+
+
+Checking the share of this distribution below 0.3...
+```{r, message=F, warning=F}
+phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3
+```
+
+\
+
+... But they go for the 'more conservative' $s=0.5$.
+
+> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially
+
+\
+
+Complete model:
+
+$$ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) $$
+$$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
+$$ \mu \sim \mathcal{N}(0,1)$$
+$$ \tau \sim \mathcal{HC}(0,0.5)$$
+
+#### Bayesian Meta-Analysis in R using the `brms` package
+
+
+
+You specify the priors as a vector of elements, each of which invokes the 'prior' function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a 'class'. 
+
+```{r priors}
+priors <- c(prior(normal(0,1), class = Intercept), prior(cauchy(0,0.5), class = sd))
+```
+
+
+
+A quick look at the data we're using here: 
+
+```{r}
+
+str(ThirdWave[,1:3])
+```
+
+
+\
+
+To actually run the model, he uses the following code:
+
+(it seems to require Xcode to run on my mac)
+
+```{r}
+
+m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
+             data = ThirdWave,
+             prior = priors,
+             iter = 400)
+
+```
+
+
+- The *formula for the model* is specified using 'regression formula notation'
+
+- As there is no 'predictor variable' here (unless it's meta-regression), `x` is replaced with `1`
+
+- But we want to  give studies with greater precision of the effect size estimate a greather weight. 
+  - Done using `y|se(se_y)`
+  
+- For  the *random effects terms* he adds  `(1|study)` to the predictor part.
+
+-  `prior`: Plugs in the priors created above plug in the `priors` object we created previously here.
+
+- `iter`:  Number of iterations of MCMC algorithm... the more complex your model, the higher this number should be. [DR: but what's a rule of thumb here?]
+
+
 
 

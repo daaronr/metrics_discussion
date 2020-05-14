@@ -89,9 +89,71 @@ http://datacolada.org/62
 
 ### OLS and heterogeneity
 
-- OLS does *not* identify the ATE
+#### OLS does *not* identify the ATE (-)
 
-http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT
+In general, with heterogeneity, OLS does *not* identify the ATE. It weights observations from different parts of the sample differently. Parts with greater residual variation in the treatment (outcome) variable are more (less) heavily weighted. 
+
+<div class="marginnote">
+E.g., if the treatment is binary, the estimator will most heavily weight those parts of the sample where the probability of treatment is closest to 1/2.
+</div>
+ 
+The formula is ...
+
+\
+
+```{block2,  type='note'}
+**Some intuition**
+
+Why is this the case?  The OLS type estimators we are taught in Econometrics are 'BLUE'  under the assumption of a *single homogenous 'effect'* (the 'slope'...  although the discussion itself is often agnostic as to whether this represents a causal effect). 
+
+\
+ 
+It is 'best' in a minimizing MSE sense under certain assumptions;  in particular, we must also know the true functional form and the set of variables to be included. See 'overfitting' issues.
+ 
+In  order to have the estimate of the true slope that minimizes the squared errors, OLS (and related estimators like FGLS; as well as 2SLS in a more complicated sense) weights  some observations more than others. The 'influence' of an observation on the estimated slope depends on the nature of the variation in the  dependent and independent variables in the region that observation is drawn from.  Think of drawing a line  through a set of points  that were drawn with some noise from the true distribution.  If you drew it based on a bunch of points (from a region where) the treatment varies very little and the outcomes have a lot of noise,  the line you draw will be very sensitive to the latter noise and thus unreliable. So,  would optimally 'down-weight'  these observations in drawing the line. 
+
+\
+
+However, if the *actual* slope varies by region, this also means you are under-representing certain regions, and  thus getting  a biased  estimate of the average slope.
+
+```
+
+How can we deal with this?  If we think  that the  treatment effect varies with *observable* variables, we could include 'interactions';  essentially making separate estimates of the slope for each share of the population (but potentially  allowing other control variables to have a homogenous effects, and pooled or clustered estimation of underlying variance.)
+
+<div class="marginnote">
+ ...Although we may want to consider both overfitting here and the idea that there may be *some* shared component, so the fully-interacted model may be sub-optimal. See mixed modeling (?) 
+</div>
+
+\
+
+However, this does not tell us how to recover the *average* of these slopes (approximately, the ATE).  Should we weight  each of the slopes by the share of the population that this group represents?
+
+Mechanically,  the standard way of estimating and representing these  interactions and economics has been with simple dummies (0,1) for each compared group. This yields a 'base group' (e.g., males aged 35-60) --  this obviously does not recover the average slope-- as well as the 'adjustment' coefficients.
+
+\
+
+Another way of expressing interactions, particularly helpful with multi-level interactions is called 'effect coding': each group is coded as a 'difference from 0' (e.g,. males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms  represent adjustments relative to this average. *But under which conditions is this in fact the case?*
+
+
+
+[insert here].
+
+
+[WB blog - your-go-to regression-specification is -biased-here-s-simple-way-fix-it](http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT)
+
+A key paper: http://www.jcsuarez.com/Files/Suarez_Serrato-BFE.pdf
+
+> In particular, we compare treatment effect estimates using a fixed effects estimator (FE) to the average treatment effect (ATE) by replicating eight influential papers from the American Economic Review published between 2004 and 2009.1 Using these examples, we consider a randomized experiment in Section 1 as a case study and, in Section 3, we show generally that heterogeneous treatment effects are common and that the FE and ATE are often different in statistically and economically significant degrees. In all but one paper, there is at least one statistically significant source of treatment effect heterogeneity. In five papers, this heterogeneity induces the ATE to be statistically different from the FE estimate at the 5% level (7 of 8 are statistically different at the 10% level). Five of these differences are economically significant, which we define as an absolute difference exceeding 10%. Based upon these results, we conclude that methods that consistently estimate the ATE offer more interpretable results than standard FE models
+
+
+The use of interaction ters is delicate... 
+
+<!-- 
+On the book, I saw the section on the problems of using OLS as an estimator of FE without fully interacting the variables (4.2.4, this blog post), but didn’t really understand the issue/intuition behind the problem/solution – I would be keen to chat about what it means.. and if I then get it, would more than happily contribute a lay summary for the book. Also there are three papers by Ferraro (links below) that I think you might find interesting/offer well explained insights into difficulties in how to do empirical econ/problems within it for the Book. 
+
+Plus there is this paper – https://www.nber.org/papers/w25636 which applies the changes-in-changes method of Athey and Imbens 2006 a method which (proponents claims) is able to get at heterogeneous treatment effects better than simple DiD by bin/something similar.
+--> 
+
 
 
 - Modeling heterogeneity: the limits of Quantile re regression

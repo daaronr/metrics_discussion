@@ -637,14 +637,13 @@ And a large <span class="math inline">\(\mu\)</span> may suggest looking into sa
 <p><br />
 </p>
 <p>Uniform prior for <span class="math inline">\(\mu\)</span> <span class="math inline">\(\rightarrow\)</span> conditional posterior:</p>
-<p><span class="math display">\[\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})\]</span> where the estimated common effect <span class="math inline">\(\hat{\mu}\)</span> is
-$$=</p>
+<p><span class="math display">\[\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})\]</span> where the estimated common effect <span class="math inline">\(\hat{\mu}\)</span> is</p>
 <p><span class="math display">\[\hat{\mu}=
 \frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
 {\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))}\]</span></p>
 <p>(Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)</p>
-<p>and where the estimated variance of the generalizable component <span class="math inline">\(V_\mu\)</span> is:
-<span class="math display">\[Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}\]</span></p>
+<p>and where the estimated variance of the generalizable component <span class="math inline">\(V_\mu\)</span> is:</p>
+<p><span class="math display">\[Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}\]</span></p>
 <div class="marginnote">
 <p>Confusion/correction? Is this the estimated variance or the variance of the estimate?</p>
 </div>
@@ -666,7 +665,7 @@ $$=</p>
 </div>
 <!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? -->
 </div>
-<p> The <span class="math inline">\(I^2\)</span> stat is a measure of the proportion of toatal varn attributed to cross-study varn; if <span class="math inline">\(\hat{\sigma}_j\)</span> is the same across all studies we have:
+<p> The <span class="math inline">\(I^2\)</span> stat is a measure of the proportion of total variation attributed to cross-study variation; if <span class="math inline">\(\hat{\sigma}_j\)</span> is the same across all studies we have:
 <span class="math inline">\(I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)\)</span></p>
 <!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
 
@@ -680,18 +679,16 @@ https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/
 <h2><span class="header-section-number">15.2</span> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</h2>
 <p>Some notes follow excerpting and commenting on</p>
 <p><a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/">Doing Meta-Analysis in R: A Hands-on Guide</a></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="metaanalysis.html#cb22-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;MathiasHarrer/dmetar&quot;</span>)</span>
-<span id="cb22-2"><a href="metaanalysis.html#cb22-2"></a><span class="kw">library</span>(meta)</span>
-<span id="cb22-3"><a href="metaanalysis.html#cb22-3"></a></span>
-<span id="cb22-4"><a href="metaanalysis.html#cb22-4"></a><span class="co"># I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... </span></span>
-<span id="cb22-5"><a href="metaanalysis.html#cb22-5"></a><span class="co">#install.packages(&quot;brms&quot;)</span></span>
-<span id="cb22-6"><a href="metaanalysis.html#cb22-6"></a><span class="kw">library</span>(brms)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="metaanalysis.html#cb33-1"></a><span class="co">#devtools::install_github(&quot;MathiasHarrer/dmetar&quot;)</span></span>
+<span id="cb33-2"><a href="metaanalysis.html#cb33-2"></a><span class="kw">library</span>(meta)</span>
+<span id="cb33-3"><a href="metaanalysis.html#cb33-3"></a></span>
+<span id="cb33-4"><a href="metaanalysis.html#cb33-4"></a><span class="co"># I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... </span></span>
+<span id="cb33-5"><a href="metaanalysis.html#cb33-5"></a><span class="co">#install.packages(&quot;brms&quot;)</span></span>
+<span id="cb33-6"><a href="metaanalysis.html#cb33-6"></a><span class="kw">library</span>(brms)</span></code></pre></div>
 <div id="pooling-effect-sizes" class="section level3" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Pooling effect sizes</h3>
 <p>FE model calculates weighted average:</p>
-<p><span class="math display">\[\begin{equation}
-\hat\theta_F = \frac{\sum\limits_{k=1}^K \hat\theta_k/ \hat\sigma^2_k}{\sum\limits_{k=1}^K 1/\hat\sigma^2_k}
-\end{equation}\]</span></p>
+<p><span class="math display">\[\hat\theta_F = \frac{\sum\limits_{k=1}^K \hat\theta_k \]</span> <span class="math display">\[\hat\sigma^2_k}{\sum\limits_{k=1}^K 1/\hat\sigma^2_k \]</span></p>
 <ul>
 <li>note that this process does not ‘dig in’ to the raw data, it just needs the summary statistics, neither does the “RE model” they refer to:</li>
 </ul>
