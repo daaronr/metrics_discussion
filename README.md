@@ -1,11 +1,13 @@
 # metrics_discussion
- Notes and writings on econometrics and statistics to weave into various content and serve as a discussion board.
+Notes and writings on econometrics and statistics to weave into various content and serve as a discussion board.
+ 
+ 
 
-## [Outline file](metrics_outline.md) (md for now; will swap for Rmd later)
+## [Bookdown file](introduction.html) 
 
--- will be built into a Bookdown, with links to other notes files
+A work in progress
 
-## Particular foci:
+## Some particular foci:
 
  - Efficient experimental design and treatment assignment
  - Causal inference
