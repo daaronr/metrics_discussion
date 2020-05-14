@@ -3,7 +3,7 @@ Notes and writings on econometrics and statistics to weave into various content 
  
  
 
-## [Bookdown file](introduction.html) 
+## [Bookdown file](https://daaronr.github.io/metrics_discussion/introduction.html) 
 
 A work in progress
 
