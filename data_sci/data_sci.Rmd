@@ -2,11 +2,36 @@
 
 This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.
 
+Some key resources are in a continually updated airtable [HERE](https://airtable.com/shrqNt0YAa3eLiK5S)
+
+See especially:
+
+[R for data science](r4ds.had.co.nz)
+
+[Advanced R](https://adv-r.hadley.nz/)
+
+[bookdown: Authoring Books and Technical Documents with R Markdown:](https://bookdown.org/yihui/bookdown/)
+
+[OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research'	https://osf.io/g8yjz/](OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research'	https://osf.io/g8yjz/)
+
+
+[Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+
+"Data science for business"
+
+"Code and Data for the Social Sciences" (Gentzkow/Shapiro)
+
+
 ## Data: What/why/where/how
 
 ## Organizing a project
 
 ## Dynamic documents (esp Rmd/bookdown)
+
+Some guidelines from a particular project:
+
+[Appendix: Tech for creating, editing and collaborating on this ‘Bookdown’ web book/project (and starting your own)](https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html)
 
 ### Managing references/citations
 
@@ -47,6 +72,10 @@ tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does t
 ```
 
 
+A fairly comprehensive discussion of tools for citation in R-markdown: 
+
+[A Roundup of R Tools for Handling BibTeX](https://ropensci.org/technotes/2020/05/07/rmd-citations/)
+
 ## Good coding practices
 
 ### New tools and approaches to data (esp 'tidyverse')
@@ -82,3 +111,92 @@ This includes:
 
 ### Using functions, variable lists, etc., for clean, concise, readable code
 
+### Mapping over lists to produce results
+
+<!-- ft <- list(ft_treat_no_ask, ft_treat_no_ask_19, ft_treat_no_ask_19_short, ft_treat_no_ask_19_long)
+
+ft_names <- c("All", "2019", "2019-short", "2019-long")
+
+ft <- map2(ft, ft_names, function(x, y) {
+  broom::tidy(x) %>% add_column(Experiment = y)
+}) %>%
+  bind_rows() %>%
+  kable(, caption = "S2 Donation incidence by S1 Ask/no-ask; Fisher tests", digits = 2) %>%
+  kable_styling()
+-->
+
+### Building results based on 'lists of filters' of the data set
+
+We can store a filter as a character vector and then apply it
+```{r}
+
+selection_statement <- "Species == 'setosa'"
+
+iris %>% 
+    filter(rlang::eval_tidy(rlang::parse_expr(selection_statement)))
+```
+
+Making this a function for later use:
+
+```{r}
+
+filter_parse =  function(df, x) {
+  {{df}} %>%
+   filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
+}
+
+iris %>% filter_parse(selection_statement)
+
+selection_statement <- "Species == 'setosa'"
+```
+
+
+
+We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:
+
+```{r}
+
+sel_st <- c("Species == 'setosa'", "Species == 'virginica'")
+
+map(iris, selection_statement) 
+ 
+sel_st %>% map(~ filter_parse(iris, .x))
+
+```
+
+It works nicely if you have a list of filters aligned with a list of names or other objects 'specific to each filter'
+
+
+(Code below: adapt to public data and explain)
+
+```
+ bal_sx <-   
+    map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
+      filter_parse(sa, x) %>%
+    dplyr::filter(stage == "2") %>%
+     tabyl(treat_1, treat_2, show_missing_levels = FALSE)  %>%
+    adornme_not(cap = paste(y, "; 1st and 2nd stage treatments"))
+    }
+  )
+```
+
+
+### Coding style and indenting in Stata (one approach)
+
+I indent every line except
+
+- clear, import, save, merge ('file operations') 
+  - except where these occur as part of a loop, in which case I put in an 'important comment' noting these operations
+
+- lines that call other do files 
+
+- important comments/flags/to-do's
+
+
+I only put 'small todo' elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include `#todo` to search for these later (and R has a utility to collect these in a nice way... maybe Stata does too.
+
+
+\
+
+
+Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate 'do' file and call that do file (with no indent).  That's what I do here, giving a brief description and a 'back link'.  Sometimes I put all those do files into an separate folder. 

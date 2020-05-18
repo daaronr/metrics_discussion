@@ -1,6 +1,5 @@
 %Notes on Mostly Harmless Econometrics, especially for NL Education paper
 
-
 > "The omitted variable bias formula is a mechanical link between coefficient vectors that applies to short and long regressions whether or not the longer regression is causal"
 
 > Footnote 10 gives the multivariate generalization of the omitted variable bias formula.
