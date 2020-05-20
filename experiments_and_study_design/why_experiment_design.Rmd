@@ -2,7 +2,77 @@
 
 ## Why run an experiment or study?
 
-- Sugden and Sitzia critique here, give more motivation
+I claim an experiment should:
+
+1. Have a reasonable chance of an outcome that would not have been predicted in advance. 
+
+2. The realized outcome should meaningfully inform  our understanding of the world in other words. In other words, if the outcome comes out one way it should cause us to update our beliefs about a particular hypothesis about the world in one direction (and if it comes out the other way we should update in the other direction.)
+
+> Experimenter should always ask: "What uncertainty (about real-world  preferences, decision-making etc.) is 'entangled' (ala @ESYudkowsky) with the results of this experiment?"... i.e., 'how might my beliefs change depending on the results?' 
+
+- @givingtools on twitter
+
+
+### Sitzia and Sugden on what theoretically driven experiments can and should do
+
+**"Sitzia, Stefania, and Robert Sugden. "Implementing theoretical models in the laboratory, and what this can and cannot achieve." Journal of Economic Methodology 18.4 (2011): 323-343.**
+
+This paper is a critique of how models are claimed to be "tested", through a literal implementation, in the laboratory. They argue this misinterprets the intention of a model, and use of economic modelling in general. Ultimately, such experiments (they say) don't really tell us one way or another about the truth or usefulness of the model for the real-world domain that was intended. Some key quotes..
+
+> My reductio ad absurdum on this is an experimenter who 'tests mechanism-design' by asking subjects "do you want to choose this optimal mechanism and earn $20, or this inefficient mechanism and earn $10"? -- @givingtools on twitter
+
+They single-out  two examples of well-published experiments  for criticism: "an investigation of price dispersion by John Morgan,
+
+Henrik Orzen and Martin Sefton (2006), and an investigation of information cascades by Lisa Anderson and Charles Holt (1997)"...
+
+> In each case, the experimenters create a laboratory environment that closely resembles the model itself. The only important difference between the experiment and the model is that, whereas the model world contains imaginary agents who act according to certain principles of rational choice, the laboratory contains real human beings who are free to act as they wish. The decision problems that the human subjects face are exactly the problems specified by the model. We argue that such an experiment is not, in any useful sense, a test of what the model purports to say about the target domain. Instead, it is a test of those principles of rational choice that the modeller has attributed to the model world. Those principles are not specific to that model; they are generic theoretical components that are used in many economic models across a wide range of applications.
+
+\
+
+> Surprisingly, these doubts are not expressed in terms of the applicability of MSNE [mixed strategy Nash Equilibrium] to the model’s target domain, pricing decisions by retail firms. The doubts are about whether experimental subjects will act according to MSNE when placed in a laboratory environment that reproduces the main features of the model.
+
+\
+
+> If one takes the viewpoint of the subjects themselves, there seems to be very little resemblance between the decision problems they face and those by which retail firms set their prices. The connection between the two is given by the model: the subjects’ decision problems are like those of the firms in the model, and the firms in the model are supposed to represent firms in the world.
+
+> However, MOS are no more concrete than Varian in explaining how the comparative-static properties of the model relate to the real world of retail pricing.
+
+\
+
+> The suggestion in these passages is that the clearinghouse model’s claim to be informative about the world is strengthened if its results are confirmed in the laboratory. In this sense the experiment is informative about the world. But the experiment itself is a test of the model, not of what the model says about the world.
+
+\
+
+> The procedure of random and anonymous rematching of subjects is explained as a means of eliminating ‘unintended repeated game effects’, such as tacit collusion among sellers (pp. 142–3). This argument illustrates how tightly the laboratory environment is being configured to match the model. In a test of MSNE, repeated game effects are indeed a source of contamination; and MSNE is a property of Varian’s model. But in the target domain of retail trade, the same firms interact repeatedly in the same markets, with opportunities for tacit collusion.
+
+\
+
+> Clearly, if an experiment implemented a model in its entirety, all that it could test would be the mathematical validity of the model’s results. Provided one were confident in the modeller’s mathematics, experimental testing would be pointless. Thus, when an experiment implements almost every feature of a model, all it can test in addition to mathematical validity are those features that have not been implemented.
+
+\
+
+> Thus, the experiment is a test of MSNE in a specific class of games. [emphasis added]
+
+\
+
+> MSNE is what we will call a generic component of economic models – a piece of ready-to-use theory which economists insert into models with disparate target domain
+
+- ibid
+
+Relating back to the discussion of the different conceptions of theory:
+
+> Is it informative at all to run experimental tests of theoretical principles such as MSNE and Bayesian rationality, viewed as generic components of economic models? ... A strict instrumentalist (taking a position that is often attributed to Friedman) might answer ‘No’ to the first question, on the grounds that tests should be directed only at the predictions of theories and not at their assumptions.
+
+\
+
+> Such an experimental design should not be appraised in terms of what the model purports to say about its target domain. It should be appraised in terms of what it can tell us about the relevant generic component, considered generically. When (as in the cases of MSNE and Bayesian rationality) the same theoretical component appears in many different models, an experimenter can afford to be selective in looking for a suitable design for a test
+
+
+\
+
+> Considered simply as a test of MSNE, MOS’s experiment uses extraordinarily complicated games. Many of the canonical experiments in game theory use 2×2 games. Depending on the treatment, MOS’s games are either 101×101 (for two players) or 101×101×101×101 (for four players). Payoffs to combinations of strategies are determined by a formula which, although perhaps intuitive to an economist (it replicates the demand conditions of the clearinghouse model), might not be easy for a typical subject to grasp.
+
+\
 
 ## Causal channels and identification
 
@@ -12,3 +82,32 @@
 
 ## Generalizability (and heterogeneity)
 
+
+```{block2,  type='note'}
+
+**"But all the other papers do it!"**
+
+A common response to critiques (particularly critiques of the  generalizability of experimental work) is that "all the other papers have the same problem" and that excepting this critique would require rejecting all previous work too.  In politics this has been referred to as "what-about-ism".
+
+You can guess that I'm not a fan of this.  I think one always needs to defend the paper and approach  on its own merits. Generalisability is an important issue. Each of the other published papers that also suffers from such issues has a specific response and justification for that particular case, and if it doesn't this is sorely lacking.
+
+I think we *should* be reading and publishing papers that consider, discuss, and acknowledge their own limitations, and future work can test and build on this. This should promote to robust, reproducable science. 
+
+\
+
+Just because I say "'"this is something we should be concerned with doesn't mean I'm saying "this paper has no value'. I just mean "let's discuss reasons why this may or may not threaten internal or external validity/generalisability, and how we can design the study and analysis minimise these potential problems""
+
+\
+
+In writing a paper, I find it important that *we the authors* feel the results are credible and not overstated. So I feel like the best approach is "let's write the best paper we can and consider every issue seriously, and then hopefully the good publication/peer-review outcome will follow". That's also the most motivating and least stressful way for me to work. (Rather than thinking 'how can I sneak this paper into the best journal?') 
+
+<div class="marginnote">
+In fact I consider peer review and high rating and use as the important outcome, not the publication itself. We live in a world where anyone can publish their work immediately on the WWW. The journals themselves are providing little or no service: it is the reviewers and editors offering feedback and evaluation that matters.
+</div>
+  
+```  
+
+
+\
+
+[A thought: Replace reviews (accept/reject/R&R) with ratings (0-10)?](https://twitter.com/GivingTools/status/1258704179306147841?s=20)

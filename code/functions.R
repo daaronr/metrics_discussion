@@ -25,12 +25,10 @@ hijack <- function (FUN, ...) {
 
 ### Function to filter by given string:
 
-
-df_subset <- function(df, cond){
-    q = quote(filter(df, cond))
-    eval(parse(text=sub("cond", cond, deparse(q))))
+filter_parse <- function(df, x) {
+ {{df}} %>%
+   filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
 }
-
 
 ################# Test functions
 

@@ -392,7 +392,7 @@ To actually run the model, he uses the following code:
 
 (it seems to require Xcode to run on my mac)
 
-```{r}
+```{r echo=FALSE, eval=FALSE}
 
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              data = ThirdWave,
