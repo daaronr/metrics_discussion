@@ -29,6 +29,8 @@ Dropping zeroes in a "loglinear" model is problematic
 
 Random effects estimators show a lack of robustness
 
+-(Some notes on multi-level modeling) and RE linked [in this Twitter thread](https://twitter.com/DavidPoe223/status/1239447381172727809)
+ 
 With heterogeneity the simple OLS estimator is not the 'mean effect'
 
 P_augmented may *overstate* type-1 error rate

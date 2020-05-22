@@ -549,3 +549,7 @@ More advanced: C++; can integrate it with Rcpp, or even use Exeter's ISCA cluste
 summary(cars)
 ```
 
+## Other resources and notes to integrate
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hey stats twitter: got a very sharp psych UG student wanting to dive into Bayes. Many resources are too technical (i.e., not good teaching texts for UG level, but useful references). Where should I point her?</p>&mdash; Tom Carpenter (@tcarpenter216) <a href="https://twitter.com/tcarpenter216/status/1223406990325534720?ref_src=twsrc%5Etfw">February 1, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+

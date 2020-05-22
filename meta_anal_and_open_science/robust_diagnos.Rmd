@@ -1,4 +1,4 @@
-# Robustness and diagnostics, with integrity {#robust-diag}
+# Robustness and diagnostics, with integrity; Open Science resources {#robust-diag}
 
 ## (How) can diagnostic tests make sense? Where is the burden of proof?
 
@@ -9,11 +9,25 @@ I am concerned with the interpretation of diagnostic testing, both in model sele
 - How powerful are these tests?
 
 - I.e. what is the probability of a false negative Type II error?
-- How large a bias would be compatible with reasonable confidence intervals for these tests?￼
+- How large a bias would be compatible with reasonable confidence intervals for these tests?
 
 
 ## Estimating standard errors
 
 ## Sensitivity analysis: Interactive presentation
 
+## Supplement: open science resources, tools and considerations
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;m in psychology research (just finished PhD) and I want to get into <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> to make sure I&#39;m following best practices. But this is something that wasn&#39;t explicitly taught to me. What are some good resources? Thanks! <a href="https://twitter.com/AcademicChatter?ref_src=twsrc%5Etfw">@AcademicChatter</a> <a href="https://twitter.com/OSFramework?ref_src=twsrc%5Etfw">@OSFramework</a> <a href="https://twitter.com/OpenAcademics?ref_src=twsrc%5Etfw">@OpenAcademics</a> <a href="https://twitter.com/dsquintana?ref_src=twsrc%5Etfw">@dsquintana</a></p>&mdash; Alessa Teunisse (@alessateunisse) <a href="https://twitter.com/alessateunisse/status/1252481892240125952?ref_src=twsrc%5Etfw">April 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+\
+
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A couple of months ago I made a guide on how to use Binder to make our <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> code <a href="https://twitter.com/hashtag/reproducible?src=hash&amp;ref_src=twsrc%5Etfw">#reproducible</a>. E.g., Binder will make your code runnable using the versions of R and r-packages used when you analyzed your data. <a href="https://t.co/srYNazwy0q">https://t.co/srYNazwy0q</a> <a href="https://twitter.com/hashtag/reproducibility?src=hash&amp;ref_src=twsrc%5Etfw">#reproducibility</a> <a href="https://twitter.com/hashtag/openscience?src=hash&amp;ref_src=twsrc%5Etfw">#openscience</a> <a href="https://t.co/gcTlVFpaY5">pic.twitter.com/gcTlVFpaY5</a></p>&mdash; Erik Marsja (@Emarsja) <a href="https://twitter.com/Emarsja/status/1206850126444204032?ref_src=twsrc%5Etfw">December 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## Diagnosing p-hacking (see also [meta-analysis](#metaanalysis))
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ever wonder &quot;Were those results p-hacked?&quot; Brodeur et al. propose a useful new check (&quot;speccheck&quot; on Stata. R/etc. coming soon). <a href="https://twitter.com/hashtag/ASSA2020?src=hash&amp;ref_src=twsrc%5Etfw">#ASSA2020</a> <a href="https://t.co/NCZ1jZTaO5">pic.twitter.com/NCZ1jZTaO5</a></p>&mdash; Eva Vivalt (@evavivalt) <a href="https://twitter.com/evavivalt/status/1213608282486525952?ref_src=twsrc%5Etfw">January 4, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
