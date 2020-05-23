@@ -1,5 +1,6 @@
 # 'Experimetrics' and measurement of treatment effects from RCTs {#experimetrics_te}
 
+
 ## Which error structure? Random effects?
 
 ## Randomization inference?
@@ -11,5 +12,662 @@
 ## IV in an experimental context to get at 'mediators'?
 
 ## Heterogeneity in an experimental context
+
+## Incorporate above: Notes on "The econometrics of randomised experiments" (Athey and Imbens)
+
+(with an eye towards giving experiments_
+
+
+Page 7
+
+>   Fundamentally, most concerns  with external validity are related to treatment effect heterogeneity ...
+> [ considering extrapolation between settings A and B] Units  in the two settings may differ in observed or unobserved characteristics, or treatments may differ in some aspect.
+>  to assess these issues it is helpful to have ...  randomized experiments,  in multiple settings [varying] in  the distribution of characteristics of the units,  and possibly ...  the nature of the treatments or the treatment rate,  in order to assess the credibility of generalizing to other settings
+
+- Shall we do Fisher's test based on computing the distribution of differences in means randomly reassigning the  "treatment"?
+
+- F-tests to consider multiple outcomes for any cases?
+
+- (When) shall we use covariates (esp those for interactions) in the 'deviations from mean' form?
+
+- Considering when to use controls (and interactions?)
+
+> the asymptotic variance for $\hat{\tau}}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
+> If... the covariates have very skewed distributions, the finite sample bias in the linear regression estimates may be substantial
+
+- DR: Could there not ever be a loss from doing interactions dividing up the sample too fine in doing this interactive estimation? This should depend on the true $R^2$ I think. Try to remember what is the real tradeoff?
+
+- Statistics adjusted for stratification:
+
+> One can always use the variance that ignores the stratification: this is conservative if the stratification did in fact reduce the variance
+
+<div class="marginnote">
+  DR: Is it valid to simply say "we choose the lower value of the estimated variances"? Are they advocating this? Such a procedure seems like it would have a bias.
+  </div>
+
+
+** Things to potential incorporate in NL HE lottery paper(s) **
+
+- (When) shall we use covariates (esp those for interactions) in the 'deviations from mean' form?
+
+"randomization that validates comparisons by treatment status does not validate comparisons by post-treatment variables such as the treatment received"
+
+- Consider a "partial identification or bounds analysis" to deal with noncompliance at each margin
+
+- Look up "randomization-based approach to IV" (Imbens and Rosenbaum, 2005)
+
+
+
+
+### Abstract and intro
+
+1. randomisation-based inference as opposed to sampling based inference
+
+- DR: I Disagree as the object of interest is ultimately not the experimental sample, particularly not in the lab
+
+2. efficiency gains from stratification into small strata, adjust se to capture these gains  (We have only done this to a limited extent)
+3. (Non-compliance, intention-to-treat, and IV)
+4. Estimation and inference for **heterogeneous treatment with covariates… ** subpopulations… Maintaining the ability to construct valid confidence (mht etc). "Conditional average treatment effects"
+5. (interaction between units)
+
+Why careful statistics are important even for randomised experiments
+
+"Randomisation approach": potential outcomes fixed, Assignment to treatments random
+
+Example of why the randomisation-based inference approach matters:
+
+"in the conventional sampling paradigm… Controlling for observable heterogeneity using a regression model" required for the assumptions to be justified with this approach. With randomisation approach it makes more sense to put data into strata by covariates, analyse within-group experiments and average results.
+
+Recommend small strata but not too small as variances cannot be estimated within pairs
+
+- DR: Section 10 on heterogeneity is particularly relevant for us
+
+- Other experimetrics methodology surveys mentioned (Duflo et al '06, Glennerster and T '13, Glennerster '16); present one is more theoretical
+
+### randomised experiments and validity
+
+Defined as settings "where the assignment mechanism does not depend on characteristics of the units"
+- That seems to be "pure randomisation"
+
+… Debate about the supremacy of randomised experiments
+
+Definition of internal validity (DR:: it is a bit imprecise here).
+
+\
+
+Typical argument about how external validity is no more guaranteed in observational studies then and randomised experiments "there is nothing in non-experimental methods which made some superior randomised experiments with the same population and sample size in this regard."
+
+-DR: I think this is a bit of a strawman and a weak argument here
+- GR: This is the Deaton argument, very strange
+
+They argue for experiments in multiple settings varying in the characteristics of the units and perhaps the treatments to assess the credibility of generalizing to other settings.
+
+\
+
+(?Graphical methods to deal with external validity issues?)
+
+\
+
+**Finite population versus random sample from super-population**
+
+We can interpret the uncertainty as unobserved potential outcomes rather than sampling uncertainty.
+
+- DR: I don't see why these are mutually exclusive.
+- GR: agreed
+- DR: Viewing the sample of the full population of interest may not even work I'm considering some experiments such as those using within subject treatments
+
+\
+
+The differences in these approaches matter in some settings but not others.
+Sometimes "...conventional sampling-based standard errors will be unnecessarily conservative"
+
+- DR: This could be helpful
+
+### Potential outcomes/ Rubin causal model framework (covered earlier)
+
+(This is somewhat familiar by now)
+
+\
+
+**Potential outcomes**
+
+If we do not impose limitations on interactions between units (like SUTVA) there  will be a dimensionality problem
+
+
+$$p\:\{0,1\}^N \times Y^{2N}\times X^N \rightarrow [0,1]$$
+
+- DR: I am not sure I understand this notation, particularly the $\{0,1\}$ bit
+
+\
+
+" For randomized experiments we disallow dependence on the potential outcomes, and we assume that the functional form of the assignment mechanism is known"
+(this goes further than "completely randomized")
+
+### 3.2 Classification of assignment mechanisms
+
+(Formula for probabilities of each assignment combination of control and treatment given for each one)
+
+1. Completely Randomized: $N_t$ Units drawn at random from a population of $N$ to receive the treatment, remaining $N_c$ get control.
+
+2. Stratified randomized: Partition into $G$ strata based on covariates values, "Disallowing assignments that are likely to be uninformative about the treatment effects of interest"
+
+3. Paired randomized (Extreme stratification)
+
+4. Cluster randomized: Treatments assigned randomly to entire clusters. Maybe cheaper to implement and more valid in the presence of interactions between units within but not across clusters.
+
+### The analysis of Completely randomized experiments
+
+**Exact p-values for sharp null hypotheses (Fisher etc)** 
+
+"Sharp": "Under which we can an for all the missing potential outcomes from the observed data" ... So we can infer the distribution of any statistics under the Null.
+
+E.g., $H0$, The treatment has no effect $Y_i(0)=Y_i(1)\forall i$, vs $Ha$, At least one unit i has $Y_i(0)\neq Y_i(1)$
+
+\
+
+Difference in means by treatment status: Calculate the probability over the randomization distribution of a value with as large an absolute value as the one observed given the actual assignments.
+
+This is done by reassigning what we call the "treatments" to all possible combinations (keeping the number of treated units constant) and calculating the "placebo" treatment effect. Calculate the fraction of assignment vectors with statistic at least as large (in absolute value) as the observed one.
+
+- DR: What is the statistic called and is there preprogrammed code? Is it the Fisher's exact test?
+
+- Can do for means or means of the ranks by treatment status (rank sum?) or any stat.
+    - Latter is less sensitive to outliers and thick-tailed distributions
+
+\
+
+With multiple outcomes, multiple comparisons issues
+
+- Use statistics it takes into account all the outcomes (e.g., F-stat, calculate exact P value using the 'Fisher randomization distribution' as in Young, '16)
+
+- Or use adjustments to P values e.g., Bonferroni or tighter bounds (Which are still more conservative than the Fisher thing); Romano ea survey (2010)
+
+- Rosenbaum '92 on estimating treatment effects based on rank statistics (DR: I don't get this at all)
+
+### Randomization inference for Average treatment effects
+
+Neyman wanted to estimate the ATE for the sample at hand
+
+$$\tau=\frac{1}{N}\Sum_{i=1..N}{(Y_i(1)-Y_i(0)i)}=\bar{Y}(1)-\bar{Y}(0)$$
+
+- DR: Again, this is really not what we care about particularly not in a small-scale experiment.
+
+    \
+
+Proposed the estimator "Difference in average outcomes by treatment status" (DR: Same as in last section)
+
+\
+
+Defining $D_i$, a term representing "assignment minus the average assignment"
+
+Allows a restatement of the estimator which makes it clear that this is unbiased for the average treatment effect $\tau$
+
+$$\hat{tau}=\tau+\frac{1}{N}\Sum_{i=1..N}{(D_i(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)}$$
+
+
+
+Sampling variance of $\hat{\tau}$ over the randomization distribution decomposed as
+
+$$V{\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}$$
+
+Where $S_c^2$ and $S_t^2$ Are the variances of the control and treated outcomes,
+and $S_{tc}^2$ is the variance of the unit level treatment effect (DR: This must be related to the covariance)
+
+We can estimate rhe first two terms but not the latter term as we have no observations with both a control and a treatment.
+
+\
+
+In practice researchers ignore the third term, which leads to an upward bias for the *sample* treatment effect but an unbiased estimator of the population ATE
+
+- DR: Any intuition for this?
+
+\
+
+We still need to make large sample approximations to construct confidence intervals for the ATE.
+
+- DR: Does this yield any practical strategy for us to use?
+
+### Quantile treatment effect (Infinite population context)
+
+Usefulness:
+
+1. Uncover "Treatment effects in the tails"
+
+1. Results robust to thick tails
+
+S-th quantile treatment effect defined as the difference in quantiles between the $Y_i(1)$ and$Y_i(0)$ distributions:
+
+$$\tau_s=q_{Y(1)}(s)-q_{Y(0)}(s)$$ ...
+
+- this is distinct from the "quantile of the differences": $q_{Y(1)-Y(0)}(s)$,  which is in general not identified
+    - DR:  the letter is truly more interesting; we care about the distribution of the *impact of the treatment*  and not so much about the impact of the treatment on the distribution of  outcomes.
+
+-  the two are equal if  there is "perfect rank correlation between the two potential outcomes" (DR: I think this simply means that the unit ranked n'th  if not treated would also be the unit ranked n'th if treated ...  no crossing over).
+
+\
+
+Making lemonade: they argue here that the (identifiable) difference in quantiles would be more interesting  to a policymaker considering exposing all units to the treatment ... (DR:  presumably because she should not care *who*  get the particular outcome but only about the distribution of outcomes, a  common  axiom for social
+ welfare functions).
+
+ \
+
+Estimates and tests:   use the difference in quantiles as a statistic in  and exact P value computation ...  results for such exact tests are quite different than those based on estimated effects and standard errors because "Quantile estimates are far from normally distributed."
+
+### Covariates (if not stratified) in completely randomized experiments
+
+(They strongly recommend stratifying instead of ex post controls.)
+
+Why use controls  if a simple difference in means is unbiased for the ATE?
+
+1.  "incorporating covariates may make analyses more informative" (greater  precision)
+
+-  Can incorporate covariates in exact P value analysis, or estimate average treatment effects  within subpopulations and average these up appropriately
+
+- DR: How to do these things in practice?
+
+2.  correcting for compromised randomization ...  which may occur because of missing data and selective attrition
+
+\
+They give an example with the data from Lalonde where they estimate the average treatment effect for two groups those with and without prior earnings. They then add these up weighted by the estimated probability of being in each group.
+
+- DR:  I understand this correctly, as they do not define all variables
+    - also, how do they compute the standard error of the combined estimator here?!
+    - this seems more like an interaction than a standard control here, which would allow a different intercept (control outcome) but not a different treatment effect.
+
+
+? se of
+$$\hat{p}(\bar{Y}_t|Y^{t-1}=0-\bar{Y}_c|Y^{t-1}=0)+(1-\hat{p})(\bar{Y}_t|Y^{t-1}=1-\bar{Y}_c|Y^{t-1}=1)$$
+
+- DR: I think there is a simple formula for difference in means that could be applied to this
+
+    \
+
+### Randomization inference and regression estimators
+
+They urge caution in using reg. "Since randomization does not justify the models, almost anything can happen" (Freedman 08)
+
+But using only "indicator variables based on partitioning the covariate space" preserves many of the finite simple properties of simple comparisons of means.
+\
+
+**Regression estimators for average treatment effects**
+
+With a single variable, the least-squares estimate of $\tau$ is identical to the simple difference in means:
+
+
+$$\hat{tau}_{ols} = \bar{Y^o}_t - \bar{Y}^o_c$$
+
+The intercept is the control value of course: $\hat{\alpha}_{ols}=\bar{Y}^o-\hat{\tau_{ols}}\bar{W}=\bar{Y^0}_c$.
+
+*Conceptually important:*
+
+> the unbiasedness claim in the Neyman analysis is conceptually different from the one in conventional regression analysis: in the first case the repeated sampling paradigm keeps the potential outcomes fixed and varies the assignments, whereas in the latter the realized outcomes and assignments are fixed but different units with different residuals, but the same treatment status, are sampled.
+
+\
+
+Redefining the residual in randomisation-based inference terms
+
+> Now the error term has a clear meaning as the difference between potential outcomes and their population expectation
+[DR: I think they mean the expectation conditional on treatment]
+
+> The randomization  implies that the average residuals for treated and control units are zero ...
+
+DR: They mean it implies mean independence (?) but not full independence, heteroskedasticity still likely
+
+
+> Because the general robust variance estimator has no natural degrees-of-freedom adjustment [DR: ??], these standard [Randomisation-based?] robust variance estimators differs slightly from the Neyman unbiased variance estimator $\hat{V}_{neyman}$
+
+\
+
+
+$\hat{V}_{robust} =\frac{s^2_c}{N_c}\frac{N_c-1}{N_c}+\frac{s^2_t}{N_t}\frac{N_t-1}{N_t}$
+
+Compared to the previously stated estimator for the TE variance for the sample (which we argued overstates the true sample TE variance)
+
+\
+
+$\hat{V}_{neyman} =\frac{s^2_c}{N_c}+\frac{s^2_t}{N_t}$
+
+\
+
+> The Eicker-Huber-White variance estimator is not unbiased, and in settings where one of the treatment arms is rare, the difference may matter
+
+
+They give an example where it does not matter.
+
+- DR: This point seems ignorable for most of our designs, as we intentionally avoid such rare arms (but in NL lottery maybe)
+
+
+### Regression Estimators with Additional Covariates [DR: seems important]
+
+
+For now they continue to focus on 'pure randomisation', not stratified nor merely exogenous conditional on observables
+
+\
+
+1. Can include these additively:
+
+$$Y^{obs}_i=\alpha+\tau W_i + \beta'\dot{X}_i +  \epsilon_i$$
+
+2. Can allow a 'full set of interactions'
+
+\
+
+$Y^{obs}_i=\alpha+\tau W_i + \beta'\dot{X}_i + \gamma'\dot{X}_i W_i + \epsilon_i$
+
+\
+
+- DR: They do not do much discussion here of whether to do additive or full interactions; maybe it comes later (causal trees etc)
+
+\
+
+> In general the least squares estimates based on these regression functions are not unbiased for the average treatment effects over the randomization distribution given the finite population.
+
+- DR: Why not?  Intuition? Which regression function of the ones above is referred to here?
+
+- DR: The discussion below suggests it will *still* be consistent (asymptotically unbiased)
+
+\
+
+> There is one exception. If the covariates are all indicators and they partition the population, and we estimate the model with a full set of interactions, Equation (5.4), then the least squares estimate of $\tau$ is unbiased for the average treatment effect
+
+\
+
+If $\bar{X}$ is the average value of $X_i$ in the sample, then \hat{\tau}=\hat{\tau}_1\bar{X}+\hat{\tau}_0(1−\bar{X})$, and $\hat{\gamma}=\hat{\tau}_1-\hat{\tau}_0$
+
+\
+
+With large sample approximations we can 'say something about the case with multivalued covariates' ... "$\tau$ [DR: estimated how?] is asymptotically unbiased for the average treatment effect ..."
+
+> the asymptotic variance for $\hat{\tau}}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
+
+- DR: This motivates the use of covariates even in a randomized design, and even if we don't take the 'model of the covariates' seriously.
+    - "results do not rely on the regression model being true in the sense that the conditional expectation of Y obs i is actually linear in the covariates and the treatment indicator in the population"
+- DR: Is this for the linear controls model or for the full interactions model?
+
+
+However, ...
+
+> If... the covariates have very skewed distributions, the finite sample bias in the linear regression estimates may be substantial
+
+- DR: Intuition?
+
+The presence of non-zero values for γ imply treatment effect heterogeneity.
+
+
+*Best argument for using only binary/categorical interactions: interpretation*
+
+"Only if the covariates partition the population do these $\gamma$ have a clear interpretation as differences in average treatment effects."
+
+\
+
+- DR: Could there not ever be a loss from including interactions and dividing up the sample too fine in doing this interactive estimation? This should depend on the true $R^2$ I think. Try to remember what is the real tradeoff.
+
+**  6 The Analysis of Stratified and paired randomized experiments ** 
+
+### Stratified randomized experiments: analysis
+
+*Case for stratification*
+
+> capture the gains from ex post regression adjustment without the potential costs of linear regression, and the potential costs of linear regression, and therefore stratification is generally preferable over regression adjustment
+
+> Within this stratum we can estimate the average effect as the difference in average outcomes for treated and control units: $\tauˆg = \bar{Y}^{obs}_{t,g} − \bar{Y}^{obs}_{c,g}$,
+
+> and we can estimate the within-stratum variance, using the Neyman results, as
+
+$\hat{V}(\hat{\tau}) =\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}$
+
+> where the g-subscript indexes the stratum [They wrote 'j' but I think its a typo]
+
+Next just average weighted by stratum shares:
+
+$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}$
+
+with estimated variance $\sum_{g=1..G}$\hat{V}(\hat{tau}_g)(\frac{N_g}{N})^2$
+
+- DR: Presumably they mean the above mentioned Neyman variance
+    - Also note the squared term in the variance estimation, this may be how they computed the variance in the above empirical example
+
+"Special case":  proportion treat units the same in all strata $\rightarrow$ ATE estimator equals difference in means by treatment status:
+$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c$
+... same as estimator for completely randomized experiment
+
+But the estimated variance for the latter will be overly conservative.
+
+- DR: But I thought stratifying sometime ends up yielding a larger *estimated* variance?
+
+##Paired randomized experiments: analysis
+
+(Skipping note-taking for now)
+
+
+### 7 The Design of randomised experiments and the benefits of stratification
+
+> ... Our recommendation is that one should always stratify as much as possible, up to the point that each stratum contains at least two treated and two control units
+
+### 7.1 Power calculations
+
+- DR: This section is fairly basic and trivial, largely what we already know
+
+> we largely focus on the formulation where the output is the minimum sample size required to find treatment effects of a pre-specified size with a pre-specified probability
+
+- DR: My usual formulation
+
+- DR: Why are they doing these calculations based on the t-statistic, when they recommend using other measures?
+
+- DR: They claim equal sample sizes is "typically close to optimal" in cases without homoskedasticity. I think this is pure speculation.
+
+### Stratified randomized experiments: Benefits
+
+> Stratifying does not remove any bias, it simply leads more precise inferences than complete randomization
+
+> confusion in the literature concerning the benefits of stratification in small samples if this correlation is weak [between the stratifying variables and the outcome]
+
+> in fact there is no tradeoff. We present formal results that show that in terms of expected-squared-error, stratification (with the same treatment probabilities in each stratum) cannot be worse than complete randomization.
+
+> if one stratifies on a covariate that is independent of all other variables, then stratification is obviously equivalent to complete randomization.
+
+> Ex ante, committing to stratification can only improve precision, not lower it
+
+*Qualifications to this:*
+
+1.
+
+> Ex-post, given the joint distribution of the covariates in the sample, a particular stratification may be inferior to complete randomization.
+
+2.
+
+> ... Second, the result requires that the sample can be viewed as a (stratified) random sample from an infinitely large population... guarantees that outcomes within strata cannot be negatively correlated.
+
+(Note)
+
+> The lack of any finite sample cost ... contrasts with ... regression adjustment. [which] may increase the finite sample variance, and in fact it will strictly increase the variance for any sample size, if the covariates have no predictive power at all.
+
+3.
+>  Although there is no cost to stratification in terms of the variance, there is a cost in terms of estimation of the variance.
+
+
+*Still*
+
+> One can always use the variance that ignores the stratification: this is conservative if the stratification did in fact reduce the variance
+
+- DR: Is it valid to simply say "we choose the lower value of the estimated variances"? Are they advocating this? Such a procedure seems like it would have a bias.
+
+
+
+
+> exact variance for a completely randomized experiment can be written as ... variance for the corresponding stratified randomized experiment is...  the difference in the two variances is $V_C − V_S =... \geq 0$
+
+- DR: I am curious how these terms are derived and compared
+
+> if the strata we draw from are small, say litters of puppies, it may well be that the within-stratum correlation is negative, but that is not possible if all the strata are large: in that case the correlation has to be non-negative
+
+- DR: unless sutva violated perhaps (?)
+
+
+> consider two estimators for the variance [both unbiased]
+
+$\hat{V}_C=\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}$
+> the natural estimator for the variance under the completely randomized experiment is: $\hat{V}_c=\frac{s^2_{t}}{N_{t}} + \frac{s^2_{c,g}}{N_{c,g}}$
+
+> or a stratified randomized experiment the natural variance estimator, taking into account the stratification, is:
+$\hat{V}_S=\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{fc}}{N_{fc}}\frac{s^2_{ft}}{N_{ft}}\Big)+\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{mc}}{N_{mc}}\frac{s^2_{mt}}{N_{mt}}\Big)$
+
+
+> Hence, $E\hat{V}_S\leq\hat{V}_C$.
+
+- DR: Because we know both are unbiased and we know the true variance of $\hat{V}_C$ is larger.
+
+Nevertheless, the reverse may hold in a particular sample
+
+> where the stratification is not related to the potential outcomes ... the two variances are identical in expectation
+
+but the $var\Big(hat{V}_S\Big) < var\Big(hat{V}_C\Big)$
+
+- DR: This seems contradictory at first but I think it's correct. The expectation of the estimated variance can be smaller or identical, while the *variance of the estimated variance* can still be larger.
+
+### Re-randomization
+
+Basically, they argue that if the first pre-implementation experiment comes out very unbalanced, you can randomize again -- this will be an indirect method of stratifying.
+
+P-values could/should be adjusted to take into account that you are basically stratifying imprecisely.
+
+### Analysis of Clustered Randomised Experiments
+
+> our main recommendation is to include analyses that are based on the cluster as the unit of analysis. Although more sophisticated analyses may be more informative than simple analyses using the clusters as units, it is rare that these differences in precision are substantial, and a cluster-based analysis has the virtue of great transparency
+
+*DR: skipping most of this section for now*
+
+### Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)
+
+
+> randomization that validates comparisons by treatment status does not validate comparisons by post-treatment variables such as the treatment received.
+
+- DR: good quote for Nlmed
+
+Responses to noncompliance:
+
+1. ITT
+2. LATE
+3. Partial identification or bounds analysis
+
+- Latter: "to obtain the range of values for the average causal effect of the receipt of treatment for the full population."
+
+> Another approach, not further discussed here, is the randomization-based approach to instrumental variables developed in Imbens and Rosenbaum (2005).
+[check into that]
+
+They recommend against:
+> The first of these is an as-treated analysis, where units are compared by the treatment received; this relies on an unconfoundedness or selectionon-observables assumption. A second type of analysis is a per protocol analysis, where units are dropped who do not receive the treatment they were assigned to. We need some additional notation in this section.
+
+- DR: Skipping full note-taking on this for now but *COME BACK TO IT* as it is very relevant to NL Med; the bounds analysis could be particularly interesting
+
+
+### Heterogenous Treatment Effects and Pretreatment Variables
+
+- Crump et al setup (?)
+
+Multiple splits and tests may lead to overstated statistical significance for differences in TE's.
+
+- Bonferroni "overly conservative in an environment where many covariates are correlated with one another"
+    - List, Shaikh, and Xu (2016) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct
+
+** 10.3 Estimating Treatment Effect Heterogeneity ** 
+
+- Parametric estimators, 'all interactions' (presumably with a correction as noted above)
+- Nonparametric estimator of $\tau(x)$
+
+>  The approach of List, Shaikh, and Xu (2016) works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.
+
+### 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects
+
+- Partition sample by "region of covariate space"
+- Determine which partition produces subgroups that differ the most in terms of treatment effects.
+- The method avoids introducing biases in the estimated average treatment effects and allows for valid confidence intervals using “sample splitting,” or “honest” estimation
+- Output of the method ... is a set of subgroups, selected to optimize for treatment effect heterogeneity (to minimize expected mean-squared error of treatment effects), together with treatment effect estimates and standard errors for each subgroup.
+
+\
+
+If instead...
+> we estimate the average treatment effect on the two subsamples using the same sample, the fact that this particular split led to a high value of the criterion would often imply that the average treatment effect estimate is biased.
+
+\
+
+But here ,,,
+> The treatment effect estimates are unbiased on the two subsamples, and the corresponding confidence intervals are valid, even in settings with a large number of pretreatment variables or covariates.
+
+\
+
+Because unit level TE is not observed, it is difficult to use standard protocols
+\
+
+... suggest transforming outcome from Y_i^{obs} to $Y_i^\ast=Y_i^{obs}\frac{W_i−p}{p(1−p)}$
+
+... "so that standard methods for recursive partitioning based on prediction apply"
+
+Which implies $E[Y_i^\ast|X_i=x]=\tau(x)=E[Y_i(1)−Y_i(0)|X_i = x]$
+
+
+- DR: Are these p's conditional on the x's? Probably it doesn't matter here as they are assuming pure randomisation.
+
+AI criterion
+
+> focuses directly on the expected squared error of the treatment effect estimator ... which turns out to depend both on the t-statistic and on the fit measures.
+> ... further modified to anticipate ... that the treatment effects will be re-estimated on an independent sample after the subgroups are selected
+
+- This penalises too small groups and too much variance,
+- (in general) rewards explain outcomes but not treatment effect heterogeneity...enables a lower-variance estimate of the treatment effect.
+
+Wager and W argue for inflating SE's rather than partitioning
+- DR: I see an advantage there, as the AI approach throws away data
+
+### 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity
+
+- Many allow descriptive evidence and prediction, but few methods available that allow for confidence intervals
+
+- K-nearest neighbors, hurdle methods
+    - Do not prioritise 'more important' covariates
+
+
+> ... can work well and provide satisfactory coverage of confidence intervals with one or two covariates, but performance deteriorates quickly after that.
+> The output of the nonparametric estimator is a treatment effect for an arbitrary x. The estimates generally must be further summarized or visualized since the model produces a distinct prediction for each x.
+
+> A key problem with kernels and nearest neighbor matching is that all covariates are treated symmetrically; if one unit is close to another in 20 dimensions, the units are probably not particularly similar in any given dimension. We would ideally like to prioritize dimensions that are most important for heterogeneous treatment effects, as is done in many machine learning methods, including the highly successful random forest algorithm.
+
+But these are often "bias-dominated asymptotically" ... except the ones proposed by Wager and Athey  (2015) :)
+
+>  asymptotically normal and centered on the true value of the treatment effect,... consistent estimator for the asymptotic variance.
+
+> Averages over the many "trees" of the form developed in Athey and Imbens (2016)
+
+> ... different subsamples are used for each tree [plus some randomness]
+> Each tree is “honest,” in that one subsample is used to determine a partition and [another] to estimate treatment effects within the leaves.
+> Unlike the case of a single tree, no data is “wasted” because each observation is used to determine the partition in some trees and used to estimate treatment effects in other trees, and subsampling is already an inherent part of the method.
+
+What does this mean?:
+
+> can obtain nominal coverage with more covariates than K-Nearest Neighbour matching or kernel methods,
+
+(but still "eventually becomes bias-dominated when the number of covariates grows" ... but "much more robust to irrelevant covariates than kernels or nearest neighbor matching.")
+
+- Also, approaches fitting separately for treatment and control
+
+- Also, Bayesian perspectives on this: Green and Kern (2011), Hill (2012), others ... but unknown asymptotic properties (DR: do we care?)
+
+### 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression
+
+- Lasso-like (Imai and Ratkovic (2013), etc.)
+
+- With few important covariates (a 'sparse' model), can derive valid CI's w/o sample-splitting
+
+- Some proposed modeling heterogeneity separately for treatment and control;...   can be inefficient if the covariates that affect the level of outcomes are distinct from those that affect treatment effect heterogeneity.
+    - alternative ... incorporate interactions ... as covariates, and then allow LASSO to select which covariates are important.
+
+### 10.3.4 Comparison of Methods
+
+- Lasso: more sparsity restrictions, better handle linear or polynomial relationships between covariates and outcomes;
+    - outputs a regression; but CI's justified only under strict conditions
+- Random forest methods ... are more localized, ... capture complex, multi-dimensional interactions among covariates, or highly nonlinear interactions.
+    - Less sensitive to sparsity, CI's do not 'deteriorate' as covariates grow (but MSE of predictions suffer)
+    - Inference more justifiable by random assignment (Lasso requires stronger assumptions)
+
 
 

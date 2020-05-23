@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 (Experimental) Study design: Background and quantitative issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-22" />
+<meta name="date" content="2020-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="why-experiment-design.html"/>
-<link rel="next" href="bayesian-approaches.html"/>
+<link rel="next" href="power.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -294,7 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13.2" data-path="introduction.html"><a href="introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>1.13.2</b> Power calculations without real data</a></li>
 <li class="chapter" data-level="1.13.3" data-path="introduction.html"><a href="introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>1.13.3</b> Power calculations using prior data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te"><i class="fa fa-check"></i><b>1.14</b> [‘Experimetrics’ and measurement of treatment effects from RCTs] (#experimetrics_te)</a>
+<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te"><i class="fa fa-check"></i><b>1.14</b> <span>‘Experimetrics’ and measurement of treatment effects from RCTs</span> (#experimetrics_te)</a>
 <ul>
 <li class="chapter" data-level="1.14.1" data-path="introduction.html"><a href="introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>1.14.1</b> Which error structure? Random effects?</a></li>
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
@@ -334,6 +334,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown-1"><i class="fa fa-check"></i><b>3.3</b> Dynamic documents (esp Rmd/bookdown)</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>3.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>3.3.2</b> An example of dynamic code</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>3.4</b> Project management tools, esp. Git/Github</a></li>
 <li class="chapter" data-level="3.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices-1"><i class="fa fa-check"></i><b>3.5</b> Good coding practices</a>
@@ -449,43 +450,106 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>12.1</b> Pre-registration and Pre-analysis plans</a>
 <ul>
 <li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>12.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
-<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>12.1.2</b> Pooling effect sizes</a></li>
-<li class="chapter" data-level="12.1.3" data-path="quant-design-power.html"><a href="quant-design-power.html#doing-bayes-meta"><i class="fa fa-check"></i><b>12.1.3</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>12.2</b> Other notes, links, and commentary</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>13</b> Bayesian approaches</a>
+<li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>13.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.1</b> How many treatment arms can you ‘afford’?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>13.1.1</b> Meta-analysis of previous evidence</a></li>
-<li class="chapter" data-level="13.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>13.1.2</b> Inference, particularly about ‘null effects’</a></li>
-<li class="chapter" data-level="13.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>13.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
-<li class="chapter" data-level="13.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>13.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
-<li class="chapter" data-level="13.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>13.1.5</b> Experimental design</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>13.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<li class="chapter" data-level="13.1" data-path="power.html"><a href="power.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point-1"><i class="fa fa-check"></i><b>13.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>13.2.1</b> The Golem of Prague (Chapter 1)</a></li>
-<li class="chapter" data-level="13.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>13.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
-<li class="chapter" data-level="13.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>13.2.3</b> Using prior information</a></li>
-<li class="chapter" data-level="13.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>13.2.4</b> From counts to probability.</a></li>
+<li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#the-harm-to-science-from-running-underpowered-studies-1"><i class="fa fa-check"></i><b>13.1.1</b> The ‘harm to science’ from running underpowered studies</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>13.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#power-calculations-without-real-data-1"><i class="fa fa-check"></i><b>13.2</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="13.3" data-path="power.html"><a href="power.html#power-calculations-using-prior-data-1"><i class="fa fa-check"></i><b>13.3</b> Power calculations using prior data</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>13.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
-<li class="chapter" data-level="13.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>13.3.2</b> Theory</a></li>
-<li class="chapter" data-level="13.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>13.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
-<li class="chapter" data-level="13.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>13.3.4</b> On choosing priors</a></li>
-<li class="chapter" data-level="13.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>13.3.5</b> Implementation</a></li>
-<li class="chapter" data-level="13.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>13.3.6</b> Generate predictions from a WinBUGS model</a></li>
-<li class="chapter" data-level="13.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>13.3.7</b> Missing data case</a></li>
-<li class="chapter" data-level="13.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>13.3.8</b> Stata</a></li>
-<li class="chapter" data-level="13.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>13.3.9</b> R mcmc pac</a></li>
+<li class="chapter" data-level="14.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects-1"><i class="fa fa-check"></i><b>14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="14.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-1"><i class="fa fa-check"></i><b>14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="14.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses-1"><i class="fa fa-check"></i><b>14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
+<li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>13.4</b> Other resources and notes to integrate</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>14</b> List of references</a></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Making inferences from previous work; Meta-analysis, combining studies</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analsis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analsis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.3</b> Other notes, links, and commentary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>16.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>16.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="16.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>16.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="16.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>16.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="16.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>16.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="16.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>16.1.5</b> Experimental design</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>16.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>16.2.1</b> The Golem of Prague (Chapter 1)</a></li>
+<li class="chapter" data-level="16.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>16.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
+<li class="chapter" data-level="16.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>16.2.3</b> Using prior information</a></li>
+<li class="chapter" data-level="16.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>16.2.4</b> From counts to probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>16.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>16.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="16.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>16.3.2</b> Theory</a></li>
+<li class="chapter" data-level="16.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>16.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="16.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>16.3.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="16.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>16.3.5</b> Implementation</a></li>
+<li class="chapter" data-level="16.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>16.3.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="16.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>16.3.7</b> Missing data case</a></li>
+<li class="chapter" data-level="16.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>16.3.8</b> Stata</a></li>
+<li class="chapter" data-level="16.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>16.3.9</b> R mcmc pac</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>16.4</b> Other resources and notes to integrate</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>17</b> List of references</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -562,454 +626,32 @@ My thinking was that ‘we can simply make downward adjustments to the estimates
 <blockquote>
 <p>We might also consider offering some reward careerwise to experiments that fail – in terms of being deeply inconclusive– for some arbitrary or random reason even though they were well-planned and executed. But I think it is hard to get the incentives right for the latter.</p>
 </blockquote>
-<pre><code>
-### The hazards of specification-searching
-
-## Sequential and adaptive designs
-
-Needs to adjust significance tests for augmenting data/sequential analysis/peeking  Statistics/econometrics new-statistics      sagarin_2014            http://www.paugmented.com/  resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
-
-Yet ...
-
-
-$P_{augmented}$ may *overstate* type-1 error rate   Statistics/econometrics response to referees, new-statistics    &quot;
-
-A process involving stopping &quot;whenever the nominal $p &lt; 0.05$&quot; and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5\%. Even if the subsequent data suggested a &quot;one in a million chance of arising under the null&quot; the overall process yields a 5\%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the &quot;likelihood of the null hypothesis&quot; given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.
-
-Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmented}$ should \textit{overstate} the type-1 error of the process if there is a positive probability that after an initial experiment attains p$&lt;0.05$, more data is collected.  A headline $p&lt;0.05$ does \textit{not} imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded $p&gt;0.05$, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though $p&lt;0.05$. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine&#39;s experiment).  Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p&lt;0.05, more data is collected, implying that $p_{augmented}$ as calculated above overstates the type I error rate that would arise  from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below $p=0.05$, in order to attain a type-1 error rate of 5% or less in our published corpus.&quot;
-
-## Efficient assignment of treatments
-
-(Links back to power analyses)
-
-
-### How many treatment arms can you &#39;afford&#39;?
-
-
-&lt;!--
+</div>
+<div id="the-hazards-of-specification-searching-1" class="section level3" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> The hazards of specification-searching</h3>
+</div>
+</div>
+<div id="sequential-and-adaptive-designs-1" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Sequential and adaptive designs</h2>
+<p>Needs to adjust significance tests for augmenting data/sequential analysis/peeking Statistics/econometrics new-statistics sagarin_2014 <a href="http://www.paugmented.com/" class="uri">http://www.paugmented.com/</a> resubmit_letterJpube.tex, <a href="http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/" class="uri">http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/</a></p>
+<p>Yet …</p>
+<p><span class="math inline">\(P_{augmented}\)</span> may <em>overstate</em> type-1 error rate Statistics/econometrics response to referees, new-statistics "</p>
+<p>A process involving stopping “whenever the nominal <span class="math inline">\(p &lt; 0.05\)</span>” and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5%. Even if the subsequent data suggested a “one in a million chance of arising under the null” the overall process yields a 5%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the “likelihood of the null hypothesis” given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.</p>
+<p>Considering the calculations in , it is clear that <span class="math inline">\(p_{augmented}\)</span> should  the type-1 error of the process if there is a positive probability that after an initial experiment attains p<span class="math inline">\(&lt;0.05\)</span>, more data is collected. A headline <span class="math inline">\(p&lt;0.05\)</span> does  imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded <span class="math inline">\(p&gt;0.05\)</span>, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though <span class="math inline">\(p&lt;0.05\)</span>. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine’s experiment). Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p&lt;0.05, more data is collected, implying that <span class="math inline">\(p_{augmented}\)</span> as calculated above overstates the type I error rate that would arise from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below <span class="math inline">\(p=0.05\)</span>, in order to attain a type-1 error rate of 5% or less in our published corpus."</p>
+</div>
+<div id="efficient-assignment-of-treatments-1" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Efficient assignment of treatments</h2>
+<p>(Links back to power analyses)</p>
+<div id="how-many-treatment-arms-can-you-afford" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> How many treatment arms can you ‘afford’?</h3>
+<!--
 A guiding principle might be:
-&quot;Will we have statistical power to identify a small true effect from this pairing? If not, we drop the pairing.&quot;
+"Will we have statistical power to identify a small true effect from this pairing? If not, we drop the pairing."
 
 A caveat to this is that we may be able to pool some of the pairings to answer certain questions, but then it is only worth having the distinct variations that are being pooled if that doing so gives us power to answer some other question.
---&gt;
+-->
 
-&lt;!--chapter:end:experiments_and_study_design/quant_design_power.Rmd--&gt;
-
-# (Experimental) Study design: (Ex-ante) Power calculations {#power}
-
-## What sort of &#39;power calculations&#39; make sense, and what is the point?
-
-### The &#39;harm to science&#39; from running underpowered studies
-
-&gt; &quot;One worries about underpowered tests. Your result (may have)  relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
-
-&gt; Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects.&quot;    verkaik2016, metzger2015
-
-
-\
-
-On magnitude error due to underpowered studies:
-
-https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics
-
-
-
-
-## Power calculations without real data
-
-## Power calculations using prior data
-
-Adapt example in &#39;scopingwork.Rmd&#39; to this
-
-
-
-&lt;!--chapter:end:experiments_and_study_design/power_calc.Rmd--&gt;
-
-# &#39;Experimetrics&#39; and measurement of treatment effects from RCTs {#experimetrics_te}
-
-## Which error structure? Random effects?
-
-## Randomization inference?
-
-## Parametric and nonparametric tests of simple hypotheses
-
-## Adjustments for exogenous (but non-random) treatment assignment
-
-## IV in an experimental context to get at &#39;mediators&#39;?
-
-## Heterogeneity in an experimental context
-
-
-
-&lt;!--chapter:end:experiments_and_study_design/experimetrics_te.Rmd--&gt;
-
-# Making inferences from previous work; Meta-analysis, combining studies {#metaanalysis}
-
-My opinion on why this is so important (unfold):
-
-\BeginKnitrBlock{fold}&lt;div class=&quot;fold&quot;&gt;
-it is lame how often I see &#39;new experiments&#39; and &#39;new studies&#39; that tread most of the ground as old studies, spend lots of money, get a publication and ... ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called &#39;ExpArchive&#39;, later working with projects such as GESIS&#39; X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as  the innovationsinfundraising.org project, which is now collaborating with the Lily Institute&#39;s &quot;revolutionizing philanthropy research&quot; (RPR) project.
-&lt;/div&gt;\EndKnitrBlock{fold}
-
-
-## Notes: Christensen et al 2019, ch 5, &#39;Using all evidence, registration and meta-analysis
-
-&gt; how the research community can systematically collect, organize, and analyze a body of research work
-
-- Limitations to the &#39;narrative literature review&#39;: subjectivity, too much info to narrate
-
-### The origins [and importance] of study [pre-]registration
-
-... Make details of planned and ongoing studies available to the community .... including those not (yet) published
-
-- Required by FDA in 1997, many players in medical community followe d soon after
-
-- Turner ea (08) and others documented massive publication bias and misrepresentation
-
-... but registration far from fully enforced (Mathieu ea &#39;09) found 46% clealy registered, and discrepancies between registered and published outcomes
-!
-
-### Social science study registries
-
-Jameel 2009, AEA 2013, 2100 registrations to date
-RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)
-
-### Meta-analsis
-
-Key references: Borenstein ea &#39;09, Cooper, Hedges, and V &#39;09
-
-#### Selecting studies
-
-&quot;some scholarly discretion regarding which measures are &#39;close enough&#39; to be included... contemperanous meta-analyses on the same topic finding opposit e conclusions
-
-&#39;asses the robustness... to diffrent inclusion conditions&#39;... see Doucouliagos ea &#39;17 on inclusion options
-
-
-&lt;div class=&quot;marginnote&quot;&gt;
-
-
-My opinion: this is the key barrier to meta-analysis in social science! How do we weight studies using different methodologies and in different contexts? The Bayesian Random Effects approach seems to offer some help here (this not to be confused with the random effects panel-data models discussed in standard Econometrics texts).
-
-&lt;/div&gt;
-
-#### Assembling estimates
-
-- Which statistic to collect?
-
-\
-
-
-Studies $j \in J, j= 1..N_j$
-
-Relevant estimate of stat from each study is $\hat{
-\beta_j}$ with SE $\hat{\sigma_j}$
-
-- Papers report several estimates (e.g., in robustness checks): which to choose, esp if author&#39;s preferred approach differs from other scholars.
-
-\
-
-*Ex from Hsiang, B, Miguel, &#39;13*: links between extreme climate and violence
-
-- how to classify outcomes... interpersonal and intergroup... normalised as pct changes wrt the meanoutcome in that dataset
-
-- how to standardice climate varn measures... chose SD from local area mean
-(DR: this choice implicitly reflects a behavioural assumption)
-
-$\rightarrow$ &#39;pct  change in a conflict outcome as a fncn of a 1 SD schock to local climate&#39;
-
-### Combining estimates
-
-&#39;Fixed-effect meta-analysis approach&#39;: assumes a single true effect&#39;
-
-&lt;div class=&quot;marginnote&quot;&gt;
-
-DR: I&#39;m  not sure I agree on theis assesment of *why* this is unlikely to be true in practice... &#39;differences in measures&#39; (etc) seem to be a different issue
-
-&lt;/div&gt;
-
-*Equal weight approach*: (Simply the average across studies... ugh)
-
-\
-
-*Precision-weighted approach*:
-
-$$\hat{\beta}_{PW}=
-\sum_{j}p_j\hat{\beta}_j/
-\sum_{j}p_j$$
-
-where $p_j$ is the estimated precision for study $j$: $\frac{1}{\hat{\sigma_i}^2}$
-
-Thus the weight $\omega_j$ placed on study $j$ is proportional to it&#39;s precision.
-
-
-&lt;div class=&quot;marginnote&quot;&gt;
-
-&#39;implies weight in proportion to sample size&#39;? I think that&#39;s loosely worded, it must be nonlinear.
-
-&lt;/div&gt;
-
-$\rightarrow$ This minimises the variance in the resulting meta-analtical estimate:
-
-$$Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}$$
-
-&#39;inclusion of additional estimates always reduces the SE of $\hat{\beta_{PW}}$ [in expectation].&#39; ... so more estimtes can&#39;t hurt as long as you know their precision.
-
-(they give a numerical example here with 3 estimates)
-
-&lt;!-- Todo: add R code explicitly doing these calculations --&gt;
-
-### Heterogeneous estimates...
-
-#### WLS estimate
-
-(Stanley and Doucouliagos &#39;15)
-
-Interpreted as &#39;an estimate of the average of potentially heterogenous estimates&#39;
-
-This may feel like a more familiar to Economists but it is also seems to be far less useful than the Bayesian approach.
-
-\
-
-
-#### Random-effects (more common)
-
-*Focus here on hierarchical Bayesian approach* (Gelman and Hill &#39;06; Gelman ea &#39;13)
-
-&#39;The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature&#39;
-
-... continuing from above notation
-
-&#39;cross-study differences we observe might not be driven solely by sampling variability... [even with] infinite data, they would not converge to the exact same [estimate] &#39;
-
-True Treatment Effect (TE) $\beta_j$ for study j drawn from a normal distribution...
-
-$$\beta_j \sim N(\mu, \tau^2)$$
-
-&#39;Hyperparameters&#39; $\mu$ determines central tendency of findings...
-$\tau$ the extent of hety across contexts.
-
-Considering $\tau$ vs $\mu$ is informative  in itself.
-And a large $\mu$ may suggest looking into sample splits for hety on obsl lines.
-
-\
-
-Uniform prior for $\mu$ $\rightarrow$ conditional posterior:
-
-$$\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})$$ where the estimated common effect $\hat{\mu}$ is
-
-$$\hat{\mu}=
-\frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
-{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))}$$
-
-(Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)
-
-and where the estimated variance  of the generalizable component $V_\mu$ is:
-
-$$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$$
-
-
-&lt;div class=&quot;marginnote&quot;&gt;
-
-Confusion/correction? Is this the estimated variance or the variance of the estimate?
-
-&lt;/div&gt;
-
-
-- and how do we estimate some of the components of these, like $\hat{\tau}$?
-
-&gt; Intuitively, if estimated [TE] in all studies are near one another and have relatively wide and overlapping [CI&#39;s], then most of the difference in estimates is likely the result of sampling variation [and $\tau$] is likely to be close to zero.
-
-
-&lt;div class=&quot;marginnote&quot;&gt;
-
-DR: But if the TE have wide CI&#39;s, do we have power to idfy btwn-study hety? ... I guess that&#39;s what the &#39;estimated TE are all near each other&#39; gives us?
-
-&lt;/div&gt;
-
-... Alternatively, if there is extensive variation in the estimated ATEs but each is precise... $\tau$ is likely to be relatively large.
-
-\BeginKnitrBlock{note}&lt;div class=&quot;note&quot;&gt;Coding meta-analyses in R
-
-&quot;A Review of Meta-Analysis Packages in R&quot; offers a helpful guide to the various packages, such as `metafor`.
-
-[Doing Meta-Analysis in R: A Hands-on Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/) appears extremely helpful; see, e.g., their chapter [Bayesian Meta-Analysis in R using the brms package](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/bayesian-meta-analysis-in-r-using-the-brms-package.html)
-&lt;/div&gt;\EndKnitrBlock{note}
-
-
-&lt;!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? --&gt;
-
-
-&lt;/div&gt;
-
-\ The $I^2$ stat is a measure of the proportion of total variation attributed to cross-study variation; if $\hat{\sigma}_j$ is the same across all studies we have:
-$I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
-
-&lt;!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
-
-https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
-
---&gt;
-
-## Excerpts and notes from &#39;Doing Meta-Analysis in R: A Hands-on Guide&#39; (Harrer et al) {#doing-meta}
-
-Some notes follow excerpting and commenting on 
-
-[Doing Meta-Analysis in R: A Hands-on Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)
-
-
-
-```r
-#devtools::install_github(&quot;MathiasHarrer/dmetar&quot;)
-#install.packages(&quot;extraDistr&quot;)
-
-library(meta)
-
-# I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... 
-#install.packages(&quot;brms&quot;)
-library(brms)
-library(dmetar)
-
-library(extraDistr)</code></pre>
 </div>
-<div id="pooling-effect-sizes" class="section level3" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Pooling effect sizes</h3>
-<p>FE model calculates weighted average:</p>
-<p>FIX THESE FORMULAS</p>
-<p><span class="math display">\[\hat{\theta_F} = \frac{\sum\limits_{k=1}^K \hat{\theta_k} \]</span>
-<span class="math display">\[\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k \]</span></p>
-<ul>
-<li>note that this process does not ‘dig in’ to the raw data, it just needs the summary statistics, neither does the “RE model” they refer to:</li>
-</ul>
-<blockquote>
-<p>Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.</p>
-</blockquote>
-<p>Nor the Bayesian models, apparently (they use the same ‘madata’ dataset)</p>
-</div>
-<div id="doing-bayes-meta" class="section level3" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Bayesian Meta-analysis</h3>
-
-<div class="note">
-<p>“The model we apply in Bayesian Meta-Analysis is a so-called Bayesian Hierarchical Model…
-every meta-analytical model inherently possesses a multilevel, and thus ‘hierarchical’, structure.”</p>
-</div>
-<div id="the-setup" class="section level4 unnumbered" number="">
-<h4>The setup</h4>
-<p>Underlying RE model (as before)</p>
-<p>Study-specific estimate:</p>
-<p><span class="math display">\[ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) \]</span></p>
-<p>True study-specific effects distributed:</p>
-<p><span class="math display">\[ \theta_k \sim \mathcal{N}(\mu,\tau^2) \]</span></p>
-<p>… simplified to the ‘marginal’ form:</p>
-<p><span class="math display">\[ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)\]</span></p>
-<p><br />
-</p>
-<p>And now we specify priors for these parameters, ‘making it Bayesian’</p>
-<p><span class="math display">\[(\mu, \tau^2) \sim p(.)\]</span>
-<span class="math display">\[ \tau^2 &gt; 0 \]</span><br />
-</p>
-<p>Estimation will…</p>
-<blockquote>
-<p>involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.</p>
-</blockquote>
-<p><br />
-</p>
-
-<div class="note">
-<p><strong>Why use Bayesian?</strong></p>
-<ul>
-<li><p>to “directly model the uncertainty when estimating [the between-study variance] <span class="math inline">\(\tau^2\)</span>”</p></li>
-<li><p>“have been found to be superior in estimating the between-study heterogeneity and pooled effect, particularly when the number of included studies is small”</p></li>
-<li><p>“produce full posterior distributions for both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span>” … so we can make legitimate statements about the probabilities of true parameters</p></li>
-<li><p>“allow us to integrate prior knowledge and assumptions when calculating meta-analyses” (including methodological uncertainty perhaps)</p></li>
-</ul>
-</div>
-<p><br />
-</p>
-</div>
-<div id="setting-weakly-informative-priors-for-the-mean-and-cross-study-variance-of-the-te-sizes" class="section level4 unnumbered" number="">
-<h4>Setting weakly informative’ priors for the mean and cross-study variance of the TE sizes</h4>
-<blockquote>
-<p>It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than ‘non-informative priors’!]</p>
-</blockquote>
-<p><strong>For <span class="math inline">\(\mu\)</span></strong>:</p>
-<blockquote>
-<p>include distributions which represent that we do indeed have <strong>some confidence that some values are more credible than others</strong>, while still not making any overly specific statements about the exact true value of the parameter. … In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen’s <span class="math inline">\(d=-2.0\)</span> and <span class="math inline">\(d=2.0\)</span>, but will unlikely be hovering around <span class="math inline">\(d=50\)</span>. A good starting point for our <span class="math inline">\(\mu\)</span> prior may therefore be a normal distribution with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>. This means that we grant a 95% prior probability that the true pooled effect size <span class="math inline">\(\mu\)</span> lies between <span class="math inline">\(d=-2.0\)</span> and <span class="math inline">\(d=2.0\)</span>:</p>
-</blockquote>
-<p><span class="math display">\[ \mu \sim \mathcal{N}(0,1)\]</span></p>
-<p><strong>For <span class="math inline">\(\tau^2\)</span></strong></p>
-<ul>
-<li><p>must be non-negative, but might be very close to zero.</p></li>
-<li><p>Recommended distribution for this case (for variances in general): <em>Half-Cauchy prior</em> (a censored Cauchy)</p></li>
-</ul>
-<p><span class="math inline">\(\mathcal{HC}(x_0,s)\)</span></p>
-<ul>
-<li>with <em>location parameter</em> <span class="math inline">\(x_0\)</span> (peak on x-axis)</li>
-<li>and <span class="math inline">\(s\)</span>, scaling parameter ‘how heavy-tailed’</li>
-</ul>
-<p><br />
-</p>
-<p>Half-Cauchy distribution for varying <span class="math inline">\(s\)</span>, with <span class="math inline">\(x_0=0\)</span>:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>HC is ’heavy-tailed;… gives some probability to very high values but low values are still more likely.</p>
-<p>One might consider <span class="math inline">\(s=0.3\)</span></p>
-<div class="marginnote">
-<p><span class="math inline">\(s\)</span> corresponds to the std deviation here? … so an SD of the effect size about 1/3 of it’s mean size?</p>
-</div>
-<p>Checking the share of this distribution below 0.3…</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="quant-design-power.html#cb31-1"></a><span class="kw">phcauchy</span>(<span class="fl">0.3</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>) <span class="co">#cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3</span></span></code></pre></div>
-<pre><code>## [1] 0.5</code></pre>
-<p><br />
-</p>
-<p>… But they go for the ‘more conservative’ <span class="math inline">\(s=0.5\)</span>.</p>
-<blockquote>
-<p>In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially</p>
-</blockquote>
-<p><br />
-</p>
-<p>Complete model:</p>
-<p><span class="math display">\[ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) \]</span>
-<span class="math display">\[ \theta_k \sim \mathcal{N}(\mu,\tau^2) \]</span>
-<span class="math display">\[ \mu \sim \mathcal{N}(0,1)\]</span>
-<span class="math display">\[ \tau \sim \mathcal{HC}(0,0.5)\]</span></p>
-</div>
-<div id="bayesian-meta-analysis-in-r-using-the-brms-package" class="section level4" number="12.1.3.1">
-<h4><span class="header-section-number">12.1.3.1</span> Bayesian Meta-Analysis in R using the <code>brms</code> package</h4>
-<p>You specify the priors as a vector of elements, each of which invokes the ‘prior’ function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a ‘class’.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="quant-design-power.html#cb33-1"></a>priors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">class =</span> Intercept), <span class="kw">prior</span>(<span class="kw">cauchy</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">class =</span> sd))</span></code></pre></div>
-<p>A quick look at the data we’re using here:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="quant-design-power.html#cb34-1"></a><span class="kw">str</span>(ThirdWave[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
-<pre><code>## tibble [18 × 3] (S3: tbl_df/tbl/data.frame)
-##  $ Author: chr [1:18] &quot;Call et al.&quot; &quot;Cavanagh et al.&quot; &quot;DanitzOrsillo&quot; &quot;de Vibe et al.&quot; ...
-##  $ TE    : num [1:18] 0.709 0.355 1.791 0.182 0.422 ...
-##  $ seTE  : num [1:18] 0.261 0.196 0.346 0.118 0.145 ...</code></pre>
-<p><br />
-</p>
-<p>To actually run the model, he uses the following code:</p>
-<p>(it seems to require Xcode to run on my mac)</p>
-<ul>
-<li><p>The <em>formula for the model</em> is specified using ‘regression formula notation’</p></li>
-<li><p>As there is no ‘predictor variable’ here (unless it’s meta-regression), <code>x</code> is replaced with <code>1</code></p></li>
-<li><p>But we want to give studies with greater precision of the effect size estimate a greather weight.</p>
-<ul>
-<li>Done using <code>y|se(se_y)</code></li>
-</ul></li>
-<li><p>For the <em>random effects terms</em> he adds <code>(1|study)</code> to the predictor part.</p></li>
-<li><p><code>prior</code>: Plugs in the priors created above plug in the <code>priors</code> object we created previously here.</p></li>
-<li><p><code>iter</code>: Number of iterations of MCMC algorithm… the more complex your model, the higher this number should be. [DR: but what’s a rule of thumb here?]</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="other-notes-links-and-commentary" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Other notes, links, and commentary</h2>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-A high quality meta-analysis should:<br><br>- Have a pre-registered protocol<br>- Appropriately deal with dependent effect sizes<br>- Explore effect size heterogeneity <br>- Have a clear methods description<br>- Report COIs<br>- Publish data and code <a href="https://t.co/cHj11wv5vm">https://t.co/cHj11wv5vm</a>
-</p>
-— Dan Quintana (<span class="citation">(<span class="citeproc-not-found" data-reference-id="dsquintana"><strong>???</strong></span>)</span>) <a href="https://twitter.com/dsquintana/status/1196551674132914176?ref_src=twsrc%5Etfw">November 18, 2019</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 </div>
 </div>
             </section>
@@ -1018,7 +660,7 @@ A high quality meta-analysis should:<br><br>- Have a pre-registered protocol<br>
         </div>
       </div>
 <a href="why-experiment-design.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bayesian-approaches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="power.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

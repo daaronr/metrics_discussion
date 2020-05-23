@@ -47,7 +47,6 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 > We might also consider offering some reward careerwise to experiments that fail -- in terms of being deeply inconclusive-- for some arbitrary or random reason even though they were well-planned and executed.  But I think it is hard to get the incentives right for the latter.
 
-```
 
 ### The hazards of specification-searching
 

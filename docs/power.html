@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-12" />
+<meta name="date" content="2020-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -317,9 +317,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Conceptual: approaches to statistics/inference and causality</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-approaches-1"><i class="fa fa-check"></i><b>2.0.1</b> Bayesian vs. frequentist approaches</a></li>
-<li class="chapter" data-level="2.0.2" data-path="conceptual.html"><a href="conceptual.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model-1"><i class="fa fa-check"></i><b>2.0.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
-<li class="chapter" data-level="2.0.3" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form-1"><i class="fa fa-check"></i><b>2.0.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.1" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-approaches-1"><i class="fa fa-check"></i><b>2.1</b> Bayesian vs. frequentist approaches</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="conceptual.html"><a href="conceptual.html#interpretation-of-cis-aside"><i class="fa fa-check"></i><b>2.1.1</b> Interpretation of CI’s (aside)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conceptual.html"><a href="conceptual.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model-1"><i class="fa fa-check"></i><b>2.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes-1"><i class="fa fa-check"></i><b>2.2.1</b> DAGs and Potential outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form-1"><i class="fa fa-check"></i><b>2.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html#data-sci"><i class="fa fa-check"></i><b>3</b> Getting, cleaning and using data</a>
 <ul>
@@ -328,36 +334,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown-1"><i class="fa fa-check"></i><b>3.3</b> Dynamic documents (esp Rmd/bookdown)</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>3.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>3.3.2</b> An example of dynamic code</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices-1"><i class="fa fa-check"></i><b>3.4</b> Good coding practices</a>
+<li class="chapter" data-level="3.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>3.4</b> Project management tools, esp. Git/Github</a></li>
+<li class="chapter" data-level="3.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices-1"><i class="fa fa-check"></i><b>3.5</b> Good coding practices</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse-1"><i class="fa fa-check"></i><b>3.4.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
-<li class="chapter" data-level="3.4.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency-1"><i class="fa fa-check"></i><b>3.4.2</b> Style and consistency</a></li>
-<li class="chapter" data-level="3.4.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code-1"><i class="fa fa-check"></i><b>3.4.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
+<li class="chapter" data-level="3.5.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse-1"><i class="fa fa-check"></i><b>3.5.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency-1"><i class="fa fa-check"></i><b>3.5.2</b> Style and consistency</a></li>
+<li class="chapter" data-level="3.5.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code-1"><i class="fa fa-check"></i><b>3.5.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
+<li class="chapter" data-level="3.5.4" data-path="data-sci.html"><a href="data-sci.html#mapping-over-lists-to-produce-results"><i class="fa fa-check"></i><b>3.5.4</b> Mapping over lists to produce results</a></li>
+<li class="chapter" data-level="3.5.5" data-path="data-sci.html"><a href="data-sci.html#building-results-based-on-lists-of-filters-of-the-data-set"><i class="fa fa-check"></i><b>3.5.5</b> Building results based on ‘lists of filters’ of the data set</a></li>
+<li class="chapter" data-level="3.5.6" data-path="data-sci.html"><a href="data-sci.html#coding-style-and-indenting-in-stata-one-approach"><i class="fa fa-check"></i><b>3.5.6</b> Coding style and indenting in Stata (one approach)</a></li>
 </ul></li>
+<li class="chapter" data-level="3.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>3.6</b> Additional tips (integrate)</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>4</b> Basic regression and statistical inference: Common mistakes and issues</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>4.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a></li>
-<li class="chapter" data-level="4.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>4.2</b> Bad control</a>
+<li class="chapter" data-level="4.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>4.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders-1"><i class="fa fa-check"></i><b>4.2.1</b> “Bad control” (“colliders”)</a></li>
-<li class="chapter" data-level="4.2.2" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables-1"><i class="fa fa-check"></i><b>4.2.2</b> Choices of lhs and rhs variables</a></li>
-<li class="chapter" data-level="4.2.3" data-path="reg-follies.html"><a href="reg-follies.html#functional-form-1"><i class="fa fa-check"></i><b>4.2.3</b> Functional form</a></li>
-<li class="chapter" data-level="4.2.4" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity-1"><i class="fa fa-check"></i><b>4.2.4</b> OLS and heterogeneity</a></li>
-<li class="chapter" data-level="4.2.5" data-path="reg-follies.html"><a href="reg-follies.html#null-effects-1"><i class="fa fa-check"></i><b>4.2.5</b> “Null effects”</a></li>
-<li class="chapter" data-level="4.2.6" data-path="reg-follies.html"><a href="reg-follies.html#multiple-hypothesis-testing-mht-1"><i class="fa fa-check"></i><b>4.2.6</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="4.2.7" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls-1"><i class="fa fa-check"></i><b>4.2.7</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="4.2.8" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric-1"><i class="fa fa-check"></i><b>4.2.8</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="4.2.9" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests-1"><i class="fa fa-check"></i><b>4.2.9</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="4.2.10" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results-1"><i class="fa fa-check"></i><b>4.2.10</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="4.1.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>4.1.1</b> Bad control</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders-1"><i class="fa fa-check"></i><b>4.1.2</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables-1"><i class="fa fa-check"></i><b>4.1.3</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="4.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form-1"><i class="fa fa-check"></i><b>4.1.4</b> Functional form</a></li>
+<li class="chapter" data-level="4.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity-1"><i class="fa fa-check"></i><b>4.1.5</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="4.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects-1"><i class="fa fa-check"></i><b>4.1.6</b> “Null effects”</a></li>
+<li class="chapter" data-level="4.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multiple-hypothesis-testing-mht-1"><i class="fa fa-check"></i><b>4.1.7</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="4.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls-1"><i class="fa fa-check"></i><b>4.1.8</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="4.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric-1"><i class="fa fa-check"></i><b>4.1.9</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="4.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests-1"><i class="fa fa-check"></i><b>4.1.10</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="4.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results-1"><i class="fa fa-check"></i><b>4.1.11</b> Bayesian interpretations of results</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>5</b> Robustness and diagnostics, with integrity</a>
+<li class="chapter" data-level="5" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>5</b> Robustness and diagnostics, with integrity; Open Science resources</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1"><i class="fa fa-check"></i><b>5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
 <li class="chapter" data-level="5.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors-1"><i class="fa fa-check"></i><b>5.2</b> Estimating standard errors</a></li>
 <li class="chapter" data-level="5.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation-1"><i class="fa fa-check"></i><b>5.3</b> Sensitivity analysis: Interactive presentation</a></li>
+<li class="chapter" data-level="5.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>5.4</b> Supplement: open science resources, tools and considerations</a></li>
+<li class="chapter" data-level="5.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-see-also-meta-analysis"><i class="fa fa-check"></i><b>5.5</b> Diagnosing p-hacking (see also <span>meta-analysis</span>)</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>6</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
@@ -423,16 +437,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>11</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study-1"><i class="fa fa-check"></i><b>11.1</b> Why run an experiment or study?</a></li>
+<li class="chapter" data-level="11.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study-1"><i class="fa fa-check"></i><b>11.1</b> Why run an experiment or study?</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do"><i class="fa fa-check"></i><b>11.1.1</b> Sitzia and Sugden on what theoretically driven experiments can and should do</a></li>
+</ul></li>
 <li class="chapter" data-level="11.2" data-path="why-experiment-design.html"><a href="why-experiment-design.html#causal-channels-and-identification-1"><i class="fa fa-check"></i><b>11.2</b> Causal channels and identification</a></li>
 <li class="chapter" data-level="11.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups-1"><i class="fa fa-check"></i><b>11.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
 <li class="chapter" data-level="11.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity-1"><i class="fa fa-check"></i><b>11.4</b> Generalizability (and heterogeneity)</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>12</b> (Experimental) Study design: Background and quantitative issues</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-registration-and-pre-analysis-plans-1"><i class="fa fa-check"></i><b>12.1</b> Pre-registration and Pre-analysis plans</a>
+<li class="chapter" data-level="12.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>12.1</b> Pre-registration and Pre-analysis plans</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.1</b> The hazards of specification-searching</a></li>
+<li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>12.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
+<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
 <li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
@@ -457,6 +475,31 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
 <li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Making inferences from previous work; Meta-analysis, combining studies</a>
 <ul>
@@ -471,8 +514,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
-<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#bayesian-meta-analysis"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
 </ul></li>
+<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.3</b> Other notes, links, and commentary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
 <ul>
@@ -503,7 +547,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>16.3.8</b> Stata</a></li>
 <li class="chapter" data-level="16.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>16.3.9</b> R mcmc pac</a></li>
 </ul></li>
+<li class="chapter" data-level="16.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>16.4</b> Other resources and notes to integrate</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>17</b> List of references</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -536,6 +582,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects." verkaik2016, metzger2015</p>
 </blockquote>
+<p><br />
+</p>
+<p>On magnitude error due to underpowered studies:</p>
+<p><a href="https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics" class="uri">https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics</a></p>
 </div>
 </div>
 <div id="power-calculations-without-real-data-1" class="section level2" number="13.2">

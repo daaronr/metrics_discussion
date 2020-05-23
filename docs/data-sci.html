@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Getting, cleaning and using data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="3 Getting, cleaning and using data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Getting, cleaning and using data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-22" />
+<meta name="date" content="2020-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -294,7 +294,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13.2" data-path="introduction.html"><a href="introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>1.13.2</b> Power calculations without real data</a></li>
 <li class="chapter" data-level="1.13.3" data-path="introduction.html"><a href="introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>1.13.3</b> Power calculations using prior data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te"><i class="fa fa-check"></i><b>1.14</b> [‘Experimetrics’ and measurement of treatment effects from RCTs] (#experimetrics_te)</a>
+<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te"><i class="fa fa-check"></i><b>1.14</b> <span>‘Experimetrics’ and measurement of treatment effects from RCTs</span> (#experimetrics_te)</a>
 <ul>
 <li class="chapter" data-level="1.14.1" data-path="introduction.html"><a href="introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>1.14.1</b> Which error structure? Random effects?</a></li>
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
@@ -334,6 +334,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown-1"><i class="fa fa-check"></i><b>3.3</b> Dynamic documents (esp Rmd/bookdown)</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>3.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>3.3.2</b> An example of dynamic code</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>3.4</b> Project management tools, esp. Git/Github</a></li>
 <li class="chapter" data-level="3.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices-1"><i class="fa fa-check"></i><b>3.5</b> Good coding practices</a>
@@ -449,43 +450,106 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>12.1</b> Pre-registration and Pre-analysis plans</a>
 <ul>
 <li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>12.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
-<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>12.1.2</b> Pooling effect sizes</a></li>
-<li class="chapter" data-level="12.1.3" data-path="quant-design-power.html"><a href="quant-design-power.html#doing-bayes-meta"><i class="fa fa-check"></i><b>12.1.3</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>12.2</b> Other notes, links, and commentary</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>13</b> Bayesian approaches</a>
+<li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>13.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.1</b> How many treatment arms can you ‘afford’?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>13.1.1</b> Meta-analysis of previous evidence</a></li>
-<li class="chapter" data-level="13.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>13.1.2</b> Inference, particularly about ‘null effects’</a></li>
-<li class="chapter" data-level="13.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>13.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
-<li class="chapter" data-level="13.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>13.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
-<li class="chapter" data-level="13.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>13.1.5</b> Experimental design</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>13.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<li class="chapter" data-level="13.1" data-path="power.html"><a href="power.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point-1"><i class="fa fa-check"></i><b>13.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>13.2.1</b> The Golem of Prague (Chapter 1)</a></li>
-<li class="chapter" data-level="13.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>13.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
-<li class="chapter" data-level="13.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>13.2.3</b> Using prior information</a></li>
-<li class="chapter" data-level="13.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>13.2.4</b> From counts to probability.</a></li>
+<li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#the-harm-to-science-from-running-underpowered-studies-1"><i class="fa fa-check"></i><b>13.1.1</b> The ‘harm to science’ from running underpowered studies</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>13.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#power-calculations-without-real-data-1"><i class="fa fa-check"></i><b>13.2</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="13.3" data-path="power.html"><a href="power.html#power-calculations-using-prior-data-1"><i class="fa fa-check"></i><b>13.3</b> Power calculations using prior data</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>13.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
-<li class="chapter" data-level="13.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>13.3.2</b> Theory</a></li>
-<li class="chapter" data-level="13.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>13.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
-<li class="chapter" data-level="13.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>13.3.4</b> On choosing priors</a></li>
-<li class="chapter" data-level="13.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>13.3.5</b> Implementation</a></li>
-<li class="chapter" data-level="13.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>13.3.6</b> Generate predictions from a WinBUGS model</a></li>
-<li class="chapter" data-level="13.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>13.3.7</b> Missing data case</a></li>
-<li class="chapter" data-level="13.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>13.3.8</b> Stata</a></li>
-<li class="chapter" data-level="13.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>13.3.9</b> R mcmc pac</a></li>
+<li class="chapter" data-level="14.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects-1"><i class="fa fa-check"></i><b>14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="14.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-1"><i class="fa fa-check"></i><b>14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="14.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses-1"><i class="fa fa-check"></i><b>14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
+<li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>13.4</b> Other resources and notes to integrate</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>14</b> List of references</a></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Making inferences from previous work; Meta-analysis, combining studies</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analsis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analsis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.3</b> Other notes, links, and commentary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>16.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>16.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="16.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>16.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="16.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>16.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="16.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>16.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="16.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>16.1.5</b> Experimental design</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>16.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>16.2.1</b> The Golem of Prague (Chapter 1)</a></li>
+<li class="chapter" data-level="16.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>16.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
+<li class="chapter" data-level="16.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>16.2.3</b> Using prior information</a></li>
+<li class="chapter" data-level="16.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>16.2.4</b> From counts to probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>16.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>16.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="16.3.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>16.3.2</b> Theory</a></li>
+<li class="chapter" data-level="16.3.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>16.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="16.3.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>16.3.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="16.3.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>16.3.5</b> Implementation</a></li>
+<li class="chapter" data-level="16.3.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>16.3.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="16.3.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>16.3.7</b> Missing data case</a></li>
+<li class="chapter" data-level="16.3.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>16.3.8</b> Stata</a></li>
+<li class="chapter" data-level="16.3.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>16.3.9</b> R mcmc pac</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>16.4</b> Other resources and notes to integrate</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>17</b> List of references</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -551,13 +615,26 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <span id="cb19-3"><a href="data-sci.html#cb19-3"></a>   <span class="kw">download.file</span>(<span class="dt">url =</span> <span class="st">&quot;https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1&quot;</span>, des <span class="dt">tfile =</span> <span class="st">&quot;reinstein_bibtex.bib&quot;</span>) <span class="co">#download the bibtex database</span></span>
 <span id="cb19-4"><a href="data-sci.html#cb19-4"></a></span>
 <span id="cb19-5"><a href="data-sci.html#cb19-5"></a>        <span class="kw">download.file</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css&quot;</span>, <span class="dt">destfile =</span> <span class="kw">here</span>(<span class="st">&quot;support&quot;</span>, <span class="st">&quot;tufte_plus.css&quot;</span>)) <span class="co">#this downloads the style file</span></span>
-<span id="cb19-6"><a href="data-sci.html#cb19-6"></a>    </span>
+<span id="cb19-6"><a href="data-sci.html#cb19-6"></a></span>
 <span id="cb19-7"><a href="data-sci.html#cb19-7"></a>  }, <span class="dt">error =</span> <span class="cf">function</span>(e) {</span>
 <span id="cb19-8"><a href="data-sci.html#cb19-8"></a>    <span class="kw">print</span>(<span class="st">&quot;you are not online, so we can&#39;t download&quot;</span>)</span>
 <span id="cb19-9"><a href="data-sci.html#cb19-9"></a>  }</span>
 <span id="cb19-10"><a href="data-sci.html#cb19-10"></a>)</span></code></pre></div>
 <p>A fairly comprehensive discussion of tools for citation in R-markdown:</p>
 <p><a href="https://ropensci.org/technotes/2020/05/07/rmd-citations/">A Roundup of R Tools for Handling BibTeX</a></p>
+</div>
+<div id="an-example-of-dynamic-code" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> An example of dynamic code</h3>
+<p>Shapiro Wilk test for normality; professor salaries at some US university from the built in Cars data…</p>
+<div class="marginnote">
+<p>By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!</p>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-sci.html#cb20-1"></a>prof_sal_shapiro_test &lt;-<span class="st"> </span><span class="kw">shapiro.test</span>(carData<span class="op">::</span>Salaries<span class="op">$</span>salary)</span>
+<span id="cb20-2"><a href="data-sci.html#cb20-2"></a></span>
+<span id="cb20-3"><a href="data-sci.html#cb20-3"></a>  <span class="co"># ShapiroTest &lt;- map_df(list(SXDonShapiroTest, EXDonShapiroTest), tidy)</span></span>
+<span id="cb20-4"><a href="data-sci.html#cb20-4"></a>  <span class="co"># (ShapiroTest &lt;- kable(ShapiroTest) %&gt;% kable_styling())</span></span></code></pre></div>
+<p>The results from the Shapiro Wilk normality test …</p>
+<p>The p-values are 6.08^{-9} suggesting this data is not normal</p>
 </div>
 </div>
 <div id="project-management-tools-esp.-gitgithub" class="section level2" number="3.4">
@@ -626,10 +703,10 @@ ft <- map2(ft, ft_names, function(x, y) {
 <div id="building-results-based-on-lists-of-filters-of-the-data-set" class="section level3" number="3.5.5">
 <h3><span class="header-section-number">3.5.5</span> Building results based on ‘lists of filters’ of the data set</h3>
 <p>We can store a filter as a character vector and then apply it</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-sci.html#cb20-1"></a>selection_statement &lt;-<span class="st"> &quot;Species == &#39;setosa&#39;&quot;</span></span>
-<span id="cb20-2"><a href="data-sci.html#cb20-2"></a></span>
-<span id="cb20-3"><a href="data-sci.html#cb20-3"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-4"><a href="data-sci.html#cb20-4"></a><span class="st">    </span><span class="kw">filter</span>(rlang<span class="op">::</span><span class="kw">eval_tidy</span>(rlang<span class="op">::</span><span class="kw">parse_expr</span>(selection_statement)))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-sci.html#cb21-1"></a>selection_statement &lt;-<span class="st"> &quot;Species == &#39;setosa&#39;&quot;</span></span>
+<span id="cb21-2"><a href="data-sci.html#cb21-2"></a></span>
+<span id="cb21-3"><a href="data-sci.html#cb21-3"></a>iris <span class="op">%&gt;%</span></span>
+<span id="cb21-4"><a href="data-sci.html#cb21-4"></a><span class="st">    </span><span class="kw">filter</span>(rlang<span class="op">::</span><span class="kw">eval_tidy</span>(rlang<span class="op">::</span><span class="kw">parse_expr</span>(selection_statement)))</span></code></pre></div>
 <table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 20%; margin-left: 0%; margin-right: auto;  ">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: nowrap; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 4pt 4pt 4pt 4pt; font-weight: bold;">Sepal.Length</td>
@@ -991,12 +1068,12 @@ ft <- map2(ft, ft_names, function(x, y) {
 </table>
 
 <p>Making this a function for later use:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-sci.html#cb21-1"></a>filter_parse =<span class="st">  </span><span class="cf">function</span>(df, x) {</span>
-<span id="cb21-2"><a href="data-sci.html#cb21-2"></a>  {{df}} <span class="op">%&gt;%</span></span>
-<span id="cb21-3"><a href="data-sci.html#cb21-3"></a><span class="st">   </span><span class="kw">filter</span>(rlang<span class="op">::</span><span class="kw">eval_tidy</span>(rlang<span class="op">::</span><span class="kw">parse_expr</span>({{x}})))</span>
-<span id="cb21-4"><a href="data-sci.html#cb21-4"></a>}</span>
-<span id="cb21-5"><a href="data-sci.html#cb21-5"></a></span>
-<span id="cb21-6"><a href="data-sci.html#cb21-6"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter_parse</span>(selection_statement)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-sci.html#cb22-1"></a>filter_parse =<span class="st">  </span><span class="cf">function</span>(df, x) {</span>
+<span id="cb22-2"><a href="data-sci.html#cb22-2"></a>  {{df}} <span class="op">%&gt;%</span></span>
+<span id="cb22-3"><a href="data-sci.html#cb22-3"></a><span class="st">   </span><span class="kw">filter</span>(rlang<span class="op">::</span><span class="kw">eval_tidy</span>(rlang<span class="op">::</span><span class="kw">parse_expr</span>({{x}})))</span>
+<span id="cb22-4"><a href="data-sci.html#cb22-4"></a>}</span>
+<span id="cb22-5"><a href="data-sci.html#cb22-5"></a></span>
+<span id="cb22-6"><a href="data-sci.html#cb22-6"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter_parse</span>(selection_statement)</span></code></pre></div>
 <table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 20%; margin-left: 0%; margin-right: auto;  ">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: nowrap; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 4pt 4pt 4pt 4pt; font-weight: bold;">Sepal.Length</td>
@@ -1357,11 +1434,11 @@ ft <- map2(ft, ft_names, function(x, y) {
 </tr>
 </table>
 
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-sci.html#cb22-1"></a>selection_statement &lt;-<span class="st"> &quot;Species == &#39;setosa&#39;&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-sci.html#cb23-1"></a>selection_statement &lt;-<span class="st"> &quot;Species == &#39;setosa&#39;&quot;</span></span></code></pre></div>
 <p>We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-sci.html#cb23-1"></a>sel_st &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Species == &#39;setosa&#39;&quot;</span>, <span class="st">&quot;Species == &#39;virginica&#39;&quot;</span>)</span>
-<span id="cb23-2"><a href="data-sci.html#cb23-2"></a></span>
-<span id="cb23-3"><a href="data-sci.html#cb23-3"></a><span class="kw">map</span>(iris, selection_statement) </span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-sci.html#cb24-1"></a>sel_st &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Species == &#39;setosa&#39;&quot;</span>, <span class="st">&quot;Species == &#39;virginica&#39;&quot;</span>)</span>
+<span id="cb24-2"><a href="data-sci.html#cb24-2"></a></span>
+<span id="cb24-3"><a href="data-sci.html#cb24-3"></a><span class="kw">map</span>(iris, selection_statement)</span></code></pre></div>
 <pre><code>## $Sepal.Length
 ## NULL
 ## 
@@ -1376,7 +1453,7 @@ ft <- map2(ft, ft_names, function(x, y) {
 ## 
 ## $Species
 ## NULL</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-sci.html#cb25-1"></a>sel_st <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map</span>(<span class="op">~</span><span class="st"> </span><span class="kw">filter_parse</span>(iris, .x))</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-sci.html#cb26-1"></a>sel_st <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map</span>(<span class="op">~</span><span class="st"> </span><span class="kw">filter_parse</span>(iris, .x))</span></code></pre></div>
 <pre><code>## [[1]]
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1           5.1         3.5          1.4         0.2  setosa
@@ -1484,7 +1561,7 @@ ft <- map2(ft, ft_names, function(x, y) {
 ## 50          5.9         3.0          5.1         1.8 virginica</code></pre>
 <p>It works nicely if you have a list of filters aligned with a list of names or other objects ‘specific to each filter’</p>
 <p>(Code below: adapt to public data and explain)</p>
-<pre><code> bal_sx &lt;-   
+<pre><code> bal_sx &lt;-
     map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
       filter_parse(sa, x) %&gt;%
     dplyr::filter(stage == &quot;2&quot;) %&gt;%
@@ -1513,8 +1590,11 @@ ft <- map2(ft, ft_names, function(x, y) {
 <div id="additional-tips-integrate" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Additional tips (integrate)</h2>
 <p><a href="https://twitter.com/gdequeiroz/status/1228722821817225216">When you have to upgrade R on Mac, how to preserve package installations - twitter thread</a></p>
-<p><br />
-</p>
+<ul>
+<li><a href="https://github.com/ivelasq/r-data-recipes/blob/master/README.md#reinstall-packages-after-a-major-r-update">This worked well for me</a>. Thanks
+<span class="citation">(<span class="citeproc-not-found" data-reference-id="ivelasq3"><strong>???</strong></span>)</span> !<br />
+</li>
+</ul>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 Are you teaching/learning <a href="https://twitter.com/hashtag/r?src=hash&amp;ref_src=twsrc%5Etfw">#r</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; want to teach/learn the latest <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a> <a href="https://twitter.com/hashtag/tidyr?src=hash&amp;ref_src=twsrc%5Etfw">#tidyr</a> tools? e.g. bind_rows, pivot_wider/pivot_longer, the join family (full_join, inner_join…) Check out my slides on “Advanced data manipulation” here 😺<a href="https://t.co/dr9VNx7MFf">https://t.co/dr9VNx7MFf</a>

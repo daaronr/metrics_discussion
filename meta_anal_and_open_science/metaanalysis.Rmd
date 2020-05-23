@@ -216,14 +216,19 @@ Some notes follow excerpting and commenting on
 [Doing Meta-Analysis in R: A Hands-on Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)
 
 
+<div class="marginnote">
+Note that installation of the required packages can be tricky here. 
+For Mac Catalina with R 4.0 I followed the instructions [HERE](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30)
+</div>
+ 
 ```{r, warning=FALSE, message=FALSE}
 
-#devtools::install_github("MathiasHarrer/dmetar")
+#devtools::install_github("MathiasHarrer/dmetar") 
+#...I did not 'update new packages'
 #install.packages("extraDistr")
 
 library(meta)
 
-# I followed a lot of steps before this worked! ... https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started ... 
 #install.packages("brms")
 library(brms)
 library(dmetar)
@@ -330,10 +335,12 @@ $\mathcal{HC}(x_0,s)$
 Half-Cauchy distribution for varying $s$, with $x_0=0$:
 
 ```{r, echo=FALSE, fig.width=6, fig.align='center'}
+
 library(png)
 library(grid)
 img <- readPNG(here("images", "half_cauchy.png"))
 grid.raster(img)
+
 ```
 
 
@@ -392,14 +399,19 @@ To actually run the model, he uses the following code:
 
 (it seems to require Xcode to run on my mac)
 
-```{r echo=FALSE, eval=FALSE}
+30 iterations is no doubt far too few, but the run process is too slow to do many more here.
+
+```{r echo=TRUE, eval=TRUE}
 
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              data = ThirdWave,
              prior = priors,
-             iter = 400)
+             iter = 30)
+
+m.brm
 
 ```
+
 
 
 - The *formula for the model* is specified using 'regression formula notation'

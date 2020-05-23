@@ -44,14 +44,14 @@ Hi all.
 Hope you are doing well. I've just invited you to a shared Zotero group managing my bibliography/references. I think this should be useful. (I prefer Zotero to Mendeley because it's open source and... I forgot the other reason.)
 On my computer it synchronizes with a .bib (bibtex) file in a dropbox folder ...
 
-For latex files we just refer to this as normal. 
+For latex files we just refer to this as normal.
 In the Rmd files/bookdown (producing output like [EA barriers](#https://daaronr.github.io/ea_giving_barriers/outline.html) or Metrics notes (present book) this is referenced in the YAML header to the index.Rmd file as
 
 > bibliography: [reinstein_bibtex.bib]
 
 Then, to keep this file, I have a "download block" included in that same file (the first line with 'dropbox' is the key one).
 
-```  
+```
 
 \
 
@@ -64,7 +64,7 @@ tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does t
    download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", des tfile = "reinstein_bibtex.bib") #download the bibtex database
 
         download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plus.css")) #this downloads the style file
-    
+
   }, error = function(e) {
     print("you are not online, so we can't download")
   }
@@ -72,10 +72,32 @@ tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does t
 ```
 
 
-A fairly comprehensive discussion of tools for citation in R-markdown: 
+A fairly comprehensive discussion of tools for citation in R-markdown:
 
 [A Roundup of R Tools for Handling BibTeX](https://ropensci.org/technotes/2020/05/07/rmd-citations/)
 
+
+### An example of dynamic code
+
+
+Shapiro Wilk test for normality; professor salaries at some US university from the built in Cars data...
+
+<div class="marginnote">
+By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!
+</div>
+
+```{r Diagnostic-tests, include=TRUE}
+
+
+prof_sal_shapiro_test <- shapiro.test(carData::Salaries$salary)
+
+  # ShapiroTest <- map_df(list(SXDonShapiroTest, EXDonShapiroTest), tidy)
+  # (ShapiroTest <- kable(ShapiroTest) %>% kable_styling())
+```
+
+The results from the Shapiro Wilk normality test ...
+
+The p-values are  `r prof_sal_shapiro_test[2]` suggesting this data `r ifelse(prof_sal_shapiro_test[2]<0.10, "is not", "is")` normal
 
 ## Project management tools, esp. Git/Github
 
@@ -93,13 +115,13 @@ See ['Git and GitHub' here... watch this space](https://daaronr.github.io/ea_giv
 
 From [Kurtz](https://bookdown.org/content/3890/small-worlds-and-large-worlds.html):
 
-> If you are new to tidyverse-style syntax, possibly the oddest component is the pipe (i.e., `%>%`). I'm not going to explain the `%>%` in this project, but you might learn more about in [this brief clip](https://www.youtube.com/watch?v=9yjhxvu-pDg), starting around [minute 21:25 in this talk by Wickham](https://www.youtube.com/watch?v=K-ss_ag2k9E&t=1285s), or in [section 5.6.1 from Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe). Really, all of Chapter 5 of *R4DS* is just great for new R and new tidyverse users. And *R4DS* Chapter 3 is a nice introduction to plotting with ggplot2. 
+> If you are new to tidyverse-style syntax, possibly the oddest component is the pipe (i.e., `%>%`). I'm not going to explain the `%>%` in this project, but you might learn more about in [this brief clip](https://www.youtube.com/watch?v=9yjhxvu-pDg), starting around [minute 21:25 in this talk by Wickham](https://www.youtube.com/watch?v=K-ss_ag2k9E&t=1285s), or in [section 5.6.1 from Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe). Really, all of Chapter 5 of *R4DS* is just great for new R and new tidyverse users. And *R4DS* Chapter 3 is a nice introduction to plotting with ggplot2.
 
 ### Style and consistency
 
-#### lower_snake_case {-} 
+#### lower_snake_case {-}
 
-Use `lower_snake_case` to name *all* objects (that's my preference anyways) 
+Use `lower_snake_case` to name *all* objects (that's my preference anyways)
 unless there's a strong reason to do otherwise.
 
 \
@@ -115,7 +137,7 @@ This includes:
 
 \
 
-*And by all that is holy, never put spaces or slashes in file or object names!* This can make it very hard to process across systems... there are various ways of referring to spaces and other white space. 
+*And by all that is holy, never put spaces or slashes in file or object names!* This can make it very hard to process across systems... there are various ways of referring to spaces and other white space.
 
 #### Indenting and spacing
 
@@ -143,7 +165,7 @@ We can store a filter as a character vector and then apply it
 
 selection_statement <- "Species == 'setosa'"
 
-iris %>% 
+iris %>%
     filter(rlang::eval_tidy(rlang::parse_expr(selection_statement)))
 ```
 
@@ -169,8 +191,8 @@ We can do the same for a list of character vectors of filter statements, and app
 
 sel_st <- c("Species == 'setosa'", "Species == 'virginica'")
 
-map(iris, selection_statement) 
- 
+map(iris, selection_statement)
+
 sel_st %>% map(~ filter_parse(iris, .x))
 
 ```
@@ -181,7 +203,7 @@ It works nicely if you have a list of filters aligned with a list of names or ot
 (Code below: adapt to public data and explain)
 
 ```
- bal_sx <-   
+ bal_sx <-
     map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
       filter_parse(sa, x) %>%
     dplyr::filter(stage == "2") %>%
@@ -196,10 +218,10 @@ It works nicely if you have a list of filters aligned with a list of names or ot
 
 I indent every line except
 
-- clear, import, save, merge ('file operations') 
+- clear, import, save, merge ('file operations')
   - except where these occur as part of a loop, in which case I put in an 'important comment' noting these operations
 
-- lines that call other do files 
+- lines that call other do files
 
 - important comments/flags/to-do's
 
@@ -210,7 +232,7 @@ I only put 'small todo' elements having to do with code in a code file itself (a
 \
 
 
-Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate 'do' file and call that do file (with no indent).  That's what I do here, giving a brief description and a 'back link'.  Sometimes I put all those do files into an separate folder. 
+Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate 'do' file and call that do file (with no indent).  That's what I do here, giving a brief description and a 'back link'.  Sometimes I put all those do files into an separate folder.
 
 
 ## Additional tips (integrate)
@@ -218,6 +240,8 @@ Whenever there are more than 20 lines of something prosaic that cannot/has not b
 [When you have to upgrade R on Mac, how to preserve package installations - twitter thread](https://twitter.com/gdequeiroz/status/1228722821817225216)
 
 
+- [This worked well for me](https://github.com/ivelasq/r-data-recipes/blob/master/README.md#reinstall-packages-after-a-major-r-update). Thanks
+@ivelasq3 !
 \
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Are you teaching/learning <a href="https://twitter.com/hashtag/r?src=hash&amp;ref_src=twsrc%5Etfw">#r</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; want to teach/learn the latest <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a> <a href="https://twitter.com/hashtag/tidyr?src=hash&amp;ref_src=twsrc%5Etfw">#tidyr</a> tools? e.g. bind_rows, pivot_wider/pivot_longer, the join family (full_join, inner_join...) Check out my slides on &quot;Advanced data manipulation&quot; here 😺<a href="https://t.co/dr9VNx7MFf">https://t.co/dr9VNx7MFf</a></p>&mdash; Amy Willis (@AmyDWillis) <a href="https://twitter.com/AmyDWillis/status/1195498569072959490?ref_src=twsrc%5Etfw">November 16, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

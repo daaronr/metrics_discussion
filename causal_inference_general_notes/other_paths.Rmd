@@ -5,7 +5,16 @@
 
 ## DiD
 
-FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
+Key issue: FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
+
+\
+
+Helpful links from a Twitter thread:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in the last two yeasts. What are the key methodological papers I need to brush up on? <a href="https://twitter.com/hashtag/EconTwitter?src=hash&amp;ref_src=twsrc%5Etfw">#EconTwitter</a><br><br>Didn’t someone put together a list?</p>&mdash; Damon Jones (@nomadj1s) <a href="https://twitter.com/nomadj1s/status/1263225306275614722?ref_src=twsrc%5Etfw">May 20, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
 
 ## RD
 
