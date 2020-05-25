@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-23" />
+<meta name="date" content="2020-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -592,14 +592,14 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 </div>
 <div id="policy-and-business-implications-and-recommendations" class="section level3" number="16.1.3">
 <h3><span class="header-section-number">16.1.3</span> ‘Policy’ and business implications and recommendations</h3>
-<ul>
-<li>E.g., for ‘which pages to seed’</li>
-</ul>
+<p>In particular, in a charitable giving social-media fundraising context, we might consider whether it is worth offering ‘seed contributions’ to encourage giving on existing pages. If so, ‘which pages should we seed and how much?’</p>
+<p><br />
+</p>
 </div>
 <div id="theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings" class="section level3" number="16.1.4">
 <h3><span class="header-section-number">16.1.4</span> Theory-driven inference about optimizing agents, esp. in strategic settings</h3>
 <ul>
-<li>Especially in ‘predicted contributions to public goods’ settings and 2nd order beliefs</li>
+<li>Especially in the context od ‘predicted contributions to public goods… and 2nd order beliefs’</li>
 </ul>
 </div>
 <div id="experimental-design" class="section level3" number="16.1.5">
@@ -610,8 +610,13 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 <li><p>Bayesian Power calculation<br />
 </p></li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="bayesian-approaches.html#cb43-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="bayesian-approaches.html#cb42-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
 <p>Package loadings from Kurtz:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="bayesian-approaches.html#cb43-1"></a>pacman<span class="op">::</span><span class="kw">p_unload</span>(pacman<span class="op">::</span><span class="kw">p_loaded</span>(), <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb43-2"><a href="bayesian-approaches.html#cb43-2"></a>ggplot2<span class="op">::</span><span class="kw">theme_set</span>(ggplot2<span class="op">::</span><span class="kw">theme_grey</span>())</span>
+<span id="cb43-3"><a href="bayesian-approaches.html#cb43-3"></a>bayesplot<span class="op">::</span><span class="kw">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb43-4"><a href="bayesian-approaches.html#cb43-4"></a></span>
+<span id="cb43-5"><a href="bayesian-approaches.html#cb43-5"></a><span class="kw">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
 </div>
 </div>
 <div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="16.2">
@@ -628,23 +633,24 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <div id="the-golem-of-prague-chapter-1" class="section level3" number="16.2.1">
 <h3><span class="header-section-number">16.2.1</span> The Golem of Prague (Chapter 1)</h3>
 <p>Don’t let your model or approach turn into a Golem you can’t control. Don’t ‘believe the model’; continuously validate it. The map is not the territory.</p>
-<p>‘Statistical decision trees’ lend a false sense of security… and almost never fit the actual case we are dealing with. (fig 1.1)</p>
-<p><br />
+<p>‘Statistical decision trees’ lend a false sense of security… and almost never fit the actual case we are dealing with. (fig 1.1)<br />
 </p>
-<p>Statistical models are non-unique maps to ‘Process models’ which are non-unique maps to Hypotheses. (‘Nuetral evolutionary selection’ example.) This makes strict falsification impossible … How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses?</p>
-<p><br />
+<p>Statistical models are non-unique maps to ‘process models’ which are non-unique maps to <em>hypotheses</em>. (He offers the example of neutral evolutionary selection’ example.)</p>
+<p>This makes strict falsification impossible: How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses?<br />
 </p>
 <p>But this warning is at least as relevant for Bayesian analyses, which must be based on specifically defined (term) models of the DGP etc. Thus he recommends caution and continuous (?) interplay between the model and the data. (See next chapter … ‘small worlds and large worlds’.)<br />
 </p>
 <p>He also suggests we refer not to ‘Confidence intervals’ or even ‘Credible intervals’, but to ‘Consistent intervals’ … as in ‘these intervals are consistent with the model and data’.</p>
 <p><br />
 </p>
-<p>And…
-&gt; [so you should] ‘…Explicitly compare predictions of more than one model’</p>
-<div id="rethinking-is-nhst-falsificationist" class="section level4" number="16.2.1.1">
-<h4><span class="header-section-number">16.2.1.1</span> Rethinking: Is NHST falsificationist?</h4>
+<p>And…</p>
+<blockquote>
+<p>[so you should] ‘…Explicitly compare predictions of more than one model’</p>
+</blockquote>
+<div id="rethinking-is-nhst-falsificationist" class="section level4 unnumbered" number="">
+<h4>Rethinking: Is NHST falsificationist?</h4>
 <div class="figure" style="text-align: center">
-<img src="images/failure_of_falsification.png" alt="From McElreath video lecture 1" width="50%" />
+<img src="images/failure_of_falsification.png" alt="From McElreath video lecture 1" width="70%" />
 <p class="caption">
 (#fig:failure_of_falsification.png)From McElreath video lecture 1
 </p>
@@ -656,8 +662,8 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <p>I.e., scientists have turned things upside down; originally the idea was that you had substitute of hypotheses that you would want to falsify and now we try to falsify silly null hypotheses that “nothing is going on”. You should try to really build a hypothesis and test it not just reject that nothing is going on.</p>
 </div>
 </div>
-<div id="books-foci" class="section level4" number="16.2.1.2">
-<h4><span class="header-section-number">16.2.1.2</span> Book’s foci</h4>
+<div id="books-foci" class="section level4" number="16.2.1.1">
+<h4><span class="header-section-number">16.2.1.1</span> Book’s foci</h4>
 <ol style="list-style-type: decimal">
 <li>Bayesian data analysis</li>
 <li>Multilevel modeling</li>
@@ -812,7 +818,8 @@ Figure 16.1: All possible draws of three balls
 <p><br />
 </p>
 <p>Now the inferential exercise: we want to know (the likelihood) of each of the five possible ‘worlds’. As we draw data we know we are proceeding along one of some subset of the forking paths.<br />
-For example, under possible world 2, if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):</p>
+</p>
+<p>For example, under possible world 2, if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-34"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-14-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
@@ -1192,7 +1199,7 @@ b
 <p><br />
 How to incorporate <em>prior</em> information about the probability of each world?<br />
 </p>
-<p>Suppose your friend in the factory tells you (reliably) that ’we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues.</p>
+<p>Suppose your friend in the factory tells you (reliably) that “we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues.”</p>
 <p>We can think of the ‘factory choosing which bag to produce’ as another draw, thus another path.</p>
 <p><br />
 Here the <em>sequence</em> in which the information is recieved shouldn’t matter. The draws are independent (we presume).</p>
@@ -1353,6 +1360,8 @@ b
 </div>
 <div id="from-counts-to-probability." class="section level3" number="16.2.4">
 <h3><span class="header-section-number">16.2.4</span> From counts to probability.</h3>
+<p><br />
+</p>
 </div>
 </div>
 <div id="title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep" class="section level2" number="16.3">
@@ -1493,7 +1502,9 @@ Eventually ‘we obtain samples of <span class="math inline">\(p(\theta|y)\)</sp
 <li>Use an overall fit measure to assess model fit</li>
 </ol>
 <p>E.g., percent correct predictions (binary), whether the true data is within the 95% CI of the replicates, deviance</p>
-<p>For each replicate Choose statistic D, compare the replicated <span class="math inline">\(D(y_s_{replicated})\)</span> against $D(y_s_{observed})</p>
+<p>For each replicate Choose statistic D, compare the replicated</p>
+<p><span class="math inline">\(D(y^s_{replicated})\)</span>
+against <span class="math inline">\(D(y^s_{observed})\)</span></p>
 <p>Quantify the discrepancy … percent of correct predictions, proportion of times replicated y is below true y … compute ‘bayesian p-value’s’</p>
 <p>Systematic differences between replicate and actual data indicate model limitations</p>
 <p>(?? what are reasonable values here??)</p>

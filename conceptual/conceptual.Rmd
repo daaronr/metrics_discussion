@@ -14,5 +14,7 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### DAGs and Potential outcomes
 
+See especially  Imbens, 2019: "Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics"
+
 ## Theory, restrictions, and 'structural vs reduced form'
 

@@ -7,7 +7,6 @@ I take notes on several different resources/texts below. Ultimately I'll try to 
 
 ## My (David Reinstein's) uses for Bayesian approaches (brainstorm)
 
-
 ### Meta-analysis of previous evidence
 
 - Of prior work, especially on motivators of (effective) charitable giving and responses to effectiveness information
@@ -22,11 +21,13 @@ How to integrate into inferences from diagnostic testing (e.g., common-trend ass
 
 ### 'Policy' and business implications and recommendations
 
-- E.g., for 'which pages to seed'
+In particular, in a charitable giving social-media fundraising context, we might consider whether it is worth offering 'seed contributions' to encourage giving on existing pages. If so, 'which pages should we seed and how much?'
+
+\
 
 ### Theory-driven inference about optimizing agents, esp. in strategic settings
 
-- Especially in 'predicted contributions to public goods' settings and 2nd order beliefs
+- Especially in the context od 'predicted contributions to public goods... and 2nd order beliefs'
 
 ### Experimental design
 
@@ -46,7 +47,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 Package loadings from Kurtz:
-```{r, echo = F, message = F, warning = F, results = "hide"}
+```{r, echo = TRUE, message = F, warning = F, results = "hide"}
 
 pacman::p_unload(pacman::p_loaded(), character.only = TRUE)
 ggplot2::theme_set(ggplot2::theme_grey())
@@ -65,7 +66,7 @@ library(tidyverse) #adds in next chapter
 McElreath's course and text looks great. I'm taking selective notes here; I'll try to incorporate content from both text and [youtube video lectures](https://www.youtube.com/watch?v=4WVelCswXo4&list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI).
 
 [AJ Kurtz has re-written the code](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded) using the `brms` package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?
-  
+
 I'm planning to through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
 ```  
 
@@ -78,11 +79,11 @@ I've also forked Kurtz's repo [here](https://github.com/daaronr/Statistical_Reth
 Don't let your model or approach turn into a Golem you can't control. Don't 'believe the model'; continuously validate it. The map is not the territory.
 
 'Statistical decision trees' lend a false sense of security... and almost never fit the actual case we are dealing with. (fig 1.1)
-
 \
 
-Statistical models are non-unique maps to 'Process models' which are non-unique maps to Hypotheses. ('Nuetral evolutionary selection' example.) This makes strict falsification impossible ... How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses? 
+Statistical models are non-unique maps to 'process models' which are non-unique maps to *hypotheses*. (He offers the example of neutral evolutionary selection' example.) 
 
+This makes strict falsification impossible:  How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses? 
 \
 
 But this warning is at least as relevant for Bayesian analyses, which must be based on specifically defined (term) models of the DGP etc. Thus he recommends caution and continuous (?) interplay between the model and the data. (See next chapter ... 'small worlds and large worlds'.)
@@ -93,12 +94,13 @@ He also suggests we refer not to 'Confidence intervals' or even 'Credible interv
 \
 
 And... 
+
 > [so you should] '...Explicitly compare predictions of more than one model'
 
 
-#### Rethinking: Is NHST falsificationist? 
+#### Rethinking: Is NHST falsificationist? {-}
 
-```{r failure_of_falsification.png, fig.cap='From McElreath video lecture 1', out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
+```{r failure_of_falsification.png, fig.cap='From McElreath video lecture 1', out.width='70%', fig.asp=.5, fig.align='center', echo = FALSE}
 
 knitr::include_graphics("images/failure_of_falsification.png")
 
@@ -196,6 +198,7 @@ knitr::include_graphics("https://bookdown.org/content/3890/02_files/figure-gfm/u
 
 Now the inferential exercise: we want to know (the likelihood) of each of the five possible 'worlds'. As we draw data we know we are  proceeding along one of some subset of the forking paths.
 \
+
 For example, under possible world 2,  if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):
 
 ```{r, fig.cap='All possible draws of three balls', out.width='50%', fig.asp=.5, fig.align='center', echo = FALSE}
@@ -289,7 +292,7 @@ t %>%
 How to incorporate *prior* information about the probability of each world? 
 \
 
-Suppose your friend in the factory tells you (reliably) that 'we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues.
+Suppose your friend in the factory tells you (reliably) that "we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues."
 
 We can think of the 'factory choosing which bag to produce' as another draw, thus another path.
 
@@ -312,6 +315,7 @@ t %>%
 
 ### From counts to probability.
 
+\
 
 ## Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
 
@@ -474,7 +478,10 @@ $p(y_{replicated}|y_{observed}= ...$
 
 E.g.,   percent correct predictions (binary), whether the true data is within the 95\% CI of the replicates, deviance
 
-For each replicate Choose statistic D, compare the replicated $D(y_s_{replicated})$ against $D(y_s_{observed})
+For each replicate Choose statistic D, compare the replicated 
+
+$D(y^s_{replicated})$ 
+against $D(y^s_{observed})$
 
 Quantify the discrepancy ... percent of correct predictions, proportion of times replicated y is below true y ... compute 'bayesian p-value's'
 

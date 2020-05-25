@@ -1,0 +1,150 @@
+## Making inferences from previous work; Meta-analysis, combining studies
+
+### Notes: Christensen et al 2019, ch 5, 'Using all evidence, registration and meta-analysis
+
+> how the research community can systematically collect, organize, and analyze a body of research work
+
+- Limitations to the  narrative literature review: subjectivity, too much info to narrate
+
+#### The origins [and importance] of study [pre-]registration
+
+... Make details of planned and ongoing studies available to the community .... including those not (yet) published
+
+- Required by FDA in 1997, many players in medical community followe d soon after 
+
+- Turner ea (08) and others documented massive publication bias and misrepresentation
+
+... but registration far from fully enforced (MAthieu ea '09) found 46% clealy registered, and discrepancies between registered and published outcomes
+!
+
+#### Social science study registries
+
+Jameel 2009, AEA 2013, 2100 registrations to date
+RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)
+ 
+#### Meta-analsis
+
+Ref: Borentstein ea '09, Cooper, Hedges, and V '09
+
+##### Selecting studies
+
+"some scholarly discretion regarding which measures are 'close enough' to be included... contemperanous meta-analyses on the same topic finding opposit e conclusions
+
+'asses the robustness... to diffrent inclusion conditions'... see Doucouliagos ea '17 on inclusion optinos
+
+##### Assembling estimates
+
+- Which statistic to collect?
+
+Studies $j \in J, j= 1..N_j$
+
+Relevant estimate of stat from each study is $\hat{
+\beta_j}$ with SE $\hat{\sigma_j}$
+
+- Papers report several estimates (e.g., in robustness checks): which to choose, esp if author's preferred approach differs from other scholars.
+
+\
+
+*Ex from Hsiang, B, Miguel, '13*: links between extreme climate and violence
+
+- how to classify outcomes... interpersonal and intergroup... normalised as pct changes wrt the meanoutcome in that dataset
+
+- how to standardice climate varn measures... chose SD from local area mean
+(DR: this choice implicitly reflects a behavioural assumption)
+
+--> 'pct  change in a conflict outcome as a fncn of a 1 SD schock to local climate'
+
+#### Combining estimates
+
+'Fixed-effect meta-analysis approach': assumes a single true effect'
+
+(DR: not sure I agree on there cassesment of *ehy* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue)
+
+*Equal weight approach*: (Simply the average across studies... ugh)
+
+\
+
+*Precision-weighted approach*:
+
+$$\hat{\beta}_{PW}= 
+\sum_{j}p_j\hat{\beta}_j/
+\sum_{j}p_j$$
+
+where $p_j$ is the estimated precision for study $j$: $\frac{1}{\hat{\sigma_i}^2}$
+
+Thus the weight $\omega_j$ placed on study $j$ is proportional to it's precision.
+
+?implies weight in proportion to sample size? I think that's wrong, it must be nonlinear.
+
+--> This minimises the variance in the resulting meta-analtical estimate:
+
+$$Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}$$
+
+'inclusion of additional estimates always reduces the SE of $\hat{\beta_{PW}}$ [in expectation].' ... so more estimtes can't hurt as long as you know their precision.
+
+(they give a numerical example here with 3 estimates)
+
+#### Heterogeneous estimates...
+
+##### WLS estimate
+
+(Stanley and Doucouliagos '15)
+'an estimate of the average of potentially heterog ests'
+
+##### Random-effects (more common)
+
+*Focus here on hierarchical Bayesian approach* (Gelman and Hill '06; Gelman ea '13)
+
+'The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature'
+
+... continuing from above notation
+
+'cross-studt differences we observe might not be driven solely by sampling variability... [even with] infinite data, they would not converge to the exxact same [estimate]'
+
+True TE $\beta_j$ for study j drawn from a normal distribution...
+
+$$\beta_j \sim N(\mu, \tau^2)$$
+
+'Hyperparameters' $\mu$ determines central tendency of findings... 
+$\tau$ the extent of hety across contexts.
+
+Considering $\tau$ vs $\mu$ is informative  in itself.
+And a large $\mu$ may suggest looking into sample splits for hety on obsl lines.
+
+\
+
+Uniform prior for $\mu$ --> conditional posterior:
+
+$$\mu|\tau,y \sim N(\hat{\mu}, V_{\mu})$$ where the estd common effect $\hat{\mu}$ is 
+$$\hat{\mu}= 
+
+$$\hat{\mu}=
+\frac{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))\hat{\beta}}
+{\sum_{j}(1/(\hat{\sigma}^2_j+\hat{\tau}^2))}$$
+
+(Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)
+
+and where the estimated variance  of the generalizable component $V_\mu$ is:
+$$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$
+
+*DR -- confusion/correction? Is this the estimated variance or the variance of the estimate?*
+
+
+- and how do we estimate some of the components of these, like $\hat{\tau}$?
+
+  > Intuitively, if estimated [TE] in all studies are near one another and have relatively wide and overlapping [CI's], then most of the dfc in ests is lkly the result of sampling varn [and $\tau$] is likely to be close to zero.
+
+ *DR: But if the TE have wide CI's, do we have power to idfy btwn-study hety? ... I guess that's what the 'estimated TE are all near eachother' gives us?*
+
+... Alternatively, extensive varn in the estd ATEs but each is precise... $\tau$ is likely to be relvly large.
+
+*TODO: some code exercises should be put or linked here*
+
+\ The $I^2$ stat is a measure of the proportion of toatal varn attributed to cross-study varn; if $\hat{\sigma}_j$ is the same across all studies we have:
+$I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$ 
+
+*DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.  
+
+https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
+
+

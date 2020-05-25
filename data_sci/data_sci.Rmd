@@ -163,9 +163,10 @@ ft <- map2(ft, ft_names, function(x, y) {
 We can store a filter as a character vector and then apply it
 ```{r}
 
-selection_statement <- "Species == 'setosa'"
+selection_statement <- "Species == 'setosa' & Petal.Width>0.3"
 
-iris %>%
+iris %>%  
+   as.tibble() %>%
     filter(rlang::eval_tidy(rlang::parse_expr(selection_statement)))
 ```
 
@@ -173,14 +174,18 @@ Making this a function for later use:
 
 ```{r}
 
+selection_statement <- "Species == 'setosa' & Petal.Width>0.3"
+
+
 filter_parse =  function(df, x) {
   {{df}} %>%
    filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
 }
 
-iris %>% filter_parse(selection_statement)
+iris %>%
+  as.tibble() %>%
+ filter_parse(selection_statement)
 
-selection_statement <- "Species == 'setosa'"
 ```
 
 
@@ -189,7 +194,7 @@ We can do the same for a list of character vectors of filter statements, and app
 
 ```{r}
 
-sel_st <- c("Species == 'setosa'", "Species == 'virginica'")
+sel_st <- c("Species == 'setosa' & Petal.Width>0.3", "Species == 'virginica' & Petal.Width>2.4")
 
 map(iris, selection_statement)
 
@@ -248,4 +253,10 @@ Whenever there are more than 20 lines of something prosaic that cannot/has not b
 
 \
 
+**Tools for structuring your workflow for reproducable code with Rmd and Git: The workflowr package** 
+
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;This paper does a thorough job setting out the rationale, design, and implementation of the workflowr package&quot; says <a href="https://twitter.com/PeteHaitch?ref_src=twsrc%5Etfw">@PeteHaitch</a> <a href="https://twitter.com/WEHI_research?ref_src=twsrc%5Etfw">@WEHI_research</a> in his review of this <a href="https://twitter.com/hashtag/softwaretool?src=hash&amp;ref_src=twsrc%5Etfw">#softwaretool</a> article introducing workflowr by <a href="https://twitter.com/jdblischak?ref_src=twsrc%5Etfw">@jdblischak</a> and co-authors <a href="https://t.co/ZXmQkDhFuD">https://t.co/ZXmQkDhFuD</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> <a href="https://t.co/e77SVo8PhO">pic.twitter.com/e77SVo8PhO</a></p>&mdash; F1000Research (@F1000Research) <a href="https://twitter.com/F1000Research/status/1196056651691962368?ref_src=twsrc%5Etfw">November 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+\
+
+Switching from Latex to markdown/R-markdown? [These tips from Colin Bousige look pretty good](https://colinbousige.github.io/post/rmarkdown/), although I prefer the bookdown/gitbook format

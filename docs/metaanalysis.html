@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-23" />
+<meta name="date" content="2020-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -589,7 +589,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.1.1</span> The origins [and importance] of study [pre-]registration</h3>
 <p>… Make details of planned and ongoing studies available to the community …. including those not (yet) published</p>
 <ul>
-<li><p>Required by FDA in 1997, many players in medical community followe d soon after</p></li>
+<li><p>Required by FDA in 1997, many players in medical community followed soon after</p></li>
 <li><p>Turner ea (08) and others documented massive publication bias and misrepresentation</p></li>
 </ul>
 <p>… but registration far from fully enforced (Mathieu ea ’09) found 46% clealy registered, and discrepancies between registered and published outcomes
@@ -606,7 +606,7 @@ RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
 <div id="selecting-studies" class="section level4" number="15.1.3.1">
 <h4><span class="header-section-number">15.1.3.1</span> Selecting studies</h4>
 <p>"some scholarly discretion regarding which measures are ‘close enough’ to be included… contemperanous meta-analyses on the same topic finding opposit e conclusions</p>
-<p>‘asses the robustness… to diffrent inclusion conditions’… see Doucouliagos ea ’17 on inclusion options</p>
+<p>‘asses the robustness… to different inclusion conditions’… see Doucouliagos ea ’17 on inclusion options</p>
 <div class="marginnote">
 <p>My opinion: this is the key barrier to meta-analysis in social science! How do we weight studies using different methodologies and in different contexts? The Bayesian Random Effects approach seems to offer some help here (this not to be confused with the random effects panel-data models discussed in standard Econometrics texts).</p>
 </div>
@@ -638,7 +638,7 @@ RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
 <h3><span class="header-section-number">15.1.4</span> Combining estimates</h3>
 <p>‘Fixed-effect meta-analysis approach’: assumes a single true effect’</p>
 <div class="marginnote">
-<p>DR: I’m not sure I agree on theis assesment of <em>why</em> this is unlikely to be true in practice… ‘differences in measures’ (etc) seem to be a different issue</p>
+<p>DR: I’m not sure I agree on this assesment of <em>why</em> this is unlikely to be true in practice… ‘differences in measures’ (etc) seem to be a different issue</p>
 </div>
 <p><em>Equal weight approach</em>: (Simply the average across studies… ugh)</p>
 <p><br />
@@ -652,8 +652,8 @@ RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
 <div class="marginnote">
 <p>‘implies weight in proportion to sample size’? I think that’s loosely worded, it must be nonlinear.</p>
 </div>
-<p><span class="math inline">\(\rightarrow\)</span> This minimises the variance in the resulting meta-analtical estimate:</p>
-<p><span class="math display">\[Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}\]</span></p>
+<p><span class="math inline">\(\rightarrow\)</span> This minimises the variance in the resulting meta-analytical estimate:</p>
+<p><span class="math display">\[var(\hat{\beta}_{PW}) =\sum_j \omega_j\hat{\sigma_j}^2 = \frac{1}{\sum_j(p_j)}\]</span></p>
 <p>‘inclusion of additional estimates always reduces the SE of <span class="math inline">\(\hat{\beta_{PW}}\)</span> [in expectation].’ … so more estimtes can’t hurt as long as you know their precision.</p>
 <p>(they give a numerical example here with 3 estimates)</p>
 <!-- Todo: add R code explicitly doing these calculations -->
@@ -729,17 +729,17 @@ https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/
 <p>Note that installation of the required packages can be tricky here.
 For Mac Catalina with R 4.0 I followed the instructions <a href="https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30">HERE</a></p>
 </div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="metaanalysis.html#cb31-1"></a><span class="co">#devtools::install_github(&quot;MathiasHarrer/dmetar&quot;) </span></span>
-<span id="cb31-2"><a href="metaanalysis.html#cb31-2"></a><span class="co">#...I did not &#39;update new packages&#39;</span></span>
-<span id="cb31-3"><a href="metaanalysis.html#cb31-3"></a><span class="co">#install.packages(&quot;extraDistr&quot;)</span></span>
-<span id="cb31-4"><a href="metaanalysis.html#cb31-4"></a></span>
-<span id="cb31-5"><a href="metaanalysis.html#cb31-5"></a><span class="kw">library</span>(meta)</span>
-<span id="cb31-6"><a href="metaanalysis.html#cb31-6"></a></span>
-<span id="cb31-7"><a href="metaanalysis.html#cb31-7"></a><span class="co">#install.packages(&quot;brms&quot;)</span></span>
-<span id="cb31-8"><a href="metaanalysis.html#cb31-8"></a><span class="kw">library</span>(brms)</span>
-<span id="cb31-9"><a href="metaanalysis.html#cb31-9"></a><span class="kw">library</span>(dmetar)</span>
-<span id="cb31-10"><a href="metaanalysis.html#cb31-10"></a></span>
-<span id="cb31-11"><a href="metaanalysis.html#cb31-11"></a><span class="kw">library</span>(extraDistr)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="metaanalysis.html#cb30-1"></a><span class="co">#devtools::install_github(&quot;MathiasHarrer/dmetar&quot;) </span></span>
+<span id="cb30-2"><a href="metaanalysis.html#cb30-2"></a><span class="co">#...I did not &#39;update new packages&#39;</span></span>
+<span id="cb30-3"><a href="metaanalysis.html#cb30-3"></a><span class="co">#install.packages(&quot;extraDistr&quot;)</span></span>
+<span id="cb30-4"><a href="metaanalysis.html#cb30-4"></a></span>
+<span id="cb30-5"><a href="metaanalysis.html#cb30-5"></a><span class="kw">library</span>(meta)</span>
+<span id="cb30-6"><a href="metaanalysis.html#cb30-6"></a></span>
+<span id="cb30-7"><a href="metaanalysis.html#cb30-7"></a><span class="co">#install.packages(&quot;brms&quot;)</span></span>
+<span id="cb30-8"><a href="metaanalysis.html#cb30-8"></a><span class="kw">library</span>(brms)</span>
+<span id="cb30-9"><a href="metaanalysis.html#cb30-9"></a><span class="kw">library</span>(dmetar)</span>
+<span id="cb30-10"><a href="metaanalysis.html#cb30-10"></a></span>
+<span id="cb30-11"><a href="metaanalysis.html#cb30-11"></a><span class="kw">library</span>(extraDistr)</span></code></pre></div>
 <div id="pooling-effect-sizes" class="section level3" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Pooling effect sizes</h3>
 <p>FE model calculates weighted average:</p>
@@ -825,7 +825,7 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <p><span class="math inline">\(s\)</span> corresponds to the std deviation here? … so an SD of the effect size about 1/3 of it’s mean size?</p>
 </div>
 <p>Checking the share of this distribution below 0.3…</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="metaanalysis.html#cb32-1"></a><span class="kw">phcauchy</span>(<span class="fl">0.3</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>) <span class="co">#cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="metaanalysis.html#cb31-1"></a><span class="kw">phcauchy</span>(<span class="fl">0.3</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>) <span class="co">#cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3</span></span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
 <p><br />
 </p>
@@ -844,9 +844,9 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <div id="bayesian-meta-analysis-in-r-using-the-brms-package" class="section level4" number="15.2.2.1">
 <h4><span class="header-section-number">15.2.2.1</span> Bayesian Meta-Analysis in R using the <code>brms</code> package</h4>
 <p>You specify the priors as a vector of elements, each of which invokes the ‘prior’ function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a ‘class’.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="metaanalysis.html#cb34-1"></a>priors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">class =</span> Intercept), <span class="kw">prior</span>(<span class="kw">cauchy</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">class =</span> sd))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="metaanalysis.html#cb33-1"></a>priors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">class =</span> Intercept), <span class="kw">prior</span>(<span class="kw">cauchy</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">class =</span> sd))</span></code></pre></div>
 <p>A quick look at the data we’re using here:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="metaanalysis.html#cb35-1"></a><span class="kw">str</span>(ThirdWave[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="metaanalysis.html#cb34-1"></a><span class="kw">str</span>(ThirdWave[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## tibble [18 × 3] (S3: tbl_df/tbl/data.frame)
 ##  $ Author: chr [1:18] &quot;Call et al.&quot; &quot;Cavanagh et al.&quot; &quot;DanitzOrsillo&quot; &quot;de Vibe et al.&quot; ...
 ##  $ TE    : num [1:18] 0.709 0.355 1.791 0.182 0.422 ...
@@ -854,19 +854,22 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <p><br />
 </p>
 <p>To actually run the model, he uses the following code:</p>
-<p>(it seems to require Xcode to run on my mac)</p>
+<div class="marginnote">
+<p>This requires careful installation of packages. See <a href="https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30">here</a> for Mac OS Catalina, R 4.9 instructions.</p>
+</div>
 <p>30 iterations is no doubt far too few, but the run process is too slow to do many more here.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="metaanalysis.html#cb37-1"></a>m.brm &lt;-<span class="st"> </span><span class="kw">brm</span>(TE<span class="op">|</span><span class="kw">se</span>(seTE) <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Author),</span>
-<span id="cb37-2"><a href="metaanalysis.html#cb37-2"></a>             <span class="dt">data =</span> ThirdWave,</span>
-<span id="cb37-3"><a href="metaanalysis.html#cb37-3"></a>             <span class="dt">prior =</span> priors,</span>
-<span id="cb37-4"><a href="metaanalysis.html#cb37-4"></a>             <span class="dt">iter =</span> <span class="dv">30</span>)</span></code></pre></div>
+<p>I find it surprising how long this procedure takes to run, this simulation, given that the actual data used (estimates and SE’s) is rather small.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="metaanalysis.html#cb36-1"></a>m.brm &lt;-<span class="st"> </span><span class="kw">brm</span>(TE<span class="op">|</span><span class="kw">se</span>(seTE) <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Author),</span>
+<span id="cb36-2"><a href="metaanalysis.html#cb36-2"></a>             <span class="dt">data =</span> ThirdWave,</span>
+<span id="cb36-3"><a href="metaanalysis.html#cb36-3"></a>             <span class="dt">prior =</span> priors,</span>
+<span id="cb36-4"><a href="metaanalysis.html#cb36-4"></a>             <span class="dt">iter =</span> <span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## Compiling the C++ model</code></pre>
 <pre><code>## Start sampling</code></pre>
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 2.4e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
+## Chain 1: Gradient evaluation took 2.2e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -886,15 +889,15 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Chain 1: Iteration: 27 / 30 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 30 / 30 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.005991 seconds (Warm-up)
-## Chain 1:                0.005647 seconds (Sampling)
-## Chain 1:                0.011638 seconds (Total)
+## Chain 1:  Elapsed Time: 0.005682 seconds (Warm-up)
+## Chain 1:                0.006664 seconds (Sampling)
+## Chain 1:                0.012346 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 2).
 ## Chain 2: 
-## Chain 2: Gradient evaluation took 8e-06 seconds
-## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.08 seconds.
+## Chain 2: Gradient evaluation took 1.1e-05 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
 ## Chain 2: Adjust your expectations accordingly!
 ## Chain 2: 
 ## Chain 2: 
@@ -914,9 +917,9 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Chain 2: Iteration: 27 / 30 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 30 / 30 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.005802 seconds (Warm-up)
-## Chain 2:                0.006231 seconds (Sampling)
-## Chain 2:                0.012033 seconds (Total)
+## Chain 2:  Elapsed Time: 0.008605 seconds (Warm-up)
+## Chain 2:                0.005664 seconds (Sampling)
+## Chain 2:                0.014269 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 3).
@@ -942,15 +945,15 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Chain 3: Iteration: 27 / 30 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 30 / 30 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.008384 seconds (Warm-up)
-## Chain 3:                0.004734 seconds (Sampling)
-## Chain 3:                0.013118 seconds (Total)
+## Chain 3:  Elapsed Time: 0.009106 seconds (Warm-up)
+## Chain 3:                0.005403 seconds (Sampling)
+## Chain 3:                0.014509 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 9e-06 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.09 seconds.
+## Chain 4: Gradient evaluation took 1.2e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -970,11 +973,11 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Chain 4: Iteration: 27 / 30 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 30 / 30 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.005298 seconds (Warm-up)
-## Chain 4:                0.008139 seconds (Sampling)
-## Chain 4:                0.013437 seconds (Total)
+## Chain 4:  Elapsed Time: 0.005404 seconds (Warm-up)
+## Chain 4:                0.004644 seconds (Sampling)
+## Chain 4:                0.010048 seconds (Total)
 ## Chain 4:</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="metaanalysis.html#cb41-1"></a>m.brm</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="metaanalysis.html#cb40-1"></a>m.brm</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
@@ -985,11 +988,11 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Group-Level Effects: 
 ## ~Author (Number of levels: 18) 
 ##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## sd(Intercept)     0.28      0.16     0.01     0.62 1.46       22       21
+## sd(Intercept)     0.29      0.10     0.12     0.46 0.98       62       75
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept     0.53      0.10     0.35     0.71 1.07       48       26
+## Intercept     0.58      0.09     0.45     0.78 1.02       40       39
 ## 
 ## Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential

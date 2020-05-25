@@ -19,7 +19,7 @@ it is lame how often I see 'new experiments' and 'new studies' that tread most o
 
 ... Make details of planned and ongoing studies available to the community .... including those not (yet) published
 
-- Required by FDA in 1997, many players in medical community followe d soon after
+- Required by FDA in 1997, many players in medical community followed soon after
 
 - Turner ea (08) and others documented massive publication bias and misrepresentation
 
@@ -39,7 +39,7 @@ Key references: Borenstein ea '09, Cooper, Hedges, and V '09
 
 "some scholarly discretion regarding which measures are 'close enough' to be included... contemperanous meta-analyses on the same topic finding opposit e conclusions
 
-'asses the robustness... to diffrent inclusion conditions'... see Doucouliagos ea '17 on inclusion options
+'asses the robustness... to different inclusion conditions'... see Doucouliagos ea '17 on inclusion options
 
 
 <div class="marginnote">
@@ -80,7 +80,7 @@ $\rightarrow$ 'pct  change in a conflict outcome as a fncn of a 1 SD schock to l
 
 <div class="marginnote">
 
-DR: I'm  not sure I agree on theis assesment of *why* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
+DR: I'm  not sure I agree on this assesment of *why* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
 
 </div>
 
@@ -105,9 +105,10 @@ Thus the weight $\omega_j$ placed on study $j$ is proportional to it's precision
 
 </div>
 
-$\rightarrow$ This minimises the variance in the resulting meta-analtical estimate:
+$\rightarrow$ This minimises the variance in the resulting meta-analytical estimate:
 
-$$Var(\hat{\beta}_{PW) =\sum_j \omega_j^\hat{\sigma_j}^2=\frac{1}{\sum_j(p_j)}$$
+$$var(\hat{\beta}_{PW}) =\sum_j \omega_j\hat{\sigma_j}^2 = \frac{1}{\sum_j(p_j)}$$
+
 
 'inclusion of additional estimates always reduces the SE of $\hat{\beta_{PW}}$ [in expectation].' ... so more estimtes can't hurt as long as you know their precision.
 
@@ -217,8 +218,10 @@ Some notes follow excerpting and commenting on
 
 
 <div class="marginnote">
+
 Note that installation of the required packages can be tricky here. 
 For Mac Catalina with R 4.0 I followed the instructions [HERE](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30)
+
 </div>
  
 ```{r, warning=FALSE, message=FALSE}
@@ -376,7 +379,6 @@ $$ \tau \sim \mathcal{HC}(0,0.5)$$
 #### Bayesian Meta-Analysis in R using the `brms` package
 
 
-
 You specify the priors as a vector of elements, each of which invokes the 'prior' function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a 'class'. 
 
 ```{r priors}
@@ -397,9 +399,14 @@ str(ThirdWave[,1:3])
 
 To actually run the model, he uses the following code:
 
-(it seems to require Xcode to run on my mac)
+<div class="marginnote">
+This requires careful installation of packages. See [here](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30) for Mac OS Catalina, R 4.9 instructions.
+</div>
 
-30 iterations is no doubt far too few, but the run process is too slow to do many more here.
+30 iterations is no doubt far too few, but the run process is too slow to do many more here. 
+
+I find it surprising how long this procedure takes to run, this simulation, given that the actual data used (estimates and SE's) is rather small.
+ 
 
 ```{r echo=TRUE, eval=TRUE}
 
@@ -411,7 +418,6 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
 m.brm
 
 ```
-
 
 
 - The *formula for the model* is specified using 'regression formula notation'

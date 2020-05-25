@@ -1,12 +1,13 @@
 ## Notes: Mullainathan
 
- **Page** 1
+**Page** 1
+ 
 The fundamental insight behind these breakthroughs is as much statistical as computational. Machine intelligence became possible once researchers
 stopped approaching intelligence tasks procedurally and began tackling them
 empirically. Face recognition algorithms, for example, do not consist of hard-wired
 rules to scan for certain pixel combinations, based on human understanding of
 what constitutes a face. Instead, these algorithms use a large dataset of photos
-labeled as having a face or not to estimate a function f (x) that predicts the presence y of a face from pixels x
+labeled as having a face or not to estimate a function f (x) that predicts the presence y of a face from pixels 
 
 (p2)
 supervised- machine learning, the focus of this article) revolves around
