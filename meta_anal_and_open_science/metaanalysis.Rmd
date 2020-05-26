@@ -1,4 +1,4 @@
-# Making inferences from previous work; Meta-analysis, combining studies {#metaanalysis}
+# Meta-analysis and combining studies: Making inferences from previous work {#metaanalysis}
 
 My opinion on why this is so important (unfold):
 
@@ -31,7 +31,7 @@ it is lame how often I see 'new experiments' and 'new studies' that tread most o
 Jameel 2009, AEA 2013, 2100 registrations to date
 RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)
 
-### Meta-analsis
+### Meta-analysis
 
 Key references: Borenstein ea '09, Cooper, Hedges, and V '09
 
@@ -216,7 +216,6 @@ Some notes follow excerpting and commenting on
 
 [Doing Meta-Analysis in R: A Hands-on Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)
 
-
 <div class="marginnote">
 
 Note that installation of the required packages can be tricky here. 
@@ -230,13 +229,9 @@ For Mac Catalina with R 4.0 I followed the instructions [HERE](https://discourse
 #...I did not 'update new packages'
 #install.packages("extraDistr")
 
-library(meta)
+library(pacman)
 
-#install.packages("brms")
-library(brms)
-library(dmetar)
-
-library(extraDistr)
+p_load(tidyverse, meta, brms, dmetar, extraDistr, ggplot2, tidybayes, dplyr, ggplot2, ggridges, glue, stringr, forcats)
 
 ```
 
@@ -376,15 +371,13 @@ $$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
 $$ \mu \sim \mathcal{N}(0,1)$$
 $$ \tau \sim \mathcal{HC}(0,0.5)$$
 
-#### Bayesian Meta-Analysis in R using the `brms` package
-
+#### Bayesian Meta-Analysis in R using the `brms` package {-}
 
 You specify the priors as a vector of elements, each of which invokes the 'prior' function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a 'class'. 
 
 ```{r priors}
 priors <- c(prior(normal(0,1), class = Intercept), prior(cauchy(0,0.5), class = sd))
 ```
-
 
 
 A quick look at the data we're using here: 
@@ -394,6 +387,11 @@ A quick look at the data we're using here:
 str(ThirdWave[,1:3])
 ```
 
+`TE`:  calculated effect size of each study, expressed as the Standardized Mean Difference (SMD)
+
+`seTE`: the standard error corresponding to each effect size
+
+`Author`: a unique identifier for each study/effect size.
 
 \
 
@@ -403,35 +401,264 @@ To actually run the model, he uses the following code:
 This requires careful installation of packages. See [here](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30) for Mac OS Catalina, R 4.9 instructions.
 </div>
 
-30 iterations is no doubt far too few, but the run process is too slow to do many more here. 
-
-I find it surprising how long this procedure takes to run, this simulation, given that the actual data used (estimates and SE's) is rather small.
+I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile.
  
+<div class="marginnote">
+The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.
+</div>
 
 ```{r echo=TRUE, eval=TRUE}
 
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              data = ThirdWave,
              prior = priors,
-             iter = 30)
+             iter = 100)
 
 m.brm
 
 ```
 
+The *formula for the model* is specified using 'regression formula notation' (unfold)...
 
-- The *formula for the model* is specified using 'regression formula notation'
+```{block2,  type='note'}
 
-- As there is no 'predictor variable' here (unless it's meta-regression), `x` is replaced with `1`
 
-- But we want to  give studies with greater precision of the effect size estimate a greather weight. 
-  - Done using `y|se(se_y)`
+- As there is no 'predictor variable' in such analyses (unless it's meta-regression), `x` is replaced with `1`
+
+- But we want to give studies that more precisely estimate the effect size (perhaps because they have a larger sample) a greater weight. 
+  - Coded using the `y|se(se_y)` element
   
-- For  the *random effects terms* he adds  `(1|study)` to the predictor part.
+- For the *random effects terms* he adds `(1|study)` to the predictor part (or here `(1|author)`.
 
 -  `prior`: Plugs in the priors created above plug in the `priors` object we created previously here.
 
 - `iter`:  Number of iterations of MCMC algorithm... the more complex your model, the higher this number should be. [DR: but what's a rule of thumb here?]
+
+```
+
+
+#### Assesing convergence (has MCMC algo found an optimum?) {-}
+
+- If it hasn't converged, don't trust it! 
+  - You may need to boost the number of iterations
+
+"Posterior predictive checks": If it's converged, then the density of the replications should resemble the original data. 
+
+<div class="marginnote">
+Not sure I understand this; may need to revise and give a clear explanation. I guess it's something like 'the estimated terms are can then be run to simulate a dgp, which should yield data looking like the original data set'...
+</div>
+
+
+```{r}
+pp_check(m.brm)
+
+```
+ 
+
+
+\
+
+Also check for a Potential Scale Reduction Factor (PSRF), or $\hat{R}$ below 1.01.
+
+<div class="marginnote">
+I've no idea what this is at this point; I need to read earlier chapters. 
+</div>
+
+```{r}
+summary(m.brm)
+
+```
+
+ 
+#### Interpreting the Results {-}
+
+Above we see the estimated 'sd of the mean effect' and the 'mean effect', and 'est. error' and CI's for each. 
+
+<div class="marginnote">
+Is 'est error' this like a measure of the standard deviation of the estimated coefficient?
+
+Here CI's are 'credible intervals'. 
+</div>
+
+\
+
+We can also extract the estimated deviation of each study’s “true” effect size from the pooled effect:
+ 
+```{r}
+ranef(m.brm)
+
+```
+
+<div class="marginnote">
+
+These are measures of *deviations*. But they don't exactly equal the difference between the input effect size and the estimated pooled effect size. In fact this is coming from an estimate of the true effect for each study which  'averages towards the mean' following some criteria (this is mentioned later).
+
+</div>
+
+
+- No p-values listed because this is Bayesian
+
+Instead he states:
+
+>  the Estimate of the pooled effect size is SMD = 0.57,
+> with the 95% credibility interval (not confidence interval!) ranging from   95% CrI: 0.40 − 0.77. This indicates that there is in fact a moderate-sized overall effect of the interventions studied in this meta-analysis.
+
+But now we can model the parameters we want to estimate probabilistically...
+
+Taking samples from the (?) simulated posterior density of the population intercept (mean effect size) and sd of the effect...
+
+```{r}
+
+post.samples <- posterior_samples(m.brm, c("^b", "^sd"))
+names(post.samples)
+
+names(post.samples) <- c("smd", "tau")
+
+```
+
+"... make a **density plot** of the posterior distributions"
+
+
+```{r, eval=T}
+
+# Plot for SMD
+
+smd_density  <- ggplot(aes(x = smd), data = post.samples) +
+  geom_density(fill = "lightblue", color = "lightblue", alpha = 0.7) +
+  geom_point(y = 0, x = mean(post.samples$smd)) +
+  labs(x = expression(italic(SMD)),
+       y = element_blank()) +
+  theme_minimal() +
+  ggtitle("Standardized mean difference", subtitle = "Posterior density plot")
+
+
+# Plot for tau
+tau_density <- ggplot(aes(x = tau), data = post.samples) +
+  geom_density(fill = "lightgreen", color = "lightgreen", alpha = 0.7) +
+  geom_point(y = 0, x = mean(post.samples$tau)) +
+    labs(x = expression(tau),
+       y = element_blank()) +
+  theme_minimal() +
+  ggtitle("Between-study variation (SD = tau)", subtitle = "Posterior density plot")
+
+#Display plots together
+
+require(gridExtra)
+grid.arrange(smd_density, tau_density, ncol=2)
+
+```
+
+- posterior distributions unimodal, roughly normal distribution
+- ... "peaking around the values for $\mu$ and $\tau$ we saw in the output"
+
+<div class="marginnote">
+Consider: why are the peaks not exactly these values? Mean versus mode, I guess.
+</div>
+ 
+\
+Maybe we want to know (e.g.) "the probability that the pooled effect is $SMD=0.30$ or smaller, based on our model."
+<div class="marginnote">
+Because maybe an effect of 0.30 or smaller means it's not worth using this drug or something </div>
+ 
+ 
+Consider the *Empirical Cumulative Distribution Function* (ECDF) "of the posterior distribution for the pooled effect size"...
+
+> Use the `ecdf` function to implement the ECDF...  then check...
+
+```{r}
+smd.ecdf <- ecdf(post.samples$smd)
+smd.ecdf(0.3)
+```
+
+> We see that the probability of our pooled effect being smaller than $SMD = 0.30$ is **very, very low**, so  the effects of the interventions we find in this meta-analysis are very likely to be meaningful.
+
+ 
+\
+
+Plotting the ECDF  below:
+
+```{r, warning=F, message=F, fig.width=7, fig.height=5, fig.align='center', echo=F}
+
+smd.ecdf <- ecdf(post.samples$smd) #cumulative distribution computed on the posterior samples/ simulations of the SMD
+ecdf.dat <- data.frame(smd = 1:1000/1000, p = smd.ecdf(1:1000/1000)) #makes a data frame from a 0-1 counter in .001 units, and of the increments of the aforementioned cdf (I guess)
+
+ggplot(aes(x = smd, y = p), data = ecdf.dat) +
+  geom_vline(xintercept = mean(post.samples$smd), color = "grey") +
+  geom_line(size = 2, color = "darkblue") +
+  theme_minimal() +
+  labs(x = "SMD", y = "Cumulative Probability") +
+  ggtitle("ECDF: Posterior Distribution of the Pooled Effect Size")
+
+```
+
+### Forest plots
+
+Forest plots are great, esp. with Bayesian, where we've 'sampled posterior distributions'... but there's no prepackaged tool yet. So we've to build it with help from the `tidybayes` package.
+
+\
+
+First we prepare the data, extracting the posterior distribution for each study individually.
+
+<div class="marginnote">
+Use the `spread_draws` function ... takes, as input 1. the fitted `brms` model, 2. the random-effects index factor and the parameter to extract (here `b_Intercept`).
+...calculate actual effect sizes for each by adding the pooled effect size `b_Intercept` to the estimated deviation for each study.
+</div>
+
+```{r}
+study.draws <- spread_draws(m.brm, r_Author[Author,], b_Intercept) %>% 
+  mutate(b_Intercept = r_Author + b_Intercept)
+```
+
+\
+
+Next, generate the distribution of the pooled effect (usually out in the last row of forest plots).
+
+```{r}
+pooled.effect.draws <- spread_draws(m.brm, b_Intercept) %>% 
+  mutate(Author = "Pooled Effect")
+```
+
+Bind this together, clean labels and reorder:
+
+```{r}
+forest.data <- bind_rows(study.draws, pooled.effect.draws) %>% 
+   ungroup() %>%
+   mutate(Author = str_replace_all(Author, "[.]", " ")) %>% 
+   mutate(Author = reorder(Author, b_Intercept))
+```
+
+Generate summarized data (the mean and credibility interval) of each study. Group the above by author, use the `mean_qi` function (generates 95pct intervals) to calculate these.
+
+```{r}
+forest.data.summary <- group_by(forest.data, Author) %>% 
+  mean_qi(b_Intercept)
+```
+
+\
+
+Now generate the forest plot: 
+
+```{r, message=F, fig.align="center"}
+ggplot(aes(b_Intercept, relevel(Author, "Pooled Effect", after = Inf)), 
+       data = forest.data) +
+  geom_vline(xintercept = fixef(m.brm)[1, 1], color = "grey", size = 1) +
+  geom_vline(xintercept = fixef(m.brm)[1, 3:4], color = "grey", linetype = 2) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_density_ridges(fill = "blue", rel_min_height = 0.01, col = NA, scale = 1,
+                      alpha = 0.8) +
+  geom_pointintervalh(data = forest.data.summary, size = 1) +
+  geom_text(data = mutate_if(forest.data.summary, is.numeric, round, 2),
+    aes(label = glue("{b_Intercept} [{.lower}, {.upper}]"), x = Inf), hjust = "inward") +
+  labs(x = "Standardized Mean Difference",
+       y = element_blank()) +
+  theme_minimal()
+```
+
+
+<div class="marginnote">
+Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.
+</div>
+ 
 
 
 ## Other notes, links, and commentary
