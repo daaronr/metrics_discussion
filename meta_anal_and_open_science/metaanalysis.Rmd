@@ -654,12 +654,9 @@ ggplot(aes(b_Intercept, relevel(Author, "Pooled Effect", after = Inf)),
   theme_minimal()
 ```
 
-
 <div class="marginnote">
 Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.
 </div>
- 
-
 
 ## Other notes, links, and commentary
 
