@@ -240,7 +240,11 @@ FE model calculates weighted average:
 
 FIX THESE FORMULAS
 
-$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K \hat{\theta_k} $$ 
+<div class="marginnote">
+Fixed the equations according to https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/fixed.html 
+</div>
+
+$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$ 
 $$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
 
 
@@ -258,6 +262,10 @@ Nor the Bayesian models, apparently (they use the same 'madata' dataset)
 "The model we apply in Bayesian Meta-Analysis is a so-called Bayesian Hierarchical Model...
 every meta-analytical model inherently possesses a multilevel, and thus 'hierarchical', structure."
 
+"A Bayesian heriarchical model has three layers:
+- A data layer (the likelihood)
+- A process layer (the parameters describing the underlying process)
+- A prior layer (priors on hyper parameters) "
 ```  
 
 #### The setup {-}
@@ -287,7 +295,7 @@ $$ \tau^2 > 0 $$
 
 Estimation will...
 
-> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.
+> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used. MCMC is used to sample from the posterior distribution. Without MCMC, to sample from the posterior the normalising constant would have to be found. But with most prior/likelihood combinations, the integral to find it is intractable.
 
 \
 
@@ -308,12 +316,12 @@ Estimation will...
 
 #### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {-}
 
-> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]
+> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]. With a non-informative prior, we are essentially saying that we do not have any prior information on the effect size, whereas often we do have some information, and would like to include it in our analyis. Be careful of falling into traps - for instance, consider the uniform prior, which gives equal probability to every effect size. This is actually very informative, as it is saying that extreme values are as likely as moderate values. 
 
 
 **For $\mu$**: 
 
-> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$:
+> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$. There has to be very good reason for setting the prior mean to be different from zero, as doing so may induce some form of bias. With regards to the variance, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values:
 
 $$ \mu \sim \mathcal{N}(0,1)$$
 
@@ -344,10 +352,13 @@ grid.raster(img)
 
 HC is 'heavy-tailed;... gives some probability to very high values but low values are still more likely.
 
+Note that the Half-Cauchy distribution has an undefined mean, variance, skewness, and kurtosis. It does have a mode, at $x_0$.
+
 One might consider $s=0.3$ 
 
 <div class="marginnote">
 $s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size?
+SD: Since the Cauchy distribution has infinite mean (hence undefined first moment) and variance, it doesn't make sense to discuss $s$ in this way. $s$ is a way of capturing the dispersion of the distribution. 
 </div>
 
 
@@ -360,7 +371,7 @@ phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/
 
 ... But they go for the 'more conservative' $s=0.5$.
 
-> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially
+> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially. With enough data, the likelihood should start to "overload" the prior. Some priors never allow the data to overload them, so we should be careful using them. 
 
 \
 
@@ -405,6 +416,8 @@ I find it surprising how long this procedure takes to run this simulation, given
  
 <div class="marginnote">
 The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.
+
+SD: If I can get this to work in Stan, I can write a .stan file and there should be some code so that the model does not need to be compiled in C++ every time it is run when unchanged. This is a work in progress
 </div>
 
 ```{r echo=TRUE, eval=TRUE}
@@ -412,18 +425,22 @@ The issue here seems to be that it takes a long time to compile the C++ model ea
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              data = ThirdWave,
              prior = priors,
-             iter = 100)
+             iter = 2000)
 
 m.brm
 
 ```
+
+<div class="marginnote">
+The number of iterations can be any high number. A commonly used amount is 2000 iterations and four chains. The reason the number should be high is that the MCMC sampler needs to converge in distribution to the target distribution.
+</div>
 
 The *formula for the model* is specified using 'regression formula notation' (unfold)...
 
 ```{block2,  type='note'}
 
 
-- As there is no 'predictor variable' in such analyses (unless it's meta-regression), `x` is replaced with `1`
+- As there is no 'predictor variable' in such analyses (unless it's meta-regression), `x` is replaced with `1`.
 
 - But we want to give studies that more precisely estimate the effect size (perhaps because they have a larger sample) a greater weight. 
   - Coded using the `y|se(se_y)` element
@@ -455,13 +472,21 @@ pp_check(m.brm)
 ```
  
 
+A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look "well mixed", suggesting that the parameter space is being explored. Assessing convergence is a subjective judgement. 
+
+```{r}
+library(bayesplot)
+mcmc_trace(m.brm)
+```
+
 
 \
 
 Also check for a Potential Scale Reduction Factor (PSRF), or $\hat{R}$ below 1.01.
 
 <div class="marginnote">
-I've no idea what this is at this point; I need to read earlier chapters. 
+I've no idea what this is at this point; I need to read earlier chapters.
+SD: Rhat is a Bayesian measure used to determine convergence - I don't think that Harrer will go into detail. It has a complicated formula, but all we should focus on is that Rhat converges to 1 as n tends to infinity. Read more here: https://mc-stan.org/rstan/reference/Rhat.html
 </div>
 
 ```{r}
@@ -496,7 +521,7 @@ These are measures of *deviations*. But they don't exactly equal the difference 
 </div>
 
 
-- No p-values listed because this is Bayesian
+- No p-values listed because this is Bayesian. P-values are not really as helpful here as with frequentist approaches. With a classical analysis, we would ask if there is enough evidence of an effect to reject the null hypothesis of no impact at a (subjective) significance level. With a Bayesian approach, the entire distribution of the parameter is calcuated, is it is better to observe the distribution of the parameter. Frequentist analyses give binary answers to continuous questions, whereas with Bayesian analyses, continuous questions have continuous answers. 
 
 Instead he states:
 
