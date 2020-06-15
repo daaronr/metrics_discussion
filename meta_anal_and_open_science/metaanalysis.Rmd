@@ -261,12 +261,13 @@ Nor the Bayesian models, apparently (they use the same 'madata' dataset)
 ```{block2,  type='note'}
 "The model we apply in Bayesian Meta-Analysis is a so-called Bayesian Hierarchical Model...
 every meta-analytical model inherently possesses a multilevel, and thus 'hierarchical', structure."
+```  
 
-"A Bayesian heriarchical model has three layers:
+A Bayesian heriarchical model has three layers:
 - A data layer (the likelihood)
 - A process layer (the parameters describing the underlying process)
-- A prior layer (priors on hyper parameters) "
-```  
+- A prior layer (priors on hyper parameters)
+
 
 #### The setup {-}
 Underlying RE model (as before)
@@ -295,9 +296,10 @@ $$ \tau^2 > 0 $$
 
 Estimation will...
 
-> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used. MCMC is used to sample from the posterior distribution. Without MCMC, to sample from the posterior the normalising constant would have to be found. But with most prior/likelihood combinations, the integral to find it is intractable.
-
+> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used. 
 \
+
+MCMC is used to sample from the posterior distribution. Without MCMC, to sample from the posterior the normalising constant would have to be found. But with most prior/likelihood combinations, the integral to find it is intractable.
 
 ```{block2,  type='note'}
 
@@ -316,14 +318,18 @@ Estimation will...
 
 #### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {-}
 
-> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]. With a non-informative prior, we are essentially saying that we do not have any prior information on the effect size, whereas often we do have some information, and would like to include it in our analyis. Be careful of falling into traps - for instance, consider the uniform prior, which gives equal probability to every effect size. This is actually very informative, as it is saying that extreme values are as likely as moderate values. 
+> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]. 
+\
+
+With a non-informative prior, we are essentially saying that we do not have any prior information on the effect size, whereas often we do have some information, and would like to include it in our analyis. Make sure to research priors before using them, as some be be very informative, with an example being the uniform distibution saying that extreme values are as likely as moderate values. 
 
 
 **For $\mu$**: 
 
-> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$. There has to be very good reason for setting the prior mean to be different from zero, as doing so may induce some form of bias. With regards to the variance, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values:
+> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$. 
 
 $$ \mu \sim \mathcal{N}(0,1)$$
+There has to be very good reason for setting the prior mean to be different from zero, as that would mean holding a prior belief of a (potentially) strong, positive or negative effect. Normally it is better to use a prior with a neutral effect. With regards to the variance of $\mu$, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values.
 
 **For  $\tau^2$**
 
@@ -371,9 +377,10 @@ phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/
 
 ... But they go for the 'more conservative' $s=0.5$.
 
-> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially. With enough data, the likelihood should start to "overload" the prior. Some priors never allow the data to overload them, so we should be careful using them. 
-
+> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially. 
 \
+
+With enough data, the effect of the prior should shrink. Some priors never allow the data to overload them, so we should be careful using them. 
 
 Complete model:
 
@@ -417,7 +424,7 @@ I find it surprising how long this procedure takes to run this simulation, given
 <div class="marginnote">
 The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.
 
-SD: If I can get this to work in Stan, I can write a .stan file and there should be some code so that the model does not need to be compiled in C++ every time it is run when unchanged. This is a work in progress
+SD: It will take some time to compile the model, and this is inevitable (it takes a long time with every model, this one works pretty quickly at a few minutes), but once it has compiled, it should not take a long time to sample. Below is some code to change the number of samples and show the speed once the model has compiled.
 </div>
 
 ```{r echo=TRUE, eval=TRUE}
@@ -430,6 +437,30 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
 m.brm
 
 ```
+
+
+The brms package has a way of running the model again once it has compiled, without compiling it agin. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
+
+
+```{r}
+model2 <- update(m.brm, iter=10000)
+
+model2
+```
+
+If you would want to change something with the model, such as the priors, then it would have to compile again in c++.
+
+
+```{r, results = "hide}
+priors2 <- c(prior(normal(0,1), class = Intercept), prior(normal(0,1), class = sd))
+
+model3 <- update(m.brm, prior = priors2)
+```
+
+```{r}
+model3
+```
+
 
 <div class="marginnote">
 The number of iterations can be any high number. A commonly used amount is 2000 iterations and four chains. The reason the number should be high is that the MCMC sampler needs to converge in distribution to the target distribution.
