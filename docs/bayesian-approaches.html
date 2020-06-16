@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-06-10" />
+<meta name="date" content="2020-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -519,6 +519,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>15.2.3</b> Forest plots</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.3</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="15.4" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>15.4</b> Other resources and tools</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
 <ul>
@@ -612,13 +613,13 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 <li><p>Bayesian Power calculation<br />
 </p></li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="bayesian-approaches.html#cb68-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="bayesian-approaches.html#cb86-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
 <p>Package loadings from Kurtz:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="bayesian-approaches.html#cb69-1"></a>pacman<span class="op">::</span><span class="kw">p_unload</span>(pacman<span class="op">::</span><span class="kw">p_loaded</span>(), <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb69-2"><a href="bayesian-approaches.html#cb69-2"></a>ggplot2<span class="op">::</span><span class="kw">theme_set</span>(ggplot2<span class="op">::</span><span class="kw">theme_grey</span>())</span>
-<span id="cb69-3"><a href="bayesian-approaches.html#cb69-3"></a>bayesplot<span class="op">::</span><span class="kw">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb69-4"><a href="bayesian-approaches.html#cb69-4"></a></span>
-<span id="cb69-5"><a href="bayesian-approaches.html#cb69-5"></a><span class="kw">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="bayesian-approaches.html#cb87-1"></a>pacman<span class="op">::</span><span class="kw">p_unload</span>(pacman<span class="op">::</span><span class="kw">p_loaded</span>(), <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb87-2"><a href="bayesian-approaches.html#cb87-2"></a>ggplot2<span class="op">::</span><span class="kw">theme_set</span>(ggplot2<span class="op">::</span><span class="kw">theme_grey</span>())</span>
+<span id="cb87-3"><a href="bayesian-approaches.html#cb87-3"></a>bayesplot<span class="op">::</span><span class="kw">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb87-4"><a href="bayesian-approaches.html#cb87-4"></a></span>
+<span id="cb87-5"><a href="bayesian-approaches.html#cb87-5"></a><span class="kw">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
 </div>
 </div>
 <div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="16.2">
@@ -684,14 +685,14 @@ I’m planning to through this here, adding my own notes, questions, and conside
 </p>
 <p>We imagine a bag filled with four marbles, each of which is blue or white.</p>
 <p>“So, if we’re willing to code the marbles as 0 =”white" 1 = “blue”, we can arrange the possibility data in a tibble as follows." I.e., we can consider the five possible worlds, in each of which the bag has a different number of white and blue marbles, and represent each of these worlds as a column vector:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="bayesian-approaches.html#cb70-1"></a>d &lt;-</span>
-<span id="cb70-2"><a href="bayesian-approaches.html#cb70-2"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="dv">0</span>,</span>
-<span id="cb70-3"><a href="bayesian-approaches.html#cb70-3"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
-<span id="cb70-4"><a href="bayesian-approaches.html#cb70-4"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
-<span id="cb70-5"><a href="bayesian-approaches.html#cb70-5"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
-<span id="cb70-6"><a href="bayesian-approaches.html#cb70-6"></a>         <span class="dt">p_5 =</span> <span class="dv">1</span>)</span>
-<span id="cb70-7"><a href="bayesian-approaches.html#cb70-7"></a></span>
-<span id="cb70-8"><a href="bayesian-approaches.html#cb70-8"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="bayesian-approaches.html#cb88-1"></a>d &lt;-</span>
+<span id="cb88-2"><a href="bayesian-approaches.html#cb88-2"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="dv">0</span>,</span>
+<span id="cb88-3"><a href="bayesian-approaches.html#cb88-3"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
+<span id="cb88-4"><a href="bayesian-approaches.html#cb88-4"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb88-5"><a href="bayesian-approaches.html#cb88-5"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
+<span id="cb88-6"><a href="bayesian-approaches.html#cb88-6"></a>         <span class="dt">p_5 =</span> <span class="dv">1</span>)</span>
+<span id="cb88-7"><a href="bayesian-approaches.html#cb88-7"></a></span>
+<span id="cb88-8"><a href="bayesian-approaches.html#cb88-8"></a>d</span></code></pre></div>
 <table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 20%; margin-left: 0%; margin-right: auto;  ">
 <col><col><col><col><col><tr>
 <td style="vertical-align: top; text-align: right; white-space: nowrap; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt; padding: 4pt 4pt 4pt 4pt; font-weight: bold;">p_1</td>
@@ -733,26 +734,26 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <p><br />
 </p>
 <p>We visualize this in the plot below, where each column is one ‘world’:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="bayesian-approaches.html#cb71-1"></a>d <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb71-2"><a href="bayesian-approaches.html#cb71-2"></a><span class="st">  </span><span class="kw">gather</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
-<span id="cb71-3"><a href="bayesian-approaches.html#cb71-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
-<span id="cb71-4"><a href="bayesian-approaches.html#cb71-4"></a>         <span class="dt">possibility =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each =</span> <span class="dv">4</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#distributing the &#39;which world&#39; index</span></span>
-<span id="cb71-5"><a href="bayesian-approaches.html#cb71-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> possibility, </span>
-<span id="cb71-6"><a href="bayesian-approaches.html#cb71-6"></a>             <span class="dt">fill =</span> value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.character</span>())) <span class="op">+</span></span>
-<span id="cb71-7"><a href="bayesian-approaches.html#cb71-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></span>
-<span id="cb71-8"><a href="bayesian-approaches.html#cb71-8"></a><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="op">+</span></span>
-<span id="cb71-9"><a href="bayesian-approaches.html#cb71-9"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
-<span id="cb71-10"><a href="bayesian-approaches.html#cb71-10"></a><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
-<span id="cb71-11"><a href="bayesian-approaches.html#cb71-11"></a>                  <span class="dt">ylim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="op">+</span></span>
-<span id="cb71-12"><a href="bayesian-approaches.html#cb71-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-47-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="bayesian-approaches.html#cb89-1"></a>d <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb89-2"><a href="bayesian-approaches.html#cb89-2"></a><span class="st">  </span><span class="kw">gather</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
+<span id="cb89-3"><a href="bayesian-approaches.html#cb89-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
+<span id="cb89-4"><a href="bayesian-approaches.html#cb89-4"></a>         <span class="dt">possibility =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each =</span> <span class="dv">4</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#distributing the &#39;which world&#39; index</span></span>
+<span id="cb89-5"><a href="bayesian-approaches.html#cb89-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> possibility, </span>
+<span id="cb89-6"><a href="bayesian-approaches.html#cb89-6"></a>             <span class="dt">fill =</span> value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.character</span>())) <span class="op">+</span></span>
+<span id="cb89-7"><a href="bayesian-approaches.html#cb89-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></span>
+<span id="cb89-8"><a href="bayesian-approaches.html#cb89-8"></a><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="op">+</span></span>
+<span id="cb89-9"><a href="bayesian-approaches.html#cb89-9"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb89-10"><a href="bayesian-approaches.html#cb89-10"></a><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
+<span id="cb89-11"><a href="bayesian-approaches.html#cb89-11"></a>                  <span class="dt">ylim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="op">+</span></span>
+<span id="cb89-12"><a href="bayesian-approaches.html#cb89-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-51-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="bayesian-approaches.html#cb72-1"></a><span class="kw">tibble</span>(<span class="dt">draw    =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,</span>
-<span id="cb72-2"><a href="bayesian-approaches.html#cb72-2"></a>       <span class="dt">marbles =</span> <span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb72-3"><a href="bayesian-approaches.html#cb72-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">possibilities =</span> marbles <span class="op">^</span><span class="st"> </span>draw) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb72-4"><a href="bayesian-approaches.html#cb72-4"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="bayesian-approaches.html#cb90-1"></a><span class="kw">tibble</span>(<span class="dt">draw    =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,</span>
+<span id="cb90-2"><a href="bayesian-approaches.html#cb90-2"></a>       <span class="dt">marbles =</span> <span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb90-3"><a href="bayesian-approaches.html#cb90-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">possibilities =</span> marbles <span class="op">^</span><span class="st"> </span>draw) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb90-4"><a href="bayesian-approaches.html#cb90-4"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -811,7 +812,7 @@ possibilities
 </p>
 <p>Suppose there is only one blue ball and three white balls, possibility ‘2’ above. For this world, we see the full ‘garden of forking paths’ — the number of ways to select 1, 2, and 3 balls (with replacement) — below.</p>
 <p>Every path starting from the center is a possible (sequence of) draws.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-50"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-54"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-13-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 16.1: All possible draws of three balls
@@ -822,7 +823,7 @@ Figure 16.1: All possible draws of three balls
 <p>Now the inferential exercise: we want to know (the likelihood) of each of the five possible ‘worlds’. As we draw data we know we are proceeding along one of some subset of the forking paths.<br />
 </p>
 <p>For example, under possible world 2, if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-14-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 16.2: All possible draws of three balls
@@ -832,28 +833,28 @@ Figure 16.2: All possible draws of three balls
 <p><br />
 </p>
 <p>We can do similar for the other possible worlds; multiplying the ‘ways to produce each draw’ in the path yields the ‘total ways to produce the path’, under each world.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="bayesian-approaches.html#cb73-1"></a><span class="co"># if we make two custom functions, here, it will simplify the code within `mutate()`, below</span></span>
-<span id="cb73-2"><a href="bayesian-approaches.html#cb73-2"></a>n_blue &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb73-3"><a href="bayesian-approaches.html#cb73-3"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;b&quot;</span>)</span>
-<span id="cb73-4"><a href="bayesian-approaches.html#cb73-4"></a>}</span>
-<span id="cb73-5"><a href="bayesian-approaches.html#cb73-5"></a></span>
-<span id="cb73-6"><a href="bayesian-approaches.html#cb73-6"></a>n_white &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb73-7"><a href="bayesian-approaches.html#cb73-7"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;w&quot;</span>)</span>
-<span id="cb73-8"><a href="bayesian-approaches.html#cb73-8"></a>}</span>
-<span id="cb73-9"><a href="bayesian-approaches.html#cb73-9"></a></span>
-<span id="cb73-10"><a href="bayesian-approaches.html#cb73-10"></a>t &lt;-</span>
-<span id="cb73-11"><a href="bayesian-approaches.html#cb73-11"></a><span class="st">  </span><span class="co"># for the first four columns, `p_` indexes position</span></span>
-<span id="cb73-12"><a href="bayesian-approaches.html#cb73-12"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)),</span>
-<span id="cb73-13"><a href="bayesian-approaches.html#cb73-13"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)),</span>
-<span id="cb73-14"><a href="bayesian-approaches.html#cb73-14"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)),</span>
-<span id="cb73-15"><a href="bayesian-approaches.html#cb73-15"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb73-16"><a href="bayesian-approaches.html#cb73-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">draw 1: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.),</span>
-<span id="cb73-17"><a href="bayesian-approaches.html#cb73-17"></a>         <span class="st">`</span><span class="dt">draw 2: white</span><span class="st">`</span> =<span class="st"> </span><span class="kw">n_white</span>(.),</span>
-<span id="cb73-18"><a href="bayesian-approaches.html#cb73-18"></a>         <span class="st">`</span><span class="dt">draw 3: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb73-19"><a href="bayesian-approaches.html#cb73-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 2: white</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 3: blue</span><span class="st">`</span>)</span>
-<span id="cb73-20"><a href="bayesian-approaches.html#cb73-20"></a></span>
-<span id="cb73-21"><a href="bayesian-approaches.html#cb73-21"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb73-22"><a href="bayesian-approaches.html#cb73-22"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="bayesian-approaches.html#cb91-1"></a><span class="co"># if we make two custom functions, here, it will simplify the code within `mutate()`, below</span></span>
+<span id="cb91-2"><a href="bayesian-approaches.html#cb91-2"></a>n_blue &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb91-3"><a href="bayesian-approaches.html#cb91-3"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;b&quot;</span>)</span>
+<span id="cb91-4"><a href="bayesian-approaches.html#cb91-4"></a>}</span>
+<span id="cb91-5"><a href="bayesian-approaches.html#cb91-5"></a></span>
+<span id="cb91-6"><a href="bayesian-approaches.html#cb91-6"></a>n_white &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb91-7"><a href="bayesian-approaches.html#cb91-7"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;w&quot;</span>)</span>
+<span id="cb91-8"><a href="bayesian-approaches.html#cb91-8"></a>}</span>
+<span id="cb91-9"><a href="bayesian-approaches.html#cb91-9"></a></span>
+<span id="cb91-10"><a href="bayesian-approaches.html#cb91-10"></a>t &lt;-</span>
+<span id="cb91-11"><a href="bayesian-approaches.html#cb91-11"></a><span class="st">  </span><span class="co"># for the first four columns, `p_` indexes position</span></span>
+<span id="cb91-12"><a href="bayesian-approaches.html#cb91-12"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)),</span>
+<span id="cb91-13"><a href="bayesian-approaches.html#cb91-13"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)),</span>
+<span id="cb91-14"><a href="bayesian-approaches.html#cb91-14"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)),</span>
+<span id="cb91-15"><a href="bayesian-approaches.html#cb91-15"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb91-16"><a href="bayesian-approaches.html#cb91-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">draw 1: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.),</span>
+<span id="cb91-17"><a href="bayesian-approaches.html#cb91-17"></a>         <span class="st">`</span><span class="dt">draw 2: white</span><span class="st">`</span> =<span class="st"> </span><span class="kw">n_white</span>(.),</span>
+<span id="cb91-18"><a href="bayesian-approaches.html#cb91-18"></a>         <span class="st">`</span><span class="dt">draw 3: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb91-19"><a href="bayesian-approaches.html#cb91-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 2: white</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 3: blue</span><span class="st">`</span>)</span>
+<span id="cb91-20"><a href="bayesian-approaches.html#cb91-20"></a></span>
+<span id="cb91-21"><a href="bayesian-approaches.html#cb91-21"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb91-22"><a href="bayesian-approaches.html#cb91-22"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1021,7 +1022,7 @@ b
 </p>
 <p>We can see this in the following plot. (We leave out the worlds with only one color ball, as these will have no paths that produce B-W-B). Below, each partitioned section represents one world, and the paths in that world that could produce B-W-B are shown.</p>
 <p> </p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-53"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-57"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-20-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 16.3: All possible draws of three balls
@@ -1045,15 +1046,15 @@ Figure 16.3: All possible draws of three balls
 <p><br />
 </p>
 <p>This is given in the table below:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="bayesian-approaches.html#cb74-1"></a>t &lt;-</span>
-<span id="cb74-2"><a href="bayesian-approaches.html#cb74-2"></a><span class="st">  </span>t <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb74-3"><a href="bayesian-approaches.html#cb74-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span>,</span>
-<span id="cb74-4"><a href="bayesian-approaches.html#cb74-4"></a>         <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb74-5"><a href="bayesian-approaches.html#cb74-5"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span>, <span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb74-6"><a href="bayesian-approaches.html#cb74-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">previous counts</span><span class="st">`</span>)</span>
-<span id="cb74-7"><a href="bayesian-approaches.html#cb74-7"></a></span>
-<span id="cb74-8"><a href="bayesian-approaches.html#cb74-8"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb74-9"><a href="bayesian-approaches.html#cb74-9"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="bayesian-approaches.html#cb92-1"></a>t &lt;-</span>
+<span id="cb92-2"><a href="bayesian-approaches.html#cb92-2"></a><span class="st">  </span>t <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-3"><a href="bayesian-approaches.html#cb92-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span>,</span>
+<span id="cb92-4"><a href="bayesian-approaches.html#cb92-4"></a>         <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-5"><a href="bayesian-approaches.html#cb92-5"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span>, <span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-6"><a href="bayesian-approaches.html#cb92-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">previous counts</span><span class="st">`</span>)</span>
+<span id="cb92-7"><a href="bayesian-approaches.html#cb92-7"></a></span>
+<span id="cb92-8"><a href="bayesian-approaches.html#cb92-8"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb92-9"><a href="bayesian-approaches.html#cb92-9"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1206,14 +1207,14 @@ How to incorporate <em>prior</em> information about the probability of each worl
 <p><br />
 Here the <em>sequence</em> in which the information is recieved shouldn’t matter. The draws are independent (we presume).</p>
 <p>We can thus multiply the number of paths for each marbles-in-bag world by the (relative) frequency with which the factory ‘draws’ that bag… as shown below:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="bayesian-approaches.html#cb75-1"></a>t &lt;-<span class="st"> </span>t <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-2"><a href="bayesian-approaches.html#cb75-2"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-3"><a href="bayesian-approaches.html#cb75-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">prior count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-4"><a href="bayesian-approaches.html#cb75-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">factory count</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-5"><a href="bayesian-approaches.html#cb75-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">prior count</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">factory count</span><span class="st">`</span>)</span>
-<span id="cb75-6"><a href="bayesian-approaches.html#cb75-6"></a></span>
-<span id="cb75-7"><a href="bayesian-approaches.html#cb75-7"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-8"><a href="bayesian-approaches.html#cb75-8"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="bayesian-approaches.html#cb93-1"></a>t &lt;-<span class="st"> </span>t <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-2"><a href="bayesian-approaches.html#cb93-2"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-3"><a href="bayesian-approaches.html#cb93-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">prior count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-4"><a href="bayesian-approaches.html#cb93-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">factory count</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-5"><a href="bayesian-approaches.html#cb93-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">prior count</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">factory count</span><span class="st">`</span>)</span>
+<span id="cb93-6"><a href="bayesian-approaches.html#cb93-6"></a></span>
+<span id="cb93-7"><a href="bayesian-approaches.html#cb93-7"></a>t <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-8"><a href="bayesian-approaches.html#cb93-8"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1561,7 +1562,7 @@ against <span class="math inline">\(D(y^s_{observed})\)</span></p>
 <p>Also simple code; great for standard use</p>
 <p>Speedup with parallelization; see “script for parallel probit.R” and “parallelprobit.R”</p>
 <p>More advanced: C++; can integrate it with Rcpp, or even use Exeter’s ISCA cluster</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="bayesian-approaches.html#cb76-1"></a><span class="kw">summary</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="bayesian-approaches.html#cb94-1"></a><span class="kw">summary</span>(cars)</span></code></pre></div>
 <pre><code>##      speed           dist    
 ##  Min.   : 4.0   Min.   :  2  
 ##  1st Qu.:12.0   1st Qu.: 26  

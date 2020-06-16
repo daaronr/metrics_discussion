@@ -587,7 +587,7 @@ model2
 If you would want to change something with the model, such as the priors, then it would have to compile again in c++.
 
 
-```{r, results = "hide}
+```{r, results = "hide"}
 priors2 <- c(prior(normal(0,1), class = Intercept), prior(normal(0,1), class = sd))
 
 model3 <- update(m.brm, prior = priors2)
