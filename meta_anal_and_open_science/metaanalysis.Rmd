@@ -245,10 +245,12 @@ load(here("meta_anal_and_open_science", "Doing-Meta-Analysis-in-R-master", "_dat
 
 #### Fixed effects model {-}
 
-FE model calculates weighted average of the effect sizes for the pooled effect size:
+<!-- SD:
+Fixed the equations according to https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/fixed.html
+-->
 
-$$\hat{\theta}_F = \frac{\sum\limits_{k=1}^K \hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K 1/\hat{\sigma}^2_k} $$
-\
+$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$
+$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
 
 <!--
 And (it looks like) the simple average of the variabces for the pooled effect variance:
@@ -381,6 +383,12 @@ every meta-analytical model inherently possesses a multilevel, and thus 'hierarc
 
 ```
 
+A Bayesian heriarchical model has three layers:
+- A data layer (the likelihood)
+- A process layer (the parameters describing the underlying process)
+- A prior layer (priors on hyper parameters)
+
+
 #### The setup {-}
 Underlying RE model (as before)
 
@@ -409,8 +417,9 @@ $$ \tau^2 > 0 $$
 Estimation will...
 
 > involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.
-
 \
+
+MCMC is used to sample from the posterior distribution. Without MCMC, to sample from the posterior the normalising constant would have to be found. But with most prior/likelihood combinations, the integral to find it is intractable.
 
 ```{block2,  type='note'}
 
@@ -429,14 +438,18 @@ Estimation will...
 
 #### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {-}
 
-> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!]
+> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!].
+\
+
+With a non-informative prior, we are essentially saying that we do not have any prior information on the effect size, whereas often we do have some information, and would like to include it in our analyis. Make sure to research priors before using them, as some be be very informative, with an example being the uniform distibution saying that extreme values are as likely as moderate values.
 
 
 **For $\mu$**:
 
-> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$:
+> include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$.
 
 $$ \mu \sim \mathcal{N}(0,1)$$
+There has to be very good reason for setting the prior mean to be different from zero, as that would mean holding a prior belief of a (potentially) strong, positive or negative effect. Normally it is better to use a prior with a neutral effect. With regards to the variance of $\mu$, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values.
 
 **For  $\tau^2$**
 
@@ -467,8 +480,13 @@ HC is 'heavy-tailed;... gives some probability to very high values but low value
 
 One might consider $s=0.3$
 
+Note that the Half-Cauchy distribution has an undefined mean, variance, skewness, and kurtosis. It does have a mode, at $x_0$.
+
+One might consider $s=0.3$
+
 <div class="marginnote">
-$s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size?
+DR: $s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size?
+SD: Since the Cauchy distribution has infinite mean (hence undefined first moment) and variance, it doesn't make sense to discuss $s$ in this way. $s$ is a way of capturing the dispersion of the distribution.
 </div>
 
 
@@ -481,9 +499,19 @@ phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/
 
 ... But they go for the 'more conservative' $s=0.5$.
 
-> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially
-
+> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially.
 \
+
+With enough data, the effect of the prior should shrink. Some priors never allow the data to overload them, so we should be careful using them.
+
+
+<div class="marginnote">
+DR:  Todo - insert a formal definition
+
+"Smaller and smaller" could be measured in terms of some metrics over the shift in the distribution, I presume. Perhaps there are several ways of measuring this (average shifts, weighted average, maximum shift for any segment, etc).
+
+</div>
+
 
 Complete model:
 
@@ -530,6 +558,8 @@ I find it surprising how long this procedure takes to run this simulation, given
 
 <div class="marginnote">
 The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.
+
+SD: It will take some time to compile the model, and this is inevitable (it takes a long time with every model, this one works pretty quickly at a few minutes), but once it has compiled, it should not take a long time to sample. Below is some code to change the number of samples and show the speed once the model has compiled.
 </div>
 
 ```{r echo=TRUE, eval=TRUE}
@@ -541,14 +571,50 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              iter = 2000)
 )
 
+
 ```
+
+
+The brms package has a way of running the model again once it has compiled, without compiling it agin. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
+
+
+```{r}
+model2 <- update(m.brm, iter=10000)
+
+model2
+```
+
+If you would want to change something with the model, such as the priors, then it would have to compile again in c++.
+
+
+```{r, results = "hide}
+priors2 <- c(prior(normal(0,1), class = Intercept), prior(normal(0,1), class = sd))
+
+model3 <- update(m.brm, prior = priors2)
+```
+
+```{r}
+model3
+```
+
+
+<div class="marginnote">
+The number of iterations can be any ''high number''. A commonly used amount is 2000 iterations and four chains. The reason the number should be high is that the MCMC sampler needs to converge in distribution to the target distribution.
+
+
+SD: "High" may depend on several factors (such as what distribution we're trying to sample from, the amount of time it takes to sample, how accurate we want it to be, etc.). But broadly we want to make sure we have more samples than fewer as we want to be confident that we have converged to the target distribution. I'd usually stick to something in the thousands to be sure.
+
+There is a good discussion about it on the answers here: https://stats.stackexchange.com/questions/203281/number-of-markov-chain-monte-carlo-samples
+
+
+</div>
 
 The *formula for the model* is specified using 'regression formula notation' (unfold)...
 
 ```{block2,  type='note'}
 
 
-- As there is no 'predictor variable' in such analyses (unless it's meta-regression), `x` is replaced with `1`
+- As there is no 'predictor variable' in such analyses (unless it's meta-regression), `x` is replaced with `1`.
 
 - But we want to give studies that more precisely estimate the effect size (perhaps because they have a larger sample) a greater weight.
   - Coded using the `y|se(se_y)` element
@@ -570,7 +636,7 @@ The *formula for the model* is specified using 'regression formula notation' (un
 "Posterior predictive checks": If it's converged, then the density of the replications should resemble the original data.
 
 <div class="marginnote">
-Not sure I understand this; may need to revise and give a clear explanation. I guess it's something like 'the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set'...
+DRL Not sure I understand this; may need to revise and give a clear explanation. I guess it's something like 'the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set'...
 </div>
 
 
@@ -579,13 +645,34 @@ pp_check(m.brm)
 
 ```
 
+A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look "well mixed", suggesting that the parameter space is being explored.\*
+
+<div class="marginnote">
+Is  'assessing convergence' a subjective judgement?\*)@ScottDickinson1701 This seems helpful, but it seems like there should be some more objective methods.
+
+SD: We will never know if the sampler has converged to the target distribution, but with more and more samples and well mixed traceplots, along with R-hats close to 1, we can be very confident that it has.
+I think that it is the same for other subjective methods such as GAMs, where the number of splines to include is very subjective. There are some tests used to help inform the statistician about the suitability of more/less splines, but ultimately it is down to the statistician to make the judgement about it.
+
+DR: Rather than 'subjective' I would suspect that: 1. There are numerical measures for assessing this convergence (as there are in optimisation problems)
+2. Perhaps there remains debate over which is the best method.
+
+
+</div>
+
+
+
+```{r}
+library(bayesplot)
+mcmc_trace(m.brm)
+```
+
 
 \
 
 Also check for a Potential Scale Reduction Factor (PSRF), or $\hat{R}$ below 1.01.
 
 <div class="marginnote">
-I've no idea what this is at this point; I need to read earlier chapters.
+SD: Rhat is a Bayesian measure used to determine convergence - I don't think that Harrer will go into detail. It has a complicated formula, but all we should focus on is that Rhat converges to 1 as n tends to infinity. Read more here: https://mc-stan.org/rstan/reference/Rhat.html
 </div>
 
 ```{r}
@@ -620,7 +707,11 @@ These are measures of *deviations*. But they don't exactly equal the difference 
 </div>
 
 
-- No p-values listed because this is Bayesian
+- No p-values listed because this is Bayesian.
+
+<div class="marginnote">
+SD: With a classical analysis, we would ask if there is enough evidence of an effect to reject the null hypothesis of no impact at a (subjective) significance level. With a Bayesian approach, the entire distribution of the parameter is calcuated, is it is better to observe the distribution of the parameter. Frequentist analyses give binary answers to continuous questions, whereas with Bayesian analyses, continuous questions have continuous answers. (Paraphrasing Daniel XXX).
+</div>
 
 Instead he states:
 
