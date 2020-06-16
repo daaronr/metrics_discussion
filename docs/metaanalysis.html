@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-26" />
+<meta name="date" content="2020-06-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -577,7 +577,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>My opinion on why this is so important (unfold):</p>
 
 <div class="fold">
-<p>it is lame how often I see ‘new experiments’ and ‘new studies’ that tread most of the ground as old studies, spend lots of money, get a publication and … ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called ‘ExpArchive’, later working with projects such as GESIS’ X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute’s “revolutionizing philanthropy research” (RPR) project.</p>
+<p>It is lame how often I see ‘new experiments’ and ‘new studies’ that tread most of the ground as old studies, spend lots of money, get a publication and … ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called ‘ExpArchive’, later working with projects such as GESIS’ X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute’s “revolutionizing philanthropy research” (RPR) project.</p>
 </div>
 <div id="notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</h2>
@@ -599,8 +599,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="social-science-study-registries" class="section level3" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> Social science study registries</h3>
-<p>Jameel 2009, AEA 2013, 2100 registrations to date
-RIDIE, EGAP, AsPredicted, OSF allowing a DOI (25,000+)</p>
+<ul>
+<li>Jameel 2009</li>
+<li>AEA 2013, 2100 registrations to date</li>
+<li>RIDIE, EGAP, AsPredicted</li>
+<li>OSF allowing a DOI (25,000+)</li>
+</ul>
 </div>
 <div id="meta-analysis" class="section level3" number="15.1.3">
 <h3><span class="header-section-number">15.1.3</span> Meta-analysis</h3>
@@ -737,20 +741,213 @@ For Mac Catalina with R 4.0 I followed the instructions <a href="https://discour
 <span id="cb30-4"><a href="metaanalysis.html#cb30-4"></a></span>
 <span id="cb30-5"><a href="metaanalysis.html#cb30-5"></a><span class="kw">library</span>(pacman)</span>
 <span id="cb30-6"><a href="metaanalysis.html#cb30-6"></a></span>
-<span id="cb30-7"><a href="metaanalysis.html#cb30-7"></a><span class="kw">p_load</span>(tidyverse, meta, brms, dmetar, extraDistr, ggplot2, tidybayes, dplyr, ggplot2, ggridges, glue, stringr, forcats)</span></code></pre></div>
+<span id="cb30-7"><a href="metaanalysis.html#cb30-7"></a><span class="kw">p_load</span>(tidyverse, meta, brms, dmetar, extraDistr, ggplot2, tidybayes, dplyr, ggplot2, ggridges, glue, stringr, forcats, meta, metafor, here)</span>
+<span id="cb30-8"><a href="metaanalysis.html#cb30-8"></a></span>
+<span id="cb30-9"><a href="metaanalysis.html#cb30-9"></a><span class="kw">load</span>(<span class="kw">here</span>(<span class="st">&quot;meta_anal_and_open_science&quot;</span>, <span class="st">&quot;Doing-Meta-Analysis-in-R-master&quot;</span>, <span class="st">&quot;_data&quot;</span>, <span class="st">&quot;Meta_Analysis_Data.RData&quot;</span>))</span>
+<span id="cb30-10"><a href="metaanalysis.html#cb30-10"></a> </span>
+<span id="cb30-11"><a href="metaanalysis.html#cb30-11"></a> madata &lt;-<span class="st"> </span>Meta_Analysis_Data</span></code></pre></div>
 <div id="pooling-effect-sizes" class="section level3" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Pooling effect sizes</h3>
-<p>FE model calculates weighted average:</p>
-<p>FIX THESE FORMULAS</p>
-<p><span class="math display">\[\hat{\theta_F} = \frac{\sum\limits_{k=1}^K \hat{\theta_k} \]</span>
-<span class="math display">\[\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k \]</span></p>
+<div id="fixed-effects-model" class="section level4 unnumbered" number="">
+<h4>Fixed effects model</h4>
+<p>FE model calculates weighted average of the effect sizes for the pooled effect size:</p>
+<p><span class="math display">\[\hat{\theta}_F = \frac{\sum\limits_{k=1}^K \hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K 1/\hat{\sigma}^2_k} \]</span><br />
+</p>
+<!--
+And (it looks like) the simple average of the variabces for the pooled effect variance: 
+
+$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
+
+-->
 <ul>
 <li>note that this process does not ‘dig in’ to the raw data, it just needs the summary statistics, neither does the “RE model” they refer to:</li>
 </ul>
 <blockquote>
 <p>Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.</p>
 </blockquote>
-<p>Nor the Bayesian models, apparently (they use the same ‘madata’ dataset)</p>
+<p>Nor the Bayesian models, apparently (they use the same datasets in his examples I think)</p>
+<p>The sample data:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="metaanalysis.html#cb31-1"></a><span class="kw">str</span>(madata)</span></code></pre></div>
+<pre><code>## tibble [18 × 17] (S3: tbl_df/tbl/data.frame)
+##  $ Author               : chr [1:18] &quot;Call et al.&quot; &quot;Cavanagh et al.&quot; &quot;DanitzOrsillo&quot; &quot;de Vibe et al.&quot; ...
+##  $ TE                   : num [1:18] 0.709 0.355 1.791 0.182 0.422 ...
+##  $ seTE                 : num [1:18] 0.261 0.196 0.346 0.118 0.145 ...
+##  $ RoB                  : chr [1:18] &quot;low&quot; &quot;low&quot; &quot;high&quot; &quot;low&quot; ...
+##  $ Control              : chr [1:18] &quot;WLC&quot; &quot;WLC&quot; &quot;WLC&quot; &quot;no intervention&quot; ...
+##  $ intervention duration: chr [1:18] &quot;short&quot; &quot;short&quot; &quot;short&quot; &quot;short&quot; ...
+##  $ intervention type    : chr [1:18] &quot;mindfulness&quot; &quot;mindfulness&quot; &quot;ACT&quot; &quot;mindfulness&quot; ...
+##  $ population           : chr [1:18] &quot;undergraduate students&quot; &quot;students&quot; &quot;undergraduate students&quot; &quot;undergraduate students&quot; ...
+##  $ type of students     : chr [1:18] &quot;psychology&quot; &quot;general&quot; &quot;general&quot; &quot;general&quot; ...
+##  $ prevention type      : chr [1:18] &quot;selective&quot; &quot;universal&quot; &quot;universal&quot; &quot;universal&quot; ...
+##  $ gender               : chr [1:18] &quot;female&quot; &quot;mixed&quot; &quot;mixed&quot; &quot;mixed&quot; ...
+##  $ mode of delivery     : chr [1:18] &quot;group&quot; &quot;online&quot; &quot;group&quot; &quot;group&quot; ...
+##  $ ROB streng           : chr [1:18] &quot;high&quot; &quot;low&quot; &quot;high&quot; &quot;low&quot; ...
+##  $ ROB superstreng      : chr [1:18] &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot; ...
+##  $ compensation         : chr [1:18] &quot;none&quot; &quot;none&quot; &quot;voucher/money&quot; &quot;voucher/money&quot; ...
+##  $ instruments          : chr [1:18] &quot;DASS&quot; &quot;PSS&quot; &quot;DASS&quot; &quot;other&quot; ...
+##  $ guidance             : chr [1:18] &quot;f2f&quot; &quot;self-guided&quot; &quot;f2f&quot; &quot;f2f&quot; ...</code></pre>
+<blockquote>
+<p>As our effect sizes are already calculated, we can use the <code>meta::metagen</code> function.</p>
+</blockquote>
+<p><br />
+</p>
+<p>A particularly relevant parameter to specify:</p>
+<p><code>sm=</code>: The summary measure we want to calculate. We can either calculate the mean difference (MD) or Hedges’ g/Cohen’s d (SMD)".^*^</p>
+<div class="marginnote">
+<p>Recall, Hedges’ and Cohen’s measures are the mean difference between the groups divided by the pooled standard deviation. Below these seem to yield the same result, perhaps because these results are already normalised.</p>
+</div>
+<p><br />
+</p>
+<p>Our first fixed-effects model meta-analysis:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="metaanalysis.html#cb33-1"></a>(</span>
+<span id="cb33-2"><a href="metaanalysis.html#cb33-2"></a>m &lt;-<span class="st"> </span>madata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb33-3"><a href="metaanalysis.html#cb33-3"></a><span class="st">            </span><span class="kw">metagen</span>(</span>
+<span id="cb33-4"><a href="metaanalysis.html#cb33-4"></a>              TE, <span class="co"># the treatment effect variable </span></span>
+<span id="cb33-5"><a href="metaanalysis.html#cb33-5"></a>             seTE, <span class="co"># the SE of treatment effect variable  </span></span>
+<span id="cb33-6"><a href="metaanalysis.html#cb33-6"></a>             <span class="dt">data=</span>.,</span>
+<span id="cb33-7"><a href="metaanalysis.html#cb33-7"></a>             <span class="dt">studlab=</span><span class="kw">paste</span>(Author), <span class="co">#labels for each study</span></span>
+<span id="cb33-8"><a href="metaanalysis.html#cb33-8"></a>             <span class="dt">comb.fixed =</span> <span class="ot">TRUE</span>, <span class="co">#yes fixed effects estimation </span></span>
+<span id="cb33-9"><a href="metaanalysis.html#cb33-9"></a>             <span class="dt">comb.random =</span> <span class="ot">FALSE</span>, <span class="co">#no RE estimation (we could do both)</span></span>
+<span id="cb33-10"><a href="metaanalysis.html#cb33-10"></a>             <span class="dt">prediction=</span><span class="ot">TRUE</span>, <span class="co">#&quot;print a prediction interval for the effect of future studies based on present evidence&quot;</span></span>
+<span id="cb33-11"><a href="metaanalysis.html#cb33-11"></a>             <span class="dt">sm=</span><span class="st">&quot;SMD&quot;</span>)</span>
+<span id="cb33-12"><a href="metaanalysis.html#cb33-12"></a>)</span></code></pre></div>
+<pre><code>##                           SMD            95%-CI %W(fixed)
+## Call et al.            0.7091 [ 0.1979; 1.2203]       3.6
+## Cavanagh et al.        0.3549 [-0.0300; 0.7397]       6.3
+## DanitzOrsillo          1.7912 [ 1.1139; 2.4685]       2.0
+## de Vibe et al.         0.1825 [-0.0484; 0.4133]      17.5
+## Frazier et al.         0.4219 [ 0.1380; 0.7057]      11.6
+## Frogeli et al.         0.6300 [ 0.2458; 1.0142]       6.3
+## Gallego et al.         0.7249 [ 0.2846; 1.1652]       4.8
+## Hazlett-Stevens &amp; Oren 0.5287 [ 0.1162; 0.9412]       5.5
+## Hintz et al.           0.2840 [-0.0453; 0.6133]       8.6
+## Kang et al.            1.2751 [ 0.6142; 1.9360]       2.1
+## Kuhlmann et al.        0.1036 [-0.2781; 0.4853]       6.4
+## Lever Taylor et al.    0.3884 [-0.0639; 0.8407]       4.6
+## Phang et al.           0.5407 [ 0.0619; 1.0196]       4.1
+## Rasanen et al.         0.4262 [-0.0794; 0.9317]       3.6
+## Ratanasiripong         0.5154 [-0.1731; 1.2039]       2.0
+## Shapiro et al.         1.4797 [ 0.8618; 2.0977]       2.4
+## SongLindquist          0.6126 [ 0.1683; 1.0569]       4.7
+## Warnecke et al.        0.6000 [ 0.1120; 1.0880]       3.9
+## 
+## Number of studies combined: k = 18
+## 
+##                        SMD            95%-CI    z  p-value
+## Fixed effect model  0.4805 [ 0.3840; 0.5771] 9.75 &lt; 0.0001
+## Prediction interval        [-0.0344; 1.1826]              
+## 
+## Quantifying heterogeneity:
+##  tau^2 = 0.0752 [0.0357; 0.3046]; tau = 0.2743 [0.1891; 0.5519];
+##  I^2 = 62.6% [37.9%; 77.5%]; H = 1.64 [1.27; 2.11]
+## 
+## Test of heterogeneity:
+##      Q d.f. p-value
+##  45.50   17  0.0002
+## 
+## Details on meta-analytical method:
+## - Inverse variance method
+## - DerSimonian-Laird estimator for tau^2
+## - Jackson method for confidence interval of tau^2 and tau</code></pre>
+<p>Results include:</p>
+<ul>
+<li>The <strong>individual effect sizes</strong> for each study (SMD), and their weight (%W(fixed))</li>
+<li>The <strong>overall effect</strong> (in our case, <span class="math inline">\(g\)</span> = 0.48) and its confidence interval and <span class="math inline">\(p\)</span>-value</li>
+<li>Measures of <strong>between-study heterogeneity</strong>, such as <span class="math inline">\(tau^2\)</span> or <span class="math inline">\(I^2\)</span> and a <span class="math inline">\(Q\)</span>-test of heterogeneity</li>
+</ul>
+<div class="marginnote">
+<p><span class="math inline">\(tau^2\)</span> - “The square root of this number (i.e. <span class="math inline">\(\tau\)</span>) is the estimated standard deviation of underlying effects across studies” - Cochrane handbook</p>
+<p><span class="math inline">\(I^2\)</span> is a transformation of the ch-sq statistic… ‘This describes the percentage of the variability in effect estimates that is due to heterogeneity rather than sampling error (chance).’</p>
+</div>
+<p>You can output these results as a text file using the ‘sink’ command, but I don’t see the point.</p>
+<p><br />
+</p>
+<p><strong>You can do a similar calculation with raw data</strong> (rather than aggregated data) using the <code>meta::metacont</code> command, as he shows. I think it just does all the aggregation within the function but it’s otherwise the same.</p>
+<p><br />
+</p>
+<p>Harrer’s notes on whether we should use RE or FE (unfold)</p>
+
+<div class="fold">
+<p>“The random-effects-model pays more attention to small studies when pooling the overall effect in a meta-analysis (Schwarzer, Carpenter, and Rücker 2015). Yet, small studies in particular are often fraught with bias (see Chapter 8.1). This is why some have argued that the fixed-effects-model should be nearly always preferred (Poole and Greenland 1999; Furukawa, McGuire, and Barbui 2003).”</p>
+DR: somewhow I’m not sure the “pays more attention to small studies” point is correct, although it is certainly empirically the case below
+</div>
+</div>
+<div id="random-effects-model" class="section level4 unnumbered" number="">
+<h4>Random effects model</h4>
+<p>There are a variety of estimators for the variance of the true effect size <span class="math inline">\(\tau^2\)</span>. You must choose one. He recommends <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4950030/">Veroniki et al’s</a> discussion of this.</p>
+<ul>
+<li>DerSimonian-Laird (1986) estimator is the most common</li>
+<li>"Maximum-Likelihood, Sidik-Jonkman, and Empirical Bayes estimators have better properties in estimating the between-study variance (Sidik and Jonkman 2007; Viechtbauer 2005).</li>
+<li>DerSimonian-Laird is also seen to be prone to producing false positives (for the mean effect I think?)
+<ul>
+<li>HKSJ is more conservative, but has ‘residual concerns’</li>
+</ul></li>
+</ul>
+<p><strong>Running an RE meta-analysis:</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="metaanalysis.html#cb35-1"></a>(</span>
+<span id="cb35-2"><a href="metaanalysis.html#cb35-2"></a>m.hksj &lt;-<span class="st"> </span><span class="kw">metagen</span>(TE,</span>
+<span id="cb35-3"><a href="metaanalysis.html#cb35-3"></a>                  seTE,</span>
+<span id="cb35-4"><a href="metaanalysis.html#cb35-4"></a>                  <span class="dt">data =</span> madata,</span>
+<span id="cb35-5"><a href="metaanalysis.html#cb35-5"></a>                  <span class="dt">studlab =</span> <span class="kw">paste</span>(Author),</span>
+<span id="cb35-6"><a href="metaanalysis.html#cb35-6"></a>                  <span class="dt">comb.fixed =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb35-7"><a href="metaanalysis.html#cb35-7"></a>                  <span class="dt">comb.random =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb35-8"><a href="metaanalysis.html#cb35-8"></a>                  <span class="dt">method.tau =</span> <span class="st">&quot;SJ&quot;</span>, <span class="co">#Sidik-Jonkman method</span></span>
+<span id="cb35-9"><a href="metaanalysis.html#cb35-9"></a>                  <span class="dt">hakn =</span> <span class="ot">TRUE</span>, <span class="co">#&quot;use the Knapp-Hartung method&quot; or &#39;adjustment&#39;... seems to effect only the CI for the pooled effect </span></span>
+<span id="cb35-10"><a href="metaanalysis.html#cb35-10"></a>                  <span class="dt">prediction =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb35-11"><a href="metaanalysis.html#cb35-11"></a>                  <span class="dt">sm =</span> <span class="st">&quot;SMD&quot;</span>)</span>
+<span id="cb35-12"><a href="metaanalysis.html#cb35-12"></a>)</span></code></pre></div>
+<pre><code>##                           SMD            95%-CI %W(random)
+## Call et al.            0.7091 [ 0.1979; 1.2203]        5.2
+## Cavanagh et al.        0.3549 [-0.0300; 0.7397]        6.1
+## DanitzOrsillo          1.7912 [ 1.1139; 2.4685]        4.2
+## de Vibe et al.         0.1825 [-0.0484; 0.4133]        7.1
+## Frazier et al.         0.4219 [ 0.1380; 0.7057]        6.8
+## Frogeli et al.         0.6300 [ 0.2458; 1.0142]        6.1
+## Gallego et al.         0.7249 [ 0.2846; 1.1652]        5.7
+## Hazlett-Stevens &amp; Oren 0.5287 [ 0.1162; 0.9412]        5.9
+## Hintz et al.           0.2840 [-0.0453; 0.6133]        6.5
+## Kang et al.            1.2751 [ 0.6142; 1.9360]        4.3
+## Kuhlmann et al.        0.1036 [-0.2781; 0.4853]        6.1
+## Lever Taylor et al.    0.3884 [-0.0639; 0.8407]        5.6
+## Phang et al.           0.5407 [ 0.0619; 1.0196]        5.4
+## Rasanen et al.         0.4262 [-0.0794; 0.9317]        5.3
+## Ratanasiripong         0.5154 [-0.1731; 1.2039]        4.1
+## Shapiro et al.         1.4797 [ 0.8618; 2.0977]        4.5
+## SongLindquist          0.6126 [ 0.1683; 1.0569]        5.7
+## Warnecke et al.        0.6000 [ 0.1120; 1.0880]        5.4
+## 
+## Number of studies combined: k = 18
+## 
+##                         SMD            95%-CI    t  p-value
+## Random effects model 0.5935 [ 0.3891; 0.7979] 6.13 &lt; 0.0001
+## Prediction interval         [-0.2084; 1.3954]              
+## 
+## Quantifying heterogeneity:
+##  tau^2 = 0.1337 [0.0295; 0.3533]; tau = 0.3657 [0.1717; 0.5944];
+##  I^2 = 62.6% [37.9%; 77.5%]; H = 1.64 [1.27; 2.11]
+## 
+## Test of heterogeneity:
+##      Q d.f. p-value
+##  45.50   17  0.0002
+## 
+## Details on meta-analytical method:
+## - Inverse variance method
+## - Sidik-Jonkman estimator for tau^2
+## - Q-profile method for confidence interval of tau^2 and tau
+## - Hartung-Knapp adjustment for random effects model</code></pre>
+</div>
+<div id="binary-outcomes" class="section level4 unnumbered" number="">
+<h4>Binary outcomes</h4>
+<p>Outcomes like
+- pooled Odds Ratio: relative incidence in treatment vs control
+- the Relative Risk: share of total incidence in treatment, scaled by sample size
+- Incidence Rate Ratio: similar to OR but scaled by duration, I think</p>
+<p>Packages:</p>
+<ul>
+<li>Again we use <code>metagen</code> for pooled data.</li>
+<li>with raw outome data we’ve <code>meta::metabin()</code> or <code>meta::metainc()</code></li>
+</ul>
+</div>
 </div>
 <div id="doing-bayes-meta" class="section level3" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> Bayesian Meta-analysis</h3>
@@ -816,14 +1013,14 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <p><br />
 </p>
 <p>Half-Cauchy distribution for varying <span class="math inline">\(s\)</span>, with <span class="math inline">\(x_0=0\)</span>:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>HC is ’heavy-tailed;… gives some probability to very high values but low values are still more likely.</p>
 <p>One might consider <span class="math inline">\(s=0.3\)</span></p>
 <div class="marginnote">
 <p><span class="math inline">\(s\)</span> corresponds to the std deviation here? … so an SD of the effect size about 1/3 of it’s mean size?</p>
 </div>
 <p>Checking the share of this distribution below 0.3…</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="metaanalysis.html#cb31-1"></a><span class="kw">phcauchy</span>(<span class="fl">0.3</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>) <span class="co">#cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="metaanalysis.html#cb37-1"></a><span class="kw">phcauchy</span>(<span class="fl">0.3</span>, <span class="dt">sigma =</span> <span class="fl">0.3</span>) <span class="co">#cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3</span></span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
 <p><br />
 </p>
@@ -842,9 +1039,9 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <div id="bayesian-meta-analysis-in-r-using-the-brms-package" class="section level4 unnumbered" number="">
 <h4>Bayesian Meta-Analysis in R using the <code>brms</code> package</h4>
 <p>You specify the priors as a vector of elements, each of which invokes the ‘prior’ function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a ‘class’.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="metaanalysis.html#cb33-1"></a>priors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">class =</span> Intercept), <span class="kw">prior</span>(<span class="kw">cauchy</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">class =</span> sd))</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="metaanalysis.html#cb39-1"></a>priors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">class =</span> Intercept), <span class="kw">prior</span>(<span class="kw">cauchy</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">class =</span> sd))</span></code></pre></div>
 <p>A quick look at the data we’re using here:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="metaanalysis.html#cb34-1"></a><span class="kw">str</span>(ThirdWave[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="metaanalysis.html#cb40-1"></a><span class="kw">str</span>(ThirdWave[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## tibble [18 × 3] (S3: tbl_df/tbl/data.frame)
 ##  $ Author: chr [1:18] &quot;Call et al.&quot; &quot;Cavanagh et al.&quot; &quot;DanitzOrsillo&quot; &quot;de Vibe et al.&quot; ...
 ##  $ TE    : num [1:18] 0.709 0.355 1.791 0.182 0.422 ...
@@ -860,134 +1057,93 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 </div>
 <p>I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE’s) is rather small. It seems to be that the C++ model takes long to compile.</p>
 <div class="marginnote">
+<p>2000 iterations seems to be a ‘norm’. [source?]</p>
+</div>
+<div class="marginnote">
 <p>The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.</p>
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="metaanalysis.html#cb36-1"></a>m.brm &lt;-<span class="st"> </span><span class="kw">brm</span>(TE<span class="op">|</span><span class="kw">se</span>(seTE) <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Author),</span>
-<span id="cb36-2"><a href="metaanalysis.html#cb36-2"></a>             <span class="dt">data =</span> ThirdWave,</span>
-<span id="cb36-3"><a href="metaanalysis.html#cb36-3"></a>             <span class="dt">prior =</span> priors,</span>
-<span id="cb36-4"><a href="metaanalysis.html#cb36-4"></a>             <span class="dt">iter =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="metaanalysis.html#cb42-1"></a>(</span>
+<span id="cb42-2"><a href="metaanalysis.html#cb42-2"></a>m.brm &lt;-<span class="st"> </span><span class="kw">brm</span>(TE<span class="op">|</span><span class="kw">se</span>(seTE) <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Author),</span>
+<span id="cb42-3"><a href="metaanalysis.html#cb42-3"></a>             <span class="dt">data =</span> ThirdWave,</span>
+<span id="cb42-4"><a href="metaanalysis.html#cb42-4"></a>             <span class="dt">prior =</span> priors,</span>
+<span id="cb42-5"><a href="metaanalysis.html#cb42-5"></a>             <span class="dt">iter =</span> <span class="dv">2000</span>)</span>
+<span id="cb42-6"><a href="metaanalysis.html#cb42-6"></a>)</span></code></pre></div>
 <pre><code>## Compiling the C++ model</code></pre>
-<pre><code>## Trying to compile a simple C file</code></pre>
-<pre><code>## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
-## clang -mmacosx-version-min=10.13 -I&quot;/Library/Frameworks/R.framework/Resources/include&quot; -DNDEBUG   -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/Rcpp/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/unsupported&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/BH/include&quot; -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/StanHeaders/include/src/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/StanHeaders/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/rstan/include&quot; -DEIGEN_NO_DEBUG  -D_REENTRANT  -DBOOST_DISABLE_ASSERTS -DBOOST_PENDING_INTEGER_LOG2_HPP -include stan/math/prim/mat/fun/Eigen.hpp   -I/usr/local/include   -fPIC  -Wall -g -O2  -c foo.c -o foo.o
-## In file included from &lt;built-in&gt;:1:
-## In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-## In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
-## In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core:88:
-## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name &#39;namespace&#39;
-## namespace Eigen {
-## ^
-## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:16: error: expected &#39;;&#39; after top level declarator
-## namespace Eigen {
-##                ^
-##                ;
-## In file included from &lt;built-in&gt;:1:
-## In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:4:
-## In file included from /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Dense:1:
-## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/RcppEigen/include/Eigen/Core:96:10: fatal error: &#39;complex&#39; file not found
-## #include &lt;complex&gt;
-##          ^~~~~~~~~
-## 3 errors generated.
-## make: *** [foo.o] Error 1</code></pre>
 <pre><code>## Start sampling</code></pre>
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 2.6e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
+## Chain 1: Gradient evaluation took 2.4e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.24 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
-## Chain 1: WARNING: There aren&#39;t enough warmup iterations to fit the
-## Chain 1:          three stages of adaptation as currently configured.
-## Chain 1:          Reducing each adaptation stage to 15%/75%/10% of
-## Chain 1:          the given number of warmup iterations:
-## Chain 1:            init_buffer = 7
-## Chain 1:            adapt_window = 38
-## Chain 1:            term_buffer = 5
+## Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1: Iteration:  1 / 100 [  1%]  (Warmup)
-## Chain 1: Iteration: 10 / 100 [ 10%]  (Warmup)
-## Chain 1: Iteration: 20 / 100 [ 20%]  (Warmup)
-## Chain 1: Iteration: 30 / 100 [ 30%]  (Warmup)
-## Chain 1: Iteration: 40 / 100 [ 40%]  (Warmup)
-## Chain 1: Iteration: 50 / 100 [ 50%]  (Warmup)
-## Chain 1: Iteration: 51 / 100 [ 51%]  (Sampling)
-## Chain 1: Iteration: 60 / 100 [ 60%]  (Sampling)
-## Chain 1: Iteration: 70 / 100 [ 70%]  (Sampling)
-## Chain 1: Iteration: 80 / 100 [ 80%]  (Sampling)
-## Chain 1: Iteration: 90 / 100 [ 90%]  (Sampling)
-## Chain 1: Iteration: 100 / 100 [100%]  (Sampling)
-## Chain 1: 
-## Chain 1:  Elapsed Time: 0.018725 seconds (Warm-up)
-## Chain 1:                0.018555 seconds (Sampling)
-## Chain 1:                0.03728 seconds (Total)
+## Chain 1:  Elapsed Time: 0.142905 seconds (Warm-up)
+## Chain 1:                0.113873 seconds (Sampling)
+## Chain 1:                0.256778 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 2).
 ## Chain 2: 
-## Chain 2: Gradient evaluation took 1e-05 seconds
-## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 2: Gradient evaluation took 1.1e-05 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
 ## Chain 2: Adjust your expectations accordingly!
 ## Chain 2: 
 ## Chain 2: 
-## Chain 2: WARNING: There aren&#39;t enough warmup iterations to fit the
-## Chain 2:          three stages of adaptation as currently configured.
-## Chain 2:          Reducing each adaptation stage to 15%/75%/10% of
-## Chain 2:          the given number of warmup iterations:
-## Chain 2:            init_buffer = 7
-## Chain 2:            adapt_window = 38
-## Chain 2:            term_buffer = 5
+## Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2: Iteration:  1 / 100 [  1%]  (Warmup)
-## Chain 2: Iteration: 10 / 100 [ 10%]  (Warmup)
-## Chain 2: Iteration: 20 / 100 [ 20%]  (Warmup)
-## Chain 2: Iteration: 30 / 100 [ 30%]  (Warmup)
-## Chain 2: Iteration: 40 / 100 [ 40%]  (Warmup)
-## Chain 2: Iteration: 50 / 100 [ 50%]  (Warmup)
-## Chain 2: Iteration: 51 / 100 [ 51%]  (Sampling)
-## Chain 2: Iteration: 60 / 100 [ 60%]  (Sampling)
-## Chain 2: Iteration: 70 / 100 [ 70%]  (Sampling)
-## Chain 2: Iteration: 80 / 100 [ 80%]  (Sampling)
-## Chain 2: Iteration: 90 / 100 [ 90%]  (Sampling)
-## Chain 2: Iteration: 100 / 100 [100%]  (Sampling)
-## Chain 2: 
-## Chain 2:  Elapsed Time: 0.027942 seconds (Warm-up)
-## Chain 2:                0.019148 seconds (Sampling)
-## Chain 2:                0.04709 seconds (Total)
+## Chain 2:  Elapsed Time: 0.146102 seconds (Warm-up)
+## Chain 2:                0.114888 seconds (Sampling)
+## Chain 2:                0.26099 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 8e-06 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.08 seconds.
+## Chain 3: Gradient evaluation took 9e-06 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.09 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
-## Chain 3: WARNING: There aren&#39;t enough warmup iterations to fit the
-## Chain 3:          three stages of adaptation as currently configured.
-## Chain 3:          Reducing each adaptation stage to 15%/75%/10% of
-## Chain 3:          the given number of warmup iterations:
-## Chain 3:            init_buffer = 7
-## Chain 3:            adapt_window = 38
-## Chain 3:            term_buffer = 5
+## Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3: Iteration:  1 / 100 [  1%]  (Warmup)
-## Chain 3: Iteration: 10 / 100 [ 10%]  (Warmup)
-## Chain 3: Iteration: 20 / 100 [ 20%]  (Warmup)
-## Chain 3: Iteration: 30 / 100 [ 30%]  (Warmup)
-## Chain 3: Iteration: 40 / 100 [ 40%]  (Warmup)
-## Chain 3: Iteration: 50 / 100 [ 50%]  (Warmup)
-## Chain 3: Iteration: 51 / 100 [ 51%]  (Sampling)
-## Chain 3: Iteration: 60 / 100 [ 60%]  (Sampling)
-## Chain 3: Iteration: 70 / 100 [ 70%]  (Sampling)
-## Chain 3: Iteration: 80 / 100 [ 80%]  (Sampling)
-## Chain 3: Iteration: 90 / 100 [ 90%]  (Sampling)
-## Chain 3: Iteration: 100 / 100 [100%]  (Sampling)
-## Chain 3: 
-## Chain 3:  Elapsed Time: 0.024571 seconds (Warm-up)
-## Chain 3:                0.019312 seconds (Sampling)
-## Chain 3:                0.043883 seconds (Total)
+## Chain 3:  Elapsed Time: 0.138922 seconds (Warm-up)
+## Chain 3:                0.116108 seconds (Sampling)
+## Chain 3:                0.25503 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;d621f94cb5a5107aad70f85d900cd165&#39; NOW (CHAIN 4).
@@ -997,47 +1153,38 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
-## Chain 4: WARNING: There aren&#39;t enough warmup iterations to fit the
-## Chain 4:          three stages of adaptation as currently configured.
-## Chain 4:          Reducing each adaptation stage to 15%/75%/10% of
-## Chain 4:          the given number of warmup iterations:
-## Chain 4:            init_buffer = 7
-## Chain 4:            adapt_window = 38
-## Chain 4:            term_buffer = 5
+## Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4: Iteration:  1 / 100 [  1%]  (Warmup)
-## Chain 4: Iteration: 10 / 100 [ 10%]  (Warmup)
-## Chain 4: Iteration: 20 / 100 [ 20%]  (Warmup)
-## Chain 4: Iteration: 30 / 100 [ 30%]  (Warmup)
-## Chain 4: Iteration: 40 / 100 [ 40%]  (Warmup)
-## Chain 4: Iteration: 50 / 100 [ 50%]  (Warmup)
-## Chain 4: Iteration: 51 / 100 [ 51%]  (Sampling)
-## Chain 4: Iteration: 60 / 100 [ 60%]  (Sampling)
-## Chain 4: Iteration: 70 / 100 [ 70%]  (Sampling)
-## Chain 4: Iteration: 80 / 100 [ 80%]  (Sampling)
-## Chain 4: Iteration: 90 / 100 [ 90%]  (Sampling)
-## Chain 4: Iteration: 100 / 100 [100%]  (Sampling)
-## Chain 4: 
-## Chain 4:  Elapsed Time: 0.02273 seconds (Warm-up)
-## Chain 4:                0.018946 seconds (Sampling)
-## Chain 4:                0.041676 seconds (Total)
+## Chain 4:  Elapsed Time: 0.13776 seconds (Warm-up)
+## Chain 4:                0.120859 seconds (Sampling)
+## Chain 4:                0.258619 seconds (Total)
 ## Chain 4:</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="metaanalysis.html#cb42-1"></a>m.brm</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
 ##    Data: ThirdWave (Number of observations: 18) 
-## Samples: 4 chains, each with iter = 100; warmup = 50; thin = 1;
-##          total post-warmup samples = 200
+## Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup samples = 4000
 ## 
 ## Group-Level Effects: 
 ## ~Author (Number of levels: 18) 
 ##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## sd(Intercept)     0.26      0.09     0.09     0.45 1.05       96      108
+## sd(Intercept)     0.30      0.10     0.12     0.52 1.00     1300     1892
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept     0.55      0.08     0.39     0.74 1.00      140      132
+## Intercept     0.57      0.09     0.39     0.76 1.00     1843     2004
 ## 
 ## Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -1067,33 +1214,33 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 </ul>
 <p>“Posterior predictive checks”: If it’s converged, then the density of the replications should resemble the original data.</p>
 <div class="marginnote">
-<p>Not sure I understand this; may need to revise and give a clear explanation. I guess it’s something like ‘the estimated terms are can then be run to simulate a dgp, which should yield data looking like the original data set’…</p>
+<p>Not sure I understand this; may need to revise and give a clear explanation. I guess it’s something like ‘the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set’…</p>
 </div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="metaanalysis.html#cb44-1"></a><span class="kw">pp_check</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="metaanalysis.html#cb47-1"></a><span class="kw">pp_check</span>(m.brm)</span></code></pre></div>
 <pre><code>## Using 10 posterior samples for ppc type &#39;dens_overlay&#39; by default.</code></pre>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-26-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-30-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Also check for a Potential Scale Reduction Factor (PSRF), or <span class="math inline">\(\hat{R}\)</span> below 1.01.</p>
 <div class="marginnote">
 <p>I’ve no idea what this is at this point; I need to read earlier chapters.</p>
 </div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="metaanalysis.html#cb46-1"></a><span class="kw">summary</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="metaanalysis.html#cb49-1"></a><span class="kw">summary</span>(m.brm)</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
 ##    Data: ThirdWave (Number of observations: 18) 
-## Samples: 4 chains, each with iter = 100; warmup = 50; thin = 1;
-##          total post-warmup samples = 200
+## Samples: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup samples = 4000
 ## 
 ## Group-Level Effects: 
 ## ~Author (Number of levels: 18) 
 ##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## sd(Intercept)     0.26      0.09     0.09     0.45 1.05       96      108
+## sd(Intercept)     0.30      0.10     0.12     0.52 1.00     1300     1892
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept     0.55      0.08     0.39     0.74 1.00      140      132
+## Intercept     0.57      0.09     0.39     0.76 1.00     1843     2004
 ## 
 ## Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -1109,29 +1256,29 @@ every meta-analytical model inherently possesses a multilevel, and thus ‘hiera
 <p><br />
 </p>
 <p>We can also extract the estimated deviation of each study’s “true” effect size from the pooled effect:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="metaanalysis.html#cb48-1"></a><span class="kw">ranef</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="metaanalysis.html#cb51-1"></a><span class="kw">ranef</span>(m.brm)</span></code></pre></div>
 <pre><code>## $Author
 ## , , Intercept
 ## 
 ##                        Estimate Est.Error    Q2.5  Q97.5
-## Call et al.              0.0882      0.17 -0.2081 0.4289
-## Cavanagh et al.         -0.1150      0.18 -0.4664 0.2001
-## DanitzOrsillo            0.4479      0.26  0.0061 1.0253
-## de Vibe et al.          -0.2943      0.15 -0.5913 0.0051
-## Frazier et al.          -0.0896      0.14 -0.4240 0.1676
-## Frogeli et al.           0.0401      0.18 -0.3814 0.3709
-## Gallego et al.           0.1105      0.18 -0.1979 0.5061
-## Hazlett-Stevens &amp; Oren  -0.0170      0.18 -0.3675 0.3001
-## Hintz et al.            -0.1737      0.18 -0.5040 0.1256
-## Kang et al.              0.2959      0.27 -0.1454 1.0317
-## Kuhlmann et al.         -0.2657      0.18 -0.7072 0.0647
-## Lever Taylor et al.     -0.1011      0.20 -0.5341 0.2702
-## Phang et al.            -0.0040      0.16 -0.2999 0.2872
-## Rasanen et al.          -0.0486      0.18 -0.4325 0.3301
-## Ratanasiripong          -0.0078      0.22 -0.4794 0.3944
-## Shapiro et al.           0.3601      0.25 -0.0704 0.9077
-## Song &amp; Lindquist         0.0548      0.18 -0.3194 0.3759
-## Warnecke et al.          0.0246      0.18 -0.3598 0.3824</code></pre>
+## Call et al.               0.075      0.19 -0.3036  0.473
+## Cavanagh et al.          -0.141      0.18 -0.5197  0.188
+## DanitzOrsillo             0.499      0.29 -0.0031  1.110
+## de Vibe et al.           -0.319      0.14 -0.6047 -0.051
+## Frazier et al.           -0.113      0.15 -0.4224  0.174
+## Frogeli et al.            0.039      0.17 -0.2890  0.374
+## Gallego et al.            0.091      0.18 -0.2559  0.470
+## Hazlett-Stevens &amp; Oren   -0.027      0.18 -0.3769  0.324
+## Hintz et al.             -0.208      0.16 -0.5511  0.088
+## Kang et al.               0.295      0.24 -0.1312  0.816
+## Kuhlmann et al.          -0.308      0.19 -0.6880  0.030
+## Lever Taylor et al.      -0.108      0.19 -0.5044  0.264
+## Phang et al.             -0.019      0.19 -0.4114  0.364
+## Rasanen et al.           -0.082      0.20 -0.4888  0.293
+## Ratanasiripong           -0.024      0.22 -0.4802  0.423
+## Shapiro et al.            0.411      0.27 -0.0522  0.971
+## Song &amp; Lindquist          0.022      0.19 -0.3404  0.395
+## Warnecke et al.           0.015      0.19 -0.3553  0.378</code></pre>
 <div class="marginnote">
 <p>These are measures of <em>deviations</em>. But they don’t exactly equal the difference between the input effect size and the estimated pooled effect size. In fact this is coming from an estimate of the true effect for each study which ‘averages towards the mean’ following some criteria (this is mentioned later).</p>
 </div>
@@ -1145,42 +1292,42 @@ with the 95% credibility interval (not confidence interval!) ranging from 95% Cr
 </blockquote>
 <p>But now we can model the parameters we want to estimate probabilistically…</p>
 <p>Taking samples from the (?) simulated posterior density of the population intercept (mean effect size) and sd of the effect…</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="metaanalysis.html#cb50-1"></a>post.samples &lt;-<span class="st"> </span><span class="kw">posterior_samples</span>(m.brm, <span class="kw">c</span>(<span class="st">&quot;^b&quot;</span>, <span class="st">&quot;^sd&quot;</span>))</span>
-<span id="cb50-2"><a href="metaanalysis.html#cb50-2"></a><span class="kw">names</span>(post.samples)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="metaanalysis.html#cb53-1"></a>post.samples &lt;-<span class="st"> </span><span class="kw">posterior_samples</span>(m.brm, <span class="kw">c</span>(<span class="st">&quot;^b&quot;</span>, <span class="st">&quot;^sd&quot;</span>))</span>
+<span id="cb53-2"><a href="metaanalysis.html#cb53-2"></a><span class="kw">names</span>(post.samples)</span></code></pre></div>
 <pre><code>## [1] &quot;b_Intercept&quot;          &quot;sd_Author__Intercept&quot;</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="metaanalysis.html#cb52-1"></a><span class="kw">names</span>(post.samples) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;smd&quot;</span>, <span class="st">&quot;tau&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="metaanalysis.html#cb55-1"></a><span class="kw">names</span>(post.samples) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;smd&quot;</span>, <span class="st">&quot;tau&quot;</span>)</span></code></pre></div>
 <p>“… make a <strong>density plot</strong> of the posterior distributions”</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="metaanalysis.html#cb53-1"></a><span class="co"># Plot for SMD</span></span>
-<span id="cb53-2"><a href="metaanalysis.html#cb53-2"></a></span>
-<span id="cb53-3"><a href="metaanalysis.html#cb53-3"></a>smd_density  &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> smd), <span class="dt">data =</span> post.samples) <span class="op">+</span></span>
-<span id="cb53-4"><a href="metaanalysis.html#cb53-4"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
-<span id="cb53-5"><a href="metaanalysis.html#cb53-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">x =</span> <span class="kw">mean</span>(post.samples<span class="op">$</span>smd)) <span class="op">+</span></span>
-<span id="cb53-6"><a href="metaanalysis.html#cb53-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">expression</span>(<span class="kw">italic</span>(SMD)),</span>
-<span id="cb53-7"><a href="metaanalysis.html#cb53-7"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
-<span id="cb53-8"><a href="metaanalysis.html#cb53-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
-<span id="cb53-9"><a href="metaanalysis.html#cb53-9"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Standardized mean difference&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
-<span id="cb53-10"><a href="metaanalysis.html#cb53-10"></a></span>
-<span id="cb53-11"><a href="metaanalysis.html#cb53-11"></a></span>
-<span id="cb53-12"><a href="metaanalysis.html#cb53-12"></a><span class="co"># Plot for tau</span></span>
-<span id="cb53-13"><a href="metaanalysis.html#cb53-13"></a>tau_density &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> tau), <span class="dt">data =</span> post.samples) <span class="op">+</span></span>
-<span id="cb53-14"><a href="metaanalysis.html#cb53-14"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
-<span id="cb53-15"><a href="metaanalysis.html#cb53-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">x =</span> <span class="kw">mean</span>(post.samples<span class="op">$</span>tau)) <span class="op">+</span></span>
-<span id="cb53-16"><a href="metaanalysis.html#cb53-16"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">expression</span>(tau),</span>
-<span id="cb53-17"><a href="metaanalysis.html#cb53-17"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
-<span id="cb53-18"><a href="metaanalysis.html#cb53-18"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
-<span id="cb53-19"><a href="metaanalysis.html#cb53-19"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Between-study variation (SD = tau)&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
-<span id="cb53-20"><a href="metaanalysis.html#cb53-20"></a></span>
-<span id="cb53-21"><a href="metaanalysis.html#cb53-21"></a><span class="co">#Display plots together</span></span>
-<span id="cb53-22"><a href="metaanalysis.html#cb53-22"></a></span>
-<span id="cb53-23"><a href="metaanalysis.html#cb53-23"></a><span class="kw">require</span>(gridExtra)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="metaanalysis.html#cb56-1"></a><span class="co"># Plot for SMD</span></span>
+<span id="cb56-2"><a href="metaanalysis.html#cb56-2"></a></span>
+<span id="cb56-3"><a href="metaanalysis.html#cb56-3"></a>smd_density  &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> smd), <span class="dt">data =</span> post.samples) <span class="op">+</span></span>
+<span id="cb56-4"><a href="metaanalysis.html#cb56-4"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
+<span id="cb56-5"><a href="metaanalysis.html#cb56-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">x =</span> <span class="kw">mean</span>(post.samples<span class="op">$</span>smd)) <span class="op">+</span></span>
+<span id="cb56-6"><a href="metaanalysis.html#cb56-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">expression</span>(<span class="kw">italic</span>(SMD)),</span>
+<span id="cb56-7"><a href="metaanalysis.html#cb56-7"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
+<span id="cb56-8"><a href="metaanalysis.html#cb56-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb56-9"><a href="metaanalysis.html#cb56-9"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Standardized mean difference&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
+<span id="cb56-10"><a href="metaanalysis.html#cb56-10"></a></span>
+<span id="cb56-11"><a href="metaanalysis.html#cb56-11"></a></span>
+<span id="cb56-12"><a href="metaanalysis.html#cb56-12"></a><span class="co"># Plot for tau</span></span>
+<span id="cb56-13"><a href="metaanalysis.html#cb56-13"></a>tau_density &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> tau), <span class="dt">data =</span> post.samples) <span class="op">+</span></span>
+<span id="cb56-14"><a href="metaanalysis.html#cb56-14"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
+<span id="cb56-15"><a href="metaanalysis.html#cb56-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">x =</span> <span class="kw">mean</span>(post.samples<span class="op">$</span>tau)) <span class="op">+</span></span>
+<span id="cb56-16"><a href="metaanalysis.html#cb56-16"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">expression</span>(tau),</span>
+<span id="cb56-17"><a href="metaanalysis.html#cb56-17"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
+<span id="cb56-18"><a href="metaanalysis.html#cb56-18"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb56-19"><a href="metaanalysis.html#cb56-19"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Between-study variation (SD = tau)&quot;</span>, <span class="dt">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
+<span id="cb56-20"><a href="metaanalysis.html#cb56-20"></a></span>
+<span id="cb56-21"><a href="metaanalysis.html#cb56-21"></a><span class="co">#Display plots together</span></span>
+<span id="cb56-22"><a href="metaanalysis.html#cb56-22"></a></span>
+<span id="cb56-23"><a href="metaanalysis.html#cb56-23"></a><span class="kw">require</span>(gridExtra)</span></code></pre></div>
 <pre><code>## Loading required package: gridExtra</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;gridExtra&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     combine</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="metaanalysis.html#cb57-1"></a><span class="kw">grid.arrange</span>(smd_density, tau_density, <span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-30-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="metaanalysis.html#cb60-1"></a><span class="kw">grid.arrange</span>(smd_density, tau_density, <span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-34-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>posterior distributions unimodal, roughly normal distribution</li>
 <li>… “peaking around the values for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span> we saw in the output”</li>
@@ -1197,16 +1344,16 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <blockquote>
 <p>Use the <code>ecdf</code> function to implement the ECDF… then check…</p>
 </blockquote>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="metaanalysis.html#cb58-1"></a>smd.ecdf &lt;-<span class="st"> </span><span class="kw">ecdf</span>(post.samples<span class="op">$</span>smd)</span>
-<span id="cb58-2"><a href="metaanalysis.html#cb58-2"></a><span class="kw">smd.ecdf</span>(<span class="fl">0.3</span>)</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="metaanalysis.html#cb61-1"></a>smd.ecdf &lt;-<span class="st"> </span><span class="kw">ecdf</span>(post.samples<span class="op">$</span>smd)</span>
+<span id="cb61-2"><a href="metaanalysis.html#cb61-2"></a><span class="kw">smd.ecdf</span>(<span class="fl">0.3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.004</code></pre>
 <blockquote>
 <p>We see that the probability of our pooled effect being smaller than <span class="math inline">\(SMD = 0.30\)</span> is <strong>very, very low</strong>, so the effects of the interventions we find in this meta-analysis are very likely to be meaningful.</p>
 </blockquote>
 <p><br />
 </p>
 <p>Plotting the ECDF below:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-32-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-36-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="forest-plots" class="section level3" number="15.2.3">
@@ -1219,38 +1366,38 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <p>Use the <code>spread_draws</code> function … takes, as input 1. the fitted <code>brms</code> model, 2. the random-effects index factor and the parameter to extract (here <code>b_Intercept</code>).
 …calculate actual effect sizes for each by adding the pooled effect size <code>b_Intercept</code> to the estimated deviation for each study.</p>
 </div>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="metaanalysis.html#cb60-1"></a>study.draws &lt;-<span class="st"> </span><span class="kw">spread_draws</span>(m.brm, r_Author[Author,], b_Intercept) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb60-2"><a href="metaanalysis.html#cb60-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">b_Intercept =</span> r_Author <span class="op">+</span><span class="st"> </span>b_Intercept)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="metaanalysis.html#cb63-1"></a>study.draws &lt;-<span class="st"> </span><span class="kw">spread_draws</span>(m.brm, r_Author[Author,], b_Intercept) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb63-2"><a href="metaanalysis.html#cb63-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">b_Intercept =</span> r_Author <span class="op">+</span><span class="st"> </span>b_Intercept)</span></code></pre></div>
 <p><br />
 </p>
 <p>Next, generate the distribution of the pooled effect (usually out in the last row of forest plots).</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="metaanalysis.html#cb61-1"></a>pooled.effect.draws &lt;-<span class="st"> </span><span class="kw">spread_draws</span>(m.brm, b_Intercept) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb61-2"><a href="metaanalysis.html#cb61-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="st">&quot;Pooled Effect&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="metaanalysis.html#cb64-1"></a>pooled.effect.draws &lt;-<span class="st"> </span><span class="kw">spread_draws</span>(m.brm, b_Intercept) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb64-2"><a href="metaanalysis.html#cb64-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="st">&quot;Pooled Effect&quot;</span>)</span></code></pre></div>
 <p>Bind this together, clean labels and reorder:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="metaanalysis.html#cb62-1"></a>forest.data &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(study.draws, pooled.effect.draws) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb62-2"><a href="metaanalysis.html#cb62-2"></a><span class="st">   </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
-<span id="cb62-3"><a href="metaanalysis.html#cb62-3"></a><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="kw">str_replace_all</span>(Author, <span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb62-4"><a href="metaanalysis.html#cb62-4"></a><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="kw">reorder</span>(Author, b_Intercept))</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="metaanalysis.html#cb65-1"></a>forest.data &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(study.draws, pooled.effect.draws) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb65-2"><a href="metaanalysis.html#cb65-2"></a><span class="st">   </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
+<span id="cb65-3"><a href="metaanalysis.html#cb65-3"></a><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="kw">str_replace_all</span>(Author, <span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb65-4"><a href="metaanalysis.html#cb65-4"></a><span class="st">   </span><span class="kw">mutate</span>(<span class="dt">Author =</span> <span class="kw">reorder</span>(Author, b_Intercept))</span></code></pre></div>
 <p>Generate summarized data (the mean and credibility interval) of each study. Group the above by author, use the <code>mean_qi</code> function (generates 95pct intervals) to calculate these.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="metaanalysis.html#cb63-1"></a>forest.data.summary &lt;-<span class="st"> </span><span class="kw">group_by</span>(forest.data, Author) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb63-2"><a href="metaanalysis.html#cb63-2"></a><span class="st">  </span><span class="kw">mean_qi</span>(b_Intercept)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="metaanalysis.html#cb66-1"></a>forest.data.summary &lt;-<span class="st"> </span><span class="kw">group_by</span>(forest.data, Author) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb66-2"><a href="metaanalysis.html#cb66-2"></a><span class="st">  </span><span class="kw">mean_qi</span>(b_Intercept)</span></code></pre></div>
 <p><br />
 </p>
 <p>Now generate the forest plot:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="metaanalysis.html#cb64-1"></a><span class="kw">ggplot</span>(<span class="kw">aes</span>(b_Intercept, <span class="kw">relevel</span>(Author, <span class="st">&quot;Pooled Effect&quot;</span>, <span class="dt">after =</span> <span class="ot">Inf</span>)), </span>
-<span id="cb64-2"><a href="metaanalysis.html#cb64-2"></a>       <span class="dt">data =</span> forest.data) <span class="op">+</span></span>
-<span id="cb64-3"><a href="metaanalysis.html#cb64-3"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">1</span>], <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb64-4"><a href="metaanalysis.html#cb64-4"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb64-5"><a href="metaanalysis.html#cb64-5"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb64-6"><a href="metaanalysis.html#cb64-6"></a><span class="st">  </span><span class="kw">geom_density_ridges</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">rel_min_height =</span> <span class="fl">0.01</span>, <span class="dt">col =</span> <span class="ot">NA</span>, <span class="dt">scale =</span> <span class="dv">1</span>,</span>
-<span id="cb64-7"><a href="metaanalysis.html#cb64-7"></a>                      <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
-<span id="cb64-8"><a href="metaanalysis.html#cb64-8"></a><span class="st">  </span><span class="kw">geom_pointintervalh</span>(<span class="dt">data =</span> forest.data.summary, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb64-9"><a href="metaanalysis.html#cb64-9"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">mutate_if</span>(forest.data.summary, is.numeric, round, <span class="dv">2</span>),</span>
-<span id="cb64-10"><a href="metaanalysis.html#cb64-10"></a>    <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">glue</span>(<span class="st">&quot;{b_Intercept} [{.lower}, {.upper}]&quot;</span>), <span class="dt">x =</span> <span class="ot">Inf</span>), <span class="dt">hjust =</span> <span class="st">&quot;inward&quot;</span>) <span class="op">+</span></span>
-<span id="cb64-11"><a href="metaanalysis.html#cb64-11"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Standardized Mean Difference&quot;</span>,</span>
-<span id="cb64-12"><a href="metaanalysis.html#cb64-12"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
-<span id="cb64-13"><a href="metaanalysis.html#cb64-13"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-37-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="metaanalysis.html#cb67-1"></a><span class="kw">ggplot</span>(<span class="kw">aes</span>(b_Intercept, <span class="kw">relevel</span>(Author, <span class="st">&quot;Pooled Effect&quot;</span>, <span class="dt">after =</span> <span class="ot">Inf</span>)), </span>
+<span id="cb67-2"><a href="metaanalysis.html#cb67-2"></a>       <span class="dt">data =</span> forest.data) <span class="op">+</span></span>
+<span id="cb67-3"><a href="metaanalysis.html#cb67-3"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">1</span>], <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb67-4"><a href="metaanalysis.html#cb67-4"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb67-5"><a href="metaanalysis.html#cb67-5"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb67-6"><a href="metaanalysis.html#cb67-6"></a><span class="st">  </span><span class="kw">geom_density_ridges</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">rel_min_height =</span> <span class="fl">0.01</span>, <span class="dt">col =</span> <span class="ot">NA</span>, <span class="dt">scale =</span> <span class="dv">1</span>,</span>
+<span id="cb67-7"><a href="metaanalysis.html#cb67-7"></a>                      <span class="dt">alpha =</span> <span class="fl">0.8</span>) <span class="op">+</span></span>
+<span id="cb67-8"><a href="metaanalysis.html#cb67-8"></a><span class="st">  </span><span class="kw">geom_pointintervalh</span>(<span class="dt">data =</span> forest.data.summary, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb67-9"><a href="metaanalysis.html#cb67-9"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">mutate_if</span>(forest.data.summary, is.numeric, round, <span class="dv">2</span>),</span>
+<span id="cb67-10"><a href="metaanalysis.html#cb67-10"></a>    <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">glue</span>(<span class="st">&quot;{b_Intercept} [{.lower}, {.upper}]&quot;</span>), <span class="dt">x =</span> <span class="ot">Inf</span>), <span class="dt">hjust =</span> <span class="st">&quot;inward&quot;</span>) <span class="op">+</span></span>
+<span id="cb67-11"><a href="metaanalysis.html#cb67-11"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Standardized Mean Difference&quot;</span>,</span>
+<span id="cb67-12"><a href="metaanalysis.html#cb67-12"></a>       <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
+<span id="cb67-13"><a href="metaanalysis.html#cb67-13"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-41-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div class="marginnote">
 <p>Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.</p>
 </div>
