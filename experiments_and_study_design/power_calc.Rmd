@@ -14,7 +14,7 @@
 On magnitude error due to underpowered studies:
 
 https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics
-
+This paper really just highlights that if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likley) be overestimated. The intuition behind that result is (i think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficeint. By using a low powered study you sift through for these kind of effects
 
 
 
