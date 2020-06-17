@@ -11,6 +11,14 @@ I am concerned with the interpretation of diagnostic testing, both in model sele
 - I.e. what is the probability of a false negative Type II error?
 - How large a bias would be compatible with reasonable confidence intervals for these tests?
 
+BB 17/06:
+So these notes are really just on the general idea, in line with the above points, that basically economicts do actually iplicitly suggest that they have evidence which allows them to accept null hypotheses. The motivating example would be in the case of DiD sestimation, where we have to assume parallel trends, my hunch is that fairly frequently people just say "yes we have evidence the trends were parallel pre-intervention" and then point away to something taht shows a p>0.05 on pre-interenvetion differences in trend. Sometimes this is done better where they say yeah here is a (relatively) tightly estimated zero effect. But what do we accept as good enough to show that?
+Building on that point, it seems that we do need something to tell us when DiD is valid and yet don't yet have something. My hunch is that the answer may well lie in Bayesian approaches. DR's suggestions was, I think, that we could maybe simultaneously try and estimate the difference in trends both before and after intervention simultaneously. I was wondering about a less sophistictaed approachh in which we set up the prior to be not-parallel trends and see over what range of "not parallel" priors the posterioir is pulled closer to the idea of there actually being a parallel trend.
+I think similar to teh DR suggest above is what we used bayseian approaches to do for covid. Seems to me that the interventyion in this case is the lockdown. There we assume that when a country locksdown it reduces the R, and we estimate two different Rs. Thinking about that approach here, we could try and estimate a pre-intervention relationship between the two groups, and then introduce a post-intervention term which is asked to explain the residual of the variation in the intervnetion group post-treatment. again, i think they key would be trying to establish over what prior assumptions for the pre-treatment trend is the posterior outcome for post-treatment effect in a particular direction.
+P think before we get into this we should definitely look at the tweet on DiD that you incldued as well as the drive folder of patrick Button
+
+
+
 
 ## Estimating standard errors
 
