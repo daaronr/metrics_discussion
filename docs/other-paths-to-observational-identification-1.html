@@ -407,9 +407,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#fixed-effects-and-differencing-1"><i class="fa fa-check"></i><b>8.1</b> Fixed effects and differencing</a></li>
 <li class="chapter" data-level="8.2" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#did-1"><i class="fa fa-check"></i><b>8.2</b> DiD</a></li>
-<li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.3</b> Time-series-ish panel approaches to micro</a>
+<li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#rd-1"><i class="fa fa-check"></i><b>8.3</b> RD</a></li>
+<li class="chapter" data-level="8.4" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias-1"><i class="fa fa-check"></i><b>8.3.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="8.4.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias-1"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>9</b> Causal pathways - mediators</a>
@@ -603,18 +604,26 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 — Damon Jones (<span class="citation">(<span class="citeproc-not-found" data-reference-id="nomadj1s"><strong>???</strong></span>)</span>) <a href="https://twitter.com/nomadj1s/status/1263225306275614722?ref_src=twsrc%5Etfw">May 20, 2020</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>From that twitter thread i also found this really useful [google drive folder] (<a href="https://drive.google.com/drive/folders/14VgSFPsmv2H8ZngW-P2xEQE7g4WbWXfH" class="uri">https://drive.google.com/drive/folders/14VgSFPsmv2H8ZngW-P2xEQE7g4WbWXfH</a>) of recent developments
-This Freyaldenhoven [paper] (<a href="https://www.aeaweb.org/articles?id=10.1257/aer.20180609" class="uri">https://www.aeaweb.org/articles?id=10.1257/aer.20180609</a>) might also be handy. And it looks like there is quite a lot by Susan Athey that we should look at too.</p>
-<p>Re Athey, she has a paper with imbens (2006) which proposes the change in chnages approach which allows estimation of hetergoenous treatment effects in a “better” way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD
-That method (CiC) is applied by <a href="https://www.nber.org/papers/w25636">this Assuncao paper</a> to the amazon. We actuall looked at this paper at the journal club in LEEP and the poitn was raised that actually you could see the observed effect (reduced deforestation in targetted municipalities) simply owing to the fact there is very little other forest left to harvest.</p>
-<p>On DiD more generally, i think it suffers from the flaw that we have to somehow establish pre-treatmnet parallel trends which is basically an issue of accepting a null hypothesis which is clearly not possible with traditional statistical inference.
-## RD</p>
+<p>Some other resources and discussion (unfold)</p>
+
+<div class="fold">
+<p>BB:</p>
+<p>From that Twitter thread i also found this really useful <a href="https://drive.google.com/drive/folders/14VgSFPsmv2H8ZngW-P2xEQE7g4WbWXfH">google drive folder</a> of recent developments.</p>
+<p>This Freyaldenhoven <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20180609">paper</a> might also be handy. And it looks like there is quite a lot by Susan Athey that we should look at too.</p>
+<p>Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of hetergoenous treatment effects in a “better” way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.</p>
+<p>That method (CiC) is applied by <a href="https://www.nber.org/papers/w25636">this Assuncao paper</a> to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targetted municipalities) simply owing to the fact there is very little other forest left to harvest.</p>
+<p>On DiD more generally, I think it suffers from the flaw that we have to somehow establish pre-treatment parallel trends which is basically an issue of ‘accepting a null hypothesis’ which is clearly not possible with traditional statistical inference.</p>
+<p>DR: Yes, the problem of <a href="robust-diag.html#robust-diag">diagnostic testing</a> the assumption that the identification entirely relies on. Does CiC suffer from the same issue?</p>
 </div>
-<div id="time-series-ish-panel-approaches-to-micro-1" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Time-series-ish panel approaches to micro</h2>
+</div>
+<div id="rd-1" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> RD</h2>
+</div>
+<div id="time-series-ish-panel-approaches-to-micro-1" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Time-series-ish panel approaches to micro</h2>
 <p>Ferraro has a couple of paper which together i think basically just cauition against just accepting panel regression approaches on the basis that the covariates are matched well. They are <a href="https://www.journals.uchicago.edu/doi/10.1086/689868">here</a> and <a href="https://www.sciencedirect.com/science/article/pii/S016517651630489X">here</a></p>
-<div id="lagged-dependent-variable-and-fixed-effects-nickel-bias-1" class="section level3" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</h3>
+<div id="lagged-dependent-variable-and-fixed-effects-nickel-bias-1" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</h3>
 
 </div>
 </div>

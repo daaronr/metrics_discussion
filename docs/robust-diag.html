@@ -407,9 +407,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#fixed-effects-and-differencing-1"><i class="fa fa-check"></i><b>8.1</b> Fixed effects and differencing</a></li>
 <li class="chapter" data-level="8.2" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#did-1"><i class="fa fa-check"></i><b>8.2</b> DiD</a></li>
-<li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.3</b> Time-series-ish panel approaches to micro</a>
+<li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#rd-1"><i class="fa fa-check"></i><b>8.3</b> RD</a></li>
+<li class="chapter" data-level="8.4" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias-1"><i class="fa fa-check"></i><b>8.3.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="8.4.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias-1"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>9</b> Causal pathways - mediators</a>
@@ -607,12 +608,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <blockquote>
-<p>Building on that point, it seems that we do need something to tell us when DiD is valid and yet don’t yet have something. My hunch is that the answer may well lie in Bayesian approaches. DR’s suggestions was, I think, that we could maybe simultaneously try and estimate the difference in trends both before and after intervention simultaneously. I was wondering about a less sophistictaed approachh in which we set up the prior to be not-parallel trends and see over what range of “not parallel” priors the posterioir is pulled closer to the idea of there actually being a parallel trend.</p>
+<p>Building on that point, it seems that we do need something to tell us when DiD is valid and yet don’t yet have something. My hunch is that the answer may well lie in Bayesian approaches. DR’s suggestion was, I think, that we could maybe simultaneously try and estimate the difference in trends both before and after intervention simultaneously.</p>
+</blockquote>
+<p>DR: My idea was that a Bayesian approach would have involve a parameter for ‘differential trend’, with a prior (and then posterior) distribution over both this parameter and the ultimate estimate. I’ll look to find comparable approaches in the literature.</p>
+<blockquote>
+<p>BB: I was wondering about a less sophisticated approach in which we set up the prior to be not-parallel trends and see over what range of “not parallel” priors the posterior is pulled closer to the idea of there actually being a parallel trend.</p>
+</blockquote>
+<p>DR: It’s an interesting reframe, to place the burden of proof on the researcher; sort of ‘rejecting the null of a non-parallel trend’. But how can this work? And how to deal with the idea that the null could be a differential trend <em>in either direction</em>?</p>
+<div class="marginnote">
+<p>@BB: And perhaps we should try to have this discussion using the specific equations and assumptions of DiD?</p>
+</div>
+<blockquote>
+<p>BB: I think similar to what DR suggested above is what we used in the Bayesian approaches to do for Covid. Seems to me that the intervention in this case is the lockdown. There we assume that when a country locks down it reduces the R, and we estimate two different Rs.</p>
+</blockquote>
+<p>DR: Can you define this with a few equations to fix ideas? It’s hard to follow.</p>
+<blockquote>
+<p>BB: Thinking about that approach here, we could try and estimate a pre-intervention relationship between the two groups, and then introduce a post-intervention term which is asked to explain the residual of the variation in the intervention group post-treatment.</p>
 </blockquote>
 <blockquote>
-<p>I think similar to teh DR suggest above is what we used Bayesian approaches to do for covid. Seems to me that the interventyion in this case is the lockdown. There we assume that when a country locksdown it reduces the R, and we estimate two different Rs. Thinking about that approach here, we could try and estimate a pre-intervention relationship between the two groups, and then introduce a post-intervention term which is asked to explain the residual of the variation in the intervnetion group post-treatment. again, i think they key would be trying to establish over what prior assumptions for the pre-treatment trend is the posterior outcome for post-treatment effect in a particular direction.
-P think before we get into this we should definitely look at the tweet on DiD that you incldued as well as the drive folder of patrick Button</p>
+<p>BB: Again, I think they key would be trying to establish ‘over what prior assumptions for the pre-treatment trend is the posterior outcome for post-treatment effect in a particular direction.’</p>
 </blockquote>
+<p>DR: Yes, essentially, we need to consider the sensitivity of the estimates to the assumption!</p>
+<blockquote>
+<p>But I think before we get into this we should definitely look at the tweet on DiD that you included as well as the drive folder of Patrick Button</p>
+</blockquote>
+<p>Just to add that there seem to some further papers we should take a look at.</p>
+<p>Specifically:
+<a href="https://www.nber.org/papers/w25018">This one</a>
+<a href="https://academic.oup.com/qje/article-abstract/119/1/249/1876068">and this one</a></p>
 </div>
 </div>
 <div id="estimating-standard-errors-1" class="section level2" number="5.2">
