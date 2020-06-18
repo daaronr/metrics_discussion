@@ -1,5 +1,4 @@
-# Basic regression and statistical inference: Common mistakes and issues {#reg-follies}
-
+# Basic statistical inference and regressions: Common mistakes and issues {#reg-follies}
 
 
 ## Basic regression and statistical inference: Common mistakes and issues briefly listed
@@ -45,10 +44,9 @@ Weak IV bias
 
 Bias from selecting instruments and estimating using the same data
 
+Failure to adjust for multiple-hypothesis testing
 
 ### Bad control
-
-
 
 From MHE:
 
@@ -193,9 +191,15 @@ In general it is important to distinguish a lack of statistical power from a “
 E.g., "the treatment had a heterogeneous effect... we see a statistically significant positive effect for women but not for men".   This doesn't cut it: we need to see a *statistical test* for the *difference* in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).
 
 
-### Multiple hypothesis testing (MHT)
+### Multiple hypothesis testing (MHT) {#mht}
 
-See [@verkaik2016]
+A typical conversation (unfold)
+
+```{block2,  type='fold'}
+
+This isn't really on the above discussion of the value of pre-reg, but on a topic that i think is at least somehwat related. Namely that when we have multiple hypotheses testing in a paper how do we control for that and what do our p-values really mean. Particulary, there is [this paper](https://academic.oup.com/qje/article/134/2/557/5195544) by Alwyn Young which (I think) is basically saying that when we have a load of hypotheses within a study and then one has a significant p value we are quite a lot of the time picking up a false result. Obviously that isn't very much of a surprise. But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05. After all, it is those studies which have a real pay-off from getting that significant result.
+```
+
 
 ### Interaction terms and pitfalls
 

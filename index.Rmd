@@ -34,7 +34,7 @@ output:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: [support/reinstein_bibtex.bib, ./references.bib] #this second one seems to be auto-generated ?
+bibliography: [support/reinstein_bibtex_dropbox.bib, support/references.bib] #this second one seems to be auto-generated ?
 #
 biblio-style: apalike
 link-citations: yes
@@ -70,7 +70,6 @@ tryCatch(
   {
 download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html", destfile = here("support", "headerX.html"))
   download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plusX.css"))
-  download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", destfile = here("support", "reinstein_bibtexX.bib"))
 },  error = function(e) {
   print("you are not online, so we can't download")
 }
@@ -84,7 +83,7 @@ tryCatch(
 file.rename(here("support", "tufte_plusX.css"), here("support", "tufte_plus.css"))
 )
 tryCatch(
-file.rename(here("support", "reinstein_bibtexX.bib"), here("support", "reinstein_bibtex.bib"))
+file.rename(here("support", "reinstein_bibtex_dropboxX.bib"), here("support", "reinstein_bibtex_dropbox.bib"))
 )
 ```
 
@@ -122,21 +121,23 @@ install.packages("tufte")
 # or the development version
 # devtools::install_github("rstudio/bookdown")
 ```
+<!-- Download 'backup' bibtex file from dropbox (synced with Zotero), do the rename workaround -->
 
-```{r packages}
 
-##TODO: this probably repeats the above -- check and integrate
+```{r }
 
-library(here)
-#library(checkpoint) #to avoid differential processing from different package versions
-library(pacman)
+tryCatch(
+  {
+download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", destfile = here("support", "reinstein_bibtex_dropboxX.bib"))
 
-here <- here::here
 
-p_load(dplyr,magrittr,purrr,tidyverse,tidyr,broom,janitor,here,glue,dataMaid,glue,readr, lubridate,summarytools,gtools,knitr,pastecs,data.table)   #citr, reporttools, experiment, estimatr,  kableExtra, ggsignif, glmnet, glmnetUtils, rsample,snakecase,zoo
-library(codebook)
+file.rename(here("support", "reinstein_bibtex_dropboxX.bib"), here("support", "reinstein_bibtex_dropbox.bib"))
+  }
+)
 
 ```
+
+
 
 
 ```{r include=FALSE}

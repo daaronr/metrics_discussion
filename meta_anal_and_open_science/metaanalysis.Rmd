@@ -4,7 +4,7 @@ My opinion on why this is so important (unfold):
 
 ```{block2,  type='fold'}
 
-It is lame how often I see 'new experiments' and 'new studies' that tread most of the ground as old studies, spend lots of money, get a publication and ... ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called 'ExpArchive', later working with projects such as GESIS' X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute's "revolutionizing philanthropy research" (RPR) project.
+It is lame how often I see 'new experiments' and 'new studies' that tread most of the ground as old studies, spend lots of money, get a publication and ... ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building mrogress. This is why I became involved with a project I called 'ExpArchive', later working with projects such as GESIS' X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute's "revolutionizing philanthropy research" (RPR) project.
 
 ```
 
@@ -449,7 +449,36 @@ With a non-informative prior, we are essentially saying that we do not have any 
 > include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$.
 
 $$ \mu \sim \mathcal{N}(0,1)$$
-There has to be very good reason for setting the prior mean to be different from zero, as that would mean holding a prior belief of a (potentially) strong, positive or negative effect. Normally it is better to use a prior with a neutral effect. With regards to the variance of $\mu$, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values.
+
+Discussion (unfold) 
+
+```{block2,  type='fold'}
+
+SD: There has to be very good reason for setting the prior mean to be different from zero, as that would mean holding a prior belief of a (potentially) strong, positive or negative effect. Normally it is better to use a prior with a neutral effect. With regards to the variance of $\mu$, consider the order of magnitude of the response, and how much each effect will have. A variance of one is large enough to explore the parameter space, without being too large to allow for extreme values.
+
+... [A prior distinct from 0] only if we genuinely believe there to be a positive effect, otherwise we are not being "consistent" (a Bayesian term which links to our probability for an event to being our best guess estimate). Because if we are unsure if there is a positive or negative effect, then we would be 'incoherent' by having a positive prior effect - it would be better for our best guess estimate to have a neutral effect.
+
+```
+
+\
+
+A further discussion on 'coherence' in the Bayesian framework versus 'bias' in the frequentist world (unfold).
+
+
+```{block2,  type='fold'}
+
+SD: 
+  I think a big part of the discussion here comes from the subjective-objective debate in probability theory, and the way that statistics is studied. Classical statistics postulates that a variable theta is a true, objective, physical value, and that data y is randomly drawn from a distribution with those parameters. Expectation is defined from probability.
+
+Bayesians on the other hand start with the data; y is not random, it is known to us. The parameters theta are random, in that they are unknown to us (and subjectively unknown to each of us). Probability is defined from expectation, and our probability for an event is our subjective best guess estimate for that event. We are not being coherent if our probability is not our best guess estimate, that is, if we can make a better estimate for sure. If we're not not coherent, we're not being consistent with our beliefs.
+
+So because of this, the concept of bias doesn't really exist for subjectivists; there is no long run frequentist true parameter that our best guess is being distant from. Coherence is absolutely key to the concept, as it is about my belief and my best guess. That's where the subjectivity comes into the analysis, because you may believe one prior (for instance one with a mean of 1), whereas I may believe another prior (with a mean of 0). There isn't any correct answer, and as long as we are being coherent, because we're sampling from our posteriors for this parameter given our own beliefs and our own subjective uncertainty. Often on Bayesian projects there is a prior elicitation, where people come together and discuss what their subjective priors are and how they will proceed.
+
+I think there is some merit in this line of thought though, because clearly if you have a prior with a mean of, say, 1,000,000 then you're really influencing your effect. But then arguably if you do so, you're not being coherent. It's quite a deep, long, philosophical discussion for a meta analysis, but it is crucial to the frequentist vs Bayesian debate.
+
+More here: https://en.wikipedia.org/wiki/Bias_of_an_estimator#Bayesian_view
+
+```
 
 **For  $\tau^2$**
 
@@ -574,8 +603,11 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
 
 ```
 
+\
 
-The brms package has a way of running the model again once it has compiled, without compiling it agin. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
+**Coding tip** 
+
+The brms package has a way of running the model again once it has compiled, without compiling it again. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
 
 
 ```{r}
@@ -584,7 +616,7 @@ model2 <- update(m.brm, iter=10000)
 model2
 ```
 
-If you would want to change something with the model, such as the priors, then it would have to compile again in c++.
+If you would want to change something with the model, such as the priors, then it would have to compile again in C++.
 
 
 ```{r, results = "hide"}
@@ -606,7 +638,6 @@ SD: "High" may depend on several factors (such as what distribution we're trying
 
 There is a good discussion about it on the answers here: https://stats.stackexchange.com/questions/203281/number-of-markov-chain-monte-carlo-samples
 
-
 </div>
 
 The *formula for the model* is specified using 'regression formula notation' (unfold)...
@@ -623,7 +654,7 @@ The *formula for the model* is specified using 'regression formula notation' (un
 
 -  `prior`: Plugs in the priors created above plug in the `priors` object we created previously here.
 
-- `iter`:  Number of iterations of MCMC algorithm... the more complex your model, the higher this number should be. [DR: but what's a rule of thumb here?]
+- `iter`:  Number of iterations of MCMC algorithm... the more complex your model, the higher this number should be. [DR: but what's a rule of thumb here -- see links in margein note?]
 
 ```
 
@@ -647,17 +678,29 @@ pp_check(m.brm)
 
 A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look "well mixed", suggesting that the parameter space is being explored.\*
 
-<div class="marginnote">
-Is  'assessing convergence' a subjective judgement?\*)@ScottDickinson1701 This seems helpful, but it seems like there should be some more objective methods.
+*Is  'assessing convergence' a subjective judgement?* (Unfold a discussion.)
+
+```{block2,  type='fold'}
 
 SD: We will never know if the sampler has converged to the target distribution, but with more and more samples and well mixed traceplots, along with R-hats close to 1, we can be very confident that it has.
+
 I think that it is the same for other subjective methods such as GAMs, where the number of splines to include is very subjective. There are some tests used to help inform the statistician about the suitability of more/less splines, but ultimately it is down to the statistician to make the judgement about it.
 
 DR: Rather than 'subjective' I would suspect that: 1. There are numerical measures for assessing this convergence (as there are in optimisation problems)
 2. Perhaps there remains debate over which is the best method.
 
+\
 
-</div>
+SD: I think that the R hat is one of those numerical methods, I'm not completely sure about that though. There is a paper discussing them and it comes up on [Arxiv](https://arxiv.org/pdf/1909.11827.pdf). I think effective sample size is another one of those numerical measures.
+
+There is some discussion on which methods are best here: https://stats.stackexchange.com/questions/507/what-is-the-best-method-for-checking-convergence-in-mcmc
+
+It seems that most people use a combination of both numerical methods and visual checking. When I studied it, we checked the Rhat, the effective sample size, and checked for patterns in the trace plots (eg obvious autocorrelation, large spikes, etc)
+
+There are some good slides on visually assessing convergence here: https://astrostatistics.psu.edu/RLectures/diagnosticsMCMC.pdf
+
+
+```
 
 
 
@@ -872,6 +915,16 @@ ggplot(aes(b_Intercept, relevel(Author, "Pooled Effect", after = Inf)),
 <div class="marginnote">
 Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.
 </div>
+
+## Dealing with publication bias {#pubbias}
+
+- Exacerbated by multiple-hypothesis-testing? 
+
+> But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05.
+
+### Diagnosis and responses: P-curves, funnel plots, adjustments
+
+
 
 ## Other notes, links, and commentary
 

@@ -5,7 +5,6 @@
 
 ### The benefits and costs of pre-registration:  a typical discussion 
 
-
 > BB: That said, I would be interested to think about the benefits – and more importantly limitations to – pre-registration. I think it could solve some of the p-hacking problems but not much else. How to not relegate exploratory analyses too far is also unclear to me.
 
 
@@ -26,7 +25,8 @@
 > DR:   Statistical power is an important issue.  I was skeptical at first about the 'dangers of underpowered studies' but I'm coming around a bit.
 
 <div class="marginnote">
-My thinking was that 'we can simply make downward adjustments to the estimates reported in underpowered studies'. </div>
+My thinking was that 'we can simply make downward adjustments to the estimates reported in underpowered studies'. 
+</div>
  
 
 > Anyways, we don't want to put the cart before the horse: as Gelman  said at a conference we should be supporting science not the careers of scientists.   I tend to think there are strong arguments for more centralization in social science. 
@@ -47,9 +47,10 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 > We might also consider offering some reward careerwise to experiments that fail -- in terms of being deeply inconclusive-- for some arbitrary or random reason even though they were well-planned and executed.  But I think it is hard to get the incentives right for the latter.
 
-BB: further notes added 17/06/2020
-This isn't really on the baove discussion of the value of pre-reg, but on a topic that i think is at least somehwat related. Namely that when we have multiple hypotrheses tetsing in a paper how do we control for that and what do our p-values really mean. Particualry, there is [this paper](https://academic.oup.com/qje/article/134/2/557/5195544) by Alwyn Young which (I think) is basically saying that when we have a load of hypotheses within a study and then one has a significant p value we are quite a lot of the time pciking up a false result. obviously that isn't very much of a surprise. But i think it also talks somewhat to the Steffano DellaVigno paper that was rpesented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05. After all, it is those studies which have a real pay-off from getting that significant result.
+
+
 ### The hazards of specification-searching
+
 
 ## Sequential and adaptive designs
 
@@ -67,6 +68,8 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 ## Efficient assignment of treatments
 
 (Links back to power analyses)
+
+### See also [multiple hypothesis testing](#mht)
 
 
 ### How many treatment arms can you 'afford'?

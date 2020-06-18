@@ -1,8 +1,31 @@
 # IV and its many issues
-BB added 17/06:
-This is just really to highlight the point that IV really is pretty unreliable generally.
-So [this paper] (http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&hl=en&sa=X&scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&nossl=1&oi=scholarr) by Young highlights that the point estimates seem to not differ that much from OLS estimates... which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to
-And then [this one] (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910) is i think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much a of a surprise. My chat with one of the authors he point out that in IV any changes are less obvious - in DiD (which doesnt perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is experimenter dicrestion in the IV approach. 
+
+
+### Some casual discussion {-}
+
+
+Ben Balmford: 
+  
+> ...  IV really is pretty unreliable 
+
+> So [@ConsistencyInferenceInstrumental] [Young,  2019](http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&hl=en&sa=X&scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&nossl=1&oi=scholarr) by Young highlights that the point estimates seem to not differ that much from OLS estimates...
+which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to.
+
+
+\
+
+DR: My concerns tend to be more:
+
+1. With heterogeneity IV is not capturing the *average* effect, and often finds results that are very much driven by a particular subsample, often accentuating the supposed byas
+
+2. Many IV's are not defensible and testing the identifying assumptions is basically impossible
+
+\
+
+BB:
+
+> And then [@brodeurMethodsMatterPhacking2018] ([link](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910)) is I think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much of a surprise. In my chat with one of the authors he pointed out that in IV any changes are less obvious - in DiD (which doesnt perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is  [researcher] discretion in the IV approach. 
+
 
 ## Instrument validity
 

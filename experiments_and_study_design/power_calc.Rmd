@@ -4,17 +4,32 @@
 
 ### The 'harm to science' from running underpowered studies
 
-> "One worries about underpowered tests. Your result (may have)  relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+> "One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+- From an anonymous referee report
 
-> Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects."	verkaik2016, metzger2015
+Perhaps most of us consider power largely in thinking about 
+
+1. “Is our analysis going to be fruitful for ourselves as researchers?” and perhaps also, where we find a null result,
+2. “Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?” 
+
+The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ *own* peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”
+
+However [@buttonPowerFailureWhy2013] point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. 
 
 
-\
+In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects. 
 
-On magnitude error due to underpowered studies:
+<div class="marginnote">
+DR:  However, I speculate that this idea might be less clear-cut than it seems. E.g., if we consider a (“non-sparse”) world where every factor indeed has an effect, lower powered studies are more likely to detect effects that are truly larger, which are arguably more policy-relevant; moreover, overstated effect sizes might be adjusted with a standard correction.
+</div>
 
-https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics
-This paper really just highlights that if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likley) be overestimated. The intuition behind that result is (i think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficeint. By using a low powered study you sift through for these kind of effects
+
+```{block2,  type='note'}
+[Ferraro discussion on magnitude error due to underpowered studies:](https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics) {-}
+
+... if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficeint. By using a low powered study you sift through for these kind of effects.
+
+```  
 
 
 
