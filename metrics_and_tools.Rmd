@@ -2756,8 +2756,8 @@ On magnitude error due to underpowered studies:
 
 https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics
 
-
-
+Gelman and Carlin 2014 beyond power calculations: Assessing the probabilities that estimated coefficients are of the wrong sign or overestimated
+https://journals.sagepub.com/doi/full/10.1177/1745691614551642
 
 ## Power calculations without real data
 
