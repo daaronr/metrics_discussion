@@ -1,0 +1,44 @@
+-------------------------------------------------------------------------------
+      name:  log_run_analysis
+       log:  /Users/yosemite/githubs/metrics_discussion_work/log_run_analysis.l
+> og
+  log type:  text
+ opened on:  22 Jun 2020, 15:07:31
+
+. 
+.     **************************
+.     * Build dynamic document with key descriptives
+.     **************************
+.   dyndoc icrc_descriptives.txt, replace nostop
+file icrc_descriptives.txt not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. pwd
+/Users/yosemite/githubs/metrics_discussion_work
+
+. do "/Users/yosemite/githubs/icrc_work/analysis/run_analysis.do"
+
+. *run_analysis.do
+. *This file should run every do file in the (analysis) directory in the correc
+> t order (and do any other non-Stata operations).
+. 
+.     **************************
+.     * PREAMBLE, INITIALISE
+.     **************************
+. 
+.     *quietly do "${dodir}globals.do"
+. 
+.     global anal_dir="~/githubs/icrc_work/analysis"
+
+.     cap cd "${anal_dir}"
+
+. 
+.     set more off, permanently
+(set more preference recorded)
+
+.         
+.         cap log close _all

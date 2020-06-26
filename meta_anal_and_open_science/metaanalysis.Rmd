@@ -579,8 +579,10 @@ To actually run the model, he uses the following code:
 This requires careful installation of packages. See [here](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30) for Mac OS Catalina, R 4.9 instructions.
 </div>
 
-I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile.
-
+<div class="marginnote">
+DR:  I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile; we sort this out below.
+</div>
+ 
 <div class="marginnote">
 2000 iterations seems to be a 'norm'. [source?]
 </div>
@@ -591,7 +593,7 @@ The issue here seems to be that it takes a long time to compile the C++ model ea
 SD: It will take some time to compile the model, and this is inevitable (it takes a long time with every model, this one works pretty quickly at a few minutes), but once it has compiled, it should not take a long time to sample. Below is some code to change the number of samples and show the speed once the model has compiled.
 </div>
 
-```{r echo=TRUE, eval=TRUE}
+```{r echo=TRUE, eval=TRUE,  results = "hide"}
 
 (
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
@@ -600,12 +602,11 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
              iter = 2000)
 )
 
-
 ```
 
 \
 
-**Coding tip** 
+**Coding tip: use 'update'** 
 
 The brms package has a way of running the model again once it has compiled, without compiling it again. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
 
