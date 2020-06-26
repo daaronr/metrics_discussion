@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Basic regression and statistical inference: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="4 Basic regression and statistical inference: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>4 Basic statistical inference and regressions: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="4 Basic statistical inference and regressions: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Basic regression and statistical inference: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="4 Basic statistical inference and regressions: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Basic regression and statistical inference: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="4 Basic statistical inference and regressions: Common mistakes and issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-05-26" />
+<meta name="date" content="2020-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -223,7 +223,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>1.1.1</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
 <li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>1.1.2</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#data-sci"><i class="fa fa-check"></i><b>1.2</b> Getting, cleaning and using data; project management and coding</a>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#getting-cleaning-and-using-data-project-management-and-coding"><i class="fa fa-check"></i><b>1.2</b> <span>Getting, cleaning and using data; project management and coding</span></a>
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>1.2.1</b> Data: What/why/where/how</a></li>
 <li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#organizing-a-project"><i class="fa fa-check"></i><b>1.2.2</b> Organizing a project</a></li>
@@ -327,9 +327,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form-1"><i class="fa fa-check"></i><b>2.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html#data-sci"><i class="fa fa-check"></i><b>3</b> Getting, cleaning and using data</a>
+<li class="chapter" data-level="3" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>3</b> Getting, cleaning and using data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>3.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="3.1" data-path="data-sci.html"><a href="data-sci.html#data-whatwhywherehow-1"><i class="fa fa-check"></i><b>3.1</b> Data: What/why/where/how</a></li>
 <li class="chapter" data-level="3.2" data-path="data-sci.html"><a href="data-sci.html#organizing-a-project-1"><i class="fa fa-check"></i><b>3.2</b> Organizing a project</a></li>
 <li class="chapter" data-level="3.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown-1"><i class="fa fa-check"></i><b>3.3</b> Dynamic documents (esp Rmd/bookdown)</a>
 <ul>
@@ -348,7 +348,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>3.6</b> Additional tips (integrate)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>4</b> Basic regression and statistical inference: Common mistakes and issues</a>
+<li class="chapter" data-level="4" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>4</b> Basic statistical inference and regressions: Common mistakes and issues</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>4.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
 <ul>
@@ -358,7 +358,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form-1"><i class="fa fa-check"></i><b>4.1.4</b> Functional form</a></li>
 <li class="chapter" data-level="4.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity-1"><i class="fa fa-check"></i><b>4.1.5</b> OLS and heterogeneity</a></li>
 <li class="chapter" data-level="4.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects-1"><i class="fa fa-check"></i><b>4.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="4.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multiple-hypothesis-testing-mht-1"><i class="fa fa-check"></i><b>4.1.7</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="4.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>4.1.7</b> Multiple hypothesis testing (MHT)</a></li>
 <li class="chapter" data-level="4.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls-1"><i class="fa fa-check"></i><b>4.1.8</b> Interaction terms and pitfalls</a></li>
 <li class="chapter" data-level="4.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric-1"><i class="fa fa-check"></i><b>4.1.9</b> Choice of test statistics (including nonparametric)</a></li>
 <li class="chapter" data-level="4.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests-1"><i class="fa fa-check"></i><b>4.1.10</b> How to display and write about regression results and tests</a></li>
@@ -367,11 +367,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>5</b> Robustness and diagnostics, with integrity; Open Science resources</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1"><i class="fa fa-check"></i><b>5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
+<li class="chapter" data-level="5.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1"><i class="fa fa-check"></i><b>5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="robust-diag.html"><a href="robust-diag.html#further-discussion-the-did-approach-and-parallel-trends"><i class="fa fa-check"></i><b>5.1.1</b> Further discussion: the DiD approach and ‘parallel trends’</a></li>
+</ul></li>
 <li class="chapter" data-level="5.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors-1"><i class="fa fa-check"></i><b>5.2</b> Estimating standard errors</a></li>
 <li class="chapter" data-level="5.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation-1"><i class="fa fa-check"></i><b>5.3</b> Sensitivity analysis: Interactive presentation</a></li>
 <li class="chapter" data-level="5.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>5.4</b> Supplement: open science resources, tools and considerations</a></li>
-<li class="chapter" data-level="5.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-see-also-meta-analysis"><i class="fa fa-check"></i><b>5.5</b> Diagnosing p-hacking (see also <span>meta-analysis</span>)</a></li>
+<li class="chapter" data-level="5.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-and-publication-bias-see-also-meta-analysis"><i class="fa fa-check"></i><b>5.5</b> Diagnosing p-hacking and publication bias (see also <span>meta-analysis</span>)</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="robust-diag.html"><a href="robust-diag.html#publication-bias-see-also-considering-publication-bias-in-meta-analysis"><i class="fa fa-check"></i><b>5.5.1</b> Publication bias – see also <span>considering publication bias in meta-analysis</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="robust-diag.html"><a href="robust-diag.html#multiple-hypothesis-testing---see-above"><i class="fa fa-check"></i><b>5.6</b> <span>Multiple hypothesis testing - see above</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>6</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
@@ -390,6 +397,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html"><i class="fa fa-check"></i><b>7</b> IV and its many issues</a>
 <ul>
+<li class="chapter" data-level="" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#some-casual-discussion"><i class="fa fa-check"></i>Some casual discussion</a></li>
 <li class="chapter" data-level="7.1" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#instrument-validity-1"><i class="fa fa-check"></i><b>7.1</b> Instrument validity</a></li>
 <li class="chapter" data-level="7.2" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#heterogeneity-and-late-1"><i class="fa fa-check"></i><b>7.2</b> Heterogeneity and LATE</a></li>
 <li class="chapter" data-level="7.3" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#weak-instruments-other-issues-1"><i class="fa fa-check"></i><b>7.3</b> Weak instruments, other issues</a></li>
@@ -455,8 +463,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
 <li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.1</b> How many treatment arms can you ‘afford’?</a></li>
-<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.2</b> Other notes and resources</a></li>
+<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>12.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford’?</a></li>
+<li class="chapter" data-level="12.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
@@ -518,7 +527,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
 <li class="chapter" data-level="15.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>15.2.3</b> Forest plots</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.3</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#pubbias"><i class="fa fa-check"></i><b>15.3</b> Dealing with publication bias</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="metaanalysis.html"><a href="metaanalysis.html#diagnosis-and-responses-p-curves-funnel-plots-adjustments"><i class="fa fa-check"></i><b>15.3.1</b> Diagnosis and responses: P-curves, funnel plots, adjustments</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.4</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="15.5" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>15.5</b> Other resources and tools</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>16</b> Bayesian approaches</a>
 <ul>
@@ -573,7 +587,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="reg-follies" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Basic regression and statistical inference: Common mistakes and issues</h1>
+<h1><span class="header-section-number">4</span> Basic statistical inference and regressions: Common mistakes and issues</h1>
 <div id="basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Basic regression and statistical inference: Common mistakes and issues briefly listed</h2>
 <p>Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper) Identification</p>
@@ -596,6 +610,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)</p>
 <p>Weak IV bias</p>
 <p>Bias from selecting instruments and estimating using the same data</p>
+<p>Failure to adjust for multiple-hypothesis testing</p>
 <div id="bad-control" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Bad control</h3>
 <p>From MHE:</p>
@@ -719,9 +734,13 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 <p>E.g., “the treatment had a heterogeneous effect… we see a statistically significant positive effect for women but not for men”. This doesn’t cut it: we need to see a <em>statistical test</em> for the <em>difference</em> in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).</p>
 </div>
 </div>
-<div id="multiple-hypothesis-testing-mht-1" class="section level3" number="4.1.7">
+<div id="mht" class="section level3" number="4.1.7">
 <h3><span class="header-section-number">4.1.7</span> Multiple hypothesis testing (MHT)</h3>
-<p>See <span class="citation">(<span class="citeproc-not-found" data-reference-id="verkaik2016"><strong>???</strong></span>)</span></p>
+<p>A typical conversation (unfold)</p>
+
+<div class="fold">
+This isn’t really on the above discussion of the value of pre-reg, but on a topic that i think is at least somehwat related. Namely that when we have multiple hypotheses testing in a paper how do we control for that and what do our p-values really mean. Particulary, there is <a href="https://academic.oup.com/qje/article/134/2/557/5195544">this paper</a> by Alwyn Young which (I think) is basically saying that when we have a load of hypotheses within a study and then one has a significant p value we are quite a lot of the time picking up a false result. Obviously that isn’t very much of a surprise. But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05. After all, it is those studies which have a real pay-off from getting that significant result.
+</div>
 </div>
 <div id="interaction-terms-and-pitfalls-1" class="section level3" number="4.1.8">
 <h3><span class="header-section-number">4.1.8</span> Interaction terms and pitfalls</h3>

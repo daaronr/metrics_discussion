@@ -14,11 +14,29 @@ Helpful links from a Twitter thread:
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in the last two yeasts. What are the key methodological papers I need to brush up on? <a href="https://twitter.com/hashtag/EconTwitter?src=hash&amp;ref_src=twsrc%5Etfw">#EconTwitter</a><br><br>Didn’t someone put together a list?</p>&mdash; Damon Jones (@nomadj1s) <a href="https://twitter.com/nomadj1s/status/1263225306275614722?ref_src=twsrc%5Etfw">May 20, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
+Some other resources and discussion  (unfold)
 
+```{block2,  type='fold'}
+
+BB: 
+  
+From that Twitter thread i also found this really useful [google drive folder](https://drive.google.com/drive/folders/14VgSFPsmv2H8ZngW-P2xEQE7g4WbWXfH) of recent developments.
+
+This Freyaldenhoven [paper](https://www.aeaweb.org/articles?id=10.1257/aer.20180609) might also be handy. And it looks like there is quite a lot by Susan Athey that we should look at too.
+
+Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of hetergoenous treatment effects in a "better" way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.
+
+That method (CiC) is applied by [this Assuncao paper](https://www.nber.org/papers/w25636) to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targetted municipalities) simply owing to the fact there is very little other forest left to harvest.
+
+On DiD more generally, I think it suffers from the flaw that we have to somehow establish pre-treatment parallel trends which is basically an issue of 'accepting a null hypothesis' which is clearly not possible with traditional statistical inference.
+
+DR: Yes, the problem of [diagnostic testing](#robust-diag) the assumption that the identification entirely relies on. Does CiC suffer from the same issue?
+
+```
 
 ## RD
 
 ## Time-series-ish panel approaches to micro
-
+Ferraro has a couple of paper which together i think basically just cauition against just accepting panel regression approaches on the basis that the covariates are matched well. They are [here](https://www.journals.uchicago.edu/doi/10.1086/689868) and [here](https://www.sciencedirect.com/science/article/pii/S016517651630489X)
 
 ### Lagged dependent variable and fixed effects --> 'Nickel bias'

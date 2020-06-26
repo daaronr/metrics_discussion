@@ -1,0 +1,1904 @@
+---
+title: "Phenomenon name meta-analysis"
+description: null
+output:
+  word_document: default
+  html_notebook: default
+  pdf_document:
+    fig_height: 6
+    fig_width: 8
+  html_document:
+    css: custom.css
+    theme: united
+    toc: yes
+Author: me
+---
+
+This is a RMarkdown template for experimental studies meta-analysis in Psychology, developed by Siu Kit Yeung (MPhil student) and Dr. Gilad Feldman (Assistant Professor) from the University of Hong Kong Department of Psychology. This is integrated and adapted with reference to Yeung, Yay, and Feldman (2020) Omission-commission asymmetries in morality and decisions: 
+Meta-analysis of the Omission-bias, as well as Fillon, Kutscher, and Feldman (2020) Impact of past behavior normality on regret: Meta-analysis of exceptionality effect. The corresponding datafile is "Experimental-Studies-Meta-Analysis-Excel-Template-V3W.csv" (simulated data). 
+
+For your own analysis, please replace "Cell.1.N", "Cell.1.M", "Cell.1.SD", "Cell.2.N", "Cell.2.M", "Cell.2.SD", "DV1", "DV2", "DV3", "Possible.Moderator.1", "Possible.Moderator.2", "Possible.Moderator.3" and "Possible.Moderator.4", "Category1", "Category2", "Category3" with meaningful labels of Cells descriptives column heads, Dependent Variables, Moderators column heads and Moderators categories. Please also replace "Phenomenon name" with the effect you are investigating,  "Independent Variable" with your independent variable and "Dependent Variable 1, Dependent Variable 2, Dependent Variable 3" with your dependent variable(s) and "Lastname" with your last name. To do so efficiently, in RStudio, you can click "edit" -> "Replace and find" (or Ctrl+Shift+J). Similarly, in Excel, you can click "Home" -> "Find & Select" -> "Replace" -> "Replace all".
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r echo=FALSE}
+##This is a setup block for you to provide some basic infomation used in other parts of the document, including author(s) name, year, title, independent variable, dependent variable(s), and datafile name,
+
+# Type the last name of the first author here
+Author<-"Lastname"
+
+Year <- 2020
+
+# Meta-Analysis Title
+Title<-"Phenomenon name meta-analysis"
+
+# This file conducts a meta-analysis of experimental studies. Define the variable names for the relationship of interest
+X<-"Independent Variable"
+Y<-"Dependent Variable 1, Dependent Variable 2 and Dependent Variable 3"
+
+# What is the name of the datafile? IMPORTANT: Please ensure the datafile is in the same folder as the .R file is in, otherwise the datafile cannot be read
+filename<-"Experimental-Studies-Meta-Analysis-Excel-Template-V3W.csv"
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# update.packages(ask = FALSE, dependencies = c('Suggests'))
+
+if(!require(knitr)){install.packages('knitr', dependencies = TRUE)}
+library("knitr")
+
+
+# This automatically generates the year from the system date
+Year<-as.numeric(format(Sys.Date(), "%Y"))
+
+
+##This is a setup block to ensure that you have all of the packages needed for the analyses below. You can add additional packages if required. Below are just commonly used and essential packages.
+
+#Set system language to English. Feel free to set the language to other language of your preference. 
+Sys.setenv(LANG = "en")
+
+# Installing all the required packages for this analysis. Add more if needed.
+if(!require(rstudioapi)){install.packages('rstudioapi', dependencies = TRUE)}
+if(!require(readxl)){install.packages('readxl', dependencies = TRUE)}
+if(!require(foreign)){install.packages('foreign', dependencies = TRUE)}
+if(!require(metafor)){install.packages('metafor', dependencies = TRUE)}
+if(!require(Hmisc)){install.packages('Hmisc', dependencies = TRUE)}
+if(!require(pequod)){install.packages('pequod', dependencies = TRUE)}
+if(!require(csv)){install.packages('csv', dependencies = TRUE)}
+if(!require(dplyr)) install.packages("dplyr", dependencies = TRUE)
+if(!require(xlsx)) install.packages("xlsx", dependencies = TRUE)
+if(!require(psych)) install.packages("psych", dependencies = TRUE)
+if(!require(compute.es)) install.packages("compute.es", dependencies = TRUE)
+if(!require(devtools)) install.packages("devtools", dependencies = TRUE)
+if(!require(broom)) install.packages("broom", dependencies = TRUE)
+if(!require(MBESS)) install.packages("MBESS", dependencies = TRUE)
+if(!require(formatR))install.packages("formatR", dependencies = TRUE)
+if(!require(MAd))install.packages("MAd", dependencies = TRUE)
+if(!require(data.table))install.packages("data.table", dependencies = TRUE)
+if(!require(weightr)){install.packages('weightr')}
+if(!require(powerAnalysis)){install.packages('powerAnalysis')}
+if(!require(ggplot2)){install.packages('ggplot2', dependencies = TRUE)}
+if(!require(meta)){install.packages('meta', dependencies = TRUE)}
+if(!require(dmetar)){install.packages('dmetar', dependencies = TRUE)}
+if(!require(metaforest)){install.packages('metaforest', dependencies = TRUE)}
+if(!require(ranger)){install.packages('ranger', dependencies = TRUE)}
+if(!require(forcats)){install.packages('forcats', dependencies = TRUE)}
+if(!require(metaviz)){install.packages('metaviz', dependencies = TRUE)}
+
+
+library(powerAnalysis)
+library(weightr)
+library(data.table)
+library(MAd)
+library(formatR)
+library(MBESS)
+library(compute.es)
+library(psych)
+library(rstudioapi)
+library(foreign)
+library(metafor)
+library(Hmisc)
+library(pequod)
+library(csv)
+library(dplyr)
+library(xlsx)
+library(devtools)
+library(ggplot2)
+library(esc)
+library(broom)
+library(meta)
+library(dmetar)
+library(metaforest)
+library(ranger)
+library(forcats)
+library(metaviz)
+
+  
+# Setting formatting options (Feel free to change based on your preference)
+options(scipen=999, digits =3)
+
+
+```
+
+# Phenomenon name main effect analyses #
+
+This file documents the analyses conducted for `r Author` (`r Year`) *`r Title`*
+
+Analyses were conducted using the file `r filename`, to examine the impact of `r X` over `r Y`.
+
+<!-- ##Data importing and effect size calculation## -->
+<!-- Read `r filename` into R -->
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Read the datafile. IMPORTANT: i) Please ensure the datafile is in the same folder as the .R file is in, otherwise the datafile cannot be read. ii) Please ensure you "skip" the right number of columns so that the datafile can be read properly. For example, if the headers start at Column 4, type skip = 3.
+
+dat = read.csv("Experimental-Studies-Meta-Analysis-Excel-Template-V3W.csv", skip = 3)
+# head(dat)
+# str(dat, list.len=ncol(dat))
+
+# We need to assemble the data from lots of different designs
+# Used this reference: http://www.metafor-project.org/doku.php/tips:assembling_data_smd
+
+# Let's just keep the data that we need for effect-size calculations. IMPORTANT: Please ensure the column headings are entered and spelled correctly, same as the column headings in the datafile.
+dataset <- dat[, c("Article.Name", 
+                   "Article.number",
+                   "Published",
+                   "Study..",
+                   "Sample..",
+                   "Design.type",
+                   "DV..",
+                   "Grouping.DV.types",
+                   "N.sample.size..post.attrition.",
+                   "Cell.1.N",
+                   "Cell.2.N",
+                   "IV1.manipulated.",
+                   "DV.proportions.percentage.",
+                   "DV.count.",
+                   "DV.scale.", 
+                   "Cell.1.M", 
+                   "Cell.1.SD", 
+                   "Cell.2.M", 
+                   "Cell.2.SD", 
+                   "F.ANOVA.F", 
+                   "F.ANOVA.DF..x..y.", 
+                   "t.from.t.test", 
+                   "t.test.df..x.", 
+                   "Reported.Cohen.d",
+                   "Are.cells.compared.to.each.other.or.to.a.constant.",
+                   "If.to.a.constant...what.constant.",
+                   "p.values", 
+                   "Cnt.Cell.1", 
+                   "Cnt.Cell.2", 
+                   "p.values.1", 
+                   "Calculated.Chisquare",  
+                   "X..Cell.1", 
+                   "X..Cell.2", 
+                   "Does.effect.need.to.be.reversed.",
+                   "Best.effect.estimate", 
+                   "Possible.Moderator.1", 
+                   "Possible.Moderator.2", 
+                   "Possible.Moderator.3", 
+                   "Possible.Moderator.4")] 
+                 
+
+# set up an empty frame to hold the effect size
+dat2 <- data.frame(matrix(NA, nrow=nrow(dataset), ncol=2)) 
+names(dat2) <- c("yi","vi")
+i <- 1 
+for (i in 1:nrow(dataset)) {
+  # If we have a one samples t statistic compared to a constant)
+  # About the variance calculation - 
+  # Read https://stats.stackexchange.com/questions/226836/sampling-variance-for-meta-analysis-one-sample-data
+  # Using (1/ni)+di^2/(2*ni) dependent samples t-test (e.g., Borenstein, 2009) 
+  # With correlation between pre- and posttest (r) equal to 0.5
+  if (!is.na(dataset$N.sample.size..post.attrition.[i]) & 
+      !is.na(dataset$t.from.t.test[i]) & 
+      (dataset$Are.cells.compared.to.each.other.or.to.a.constant.[i] == "Compared to constant") &
+      !is.na(dataset$If.to.a.constant...what.constant.[i])) {
+    tmp2 <- NA
+    tmp2 <- ES.t.one(t = dataset$t.from.t.test[i], 
+                  df = dataset$N.sample.size..post.attrition.[i]-1,
+                  mu = dataset$If.to.a.constant...what.constant.)
+    # print(tmp2)
+    if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+      tmp2$es <- tmp2$es *(-1)
+    }
+    dat2$yi[i] <- tmp2$d
+    dat2$vi[i] <- (1/dataset$N.sample.size..post.attrition.[i])+tmp2$d^2/(2*dataset$N.sample.size..post.attrition.[i])
+  } else 
+  # if we only have t statistic and N per each condition (between-subjects)
+  if (!is.na(dataset$Cell.1.N[i]) & 
+      !is.na(dataset$Cell.2.N[i]) &
+      !is.na(dataset$t.from.t.test[i]) & 
+      (dataset$Design.type[i] == "Between-subject")) {
+    tmp2 <- NA
+    tmp2 <- esc_t(t = dataset$t.from.t.test[i], 
+                  grp1n = dataset$Cell.1.N[i], 
+                  grp2n = dataset$Cell.2.N[i])
+    # print(tmp2)
+    if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+      tmp2$es <- tmp2$es *(-1)
+    }
+    dat2$yi[i] <- tmp2$es
+    dat2$vi[i] <- tmp2$var
+  } else 
+      # If we only have t statistic and overall N
+    if (!is.na(dataset$N.sample.size..post.attrition.[i]) & 
+        !is.na(dataset$t.from.t.test[i]) & 
+        (dataset$Design.type[i] == "Between-subject") ) {
+      tmp3 <- NA
+      tmp3 <- esc_t(t = dataset$t.from.t.test[i], 
+                    totaln = dataset$N.sample.size..post.attrition.[i])
+      # print(tmp3)
+      if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+        tmp3$es <- tmp3$es *(-1)
+      }
+      dat2$yi[i] <- tmp3$es
+      dat2$vi[i] <- tmp3$var
+    } else 
+      # If we only have t statistic and N per each condition (within-subjects)
+      if (!is.na(dataset$N.sample.size..post.attrition.[i]) &
+          !is.na(dataset$t.from.t.test[i])& 
+          (dataset$Design.type[i] == "Within-subject")) {
+        
+        tmp3 <- NA
+        tmp3 <- esc_t(t = dataset$t.from.t.test[i],
+                    totaln = dataset$N.sample.size..post.attrition.[i])
+        # print(tmp3)
+        if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+          tmp3$es <- tmp3$es *(-1)
+        }
+        if (!is.na(dataset$Reported.Cohen.d[i])) {
+          # Because we don't know the correlation for paired, if they report Cohen's d, just use their reported d
+          dat2$yi[i] <- dataset$Reported.Cohen.d[i]
+          dat2$vi[i] <- (1/dataset$N.sample.size..post.attrition.[i])+dataset$Reported.Cohen.d[i]^2 /
+            (2*dataset$N.sample.size..post.attrition.[i])
+        } else {
+          dat2$yi[i] <- tmp3$es
+          dat2$vi[i] <- tmp3$var
+        }
+      } else 
+        # If we only have F statistic and DF
+      if (!is.na(dataset$N.sample.size..post.attrition.[i]) & 
+          !is.na(dataset$F.ANOVA.F[i]) ) {
+        tmp4 <- NA
+        tmp4 <- esc_f(f = dataset$F.ANOVA.F[i], 
+                      totaln = dataset$N.sample.size..post.attrition.[i])
+        # print(tmp4)
+        if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+          tmp4$es <- tmp4$es *(-1)
+        }
+        dat2$yi[i] <- tmp4$es
+        dat2$vi[i] <- tmp4$var
+      } else 
+        # If we only have Cohen's d and Ns
+        if (!is.na(dataset$Best.effect.estimate[i]) & 
+            !is.na(dataset$Cell.1.N[i]) & 
+            !is.na(dataset$Cell.2.N[i])) {
+          dat2$yi[i] <- dataset$Best.effect.estimate[i]
+          dat2$vi[i] <- 1/dataset$Cell.1.N[i]+ 
+            1/dataset$Cell.2.N[i] + 
+            dataset$Best.effect.estimate[i]^2/(2*(dataset$Cell.1.N[i]+dataset$Cell.2.N[i]))
+        } else 
+          # If we only have Cohen's d and overall
+          if (!is.na(dataset$Best.effect.estimate[i]) & 
+              !is.na(dataset$N.sample.size..post.attrition.[i])) {
+            dat2$yi[i] <- dataset$Best.effect.estimate[i] 
+            dat2$vi[i] <- 1/(dataset$N.sample.size..post.attrition.[i]/2) + 
+              1/(dataset$N.sample.size..post.attrition.[i]/2) + 
+              dataset$Best.effect.estimate[i]^2 / 
+              (2*((dataset$N.sample.size..post.attrition.[i]/2)+(dataset$N.sample.size..post.attrition.[i]/2)))
+          } else 
+            # If we only have chisquare and N
+            if (!is.na(dataset$Calculated.Chisquare[i]) & 
+                !is.na(dataset$N.sample.size..post.attrition.[i])) {
+              tmp5 <- NA
+              tmp5 <- chies(dataset$chisq[i], 
+                            dataset$N.sample.size..post.attrition.[i], 
+                            level = 95, dig = 2, verbose = TRUE, id=NULL, data=NULL)
+              # print(tmp5)
+              if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+                tmp5$d <- tmp5$d *(-1)
+              }
+              dat2$yi[i] <- tmp5$d
+              dat2$vi[i] <- tmp5$var.d
+            } else 
+              # If we have M, SD, N for two conditions
+              if (!is.na(dataset$Cell.1.N[i]) & 
+                  !is.na(dataset$Cell.1.M[i]) & 
+                  !is.na(dataset$Cell.1.SD[i]) & 
+                  !is.na(dataset$Cell.2.N[i]) &
+                  !is.na(dataset$Cell.2.M[i]) &
+                  !is.na(dataset$Cell.2.SD[i])) {
+                tmp1 <- NA
+                tmp1 <- escalc(measure="SMD", 
+                               m1i=dataset$Cell.1.M[i], 
+                               sd1i=dataset$Cell.1.SD[i], 
+                               n1i=dataset$Cell.1.N[i],
+                               m2i=dataset$Cell.2.M[i], 
+                               sd2i=dataset$Cell.2.SD[i], 
+                               n2i=dataset$Cell.2.N[i], append = FALSE)
+                # print(tmp1)
+                if (dataset$Does.effect.need.to.be.reversed.[i]== "Yes") {
+                  tmp1$yi <- tmp1$yi *(-1)
+                }
+                dat2$yi[i] <- tmp1$yi 
+                dat2$vi[i] <- tmp1$vi
+              } 
+}
+
+combineddataset <- cbind(dataset,dat2)
+combineddataset$d <- combineddataset$yi
+combineddataset$dvar <- combineddataset$vi
+
+# convert Cohen's d to Hedge's g 
+# Hedge's g pools variances using n - 1 for each sample but not n. Hedge's g provides a better estimate, when the sample sizes are small. However, Cohen's d is commonly used in psychology research. Read https://stats.stackexchange.com/questions/1850/difference-between-cohens-d-and-hedges-g-for-effect-size-metrics for discussion of their differences. ALso, read Lakens (2013) (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3840331/) who recommnded usage of Hedge's g in meta-analyses. Feel free to remove below codes if you prefer Cohen's d.
+
+combineddataset$yi <- 
+  d_to_g(combineddataset$d, combineddataset$dvar,
+       ifelse(!is.na(combineddataset$Cell.1.N),
+              combineddataset$Cell.1.N, 
+              combineddataset$N.sample.size..post.attrition./2),
+       ifelse(!is.na(combineddataset$Cell.2.N),
+              combineddataset$Cell.2.N, 
+              combineddataset$N.sample.size..post.attrition./2))[,1]
+
+combineddataset$vi <- 
+  d_to_g(combineddataset$d, combineddataset$dvar,
+       ifelse(!is.na(combineddataset$Cell.1.N),
+              combineddataset$Cell.1.N, 
+              combineddataset$N.sample.size..post.attrition./2),
+       ifelse(!is.na(combineddataset$Cell.2.N),
+              combineddataset$Cell.2.N, 
+              combineddataset$N.sample.size..post.attrition./2))[,2]
+
+
+```
+
+
+## Phenomenon name effect meta-analysis summary - Random-Effects Two-Level Model ##
+
+Firstly, we start by running Random-Effects Two-Level Model.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##Conducting the meta-analyis, combining and collapsing##
+
+dataset1 <- combineddataset
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+
+###
+# If we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+totalexp <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+# allexpcollapsed refers to results with effect size and variance, for two-level model
+allexpcollapsed <- rma(es, var, method = "REML", data = totalexp, slab = articlestudy)
+allexpcollapsed
+
+# code from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# same two level analysis with the rma.mv
+allexpcollapsedml2 <- rma.mv(yi, vi, random = ~ 1 | articlestudy, data=dataset1)
+allexpcollapsedml2
+print(allexpcollapsedml2, digits=3)
+
+# code from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# three level, taking into account same article/authors
+allexpcollapsedml3 <- rma.mv(yi, vi, random = ~ 1 | Article.Name/articlestudy, data=dataset1)
+allexpcollapsedml3
+# print(allexpcollapsedml3, digits=3)
+
+par(mfrow=c(2,1))
+profile(allexpcollapsedml3, sigma2=1)
+profile(allexpcollapsedml3, sigma2=2)
+
+# code from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# Estimated ICC Intraclass Correlation of the True Effects
+# The three-level model used in the meta-analysis above allows for the underlying true effects within articles to be correlated.
+ICC = round(allexpcollapsedml3$sigma2[1] / sum(allexpcollapsedml3$sigma2), 3)
+ICC
+
+# To calculate I square of multivariate three-level model, code from http://www.metafor-project.org/doku.php/tips:i2_multilevel_multivariate#multilevel_models
+
+W <- diag(1/dataset1$vi)
+M <- model.matrix(allexpcollapsedml3)
+P <- W - W %*% M %*% solve(t(M) %*% W %*% M) %*% t(M) %*% W
+I2ML <- 100 * sum(allexpcollapsedml3$sigma2) / (sum(allexpcollapsedml3$sigma2) + (allexpcollapsedml3$k-allexpcollapsedml3$p)/sum(diag(P)))
+
+
+allexpcollapsedml4 <- rma.mv(yi, vi, random = ~ factor(articlestudy) | Article.Name, data=dataset1)
+allexpcollapsedml4
+
+```
+
+## Phenomenon name effect meta-analysis summary - Multivariate Two-Level Model ##
+
+Secondly, we run a multivariate two-level model. Multi-variate random-effects model takes account into two or more effect sizes within some of the studies. Check Cheung (2013) - https://www.tandfonline.com/doi/abs/10.1080/10705511.2013.797827 for further information.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##Conducting the meta-analyis, combining and collapsing##
+
+dataset1 <- combineddataset
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+
+###
+# If we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+totalexp <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+
+# code adapted from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# same two level analysis with the rma.mv
+allexpcollapsedml2 <- rma.mv(yi, vi, random = ~ 1 | articlestudy, data=dataset1)
+allexpcollapsedml2
+print(allexpcollapsedml2, digits=3)
+
+
+```
+
+## Phenomenon name effect meta-analysis summary - Multivariate Three-Level Model ##
+
+Afterwards, we run a Multivariate Three-Level Model, with the third level being Article Name. This takes account into the possible dependence between effect sizes of the same articles. We believe that this is a better approach for estimating effect size than two-level model. For details, see Cheung (2014) - https://pdfs.semanticscholar.org/8038/1b0d516d07e42e308f983624bffd497b1d9b.pdf .
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+##Conducting the meta-analyis, combining and collapsing##
+
+dataset1 <- combineddataset
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+
+###
+# If we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+totalexp <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+
+# code from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# three level, taking into account same article/authors
+allexpcollapsedml3 <- rma.mv(yi, vi, random = ~ 1 | Article.Name/articlestudy, data=dataset1)
+allexpcollapsedml3
+# print(allexpcollapsedml3, digits=3)
+
+par(mfrow=c(2,1))
+profile(allexpcollapsedml3, sigma2=1)
+profile(allexpcollapsedml3, sigma2=2)
+
+# code from http://www.metafor-project.org/doku.php/analyses:konstantopoulos2011
+# Estimated ICC Intraclass Correlation of the True Effects
+# The three-level model used in the meta-analysis above allows for the underlying true effects within articles to be correlated.
+ICC = round(allexpcollapsedml3$sigma2[1] / sum(allexpcollapsedml3$sigma2), 3)
+ICC
+
+# To calculate I square of multivariate three-level model, code from http://www.metafor-project.org/doku.php/tips:i2_multilevel_multivariate#multilevel_models
+
+W <- diag(1/dataset1$vi)
+M <- model.matrix(allexpcollapsedml3)
+P <- W - W %*% M %*% solve(t(M) %*% W %*% M) %*% t(M) %*% W
+I2ML <- 100 * sum(allexpcollapsedml3$sigma2) / (sum(allexpcollapsedml3$sigma2) + (allexpcollapsedml3$k-allexpcollapsedml3$p)/sum(diag(P)))
+
+
+allexpcollapsedml4 <- rma.mv(yi, vi, random = ~ factor(articlestudy) | Article.Name, data=dataset1)
+allexpcollapsedml4
+
+```
+
+
+### Summary ###
+
+This analysis is based on `r allexpcollapsed$k` studies that evaluated the impact of `r X` over `r Y`. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+
+# Create a table of information of results - for two-level model
+allexpcollapsed.restable<-cbind.data.frame(allexpcollapsed$b, allexpcollapsed$se, 
+                            ifelse(allexpcollapsed$pval < 0.001, "< .001", round(allexpcollapsed$pval,3)), allexpcollapsed$ci.lb, allexpcollapsed$ci.ub,  allexpcollapsed$k)
+colnames(allexpcollapsed.restable)<-c("Hedge's g","SE", "p", "CI Lower", "CI Upper", "k")
+row.names(allexpcollapsed.restable)<-paste(X,"-",Y)
+
+# Create a table of information from the res model - multivariate three-level model
+allexpcollapsedml3.restable<-cbind.data.frame(allexpcollapsedml3$b, allexpcollapsedml3$se, 
+                            ifelse(allexpcollapsedml3$pval < 0.001, "< .001", round(allexpcollapsedml3$pval,3)), allexpcollapsedml3$ci.lb, allexpcollapsedml3$ci.ub,  allexpcollapsedml3$k)
+colnames(allexpcollapsedml3.restable)<-c("Hedge's g","SE", "p", "CI Lower", "CI Upper", "k")
+row.names(allexpcollapsedml3.restable)<-paste(X,"-",Y)
+
+# Create a table of heterogeneity information - for two-level model
+allexpcollapsed.hettable<-cbind.data.frame(allexpcollapsed$QE, 
+                            ifelse(allexpcollapsed$QEp < 0.001, "< .001", round(allexpcollapsed$QEp,5)), allexpcollapsed$I2)
+colnames(allexpcollapsed.hettable)<-c("Q", "p", "I2")
+
+# Create a table of heterogeneity information - for three-level model
+allexpcollapsedml3.hettable<-cbind.data.frame(allexpcollapsedml3$QE, 
+                            ifelse(allexpcollapsedml3$QEp < 0.001, "< .001", round(allexpcollapsedml3$QEp,5)), I2ML)
+colnames(allexpcollapsedml3.hettable)<-c("Q", "p", "I2")
+
+
+```
+
+
+### What is the effect size for `r X` over `r Y`? ###
+
+A random effects two-level meta-analysis was conducted (k=`r allexpcollapsed$k`) to explore the effect of `r X` on `r Y`. The average effect-size was Hedge's g = `r round(allexpcollapsed$b,3)`, (*p* `r ifelse(allexpcollapsed$pval < 0.001, "< .001", round(allexpcollapsed$pval,3))`, 95% CI [`r round(allexpcollapsed$ci.lb, 2)`, `r round(allexpcollapsed$ci.ub, 2)`]). See table below.
+
+`r kable(allexpcollapsed.restable, digits=3, row.names=NA, col.names=c("Hedge's g","*SE*", "*p*", "CI Lower", "CI Upper", "*k*"), caption="Two-Level Meta-Analysis Summary Table")`
+
+Furthermore, A multivariate three-level meta-analysis was conducted (k=`r allexpcollapsedml3$k`) to explore the effect of `r X` on `r Y`. The average effect-size was Hedge's g = `r round(allexpcollapsedml3$b,3)` (*p* `r ifelse(allexpcollapsedml3$pval < 0.001, "< .001", round(allexpcollapsedml3$pval,3))`, 95% CI [`r round(allexpcollapsedml3$ci.lb, 2)`, `r round(allexpcollapsedml3$ci.ub, 2)`]). See table below.
+
+`r kable(allexpcollapsedml3.restable, digits=3, row.names=NA, col.names=c("Hedge's g","*SE*", "*p*", "CI Lower", "CI Upper", "*k*"), caption="Multivariate Three-Level Meta-Analysis Summary Table")`
+
+### Does the effect-size vary across studies? ###
+
+A Cochran's Q test was conducted to examine whether variations in the observed effect-size are likely to be attributable solely to sampling error (*Q* (`r allexpcollapsed$k`)=`r round(allexpcollapsed$QE,2)`, *p*=`r ifelse(allexpcollapsed$QEp < 0.001, "< .001", round(allexpcollapsed$QEp,3))`). `r ifelse(allexpcollapsed$QEp < 0.05, "The variation in effect-size is greater than would be expected from sampling error alone. It appears that the true effect varies betweeen studies.", "There is no evidence that the true effect size varies between studies.")`
+
+The *I^2^* statistics indicates the *proportion* of variance in the observed effect attributable to sampling error. In this instance, the *I^2^* = `r round(allexpcollapsed$I2,2)`%. 
+
+Heterogeneity statistics are summarised below
+`r kable(allexpcollapsed.hettable, digits=5, row.names=NA, col.names=c("*Q*", "*p*", "*I^2^*"),caption="Heterogeneity Summary Table for Two-Level Model")`
+
+For multivariate three-level model, similarly, a Cochran's Q test was conducted to examine whether variations in the observed effect-size are likely to be attributable solely to sampling error (*Q* (`r allexpcollapsedml3$k`)=`r round(allexpcollapsedml3$QE,2)`, *p*=`r ifelse(allexpcollapsedml3$QEp < 0.001, "< .001", round(allexpcollapsedml3$QEp,3))`). `r ifelse(allexpcollapsedml3$QEp < 0.05, "The variation in effect-size is greater than would be expected from sampling error alone. It appears that the true effect varies betweeen studies.", "There is no evidence that the true effect size varies between studies.")`
+
+The *I^2^* statistics indicates the *proportion* of variance in the observed effect attributable to sampling error. In this instance, the *I^2^* = `r round(I2ML,2)`%.  
+
+Heterogeneity statistics are summarised below
+`r kable(allexpcollapsedml3.hettable, digits=5, row.names=NA, col.names=c("*Q*", "*p*", "*I^2^*"),caption="Heterogeneity Summary Table for Multivariate Three-Level Model")`
+<!-- Expand the forest plot width to 14 inches -->
+
+### Forest plot ###
+
+```{r fig.width=14, fig.height=12}          
+forest(allexpcollapsed, alim=c(-2,4), xlim=c(-4,5), ilab=totalexp$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenomenon name effect", cex=.8)
+#Add headlines to the forest, with Bells and whistles
+op <- par(font=4)
+text(-4, allexpcollapsed$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 5, allexpcollapsed$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, allexpcollapsed$k+2, "Sample size",cex=.8)
+par(op)
+```
+
+### Publication Bias ###
+
+#### Basic tests ####
+
+[Note: Below are some common tests for publication bias. You may add or remove. Read Carter, Schönbrodt, Gervais, and Hilgard (2018) for a comprehensive review and comparison of publication bias tests in psychology: https://journals.sagepub.com/doi/abs/10.1177/2515245919847196]
+
+Please read Schwarzer, Carpenter and Rücker (2015) book chapter 5 pages 107-138 for for explanation of trimfill and failsafe. 
+(Also, can check Borenstein, Hedges, Higgins & Rothstein (2009) book, pages 284-287 )
+
+### Funnel plot ###
+In a funnel plot, the standard error or inverse of the standard error is plotted against observed effect sizes. Without publication bias, the plot should look like an inverted funnel whereas asymmetric funnel plots may imply publication bias. For details, read Copas and Shi (2000) - https://academic.oup.com/biostatistics/article/1/3/247/260794
+
+```{r fig.width=14, fig.height=6}
+funnel.rma(allexpcollapsed)
+
+# http://www.metafor-project.org/doku.php/plots:contour_enhanced_funnel_plot
+# The below notes are adapted from Fillon, Kutscher, and Feldman (2020) RMD
+# Note that the second funnel below is centered NOT at the model estimate (as is usually done when drawing funnel plots, like in the first funnel above), but at 0 (i.e., at the value under the null hypothesis of no effect). Various levels of statistical significance of the points/studies are indicated by the shaded regions. In particular, the unshaded  white) region in the middle corresponds to p-values greater than .10, the gray-shaded region corresponds to p-values between .10 and .05, the dark gray-shaded region corresponds to p-values between .05 and .01, and the region outside of the funnel corresponds to p-values below .01. Funnel plots drawn in this way are more useful for detecting publication bias due to the suppression of non-significant findings. See Peters, Sutton, Jones, Abrams, and Rushton (2008) (https://www.ncbi.nlm.nih.gov/pubmed/18538991) for more details. Note that, based on Sterne and Egger (2001), the vertical axis represents the standard error (as compared to Peters et al., 2008, who use the inverse of the standard error on the vertical axis).
+funnel.rma(allexpcollapsed, level=c(90, 95, 99), shade=c("white", "gray55", "gray75"), refline=0, legend=TRUE)
+
+```
+
+
+### Trim and Fill ###
+Trim and Fill is based on funnel plot. It aims at estimating possibly missing studies as a result of publication bias in the funnel plot, in order to adjust the effect estimate (Shi & Lin, 2019). For details, read Shi and Lin (2019) (https://journals.lww.com/md-journal/fulltext/2019/06070/the_trim_and_fill_method_for_publication_bias_.70.aspx) and Duval and Tweedie (2000) (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.943.1394&rep=rep1&type=pdf) for details.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Run trim and fill
+taf <- trimfill(allexpcollapsed)
+taf
+
+```
+
+### Rank test ###
+Rank test is a correlational test based on funnel plot asymmetry, aiming to assess the association between standardized effect size and its standard error, with Kendall's tau as the measure of association. Strong correlation may imply publication bias. Read Begg and Mazumdar (1994) (https://www.ncbi.nlm.nih.gov/pubmed/7786990) for details.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# To make the assymetry test more statistical rather than visual, let's do a ranktest
+ranktest(allexpcollapsed)
+
+```
+
+### Egger's Regression test ###
+Egger's regression test is based on asymmetry of the funnel plot. The below mixed-effects meta regression examines the relationship between observed outcomes and standard error. Check Sterne and Egger (2006) (https://www.researchgate.net/publication/281952928_Regression_Methods_to_Detect_Publication_and_Other_Bias_in_Meta-Analysis) for details.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# To run mixed-effects meta regression with standard error as predictor  
+regtest(allexpcollapsed)
+```
+
+### Fail safe ###
+Fail safe N (or the Rosenthal file drawer analysis) represents the number of studies averaging null results to be added to the observed outcomes to refute significant (alpha = .05) meta-analytic means. Rosenthal proposed that if failsafe N < 5k+10, there is a concern for publication bias. Read Becker (2005) (https://onlinelibrary.wiley.com/doi/10.1002/0470870168.ch7) for details.  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# Fail Safe N
+# https://rdrr.io/cran/metafor/man/fsn.html
+fsn(es, var, data = totalexp, type="Rosenthal", alpha=.05)
+
+
+
+```
+
+
+#### Advanced tests ####
+
+### PET PEESE ###
+PET stands for precision-effect test. It is a weighted-least-squares regression test, in which effect size is regressed on its standard error. PEESE stands for the precision-effect estimate with standard error (PEESE). It is a weighted-least-squares regression test, in which effect size is regressed on the square of the standard error. The rationale behind these tests is that publication bias is generally stronger with a larger standard error. Purposed by Stanley and Doucouliagos (2014), PET-PEESE considers the statistical significance of the PET estimate to determine the choice of PET versus PEESE as final estimate. When PET is non-significant in a one-sided test with alpha = .05, PET estimate is used. But when the estimate from PET is significant with alpha = .05, the PEESE estimate is used. Read Carter et al. (2019) for details (https://journals.sagepub.com/doi/abs/10.1177/2515245919847196). 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# The below codes are from Fillon, Kutscher, and Feldman (2020).
+# From http://daniellakens.blogspot.com/2015/04/why-meta-analysis-of-90-precognition.html 
+# First convert variables from our meta-analysis to Daniel's variables
+
+#calculate variance and standard error
+totalexp$SE<-sqrt(totalexp$var)
+
+#PET
+PET<-lm(totalexp$es~totalexp$SE, weights = 1/totalexp$var)
+summary(PET)
+confint(PET)
+print(c(summary(PET)$coefficients[1], confint(PET)[1,1], confint(PET)[1,2]))
+
+#PEESE
+PEESE<-lm(totalexp$es~totalexp$var, weights = 1/totalexp$var)
+summary(PEESE)
+confint(PEESE)
+print(c(summary(PEESE)$coefficients[1], confint(PEESE)[1,1], confint(PEESE)[1,2]))
+
+
+```
+
+### puniform ###
+P-uniform focuses on statistically-significant results. It is based on the assumption that p-distribution is "uniform conditional on the population effect size" (van Assen, van Aert, & Wicherts, 2015). It provides a bias-corrected fixed-effects estimate. Read Carter et al. (2019) for details (https://journals.sagepub.com/doi/abs/10.1177/2515245919847196). 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Run puniform
+if(!require(puniform)){install.packages('puniform')}
+library(puniform)
+
+puniform (yi=totalexp$es, vi=totalexp$var, side="right", method="P", plot = "FALSE")
+
+```
+
+### Three-parameter selection model ###
+Developed by Iyengar and Greenhouse (1988), the three parameters represent
+the average true underlying effect size, the heterogeneity of the
+random effect sizes and the probability that a non-significant effect goes into the literature. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# The below lines are from from Fillon, Kutscher, and Feldman (2020).
+# Run Three-parameter selection model
+# weightr: https://www.rdocumentation.org/packages/weightr/versions/1.0.0/topics/weightfunct
+weightfunct(totalexp$es, totalexp$var, steps=c(.05/2,1))
+
+```
+
+### Henmi and Copas (2010) ###
+Henmi and Copas (2010) proposed a new confidence interval for meta-analysis. It retains the assessment of the extra uncertainty of the random effects setting for describing heterogeneity between studies, but focuses on the fixed effects estimate to construct a confidence interval. For more details, read Henmi and Copas (2010) (https://www.ncbi.nlm.nih.gov/pubmed/20963748).
+  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+# Henmi & Copas (2010)
+# http://www.metafor-project.org/doku.php/analyses:henmi2010
+hc(allexpcollapsed)
+   
+
+
+```
+
+### P-curve ###
+P-curve refers to the distribution of (only) significant (*p* < .05) p-values. It differs from asymmetry tests mentioned above. It is based on the assumption that publication bias is a result of "p-hacking" - which means playing around the data to ensure the p-value drops below 0.05, obtaining "statistical significance". The effect size adjusted estimation is based on significant effects. It is important to recognize that, when the heteorogeneity is medium to high (I sqaure 50% or above, the I square of our study is over 90%), the adjusted effect size is an overestimation (van Aert, Wicherts, & van Assen, 2016 - https://journals.sagepub.com/doi/pdf/10.1177/1745691616650874). For more information about P-curve, please check Simonsohn, Nelson, and Simmons (2014) - https://repository.upenn.edu/cgi/viewcontent.cgi?article=1077&context=oid_papers
+  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Caution: due to the nested nature of our meta-analysis and lots of missing data, the below p-curve analysis should be interpreted with caution
+
+#To run a p-curve analysis. The below code is adapted based on R codes from Lim, V., & Feldman, G. (2020). Values of the dark side: Meta-analysis of links between Dark Triad traits and personal values. Manuscript in preparation.
+allexpcollapsedforpcurve <- metagen(totalexp$es, totalexp$SE, studlab = totalexp$articlestudy)
+allexpcollapsedforpcurve
+
+#Adjusted effect size based on P-curve. Caution. The heterogeneity is very high (I square = 90%+). The adjusted effect size may be inaccurate and overestimated when the heterogeneity is high (van Aert, Wicherts, & van Assen, 2016) - https://pubmed.ncbi.nlm.nih.gov/27694466/.
+pcurve(allexpcollapsedforpcurve, effect.estimation = TRUE, N = totalexp$N.sample.size..post.attrition., dmin = 0, dmax = 2)
+
+```
+
+
+# Moderator analyses #
+
+## Our theoretical moderators ##
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+######## moderators
+
+ 
+## Below is adapted based on Bialek, M., Gao, Y., Yao, D., & Feldman, G. (2020). Owning leads to valuing: Meta-analysis of the Mere Ownership Effect. Manuscript in preparation. Preprint retrieved from https://www.researchgate.net/publication/326462915_Owning_leads_to_valuing_Meta-analysis_of_the_Mere_Ownership_Effect, as well as Yeung. S. K., Yay, T., Feldman, G. (2020) Omission-commission asymmetries in morality and decisions: Meta-analysis of the Omission-bias
+
+# Getting ready for moderator anlayses
+# First, we set up the variables
+
+
+# we'll setup a copy dataaset to clean output a bit for the Metaforest limited functions
+moddataset <- dataset1
+moddataset$Effect.size <- moddataset$yi
+
+
+#Conduct random-effects weighted MetaForest analysis
+set.seed(42)
+mf.random <- MetaForest(formula = yi~ Possible.Moderator.1 +
+                                  Possible.Moderator.2 + 
+                                  Possible.Moderator.3 +
+                                  Possible.Moderator.4 +
+                                   Grouping.DV.types,
+                                data = moddataset,
+                                whichweights = "random",
+                                num.trees = 500, 
+                                method = "REML")
+
+summary(mf.random)
+plot(mf.random)
+VarImpPlot(mf.random)
+
+#Univariate partial dependence plot
+PartialDependence(mf.random, vars = "Possible.Moderator.1")
+PartialDependence(mf.random, vars = "Possible.Moderator.2")
+PartialDependence(mf.random, vars = "Possible.Moderator.3")
+PartialDependence(mf.random, vars = "Possible.Moderator.4")
+PartialDependence(mf.random, vars = "Grouping.DV.types")
+
+WeightedScatter(moddataset, yi="yi",vars = c("Possible.Moderator.1",
+                                           "Possible.Moderator.2",
+                                           "Possible.Moderator.3",
+                                           "Possible.Moderator.4",
+                                           "Grouping.DV.types"))
+
+WeightedScatter(moddataset, yi="Effect.size" ,vars = c("Possible.Moderator.1"))
+WeightedScatter(moddataset, yi="Effect.size" ,vars = c("Possible.Moderator.2")) 
+WeightedScatter(moddataset, yi="Effect.size" ,vars = c("Possible.Moderator.3"))
+WeightedScatter(moddataset, yi="Effect.size" ,vars = c("Possible.Moderator.4"))
+WeightedScatter(moddataset, yi="Effect.size" ,vars = c("Grouping.DV.types"))
+
+
+```
+
+### DV type as a moderator ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderatorsDVtype <- rma(yi, vi, method = "REML", data = moddataset,
+                               slab = paste0(moddataset$Article, "/S",
+                                             moddataset$Study.., "-",
+                                             moddataset$Sample.., "-",
+                                             moddataset$DV..),
+                               ni = N.sample.size..post.attrition.,
+                               mods = ~ Grouping.DV.types)
+
+expmoderatorsDVtype
+```
+
+#### DV1  ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Grouping.DV.types == "DV1"),]
+
+# Collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+expdvmDV1 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expdvmDV1
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(expdvmDV1, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenomenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expdvmDV1$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expdvmDV1$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expdvmDV1$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+#### DV2  ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Grouping.DV.types == "DV2 "),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+ 
+
+expdvDV2 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expdvDV2
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(expdvDV2, alim=c(-4,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenomenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expdvDV2$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expdvDV2$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expdvDV2$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### DV3  ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Grouping.DV.types == "DV3"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+ 
+
+expdvDV3 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expdvDV3
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(expdvDV3, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenomenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expdvDV3$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expdvDV3$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expdvDV3$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+### Comparing DV types  ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Set up required information for fixed-effects contrast between DV types
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(expdvDV2$b, expdvDV3$b, expdvmDV1$b)), 
+    stderror = as.numeric(c(expdvDV2$se, expdvDV3$se, expdvmDV1$se)), 
+    numstudies = as.numeric(c(expdvDV2$k, expdvDV3$k, expdvmDV1$k)),
+    meta = as.character(c("2 - DV2","3 - DV3","1 - DV1")), 
+    tau2 = as.numeric(c(c(expdvDV2$tau2, expdvDV3$tau2, expdvmDV1$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between DV types
+compareddvtypes <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+compareddvtypes
+
+```
+
+
+### Possible Moderator 1 analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderators1 <- rma(yi, vi, method = "REML", data = moddataset,
+                               slab = paste0(moddataset$Article, "/S",
+                                             moddataset$Study.., "-",
+                                             moddataset$Sample.., "-",
+                                             moddataset$DV..),
+                               ni = N.sample.size..post.attrition.,
+                               mods = ~ Possible.Moderator.1)
+
+expmoderators1
+
+```
+
+#### Possible Moderator 1 Category 1 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.1 == "Category1"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+mod1cat1 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+mod1cat1
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(mod1cat1, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, mod1cat1$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, mod1cat1$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, mod1cat1$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 1 Category 2 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.1 == "Category2"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+mod1cat2 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+mod1cat2
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(mod1cat2, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, mod1cat2$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, mod1cat2$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, mod1cat2$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 1 Category 3 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.1 == "Category3"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+modcat3 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+modcat3
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(modcat3, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, modcat3$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, modcat3$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, modcat3$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+### Comparing Possible Moderator 1 Categories 1 to 3 designs ###
+[Insert Hypothesis, if there is - e.g. Phenomenon name under Category 1 condition is stronger than that under Category 2 condition and Category 3 condition]
+[Indicate whether the hypothesis is supported / not supported / partially supported - simulation: The hypothesis is not supported]
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Set up required information for fixed-effects contrast between Mod 1 Cat 1, Cat 2 and Cat 3
+comparedmod1types <- data.frame(
+    estimate = as.numeric(c(mod1cat1$b, mod1cat2$b, modcat3$b)), 
+    stderror = as.numeric(c(mod1cat1$se, mod1cat2$se, modcat3$se)), 
+    numstudies = as.numeric(c(mod1cat1$k, mod1cat2$k, modcat3$k)),
+    meta = as.character(c("1 - Category1","2 - Category2","3 - Category3")), 
+    tau2 = as.numeric(c(c(mod1cat1$tau2, mod1cat2$tau2, modcat3$tau2))))
+comparedmod1types
+
+#Run fixed-effects contrast between Mod 1 Cat 1, Cat 2 and Cat 3
+comparedMod1Cat123 <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedmod1types, digits=3)
+comparedMod1Cat123
+
+#Set up required information for fixed-effects contrast between Mod 1 Cat 1 and Cat 2
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(mod1cat1$b, mod1cat2$b)), 
+    stderror = as.numeric(c(mod1cat1$se, mod1cat2$se)), 
+    numstudies = as.numeric(c(mod1cat1$k, mod1cat2$k)),
+    meta = as.character(c("Category1","Category2")), 
+    tau2 = as.numeric(c(c(mod1cat1$tau2, mod1cat2$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between Mod 1 Cat 1, Cat 2
+comparedMod1Cat123b <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedMod1Cat123b
+
+
+```
+
+
+### Possible Moderator 2  moderator analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderators2 <- rma(yi, vi, method = "REML", data = moddataset,
+                                slab = paste0(
+                                  moddataset$Article, "/S",
+                                  moddataset$Study.., "-",
+                                  moddataset$Sample.., "-",
+                                  moddataset$DV..),
+                                ni = N.sample.size..post.attrition.,
+                               mods = ~ Possible.Moderator.2)
+expmoderators2
+```
+
+#### Possible Moderator 2 Category 1 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.2 == "Category1"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <-
+  cbind(
+    aggregate(
+      yi ~ articlestudy,
+      data=dataset1,
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy,
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+
+
+expMod2Cat1 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expMod2Cat1
+```
+
+```{r fig.width=14, fig.height=12}
+forest(expMod2Cat1, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expMod2Cat1$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expMod2Cat1$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expMod2Cat1$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 2 Category 2 studies  ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.2 == "Category2"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <-
+  cbind(
+    aggregate(
+      yi ~ articlestudy,
+      data=dataset1,
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy,
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+
+
+expMod2Cat2 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expMod2Cat2
+```
+
+```{r fig.width=14, fig.height=12}
+forest(expMod2Cat2, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expMod2Cat2$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expMod2Cat2$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expMod2Cat2$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 2 Category 3 studies  ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.2 == "Category3"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <-
+  cbind(
+    aggregate(
+      yi ~ articlestudy,
+      data=dataset1,
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy,
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+expMod2Cat3 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expMod2Cat3
+```
+
+```{r fig.width=14, fig.height=12}
+forest(expMod2Cat3, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expMod2Cat3$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expMod2Cat3$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expMod2Cat3$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+### Comparing Moderator 2 Categories 1 to 3 studies groups ###
+[Insert Hypothesis, if there is - e.g. Phenomenon name under Category 1 condition is stronger than that under Category 2 condition and Category 3 condition]
+[Indicate whether the hypothesis is supported / not supported / partially supported - simulation: The hypothesis is not supported]
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Set up information for fixed-effects contrast between Mod 2 Cat 1, Cat 2 and Cat 3
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(expMod2Cat1$b, expMod2Cat2$b, expMod2Cat3$b)),
+    stderror = as.numeric(c(expMod2Cat1$se, expMod2Cat2$se, expMod2Cat3$se)),
+    numstudies = as.numeric(c(expMod2Cat1$k, expMod2Cat2$k, expMod2Cat3$k)),
+    meta = as.character(c("1 - Category1","2 - Category2","3 - Category3")),
+    tau2 = as.numeric(c(c(expMod2Cat1$tau2, expMod2Cat2$tau2, expMod2Cat3$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between Mod 2 Cat 1, Cat 2 and Cat 3
+comparedModerator2 <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedModerator2
+
+#Set up information for fixed-effects contrast between Mod 2 Cat 2 and Cat 3
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(expMod2Cat2$b, expMod2Cat3$b)),
+    stderror = as.numeric(c(expMod2Cat2$se, expMod2Cat3$se)),
+    numstudies = as.numeric(c(expMod2Cat2$k, expMod2Cat3$k)),
+    meta = as.character(c("2 - Category2","3 - Category3")),
+    tau2 = as.numeric(c(c(expMod2Cat2$tau2, expMod2Cat3$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between Mod 2 Cat 2 and Cat 3
+comparedModerator22 <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedModerator22
+
+
+```
+
+
+
+
+### Possible Moderator 3 moderator analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+
+expmoderators3 <- rma(yi, vi, method = "REML", data = moddataset,
+                                slab = paste0(moddataset$Article, "/S",
+                                              moddataset$Study.., "-",
+                                              moddataset$Sample.., "-",
+                                              moddataset$DV..),
+                                ni = N.sample.size..post.attrition.,
+                                mods = ~ Possible.Moderator.3)
+expmoderators3
+```
+
+#### Possible Moderator 3 Category 1 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.3 == "Category1"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <-
+  cbind(
+    aggregate(
+      yi ~ articlestudy,
+      data=dataset1,
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy,
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+
+
+expMod3Cat1 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expMod3Cat1
+```
+
+```{r fig.width=14, fig.height=12}
+forest(expMod3Cat1, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expMod3Cat1$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expMod3Cat1$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expMod3Cat1$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 3 Category 2 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+
+# This is to demonstrate that two categories/levels in the datafile of a moderator can be combined into one single category for analysis
+
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.3 == "Category2a" | moddataset$Possible.Moderator.3 == "Category2b"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <-
+  cbind(
+    aggregate(
+      yi ~ articlestudy,
+      data=dataset1,
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy,
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+expMod3Cat2 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expMod3Cat2
+```
+
+```{r fig.width=14, fig.height=12}
+forest(expMod3Cat2, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expMod3Cat2$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expMod3Cat2$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expMod3Cat2$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+### Comparing Moderator 3 Categories 1 and 2 groups ###
+[Insert Hypothesis, if there is - e.g. Phenomenon name under Category 1 condition is stronger than that under Category 2 condition]
+[Indicate whether the hypothesis is supported / not supported / partially supported - simulation: The hypothesis is not supported]
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Set up information for fixed-effects contrast between Mod 3 Cat 1 and Cat 2
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(expMod3Cat1$b, expMod3Cat2$b)),
+    stderror = as.numeric(c(expMod3Cat1$se, expMod3Cat2$se)),
+    numstudies = as.numeric(c(expMod3Cat1$k, expMod3Cat2$k)),
+    meta = as.character(c("Category1","Category2")),
+    tau2 = as.numeric(c(c(expMod3Cat1$tau2, expMod3Cat2$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between Mod 3 Cat 1 and Cat 2
+comparedoutcomevalence <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedoutcomevalence
+
+```
+
+
+### Published vs Unpublished moderator analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderatorspubornot <- rma(yi, vi, method = "REML", data = moddataset,
+                                slab = paste0(moddataset$Article, "/S",
+                                              moddataset$Study.., "-",
+                                              moddataset$Sample.., "-",
+                                              moddataset$DV..),
+                                ni = N.sample.size..post.attrition.,
+                                mods = ~ Published)
+ 
+expmoderatorspubornot
+
+```
+
+#### Published studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Published == "Yes"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+exppublished <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+exppublished
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(exppublished, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, exppublished$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, exppublished$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, exppublished$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Unpublished studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Published == "No"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+expunpublished <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+expunpublished
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(expunpublished, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, expunpublished$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, expunpublished$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, expunpublished$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+### Comparing published versus unpublised study groups ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(exppublished$b, expunpublished$b)), 
+    stderror = as.numeric(c(exppublished$se, expunpublished$se)), 
+    numstudies = as.numeric(c(exppublished$k, expunpublished$k)),
+    meta = as.character(c("Published studies","Unpublished studies")), 
+    tau2 = as.numeric(c(c(exppublished$tau2, expunpublished$tau2))))
+comparedvtypes
+
+comparedpublished <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedpublished
+
+```
+
+
+### Possible Moderator 4 analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderators <- rma(yi, vi, method = "REML", data = moddataset,
+                               slab = paste0(moddataset$Article, "/S",
+                                             moddataset$Study.., "-",
+                                             moddataset$Sample.., "-",
+                                             moddataset$DV..),
+                               ni = N.sample.size..post.attrition.,
+                               mods = ~ Possible.Moderator.4)
+
+expmoderators
+
+```
+
+#### Possible Moderator 4 Category 1 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.4 == "Category1"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+mod4cat1 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+mod4cat1
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(mod4cat1, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, mod4cat1$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, mod4cat1$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, mod4cat1$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Possible Moderator 4 Category 2 studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Possible.Moderator.4 == "Category2"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+mod4cat2 <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+mod4cat2
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(mod4cat2, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, mod4cat2$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, mod4cat2$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, mod4cat2$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+### Comparing Possible Moderator 4 Categories 1 and 2 designs ###
+[Insert Hypothesis, if there is - e.g. Competing hypotheses: Phenomenon name under Category 1 condition is stronger than that under Category 2 condition / It is expected that there is no meaningful difference in effect of Phenomenon name under Category 1 condition vs Category 2 condition]
+[Indicate whether the hypotheses are supported / not supported / partially supported - simulation: The second no-meaningful-difference hypothesis is supported whereas the first meaningful-difference hypothesis is not supported]
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#Set up information for fixed-effects contrast between Mod 4 Cat 1 and Cat 2
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(mod4cat1$b, mod4cat2$b)), 
+    stderror = as.numeric(c(mod4cat1$se, mod4cat2$se)), 
+    numstudies = as.numeric(c(mod4cat1$k, mod4cat2$k)),
+    meta = as.character(c("1 - Category1","2 - Category2")), 
+    tau2 = as.numeric(c(c(mod4cat1$tau2, mod4cat2$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between Mod 4 Cat 1 and Cat 2
+comparedMod4Cat12 <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedMod4Cat12
+
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(mod4cat1$b, mod4cat2$b)), 
+    stderror = as.numeric(c(mod4cat1$se, mod4cat2$se)), 
+    numstudies = as.numeric(c(mod4cat1$k, mod4cat2$k)),
+    meta = as.character(c("Category1","Category2")), 
+    tau2 = as.numeric(c(c(mod4cat1$tau2, mod4cat2$tau2))))
+comparedvtypes
+
+comparedMod4Cat12b <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedMod4Cat12b
+
+```
+
+
+### Study design analyses ###
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+expmoderatorsstudydesign <- rma(yi, vi, method = "REML", data = moddataset,
+                                slab = paste0(moddataset$Article, "/S",
+                                              moddataset$Study.., "-",
+                                              moddataset$Sample.., "-",
+                                              moddataset$DV..),
+                                ni = N.sample.size..post.attrition.,
+                                mods = ~ Published)
+ 
+expmoderatorsstudydesign
+
+```
+
+#### Between subject studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Design.type == "Between-subject"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+modbetween <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+modbetween
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(modbetween, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, modbetween$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, modbetween$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, modbetween$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+#### Within subject studies ####
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+############
+dataset1 <- moddataset[which(moddataset$Design.type == "Within-subject"),]
+
+# collapsing first for manipulated studies
+dataset1$articlestudy <- paste(dataset1$Article.Name, "/", dataset1$Study.., "/", dataset1$Sample..)
+dataset1$articlestudy <- factor(dataset1$articlestudy)
+
+collapsed <- agg(id=articlestudy, es=yi, var=vi, cor=.5,
+                 method="BHHR", mod=NULL, data=dataset1)
+# str(collapsed)
+
+###
+# if we collapse the effects within each study
+byarticlestudy <- 
+  cbind(
+    aggregate(
+      yi ~ articlestudy, 
+      data=dataset1, 
+      FUN=function(x) c(mean=mean(x), sd=sd(x), min=min(x), max=max(x), count=length(x))),
+    aggregate(
+      N.sample.size..post.attrition. ~ articlestudy, 
+      data=dataset1, FUN = max)[2]
+  )
+names(collapsed)[names(collapsed) == 'id'] <- 'articlestudy'
+dataset2 <- merge(byarticlestudy, collapsed,by="articlestudy")
+
+modwithin <- rma(es, var, method = "REML", data = dataset2, slab = articlestudy)
+modwithin
+```
+
+```{r fig.width=14, fig.height=12} 
+forest(modwithin, alim=c(-2,3), xlim=c(-4,4), ilab=dataset2$N.sample.size..post.attrition., ilab.xpos=-2, xlab = "Phenonmenon name effect", cex=.8)
+op <- par(font=4)
+# the columns are from -2 to 2 (xlim)
+text(-4, modwithin$k+2, "Author(s), Year, and Study #",    pos=4, cex=.8)
+text( 4, modwithin$k+2, "Observed [95% CI]",  pos=2, cex=.8)
+text(-2, modwithin$k+2, "Sample size",                  cex=.8)
+par(op)
+
+```
+
+
+### Comparing within to between designs ###
+[Insert hypothesis, if there is, e.g. It is expected that Phenomenon name is stronger for within-subject designs compared to between-subject designs.]
+[Indicate whether the hypothesis is supported / not supported / partially supported]
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#set up information for fixed-effects contrast between within studies and between studies
+comparedvtypes <- data.frame(
+    estimate = as.numeric(c(modbetween$b, modwithin$b)), 
+    stderror = as.numeric(c(modbetween$se, modwithin$se)), 
+    numstudies = as.numeric(c(modbetween$k, modwithin$k)),
+    meta = as.character(c("Between studies","Within studies")), 
+    tau2 = as.numeric(c(c(modbetween$tau2, modwithin$tau2))))
+comparedvtypes
+
+#Run fixed-effects contrast between within studies and between studies
+comparedstudydesign <- rma(estimate, sei=stderror, mods = ~ factor(meta), method="FE", data=comparedvtypes, digits=3)
+comparedstudydesign
+
+```
+
+
+
+# write.csv(dataset, "Experimental-Studies-Meta-Analysis-Excel-Template-V3W-outfile.csv")
+
+
+<!-- \newpage -->
+<!-- #Notes# -->
+<!--  ```{r} -->
+<!--  sessionInfo() -->
+ ``` 
+ 

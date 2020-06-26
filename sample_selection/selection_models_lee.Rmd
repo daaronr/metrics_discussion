@@ -4,7 +4,7 @@
 
 "Conditional on positive"/"intensive margin" analysis ignores selection
 
-"Conditional on positive"/"intensive margin" analysis ignores selection *identification issue* 	See Angrist and Pischke on "Good CoP, bad CoP".  See also bounding approaches such as [@Lee2018]	AngristJ.D.2008a,
+"Conditional on positive"/"intensive margin" analysis ignores selection *identification issue* 	See  [@angrist2008mostly] on "Good CoP, bad CoP".  See also bounding approaches such as [@leeTrainingWagesSample2018].
 
 \
 
@@ -12,7 +12,7 @@
 
 See [Notes on Lee bounds](#notes_lee)
 
-
+ @leeTrainingWagesSample2018].
 
 ### Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD
 

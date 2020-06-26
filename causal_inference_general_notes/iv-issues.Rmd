@@ -1,6 +1,39 @@
 # IV and its many issues
 
 
+### Some casual discussion {-}
+
+
+Ben Balmford:
+
+> ...  IV really is pretty unreliable
+
+> So [@ConsistencyInferenceInstrumental] [Young,  2019](http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&hl=en&sa=X&scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&nossl=1&oi=scholarr) by Young highlights that the point estimates seem to not differ that much from OLS estimates...
+which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to.
+
+
+\
+
+DR: My concerns tend to be more:
+
+1. With heterogeneity IV is not capturing the *average* effect, and often finds results that are very much driven by a particular subsample, often accentuating the supposed byas
+
+2. Many IV's are not defensible and testing the identifying assumptions is basically impossible
+
+\
+
+BB:
+
+> And then [@brodeurMethodsMatterPhacking2018] ([link](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910)) is I think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much of a surprise. In my chat with one of the authors he pointed out that in IV any changes are less obvious - in DiD (which doesnt perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is  [researcher] discretion in the IV approach.
+
+<div class="marginnote">
+ 
+BB: Whereas in DiD (which doesnt perform great either)/RD the its really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it's so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don't always trust your eyeballs!
+
+</div>
+
+\
+  
 ## Instrument validity
 
 - Exogeneity vs. exclusion

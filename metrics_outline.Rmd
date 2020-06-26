@@ -38,6 +38,7 @@ A note to potential research assistants and student collaborators (unfold):
 
 ### Bayesian vs. frequentist approaches {-}
 
+
 Folder: bayesian
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
@@ -47,7 +48,7 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Theory, restrictions, and 'structural vs reduced form'
 
-## Getting, cleaning and using data; project management and coding {#data-sci}
+## [Getting, cleaning and using data; project management and coding](#data-sci)
 
 This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.  
 
@@ -119,17 +120,14 @@ E.g., "the treatment had a heterogeneous effect... we see a statistically signif
 
 ### Multiple hypothesis testing (MHT)
 
-See [@verkaik2016]
-
 ### Interaction terms and pitfalls
 
 #### 'Moderators' Confusion with nonlinearity
 
 Moderators: Heterogeneity mixed with nonlinearity/corners
 
-In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts' at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from 'the diminishing returns kicking in'.  Related to https://datacolada.org/57 [57] Interactions in Logit Regressions: Why Positive May Mean Negative
+In the presence of nonlinearity, e.g., diminishing returns, if the outcome 'starts' at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from 'the diminishing returns kicking in'.  Related to https://datacolada.org/57 [57] Interactions in Logit Regressions: Why Positive May Mean Negative
 
-#### MHT
 
 ### Choice of test statistics (including nonparametric)
 
