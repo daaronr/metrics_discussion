@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-06-18" />
+<meta name="date" content="2020-06-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -43,7 +43,7 @@ div.abstract{
   width: 90%;
 }
 </style>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -61,6 +61,7 @@ div.abstract{
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -294,7 +295,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13.2" data-path="introduction.html"><a href="introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>1.13.2</b> Power calculations without real data</a></li>
 <li class="chapter" data-level="1.13.3" data-path="introduction.html"><a href="introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>1.13.3</b> Power calculations using prior data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te"><i class="fa fa-check"></i><b>1.14</b> <span>‘Experimetrics’ and measurement of treatment effects from RCTs</span> (#experimetrics_te)</a>
+<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts"><i class="fa fa-check"></i><b>1.14</b> <span>‘Experimetrics’ and measurement of treatment effects from RCTs</span></a>
 <ul>
 <li class="chapter" data-level="1.14.1" data-path="introduction.html"><a href="introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>1.14.1</b> Which error structure? Random effects?</a></li>
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
@@ -589,7 +590,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</h1>
 <p class="author"><em>Dr. David Reinstein,</em></p>
-<p class="date"><em>2020-06-18</em></p>
+<p class="date"><em>2020-06-26</em></p>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 This ‘book’ organizes my notes and helps others understand it and learn from it
@@ -627,8 +628,8 @@ This ‘book’ organizes my notes and helps others understand it and learn from
 <h2><span class="header-section-number">1.1</span> (Conceptual: approaches to statistics/inference and causality)[#conceptual]</h2>
 <div id="bayesian-vs.-frequentist-approaches" class="section level3 unnumbered" number="">
 <h3>Bayesian vs. frequentist approaches</h3>
-<p>Folder: bayesian
-Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
+<p>Folder: bayesian</p>
+<p>Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 </div>
 <div id="causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</h3>
@@ -691,8 +692,7 @@ Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 </ul>
 <div id="testing-for-nonlinear-terms" class="section level4" number="1.3.3.1">
 <h4><span class="header-section-number">1.3.3.1</span> ‘Testing for nonlinear terms’</h4>
-<p>Quadratic regressions are not diagnostic regarding u-shapedness: Simonsohn18</p>
-<p><a href="http://datacolada.org/62" class="uri">http://datacolada.org/62</a></p>
+<p>Quadratic regressions are not diagnostic regarding u-shapedness: <a href="http://datacolada.org/62">Simonsohn18</a></p>
 </div>
 </div>
 <div id="ols-and-heterogeneity" class="section level3" number="1.3.4">
@@ -832,11 +832,10 @@ Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 </div>
 <div id="experimental-study-design-identifying-meaningful-and-useful-causal-relationships-and-parameters" class="section level2" number="1.11">
 <h2><span class="header-section-number">1.11</span> <a href="#why_experiment_etc">(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a></h2>
+<!-- experiments_and_study_design/why_experiment_design.Rmd -->
 <div id="why-run-an-experiment-or-study" class="section level3" number="1.11.1">
 <h3><span class="header-section-number">1.11.1</span> Why run an experiment or study?</h3>
-<ul>
-<li>Sugden and Sitzia critique here, give more motivation</li>
-</ul>
+<!-- - Sugden and Sitzia critique here, give more motivation -->
 </div>
 <div id="causal-channels-and-identification" class="section level3" number="1.11.2">
 <h3><span class="header-section-number">1.11.2</span> Causal channels and identification</h3>
@@ -853,6 +852,7 @@ Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 </div>
 <div id="experimental-study-design-background-and-quantitative-issues" class="section level2" number="1.12">
 <h2><span class="header-section-number">1.12</span> (Experimental) Study design: Background and quantitative issues</h2>
+<!-- experiments_and_study_design/quant_design_power.Rmd -->
 <div id="pre-registration-and-pre-analysis-plans" class="section level3" number="1.12.1">
 <h3><span class="header-section-number">1.12.1</span> Pre-registration and Pre-analysis plans</h3>
 <div id="the-hazards-of-specification-searching" class="section level4" number="1.12.1.1">
@@ -861,15 +861,10 @@ Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 </div>
 <div id="sequential-and-adaptive-designs" class="section level3" number="1.12.2">
 <h3><span class="header-section-number">1.12.2</span> Sequential and adaptive designs</h3>
-<p>Needs to adjust significance tests for augmenting data/sequential analysis/peeking Statistics/econometrics new-statistics sagarin_2014 <a href="http://www.paugmented.com/" class="uri">http://www.paugmented.com/</a> resubmit_letterJpube.tex, <a href="http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/" class="uri">http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/</a></p>
-<p>Yet …</p>
-<p>P_augmented may <em>overstate</em> type-1 error rate Statistics/econometrics response to referees, new-statistics "
-A process involving stopping "“whenever the nominal <span class="math inline">\(p.0.5\)</span>”" and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5%. Even if the subsequent data suggested a "“one in a million chance of arising under the null”" the overall process yields a 5%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the "“likelihood of the null hypothesis”" given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.</p>
-<p>Considering the calculations in , it is clear that <span class="math inline">\(p_{augmented}\)</span> should  the type-1 error of the process if there is a positive probability that after an initial experiment attains p<span class="math inline">\(&lt;0.05\)</span>, more data is collected. A headline <span class="math inline">\(p&lt;0.05\)</span> does  imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded <span class="math inline">\(p&gt;0.05\)</span>, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though <span class="math inline">\(p&lt;0.05\)</span>. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine’s experiment). Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p&lt;0.05, more data is collected, implying that <span class="math inline">\(p_{augmented}\)</span> as calculated above overstates the type I error rate that would arise from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below <span class="math inline">\(p=0.05\)</span>, in order to attain a type-1 error rate of 5% or less in our published corpus."</p>
 </div>
 <div id="efficient-assignment-of-treatments" class="section level3" number="1.12.3">
 <h3><span class="header-section-number">1.12.3</span> Efficient assignment of treatments</h3>
-<p>(Links back to power analyses)</p>
+<p>(Links back to <a href="power.html#power">power analyses</a></p>
 </div>
 </div>
 <div id="experimental-study-design-ex-ante-power-calculations" class="section level2" number="1.13">
@@ -878,12 +873,6 @@ A process involving stopping "“whenever the nominal <span class="math inline">
 <h3><span class="header-section-number">1.13.1</span> What sort of ‘power calculations’ make sense, and what is the point?</h3>
 <div id="the-harm-to-science-from-running-underpowered-studies" class="section level4" number="1.13.1.1">
 <h4><span class="header-section-number">1.13.1.1</span> The ‘harm to science’ from running underpowered studies</h4>
-<blockquote>
-<p>"One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.</p>
-</blockquote>
-<blockquote>
-<p>Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects." verkaik2016, metzger2015</p>
-</blockquote>
 </div>
 </div>
 <div id="power-calculations-without-real-data" class="section level3" number="1.13.2">
@@ -893,8 +882,8 @@ A process involving stopping "“whenever the nominal <span class="math inline">
 <h3><span class="header-section-number">1.13.3</span> Power calculations using prior data</h3>
 </div>
 </div>
-<div id="experimetrics-and-measurement-of-treatment-effects-from-rcts-experimetrics_te" class="section level2" number="1.14">
-<h2><span class="header-section-number">1.14</span> <a href="experimetrics-te.html#experimetrics_te">‘Experimetrics’ and measurement of treatment effects from RCTs</a> (#experimetrics_te)</h2>
+<div id="experimetrics-and-measurement-of-treatment-effects-from-rcts" class="section level2" number="1.14">
+<h2><span class="header-section-number">1.14</span> <a href="experimetrics-te.html#experimetrics_te">‘Experimetrics’ and measurement of treatment effects from RCTs</a></h2>
 <div id="which-error-structure-random-effects" class="section level3" number="1.14.1">
 <h3><span class="header-section-number">1.14.1</span> Which error structure? Random effects?</h3>
 </div>

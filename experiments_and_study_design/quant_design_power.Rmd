@@ -3,12 +3,12 @@
 ## Pre-registration and Pre-analysis plans {#pre-reg-pap}
 
 
-### The benefits and costs of pre-registration:  a typical discussion 
+### The benefits and costs of pre-registration:  a typical discussion
 
 > BB: That said, I would be interested to think about the benefits – and more importantly limitations to – pre-registration. I think it could solve some of the p-hacking problems but not much else. How to not relegate exploratory analyses too far is also unclear to me.
 
 
-> DR: I'm much more on the 'pro' side pre-registration and PaPs. It also helps deal with publication bias and file drawers. And p-hacking is a huge issue IMHO.  But it is also good to have some consideration of the pros and cons, so this would be great. 
+> DR: I'm much more on the 'pro' side pre-registration and PaPs. It also helps deal with publication bias and file drawers. And p-hacking is a huge issue IMHO.  But it is also good to have some consideration of the pros and cons, so this would be great.
 
 
 > BB: RE pre-reg: yes I think it is enough that it prevents p-hacking (there could be very little cost associated with pre-reg) but I fear that it could prevent other advancements if it relegates exploratory analyses too far.
@@ -18,18 +18,18 @@
 
 \
 
-> BB: I think that it could also stifle students a bit – it may reduce further the number of students who have access to funding that allows for experiments that will be able to be published if all experiments have to be high-powered. 
+> BB: I think that it could also stifle students a bit – it may reduce further the number of students who have access to funding that allows for experiments that will be able to be published if all experiments have to be high-powered.
 
 \
 
-> DR:   Statistical power is an important issue.  I was skeptical at first about the 'dangers of underpowered studies' but I'm coming around a bit.
+> DR:   Statistical power is an important issue.  I was skeptical at first about the 'dangers of underpowered studies' but maybe  I'm coming around a bit.
 
 <div class="marginnote">
-My thinking was that 'we can simply make downward adjustments to the estimates reported in underpowered studies'. 
+My thinking was that 'we can simply make downward adjustments to the estimates reported in underpowered studies'. See the discussion under [power calculations](#power).
 </div>
- 
 
-> Anyways, we don't want to put the cart before the horse: as Gelman  said at a conference we should be supporting science not the careers of scientists.   I tend to think there are strong arguments for more centralization in social science. 
+
+> Anyways, we don't want to put the cart before the horse: as Gelman  said at a conference we should be supporting science not the careers of scientists.   I tend to think there are strong arguments for more centralization in social science.
 
 > And my impression is that we actually have too many different studies and distinct research programs being run, and too many papers being published and not carefully brought together into a framework. Going through the studies on the https://www.replicationmarkets.com/ reinforces this impression for me.
 
@@ -43,7 +43,7 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 > DR:  If preregistration is made public and well-organize, then the 'failed' exercises willtbe integrated into future meta-analyses; so that's at least a partial solution here.
 
-> Agreed, we need to build better systems for incentivising pre-registration and careful data sharing. We need  to give career credit to people for  planning designing and reporting  credible  experiments and projects, even if they 'fail'. Part  this is publishing/rewarding tight null results,  which actually do add a lot of value. 
+> Agreed, we need to build better systems for incentivising pre-registration and careful data sharing. We need  to give career credit to people for  planning designing and reporting  credible  experiments and projects, even if they 'fail'. Part  this is publishing/rewarding tight null results,  which actually do add a lot of value.
 
 > We might also consider offering some reward careerwise to experiments that fail -- in terms of being deeply inconclusive-- for some arbitrary or random reason even though they were well-planned and executed.  But I think it is hard to get the incentives right for the latter.
 
@@ -67,7 +67,8 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 
 ## Efficient assignment of treatments
 
-(Links back to power analyses)
+(Links back to [power analyses](#power))
+
 
 ### See also [multiple hypothesis testing](#mht)
 

@@ -24,14 +24,14 @@ I will assume familiarity with most basic statistical concepts like 'bias', 'con
 
 If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content (HERE)[https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html].  This is from a different project but the setup is basically the same.
 
-```  
+```
 
 \
 
 A note to potential research assistants and student collaborators (unfold):
 
 ```{block2,  type='fold'}
- 
+
 ```
 
 ## (Conceptual: approaches to statistics/inference and causality)[#conceptual]
@@ -40,6 +40,7 @@ A note to potential research assistants and student collaborators (unfold):
 
 
 Folder: bayesian
+
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
@@ -50,7 +51,7 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ## [Getting, cleaning and using data; project management and coding](#data-sci)
 
-This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.  
+This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.
 
 ### Data: What/why/where/how
 
@@ -92,9 +93,8 @@ Endogenous control: Are the control variables you use endogenous? (E.g., because
 
 #### 'Testing for nonlinear terms'
 
-Quadratic regressions are not diagnostic regarding u-shapedness: 	Simonsohn18
+Quadratic regressions are not diagnostic regarding u-shapedness: [Simonsohn18]( http://datacolada.org/62)
 
-http://datacolada.org/62
 
 ### OLS and heterogeneity
 
@@ -168,10 +168,10 @@ In the presence of nonlinearity, e.g., diminishing returns, if the outcome 'star
 
 *Basic consideration: what does IV identify and when:*?
 
-Focusing on a binary endogenous 'treatment' variable 
+Focusing on a binary endogenous 'treatment' variable
 
-- With heterogeneity 
-- With imperfect compliance 
+- With heterogeneity
+- With imperfect compliance
 - With one-way compliance
 
 ### Weak instruments, other issues
@@ -216,9 +216,11 @@ See [Notes on Lee bounds](#notes_lee)
 
 ## [(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_etc)
 
+<!-- experiments_and_study_design/why_experiment_design.Rmd -->
+
 ### Why run an experiment or study?
 
-- Sugden and Sitzia critique here, give more motivation
+<!-- - Sugden and Sitzia critique here, give more motivation -->
 
 ### Causal channels and identification
 
@@ -230,42 +232,30 @@ See [Notes on Lee bounds](#notes_lee)
 
 ## (Experimental) Study design: Background and quantitative issues
 
+<!-- experiments_and_study_design/quant_design_power.Rmd -->
+
 ### Pre-registration and Pre-analysis plans
 
 #### The hazards of specification-searching
 
 ### Sequential and adaptive designs
 
-Needs to adjust significance tests for augmenting data/sequential analysis/peeking	Statistics/econometrics	new-statistics		sagarin_2014			http://www.paugmented.com/	resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
-
-Yet ...
-
-
-P_augmented may *overstate* type-1 error rate	Statistics/econometrics	response to referees, new-statistics	"
-A process involving stopping ""whenever the nominal $p.0.5$"" and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5\%. Even if the subsequent data suggested a ""one in a million chance of arising under the null"" the overall process yields a 5\%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the ""likelihood of the null hypothesis"" given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.
-
-Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmented}$ should \textit{overstate} the type-1 error of the process if there is a positive probability that after an initial experiment attains p$<0.05$, more data is collected.  A headline $p<0.05$ does \textit{not} imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded $p>0.05$, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though $p<0.05$. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine's experiment).  Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p<0.05, more data is collected, implying that $p_{augmented}$ as calculated above overstates the type I error rate that would arise  from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below $p=0.05$, in order to attain a type-1 error rate of 5% or less in our published corpus."
-
 ### Efficient assignment of treatments
 
-(Links back to power analyses)
+(Links back to [power analyses](#power)
 
 
-## (Experimental) Study design: (Ex-ante) Power calculations 
+## (Experimental) Study design: (Ex-ante) Power calculations
 
 ### What sort of 'power calculations' make sense, and what is the point?
 
 #### The 'harm to science' from running underpowered studies
 
-> "One worries about underpowered tests. Your result (may have)  relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
-
-> Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects."	verkaik2016, metzger2015
-
 ### Power calculations without real data
 
 ### Power calculations using prior data
 
-## ['Experimetrics' and measurement of treatment effects from RCTs] (#experimetrics_te)
+## ['Experimetrics' and measurement of treatment effects from RCTs](#experimetrics_te)
 
 ### Which error structure? Random effects?
 
@@ -291,7 +281,7 @@ Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmente
 
 ## The Bayesian approach
 
-## Some key resources and references 
+## Some key resources and references
 
 [@AngristJ.D.2008a]
 
@@ -310,14 +300,14 @@ Christensen ea "Transparent and Reproducable Social Science Research"
 
 An Introduction to Statistical Learning with Applications in R
 
-R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org 
+R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org
 
 Statistical Rethinking: A Bayesian Course with Examples in R and Stan
 
-### Consider: 
+### Consider:
 
 Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017
-  
+
 Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction .
 Cambridge University Press, 2015
 
