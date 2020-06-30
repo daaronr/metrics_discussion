@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-06-26" />
+<meta name="date" content="2020-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,7 +411,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#rd-1"><i class="fa fa-check"></i><b>8.3</b> RD</a></li>
 <li class="chapter" data-level="8.4" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias-1"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="8.4.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>9</b> Causal pathways - mediators</a>
@@ -590,7 +590,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</h1>
 <p class="author"><em>Dr. David Reinstein,</em></p>
-<p class="date"><em>2020-06-26</em></p>
+<p class="date"><em>2020-06-29</em></p>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 This ‘book’ organizes my notes and helps others understand it and learn from it
@@ -709,24 +709,20 @@ This ‘book’ organizes my notes and helps others understand it and learn from
 <h3><span class="header-section-number">1.3.5</span> “Null effects”</h3>
 <p>“While the classical statistical framework is not terribly clear about when one should”“accept”" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a "“zero or minimal effect”" one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
 <p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks”." Harms-lakens-18</p>
-<div id="confidence-intervals-and-bayesian-credible-intervals" class="section level4" number="1.3.5.1">
-<h4><span class="header-section-number">1.3.5.1</span> Confidence intervals and Bayesian credible intervals</h4>
-</div>
-<div id="comparing-relative-parameters" class="section level4" number="1.3.5.2">
-<h4><span class="header-section-number">1.3.5.2</span> Comparing relative parameters</h4>
+<ul>
+<li><p><strong>Confidence intervals and Bayesian credible intervals</strong></p></li>
+<li><p><strong>Comparing relative parameters</strong></p></li>
+</ul>
 <p>E.g., “the treatment had a heterogeneous effect… we see a statistically significant positive effect for women but not for men”. This doesn’t cut it: we need to see a <em>statistical test</em> for the <em>difference</em> in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).</p>
-</div>
 </div>
 <div id="multiple-hypothesis-testing-mht" class="section level3" number="1.3.6">
 <h3><span class="header-section-number">1.3.6</span> Multiple hypothesis testing (MHT)</h3>
 </div>
 <div id="interaction-terms-and-pitfalls" class="section level3" number="1.3.7">
 <h3><span class="header-section-number">1.3.7</span> Interaction terms and pitfalls</h3>
-<div id="moderators-confusion-with-nonlinearity" class="section level4" number="1.3.7.1">
-<h4><span class="header-section-number">1.3.7.1</span> ‘Moderators’ Confusion with nonlinearity</h4>
+<p>** ‘Moderators’ Confusion with nonlinearity**</p>
 <p>Moderators: Heterogeneity mixed with nonlinearity/corners</p>
 <p>In the presence of nonlinearity, e.g., diminishing returns, if the outcome ‘starts’ at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from ‘the diminishing returns kicking in’. Related to <a href="https://datacolada.org/57" class="uri">https://datacolada.org/57</a> [57] Interactions in Logit Regressions: Why Positive May Mean Negative</p>
-</div>
 </div>
 <div id="choice-of-test-statistics-including-nonparametric" class="section level3" number="1.3.8">
 <h3><span class="header-section-number">1.3.8</span> Choice of test statistics (including nonparametric)</h3>
@@ -807,9 +803,7 @@ This ‘book’ organizes my notes and helps others understand it and learn from
 </div>
 <div id="time-series-ish-panel-approaches-to-micro" class="section level3" number="1.8.4">
 <h3><span class="header-section-number">1.8.4</span> Time-series-ish panel approaches to micro</h3>
-<div id="lagged-dependent-variable-and-fixed-effects-nickel-bias" class="section level4" number="1.8.4.1">
-<h4><span class="header-section-number">1.8.4.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</h4>
-</div>
+<p>** Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’**</p>
 </div>
 </div>
 <div id="causal-pathways-mediation-modeling-and-its-massive-limitations" class="section level2" number="1.9">

@@ -111,9 +111,9 @@ http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-bi
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks”."	Harms-lakens-18
 
-#### Confidence intervals and Bayesian credible intervals
+- **Confidence intervals and Bayesian credible intervals**
 
-#### Comparing relative parameters
+- **Comparing relative parameters**
 
 E.g., "the treatment had a heterogeneous effect... we see a statistically significant positive effect for women but not for men".   This doesn't cut it: we need to see a *statistical test* for the *difference* in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).
 
@@ -122,7 +122,7 @@ E.g., "the treatment had a heterogeneous effect... we see a statistically signif
 
 ### Interaction terms and pitfalls
 
-#### 'Moderators' Confusion with nonlinearity
+** 'Moderators' Confusion with nonlinearity**
 
 Moderators: Heterogeneity mixed with nonlinearity/corners
 
@@ -192,7 +192,7 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 
 ### Time-series-ish panel approaches to micro
 
-#### Lagged dependent variable and fixed effects --> 'Nickel bias'
+** Lagged dependent variable and fixed effects --> 'Nickel bias'**
 
 ## Causal pathways: [Mediation modeling and its massive limitations](#mediators)
 

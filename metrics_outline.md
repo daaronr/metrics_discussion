@@ -20,7 +20,9 @@ Data:
 
 Assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied.
 
+<!--
 
+Folders:
 causal_inference_general_notes/
 experimetrics_expt_design/
 heterog_TE_moderators/
@@ -31,6 +33,8 @@ ml-and-mlreading-group/
 mostly-harmless-replication_and_notes/
 multilevel-models/
 sample_selection/
+-->
+
 
 ## Conceptual
 
@@ -42,7 +46,7 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
 
-#### DAGs and Potential outcomes
+-  **DAGs and Potential outcomes**
 
 ### Theory, restrictions, and 'structural vs reduced form'
 
@@ -52,17 +56,16 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Good coding practices
 
-#### Organizing a project
+-  **Organizing a project**
 
-#### Dynamic documents (esp Rmd/bookdown)
+-  **Dynamic documents (esp Rmd/bookdown)**
 
 ### New tools and approaches to data (esp 'tidyverse')
 
-#### Style and consistency
+- **Style and consistency**
+    - Indenting, snake-case,etc
 
-Indenting, snake-case,etc
-
-#### Using functions, variable lists, etc., for clean, concise, readable code
+-  **Using functions, variable lists, etc., for clean, concise, readable code**
 
 ### Data sharing and integrity
 
@@ -136,7 +139,7 @@ Endogenous control: Are the control variables you use endogenous? (E.g., because
 - Nonlinear modeling (and interpreting coefficients)
 
 
-#### 'Testing for nonlinear terms'
+-  **'Testing for nonlinear terms'**
 
 Quadratic regressions are not diagnostic regarding u-shapedness: 	Simonsohn18
 
@@ -158,9 +161,9 @@ http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-bi
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks”."	Harms-lakens-18
 
-#### Confidence intervals and Bayesian credible intervals
+-  **Confidence intervals and Bayesian credible intervals**
 
-#### Comparing relative parameters
+-  **Comparing relative parameters**
 
 E.g., "the treatment had a heterogeneous effect... we see a statistically significant positive effect for women but not for men".   This doesn't cut it: we need to see a *statistical test* for the *difference* in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).
 
@@ -171,14 +174,13 @@ See [@verkaik2016]
 
 ### Interaction terms and pitfalls
 
-#### 'Moderators' Confusion with nonlinearity
+-  **'Moderators' Confusion with nonlinearity**
 
 Moderators: Heterogeneity mixed with nonlinearity/corners
 
 In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts' at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from 'the diminishing returns kicking in'.  Related to https://datacolada.org/57 [57] Interactions in Logit Regressions: Why Positive May Mean Negative
 
-
-#### MHT
+-  **MHT**
 
 ### Choice of test statistics (including nonparametric)
 
@@ -243,7 +245,7 @@ IV not credible	Identification	Note that for an instrument to be valid it needs 
 
 ### 'Corner solution' or hurdle variables and 'Conditional on Positive
 
-#### Bounding approaches (Lee, Manski, etc)
+-  **Bounding approaches (Lee, Manski, etc)**
 
 ## Other paths to observational identification
 
@@ -257,18 +259,19 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 
 ### Time-series-ish panel approaches to micro
 
-
-#### Lagged dependent variable and fixed effects --> 'Nickel bias'
+-  **Lagged dependent variable and fixed effects --> 'Nickel bias'**
 
 ## (Ex-ante) Power calculations
 
 ### What sort of 'power calculations' make sense, and what is the point?
 
-#### The 'harm to science' from running underpowered studies
+-  **The 'harm to science' from running underpowered studies**
 
+<!--
 > "One worries about underpowered tests. Your result (may have)  relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
 
 > Button et al (2013_ point out that running lower-powered studies reduces the positive predicted value—the probability that a “pos- itive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects."	verkaik2016, metzger2015
+-->
 
 ### Power calculations without real data
 
@@ -294,7 +297,7 @@ FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 
 ### Pre-registration and Pre-analysis plans
 
-#### The hazards of specification-searching
+- **The hazards of specification-searching**
 
 ### Sequential and adaptive designs
 
