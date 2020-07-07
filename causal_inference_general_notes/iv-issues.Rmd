@@ -55,6 +55,11 @@ Focusing on a binary endogenous 'treatment' variable
 
 - With a 'weak instrument' ... why does that matter?
 
+## Intrumenting Interactions 
+
+In randomized controlled trials it sometimes arises the issue that on is particularly interested in a potentially endogeneous explanatory variable and its interaction with the experimental treatments, that are exogenous by construction. From the stata list and mostly harmless econometrics [](http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/)
+>If you have \(X_1\) endogenous and an exogenous instrument \(Z\) , and your model includes two terms involving \(X_1\) and \(X_1 \times X_2\), then you should use two instruments: \(Z\), and \(Z \times X_2\). 
+
 ## Reference to the use of IV in experiments/mediation
 
 
