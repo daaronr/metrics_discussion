@@ -157,7 +157,7 @@ $$p\:\{0,1\}^N \times Y^{2N}\times X^N \rightarrow [0,1]$$
 
 ### The analysis of Completely randomized experiments
 
-**Exact p-values for sharp null hypotheses (Fisher etc)** 
+**Exact p-values for sharp null hypotheses (Fisher etc)**
 
 "Sharp": "Under which we can an for all the missing potential outcomes from the observed data" ... So we can infer the distribution of any statistics under the Null.
 
@@ -188,7 +188,7 @@ With multiple outcomes, multiple comparisons issues
 
 Neyman wanted to estimate the ATE for the sample at hand
 
-$$\tau=\frac{1}{N}\Sum_{i=1..N}{(Y_i(1)-Y_i(0)i)}=\bar{Y}(1)-\bar{Y}(0)$$
+$$\tau=\frac{1}{N}\sum_{i=1..N}{(Y_i(1)-Y_i(0)i)}=\bar{Y}(1)-\bar{Y}(0)$$
 
 - DR: Again, this is really not what we care about particularly not in a small-scale experiment.
 
@@ -202,13 +202,13 @@ Defining $D_i$, a term representing "assignment minus the average assignment"
 
 Allows a restatement of the estimator which makes it clear that this is unbiased for the average treatment effect $\tau$
 
-$$\hat{tau}=\tau+\frac{1}{N}\Sum_{i=1..N}{(D_i(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)}$$
+$$\hat{i\tau}=\tau+\frac{1}{N}\sum_{i=1..N}{(D_i(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)}$$
 
 
 
 Sampling variance of $\hat{\tau}$ over the randomization distribution decomposed as
 
-$$V{\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}$$
+$$V({\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}$$
 
 Where $S_c^2$ and $S_t^2$ Are the variances of the control and treated outcomes,
 and $S_{tc}^2$ is the variance of the unit level treatment effect (DR: This must be related to the covariance)
@@ -402,7 +402,7 @@ The presence of non-zero values for γ imply treatment effect heterogeneity.
 
 - DR: Could there not ever be a loss from including interactions and dividing up the sample too fine in doing this interactive estimation? This should depend on the true $R^2$ I think. Try to remember what is the real tradeoff.
 
-**  6 The Analysis of Stratified and paired randomized experiments ** 
+**  6 The Analysis of Stratified and paired randomized experiments **
 
 ### Stratified randomized experiments: analysis
 
@@ -428,7 +428,9 @@ with estimated variance $\sum_{g=1..G}$\hat{V}(\hat{tau}_g)(\frac{N_g}{N})^2$
     - Also note the squared term in the variance estimation, this may be how they computed the variance in the above empirical example
 
 "Special case":  proportion treat units the same in all strata $\rightarrow$ ATE estimator equals difference in means by treatment status:
-$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c$
+
+$$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c$$
+
 ... same as estimator for completely randomized experiment
 
 But the estimated variance for the latter will be overly conservative.
@@ -570,7 +572,7 @@ Multiple splits and tests may lead to overstated statistical significance for di
 - Bonferroni "overly conservative in an environment where many covariates are correlated with one another"
     - List, Shaikh, and Xu (2016) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct
 
-** 10.3 Estimating Treatment Effect Heterogeneity ** 
+** 10.3 Estimating Treatment Effect Heterogeneity **
 
 - Parametric estimators, 'all interactions' (presumably with a correction as noted above)
 - Nonparametric estimator of $\tau(x)$

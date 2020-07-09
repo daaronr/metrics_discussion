@@ -27,16 +27,288 @@ DR:  However, I speculate that this idea might be less clear-cut than it seems. 
 ```{block2,  type='note'}
 [Ferraro discussion on magnitude error due to underpowered studies:](https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics) {-}
 
-... if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficeint. By using a low powered study you sift through for these kind of effects.
+... if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficient. By using a low powered study you sift through for these kind of effects.
 
 ```  
 
 
-
 ## Power calculations without real data
+
+[R 'Paramtest' package vignette](https://cran.r-project.org/web/packages/paramtest/vignettes/Simulating-Power.html) is helpful here.
 
 ## Power calculations using prior data
 
 Adapt example in 'scopingwork.Rmd' to this
+
+### From Reinstein upcoming experiment preregistration
+
+> We are searching for a design and sample size that has sufficient power to detect (or ‘statistically rule out’) an effect of ‘minimal interest’ size, given our somewhat-limited budget. The ‘design parameters’ we can play with are given above.
+
+> While conventional practice seems to involve completely simulated data based on parametric assumptions (normality, etc) we prefer to draw from comparable ‘untreated’ real-world data (see (Barrios 2014) for a related discussion). Assuming the general distribution of outcomes (and covariates) is in some sense constant or predictable over time (perhaps stationarity?), this should give us more accurate estimates of power.
+
+> We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect’.
+
+
+
+#### Assignment procedures to consider {-#assign-notes}
+
+We consider three categories of possible assignment criteria: (We are coding these [below](#assign-functions).)
+
+**1. Simple data-based** 
+
+(Coded [here](#power-simple))
+
+Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.  
+
+We will also consider an unbalanced design, both in this and in other categories, which may achieve greater power, especially considering the differential costs of our treatments.
+
+<div class="marginnote">
+Although as we have no evidence on the treatments and thus no reason to anticipate a differential variance between treatments and control, an unbalanced design may allow greater power for the same *cost*, as observing controls is costless, and the 'low-donation' treatment is lower cost.
+</div>
+ 
+\
+ 
+**2. Ad-hoc (Reinstein adapts Barrios), using prediction.Rmd quantiles**
+
+*General summary:* Fit a predictive model of the outcome (total donations) based on pre-treatment observables, using set-aside training data. Generate quantiles of 'predicted donation' (tuning parameter=number of quantiles?). Power-test block randomisation with these blocks as quantiles, using set-aside testing data. 
+
+*Caveats:* If we test the power with multiple models on the test data  (e.g., 'tuning' the number of quantiles) we will be overly optimistic and maybe overfitting.
+
+Also, this assignment procedure is not necessarily robust to TE heterogeneity. By luck, it may assign substantial *imbalance* across any particular dimension.
+
+\
+
+Prediction algorithm (folded)
+```{block2,  type='fold'}
+
+- Adapt from code in CharitySubstitutionExperiment repo, in assignments_power.Rmd and analysis_subst.Rmd; examples of Elastic net etc 
+
+1. Define and organize the set of variables available at intervention
+
+2. Define and calculate the outcome variables (total amount raised)
+
+3. Split and set-aside validation and simulation data (?within prediction also)
+
+4. Model the outcome, using a Ridge regression with all features.  The regularization/penalty parameter could be optimized for best fit. (Cross-fold).
+
+```
+
+Blocking process (folded)
+```{block2,  type='fold'}
+
+5. We can test block randomization by the predicted quantile of this model with a bootstrapped procedure using set-aside 'testing' data not used in the above regression.  We want to run the simulations until we find the optimal "block width" or quantile to use for blocking the randomization. Ideally, this procedure should take into account the fact that if we stopped at a random time we may have uneven cell sizes.
+
+(Caveat -- this resampling may need to be done based a randomised 'start time' to address random time-specific effects. ) *Note*: Because of this and for feasibility, we may abridge step 5, and just try out a few reasonable large block widths (e.g., quartiles)
+
+Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure,  and estimate an "effect size" for each sample. We then consider the 99% bounds of these simulated effect sizes.  The block width (and  regularization parameter?) that consistently gives us the tightest bounds  should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.  
+
+The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws... the smaller the *actual* effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time).    [Note: these latter notes may bot go with the procedure proposed below; these are older.]
+
+```
+
+
+
+**Kasy method?**
+
+We may or may not get to considering the method proposed in [@Kasy2016b]. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)
+
+```{block, type='fold'}
+
+See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
+
+- Prepare concise data set (csv?) to throw into his app, choose baseline covariates
+- Estimator: Difference of means or Bayes
+- Prior:  Squared exponential or Linear?
+- Re-randomization draws (default=1000); Expected R-sq (default=0.7)
+
+Notes: 
+- Stratify on 'discrete strata' 
+- Conservative: difference in means without controls or interactions
+- More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors 
+- But Kasy's technique makes frequentist inference difficult (Bayesian OK) 
+```
+
+
+**See Guidance/code:**
+
+- Simple; from  <https://egap.org/content/power-analysis-simulations-r>
+
+
+
+
+#### Treatment assignment functions, used in power calculations {-#assign-functions}
+
+1. simple_assign: assign treatment dummy to first t-share of n rows
+
+```{r simple_assign}
+
+simple_assign <- function(df, tshare=0.5, blockvar="NA") { #note: no blocking here, this is just to get a homogenous code
+  mutate(df, d_t = row_number() <= (n() * tshare)) #note: the data must be randomised first!
+}
+
+```
+
+\
+
+**Data-based power calculation: create simulation function** {#power-calc-sim-func}
+
+<!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
+
+```{r power-simulations}
+
+power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0.05, test_nm= wilcox.test, f_assign=simple_assign, bv) {
+
+    results  <- sapply(1:reps, function(r) { #TODO - replace with purr::map (Toby)
+#1. Sample size N from data for each iteration
+    exp_sample <- sample_n(ds, size = N, replace = TRUE) 
+    
+#2. Selection of control and treatment group using function `f_assign' 
+    exp_sample <- exp_sample %>%
+      f_assign(tshare=tshare, blockvar=bv) %>%    
+
+#3. Add treatment effects (`propTE` and `linTE`) to treatgroup
+      mutate({{yvar}} :=   ifelse(
+        d_t == "TRUE", {{yvar}} * (1 + propTE) + linTE, {{yvar}})) %>% 
+#TODO: Do this for several y-variables in each run; 'map' these?
+      mutate(yv := {{yvar}}) %>%  #reassign variable because I couldn't figure out how to get the unquoted argument to work in tests below #TODO-fix
+
+#4. Run chosen test `test_nm`, output p-value
+      dplyr::select(yv, d_t)
+    test <- exp_sample %>%
+      do(tidy(test_nm( yv ~ d_t, data = ., paired = FALSE )))
+    test$p.value
+    }
+    )
+    
+#5. Output share of p-values below alpha
+      sum(results < alpha) / reps
+  }
+```
+
+
+
+2. block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (`blockvar`)
+
+*Note: I am using 'randomizr' here to assign blocks*
+
+```{r block_1d_assign}
+
+block_1d_assign <- function(df, tshare=0.5, blockvar) { 
+      block_rand <- as.tibble(
+        randomizr::block_ra(
+          blocks =  df[[glue("{blockvar}")]], conditions = c("control","treat"), prob_each=c(1-tshare, tshare)
+          )
+        )
+      df <- as.tibble(bind_cols(df, block_rand)) %>% 
+        rename(d_t=value) %>% 
+        mutate(
+          d_t=(d_t=="treat")
+        )
+}
+
+```
+
+
+#### Power calculation (just simple examples): adapt to built-in data {-}
+```{r}
+
+#pwr_n400_L50_p15 <- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)
+
+```
+
+#### Loop and plot over...
+
+```{r}
+
+linTE.try <- c(0,50,100)
+propTE.try <- seq(from=0.05, to = 0.2, by = 0.05)
+
+outcomes.try <- c("sum_don","count_don")
+tests.try <- c(t.test, wilcox.test)
+
+```
+
+
+Testing equicost parings, determine necessary cost
+
+With only control and treatment we have 
+
+$$cost = multiplier \times avgcost \times N \times tshare$$
+$$\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)$$
+
+Setting a 2x multiplier (for the 'large') treatment, avgcost=£30 (hard coded) for now, and imagining a £6000 initial budget yields
+
+$$\rightarrow N = 6000/\big(60 \times tshare\big) $$
+
+
+
+```{r}
+
+cost <- 6000 #make this an entry in the 'design_params' list
+multip <- 2
+avdon <- 30
+
+tshare.try <- seq(from=0.1, to=0.5, by=0.1)  
+sample.try <- seq(from=400, to=1200, by=200)  
+equi_sample <- cost/(avdon*multip*tshare.try)
+
+# now maybe make a vector of tshare.try and equi_sample, for iterating over
+# I assume we can consider the 'optimal tradeoff' and this will be invariant to the cost; am I right? 
+                     
+
+```
+
+
+#### For 'total x' outcome variable {-} 
+
+```{r eval=FALSE}
+
+#Unvarying parameters up here:
+linTE <- 0
+
+#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?
+power_vals <- tibble(
+  n_try=NA,
+  prop_te = NA,
+  lin_te=NA,
+  test=NA,
+  power_est=NA
+)
+
+#tic() #timer
+
+#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 'mapping over multiple arguments'
+
+  #OUTCOME <- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven't got the syntax to work
+  
+  df_x <- df %>%
+    select(outcomes.try)
+    #select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)
+  
+  #loop over tests
+  for (t in seq_along(tests.try)) {
+    TEST <- tests.try[t]
+    
+    #Loop over proportional TE
+    for (p in seq_along(propTE.try)) {
+      PT <- propTE.try[[p]]
+      
+      #Loop over sample sizes
+      for (s in seq_along(sample.try)) {
+        N <- sample.try[s]
+        PW <- power_data(
+            ds = dfX, reps = 80, yvar = sum_don, N = N, tshare = 0.5, linTE = linTE, propTE = PT, alpha = 0.05
+          )
+        power_vals <- add_row(
+            power_vals, n_try = N, prop_te = PT, lin_te = linTE, test = as.character(TEST), power_est = PW
+          ) ##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)
+      }
+    }
+  }
+
+  #}
+
+#toc()
+```
 
 

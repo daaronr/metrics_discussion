@@ -146,6 +146,8 @@ This includes:
 
 ### Mapping over lists to produce results
 
+
+
 <!-- ft <- list(ft_treat_no_ask, ft_treat_no_ask_19, ft_treat_no_ask_19_short, ft_treat_no_ask_19_long)
 
 ft_names <- c("All", "2019", "2019-short", "2019-long")
@@ -159,6 +161,13 @@ ft <- map2(ft, ft_names, function(x, y) {
 -->
 
 ### Building results based on 'lists of filters' of the data set
+
+In writing a paper you very often want to produce 'statistics A-F for subsets S1-S5'.
+
+Can't we just automate this?
+
+\
+
 
 We can store a filter as a character vector and then apply it
 ```{r}
@@ -260,3 +269,9 @@ Whenever there are more than 20 lines of something prosaic that cannot/has not b
 \
 
 Switching from Latex to markdown/R-markdown? [These tips from Colin Bousige look pretty good](https://colinbousige.github.io/post/rmarkdown/), although I prefer the bookdown/gitbook format
+
+
+Massive data cleaning using the Recipe package
+
+
+Codebook package

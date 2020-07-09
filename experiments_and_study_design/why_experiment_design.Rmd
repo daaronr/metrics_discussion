@@ -4,11 +4,11 @@
 
 I claim an experiment should:
 
-1. Have a reasonable chance of an outcome that would not have been predicted in advance. 
+1. Have a reasonable chance of an outcome that would not have been predicted in advance.
 
 2. The realized outcome should meaningfully inform  our understanding of the world in other words. In other words, if the outcome comes out one way it should cause us to update our beliefs about a particular hypothesis about the world in one direction (and if it comes out the other way we should update in the other direction.)
 
-> Experimenter should always ask: "What uncertainty (about real-world  preferences, decision-making etc.) is 'entangled' (ala @ESYudkowsky) with the results of this experiment?"... i.e., 'how might my beliefs change depending on the results?' 
+> Experimenter should always ask: "What uncertainty (about real-world  preferences, decision-making etc.) is 'entangled' (ala @ESYudkowsky) with the results of this experiment?"... i.e., 'how might my beliefs change depending on the results?'
 
 - @givingtools on twitter
 
@@ -19,7 +19,7 @@ I claim an experiment should:
 
 This paper is a critique of how models are claimed to be "tested", through a literal implementation, in the laboratory. They argue this misinterprets the intention of a model, and use of economic modelling in general. Ultimately, such experiments (they say) don't really tell us one way or another about the truth or usefulness of the model for the real-world domain that was intended. Some key quotes..
 
-> My reductio ad absurdum on this is an experimenter who 'tests mechanism-design' by asking subjects "do you want to choose this optimal mechanism and earn $20, or this inefficient mechanism and earn $10"? -- @givingtools on twitter
+> My reductio ad absurdum on this is an experimenter who 'tests mechanism-design' by asking subjects "do you want to choose this optimal mechanism and earn £20, or this inefficient mechanism and earn £10"? -- @givingtools on twitter
 
 They single-out  two examples of well-published experiments  for criticism: "an investigation of price dispersion by John Morgan,
 
@@ -91,21 +91,21 @@ A common response to critiques (particularly critiques of the  generalizability 
 
 You can guess that I'm not a fan of this.  I think one always needs to defend the paper and approach  on its own merits. Generalisability is an important issue. Each of the other published papers that also suffers from such issues has a specific response and justification for that particular case, and if it doesn't this is sorely lacking.
 
-I think we *should* be reading and publishing papers that consider, discuss, and acknowledge their own limitations, and future work can test and build on this. This should promote to robust, reproducable science. 
+I think we *should* be reading and publishing papers that consider, discuss, and acknowledge their own limitations, and future work can test and build on this. This should promote to robust, reproducable science.
 
 \
 
-Just because I say "'"this is something we should be concerned with doesn't mean I'm saying "this paper has no value'. I just mean "let's discuss reasons why this may or may not threaten internal or external validity/generalisability, and how we can design the study and analysis minimise these potential problems""
+Just because I say "this is something we should be concerned with" doesn't mean I'm saying "this paper has no value'. I just mean "let's discuss reasons why this may or may not threaten internal or external validity/generalisability, and how we can design the study and analysis minimise these potential problems""
 
 \
 
-In writing a paper, I find it important that *we the authors* feel the results are credible and not overstated. So I feel like the best approach is "let's write the best paper we can and consider every issue seriously, and then hopefully the good publication/peer-review outcome will follow". That's also the most motivating and least stressful way for me to work. (Rather than thinking 'how can I sneak this paper into the best journal?') 
+In writing a paper, I find it important that *we the authors* feel the results are credible and not overstated. So I feel like the best approach is "let's write the best paper we can and consider every issue seriously, and then hopefully the good publication/peer-review outcome will follow". That's also the most motivating and least stressful way for me to work. (Rather than thinking 'how can I sneak this paper into the best journal?')
 
 <div class="marginnote">
-In fact I consider peer review and high rating and use as the important outcome, not the publication itself. We live in a world where anyone can publish their work immediately on the WWW. The journals themselves are providing little or no service: it is the reviewers and editors offering feedback and evaluation that matters.
+In fact I consider peer review and rating as the important outcome, not the publication itself. We live in a world where anyone can publish their work immediately on the WWW. The journals themselves are providing little or no service: it is the reviewers and editors offering feedback and evaluation that matters.
 </div>
-  
-```  
+
+```
 
 
 \
