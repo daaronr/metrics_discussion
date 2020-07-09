@@ -7,6 +7,27 @@
 
 ## Parametric and nonparametric tests of simple hypotheses
 
+### Parametric tests
+
+### Non-parametric tests
+
+#### Fligner-Policello test
+
+@flignerpolicello1981
+Null-hypothesis that the medians in the two groups (samples) are the same. 
+> Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test. 
+
+```{r Fligner-Policello-test, eval=FALSE, include=FALSE}
+  library(RVAideMemoire)
+  
+  x <- rpois(20,3)
+  y <- rpois(20,5)
+  fp.test(x,y)
+
+```
+
+
+
 ## Adjustments for exogenous (but non-random) treatment assignment
 
 ## IV in an experimental context to get at 'mediators'?
