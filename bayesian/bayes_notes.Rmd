@@ -317,6 +317,21 @@ t %>%
 
 \
 
+
+
+## Third video/chapter
+
+Regression is a useful simplification, similar to the Ptolomeic geocentric model
+
+### Normal distributions
+
+Normal distributions are hugely common in nature because it is 'the product of adding small fluctutations'; there are the most combinations that produce 'no movement from the center'
+
+But this means that seeing a normal distribution tells you little about the underlying process
+
+Addition, 'the mathematical function where order doesn't matter' (not even adding 0's), leads to Normal distributions
+
+
 ## Title: "Introduction to Bayesian analysis in R and Stata - Katz, Qstep"
 
 *Content from notes from this lecture*
