@@ -72,10 +72,9 @@ You can calculate the ICC using ANOVA estimation.
 
 ```{r}
 icc_anova <- aov(outcome ~ group,data = df) %>% summary
-icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
+icc <- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 
 ```
-
 
 
 ## Alternative/Naive approaches
