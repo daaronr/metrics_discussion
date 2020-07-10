@@ -3,7 +3,7 @@ title: "multilevel models, qstep, Gabriel KAtz"
 output: html_document
 ---
 
-#INtroduction
+#Introduction
 
 - Came from test scores modeling, education literature
 
@@ -64,6 +64,19 @@ Could also have a 'random slope' model; the model with heterogeneity
 
 
 Could affect the impact of student effort; could affect students' average marks, or both
+
+### Intra-cluster correlations
+From David McKenzie's WorldBank blog. [Tools of the Trade: Intra-cluster Correlations](https://blogs.worldbank.org/impactevaluations/tools-of-the-trade-intra-cluster-correlations) 
+
+You can calculate the ICC using ANOVA estimation.
+
+```{r}
+icc_anova <- aov(outcome ~ group,data = df) %>% summary
+icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
+
+```
+
+
 
 ## Alternative/Naive approaches
 
