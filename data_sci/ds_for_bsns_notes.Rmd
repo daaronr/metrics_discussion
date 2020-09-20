@@ -1,7 +1,9 @@
-# Notes on Data Science for Business by Foster Provost and Tom Fawcett
+# Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)
+- Notes by David Reinstein
 
+This (2013) book seems to have some slightly outdated focus (terms like 'data-mining') but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is 'meat in this sandwich'.
 
-Terms like 'lift':
+## Terms like 'lift'
 
 > As another example, in evaluating the utility of a pattern, we see a notion of lift— how much more prevalent a pattern is than would be expected by chance—recurring broadly across data science. It is used to evaluate very different sorts of patterns in different contexts. Algorithms for targeting advertisements are evaluated by computing the lift one gets for the targeted population. Lift is used to judge the weight of evidence for or against a conclusion. Lift helps determine whether a co-occurrence (an association) in data is interesting, as opposed to simply being a natural consequence of popularity.
 
@@ -11,7 +13,6 @@ Terms like 'lift':
 Example: Hurricane Frances... predicting demand to gear inventory ... lead to huge profit for Wal-Mart...
 
 > ‘We didn’t know in the past that strawberry PopTarts increase in sales, like seven times their normal sales rate, ahead of a hurricane"
-
 
 > 1. Classification and class probability estimation attempt to predict, for each individual in a population, which of a (small) set of classes this individual belongs to. Usually the classes are mutually exclusive. An example classification question would be: “Among all the customers of MegaTelCo, which are likely to respond to a given offer?” In this example the two classes could be called will respond and will not respond.
 
@@ -24,9 +25,11 @@ Example: Hurricane Frances... predicting demand to gear inventory ... lead to hu
 ### Data Science, Engineering, and Data-Driven Decision Making
 
 
-> They show that statistically, the more datadriven a firm is, the more productive it is—even controlling for a wide range of possible confounding factors. And the differences are not small. One standard deviation higher on the DDD scale is associated with a 4%–6% increase in productivity. DDD also is correlated with higher return on assets, return on equity, asset utilization, and market value, and the relationship seems to be causal.
+> They show that statistically, the more data-driven a firm is, the more productive it is—even controlling for a wide range of possible confounding factors. And the differences are not small. One standard deviation higher on the DDD scale is associated with a 4%–6% increase in productivity. DDD also is correlated with higher return on assets, return on equity, asset utilization, and market value, and the relationship seems to be causal.
 
-*DR: I still doubt the causality here*
+<div class="marginnote">
+DR: I am still somewhat skeptical of the causality here
+</div>
 
 >  two types: (1) decisions for which “discoveries” need to be made within data, and (2) decisions that repeat, especially at massive scale, and so decision-making can benefit from even small increases in decision-making accuracy based on data analysis
 
@@ -134,12 +137,12 @@ Logit, Mnlogit, etc
 > would be: What items are commonly purchased together? While clustering looks at similarity between objects based on the objects’ attributes, co-occurrence grouping considers similarity of objects based on their appearing together in transactions.
 
 
-**Profiling** 
+**Profiling**
 
 *“What is the typical cell phone usage of this customer segment?”*
 
 > Profiling (also known as behavior description) attempts to characterize the typical
-behavior of an individual, group, or population. 
+behavior of an individual, group, or population.
 
 > Profiling is often used to establish behavioral norms for anomaly detection applications such as fraud detection ...
 
@@ -150,12 +153,12 @@ behavior of an individual, group, or population.
 *“Since you and Karen share 10 friends, maybe you’d like to be Karen’s friend?*
 
 > attempts to predict connections between data items, usually by
-suggesting that a link should exist, 
+suggesting that a link should exist,
 
 
 \
 
-**Data reduction** 
+**Data reduction**
 
 > attempts to take a large set of data and replace it with a smaller set of data that contains much of the important information in the larger set.
 
@@ -174,9 +177,9 @@ servational data
 
 > Metaphorically, a teacher “supervises” the learner by carefully providing target information along with a set of examples.
 
-The term 'label' 
+The term 'label'
 
-> Technically, another condition must be met for supervised data mining: there must be data on the target. 
+> Technically, another condition must be met for supervised data mining: there must be data on the target.
 
 > The value for the target variable for an individual is often called the indi‐ vidual’s label, emphasizing that often (not always) one must incur expense to actively label the data.
 
@@ -185,7 +188,7 @@ The term 'label'
 
 Like 'ask a question with a question mark', perhaps:
 
-> A vital part in the early stages of the data mining process is (i) to decide whether the line of attack will be supervised or unsupervised, and (ii) if supervised, to produce a precise definition of a target variable. 
+> A vital part in the early stages of the data mining process is (i) to decide whether the line of attack will be supervised or unsupervised, and (ii) if supervised, to produce a precise definition of a target variable.
 
 ### The Data Mining Process
 
@@ -197,7 +200,7 @@ Iterative... questions, data, answers, lather, rinse repeat
 
 ### Business Understanding
 
-> often the key to a great success is a creative problem formulation by some analyst regarding how to cast the business problem as one or more data science problems. 
+> often the key to a great success is a creative problem formulation by some analyst regarding how to cast the business problem as one or more data science problems.
 
 ### Data Understanding
 
@@ -207,28 +210,27 @@ Iterative... questions, data, answers, lather, rinse repeat
 
 "Leaks" -- variables used in building the model that you can't actually use in decision-making
 
-> One very general and important concern during data preparation is to beware of “leaks” (Kaufman et al. 2012). A leak is a situation where a variable collected in historical data gives information on the target variable—information that appears in historical data but is not actually available when the decision has to be made. As an example, when predicting whether at a particular point in time a website visitor would end her session or continue surfing to another page, the variable “total number of webpages visited in the session” is predictive. However, the total number of webpages visited in the session would not be known until after the session was over (Kohavi et al., 2000)—at which point one would know the value for the target variable! As another illustrative example, consider predicting whether a customer will be a “big spender”; knowing the categories of the items purchased (or worse, the amount of tax paid) are very predictive, but are not known at decision-making time (Kohavi & Parekh, 2003). 
+> One very general and important concern during data preparation is to beware of “leaks” (Kaufman et al. 2012). A leak is a situation where a variable collected in historical data gives information on the target variable—information that appears in historical data but is not actually available when the decision has to be made. As an example, when predicting whether at a particular point in time a website visitor would end her session or continue surfing to another page, the variable “total number of webpages visited in the session” is predictive. However, the total number of webpages visited in the session would not be known until after the session was over (Kohavi et al., 2000)—at which point one would know the value for the target variable! As another illustrative example, consider predicting whether a customer will be a “big spender”; knowing the categories of the items purchased (or worse, the amount of tax paid) are very predictive, but are not known at decision-making time (Kohavi & Parekh, 2003).
 
 ### Evaluation
 
-> assess the data mining results rigorously and to gain confidence that they are valid and reliable before moving 
+> assess the data mining results rigorously and to gain confidence that they are valid and reliable before moving
 
 > test a model first in a controlled laboratory setting. Equally important, the evaluation stage also serves to help ensure that the model satisfies the original business goal
 
-> A model may be extremely accurate (> 99%) by laboratory standards, but eval‐ uation in the actual business context may reveal that it still produces too many false alarms to be economically feasible. (How much would it cost to provide the staff to deal with all those false alarms?
+> A model may be extremely accurate (> 99%) by laboratory standards, but evaluation in the actual business context may reveal that it still produces too many false alarms to be economically feasible. (How much would it cost to provide the staff to deal with all those false alarms?
 
 > Think about the comprehensibility of the model to stakeholders (not just to the data scientists).
 
 \
 
-Use an experiment to test the model: 
+Use an experiment to test the model:
 
->  in some cases we may want to extend evaluation into the development environment, for example by instrumenting a live system to be able to conduct random‐ ized experiments. In our churn example, if we have decided from laboratory tests that a data mined model will give us better churn reduction, we may want to move on to an “in vivo” evaluation, in which a live system randomly applies the model to some cus‐ tomers while keeping other customers as a control group (recall our discussion of causal modeling from Chapter 1). 
+>  in some cases we may want to extend evaluation into the development environment, for example by instrumenting a live system to be able to conduct random‐ ized experiments. In our churn example, if we have decided from laboratory tests that a data mined model will give us better churn reduction, we may want to move on to an “in vivo” evaluation, in which a live system randomly applies the model to some cus‐ tomers while keeping other customers as a control group (recall our discussion of causal modeling from Chapter 1).
 
 ... noting
 
->  behavior can change—in some cases, like fraud or spam, in direct response to
-the deployment of models. 
+>  behavior can change—in some cases, like fraud or spam, in direct response to the deployment of models.
 
 \
 
@@ -245,22 +247,21 @@ You may need to 'deploy the whole data mining system' (i.e., rebuild the model u
 
 Difficulties with 'over the wall' transfers:
 
-> “Your model is not what the data scientists design, it’s what the engineers build.” From a management perspective, it is advisable to have members of the development team involved early on in the data science project. 
+> “Your model is not what the data scientists design, it’s what the engineers build.” From a management perspective, it is advisable to have members of the development team involved early on in the data science project.
 
 ### Database Querying
 
-> s are available to
-answer one-off or repeating queries about data posed by an analyst. These tools are
-usually frontends to database systems, based on Structured Query Language (SQL) or
-a tool with a graphical user interface (GUI) to help formulate queries (e.g., query-by-example, or QBE). 
+> s are available to answer one-off or repeating queries about data posed by an analyst. These tools are usually frontends to database systems, based on Structured Query Language (SQL) or a tool with a graphical user interface (GUI) to help formulate queries (e.g., query-by-example, or QBE).
 
-> On-line Analytical Processing (OLAP) provides an easy-to-use GUI to query large data collections, for the purpose of facilitating data exploration. 
+> On-line Analytical Processing (OLAP) provides an easy-to-use GUI to query large data collections, for the purpose of facilitating data exploration.
 
 ### Regression Analysis
 
->  Here we are less interested in explaining a particular dataset as we are in extracting patterns that will generalize to other data, and for the purpose of improving some business process. 
+>  Here we are less interested in explaining a particular dataset as we are in extracting patterns that will generalize to other data, and for the purpose of improving some business process.
 
-**DR: The above seems wrong** -- this is not what regression analysis *does*, without many further assumptions!
+<div class="marginnote">
+ **DR: The above seems wrong** -- this is not what regression analysis *does*, without many further assumptions!
+</div>
 
 \
 
@@ -270,7 +271,7 @@ a tool with a graphical user interface (GUI) to help formulate queries (e.g., qu
 
 ### Answering Business Questions with These Techniques
 
-> consider a set of questions that may arise and the technologies that would be appropriate for answering them. These questions are all related but each is subtly different. 
+> consider a set of questions that may arise and the technologies that would be appropriate for answering them. These questions are all related but each is subtly different.
 
 > 1. Who are the most profitable customers?
 2. Is there really a difference between the profitable customers and the average customer?
@@ -280,23 +281,15 @@ this customer to generate?
 
 ## Introduction to Predictive Modeling: From Correlation to Supervised Segmentation
 
-we will begin by
-thinking of predictive modeling as supervised segmentation—how can we segment the
-population into groups that differ from each other with respect to some quantity of
-interest. In particular, how can we segment the population with respect to something
-that we would like to predict or estimate.
+we will begin by thinking of predictive modeling as supervised segmentation—how can we segment the population into groups that differ from each other with respect to some quantity of interest. In particular, how can we segment the population with respect to something that we would like to predict or estimate.
 
- Tree induction incorporates the idea of
-supervised segmentation in an elegant manner, repeatedly selecting informative attributes
+ Tree induction incorporates the idea of supervised segmentation in an elegant manner, repeatedly selecting informative attributes
 
- A descriptive model must be judged in part on its intelligibility, and
-a less accurate model may be preferred if it is easier to understand. A predictive model
-may be judged solely on its predictive performance, although we will discuss why in‐
-telligibility is nonetheless important
+ A descriptive model must be judged in part on its intelligibility, and a less accurate model may be preferred if it is easier to understand. A predictive model may be judged solely on its predictive performance, although we will discuss why intelligibility is nonetheless important
 
 The creation of models from data is known as model induction. Induction is a term
 from philosophy that refers to generalizing from specific cases to general rules (or laws,
-or truths). 
+or truths).
 
 ### Supervised Segmentation
 
@@ -304,11 +297,10 @@ or truths).
 will be known when the target is not, then these segments can be used to predict the
 value of the target variable
 
- a for‐
-mula that evaluates how well each attribute splits a set of examples into segments, with
+ a formula that evaluates how well each attribute splits a set of examples into segments, with
 respect to a chosen target variable. Such a formula is based on a purity measure.
 The most common splitting criterion is called information gain, and it is based on a
-purity measure called entropy. 
+purity measure called entropy.
 
 
  Disorder corresponds
@@ -317,11 +309,11 @@ for example, a mixed up segment with lots of write-offs and lots of non-write-of
 have high entropy.
 More technically, entropy is defined as:
 
-$$entropy = - p_1 log (p_1) - p_2 log (p_2) - ... $$ 
+$$entropy = - p_1 log (p_1) - p_2 log (p_2) - ... $$
 
 \
 
-Each $p_i$ is the probability (the relative percentage) of property i within the set. the logarithm is generally taken as base 2. 
+Each $p_i$ is the probability (the relative percentage) of property i within the set. the logarithm is generally taken as base 2.
 
 
 ![](entropy_plot.png)
@@ -335,3 +327,272 @@ Each $p_i$ is the probability (the relative percentage) of property i within the
 > the entropy for each child $(c_i)$ is weighted by the proportion of instances be‐ longing to that child, $p(c_i)$
 
 ![](infogain.png)
+
+
+## Contents
+
+### 1. Introduction: Data-Analytic Thinking                     . {-}
+
+The Ubiquity of Data Opportunities 1
+Example: Hurricane Frances 3
+Example: Predicting Customer Churn 4
+Data Science, Engineering, and Data-Driven Decision Making 4
+Data Processing and “Big Data” 7
+From Big Data 1.0 to Big Data 2.0 8
+Data and Data Science Capability as a Strategic Asset 9
+Data-Analytic Thinking 12
+This Book 14
+Data Mining and Data Science, Revisited 14
+Chemistry Is Not About Test Tubes: Data Science Versus the Work of the Data
+Scientist 15
+Summary 16
+
+### 2. Business Problems and Data Science Solutions                 {-}
+Fundamental concepts: A set of canonical data mining tasks; The data mining process;
+Supervised versus unsupervised data mining.
+From Business Problems to Data Mining Tasks 19
+Supervised Versus Unsupervised Methods 24
+Data Mining and Its Results 25
+The Data Mining Process 26
+Business Understanding 27
+Data Understanding 28
+Data Preparation 29
+Modeling 31
+Evaluation 31
+Implications for Managing the Data Science Team 34
+Other Analytics Techniques and Technologies 35
+Statistics 35
+Database Querying 37
+Data Warehousing 38
+Regression Analysis 39
+Machine Learning and Data Mining 39
+Answering Business Questions with These Techniques 40
+Summary 41
+
+### 3. Introduction to Predictive Modeling: From Correlation to Supervised Segmentation. {-}
+
+Fundamental concepts: Identifying informative attributes; Segmenting data by
+progressive attribute selection.
+Exemplary techniques: Finding correlations; Attribute/variable selection; Tree
+induction.
+Models, Induction, and Prediction 44
+Supervised Segmentation 48
+Selecting Informative Attributes 49
+Example: Attribute Selection with Information Gain 56
+Supervised Segmentation with Tree-Structured Models 62
+Visualizing Segmentations 67
+Trees as Sets of Rules 71
+Probability Estimation 71
+Example: Addressing the Churn Problem with Tree Induction 73
+Summary 78
+
+#### 4. Fitting a Model to Data                           {-}
+
+Fundamental concepts: Finding “optimal” model parameters based on data; Choosing
+the goal for data mining; Objective functions; Loss functions.
+Exemplary techniques: Linear regression; Logistic regression; Support-vector machines.
+Classification via Mathematical Functions 83
+Linear Discriminant Functions 85
+Optimizing an Objective Function 87
+An Example of Mining a Linear Discriminant from Data 88
+Linear Discriminant Functions for Scoring and Ranking Instances 90
+Support Vector Machines, Briefly 91
+Regression via Mathematical Functions 94
+Class Probability Estimation and Logistic “Regression” 96
+* Logistic Regression: Some Technical Details 99
+Example: Logistic Regression versus Tree Induction 102
+Nonlinear Functions, Support Vector Machines, and Neural Networks 105
+
+#### 5. Overfitting and Its Avoidance {-}
+
+Fundamental concepts: Generalization; Fitting and overfitting; Complexity control.
+Exemplary techniques: Cross-validation; Attribute selection; Tree pruning;
+Regularization.
+Generalization 111
+Overfitting 113
+Overfitting Examined 113
+Holdout Data and Fitting Graphs 113
+Overfitting in Tree Induction 116
+Overfitting in Mathematical Functions 118
+Example: Overfitting Linear Functions 119
+* Example: Why Is Overfitting Bad? 124
+From Holdout Evaluation to Cross-Validation 126
+The Churn Dataset Revisited 129
+Learning Curves 130
+Overfitting Avoidance and Complexity Control 133
+Avoiding Overfitting with Tree Induction 133
+A General Method for Avoiding Overfitting 134
+* Avoiding Overfitting for Parameter Optimization 136
+Summary 140
+
+#### 6. Similarity, Neighbors, and Clusters                     . {-}
+
+Fundamental concepts: Calculating similarity of objects described by data; Using
+similarity for prediction; Clustering as similarity-based segmentation.
+Exemplary techniques: Searching for similar entities; Nearest neighbor methods;
+Clustering methods; Distance metrics for calculating similarity.
+Similarity and Distance 142
+Nearest-Neighbor Reasoning 144
+Example: Whiskey Analytics 144
+Nearest Neighbors for Predictive Modeling 146
+How Many Neighbors and How Much Influence? 149
+Geometric Interpretation, Overfitting, and Complexity Control 151
+Issues with Nearest-Neighbor Methods 154
+Some Important Technical Details Relating to Similarities and Neighbors 157
+Heterogeneous Attributes 157
+* Other Distance Functions 158
+* Combining Functions: Calculating Scores from Neighbors 161
+Clustering 163
+Example: Whiskey Analytics Revisited 163
+Hierarchical Clustering 164
+Example: Clustering Business News Stories 174
+Understanding the Results of Clustering 177
+* Using Supervised Learning to Generate Cluster Descriptions 179
+Stepping Back: Solving a Business Problem Versus Data Exploration 182
+Summary 184
+
+#### 7. Decision Analytic Thinking I: What Is a Good Model?              {-}
+
+Fundamental concepts: Careful consideration of what is desired from data science
+results; Expected value as a key evaluation framework; Consideration of appropriate
+comparative baselines.
+Exemplary techniques: Various evaluation metrics; Estimating costs and benefits;
+Calculating expected profit; Creating baseline methods for comparison.
+Evaluating Classifiers 188
+Plain Accuracy and Its Problems 189
+The Confusion Matrix 189
+Problems with Unbalanced Classes 190
+Problems with Unequal Costs and Benefits 193
+Generalizing Beyond Classification 193
+A Key Analytical Framework: Expected Value 194
+Using Expected Value to Frame Classifier Use 195
+Using Expected Value to Frame Classifier Evaluation 196
+Evaluation, Baseline Performance, and Implications for Investments in Data 204
+Summary 207
+
+#### 8. Visualizing Model Performance                       {-}
+
+Fundamental concepts: Visualization of model performance under various kinds of
+uncertainty; Further consideration of what is desired from data mining results.
+Exemplary techniques: Profit curves; Cumulative response curves; Lift curves; ROC
+curves.
+Ranking Instead of Classifying 209
+Profit Curves 212
+ROC Graphs and Curves 214
+The Area Under the ROC Curve (AUC) 219
+Cumulative Response and Lift Curves 219
+Example: Performance Analytics for Churn Modeling 223
+Summary 231
+
+#### 9. Evidence and Probabilities                         {-}
+
+Fundamental concepts: Explicit evidence combination with Bayes’ Rule; Probabilistic
+reasoning via assumptions of conditional independence.
+Exemplary techniques: Naive Bayes classification; Evidence lift.
+Combining Evidence Probabilistically 235
+Joint Probability and Independence 236
+Bayes’ Rule 237
+Applying Bayes’ Rule to Data Science 239
+Conditional Independence and Naive Bayes 240
+Advantages and Disadvantages of Naive Bayes 242
+A Model of Evidence “Lift” 244
+Example: Evidence Lifts from Facebook “Likes” 245
+Evidence in Action: Targeting Consumers with Ads 247
+Summary 247
+
+#### 10. Representing and Mining Text                       . {-}
+
+Fundamental concepts: The importance of constructing mining-friendly data
+representations; Representation of text for data mining.
+Exemplary techniques: Bag of words representation; TFIDF calculation; N-grams;
+Stemming; Named entity extraction; Topic models.
+Why Text Is Important 250
+Why Text Is Difficult 250
+Representation 251
+Bag of Words 252
+Term Frequency 252
+Measuring Sparseness: Inverse Document Frequency 254
+Combining Them: TFIDF 256
+Example: Jazz Musicians 256
+* The Relationship of IDF to Entropy 261
+Beyond Bag of Words 263
+N-gram Sequences 263
+Named Entity Extraction 264
+Topic Models 264
+Example: Mining News Stories to Predict Stock Price Movement 266
+The Task 266
+The Data 268
+Data Preprocessing 270
+Results 271
+Summary 275
+
+#### 11. Decision Analytic Thinking II: Toward Analytical Engineering          {-}
+
+Fundamental concept: Solving business problems with data science starts with
+analytical engineering: designing an analytical solution, based on the data, tools, and
+techniques available.
+Exemplary technique: Expected value as a framework for data science solution design.
+The Expected Value Framework: Decomposing the Business Problem and
+Recomposing the Solution Pieces 278
+A Brief Digression on Selection Bias 280
+Our Churn Example Revisited with Even More Sophistication 281
+The Expected Value Framework: Structuring a More Complicated Business
+Problem 281
+Assessing the Influence of the Incentive 283
+From an Expected Value Decomposition to a Data Science Solution 284
+Summary 287
+
+#### 12. Other Data Science Tasks and Techniques                  . {-}
+
+Fundamental concepts: Our fundamental concepts as the basis of many common data
+science techniques; The importance of familiarity with the building blocks of data
+science.
+Exemplary techniques: Association and co-occurrences; Behavior profiling; Link
+prediction; Data reduction; Latent information mining; Movie recommendation; Biasvariance decomposition of error; Ensembles of models; Causal reasoning from data.
+Co-occurrences and Associations: Finding Items That Go Together 290
+Measuring Surprise: Lift and Leverage 291
+Example: Beer and Lottery Tickets 292
+Associations Among Facebook Likes 293
+Profiling: Finding Typical Behavior 296
+Link Prediction and Social Recommendation 301
+Data Reduction, Latent Information, and Movie Recommendation 302
+Bias, Variance, and Ensemble Methods 306
+Data-Driven Causal Explanation and a Viral Marketing Example 309
+Summary 310
+
+#### 13. Data Science and Business Strategy                     {-}
+
+Fundamental concepts: Our principles as the basis of success for a data-driven
+business; Acquiring and sustaining competitive advantage via data science; The
+importance of careful curation of data science capability.
+Thinking Data-Analytically, Redux 313
+Achieving Competitive Advantage with Data Science 315
+Sustaining Competitive Advantage with Data Science 316
+Formidable Historical Advantage 317
+Unique Intellectual Property 317
+Unique Intangible Collateral Assets 318
+Superior Data Scientists 318
+Superior Data Science Management 320
+Attracting and Nurturing Data Scientists and Their Teams 321
+Be Ready to Accept Creative Ideas from Any Source 324
+Be Ready to Evaluate Proposals for Data Science Projects 324
+Example Data Mining Proposal 325
+Flaws in the Big Red Proposal 326
+A Firm’s Data Science Maturity 327
+
+#### 14. Conclusion                                {-}
+
+The Fundamental Concepts of Data Science 331
+Applying Our Fundamental Concepts to a New Problem: Mining Mobile
+Device Data 334
+Changing the Way We Think about Solutions to Business Problems 337
+What Data Can’t Do: Humans in the Loop, Revisited 338
+Privacy, Ethics, and Mining Data About Individuals 341
+Is There More to Data Science? 342
+Final Example: From Crowd-Sourcing to Cloud-Sourcing 343
+Final Words 344
+A. Proposal Review Guide                           347
+B. Another Sample Proposal                          351
+Glossary                                   355
+Bibliography                                 359
+Index                                    367

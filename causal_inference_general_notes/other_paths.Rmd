@@ -37,6 +37,19 @@ DR: Yes, the problem of [diagnostic testing](#robust-diag) the assumption that t
 ## RD
 
 ## Time-series-ish panel approaches to micro
-Ferraro has a couple of paper which together i think basically just cauition against just accepting panel regression approaches on the basis that the covariates are matched well. They are [here](https://www.journals.uchicago.edu/doi/10.1086/689868) and [here](https://www.sciencedirect.com/science/article/pii/S016517651630489X)
+
+See esp:
+
+- Wooldridge on distinct structures in panel data, First differences vs Fixed effects, etc.
+
+- Nickell bias and Arellano-Bond and related procedures
+
+- Diagnosing structural breaks... outside of Macroeconomics
+
+
+<div class="marginnote">
+Ben: Ferraro has a couple of paper which together i think basically just caution against just accepting panel regression approaches on the basis that the covariates are matched well. They are [here](https://www.journals.uchicago.edu/doi/10.1086/689868) and [here](https://www.sciencedirect.com/science/article/pii/S016517651630489X)
+</div>
+
 
 ### Lagged dependent variable and fixed effects --> 'Nickel bias'

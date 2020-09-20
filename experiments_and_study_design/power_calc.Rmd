@@ -1,5 +1,12 @@
 # (Experimental) Study design: (Ex-ante) Power calculations {#power}
 
+
+Basics: [egap](https://egap.org/resource/10-things-to-know-about-statistical-power/)
+
+
+Note:
+sometimes put together as measure like 'd' of 'effect relative to noise.... effect size/SD
+
 ## What sort of 'power calculations' make sense, and what is the point?
 
 ### The 'harm to science' from running underpowered studies
@@ -7,17 +14,17 @@
 > "One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
 - From an anonymous referee report
 
-Perhaps most of us consider power largely in thinking about 
+Perhaps most of us consider power largely in thinking about
 
 1. “Is our analysis going to be fruitful for ourselves as researchers?” and perhaps also, where we find a null result,
-2. “Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?” 
+2. “Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?”
 
 The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ *own* peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”
 
-However [@buttonPowerFailureWhy2013] point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result. 
+However [@buttonPowerFailureWhy2013] point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.
 
 
-In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects. 
+In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects.
 
 <div class="marginnote">
 DR:  However, I speculate that this idea might be less clear-cut than it seems. E.g., if we consider a (“non-sparse”) world where every factor indeed has an effect, lower powered studies are more likely to detect effects that are truly larger, which are arguably more policy-relevant; moreover, overstated effect sizes might be adjusted with a standard correction.
@@ -29,7 +36,7 @@ DR:  However, I speculate that this idea might be less clear-cut than it seems. 
 
 ... if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficient. By using a low powered study you sift through for these kind of effects.
 
-```  
+```
 
 
 ## Power calculations without real data
@@ -49,28 +56,27 @@ Adapt example in 'scopingwork.Rmd' to this
 > We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect’.
 
 
-
 #### Assignment procedures to consider {-#assign-notes}
 
 We consider three categories of possible assignment criteria: (We are coding these [below](#assign-functions).)
 
-**1. Simple data-based** 
+**1. Simple data-based**
 
 (Coded [here](#power-simple))
 
-Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.  
+Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.
 
 We will also consider an unbalanced design, both in this and in other categories, which may achieve greater power, especially considering the differential costs of our treatments.
 
 <div class="marginnote">
 Although as we have no evidence on the treatments and thus no reason to anticipate a differential variance between treatments and control, an unbalanced design may allow greater power for the same *cost*, as observing controls is costless, and the 'low-donation' treatment is lower cost.
 </div>
- 
+
 \
- 
+
 **2. Ad-hoc (Reinstein adapts Barrios), using prediction.Rmd quantiles**
 
-*General summary:* Fit a predictive model of the outcome (total donations) based on pre-treatment observables, using set-aside training data. Generate quantiles of 'predicted donation' (tuning parameter=number of quantiles?). Power-test block randomisation with these blocks as quantiles, using set-aside testing data. 
+*General summary:* Fit a predictive model of the outcome (total donations) based on pre-treatment observables, using set-aside training data. Generate quantiles of 'predicted donation' (tuning parameter=number of quantiles?). Power-test block randomisation with these blocks as quantiles, using set-aside testing data.
 
 *Caveats:* If we test the power with multiple models on the test data  (e.g., 'tuning' the number of quantiles) we will be overly optimistic and maybe overfitting.
 
@@ -81,7 +87,7 @@ Also, this assignment procedure is not necessarily robust to TE heterogeneity. B
 Prediction algorithm (folded)
 ```{block2,  type='fold'}
 
-- Adapt from code in CharitySubstitutionExperiment repo, in assignments_power.Rmd and analysis_subst.Rmd; examples of Elastic net etc 
+- Adapt from code in CharitySubstitutionExperiment repo, in assignments_power.Rmd and analysis_subst.Rmd; examples of Elastic net etc
 
 1. Define and organize the set of variables available at intervention
 
@@ -100,7 +106,7 @@ Blocking process (folded)
 
 (Caveat -- this resampling may need to be done based a randomised 'start time' to address random time-specific effects. ) *Note*: Because of this and for feasibility, we may abridge step 5, and just try out a few reasonable large block widths (e.g., quartiles)
 
-Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure,  and estimate an "effect size" for each sample. We then consider the 99% bounds of these simulated effect sizes.  The block width (and  regularization parameter?) that consistently gives us the tightest bounds  should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.  
+Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure,  and estimate an "effect size" for each sample. We then consider the 99% bounds of these simulated effect sizes.  The block width (and  regularization parameter?) that consistently gives us the tightest bounds  should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.
 
 The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws... the smaller the *actual* effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time).    [Note: these latter notes may bot go with the procedure proposed below; these are older.]
 
@@ -121,11 +127,11 @@ See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
 - Prior:  Squared exponential or Linear?
 - Re-randomization draws (default=1000); Expected R-sq (default=0.7)
 
-Notes: 
-- Stratify on 'discrete strata' 
+Notes:
+- Stratify on 'discrete strata'
 - Conservative: difference in means without controls or interactions
-- More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors 
-- But Kasy's technique makes frequentist inference difficult (Bayesian OK) 
+- More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors
+- But Kasy's technique makes frequentist inference difficult (Bayesian OK)
 ```
 
 
@@ -133,7 +139,9 @@ Notes:
 
 - Simple; from  <https://egap.org/content/power-analysis-simulations-r>
 
+https://egap.org/resource/script-power-analysis-simulations-in-r/
 
+https://egap.org/resource/10-things-to-know-about-statistical-power/
 
 
 #### Treatment assignment functions, used in power calculations {-#assign-functions}
@@ -160,15 +168,15 @@ power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0
 
     results  <- sapply(1:reps, function(r) { #TODO - replace with purr::map (Toby)
 #1. Sample size N from data for each iteration
-    exp_sample <- sample_n(ds, size = N, replace = TRUE) 
-    
-#2. Selection of control and treatment group using function `f_assign' 
+    exp_sample <- sample_n(ds, size = N, replace = TRUE)
+
+#2. Selection of control and treatment group using function `f_assign'
     exp_sample <- exp_sample %>%
-      f_assign(tshare=tshare, blockvar=bv) %>%    
+      f_assign(tshare=tshare, blockvar=bv) %>%
 
 #3. Add treatment effects (`propTE` and `linTE`) to treatgroup
       mutate({{yvar}} :=   ifelse(
-        d_t == "TRUE", {{yvar}} * (1 + propTE) + linTE, {{yvar}})) %>% 
+        d_t == "TRUE", {{yvar}} * (1 + propTE) + linTE, {{yvar}})) %>%
 #TODO: Do this for several y-variables in each run; 'map' these?
       mutate(yv := {{yvar}}) %>%  #reassign variable because I couldn't figure out how to get the unquoted argument to work in tests below #TODO-fix
 
@@ -179,7 +187,7 @@ power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0
     test$p.value
     }
     )
-    
+
 #5. Output share of p-values below alpha
       sum(results < alpha) / reps
   }
@@ -193,14 +201,14 @@ power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0
 
 ```{r block_1d_assign}
 
-block_1d_assign <- function(df, tshare=0.5, blockvar) { 
+block_1d_assign <- function(df, tshare=0.5, blockvar) {
       block_rand <- as.tibble(
         randomizr::block_ra(
           blocks =  df[[glue("{blockvar}")]], conditions = c("control","treat"), prob_each=c(1-tshare, tshare)
           )
         )
-      df <- as.tibble(bind_cols(df, block_rand)) %>% 
-        rename(d_t=value) %>% 
+      df <- as.tibble(bind_cols(df, block_rand)) %>%
+        rename(d_t=value) %>%
         mutate(
           d_t=(d_t=="treat")
         )
@@ -231,7 +239,7 @@ tests.try <- c(t.test, wilcox.test)
 
 Testing equicost parings, determine necessary cost
 
-With only control and treatment we have 
+With only control and treatment we have
 
 $$cost = multiplier \times avgcost \times N \times tshare$$
 $$\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)$$
@@ -248,18 +256,18 @@ cost <- 6000 #make this an entry in the 'design_params' list
 multip <- 2
 avdon <- 30
 
-tshare.try <- seq(from=0.1, to=0.5, by=0.1)  
-sample.try <- seq(from=400, to=1200, by=200)  
+tshare.try <- seq(from=0.1, to=0.5, by=0.1)
+sample.try <- seq(from=400, to=1200, by=200)
 equi_sample <- cost/(avdon*multip*tshare.try)
 
 # now maybe make a vector of tshare.try and equi_sample, for iterating over
-# I assume we can consider the 'optimal tradeoff' and this will be invariant to the cost; am I right? 
-                     
+# I assume we can consider the 'optimal tradeoff' and this will be invariant to the cost; am I right?
+
 
 ```
 
 
-#### For 'total x' outcome variable {-} 
+#### For 'total x' outcome variable {-}
 
 ```{r eval=FALSE}
 
@@ -280,19 +288,19 @@ power_vals <- tibble(
 #for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 'mapping over multiple arguments'
 
   #OUTCOME <- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven't got the syntax to work
-  
+
   df_x <- df %>%
     select(outcomes.try)
     #select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)
-  
+
   #loop over tests
   for (t in seq_along(tests.try)) {
     TEST <- tests.try[t]
-    
+
     #Loop over proportional TE
     for (p in seq_along(propTE.try)) {
       PT <- propTE.try[[p]]
-      
+
       #Loop over sample sizes
       for (s in seq_along(sample.try)) {
         N <- sample.try[s]
