@@ -14,12 +14,12 @@
 #### Fligner-Policello test
 
 @flignerpolicello1981
-Null-hypothesis that the medians in the two groups (samples) are the same. 
-> Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test. 
+Null-hypothesis that the medians in the two groups (samples) are the same.
+> Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test.
 
 ```{r Fligner-Policello-test, eval=FALSE, include=FALSE}
   library(RVAideMemoire)
-  
+
   x <- rpois(20,3)
   y <- rpois(20,5)
   fp.test(x,y)
@@ -177,6 +177,11 @@ $$p\:\{0,1\}^N \times Y^{2N}\times X^N \rightarrow [0,1]$$
 4. Cluster randomized: Treatments assigned randomly to entire clusters. Maybe cheaper to implement and more valid in the presence of interactions between units within but not across clusters.
 
 ### The analysis of Completely randomized experiments
+
+
+```{block2,  type='note'}
+Aside: see the limitations of the Fisher test when not considering a lady tasting tea (known shares of outcomes). One response: [a Bayesian approach](https://statmodeling.stat.columbia.edu/2009/10/13/what_is_the_bay/)
+```
 
 **Exact p-values for sharp null hypotheses (Fisher etc)**
 

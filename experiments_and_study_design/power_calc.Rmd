@@ -1,22 +1,147 @@
 # (Experimental) Study design: (Ex-ante) Power calculations {#power}
 
+The 'statistical power' of an analysis is the probability that this analysis  diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular *true effect size* (parameter magnitude). Thus one often sees the power of an analysis  'plotted' against particular effect sizes (sometimes 'alternative hypotheses'). Considering standard frequentist null hypothesis testing 'the power of a test' (or analysis) represents one minus the probability of a type-II error (something like 1- the false negative rate).
 
+
+\
 Basics: [egap](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
+Note: sometimes put together as measure like 'd' of 'effect relative to noise.... effect size/SD
+\
 
-Note:
-sometimes put together as measure like 'd' of 'effect relative to noise.... effect size/SD
 
 ## What sort of 'power calculations' make sense, and what is the point?
 
-### The 'harm to science' from running underpowered studies
+There are several reasons to consider power and to do 'power calculations' in advance of running an experiment or doing an analysis. 
+
+An 'underpowered study', one with a low likelihood of diagnosing a 'substantial' effect is present when it *is* present, is also likely to be an *uninformative* study. If 'rejecting a particular null hypothesis' is important (and please see McElreath and other's discussion about the follies of the ways NHST is used in science on this point), an underpowered test is unlikely to reject this null hypothesis even when it is 'meaningfully false'. 
+
+Perhaps more importantly, an underpowered study is likely to yield wide 'confidence intervals' (or wide 'posterior Bayesian credible intervals'). Simply put, after an underpowered study (at least in isolation), we still won't have a good sense of what the true value is. 
+
+
+### Why do a power analysis? What are the practical benefits of doing a power analysis 
+
+- Considering the cost/benefits of 'more data' to determine 'how much to collect'
+
+- Consider and optimise over the tradeoffs in design choices ... e.g., introducing more treatments usually involves a loss of power
+
+- 'Can I have enough funds to gather enough data to make it worth doing a study?'
+
+- If I am trying to do some sort of replication exercise to diagnose the credibility of previous work I want to 'have power to do this credibly' (I'm not sure about this one)
+
+- Avoiding the general harm 'underpowered studies'. There are arguments that individual ['underpowered' studies may undermine science](#underpowered), particular in conjunction with 'publication bias'. 
+
+- An ex-ante power analysis might (I'm not sure on this one, it seems possibly dubious) be useful in making ex-post statements about null effects
+
+## Key ingredients necessary for doing a power analysis(and designing a study in light of this)
+
+- Our assumptions (or existing prior data used for simulations) over the data-generating-process ... in particular, what do we expect the distribution of the outcomes to look like, and with what dispersion?
+
+- The nature of the sampling or assignment to experimental treatments
+
+- The specific proposed statistical test (or procedure) to be used
+
+\
+
+*Perhaps the most important and debated ingredient:* 
+
+**What 'metrics of power and effect size' are we considering, and what are our targets?** 
+
+- Are we simply seeking 'precise estimates', estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision? 
+
+- Do we seek power to detect some 'minimal effect size of interest'?
+
+If so, *what is this 'MESOI'?*
+
+<div class="marginnote">
+Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard 'power to detect X' criteria.
+
+Another criterion might be 'power to do an equivalency test'... but I need to learn more about this. 
+</div>
+ \
+ 
+
+#### Considering: 'should I use a function of previous estimated effect sizes to determine the MESOI'? {-}
+
+From David Moss (unfold)
+
+```{block2,  type='fold'}
+
+Moss: 
+
+> ... not basing power calculations on previously observed effect sizes?
+
+> Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature [though obviously there's a bunch of ways to do it](https://journals.sagepub.com/doi/10.1177/2515245918770963) 
+```
+
+\
+
+Moss, citing  Lakens: ... use earlier work to decide which effect sizes are deemed to be 'meaningful', with particular specific recommendations:
+
+```{block2,  type='fold'}
+
+> Subjective justification of a smallest effect size of interest ... Second, the SESOI can be based on related studies in the literature. Ideally, researchers who publish novel research would always specify their SESOI, but this is not yet common practice. It is thus up to researchers who build on earlier work to decide which effect size is too small to be meaningful when they examine the same hypothesis. Simonsohn (2015) recently proposed setting the SESOI as the effect size that an earlier study would have had 33% power to detect.
+
+> With this small-telescopes approach, the equivalence bounds are thus primarily based on the sample size in the original study. For example, consider a study in which 100 participants answered a question, and the results were analyzed with a one-sample t test. A two-sided test with an alpha of .05 would have had 33% power to detect an effect of d = 0.15. Another example of how previous research can be used to determine the SESOI can be found in Kordsmeyer and Penke (2017), who based the SESOI on the mean of effect sizes reported in the literature. Thus, in their replication study, they tested whether they could reject effects at least as extreme as the average reported in the literature. Given random variation and bias in the literature, a more conservative approach could be to use the lower end of a confidence interval around the meta-analytic estimate of the effect size (cf. Perugini, Gallucci, & Costantini, 2014).
+
+Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than $\alpha$ in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.
+```
+\
+
+
+DR response: Why do we assume previous authors considered MESOI?
+
+```{block2,  type='fold'}
+
+
+I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest”?
+
+Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects”, But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)
+
+```
+
+DR: A second reason why one might see that as the “minimum effect size of interest” simply has to do with being able to publish a paper that can in some way “refute” previous claimed findings.
+
+```{block2,  type='fold'}
+But that is flawed, in my view, as a way of doing science. We should power the study that is most informative, either by itself, or when made part of a meta analysis. I don’t see the value of this adversarial back-and-forth approach.
+
+```
+
+\
+
+DR preferred approach - power a study based on policy concerns, also considering it's use in meta-analysis.
+
+```{block2,  type='fold'}
+One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a conference interval or a credible interval if we are thinking of a Bayesian posterior). 
+
+So, in determining how much power I wish to achieve, I need to weigh the benefits of this precision against the cost of a larger sample size.
+
+This is a very different considerations from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).
+
+```
+
+
+
+Of course “We should power” is subject to constraints and cost concerns. 
+
+<div class="marginnote">
+So, when I am designing the study I am almost never able to have the power I want for all possible tests/hypotheses. Where these considerations come into play, is whether to decide to run the study now or wait to get more funding, and in considering which hypotheses to test and which treatments to put in the study, et cetera
+</div>
+ 
+
+
+
+## The 'harm to science' from running underpowered studies {#underpowered}
 
 > "One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
 - From an anonymous referee report
 
 Perhaps most of us consider power largely in thinking about
 
-1. “Is our analysis going to be fruitful for ourselves as researchers?” and perhaps also, where we find a null result,
+1. “Is our analysis going to be fruitful for ourselves as researchers?” 
+
+and perhaps also, where we find a null result...
+
 2. “Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?”
 
 The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ *own* peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”
