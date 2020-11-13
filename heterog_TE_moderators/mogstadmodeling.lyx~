@@ -1,0 +1,5642 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch expandquestion
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 314122868 "Yosemite"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Understanding and adapting Mogstad ...
+ Kirkebøen et al (2014 [updating to 2015, QJE]); 
+\begin_inset Quotes eld
+\end_inset
+
+Field of Study, Earnings, and Self-Selection
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Parey, Reinstein, Vellekoop
+\end_layout
+
+\begin_layout Section
+Formulating letter to KLM (WIP)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+The part of the KLM paper that is most opaque and which I think may be mis-state
+d revolves around:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ They state that they can identify “the gains in earnings to persons choosing
+ science instead of teaching [relative to] the gains in earnings to those
+ choosing business instead of teaching”? 
+\end_layout
+
+\begin_layout Plain Layout
+This 
+\change_inserted 314122868 1488202421
+could be interpreted in multiple ways
+\change_unchanged
+.
+ Does it refer to:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+A.
+ The comparison of 'payoffs to first choice courses' for two distinct groups
+ – 'those who prefer science' and 'those who prefer business', each of which
+ may have distinct returns to each of the three courses? or 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+B.
+ the differential gains (from science versus from business) for a homogenous
+ group (of compliers)?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Their setup would seem to imply that 'it could not represent A (not even
+ for the compliers only)' unless there were full compliance, rather than
+ their weaker Proposition 2, part 3.
+ But if it only identifies A, is this of interest (other than to the discussion
+ of choice based on comparative/absolute advantage)?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Proposition 2, part 3: I believe this is the maintained assumption they
+ use in their estimation.
+ However, it is easy to imagine very plausible reasons why this should not
+ hold.
+ Suppose that for outcomes, ignoring noncompliance costs, the returns are
+ 
+\begin_inset Formula $Y_{2}>Y_{0}>Y_{1}$
+\end_inset
+
+.
+ Suppose an individual were willing to pay the cost of noncompliance (trying
+ again next year) to gain entry to school 2 over school 1, but not to gain
+ entry to school 2 over school 0, as the gains are lesser.
+ This very reasonable case seems to violate their proposition (
+\change_inserted 314122868 1488202740
+my algebra is below
+\change_unchanged
+).
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Footnote 19: 
+\end_layout
+
+\begin_layout Plain Layout
+If the irrelevance condition [Prop 2 part B] does not hold or if individuals
+ do not understand the allocation mechanism, then our estimation approach
+ should be interpreted as relaxing the constant effects assumption in part
+ (i) of Proposition 2 to allow for heterogeneity in payoffs according to
+ next-best fields.
+ I believe this has a mistake or typo, and may be vestigial from a previous
+ working paper.
+ It sounds like they are saying 'if the weaker condition does not hold,
+ we should interpret our estimates as a relaxation of the stronger assumption'
+ ...
+ but that doesn't make sense, does it? I think understanding this footnote
+ is crucial to understanding how to interpret their results if Prop 2 part
+ 3 does not hold.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Can you help me understand how to interpret the statement 
+\begin_inset Quotes eld
+\end_inset
+
+the gains in earnings to persons choosing science instead of teaching [relative
+ to] the gains in earnings to those choosing business instead of teaching
+\begin_inset Quotes erd
+\end_inset
+
+? Does this refer to a comparison of payoffs to first choices for two distinct
+ groups – those who prefer science and those who prefer business, each of
+ which may have distinct returns to each of the three courses.
+ Or does it, perhaps under specified conditions, represent the differential
+ gains (from science versus from business) for some homogenous group?
+\change_inserted 314122868 1488206987
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 314122868 1488206991
+\begin_inset Quotes eld
+\end_inset
+
+For example, by choosing science instead of the humanities, individuals
+ almost triple their earnings early in their working career
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+DR: I think this is the most important question.
+ I also want to know what they think about our estimator as the policy-relevant
+ impact, but we should first improve our justification and relate it to
+ their 2014 paper, cited below.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+NV: From what they do in the estimation it seems to be two (distinct sub)groups:
+ one prefering science over teaching, the other prefering business over
+ teaching.
+ I think they want to make the claim that even though these are two distinct
+ groups, the gains from these two groups can be still compared to each other.
+ [DR: Compared in what way, and where do they say this? NV: the comparison
+ is that by holding the next-best alternative field fixed-teaching in this
+ example- they can make the statement that the gains from getting into business
+ (relative to teaching) are larger than the gains from science (relative
+ to teaching).
+ This comparison shows up in both the modeling part and in the empirical
+ part] 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+DR: If we allow heterogeneity in relative payoffs, you need to answer the
+ question 'the gains for whom?' In your above language you just say 
+\begin_inset Quotes eld
+\end_inset
+
+the gains from getting into business (relative to teaching) are larger than
+ the gains from science (relative to teaching)
+\begin_inset Quotes erd
+\end_inset
+
+ ...
+ but you don't specify
+\emph on
+ 
+\bar under
+which set of individuals
+\bar default
+ 
+\emph default
+each of these gains pertain to.
+
+\emph on
+ 
+\emph default
+E.g., the gains from business relative to teaching could be positive for those
+ choosing business first and teaching second, but the gains to business
+ relative to teaching could be zero for those choosing science first and
+ teaching second.
+
+\emph on
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+NV: It helps me to have their research question in mind, which is different
+ from ours.
+ I think what they are after is whether individuals sort themselves into
+ a field based on comparative advantage or absolute advantage (section X).
+ In order to make a statement about sorting on comparative advantage, they
+ need to have a comparison of a pair of fields j and k (actually they need
+ to have a double comparison, those who prefer j over k and k over j.
+ On p.
+ 1107 (QJE) they explain that this is not entirely trivial since it involves
+ multiple cut-offs.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+DR: Agreed.
+ Getting estimates of relative gains from different pairings for groups
+ with different preferences may be relevant to measuring sorting based on
+ comparative/absolute advantage.
+ However, they seem to sell their results as telling us about more than
+ just comparative/absolute advantage.
+ To me, the way they describe their results suggests that certain fields
+ are more lucrative 
+\emph on
+for everyone
+\emph default
+ relative to certain other fields, 
+\emph on
+regardless of the students' preferences.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Proposition 2, part 3: I believe this is the maintained assumption you use
+ in your estimation.
+ How is the underlying assumption and result justified, interpreted, and
+ used in your context?
+\end_layout
+
+\begin_layout Standard
+More specifically...
+\begin_inset Branch expandquestion
+status open
+
+\begin_layout Standard
+DR: I interpret the Prop.
+ 2, part 3 as follows (perhaps incorrectly).
+ The conditions are:
+\end_layout
+
+\begin_layout Itemize
+A.
+ Irrelevance
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $d_{1}^{1}=d_{1}^{0}=0\Rightarrow d_{2}^{1}=d_{2}^{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ : Someone
+\change_inserted 314122868 1488207342
+ 
+\change_unchanged
+who will not enter 1 when assigned to 0 or 1 will enter the same field (either
+ 2 or 0) whether they are assigned to 0 or 1.
+ E.g., an individual does not choose 0 if assigned to 0 and 2 if assigned
+ to 1.
+ 
+\change_inserted 314122868 1488207293
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $d_{2}^{2}=d_{2}^{0}=0\Rightarrow d_{1}^{2}=d_{1}^{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+: Someone
+\change_deleted 314122868 1488207487
+ 
+\change_unchanged
+who will not enter 2 when assigned to 2 or 0 will enter the same field (either
+ 0 or 1) whether they are assigned to 2 or 0.
+ E.g., no one chooses 1 if assigned to 2 but chooses 0 if assigned to 0
+\end_layout
+
+\begin_layout Itemize
+In the words of KLM 
+\begin_inset Quotes eld
+\end_inset
+
+In result iii, we assume that if changing z from 0 to 1 (2) does not induce
+ an individual to choose treatment 1 (2), then it does not make her choose
+ treatment 2 (1) either.
+ In our context, for example, this assumption means that if crossing the
+ admission cutoff to field 1 does not make an individual choose field 1,
+ it does not make her choose field 2 either
+\begin_inset Quotes erd
+\end_inset
+
+ (KLM, QJE p.
+ 1071).
+\change_inserted 314122868 1488203299
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted 314122868 1488209454
+DR: This may offer insight – which case are they referring to? One in which
+ the threshold scores (
+\begin_inset Formula $S_{x}$
+\end_inset
+
+) needed for admission to field 
+\begin_inset Formula $x$
+\end_inset
+
+ follow 
+\begin_inset Formula $S_{2}>S_{1}>S_{0}$
+\end_inset
+
+ and we compare an individual whose score is just above or just below 
+\begin_inset Formula $S_{1}?$
+\end_inset
+
+ In this case, with a score above 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+, you can go to 1 or 0 without paying a noncompliance cost.
+ The equivalent to my 'counterexample' would be someone who goes to 1 if
+ their score is between 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+, but goes to 2 (paying a noncompliance cost), if their score is below 
+\begin_inset Formula $S_{1}.$
+\end_inset
+
+ In this case crossing the threshold (dropping 
+\emph on
+below 
+\emph default
+it) for 1 causes you to go to 2 (apparently violating their condition),
+ but crossing the threshold from 0 to 1 does cause you to choose 1 (so their
+ condition holds).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted 314122868 1488209019
+another case 
+\begin_inset Formula $S_{1}>S_{0}>S_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 314122868 1488204217
+If we interpret 'crossing the threshold' in a positive direction only then
+ the condition described in words would be violated only if he chose 0 when
+ 
+\begin_inset Formula $s<S_{1}$
+\end_inset
+
+, and chose 2 when 
+\begin_inset Formula $S_{1}<s<S_{2}.$
+\end_inset
+
+ I agree that this would not be reasonable under any normal set of preferences.
+ (But is this what their assumptions literally describe?)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\change_inserted 314122868 1488204040
+Alternately, we could have  
+\begin_inset Formula $S_{1}>S_{2}>S_{0}$
+\end_inset
+
+; I assume by 'crossing the threshold' they always mean a, single adjacent
+ threshold.
+ So here we compare the bits in parentheses and the analysis is as in the
+ last bullet.
+ It depends what you mean by 'crossing the threshold'.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+I interpret this as 
+\begin_inset Quotes eld
+\end_inset
+
+within the group and margin you are looking at, one must assume that someone
+ 'always complies', i.e., attends the programme they are assigned to no matter
+ what, or 'never complies', i.e., goes to their preferred program no matter
+ what (I believe these are called 'always takers'
+\begin_inset Quotes erd
+\end_inset
+
+).
+ However, this is inconsistent with a fairly plausible example I give below;
+ would that example apply to your analysis? If the irrelevance condition
+ is violated, how can we interpret the estimates? 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV If the irrelevance condition is violated, KLM interpret their estimates
+ as heterogeneous pay-offs, with a null-hypothesis of homogeneous pay-offs.
+ 
+\end_layout
+
+\begin_layout Standard
+DR: I don't see this; can you explain and cite the part where they say this?
+ I think Prop 2 part 3 already allows for heterogeneous payoffs.
+ It's part 1 that imposes homogenous payoffs.
+ (Also, I don't know what you mean by the null/alternative hypothesis here.)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+B.
+ Next best alternative
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+\begin_inset Quotes eld
+\end_inset
+
+and we condition on 
+\begin_inset Formula $d_{1}^{0}=d_{2}^{0}=0$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ : I believe this is implied by the conditioning stated below, for both
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ terms, 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{2}^{0}=0$
+\end_inset
+
+ in combination with 
+\begin_inset Formula $d_{1}^{1}-d_{1}^{0}=1$
+\end_inset
+
+ implies one does not go to 1 or 2 if assigned to 0, so must go to 0.
+ Similarly for other estimate.
+ 
+\end_layout
+
+\end_inset
+
+.
+ However, it does not fully 
+\emph on
+imply 
+\emph default
+the conditioning; the conditioning also imposes the compliance 
+\begin_inset Formula $d_{1}^{1}=1$
+\end_inset
+
+ for estimating 
+\begin_inset Formula $\Delta_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $d_{2}^{2}=1$
+\end_inset
+
+ for 
+\begin_inset Formula $\Delta_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+Combining with the irrelevance assumption implies that to consistently estimate
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+each 
+\begin_inset Formula $\Delta^{j}$
+\end_inset
+
+ for a particular subset we must (sufficient and necessary? condition) assert
+ that for these individuals the mapping is:
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Conclusion (tentative): The IV technique can consistently estimate 
+\begin_inset Formula $\Delta^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta^{2}$
+\end_inset
+
+ (returns to 1 versus 0 and for 2 versus zero respectively) for distinct
+ populations with 'some' noncompliance ...
+ (see table) However, to be able to estimate these returns for the same
+ group, to be able to say 'for this group the returns to Science vs Humanities
+ exceeds the return to Business vs Humanities'*, one needs full compliance
+ for this subset for the conditions of their theorem to work.
+ (And with full compliance, one wouldn't need IV, correct?) 
+\begin_inset Newline newline
+\end_inset
+
+DR If we don't have the "right kind of compliance" this I don't think this
+ allows us to say "OK, but the estimates are valid for compliers" ...
+ I think they need these conditions for the estimates to be consistent even
+ for compliers.
+ 
+\begin_inset Newline newline
+\end_inset
+
+(Of course there may be weaker sufficient condition they haven't specified).
+ 
+\begin_inset Newline newline
+\end_inset
+
+*Logically, isn't this the same as saying 'the returns to Science exceeds
+ the return to Business for this group'? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+To estimate 
+\begin_inset Formula $\Delta_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+To estimate 
+\begin_inset Formula $\Delta_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\emph on
+To estimate both on same subset
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assigned
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Attend
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assigned
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Attend
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assigned
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Attend
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 or 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 or 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+This condition 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang american
+(Of course the hypothetical choices are not observed empirically) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang american
+NV: they definitely use this in the empirical part, but I believe they want
+ to narrow the implications of the irrelevance assumption, because the irrelevan
+ce assumption itself does not identify the pay-offs.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+In the words of KLM 
+\begin_inset Quotes eld
+\end_inset
+
+On its own, this irrelevance condition does not help in resolving the identifica
+tion problem posed by heterogeneous effects under Assumptions 1–4.
+ But together with information about individuals’ next-best alternatives,
+ it is sufficient to identify LATEs for every field.
+\begin_inset Quotes erd
+\end_inset
+
+ (KLM, QJE, p.
+ 1071).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+DR: What do you mean 'narrow the implications of the irrelevance assumption'?
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+DR: What is meant by 'LATEs for every field'? The 
+\begin_inset Quotes eld
+\end_inset
+
+Local
+\begin_inset Quotes erd
+\end_inset
+
+ part of this has to do with the compliers.
+ But is the averaging only for a specific pairing of choices (a particular
+ choice ordering)? 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+(NV) The result is:
+\begin_inset Formula 
+\[
+\beta_{1}=E[\Delta^{1}|d_{1}^{1}-d_{1}^{0}=1,\:d_{1}^{0}=d_{2}^{0}=0]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+\beta_{2}=E[\Delta^{2}|d_{2}^{2}-d_{2}^{0}=1,\:d_{1}^{0}=d_{2}^{0}=0]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV: in words, 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ is the expected pay-off of completing field 1 relative to field 0, given
+ that if the instrument shifts you to field 1, you complete field 1, but
+ if the instrument shifts you to field 0, you do not go to field 1, nor
+ to field 2, hence you must go to field 0.
+ 
+\begin_inset Newline newline
+\end_inset
+
+DR: You have pasted in the 
+\begin_inset Formula $d_{2}^{0}=0$
+\end_inset
+
+ from the 
+\emph on
+assumption 
+\emph default
+(
+\begin_inset Quotes eld
+\end_inset
+
+If
+\begin_inset Quotes erd
+\end_inset
+
+) part of condition 3.
+
+\emph on
+ 
+\emph default
+What confuses me here is I am never sure what is an assumption about behavior
+ and what is referring to the empirical subset that they are choosing for
+ their estimation procedure.
+\end_layout
+
+\begin_layout Standard
+What you state in the line above could hold for someone with any set of
+ preferences, as long as they always comply with an assignment to courses
+ 1 or 0.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $d_{2}^{2}=d_{2}^{0}=0\Rightarrow d_{1}^{2}=d_{1}^{0}$
+\end_inset
+
+ part of the irrelevance condition then implies that if they 
+\emph on
+also fail to comply with an assignment to 2
+\emph default
+, you do not go to field 1 if assigned to 2, thus you must go to field 0
+ if assigned to 2.
+ In other words, adding the irrelevance condition to the above means that
+ either 
+\begin_inset Formula $d_{2}^{2}=1$
+\end_inset
+
+ or 
+\begin_inset Formula $d_{0}^{2}=1$
+\end_inset
+
+ (but not 
+\begin_inset Formula $d_{1}^{2}=1)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+So, someone who complies with 
+\emph on
+every 
+\emph default
+assignment meets the above assumptions and conditioning, as well as someone
+ who complies with 1 and 0 but goes to 0 when assigned to 2.
+ This is as in the table above.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DR thought: is it possible that there is a group of people for whom the
+ condition applies so that the betas are comparable? 
+\end_layout
+
+\begin_layout Standard
+NV.
+ I don't think so, both groups have the same next best alternative (field
+ 0) but differ in the field just above the next-best alternative, in the
+ construction of groups and the institional set-up with a ranking and a
+ single cut-off it must be different groups.
+ 
+\begin_inset Newline newline
+\end_inset
+
+DR: Based on the actual algebra, why do you think that field 0 must be the
+ NBA here? Can't they have any 
+\emph on
+ranking
+\emph default
+ as long as they comply with the assignments in the way described above?
+ This is important – we are missing something about the correspondence between
+ this theory and their empirical work.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DR You [KLM] interpret or exemplify the assumption as: 
+\begin_inset Quotes eld
+\end_inset
+
+[here] if crossing the admission cutoff to field 1 does not make an individual
+ choose field 1, it does not make her choose field 2 either.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+DR: Here does 'crossing the admission cutoff to field 1' make it harder
+ for her to enter field 0 ...
+ relative to the case where d=0, or are these ordered in some way? 
+\emph default
+I think there is an ordering; each field-institution combination has a minimum
+ mark threshold, although these differ from year to year.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I am having trouble understanding the logic for this in your context.
+ Suppose an individual's potential (earnings) outcomes for three courses
+ are ranked
+\emph on
+ 
+\begin_inset Formula $Y_{2}>Y_{0}>Y_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+I assume 'assignment to a course' means it is less costly to enter or complete
+ this course ('comply') than to complete any other course.
+ 
+\end_layout
+
+\begin_layout Standard
+Here, if she is assigned to 0 she might choose 0 (rather than 2), i.e., 
+\begin_inset Formula $d_{0}^{0}=1$
+\end_inset
+
+ (
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $d_{1}^{0}=d_{2}^{0}=0$
+\end_inset
+
+), to avoid the cost of noncompliance, as the gain to noncompliance (
+\begin_inset Formula $Y_{2}-Y_{0})$
+\end_inset
+
+ may be small.
+\end_layout
+
+\begin_layout Standard
+On the other hand, if she is assigned to 1 it might be worth paying the
+ noncompliance cost to obtain the larger gain 
+\begin_inset Formula $Y_{2}-Y_{1}$
+\end_inset
+
+, and thus choose 2, i.e., 
+\begin_inset Formula $d_{2}^{1}=1$
+\end_inset
+
+ (
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $d_{1}^{1}=d_{0}^{1}=0$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+This would violate the first bulleted condition above as 
+\begin_inset Formula $d_{1}^{1}=d_{1}^{0}=0$
+\end_inset
+
+ but 
+\begin_inset Formula $d_{2}^{1}=1\neq d_{2}^{0}=0$
+\end_inset
+
+.
+ What is the logic for ruling this out in the Norway context, or is there
+ an error in my above depiction?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV: first of all, I think it depends on which two pay-offs you are comparing.
+ They do not estimate the pay-off 
+\begin_inset Formula $Y_{2}-Y_{1}$
+\end_inset
+
+, because in your ranking the next best alternative for 
+\begin_inset Formula $Y_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+, not 
+\begin_inset Formula $Y_{1}.$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+DR: OK, but whether or not they are 
+\emph on
+estimating
+\emph default
+ this payoff should not the compliance condition itself, no?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV: The two relevant comparisons [DR: by 'relevant' you mean the estimates
+ they could produce for someone with the above rankings, I guess?] are field
+ 2 with next-best alternative field 0 (
+\begin_inset Formula $Y_{2},Y_{0})$
+\end_inset
+
+, respectively
+\change_inserted 314122868 1487852837
+, and 
+\change_deleted 314122868 1487852836
+ 
+\change_unchanged
+field 0 
+\change_deleted 314122868 1487852840
+and 
+\change_inserted 314122868 1487852841
+with 
+\change_unchanged
+next best alternative 1 (
+\begin_inset Formula $Y_{0},Y_{1})$
+\end_inset
+
+.
+ The first one is [DR: I don't agree that choosing people with these 
+\emph on
+rankings
+\emph default
+ is necessary or sufficient for the conditions after the vertical bar to
+ hold.
+ The elements after the vertical bar are (I guess) 2 of the 3 maintained
+ assumptions, and I question the validity of these assumptions]: 
+\lang american
+
+\begin_inset Formula 
+\[
+\beta_{2}=E[\Delta^{2}|d_{2}^{2}-d_{2}^{0}=1,\:d_{1}^{0}=d_{2}^{0}=0]
+\]
+
+\end_inset
+
+
+\lang english
+NV: The second comparison is the pay-off from completing field 0 relative
+ to field 1, which would be the equivalent to:.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+\beta_{0}=E[y^{0}-y^{1}|d_{0}^{0}-d_{0}^{1}=1,\:d_{0}^{1}=d_{2}^{1}=0]
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV: second, KLM select their sample in such a way that for the comparison
+ of field 2 relative to field 0 they construct the sample to force the compariso
+n.
+ In other words, in your example for the comparison of (
+\begin_inset Formula $Y_{2},Y_{0})$
+\end_inset
+
+ they take all people with this particular preference ordering AND having
+ either their application score in between (
+\begin_inset Formula $Y_{2},Y_{0})$
+\end_inset
+
+ or right above
+\begin_inset Formula $Y_{2}$
+\end_inset
+
+(top panel in Table 1).
+ So if I am assigned to field 0, this implies that my application score
+ is lower than the cut-off and field 2 is unreachable to me.
+ 
+\change_inserted 314122868 1487939295
+(This is 
+\change_deleted 314122868 1487939296
+U
+\change_inserted 314122868 1487939296
+u
+\change_unchanged
+nless I do not comply and try again next year for field 2 (always-taker),
+ and there KLM state that their analysis is silent on never-takers and always-ta
+kers (QJE, p.
+ 1083).
+\change_inserted 314122868 1487939299
+)
+\change_unchanged
+ Continuing your example, if I am assigned to field 1, of course the gain
+ to noncompliance might be larger and I would like to get into field 2.
+ However, by construction, this is either not possible–your application
+ score is in between field 0 and 1 and I really will not get into 2; or
+ you try again next year for field 2 (always-taker).
+ 
+\end_layout
+
+\begin_layout Standard
+DR: But why shouldn't it be possible that I would not try again for field
+ 2 if I got into field 0 but I 
+\emph on
+would
+\emph default
+ try again if I failed to get into either field 0 or field 2 but I got in
+ to field 1? And if 
+\begin_inset Quotes eld
+\end_inset
+
+not getting into fields 2 nor into 0
+\begin_inset Quotes erd
+\end_inset
+
+ is impossible for the people in the relevant sample, why do they need to
+ have the irrelevance assumption (limiting 
+\begin_inset Formula $d_{x}^{1}$
+\end_inset
+
+) for this person? Or what am I misunderstanding?
+\change_inserted 314122868 1487939816
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+NV: there is a sub
+\change_inserted 314122868 1488210244
+t
+\change_unchanged
+le way of non-compliance, again taking your ordering and comparing fields
+ 2 and 0 (
+\begin_inset Formula $Y_{2},Y_{0})$
+\end_inset
+
+.
+ Remember that for the comparison in 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+(see formula) they compare people with the preference ordering (
+\begin_inset Formula $Y_{2},Y_{0})$
+\end_inset
+
+ and for some the instrument assigns them to field 2.
+ For the other
+\change_inserted 314122868 1487939875
+s
+\change_unchanged
+ the instrument does not assign them to field 2, but where will they go
+ to? KLM assume irrelevance and independence, so that the losers will go
+ into field 0.
+ Non-compliance here would be going into field 1 (taking your preference
+ ordering).
+ 
+\change_inserted 314122868 1487939999
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+DR: Not sure what you are getting at here.
+ If these people didn't get in to field 2 but instead got into 0, there
+ is no reason they would select their third choice (field 1), so that would
+ be perverse non-compliance.
+ 
+\change_inserted 314122868 1487939999
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+DR: I think the relevant concern is that there are some who 'comply' in
+ the way described and others who don't (and their potential returns differ?)
+ ...
+ the first stage will predict something not reflected in the 2nd stage (complete
+ the thought...)
+\change_inserted 314122868 1488282667
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 314122868 1488210377
+Ask about compliance: what does noncompliance mean in the context of their
+ theoretical discussion 
+\end_layout
+
+\begin_layout Itemize
+Footnote 19, in context:
+\end_layout
+
+\begin_layout Quotation
+In particular, Proposition 2 showed that we can identify the LATE from choosing
+ one field of study as compared to another if our instruments satisfy an
+ irrelevance condition, and if we can condition on individuals’ next-best
+ fields.
+\end_layout
+
+\begin_layout Quotation
+(19): If the irrelevance condition does not hold or if individuals do not
+ understand the allocation mechanism, then our estimation approach should
+ be interpreted as relaxing the constant effects assumption in part (i)
+ of Proposition 2 to allow for heterogeneity in payoffs according to next-best
+ fields.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+...
+ I thought that your estimation was based on part iii (not part i) of Propositio
+n 2.
+ Part iii is in fact referred to as the 'irrelevance condition', and it
+ does not require the constant effects association of part i (unless I misread
+ it).
+\end_layout
+
+\begin_layout Itemize
+NV: part (iii) nests part (i) (and part ii) as special cases.
+ In part VIII.A they test for constant pay-off effects and restrictive preference
+s, and report 
+\change_deleted 314122868 1487940546
+to reject
+\change_inserted 314122868 1487940547
+rejecting
+\change_unchanged
+ both.
+ 
+\change_inserted 314122868 1487940486
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DR: are you sure? I wasn't convinced these were nested.
+ Why should (i = constant effects) imply any particular compliance behavior?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Given that you are conditioning on next-best fields anyway, aren't you already
+ allowing for the 'heterogeneity in payoffs according to next-best fields',
+ rather than relying on part i? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NV: exactly
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DR: If part iii already allows for payoff heterogeneity, what is the consequence
+ of a violation of the 'irrelevance' condition?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NV if assumption (iii) fails the following happens.
+ By construction KLM looks at single (local) comparisons of two fields.
+ [DR: So you are saying they will either be assigned to 1 or 0 here, correct?]
+ Again, looking at 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+compares the pay-off of field 1 versus field 0.
+ Now if assumption (iii) fails, this means that people NOT assigned to field
+ 1 will go into field 0 AND into field 2 (or any other lower-ranked field
+ in the menu with all fields).
+ When assumption (iii) holds, losers would only go into field 0.
+ [DR: The 'going to field 0 if assigned to it' is implied by only a part
+ of the assumption, the 
+\begin_inset Quotes eld
+\end_inset
+
+and we condition on 
+\begin_inset Formula $d_{1}^{0}$
+\end_inset
+
+=
+\begin_inset Formula $d_{2}^{0}=0$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ part; I'm not sure whether this is the assumption or the 'conditioning';
+ it's confusing.] When assumption (iii) fails, losers will also go into field
+ 2.
+ This will show up in the data as
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $d_{1}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $y>0$
+\end_inset
+
+, so in a way KLM would have a different version of the problem they started
+ out with: equation 6 (QJE, p.
+ 1067).
+ The comparison of two fields is a weighted average across person with different
+ next-best alternatives.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DR: I believe you are correct that it would be a weighted average across
+ people with different NBAs.
+ However, the footnote does not say this.
+ It says 
+\begin_inset Quotes eld
+\end_inset
+
+to allow for heterogeneity in payoffs according to next-best fields
+\begin_inset Quotes erd
+\end_inset
+
+ and not [what I think this should say] 
+\begin_inset Quotes eld
+\end_inset
+
+to allow that our payoffs reflect payoffs a particular field relative to
+ a weighted combination of next-best fields, for those with a particular
+ single next-best field.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+DR: Second thought - each estimate that they give focuses on those whose
+ qualification and preferences place them at the margin of two particular
+ fields (say A and B), comparing those who get into the preferred field
+ to those who get in to the less-preferred field.
+ However, they are pooling between 
+\begin_inset Quotes eld
+\end_inset
+
+ABC people
+\begin_inset Quotes erd
+\end_inset
+
+ for whom A and B were (e.g,) the first and second preference (so A>B>C)
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+CAB people
+\begin_inset Quotes erd
+\end_inset
+
+ for whom these were the second and third preference (so C>A>B but their
+ mark is far too low for C).
+ If all ABC and CAB people go to A if assigned to A but go to B if assigned
+ to B (as implied by the conditioning, correct?) we have 'full compliance'
+ at this margin, so the estimate should give us the weighted average payoff
+ for CAB and ABC people.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+...
+ So if the above is correct and implied by the conditioning, why do we need
+ the additional irrelevance assumptions? Do the irrelevance assumptions
+ tell us something about the comparability of the CAB and the ABC people?
+ 
+\change_deleted 314122868 1487941226
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NV: it might help to write out the empirical estimation of the model counterpart
+, so three fields, field 0 is the next best alternative (first subscript
+ is completed field, second is next best alternative).
+ I doublechecked the 
+\lang american
+
+\begin_inset Formula $\pi_{10}$
+\end_inset
+
+ and 
+\begin_inset Formula $\pi_{20}$
+\end_inset
+
+ in the second and third line, and I think this is the way it should be.
+\begin_inset Formula 
+\[
+y=\beta_{10}d_{1}+\beta_{20}d_{2}+\gamma_{0}x+\mu_{0}+\theta_{1}(+\theta_{2})+\epsilon_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+d_{1}=\pi_{10}z_{1}+\pi_{20}z_{2}+\psi_{10}x+\tau_{0}+\sigma_{1}(+\sigma_{2})+u_{10}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+d_{2}=\pi_{10}z_{1}+\pi_{20}z_{2}+\psi_{20}x+\tau_{0}+\sigma_{1}(+\sigma_{2})+u_{20}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The first line is 
+\emph on
+estimated for two groups
+\emph default
+, those who prefer field 1 over 0 and those who prefer field 2 over 0.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula $z_{1}=1$
+\end_inset
+
+ means that the preferred field is 1 and the score exceeds the cutoff for
+ 1, and is zero otherwise.
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+NV: I made up the following example, with compliance and non-compliance.
+ Take three candidates with the same rankings, cut-offs are the same, but
+ the individual application scores are different.
+ For A and B the comparison works according to KLM.
+ Applicant C completes field 2 instead of field 0.
+ If my understanding is correct, he will be counted with B in contrasting
+ the pay-off comparison of fields 1 and 0.
+ I don't think C will be added to the comparison of field 2 versus field
+ 0, because field 2 is the next best alternative after field 0, and not
+ the other way around (
+\begin_inset Formula $d_{2}$
+\end_inset
+
+is the comparison of field 2 with next best alternative field 0).
+ 
+\change_inserted 314122868 1488042014
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 314122868 1488042085
+
+\lang american
+DR: I think something is missing in your example.
+ You gave everyone identical preferences and payoffs in the table.
+ Is that what you meant?
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 314122868 1488042105
+
+\lang american
+Bernard and Chris have identical preferences and identical scores in your
+ example 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 314122868 1488042101
+
+\lang american
+NV: 
+\change_unchanged
+Assumption (iii) rules out this type of non-compliance.
+ If assumption (iii) fails–as in the example– completing field 1 versus
+ field 0 will be a comparison involving an average of other fields.
+\change_inserted 314122868 1488042178
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 314122868 1488042331
+
+\lang american
+DR: I don't understand why Chris goes to field 2 in your example, if it
+ gives him the lowest payoffs and he is assigned to field 0.
+ One thing that strikes me, however, is that this sort of noncompliance
+ may be costless to Chris, whereas to noncomply to try to go to field 1
+ he would need to wait another year, presumably.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 314122868 1488042351
+Can you identify specifically which assumption (using the KLM notation)
+ that Chris is violating?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="14">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ranking
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+field
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cutoff
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pay-off
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ranking
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+field
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cutoff
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pay-off
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ranking
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+field
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cutoff
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pay-off
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1st
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1st
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1st
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3rd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3rd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3rd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Anton
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $z_{1}=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Bernard
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $z_{1}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Chris
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $z_{1}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+score=49
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{1}=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+score=47
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{1}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+score=47
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{1}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{2}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{2}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $d_{2}=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+compliance
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+compliance
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-compliance
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questions to maybe skip, (at least for now), but I'd still like to understand:
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Itemize
+Terminology stuff ...
+ they conflate 'field chosen' and 'field completed' at times
+\end_layout
+
+\begin_layout Itemize
+Discussion of returns to 'compliers' taking into account differential completion
+ rates, particularly between fields
+\end_layout
+
+\begin_layout Itemize
+Payoffs to 2 versus 0 exceed the payoffs to 1 versus 0 across all of those
+ choosing 2 and 1 as first choices respectively, i.e., 
+\begin_inset Formula $E[\Delta^{2}|d=2]>E[\Delta^{1}|d=1]$
+\end_inset
+
+ [while]...the opposite holds for those at the 
+\begin_inset Quotes eld
+\end_inset
+
+relevant choice margins
+\begin_inset Quotes erd
+\end_inset
+
+, those choosing 2 and 1 as first choices and 0 as a second choice: 
+\begin_inset Formula $E[\Delta^{2}|d=2,d_{/2}=0]<E[\Delta^{1}|d=1,d_{/1}=0]$
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Ffor which question are these the 'relevant margins', i.e., what is the relevance
+ of the above comparison? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+OLS estimates of the payoffs to field of study can vary either because of
+ selection bias, differences in potential earnings across fields, or differences
+ in weights across the next-best alternatives.
+\begin_inset Quotes erd
+\end_inset
+
+ ...
+ 
+\emph on
+doesn't this leave out the possibility that payoffs to a field could also
+ vary because of different potential outcomes between those who 
+\bar under
+choose
+\bar default
+ different fields as first choices?
+\end_layout
+
+\begin_layout Itemize
+
+\lang american
+Prop 1 intuition: Why should (e.g.) the IV-estimated 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ be affected by 
+\begin_inset Formula $\Delta^{2}$
+\end_inset
+
+ (the payoff to 2 relative to 0)? I would have thought the estimated 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ would pick up a weighted average of payoffs to getting 1 instead of 0 for
+ those with NBA=0 and those with NBA=2.
+ What does this have to do with the payoffs to 2 versus 0? For this measure,
+ are we not simply comparing those, for whatever preference, whose marks
+ put them just above or just beow the margin between fields 1 and field
+ 0 ...
+ so they never should enter field 2, I would think.
+\end_layout
+
+\end_inset
+
+
+\change_inserted 314122868 1488284800
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 314122868 1488284811
+28 Feb 2017 comments
+\end_layout
+
+\begin_layout Standard
+1.
+ If the irrelevance condition (assumption in part three in Prop 2) is meant
+ to refer to "where field 1 is preferred over field 0" it should follow
+ from an optimizing agent with a fixed 'noncompliance cost', but I do not
+ see this state somewhere explicitly.
+ (See discussion 'more on proposition 2 part 3' below).
+ Let me call this the 
+\emph on
+'ordered irrelevance condition
+\emph default
+'
+\change_inserted 314122868 1488284976
+.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+2.
+ I believe that for each of these parts they mean the 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ to refer to the IV estimation result where we look at students (with scores
+ near the threshold of two fields), 
+\emph on
+where these fields are adjacent in the student's rankings.
+
+\emph default
+ (E.g., if field A requires 90 marks, and the next highest field is B requiring
+ 80 marks, we look only if students who rank B directly below A in some
+ part of their rankings.)
+\end_layout
+
+\begin_layout Standard
+...
+ However, for part 1 (homogenous effects) this empirical restriction should
+ not matter, while it is critical for part 3.
+ For part 3, I believe that with the ordered irrelevance condition assumption,
+ looking at this subset means the IV-"LATE" estimator tells me about those
+ for whom the condition after the bar holds.
+ If I have someone for whom A>B>C or C>A>B, I know that they either comply
+ with an assignment to A and to B, or they 'always go to C'.
+ If this is the case, the LATE estimator of the returns to A over B tells
+ me about the average of those relative returns for compliers who have A>B
+ somewhere in their ranking (without any others in between).
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3.
+ I do see how they can test for constant effects if they assume condition
+ 3 and produce the estimate mentioned above.
+ If 'constant effects' holds, then we can simply add things up and see if
+ the sums agree.
+ E.g., add 'payoffs to A-B for those with this ranking in one year' to 'payoffs
+ to B-C for those with these rankings in some year', and see if they add
+ up to 'payoffs to A-C for those with this ranking in some year.'
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ I still find it unclear what they're claiming to infer about "“the gains
+ in earnings to persons choosing science instead of teaching [relative to]
+ the gains in earnings to those choosing business instead of teaching".
+ I suspect that statements like “for example, by choosing science instead
+ of the humanities, individuals almost triple their earnings early in their
+ working career” is overstated and a bit misleading.
+ If payoffs are heterogeneous and can vary for people with different first
+ and second preferences, and we only observe payoffs for those who 
+\emph on
+state this particular preference ranking
+\emph default
+, how can we ever say something about 'average payoffs to A-B for everyone',
+ or even for any group including people who did not state this preference
+ ordering?
+\end_layout
+
+\begin_layout Standard
+They can do things like in figure IX and examine the "average pay off relative
+ to next best field -- for those with these next-best fields -- and compare
+ this across (preferred) fields".
+ However, this would seem to be vulnerable to their own basic critique --
+ we are adding heterogeneous payoffs relative to heterogeneous fields, so
+ some may not be informed of any particular labor market returns.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+5.
+ I still think there is something mis-stated in Footnote 19.
+ However, if proposition 2 part 3 now makes more sense, this may be less
+ important -- unless our own work violates the equivalent of the assumptions
+ of part 3.
+ I suspect what they meant was something like
+\end_layout
+
+\begin_layout Quotation
+If the irrelevance condition does not hold [e.g., because of differential
+ non-compliance costs depending on one's allocation] or if individuals do
+ not understand the allocation mechanism [?so they don't rank their true
+ preferences], then our estimation approach should be interpreted as 
+\emph on
+[cut: relaxing the constant effects assumption in part (i) of Proposition
+ 2 to allow for heterogeneity in payoffs according to next-best fields]
+\emph default
+ an estimate of returns to admission to the more preferred field for those
+ specifying a particular set of preferences (1>0) reflecting a weighted
+ estimate of returns to fields.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+\bar under
+More on proposition 2 part 3
+\end_layout
+
+\begin_layout Standard
+1.
+ Their proposition 2 (part three) makes sense to me if I assume they mean
+ that field 1 is preferred over field 2 in this proposition.
+ Then when you think about: ...
+ holding constant the threshold required for entry into each field,
+\end_layout
+
+\begin_layout Standard
+...
+ and note that we are looking exclusively at: 
+\end_layout
+
+\begin_layout Itemize
+the comparison of individuals just below or just above a particular threshold
+ (e.g., let field A have the threshold of 90, and field B has the next highest
+ threshold of 80; we look at individuals with a score of 89 or 90) 
+\end_layout
+
+\begin_layout Itemize
+where that individual has ranked the institutions in this order (in their
+ preference ranking A>B, with no institutions in between).
+ 
+\end_layout
+
+\begin_layout Standard
+Adapting their irrelevance assumption: "Someone who will not enter A when
+ assigned to A orB will enter the same field (either C or B) whether they
+ are assigned to A or B.
+ E.g., an individual does not choose B if assigned to B and C if assigned
+ to A."
+\end_layout
+
+\begin_layout Standard
+For the set of students we're looking at, this guy could have 
+\begin_inset Formula $C>A>B$
+\end_inset
+
+ or 
+\begin_inset Formula $A>B>C$
+\end_inset
+
+ (but not B>A and not A>C>B).
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $A>B>C$
+\end_inset
+
+ he will enter A if assigned to A.
+ 
+\end_layout
+
+\begin_layout Itemize
+If C>A>B then if he is willing to pay the noncompliance cost and go to C
+ when assigned to A, he would certainly pay this cost and also go to C when
+ assigned to the less-preferred B.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+However, if we are not meant to assume that field 1 is preferred over field
+ 2 in their statement, 
+\emph default
+then I can switch B and A in their statement ...
+ so it becomes 
+\end_layout
+
+\begin_layout Standard
+"Someone who will not enter B when assigned to B or A will enter the same
+ field (either C or A) whether they are assigned to A or B.
+ E.g., an individual does not choose A if assigned to A and C if assigned
+ to B."
+\end_layout
+
+\begin_layout Itemize
+Here if 
+\begin_inset Formula $C>A>B$
+\end_inset
+
+ it is reasonable to expect that he may enter A if assigned to A but C if
+ assigned to B; this is the example I gave earlier.
+ 
+\end_layout
+
+\begin_layout Standard
+...
+ So are we to assume that they mean the irrelevance condition to refer to
+ 'where field 1 is preferred over field 0?'
+\end_layout
+
+\begin_layout Section
+Introduction (and abstract)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+Different fields of study have substantially different labor market payoffs,
+ even after accounting for institution and peer quality.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+The effect on earnings from attending a more selective institution tends
+ to be relatively small compared to payoffs to field of study.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+The estimated payoffs to field of study are consistent with individuals
+ choosing fields in which they have a comparative advantage.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+...allows us identify the payoff to completing one type of education relative
+ to a particular next-best alternative ...
+\end_layout
+
+\begin_layout Quotation
+[Also, later:] While a complete characterization of the pattern of selection
+ would require a number of strong assumptions, we can use the estimated
+ payoffs to learn about the comparative advantages of the compliers to our
+ instruments.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+DR: I am unclear whether they are able to identify the 'payoff' mentioned
+\series default
+  for a general group or whether it is only 
+\bar under
+for those who choose this pairing of first and second choices
+\bar default
+.
+ In the latter case, comparisons of relative returns should not be used
+ to claim that certain fields yield higher payoffs than other fields for
+ the average person.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+DR, 17-11-16:
+\series default
+ I am fairly sure it is the latter.
+ However, they argue the choices are incentive-compatible, so we are getting
+ at the payoffs for people for whom these are the actual next-best alternatives.
+ But: this doesn't mean their NBA is the second-highest paying field for
+ them, if we allow for compensating differentials/amenities.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+the admission system we study creates exogenous variation in both field
+ and institution choice
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+DR: I think they mean in the allocations not the 
+\bar under
+choices
+\series default
+\bar default
+; choices are endogenous which makes the interpretation problematic.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+MP: this is standard terminology in IV models, to say that the IV gives
+ you exogenous variation to understand the effect of the endogenous variable.
+ (In some sense that’s the whole point of the IV model, to allow you to
+ make a causal statement about an endogenous variable.)
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: Of course that's what IV is about, but here the distinction between
+ allocations and choices matter, for the reasons mentioned above.
+ The returns to 'going to A versus B' are likely to vary on average for
+ between those who chose A as a first choice, and those who made another
+ choice.
+ But ultimately, this may just be an error in their wording, their analysis
+ is what it is.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+[Noting] completion rates are sometimes low and vary systematically across
+ fields...
+\end_layout
+
+\begin_layout Quotation
+...We are able to estimate the impact of graduating with a degree in a field
+ in addition to the intention-to-treat effect of crossing the admission
+ cutoff to a field
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+DR: How do they deal with selection issues in doing this?
+\series default
+ If some fields are harder to complete one would imagine the estimated payoffs
+ from these fields are biased upwards.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+MP: I’m also not sure what happens if different subjects have different
+ drop-out rates (or transition rates to other subjects with different probabilit
+ies).
+ I think their IV estimate is clean if there is non-compliance between first-
+ and second choice, but if there are effects on dropout or on completing
+ other subjects then I’m not sure if this is a violation of their IV assumption
+ (that everything works through the major).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: Consider an IV model using assignment to instrument completion.
+ This IV regression should measure the returns to completion for those 'complier
+s' who complete the field if and only if they are assigned to it.
+ It's an unbiased measure for these 'compliers', so IV 'works'.
+ However, the returns to compliers may differ from the average returns,
+ and 'compliers' in more difficult fields are likely to be stronger students
+ than compliers in easier fields, so comparing the returns across fields
+ is difficult! 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+DR: Note that they have scaled back some of the claims,
+\series default
+ and refer more narrowly to their estimator in this QJE version vs the 2014
+ NBER WP; 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+For example, by choosing Science instead of Humanities, individuals almost
+ triple their earnings early in their working career.
+ By comparison, choosing Science instead of Engineering or Business has
+ little payoff
+\begin_inset Quotes erd
+\end_inset
+
+ – the latter sentence was removed
+\end_layout
+
+\begin_layout Section*
+II Instrumental variables in unordered choice models (model for identifying
+ payoffs to field)
+\end_layout
+
+\begin_layout Standard
+Consider choice between three fields 
+\begin_inset Formula $d\in{0,1,2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $d_{j}$
+\end_inset
+
+ indicate 'completed field 
+\emph on
+j
+\emph default
+'.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Consider
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Regression estimates
+\series default
+\bar default
+ (or hypothetical linear projection) of observed earnings as a function
+ of completing each field:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+(Equation 1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y=\beta_{0}+\beta_{1}d_{1}+\beta_{2}d_{2}+\varepsilon\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\bar under
+Groups
+\series default
+\bar default
+ : 
+\begin_inset Formula $Z\in{0,1,2}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{j}$
+\end_inset
+
+ indicates assigned group.
+\end_layout
+
+\begin_layout Standard
+...
+ “instrument that shifts the cost or benefit of choosing field 
+\emph on
+j
+\emph default
+” 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+DR: In their context, how do the instruments shift the cost/benefit? Is
+ it that if one does not get assigned one must try again next year ...
+ or 'infinitely costly'? This makes me think by 'choosing' they mean 'entering'.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\bar under
+Potential outcomes: 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d^{z};\,y^{d,z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $d^{z}:$
+\end_inset
+
+ field chosen [or completed?] if assigned group 
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y^{d,z}$
+\end_inset
+
+: Outcome (for an individual) if assigned group 
+\begin_inset Formula $z$
+\end_inset
+
+ and entering field 
+\begin_inset Formula $d$
+\end_inset
+
+ ...
+ (below we assume this is independent of 
+\begin_inset Formula $z$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\bar under
+Assumptions: Exclusion, independence, full rank (standard IV assumptions,
+ treatment context)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+y^{d,z} & = & y^{d}\,\forall\,d,z\label{eq:2}\\
+y^{d},d^{z} & \perp & Z\,\forall\,d,z\\
+E[z'd] & full\,rank
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So outcome depends on 
+\emph on
+field completed 
+\emph default
+not on assigned group (instrument, lottery assignment, etc)
+\end_layout
+
+\begin_layout Itemize
+Assigned group unrelated to 
+\emph on
+potential
+\emph default
+ outcomes for 'choices (of field) for each assignment' and for outcomes
+ of interest (income)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Norwegian data provides us with i) one instrument for every field
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Cf: we 
+\series bold
+don't
+\series default
+ have this for each institution in the DUO lottery; I don't understand how
+ they claim to have it either; does each individual have a distinct instrument
+ for each field or only a single score? Ans (?): Only a single score; the
+ instruments are the field cutoffs, which vary from year to year.
+\end_layout
+
+\end_inset
+
+
+\emph on
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+Model allows payoffs to differ by 'which fields compared' (
+\begin_inset Formula $y^{1}-y^{0}$
+\end_inset
+
+ vs.
+ 
+\begin_inset Formula $y^{2}-y^{0}$
+\end_inset
+
+), and by individuals (
+\begin_inset Formula $y^{1}-y^{0}$
+\end_inset
+
+ may differ for everyone).
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Model linking observed to potential outcomes
+\end_layout
+
+\begin_layout Standard
+1.
+ Field completion 
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+ outcome:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+y & = & y_{0}+(y^{1}-y^{0})d_{1}+(y^{2}-y^{0})d_{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2-3: 'Choice equations' (assignment
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+ field completion [or entry?] at 1, 2 respectively)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{1}=d_{1}^{0}+(d_{1}^{1}-d_{1}^{0})z_{1}+(d_{1}^{2}-d_{1}^{0})z_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...where dummies represent 
+\begin_inset Formula $d_{1}^{0}$
+\end_inset
+
+: choose 1 if 
+\begin_inset Formula $z=0$
+\end_inset
+
+', 
+\begin_inset Formula $d_{1}^{1}:$
+\end_inset
+
+ 'choose 1 if 
+\begin_inset Formula $z=1$
+\end_inset
+
+' etc.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{2}=d_{2}^{0}+(d_{2}^{1}-d_{2}^{0})z_{1}\:...
+\]
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Assumption 4: Monotonicity
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{1}^{1}\geq d_{1}^{0},\,d_{2}^{2}\geq d_{2}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...assignment weakly increases probability of field completion (no 'defiers')
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Note: Independence of Irrelevant Alternatives not assumed
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+OLS estimation of payoffs to field of study (
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+standard selection bias (
+\series medium
++ a 'comparison issue')
+\series default
+)
+\end_layout
+
+\begin_layout Standard
+(Naive) OLS (estimate of 
+\begin_inset Formula $\beta_{2})$
+\end_inset
+
+ yields the sample analogue of...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E[y|d=2]-E[y|d=0]=\underbrace{{E[\Delta^{2}|d=2]}}_{Payoff}+\underbrace{E[y^{0}|d=2]-E[y^{0}|d=0]}_{Selection\:bias}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Delta^{2}:=y^{2}-y^{0}$
+\end_inset
+
+ (individual payoff from 2 instead of 0
+\emph on
+; payoff (ATT?) for those choosing d=2)
+\end_layout
+
+\begin_layout Enumerate
+Need to correct for selection bias (recognized in most papers); 
+\begin_inset Formula $E[y^{0}|d=2]\neq E[y^{0}|d=0]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Individuals who choose same (fields) may differ in their next-best alternative
+ (NBA), but we typically observe only the chosen field.
+ This causes another comparison issue [previously they called it an 'interpretat
+ion bias']
+\end_layout
+
+\begin_layout Standard
+Letting 
+\begin_inset Formula $d_{/j}$
+\end_inset
+
+ denote an individual's NBA:
+\begin_inset Formula 
+\begin{equation}
+E[\Delta^{2}|d=2]=\underbrace{{E[\Delta^{2}|d=2,d_{/2}=0]}}_{ATE\:where\:NBA=0}Pr(d_{/2}=0|d=2)+\underbrace{{E[\Delta^{2}|d=2,d_{/2}=1]}}_{ATE\:where\:NBA=1}Pr(d_{/2}=1|d=2)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So even if there is no selection bias (e.g., all get the same return to d=0),
+ 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ estimates a weighted average of payoffs to choosing 2 instead of 0 across
+ groups with different NBAs.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+[However this estimate still might be policy-relevant, e.g., as a measure
+ of the return to expanding spaces in field 2.]
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above bracketed ATEs will differ if the returns to 2 versus 0 vary across
+ individuals and they rank their choices based on this (presumably, those
+ where NBA=0 get more from 0 than the second group and thus, ceteris paribus,
+ will have a smaller ATE.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+As an example, we can have that:
+\end_layout
+
+\begin_layout Itemize
+Payoffs to 2 versus 0 exceed the payoffs to 1 versus 0 across all of those
+ choosing 2 and 1 as first choices respectively, i.e., 
+\begin_inset Formula $E[\Delta^{2}|d=2]>E[\Delta^{1}|d=1]$
+\end_inset
+
+ 
+\emph on
+but
+\end_layout
+
+\begin_layout Itemize
+...the opposite holds for those at the 
+\begin_inset Quotes eld
+\end_inset
+
+relevant choice margins
+\begin_inset Quotes erd
+\end_inset
+
+, those choosing 2 and 1 as first choices and 0 as a second choice: 
+\begin_inset Formula $E[\Delta^{2}|d=2,d_{/2}=0]<E[\Delta^{1}|d=1,d_{/1}=0]$
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DR: But for which question are these the 'relevant margins', i.e., what is
+ the relevance of the above comparison? (maybe relevant for comparative
+ advantage measures?)
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+OLS estimates of the payoffs to field of study can vary [
+\emph on
+vary across ??
+\emph default
+] either because of selection bias, differences in potential earnings across
+ fields, or differences in weights across the next-best alternatives.
+ ...To address selection bias, it is sufficient to have instruments that satisfy
+ Assumptions 1-4.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: doesn't this leave out the possibility that payoffs to a field could
+ also vary because of different potential outcomes between those who 
+\bar under
+choose
+\bar default
+ different fields as first choices?
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+IV estimation of payoffs to field of study
+\end_layout
+
+\begin_layout Standard
+Consider an IV regression 
+\end_layout
+
+\begin_layout Itemize
+With a valid instrument for each field (or other choice)
+\end_layout
+
+\begin_layout Itemize
+but without (using) information about individuals' rankings
+\end_layout
+
+\begin_layout Standard
+Uses moment restrictions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+E[\epsilon z_{1}]=0,\:E[\epsilon z_{2}]=0, & \:E[\epsilon]=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rewriting residuals in potential outcome format:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\epsilon=(y^{0}-\beta_{0})+(\Delta^{1}-\beta_{1})d_{1}+(\Delta^{1}-\beta_{2})d_{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Here we are subtracting the 'true' individual treatment effects from the
+ estimated/predicted effects to obtain the residual for each individual.
+ Note that as this represents a projection of 
+\emph on
+actual 
+\emph default
+outcomes, we are only observing the field choices where people actually
+ would choose these fields given their choice sets (see above choice equations).
+ Thus we plug these in to get:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+=(y^{0}-\beta_{0})+(\Delta^{1}-\beta_{1})\underbrace{{\left(d_{1}^{0}+(d_{1}^{1}-d_{1}^{0})z_{1}+(d_{1}^{2}-d_{1}^{0})z_{2}\right)}}_{d_{1}:\:all\:situations\:where\:1\:chosen}\\
++(\Delta^{2}-\beta_{2})\underbrace{{\left(d_{2}^{0}+(d_{2}^{1}-d_{2}^{0})z_{1}+(d_{2}^{2}-d_{2}^{0})z_{2}\right)}}_{d_{2}:\:all\:situations\:where\:2\:chosen}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Restating the moment conditions (and using the independence assumption 
+\begin_inset Formula $y^{d},d^{z}\perp z\,$
+\end_inset
+
+):
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Multiply each element of the above by 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ or 1, and take the expectation, which we know to be zero by the moment
+ restrictions.
+ The independence assumption also allows us (?) to remove several terms
+ we already 'know' to have expectation zero, leaving us with: 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+E\big[(\Delta^{1}-\beta_{1})(d_{1}^{1}-d_{1}^{0})+(\Delta^{2}-\beta_{2})(d_{2}^{1}-d_{2}^{0})\big]=0\\
+E\big[(\Delta^{1}-\beta_{1})(d_{1}^{2}-d_{1}^{0})+(\Delta^{2}-\beta_{2})(d_{2}^{2}-d_{2}^{0})\big]=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+This equation has changed from the earlier draft
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving for 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ yields Prop.
+ 1.
+\end_layout
+
+\begin_layout Subsubsection*
+Proposition 1
+\end_layout
+
+\begin_layout Standard
+Given assumptions 1-4 and solving the above for 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ (the terms the estimators will converge to), each 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is a linear combination of:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Delta^{1}$
+\end_inset
+
+: Payoff of field 1 compared to 0 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Delta^{2}:$
+\end_inset
+
+ Payoff of field 2 compared to 0
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Delta^{2}-\Delta^{1}$
+\end_inset
+
+: Payoff of field 2 compared to 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+DR: This is surprising to me, e.g., why should the IV-estimated 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ be affected by 
+\begin_inset Formula $\Delta^{2}$
+\end_inset
+
+ (the payoff to 2 relative to 0).
+ I'd like to have some intuition for this.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+MP: I think one intuition might be that (since this does not condition on
+ next-best), it will average over the next best alternatives, and the correspond
+ing effects are represented by 
+\begin_inset Formula $\Delta^{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang american
+DR:
+\series default
+ I thought 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ should pick up a weighted average of payoffs to getting 1 instead of 0
+ for those with NBA=0 and those with NBA=2.
+ What does this have to do with the payoffs to 2 versus 0?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proposition 2 (the big one)
+\end_layout
+
+\begin_layout Standard
+(Given assumptions 1-4, solving for 
+\begin_inset Formula $\beta$
+\end_inset
+
+'s)
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+With constant effects
+\bar default
+: If 
+\begin_inset Formula $\Delta^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta^{2}$
+\end_inset
+
+ are common across all individuals, then 
+\begin_inset Formula $\beta_{1}=\Delta^{1}$
+\end_inset
+
+, and 
+\begin_inset Formula $\beta_{2}=\Delta^{2}$
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+DR: This is basically from the definition of constant effects 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+With restrictive preferences
+\bar default
+: If 
+\begin_inset Formula $d_{2}^{1}=d_{2}^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{1}^{2}=d_{1}^{0}$
+\end_inset
+
+ (i.e., whether I'm assigned to 1 or 0 doesn't impact whether I choose 2;
+ similarly, being assigned 2 versus 0 doesn't affect whether I choose 1)
+ then 
+\begin_inset Formula $\beta_{1}=E[\Delta^{1}|d_{1}^{1}-d_{1}^{0}=1]$
+\end_inset
+
+ (because the share choosing 2 is unaffected by this instrument) and similarly
+ for 
+\begin_inset Formula $\beta_{2}...$
+\end_inset
+
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR
+\series default
+: I'm not sure whether their choice variables come directly from the stated
+ choice ordering, or whether there is an opportunity for additional noncomplianc
+e.
+ E.g., if I state I prefer 
+\begin_inset Formula $A\succ B\succ C$
+\end_inset
+
+, and I am assigned to B, can I still enter A? MP: Yes I think so, we are
+ not requiring 
+\begin_inset Formula $d_{j}^{k}=1{k=j}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+DR: 
+\series default
+If so, I don't understand how their estimate deals with my critique below
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+The big one
+\series default
+: 
+\bar under
+Irrelevance and next-best alternative
+\bar default
+: If 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $d_{1}^{1}=d_{1}^{0}=0\Rightarrow d_{2}^{1}=d_{2}^{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ : 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Someone who will not enter 1 when assigned to 0 or 1 will enter the same
+ field (either 2 or 0) whether they are assigned to 0 or 1.
+ E.g., no one chooses 0 if assigned to 0 but chooses 2 if assigned to 1.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $d_{2}^{2}=d_{2}^{0}=0\Rightarrow d_{1}^{2}=d_{1}^{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Someone who will not enter 2 when assigned to 2 or 0 will enter the same
+ field (either 0 or 1) whether they are assigned to 2 or 0.
+ E.g., no one chooses 1 if assigned to 2 but chooses 0 if assigned to 0
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang american
+\begin_inset Quotes eld
+\end_inset
+
+and we condition on 
+\begin_inset Formula $d_{1}^{0}=d_{2}^{0}=0$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang american
+(
+\emph on
+?look at the set of people who would choose 0 if assigned to 0 – how do
+ they identify this set? People who put 0 as their first choice?)
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size normal
+\emph on
+\lang american
+DR:
+\series default
+ Matthias, any ideas on this?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\lang american
+...
+ then 
+\begin_inset Formula 
+\[
+\beta_{1}=E[\Delta^{1}|d_{1}^{1}-d_{0}^{1}=1,\:d_{2}^{0}=0]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\[
+\beta_{2}=E[\Delta^{2}|d_{2}^{2}-d_{0}=0,\:d_{2}=0]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Proposition 2, part 3 is their maintained assumption; 
+\series default
+\emph on
+we can find reasonable exceptions to this assumption (see question above)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+If the admissions criteria are unordered...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Then suppose she has 
+\begin_inset Formula $Y_{2}>Y_{0}>Y_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Here, if she is assigned to 0 she might choose 0 (rather than 2), i.e., 
+\begin_inset Formula $d_{0}^{0}=1$
+\end_inset
+
+, (
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $d_{1}^{0}=d_{2}^{0}=0$
+\end_inset
+
+) if noncompliance brings a cost.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+However, if she is assigned to 1 it might be worth paying the noncompliance
+ cost (for the larger gain 
+\begin_inset Formula $Y_{2}-Y_{1})$
+\end_inset
+
+ and choosing 2, i.e., 
+\begin_inset Formula $d_{2}^{1}=1$
+\end_inset
+
+ (
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $d_{1}^{1}=d_{0}^{1}=0$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+This would violate the first condition of part 3 as 
+\emph default
+
+\begin_inset Formula $d_{1}^{1}=d_{1}^{0}=0$
+\end_inset
+
+ but 
+\begin_inset Formula $d_{2}^{1}=1\neq d_{2}^{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+[e.g., in Mogstad context] if crossing the admission cutoff to field 1 does
+ not make an individual choose field 1, it does not make her choose field
+ 2 either.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: Here does 'crossing the admission cutoff to field 1' make it harder
+ for her to enter field 0 ...
+ relative to the case where d=0, or are these ordered in some way? 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR: 
+\series default
+I think there is an ordering; each field-institution combination has a minimum
+ mark threshold, although these differ from year to year.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Specifics of identification strategy and estimation
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+RD (fuzzy):
+\end_layout
+
+\begin_layout Quotation
+For courses with excess demand, ...
+ applicants scoring above a certain threshold are much more likely to receive
+ an offer for a course they prefer as compared to applicants with the same
+ course preferences but marginally lower application score.
+ This creates credible instruments from discontinuities which effectively
+ randomize applicants near unpredictable admission cutoffs into different
+ fields and institutions.
+\end_layout
+
+\begin_layout Quotation
+...
+ therefore think of the baseline estimates as measures of earnings gains
+ from completing one field of study as compared to another, with the understandi
+ng that these gains may not necessarily arise only from field specific human
+ capital.
+ [could include institutional differences] ....
+ we extend the baseline 2SLS model to include a full set of indicator variables
+ for both field and institution of study and use the admission cutoffs to
+ instrument for these endogenous variables.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+DR: Note that they are willing to allow for combined or 'reduced form' effects,
+ at least in the baseline specification
+\end_layout
+
+\begin_layout Standard
+In our baseline 2SLS model, however, we abstract from differences in institution
+al quality, recognizing that changing field could involve changes in institution
+ of study.
+ Indeed, the baseline estimates of the payoffs to field of study will capture
+ any effect that is linked to the change in fields because of crossing the
+ admission cutoff between his preferred field and next-best alternative.
+ We therefore think of the baseline estimates as measures of earnings gains
+ from completing one field of study as compared to another, with the understandi
+ng that these gains may not necessarily arise only from field specific human
+ capital.
+ To examine the role of institutional quality in explaining the estimated
+ payoffs, we take several steps.
+ In particular, we extend the baseline 2SLS model to include a full set
+ of indicator variables for both field and institution of study and use
+ the admission cutoffs to instrument for these endogenous variables.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Baseline 2SLS model (section VI)
+\end_layout
+
+\begin_layout Standard
+They estimate the following system; separately for individuals with 'next
+ best field 
+\begin_inset Formula $k$
+\end_inset
+
+ (in the local course ranking)': 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR
+\series default
+: By 'next best' I assume they mean the stated choice that follows the choice
+ of the particular course focused on for estimation/comparison.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+y=\sum_{j\neq k} & \beta_{jk}d_{j}+x'\gamma_{k}+\lambda_{jk}+\epsilon_{k}\\
+d_{j}=\sum_{j\neq k} & \pi_{jk}z_{j}+x'\psi_{jk}+\eta_{jk}+\epsilon_{k}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $d_{j}$
+\end_inset
+
+: Completed field 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $z_{j}$
+\end_inset
+
+: predicted offers for field 
+\begin_inset Formula $j$
+\end_inset
+
+ (i.e., =1 if j is preferred field and she exceeds the admissions cutoff)
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Estimating this
+\end_layout
+
+\begin_layout Itemize
+Not enough data to do local nonparametric estimation, so include controls:
+ for running variable (linear application score), preferences (
+\begin_inset Formula $\lambda_{jk}$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta_{jk}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Important: 
+\emph default
+
+\begin_inset Quotes eld
+\end_inset
+
+To gain precision, we estimate the system of equations (14)– (15) jointly
+ for all next-best fields, allowing for separate intercepts for preferred
+ field and for next-best field ...
+\begin_inset Quotes erd
+\end_inset
+
+ and robust-check this to allow 
+\begin_inset Quotes eld
+\end_inset
+
+separate intercepts for every interaction between preferred and next-best
+ field.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR
+\series default
+: If we are estimating a matrix we will need to do something like this.
+ It seems important; need to think about what this means; why do they need
+ these controls at all if they are limiting it to a subset with all the
+ same NBA?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Control for predetermined covariates 
+\begin_inset Quotes eld
+\end_inset
+
+to reduce residual variance
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+We obtain a 
+\bar under
+matrix of the payoffs to field j compared to k for those who prefer j and
+ have k as next-best field
+\bar default
+.
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR: 
+\series default
+that is what I've been saying; a more modest interpretation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Following Imbens and Rubin (1997) and Abadie (2002), we also decompose these
+ payoff estimates into the complier average potential earnings with field
+ j and the complier average potential earnings with field k.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR
+\series default
+: what is this and how is it estimated??
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+By comparing Figure VII to Figure I, we can see that the compliers to our
+ instruments are fairly similar to non-compliers in terms of their preferred
+ and next-best fields.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+DR
+\series default
+: What are 'compliers' in their context? Those who would complete the preferred
+ course if their score exceeds the threshold, but would complete the NBA
+ otherwise? How do they use the 1st stage estimates to weight 'compliers'?
+ This seems important: how does it relate to their key assumption about
+ irrelevance?
+\end_layout
+
+\begin_layout Quote
+Second, we control for individuals’ preferences by adding fixed effects
+ for preferring field j and having k as the next-best field (in the local
+ course ranking)...
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\size normal
+DR: 
+\series default
+I don't think we need to do this in our context.
+ For us, after controlling for mark category, winners and losers should
+ have the same next best alternatives on average.
+ However, perhaps this control would reduce residual noise? (MP?)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Crucial but confusing points about identification and what they claim to
+ estimate 
+\end_layout
+
+\begin_layout Quotation
+despite the local nature of our estimates, the payoffs among the compliers
+ to our instruments are informative about policy that (marginally) changes
+ the supply of slots in different fields.
+ In Kirkeboen, Leuven, and Mogstad (2014), we show that the effect of a
+ policy that changes the field people choose depends inherently on the next-best
+ alternatives, both directly through the next-best specific payoffs, and
+ indirectly through the fields in which slots are freed up.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+DR: 
+\series default
+This is very close to the point that I make about the relevance of our estimator
+ 'even though it is for a particular weighted combination of next-best-alternati
+ves' ...
+ they give basically my same justification for why it is interesting and
+ policy relevant.
+ Matthias.
+ I know you are arguing that they are not 
+\emph on
+leading
+\emph default
+ with this point.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Defining our estimates in the Mogstad framework
+\end_layout
+
+\begin_layout Standard
+We are mainly estimating the payoffs to an individual's first ranked (
+\begin_inset Formula $\approx$
+\end_inset
+
+ first preference) institution over the 'institution assigned given all
+ other ranks', averaged over all individuals, and over demographic subsets.
+ 
+\end_layout
+
+\begin_layout Standard
+Our instrument should mimic random assignment (do we need to worry about
+ the LATE stuff about the instrument over-representing certain margins?),
+ which should eliminate the 'selection bias term' [define here].
+\end_layout
+
+\begin_layout Section*
+What they actually estimate 
+\end_layout
+
+\begin_layout Section*
+Replicating approach of Mogstad et al 
+\end_layout
+
+\begin_layout Enumerate
+Estimate treatment effects (impact of attending each institution or field)
+ separately for all second choices, using 2sls 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\ensuremath{\rightarrow}$
+\end_inset
+
+ matrix of payoffs as in Mogstad table 5
+\end_layout
+
+\begin_layout Enumerate
+'estimate this jointly to gain precision'
+\end_layout
+
+\begin_layout Enumerate
+Also estimate 'complier weights of next best alternatives (NBAs)' (?from
+ first stage)
+\end_layout
+
+\begin_layout Enumerate
+New endogenous variable: dummy for completion
+\end_layout
+
+\begin_layout Enumerate
+Include indicators for 
+\emph on
+predicted 
+\emph default
+institution in first and 2nd stage
+\end_layout
+
+\begin_layout Enumerate
+control for predicted peer quality 
+\end_layout
+
+\begin_layout Enumerate
+control for predicted experience level
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Test difference between the treatment of pooled measures versus measures
+ conditional on NBA 
+\begin_inset Formula $\approx$
+\end_inset
+
+ second choice sets
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plot these estimates against one another
+\end_layout
+
+\begin_layout Enumerate
+Test restrictions on preferences of Beghal (sp) et al, 2013
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Establishing comparative advantage
+\end_layout
+
+\begin_layout Standard
+Notion of Comparative Advantage (CA) from Sattinger (1978): Individual 1
+ has a CA in subject j relative to k if return to j (relative to k) is larger
+ than for individual 2.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+DR: note this can hold even if both individuals gain more from k than from
+ j.
+ Furthermore, if 1 has a CA in j relative to k relative to individual 2,
+ then 2 must have a CA in k relative to j relative to individual 1.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\log y_{1}^{j}-\log y_{1}^{k}>\log y_{2}^{j}-\log y_{2}^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Procedure
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+Estimate matrix of payoff coefficients.
+ [DR: can you clarify this?] [matrix of first and second preferences, payoff
+ (log outcomes) to winning first preference relative to second preference?]
+\end_layout
+
+\begin_layout Enumerate
+Compute difference (return j over k for those who prefer j, minus return
+ t over k for those who prefer k).
+ Hypothesis is that this difference is positive.
+\end_layout
+
+\begin_layout Enumerate
+Show using histogram, plotting the distribution of 
+\begin_inset Formula $(\log y_{1}^{j}-\log y_{1}^{k})-(\log y_{2}^{j}-\log y_{2}^{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+DR - Roy model, background:
+\end_layout
+
+\begin_layout Standard
+Individual chooses fields of study j over k whenever 
+\begin_inset Quotes eld
+\end_inset
+
+her relative productivity advantage in field j 
+\begin_inset Formula $(q_{ij}/q_{ik})$
+\end_inset
+
+ exceeds the relative prices 
+\begin_inset Formula $(f_{ik}/f_{ij})$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Additional notes on Mogstad (discussion)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+field of study drives the heterogeneity in the payoffs to post-secondary
+ education ...
+ little evidence of significant gains in earnings to graduation from a more
+ selective institution once we hold field of study fixed
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Caveats:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+ it is important to emphasize the local nature of our results ...
+ since our instruments are admission cutoffs, the pick of individuals who
+ are at the margin of entry to particular fields
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+...
+ might be specific to the Norwegian context
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note
+\series default
+ that they give a fairly detailed description of the admissions process
+ in its multiple rounds, and give some hypothetical examples in tables.
+ 
+\end_layout
+
+\begin_layout Standard
+They argue it is a truth-revealing mechanism.
+ In some ways it is rather similar to the Netherlands, but in other ways
+ not (NL has weighted random draws not thresholds, also may not yield strategy-p
+roof choices, Norwegian students can rank multiple fields and can rank any
+ combination of fields and institutions)
+\end_layout
+
+\begin_layout Subsection*
+Data
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Subsetting: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+Important
+\series default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph default
+All applicants who apply for at least two broad fields of study, where the
+ most preferred field needs to have an admission cutoff, and the next-best
+ alternative must have a lower cutoff (or no binding cutoff).
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Limit to those who complete post-secondary ed (testing for sensitivity to
+ this)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Earnings:
+\end_layout
+
+\begin_layout Itemize
+from Norwegian tax registers 1998-2012.
+ ...
+ every cohort is observed for at least eight years after their application.
+ The measure of earnings encompasses wage income, income from self-employment,
+ and transfers that replace such income like short-term sickness pay and
+ paid parental leave (but excludes unemployment benefits).
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
+Relating the moment at which we measure earnings to the year of application
+ (rather than year of completion) avoids endogeneity issues related to time
+ to degree.
+ Another advantage is that by positioning earnings 8 years after applying
+ most individuals will have made the transition to work.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Statistics presented:
+\end_layout
+
+\begin_layout Itemize
+They give descriptive statistics for estimation sample and for overall pool
+ of applicants
+\end_layout
+
+\begin_layout Itemize
+Most common NBA's by field (should we do anything comparable?)
+\end_layout
+
+\begin_layout Itemize
+They present scatterplots of earnings by institution for institutions with
+ more than 1000 students (we cannot do this)
+\end_layout
+
+\begin_layout Itemize
+Statistics on strength of RD instrument: share received preferred offer,
+ completed preferred field just below and above thresholds
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Why not 0/1 for preferred offer? 
+\begin_inset Quotes eld
+\end_inset
+
+Some slots are reserved for special quotas and there may be some ad-hoc
+ conditions unrelated to academic requirements (e.g.
+ if an applicant has been ill during the last part of upper secondary),
+ thus we have some measurement error in the cutoffs.
+ Also, some applicants do not choose to remain on the waiting list after
+ the first set of offers are sent out and thus do not get an offer, even
+ though they are above the application threshold.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Check for balance/randomness: 'earnings predicted by covariates' around
+ the threshold.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DR: We should do this version for our instrument!
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
