@@ -3,3 +3,4 @@ _DelSyncFiles/*
 .Rproj.user
 *.zip
 .Rhistory
+.DS_Store

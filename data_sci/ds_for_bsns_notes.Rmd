@@ -297,8 +297,8 @@ or truths).
 will be known when the target is not, then these segments can be used to predict the
 value of the target variable
 
- a formula that evaluates how well each attribute splits a set of examples into segments, with
-respect to a chosen target variable. Such a formula is based on a purity measure.
+a formula that evaluates how well each attribute splits a set of examples into segments, with
+respect to a chosen target variable. Such a formula is based on a purity measure. A purity measure measures the purity of a given set.
 The most common splitting criterion is called information gain, and it is based on a
 purity measure called entropy.
 
@@ -306,14 +306,17 @@ purity measure called entropy.
  Disorder corresponds
 to how mixed (impure) the segment is with respect to these properties of interest. So,
 for example, a mixed up segment with lots of write-offs and lots of non-write-offs would
-have high entropy.
+have high entropy. We can think of entropy as being related to the probability of an outcome:
+- High probability: Low entropy (we know what the output is going to be)
+- Low probability: High entropy
+
 More technically, entropy is defined as:
 
 $$entropy = - p_1 log (p_1) - p_2 log (p_2) - ... $$
 
 \
 
-Each $p_i$ is the probability (the relative percentage) of property i within the set. the logarithm is generally taken as base 2.
+Each $p_i$ is the probability (the relative percentage) of property i within the set. The logarithm is generally taken as base 2 which gives entropy in the units of "bits". If we were to use base $e$ this would give us the "natural units" and base 10 would give us entropy in "dits".   
 
 
 ![](entropy_plot.png)
@@ -327,7 +330,6 @@ Each $p_i$ is the probability (the relative percentage) of property i within the
 > the entropy for each child $(c_i)$ is weighted by the proportion of instances be‐ longing to that child, $p(c_i)$
 
 ![](infogain.png)
-
 
 ## Contents
 
