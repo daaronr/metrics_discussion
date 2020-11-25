@@ -257,7 +257,7 @@ Data Warehousing
 **DR: The above seems wrong** -- this is not what regression analysis *does*, without many further assumptions!
 :::
 
-**OF:** This section notes that regression analysis is used for prediction rather than inference. Hence the use of models to *predict* new cases rather than provide inference. \
+**OF:** This section notes that regression analysis is used for prediction rather than inference. Hence the use of models to *predict* new cases rather than provide inference.\
 
 #### Machine Learning and Data Mining {.unnumbered}
 
@@ -586,6 +586,7 @@ The Euclidean and Manhattan distance are special cases of the **Minkowski** dist
 $$
 \text{Minkowski}(\textbf{a}, \textbf{b}) = (\sum_{i=1}^m abs(\textbf{a}[i]-\textbf{b}[i])^p)^{1/p}
 $$
+Source: [@kelleherFundamentalsMachineLearning2015]
 
 ### Example: Whiskey Analytics
 
@@ -941,6 +942,20 @@ Should be discussed only briefly; largely too technical for C-Suite?
 Fundamental concepts: Calculating similarity of objects described by data; Using similarity for prediction; Clustering as similarity-based segmentation. Exemplary techniques: Searching for similar entities; Nearest neighbor methods; Clustering methods; Distance metrics for calculating similarity. Similarity and Distance 142 Nearest-Neighbor Reasoning 144 Example: Whiskey Analytics 144 Nearest Neighbors for Predictive Modeling 146 How Many Neighbors and How Much Influence? 149 Geometric Interpretation, Overfitting, and Complexity Control 151 Issues with Nearest-Neighbor Methods 154 Some Important Technical Details Relating to Similarities and Neighbors 157 Heterogeneous Attributes 157 \* Other Distance Functions 158 \* Combining Functions: Calculating Scores from Neighbors 161 Clustering 163 Example: Whiskey Analytics Revisited 163 Hierarchical Clustering 164 Example: Clustering Business News Stories 174 Understanding the Results of Clustering 177 \* Using Supervised Learning to Generate Cluster Descriptions 179 Stepping Back: Solving a Business Problem Versus Data Exploration 182 Summary 184
 
 \
+OF: **What is clustering and why is it useful?** Clustering analysis is a form of unsupervised learning which focuses around splitting data into groups. The aim of this is to identify key patterns in our data. For example: The supermarket Tesco may wish to identify which products are bought together by consumers. Using clustering may reveal that 80% customers who buy bread also buy milk. Insights such as these could be used in order to alter the layout of a supermarket in order to encourage higher spending. \
+Whilst insights such as the one given in the example above are very simple, in larger datasets it can be much more difficult to draw insights such as these. Provided that the correct method is used, clustering is an incredibly powerful tool for exploring big datasets.  \
+Clustering uses distance measures in order to group similar observations into clusters.
+
+**K-Means**:
+ - Simple and easy to implement
+ - Efficient
+ - Difficult to know the value of K to specify
+ - Sensitive to the initial points chosen
+
+**DBSCAN**
+ - Very good at dealing with noise
+ - Can handle different shaped clusters
+ - Tends to perform worse when the density of data varies or when data is highly dimensional
 
 #### 7. Decision Analytic Thinking I: What Is a Good Model? {.unnumbered}
 
