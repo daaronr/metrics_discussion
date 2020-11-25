@@ -218,7 +218,7 @@ Iterative... questions, data, answers, lather, rinse repeat
 
 > test a model first in a controlled laboratory setting. Equally important, the evaluation stage also serves to help ensure that the model satisfies the original business goal
 
-> A model may be extremely accurate (> 99%) by laboratory standards, but evaluation in the actual business context may reveal that it still produces too many false alarms to be economically feasible. (How much would it cost to provide the staff to deal with all those false alarms?
+> A model may be extremely accurate (\> 99%) by laboratory standards, but evaluation in the actual business context may reveal that it still produces too many false alarms to be economically feasible. (How much would it cost to provide the staff to deal with all those false alarms?
 
 > Think about the comprehensibility of the model to stakeholders (not just to the data scientists).
 
@@ -230,7 +230,7 @@ Use an experiment to test the model:
 
 ... noting
 
->  behavior can change—in some cases, like fraud or spam, in direct response to the deployment of models.
+> behavior can change---in some cases, like fraud or spam, in direct response to the deployment of models.
 
 \
 
@@ -316,7 +316,7 @@ $$entropy = - p_1 log (p_1) - p_2 log (p_2) - ... $$
 
 \
 
-Each $p_i$ is the probability (the relative percentage) of property i within the set. The logarithm is generally taken as base 2 which gives entropy in the units of "bits". If we were to use base $e$ this would give us the "natural units" and base 10 would give us entropy in "dits".   
+Each $p_i$ is the probability (the relative percentage) of property i within the set. The logarithm is generally taken as base 2 which gives entropy in the units of "bits". If we were to use base $e$ this would give us the "natural units" and base 10 would give us entropy in "dits".
 
 
 ![](entropy_plot.png)

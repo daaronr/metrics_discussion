@@ -157,7 +157,7 @@ Logit, Mnlogit, etc
 
 **Causal modeling**
 
-> Tsechniques for causal modeling include those involving a substantial in‐ vestment in data, such as randomized controlled experiments (e.g., so-called "A/B tests"), as well as sophisticated methods for drawing causal conclusions from ob‐ servational data
+> Techniques for causal modeling include those involving a substantial in‐ vestment in data, such as randomized controlled experiments (e.g., so-called "A/B tests"), as well as sophisticated methods for drawing causal conclusions from ob‐ servational data
 
 > In all cases, a careful data scientist should always include with a causal conclusion the exact assumptions that must be made in order for the causal conclusion to hold (there always are such assumptions---always ask)
 
