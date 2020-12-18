@@ -935,3 +935,58 @@ Remember, these are not the effect sizes from the original studies. There has be
 ## Other resources and tools
 
 Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main manuscript](https://docs.google.com/document/d/1z3QBDYr86S9FxGjptZP94jJnZeeN4aQaBQP3VVT89Ec/edit#heading=h.gjdgxs)
+
+\
+
+
+# Meta-analysis arbitrary example: the 'Paleo diet'  
+
+Introduction and discussion 
+
+Summarize the evidence base for the effectiveness of the Paleo diet in reducing obesity (as measured by waist circumference). Please cover: a) the basics of the intervention being studied; b) the research methodology; c) the results. 
+
+What is your conclusion on how effective the Paleo diet is at reducing waist circumference? What do you regard as the key strengths and limitations of the evidence and why? 
+
+Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
+
+
+## Thoughts on nutritional studies and meta-analysis issues
+
+Compliance: 'Intention to treat' vs 'Treatment effects'
+
+Attrition
+
+Random effects meta-analyses; Bayesian and frequentist
+
+
+> a) the basics of the intervention being studied; b) the research methodology; c) the results. 
+
+## Manheimer et al
+
+Strengths and limitations
+
+Overall results and interpretation
+
+Others' assessment of this meta-analysis 
+- Nutrigrade
+
+
+## Other meta-analyses and consideration of the Paleo diet
+
+Process of finding relevant work (informal)
+
+"Top" nutrition journals
+
+### Focus: Boers et al 
+
+### Fentons' letter criticising Manheimer et al
+
+### Ghaedi et al meta-analysis 
+
+## Overall analysis
+
+- Apparent limitations of the evidence base
+
+- Limitations and uncertainties to my own analysis; future steps
+
+> Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.

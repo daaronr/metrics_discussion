@@ -63,57 +63,31 @@ replacements needed:
 -->
 
 Try downloading and accessing some functions here:
-```{r download-formatting-to-support-folder}
 
-library(here)
-tryCatch(
-  {
-download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html", destfile = here("support", "headerX.html"))
-  download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plusX.css"))
-},  error = function(e) {
-  print("you are not online, so we can't download")
-}
-)
+```{r}
 
-tryCatch(
-file.rename(here("support", "headerX.html"), here("support", "header.html"))
-)
+   try_download <- function(url, path) {
+      new_path <- gsub("[.]", "X.", path)
+      tryCatch({
+        download.file(url = url,
+                      destfile = new_path)
+      }, error = function(e) {
+        print("You are not online, so we can't download")
+      })
+      tryCatch(
+        file.rename(new_path, path
+        )
+      )
+    }
 
-tryCatch(
-file.rename(here("support", "tufte_plusX.css"), here("support", "tufte_plus.css"))
-)
-tryCatch(
-file.rename(here("support", "reinstein_bibtex_dropboxX.bib"), here("support", "reinstein_bibtex_dropbox.bib"))
-)
+    library(here)
+    here <- here::here()
+    try_download("https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/project_setup.R", here::here("code","project_setup.R"))
+
+source(here("code", "project_setup.R"))
+
 ```
 
-```{r download-fncns}
-
-library(here)
-library(devtools)
-
-tryCatch(
-  {
-download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/functions.R", destfile = here("code", "functionsX.R"))
-  download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/baseoptions.R", destfile = here("code", "baseoptionsX.R"))
-},  error = function(e) {
-  print("you are not online, so we source locally instead; hope you've updated")
-  source(here("code", "functions.R")) # functions grabbed from web and created by us for analysis/output
- source(here("code", "baseoptions.R")) # Basic options used across files and shortcut functions, e.g., 'pp()' for print
-}
-)
-
-#Note - workaround naming and code because otherwise a failed download seems to delete the destination file -- how to fix that? Renaming files?
-
-file.rename(here::here("code", "functionsX.R"), here::here("code", "functions.R"))
-file.rename(here::here("code", "baseoptionsX.R"), here::here("code", "baseoptions.R"))
-
-source(here("code", "functions.R"))
-source(here("code", "baseoptions.R"))
-
-# Basic options used across files and shortcut functions, e.g., 'pp()' for print
-# functions grabbed from web and created by us for analysis/output
-```
 
 ```{r eval=FALSE}
 install.packages("bookdown")
@@ -124,19 +98,17 @@ install.packages("tufte")
 <!-- Download 'backup' bibtex file from dropbox (synced with Zotero), do the rename workaround -->
 
 
-```{r }
 
-tryCatch(
-  {
-download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", destfile = here("support", "reinstein_bibtex_dropboxX.bib"))
+**Pulling in key files from other repos; don't edit them here**
+
+```{r pull-in-docs}
 
 
-file.rename(here("support", "reinstein_bibtex_dropboxX.bib"), here("support", "reinstein_bibtex_dropbox.bib"))
-  }
-)
+  try_download("https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE", here::here("data_sci","ds_for_bsns_notes_remote.Rmd"))
+
+
 
 ```
-
 
 
 

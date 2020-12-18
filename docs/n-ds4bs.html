@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>18 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="18 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="18 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="daaronr/metrics_discussion_work" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="18 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  
+  
+  
+
+<meta name="author" content="Dr. David Reinstein," />
+
+
+<meta name="date" content="2020-12-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bayesian-approaches.html"/>
+<link rel="next" href="references.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<!-- <script src="js/hideOutput.js"></script> -->
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+
+
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+<!-- Folding text box javascript thing -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Unfold</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Fold" ? "Unfold" : "Fold");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Global") elem.value = "Show Global";
+    else elem.value = "Hide Global";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148137970-3');
+</script>
+-->
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="support/tufte_plus.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#conceptual-approaches-to-statisticsinference-and-causalityconceptual"><i class="fa fa-check"></i><b>1.1</b> (Conceptual: approaches to statistics/inference and causality)[#conceptual]</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i>Bayesian vs. frequentist approaches</a></li>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>1.1.1</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>1.1.2</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#getting-cleaning-and-using-data-project-management-and-coding"><i class="fa fa-check"></i><b>1.2</b> <span>Getting, cleaning and using data; project management and coding</span></a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>1.2.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#organizing-a-project"><i class="fa fa-check"></i><b>1.2.2</b> Organizing a project</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#dynamic-documents-esp-rmdbookdown"><i class="fa fa-check"></i><b>1.2.3</b> Dynamic documents (esp Rmd/bookdown)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#good-coding-practices"><i class="fa fa-check"></i><b>1.2.4</b> Good coding practices</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#data-sharing-and-integrity"><i class="fa fa-check"></i><b>1.2.5</b> Data sharing and integrity</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#basic-regression-and-statistical-inference-common-mistakes-and-issues"><i class="fa fa-check"></i><b>1.3</b> Basic regression and statistical inference: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#bad-control-colliders"><i class="fa fa-check"></i><b>1.3.1</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>1.3.2</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#functional-form"><i class="fa fa-check"></i><b>1.3.3</b> Functional form</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>1.3.4</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introduction.html"><a href="introduction.html#null-effects"><i class="fa fa-check"></i><b>1.3.5</b> “Null effects”</a></li>
+<li class="chapter" data-level="1.3.6" data-path="introduction.html"><a href="introduction.html#multiple-hypothesis-testing-mht"><i class="fa fa-check"></i><b>1.3.6</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="1.3.7" data-path="introduction.html"><a href="introduction.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>1.3.7</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="1.3.8" data-path="introduction.html"><a href="introduction.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>1.3.8</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="1.3.9" data-path="introduction.html"><a href="introduction.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>1.3.9</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="1.3.10" data-path="introduction.html"><a href="introduction.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>1.3.10</b> Bayesian interpretations of results</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#ldv-and-discrete-choice-modeling"><i class="fa fa-check"></i><b>1.4</b> LDV and discrete choice modeling</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#robustness-and-diagnostics-with-integrity"><i class="fa fa-check"></i><b>1.5</b> Robustness and diagnostics, with integrity</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>1.5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction.html"><a href="introduction.html#estimating-standard-errors"><i class="fa fa-check"></i><b>1.5.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introduction.html"><a href="introduction.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>1.5.3</b> Sensitivity analysis: Interactive presentation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#control-strategies-and-prediction-machine-learning-approaches"><i class="fa fa-check"></i><b>1.6</b> <span>Control strategies and prediction; Machine Learning approaches</span></a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introduction.html"><a href="introduction.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>1.6.1</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introduction.html"><a href="introduction.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>1.6.2</b> Limitations to inference from learning approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#iv-and-its-many-issues"><i class="fa fa-check"></i><b>1.7</b> IV and its many issues</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introduction.html"><a href="introduction.html#instrument-validity"><i class="fa fa-check"></i><b>1.7.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introduction.html"><a href="introduction.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>1.7.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introduction.html"><a href="introduction.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>1.7.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introduction.html"><a href="introduction.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>1.7.4</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#other-paths-to-observational-identification"><i class="fa fa-check"></i><b>1.8</b> <span>Other paths to observational identification</span></a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="introduction.html"><a href="introduction.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>1.8.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="1.8.2" data-path="introduction.html"><a href="introduction.html#did"><i class="fa fa-check"></i><b>1.8.2</b> DiD</a></li>
+<li class="chapter" data-level="1.8.3" data-path="introduction.html"><a href="introduction.html#rd"><i class="fa fa-check"></i><b>1.8.3</b> RD</a></li>
+<li class="chapter" data-level="1.8.4" data-path="introduction.html"><a href="introduction.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>1.8.4</b> Time-series-ish panel approaches to micro</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="introduction.html"><a href="introduction.html#causal-pathways-mediation-modeling-and-its-massive-limitations"><i class="fa fa-check"></i><b>1.9</b> Causal pathways: <span>Mediation modeling and its massive limitations</span></a></li>
+<li class="chapter" data-level="1.10" data-path="introduction.html"><a href="introduction.html#causal-pathways-selection-corners-hurdles-and-conditional-on-estimates"><i class="fa fa-check"></i><b>1.10</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="introduction.html"><a href="introduction.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>1.10.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="introduction.html"><a href="introduction.html#experimental-study-design-identifying-meaningful-and-useful-causal-relationships-and-parameters"><i class="fa fa-check"></i><b>1.11</b> <span>(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</span></a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="introduction.html"><a href="introduction.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>1.11.1</b> Why run an experiment or study?</a></li>
+<li class="chapter" data-level="1.11.2" data-path="introduction.html"><a href="introduction.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>1.11.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="1.11.3" data-path="introduction.html"><a href="introduction.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups"><i class="fa fa-check"></i><b>1.11.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
+<li class="chapter" data-level="1.11.4" data-path="introduction.html"><a href="introduction.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>1.11.4</b> Generalizability (and heterogeneity)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="introduction.html"><a href="introduction.html#experimental-study-design-background-and-quantitative-issues"><i class="fa fa-check"></i><b>1.12</b> (Experimental) Study design: Background and quantitative issues</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="introduction.html"><a href="introduction.html#pre-registration-and-pre-analysis-plans"><i class="fa fa-check"></i><b>1.12.1</b> Pre-registration and Pre-analysis plans</a></li>
+<li class="chapter" data-level="1.12.2" data-path="introduction.html"><a href="introduction.html#sequential-and-adaptive-designs"><i class="fa fa-check"></i><b>1.12.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="1.12.3" data-path="introduction.html"><a href="introduction.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>1.12.3</b> Efficient assignment of treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="introduction.html"><a href="introduction.html#experimental-study-design-ex-ante-power-calculations"><i class="fa fa-check"></i><b>1.13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="introduction.html"><a href="introduction.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point"><i class="fa fa-check"></i><b>1.13.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a></li>
+<li class="chapter" data-level="1.13.2" data-path="introduction.html"><a href="introduction.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>1.13.2</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="1.13.3" data-path="introduction.html"><a href="introduction.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>1.13.3</b> Power calculations using prior data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="introduction.html"><a href="introduction.html#experimetrics-and-measurement-of-treatment-effects-from-rcts"><i class="fa fa-check"></i><b>1.14</b> <span>‘Experimetrics’ and measurement of treatment effects from RCTs</span></a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="introduction.html"><a href="introduction.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>1.14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="1.14.3" data-path="introduction.html"><a href="introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>1.14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
+<li class="chapter" data-level="1.14.4" data-path="introduction.html"><a href="introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>1.14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
+</ul></li>
+<li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.15</b> <span>Making inferences from previous work; Meta-analysis, combining studies</span></a>
+<ul>
+<li class="chapter" data-level="1.15.1" data-path="introduction.html"><a href="introduction.html#publication-bias"><i class="fa fa-check"></i><b>1.15.1</b> Publication bias</a></li>
+<li class="chapter" data-level="1.15.2" data-path="introduction.html"><a href="introduction.html#combining-a-few-your-own-studiesestimates"><i class="fa fa-check"></i><b>1.15.2</b> Combining a few (your own) studies/estimates</a></li>
+<li class="chapter" data-level="1.15.3" data-path="introduction.html"><a href="introduction.html#full-meta-analyses"><i class="fa fa-check"></i><b>1.15.3</b> Full meta-analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="1.16" data-path="introduction.html"><a href="introduction.html#the-bayesian-approach"><i class="fa fa-check"></i><b>1.16</b> The Bayesian approach</a></li>
+<li class="chapter" data-level="1.17" data-path="introduction.html"><a href="introduction.html#some-key-resources-and-references"><i class="fa fa-check"></i><b>1.17</b> Some key resources and references</a>
+<ul>
+<li class="chapter" data-level="1.17.1" data-path="introduction.html"><a href="introduction.html#consider"><i class="fa fa-check"></i><b>1.17.1</b> Consider:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> Conceptual: approaches to statistics/inference and causality</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-approaches-1"><i class="fa fa-check"></i><b>2.1</b> Bayesian vs. frequentist approaches</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="conceptual.html"><a href="conceptual.html#interpretation-of-cis-aside"><i class="fa fa-check"></i><b>2.1.1</b> Interpretation of CI’s (aside)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conceptual.html"><a href="conceptual.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model-1"><i class="fa fa-check"></i><b>2.2</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes-1"><i class="fa fa-check"></i><b>2.2.1</b> DAGs and Potential outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form-1"><i class="fa fa-check"></i><b>2.3</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>3</b> Getting, cleaning and using data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-sci.html"><a href="data-sci.html#data-whatwhywherehow-1"><i class="fa fa-check"></i><b>3.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="3.2" data-path="data-sci.html"><a href="data-sci.html#organizing-a-project-1"><i class="fa fa-check"></i><b>3.2</b> Organizing a project</a></li>
+<li class="chapter" data-level="3.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown-1"><i class="fa fa-check"></i><b>3.3</b> Dynamic documents (esp Rmd/bookdown)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>3.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>3.3.2</b> An example of dynamic code</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>3.4</b> Project management tools, esp. Git/Github</a></li>
+<li class="chapter" data-level="3.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices-1"><i class="fa fa-check"></i><b>3.5</b> Good coding practices</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse-1"><i class="fa fa-check"></i><b>3.5.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency-1"><i class="fa fa-check"></i><b>3.5.2</b> Style and consistency</a></li>
+<li class="chapter" data-level="3.5.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code-1"><i class="fa fa-check"></i><b>3.5.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
+<li class="chapter" data-level="3.5.4" data-path="data-sci.html"><a href="data-sci.html#mapping-over-lists-to-produce-results"><i class="fa fa-check"></i><b>3.5.4</b> Mapping over lists to produce results</a></li>
+<li class="chapter" data-level="3.5.5" data-path="data-sci.html"><a href="data-sci.html#building-results-based-on-lists-of-filters-of-the-data-set"><i class="fa fa-check"></i><b>3.5.5</b> Building results based on ‘lists of filters’ of the data set</a></li>
+<li class="chapter" data-level="3.5.6" data-path="data-sci.html"><a href="data-sci.html#coding-style-and-indenting-in-stata-one-approach"><i class="fa fa-check"></i><b>3.5.6</b> Coding style and indenting in Stata (one approach)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>3.6</b> Additional tips (integrate)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>4</b> Basic statistical inference and regressions: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>4.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>4.1.1</b> Bad control</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders-1"><i class="fa fa-check"></i><b>4.1.2</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables-1"><i class="fa fa-check"></i><b>4.1.3</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="4.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form-1"><i class="fa fa-check"></i><b>4.1.4</b> Functional form</a></li>
+<li class="chapter" data-level="4.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity-1"><i class="fa fa-check"></i><b>4.1.5</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="4.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects-1"><i class="fa fa-check"></i><b>4.1.6</b> “Null effects”</a></li>
+<li class="chapter" data-level="4.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>4.1.7</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="4.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls-1"><i class="fa fa-check"></i><b>4.1.8</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="4.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric-1"><i class="fa fa-check"></i><b>4.1.9</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="4.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests-1"><i class="fa fa-check"></i><b>4.1.10</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="4.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results-1"><i class="fa fa-check"></i><b>4.1.11</b> Bayesian interpretations of results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>5</b> Robustness and diagnostics, with integrity; Open Science resources</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof-1"><i class="fa fa-check"></i><b>5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="robust-diag.html"><a href="robust-diag.html#further-discussion-the-did-approach-and-parallel-trends"><i class="fa fa-check"></i><b>5.1.1</b> Further discussion: the DiD approach and ‘parallel trends’</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors-1"><i class="fa fa-check"></i><b>5.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="5.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation-1"><i class="fa fa-check"></i><b>5.3</b> Sensitivity analysis: Interactive presentation</a></li>
+<li class="chapter" data-level="5.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>5.4</b> Supplement: open science resources, tools and considerations</a></li>
+<li class="chapter" data-level="5.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-and-publication-bias-see-also-meta-analysis"><i class="fa fa-check"></i><b>5.5</b> Diagnosing p-hacking and publication bias (see also <span>meta-analysis</span>)</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="robust-diag.html"><a href="robust-diag.html#publication-bias-see-also-considering-publication-bias-in-meta-analysis"><i class="fa fa-check"></i><b>5.5.1</b> Publication bias – see also <span>considering publication bias in meta-analysis</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="robust-diag.html"><a href="robust-diag.html#multiple-hypothesis-testing---see-above"><i class="fa fa-check"></i><b>5.6</b> <span>Multiple hypothesis testing - see above</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>6</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more-1"><i class="fa fa-check"></i><b>6.1</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches-1"><i class="fa fa-check"></i><b>6.1.1</b> Limitations to inference from learning approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>6.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>6.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>6.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="6.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>6.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="6.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>6.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>6.3</b> Notes: Mullainathan</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html"><i class="fa fa-check"></i><b>7</b> IV and its many issues</a>
+<ul>
+<li class="chapter" data-level="" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#some-casual-discussion"><i class="fa fa-check"></i>Some casual discussion</a></li>
+<li class="chapter" data-level="7.1" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#instrument-validity-1"><i class="fa fa-check"></i><b>7.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="7.2" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#heterogeneity-and-late-1"><i class="fa fa-check"></i><b>7.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="7.3" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#weak-instruments-other-issues-1"><i class="fa fa-check"></i><b>7.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="7.4" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#intrumenting-interactions"><i class="fa fa-check"></i><b>7.4</b> Intrumenting Interactions</a></li>
+<li class="chapter" data-level="7.5" data-path="iv-and-its-many-issues-1.html"><a href="iv-and-its-many-issues-1.html#reference-to-the-use-of-iv-in-experimentsmediation-1"><i class="fa fa-check"></i><b>7.5</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html"><i class="fa fa-check"></i><b>8</b> <span id="other_paths">Other paths to observational identification</span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#fixed-effects-and-differencing-1"><i class="fa fa-check"></i><b>8.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="8.2" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#did-1"><i class="fa fa-check"></i><b>8.2</b> DiD</a></li>
+<li class="chapter" data-level="8.3" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#rd-1"><i class="fa fa-check"></i><b>8.3</b> RD</a></li>
+<li class="chapter" data-level="8.4" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#time-series-ish-panel-approaches-to-micro-1"><i class="fa fa-check"></i><b>8.4</b> Time-series-ish panel approaches to micro</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="other-paths-to-observational-identification-1.html"><a href="other-paths-to-observational-identification-1.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>9</b> Causal pathways - mediators</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mediators.html"><a href="mediators.html#mediators-and-selection-and-roy-models-a-review-considering-two-research-applications"><i class="fa fa-check"></i><b>9.1</b> Mediators (and selection and Roy models): a review, considering two research applications</a></li>
+<li class="chapter" data-level="9.2" data-path="mediators.html"><a href="mediators.html#dr-initial-thoughts-for-nl-education-paper"><i class="fa fa-check"></i><b>9.2</b> DR initial thoughts (for NL education paper)</a></li>
+<li class="chapter" data-level="9.3" data-path="mediators.html"><a href="mediators.html#econometric-mediation-analyses-heckman-and-pinto"><i class="fa fa-check"></i><b>9.3</b> Econometric Mediation Analyses (Heckman and Pinto)</a>
+<ul>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+<li class="chapter" data-level="9.3.1" data-path="mediators.html"><a href="mediators.html#summary-and-key-modeling"><i class="fa fa-check"></i><b>9.3.1</b> Summary and key modeling</a></li>
+<li class="chapter" data-level="9.3.2" data-path="mediators.html"><a href="mediators.html#common-assumptions-and-their-implications"><i class="fa fa-check"></i><b>9.3.2</b> Common assumptions and their implications</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="mediators.html"><a href="mediators.html#pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity"><i class="fa fa-check"></i><b>9.4</b> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</a>
+<ul>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al-1"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#introduction-2"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#identification-strategy-brief"><i class="fa fa-check"></i>Identification strategy brief</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#results-in-brief"><i class="fa fa-check"></i>Results in brief</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-first-for-binarybinary-simplification"><i class="fa fa-check"></i>Framework: first for binary/binary (simplification)</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-for-mto-multiple-treatment-groups-multiple-choices"><i class="fa fa-check"></i>Framework for MTO multiple treatment groups, multiple choices</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="mediators.html"><a href="mediators.html#antonakis-approaches"><i class="fa fa-check"></i><b>9.5</b> Antonakis approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="selection-cop.html"><a href="selection-cop.html"><i class="fa fa-check"></i><b>10</b> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="selection-cop.html"><a href="selection-cop.html#corner-solution-or-hurdle-variables-and-conditional-on-positive-1"><i class="fa fa-check"></i><b>10.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+<li class="chapter" data-level="10.2" data-path="selection-cop.html"><a href="selection-cop.html#bounding-approaches-lee-manski-etc-1"><i class="fa fa-check"></i><b>10.2</b> Bounding approaches (Lee, Manski, etc)</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="selection-cop.html"><a href="selection-cop.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>10.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>11</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study-1"><i class="fa fa-check"></i><b>11.1</b> Why run an experiment or study?</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do"><i class="fa fa-check"></i><b>11.1.1</b> Sitzia and Sugden on what theoretically driven experiments can and should do</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="why-experiment-design.html"><a href="why-experiment-design.html#causal-channels-and-identification-1"><i class="fa fa-check"></i><b>11.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="11.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups-1"><i class="fa fa-check"></i><b>11.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
+<li class="chapter" data-level="11.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity-1"><i class="fa fa-check"></i><b>11.4</b> Generalizability (and heterogeneity)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>12</b> (Experimental) Study design: Background and quantitative issues</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>12.1</b> Pre-registration and Pre-analysis plans</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>12.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
+<li class="chapter" data-level="12.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching-1"><i class="fa fa-check"></i><b>12.1.2</b> The hazards of specification-searching</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-and-adaptive-designs-1"><i class="fa fa-check"></i><b>12.2</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>12.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford’?</a></li>
+<li class="chapter" data-level="12.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.3</b> Other notes and resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="power.html"><a href="power.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point-1"><i class="fa fa-check"></i><b>13.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>13.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>13.2</b> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</a></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="15.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>15.2.3</b> Forest plots</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="metaanalysis.html"><a href="metaanalysis.html#pubbias"><i class="fa fa-check"></i><b>15.3</b> Dealing with publication bias</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="metaanalysis.html"><a href="metaanalysis.html#diagnosis-and-responses-p-curves-funnel-plots-adjustments"><i class="fa fa-check"></i><b>15.3.1</b> Diagnosis and responses: P-curves, funnel plots, adjustments</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>15.4</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="15.5" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>15.5</b> Other resources and tools</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html"><i class="fa fa-check"></i><b>16</b> Meta-analysis arbitrary example: the ‘Paleo diet’</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#thoughts-on-nutritional-studies-and-meta-analysis-issues"><i class="fa fa-check"></i><b>16.1</b> Thoughts on nutritional studies and meta-analysis issues</a></li>
+<li class="chapter" data-level="16.2" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#manheimer-et-al"><i class="fa fa-check"></i><b>16.2</b> Manheimer et al</a></li>
+<li class="chapter" data-level="16.3" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#other-meta-analyses-and-consideration-of-the-paleo-diet"><i class="fa fa-check"></i><b>16.3</b> Other meta-analyses and consideration of the Paleo diet</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#focus-boers-et-al"><i class="fa fa-check"></i><b>16.3.1</b> Focus: Boers et al</a></li>
+<li class="chapter" data-level="16.3.2" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#fentons-letter-criticising-manheimer-et-al"><i class="fa fa-check"></i><b>16.3.2</b> Fentons’ letter criticising Manheimer et al</a></li>
+<li class="chapter" data-level="16.3.3" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#ghaedi-et-al-meta-analysis"><i class="fa fa-check"></i><b>16.3.3</b> Ghaedi et al meta-analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="meta-analysis-arbitrary-example-the-paleo-diet.html"><a href="meta-analysis-arbitrary-example-the-paleo-diet.html#overall-analysis"><i class="fa fa-check"></i><b>16.4</b> Overall analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html"><i class="fa fa-check"></i><b>17</b> Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>17.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>17.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="17.1.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>17.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="17.1.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>17.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="17.1.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>17.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="17.1.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#experimental-design"><i class="fa fa-check"></i><b>17.1.5</b> Experimental design</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>17.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>17.2.1</b> The Golem of Prague (Chapter 1)</a></li>
+<li class="chapter" data-level="17.2.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>17.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
+<li class="chapter" data-level="17.2.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#using-prior-information"><i class="fa fa-check"></i><b>17.2.3</b> Using prior information</a></li>
+<li class="chapter" data-level="17.2.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#from-counts-to-probability."><i class="fa fa-check"></i><b>17.2.4</b> From counts to probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#third-videochapter"><i class="fa fa-check"></i><b>17.3</b> Third video/chapter</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#normal-distributions"><i class="fa fa-check"></i><b>17.3.1</b> Normal distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>17.4</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>17.4.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="17.4.2" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#theory"><i class="fa fa-check"></i><b>17.4.2</b> Theory</a></li>
+<li class="chapter" data-level="17.4.3" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>17.4.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="17.4.4" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#on-choosing-priors"><i class="fa fa-check"></i><b>17.4.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="17.4.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#implementation"><i class="fa fa-check"></i><b>17.4.5</b> Implementation</a></li>
+<li class="chapter" data-level="17.4.6" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>17.4.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="17.4.7" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#missing-data-case"><i class="fa fa-check"></i><b>17.4.7</b> Missing data case</a></li>
+<li class="chapter" data-level="17.4.8" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#stata"><i class="fa fa-check"></i><b>17.4.8</b> Stata</a></li>
+<li class="chapter" data-level="17.4.9" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#r-mcmc-pac"><i class="fa fa-check"></i><b>17.4.9</b> R mcmc pac</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="bayesian-approaches.html"><a href="bayesian-approaches.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>17.5</b> Other resources and notes to integrate</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="n-ds4bs.html"><a href="n-ds4bs.html"><i class="fa fa-check"></i><b>18</b> Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-of-this-resource"><i class="fa fa-check"></i><b>18.1</b> Evaluation of this resource</a></li>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-1-introduction-data-analytic-thinking"><i class="fa fa-check"></i>Ch 1 Introduction: Data-Analytic Thinking</a>
+<ul>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart"><i class="fa fa-check"></i>Example: During Hurricane Frances… predicting demand to gear inventory and avoid shortages … lead to huge profit for Wal-Mart</a></li>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-predicting-customer-churn"><i class="fa fa-check"></i>Example: Predicting Customer Churn</a></li>
+<li class="chapter" data-level="18.1.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-science-engineering-and-data-driven-decision-making"><i class="fa fa-check"></i><b>18.1.1</b> Data Science, Engineering, and Data-Driven Decision Making</a></li>
+<li class="chapter" data-level="18.1.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-processing-and-big-data"><i class="fa fa-check"></i><b>18.1.2</b> Data Processing and “Big Data”</a></li>
+<li class="chapter" data-level="18.1.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-asset"><i class="fa fa-check"></i><b>18.1.3</b> Data and Data Science Capability as a <strong>Strategic Asset</strong></a></li>
+<li class="chapter" data-level="18.1.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#da-thinking"><i class="fa fa-check"></i><b>18.1.4</b> Data-Analytic Thinking</a></li>
+<li class="chapter" data-level="18.1.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-and-data-science-revisited"><i class="fa fa-check"></i><b>18.1.5</b> Data Mining and Data Science, Revisited</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-ch2"><i class="fa fa-check"></i><b>18.2</b> Ch 2 Business Problems and Data Science Solutions</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#types-of-problems-and-approaches"><i class="fa fa-check"></i><b>18.2.1</b> Types of problems and approaches</a></li>
+<li class="chapter" data-level="18.2.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-process"><i class="fa fa-check"></i><b>18.2.2</b> The Data Mining Process</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-3-introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation"><i class="fa fa-check"></i><b>18.3</b> Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#models-induction-and-prediction"><i class="fa fa-check"></i><b>18.3.1</b> Models, Induction, and Prediction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#supervised-segmentation"><i class="fa fa-check"></i><b>18.3.2</b> Supervised Segmentation</a></li>
+<li class="chapter" data-level="18.3.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-1"><i class="fa fa-check"></i><b>18.3.3</b> Summary</a></li>
+<li class="chapter" data-level="18.3.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#note-check-if-there-is-a-gap-here"><i class="fa fa-check"></i><b>18.3.4</b> NOTE – check if there is a gap here</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-model-to-data"><i class="fa fa-check"></i><b>18.4</b> Ch. 4: Fitting a Model to Data</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#classification-via-mathematical-functions"><i class="fa fa-check"></i><b>18.4.1</b> Classification via Mathematical Functions</a></li>
+<li class="chapter" data-level="18.4.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#regression-via-mathematical-functions"><i class="fa fa-check"></i><b>18.4.2</b> Regression via Mathematical Functions</a></li>
+<li class="chapter" data-level="18.4.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#class-probability-estimation-and-logistic-regression"><i class="fa fa-check"></i><b>18.4.3</b> Class Probability Estimation and Logistic Regression</a></li>
+<li class="chapter" data-level="18.4.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#logistic-regression-some-technical-details"><i class="fa fa-check"></i><b>18.4.4</b> Logistic Regression: Some Technical Details</a></li>
+<li class="chapter" data-level="18.4.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-logistic-regression-versus-tree-induction"><i class="fa fa-check"></i><b>18.4.5</b> Example: Logistic Regression versus Tree Induction</a></li>
+<li class="chapter" data-level="18.4.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nonlinear-functions-support-vector-machines-and-neural-networksthe-two-most-common-families-of-techniques-that-are-based-on-fitting-the-parameters-of-complex-nonlinear-functions-are-nonlinear-supportvector-machines-and-neural-networks."><i class="fa fa-check"></i><b>18.4.6</b> Nonlinear Functions, Support Vector Machines, and Neural NetworksThe two most common families of techniques that are based on fitting the parameters of complex, nonlinear functions are nonlinear supportvector machines and neural networks.</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-overfitting"><i class="fa fa-check"></i><b>18.5</b> Ch 5: Overfitting and its avoidance</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalization"><i class="fa fa-check"></i><b>18.5.1</b> Generalization</a></li>
+<li class="chapter" data-level="18.5.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#holdout-data-and-fitting-graphs"><i class="fa fa-check"></i><b>18.5.2</b> Holdout Data and Fitting Graphs</a></li>
+<li class="chapter" data-level="18.5.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-overfitting-linear-functions"><i class="fa fa-check"></i><b>18.5.3</b> Example: Overfitting Linear Functions</a></li>
+<li class="chapter" data-level="18.5.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-why-is-overfitting-bad"><i class="fa fa-check"></i><b>18.5.4</b> Example: Why Is Overfitting Bad?</a></li>
+<li class="chapter" data-level="18.5.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#from-holdout-evaluation-to-cross-validation"><i class="fa fa-check"></i><b>18.5.5</b> From Holdout Evaluation to Cross-Validation</a></li>
+<li class="chapter" data-level="18.5.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#learning-curves"><i class="fa fa-check"></i><b>18.5.6</b> Learning Curves</a></li>
+<li class="chapter" data-level="18.5.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-with-tree-induction"><i class="fa fa-check"></i><b>18.5.7</b> Avoiding Overfitting with Tree Induction</a></li>
+<li class="chapter" data-level="18.5.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting"><i class="fa fa-check"></i><b>18.5.8</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="18.5.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting-1"><i class="fa fa-check"></i><b>18.5.9</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="18.5.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-for-parameter-optimization"><i class="fa fa-check"></i><b>18.5.10</b> Avoiding Overfitting for Parameter Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-similarity"><i class="fa fa-check"></i><b>18.6</b> Ch 6.: Similarity, Neighbors, and Clusters</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance"><i class="fa fa-check"></i><b>18.6.1</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="18.6.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance-1"><i class="fa fa-check"></i><b>18.6.2</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="18.6.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-whiskey-analytics"><i class="fa fa-check"></i><b>18.6.3</b> Example: Whiskey Analytics</a></li>
+<li class="chapter" data-level="18.6.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nearest-neighbors-for-predictive-modeling"><i class="fa fa-check"></i><b>18.6.4</b> Nearest Neighbors for Predictive Modeling</a></li>
+<li class="chapter" data-level="18.6.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#how-many-neighbors-and-how-much-influence"><i class="fa fa-check"></i><b>18.6.5</b> How Many Neighbors and How Much Influence?</a></li>
+<li class="chapter" data-level="18.6.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#geometric-interpretation-overfitting-and-complexity-control"><i class="fa fa-check"></i><b>18.6.6</b> Geometric Interpretation, Overfitting, and Complexity Control</a></li>
+<li class="chapter" data-level="18.6.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#issues-with-nearest-neighbor-methods"><i class="fa fa-check"></i><b>18.6.7</b> Issues with Nearest-Neighbor Methods</a></li>
+<li class="chapter" data-level="18.6.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#other-distance-functions"><i class="fa fa-check"></i><b>18.6.8</b> Other Distance Functions</a></li>
+<li class="chapter" data-level="18.6.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#stepping-back-solving-a-business-problem-versus-data-exploration"><i class="fa fa-check"></i><b>18.6.9</b> Stepping Back: Solving a Business Problem Versus Data Exploration</a></li>
+<li class="chapter" data-level="18.6.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-2"><i class="fa fa-check"></i><b>18.6.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-decision-thinking"><i class="fa fa-check"></i><b>18.7</b> Ch. 7. Decision Analytic Thinking I: What Is a Good Model?</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluating-classifier"><i class="fa fa-check"></i><b>18.7.1</b> Evaluating Classifier</a></li>
+<li class="chapter" data-level="18.7.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#the-confusion-matrix"><i class="fa fa-check"></i><b>18.7.2</b> The Confusion Matrix</a></li>
+<li class="chapter" data-level="18.7.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#problems-with-unbalanced-classes"><i class="fa fa-check"></i><b>18.7.3</b> Problems with Unbalanced Classes</a></li>
+<li class="chapter" data-level="18.7.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalizing-beyond-classification"><i class="fa fa-check"></i><b>18.7.4</b> Generalizing Beyond Classification</a></li>
+<li class="chapter" data-level="18.7.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-key-analytical-framework-expected-value"><i class="fa fa-check"></i><b>18.7.5</b> A Key Analytical Framework: Expected Value</a></li>
+<li class="chapter" data-level="18.7.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-use"><i class="fa fa-check"></i><b>18.7.6</b> Using Expected Value to Frame Classifier Use</a></li>
+<li class="chapter" data-level="18.7.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-evaluation"><i class="fa fa-check"></i><b>18.7.7</b> Using Expected Value to Frame Classifier Evaluation</a></li>
+<li class="chapter" data-level="18.7.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-baseline-performance-and-implications-for-investments-in-data"><i class="fa fa-check"></i><b>18.7.8</b> Evaluation, Baseline Performance, and Implications for Investments in Data</a></li>
+<li class="chapter" data-level="18.7.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-3"><i class="fa fa-check"></i><b>18.7.9</b> Summary</a></li>
+<li class="chapter" data-level="18.7.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ranking-instead-of-classifying"><i class="fa fa-check"></i><b>18.7.10</b> Ranking Instead of Classifying</a></li>
+<li class="chapter" data-level="18.7.11" data-path="n-ds4bs.html"><a href="n-ds4bs.html#profit-curves"><i class="fa fa-check"></i><b>18.7.11</b> Profit Curves</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-contents"><i class="fa fa-check"></i><b>18.8</b> Contents and consideration</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> List of references</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="n_ds4bs" class="section level1" number="18">
+<h1><span class="header-section-number">18</span> Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)</h1>
+<ul>
+<li>Notes by David Reinstein and others (Oska Fentem in parts)</li>
+</ul>
+<div id="evaluation-of-this-resource" class="section level2" number="18.1">
+<h2><span class="header-section-number">18.1</span> Evaluation of this resource</h2>
+<p>This (2013) book seems to have some slightly outdated focus (terms like ‘data-mining’) but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is ‘meat in this sandwich’.</p>
+<p><br />
+</p>
+<p>E.g., terms like ‘lift’ bridge business and data science concepts in a meaningful way</p>
+<blockquote>
+<p>As another example, in evaluating the utility of a pattern, we see a notion of lift— how much more prevalent a pattern is than would be expected by chance—recurring broadly across data science. It is used to evaluate very different sorts of patterns in different contexts. Algorithms for targeting advertisements are evaluated by computing the lift one gets for the targeted population. Lift is used to judge the weight of evidence for or against a conclusion. Lift helps determine whether a co-occurrence (an association) in data is interesting, as opposed to simply being a natural consequence of popularity.</p>
+</blockquote>
+</div>
+<div id="ch-1-introduction-data-analytic-thinking" class="section level2 unnumbered" number="">
+<h2>Ch 1 Introduction: Data-Analytic Thinking</h2>
+
+<div class="note">
+<p>A range of examples illustrating applications, techniques, and principles.</p>
+</div>
+<div id="example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart" class="section level3 unnumbered" number="">
+<h3>Example: During Hurricane Frances… predicting demand to gear inventory and avoid shortages … lead to huge profit for Wal-Mart</h3>
+<p>Digging into the day to do some surprising findings:*</p>
+<blockquote>
+<p>’We didn’t know in the past that strawberry PopTarts increase in sales, like seven times their normal sales rate, ahead of a hurricane"</p>
+</blockquote>
+<div class="marginnote">
+<p>* Strange results like these might seem like examples of overfitting, but it is also seems reasonable that demand patterns may be predictable (using careful data analysis) even if we don’t always have a straightforward intuitive explanation for a ‘mechanism’.</p>
+</div>
+</div>
+<div id="example-predicting-customer-churn" class="section level3 unnumbered" number="">
+<h3>Example: Predicting Customer Churn</h3>
+<blockquote>
+<p>Customers switching from one company to another is called churn,</p>
+</blockquote>
+<blockquote>
+<p>Your task is to devise a precise, step-by-step plan for how the data science team should use MegaTelCo’s vast data resources to decide which customers should be offered the special retention deal prior to the expiration of their contracts</p>
+</blockquote>
+</div>
+<div id="data-science-engineering-and-data-driven-decision-making" class="section level3" number="18.1.1">
+<h3><span class="header-section-number">18.1.1</span> Data Science, Engineering, and Data-Driven Decision Making</h3>
+<blockquote>
+<p>They show that statistically, the more data-driven a firm is, the more productive it is—even controlling for a wide range of possible confounding factors. And the differences are not small. One standard deviation higher on the DDD scale is associated with a 4%–6% increase in productivity. DDD also is correlated with higher return on assets, return on equity, asset utilization, and market value, and the relationship seems to be causal.*</p>
+</blockquote>
+<div class="marginnote">
+<p>* DR: I am still somewhat skeptical of the causality here!</p>
+</div>
+<p><br />
+</p>
+<p><strong>Two types of decisions that data analysis can benefit:</strong></p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>decisions for which “discoveries” need to be made within data, and (2) decisions that repeat, especially at massive scale, and so decision-making can benefit from even small increases in decision-making accuracy based on data analysis</li>
+</ol>
+</blockquote>
+
+<div class="note">
+<p>Getting the jump on the competition …</p>
+<blockquote>
+<p>Target wanted to get a jump on their competition. They were interested in whether they could predict that people are expecting a baby. If they could, they would gain an advantage by making offers before their competitors. Using techniques of data science, Target analyzed historical data on customers who later were revealed to have been pregnant, and were able to extract information that could predict which consumers were pregnant. For example, pregnant mothers often change their diets, their wardrobes, their vitamin regimens, and so on. These indicators could be extracted from historical data, assembled into predictive models, and then deployed in marketing campaigns.</p>
+</blockquote>
+</div>
+</div>
+<div id="data-processing-and-big-data" class="section level3" number="18.1.2">
+<h3><span class="header-section-number">18.1.2</span> Data Processing and “Big Data”</h3>
+</div>
+<div id="data-asset" class="section level3" number="18.1.3">
+<h3><span class="header-section-number">18.1.3</span> Data and Data Science Capability as a <strong>Strategic Asset</strong></h3>
+<blockquote>
+<p>data, and the capability to extract useful knowledge from data, should be regarded as key strategic assets.</p>
+</blockquote>
+<p><br />
+</p>
+<div id="signet-bank-from-the-1990s-a-key-example-of-data-as-a-strategic-asset" class="section level4 unnumbered" number="">
+<h4>Signet Bank from the 1990s … a key example of ‘data as a strategic asset’</h4>
+<blockquote>
+<p>, but at the time, credit cards essentially had uniform pricing, for two reasons: (1) … [lack of] information systems to deal with differential pricing at massive scale, and (2) bank management believed customers would not stand for price discrimination.</p>
+</blockquote>
+<p><br />
+</p>
+<p>A realization: with their data assets,</p>
+<blockquote>
+<p>[they] could do more sophisticated predictive modeling… and offer different terms (nowadays: pricing, credit limits, low-initial-rate bal‐ ance transfers, cash back, loyalty points, and so on)</p>
+</blockquote>
+<p><br />
+</p>
+<p>Economic insight: model <em>profitability</em>, not just default probability</p>
+<blockquote>
+<p>They knew that a small proportion of customers actually account for more than 100% of a bank’s profit from credit card operations (because the rest are break-even or money-losing). If they could model profitability, they could make better offers to the best customers and “skim the cream” of the big banks’ clientele</p>
+</blockquote>
+<p><br />
+</p>
+<p><strong>“Fundamental strategy of data science: acquire the necessary data at a cost”</strong></p>
+<blockquote>
+<p>Different terms were offered at random to different customers. This may seem foolish outside the context of data-analytic thinking: you’re likely to lose money! This is true. In this case, losses are the cost of data acquisition. Losses continued for a few years while the data scientists worked to build predictive models from the data,*</p>
+</blockquote>
+<div class="marginnote">
+<p>* This falls under the category of ‘experimentation’, ‘A/B testing’, or ‘split testing’. In general, more efficient experimentation will be ‘adaptive, involving optimal dynamic allocation into different “treatments”. Algorithm-wise, this is a ’multi-armed bandit’ problem. Popular discussion of this: <span class="citation">(<span class="citeproc-not-found" data-reference-id="christianAlgorithmsLiveComputer2016"><strong>???</strong></span>)</span>, chapter 2 “Explore/Exploit”.</p>
+</div>
+<p><br />
+</p>
+<p><strong>Evidence for this?</strong></p>
+<blockquote>
+<p>Studies giving clear quantitative demonstrations of the value of a data asset are hard to find, primarily because firms are hesitant to divulge results of strategic value.</p>
+</blockquote>
+<blockquote>
+<p>The huge valuation of Facebook has been credited to its vast and unique data assets (Sengupta, 2012), including both information about individuals and their likes, as well as information about the structure of the social network. Information about network structure has been shown to be important to predicting and has been shown to be remarkably helpful in building models of who will buy certain products (Hill, Provost, &amp; Volinsky, 2006).</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+</div>
+<div id="da-thinking" class="section level3" number="18.1.4">
+<h3><span class="header-section-number">18.1.4</span> Data-Analytic Thinking</h3>
+<p><strong>Why business people need to understand data science</strong></p>
+<p>E.g., in making valuations <em>based on data assets</em>:</p>
+<blockquote>
+<p>venture capitalists must be able to invest wisely in businesses with substantial data assets, and business strategists must be able to devise plans that exploit data.</p>
+</blockquote>
+<p>More details and examples (unfold)</p>
+
+<div class="fold">
+<blockquote>
+<p>As a few examples, if a consultant presents a proposal to mine a data asset to improve your business, you should be able to assess whether the proposal makes sense. If a competitor announces a new data partnership, you should recognize when it may put you at a strategic disadvantage. Or, let’s say you take a position with a venture firm and your first project is to assess the potential for investing in an advertising company. The founders present a convincing argument that they will realize significant value from a unique body of data they will collect, and on that basis are arguing for a substantially higher valuation. Is this reasonable? With an understanding of the fundamentals of data science you should be able to devise a few probing questions to determine whether their valuation arguments are plausible.</p>
+</blockquote>
+</div>
+<p><br />
+</p>
+<p>And employees interact with these issues:</p>
+<blockquote>
+<p>Data analytics projects reach into all business units. Employees throughout these units must interact with the data science team. If these employees do not have a fundamental grounding in the principles of data analytic thinking, they will not really understand what is happening in the business</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+<div id="data-mining-and-data-science-revisited" class="section level3" number="18.1.5">
+<h3><span class="header-section-number">18.1.5</span> Data Mining and Data Science, Revisited</h3>
+<blockquote>
+<p>… <strong>Extraction of useful (nontrivial, hopefully actionable) patterns or models from large bodies of data</strong></p>
+</blockquote>
+<blockquote>
+<p>Fundamental concept: Extracting useful knowledge from data to solve business problems can be treated systematically by following a process with reasonably well-defined stages.*</p>
+</blockquote>
+<div class="marginnote">
+<p>* “The Cross Industry Standard Process for Data Mining, abbreviated CRISP-DM (CRISPDM Project, 2000), is one codification of this process”</p>
+</div>
+<p><strong>Key principle: Overfitting</strong></p>
+<blockquote>
+<p>The concept of overfitting and its avoidance permeates data science processes, algorithms, and evaluation methods</p>
+</blockquote>
+<p><a href="n-ds4bs.html#ds4bs-overfitting">Chapter 5</a> is devoted to this.**</p>
+<div class="marginnote">
+<p>** <span class="citation">(<span class="citeproc-not-found" data-reference-id="christianAlgorithmsLiveComputer2016"><strong>???</strong></span>)</span> also have a chapter on overfitting, but in parts they confound overfitting with the complexity of models. Even very simple models, e.g. involving only one feature and one outcome of interest, can be substantially overfit, while complicated models with many features and parameters can be “penalized” (using techniques such as ridge regression) and validated to detect and avoid overfitting.</p>
+</div>
+<p><strong>Quantify the benefits of using data</strong></p>
+<blockquote>
+<p>For our churn-management example, how exactly are we going to use the patterns extracted from historical data? Should the value of the customer be taken into account in addition to the likelihood of leaving? More generally, does the pattern lead to better decisions than some reasonable alternative? How well would one have done by chance? How well would one do with a smart “default” alternative?</p>
+</blockquote>
+<p><br />
+</p>
+<p><em>The point:</em> it is costly/time-consuming to maintain and analyze data. Thus it is important to continually assess whether this process is yielding value for money.</p>
+<p><br />
+</p>
+</div>
+</div>
+<div id="ds4bs-ch2" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> Ch 2 Business Problems and Data Science Solutions</h2>
+<blockquote>
+<p>A critical skill in data science is the ability to decompose a data analytics problem into pieces such that each piece matches a known task for which tools are available.</p>
+</blockquote>
+<p><br />
+</p>
+
+<div class="note">
+Examples of some techniques and applications below…
+</div>
+<div id="types-of-problems-and-approaches" class="section level3" number="18.2.1">
+<h3><span class="header-section-number">18.2.1</span> Types of problems and approaches</h3>
+<div id="classification-and-class-probability-estimation" class="section level4 unnumbered" number="">
+<h4>Classification and class probability estimation</h4>
+<p><em>Example: “Among all the customers of MegaTelCo, which are likely to respond to a given offer?”</em></p>
+
+<div class="fold">
+<blockquote>
+<p>… for each individual in a population, which of a (small) set of classes this individual belongs to. Usually the classes are mutually exclusive. An example classification question would be: “Among all the customers of MegaTelCo, which are likely to respond to a given offer?” In this example the two classes could be called will respond and will not respond.</p>
+</blockquote>
+</div>
+<div class="marginnote">
+<p>Some specific techniques: Logit, Multinomial logit, etc.</p>
+</div>
+<p><br />
+</p>
+<p>A <em>score</em> or <em>class probability</em> is a more informative measure, that can also be used for classification:</p>
+<blockquote>
+<p>A scoring model applied to an individual produces, instead of a class prediction, a score representing the probability (or some other quantification of likelihood) that that individual belongs to each class. In our customer response scenario, a scoring model would be able to evaluate each individual customer and produce a score of how likely each is to respond to the offer.</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+<div id="regression-value-estimation" class="section level4 unnumbered" number="">
+<h4>Regression (“value estimation”) *</h4>
+<blockquote>
+<p>Regression (“value estimation”) attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. An example regression question would be:</p>
+</blockquote>
+<p><strong>“How much will a given customer use the service?”</strong><br />
+</p>
+<div class="marginnote">
+<p>* (Linear) regression is probably the tool that academics are most familiar with. The idea of a ‘line’ (or plane) of best fit, is ubiquitous, and one of the major concepts taught in basic statistics and econometrics. Of course it has a million flavors and issues.</p>
+</div>
+<p><br />
+</p>
+<blockquote>
+<p>Here we are less interested in explaining a particular dataset as we are in extracting patterns that will generalize to other data, and for the purpose of improving some business process.</p>
+</blockquote>
+<div class="marginnote">
+<p><strong>DR: The above seems wrong</strong> – this is not what regression analysis <em>does</em>, without many further assumptions!</p>
+<p><strong>OF:</strong> This section notes that regression analysis is used for prediction rather than inference. Hence the use of models to <em>predict</em> new cases rather than provide inference.<br />
+</p>
+</div>
+</div>
+<div id="sim-matching" class="section level4 unnumbered" number="">
+<h4>Similarity matching</h4>
+<blockquote>
+<p>Similarity matching attempts to identify similar individuals based on data known about them. Similarity matching can be used directly to find similar entities. For example, IBM is interested in finding companies similar to their best business customers, in order to focus their sales force on the best opportunities</p>
+</blockquote>
+<blockquote>
+<p>one of the most popular methods for making product recommendations (finding people who are similar to you in terms of the products they have liked or have purchased)</p>
+</blockquote>
+<div class="marginnote">
+<p>DR: To me this seems very close to the classification of class probability problem. If I put two people in the same category, I am suggesting that they are similar. However, I can see how this can be done more flexibly; I can be “similar” to someone in many ways and consideringmany dimensions.</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="ds4bs-clustering-intro" class="section level4 unnumbered" number="">
+<h4>Clustering</h4>
+<blockquote>
+<p>… attempts to group individuals in a population together by their similarity, but not driven by any specific purpose. An example clustering question would be: “Do our customers form natural groups or segments?” Clustering is useful in preliminary domain exploration to see which natural groups exist because these groups in turn may suggest other data mining tasks or approaches. *</p>
+</blockquote>
+<div class="marginnote">
+<p>* DR: This seems very similar and related to similarity matching as well as classification. Perhaps the clusterning technique can be used in these problems.</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="co-occurance" class="section level4 unnumbered" number="">
+<h4>Co-occurrence grouping</h4>
+<p><em>What items are commonly purchased together?</em></p>
+<blockquote>
+<p>Co-occurrence grouping (also known as frequent itemset mining, association rule discovery, and market-basket analysis) attempts to find associations between entities based on transactions involving them.</p>
+</blockquote>
+<blockquote>
+<p>What items are commonly purchased together? While clustering looks at similarity between objects based on the objects’ attributes, co-occurrence grouping considers similarity of objects based on their appearing together in transactions.</p>
+</blockquote>
+<div class="marginnote">
+<p>So, is this indeed a form of clustering or similarity matching?</p>
+</div>
+</div>
+<div id="ds4bs-profiling" class="section level4 unnumbered" number="">
+<h4>Profiling</h4>
+<p><em>“What is the typical cell phone usage of this customer segment?”</em></p>
+<blockquote>
+<p>Profiling (also known as behavior description) attempts to characterize the typical behavior of an individual, group, or population.</p>
+</blockquote>
+<blockquote>
+<p>Profiling is often used to establish behavioral norms for anomaly detection applications such as fraud detection …</p>
+</blockquote>
+<p><br />
+</p>
+<p>This seems like a ‘descriptive and soft’ measure, but it can also be formalized.</p>
+</div>
+<div id="link-predict" class="section level4 unnumbered" number="">
+<h4>Link prediction</h4>
+<p><em>"Since you and Karen share 10 friends, maybe you’d like to be Karen’s friend?</em></p>
+<blockquote>
+<p>attempts to predict connections between data items, usually by suggesting that a link should exist,</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+<div id="data-reduction" class="section level4 unnumbered" number="">
+<h4>Data reduction</h4>
+<blockquote>
+<p>attempts to take a large set of data and replace it with a smaller set of data that contains much of the important information in the larger set.</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+<div id="causal-modeling" class="section level4 unnumbered" number="">
+<h4>Causal modeling</h4>
+<blockquote>
+<p>Techniques for causal modeling include those involving a substantial investment in data, such as randomized controlled experiments (e.g., so-called “A/B tests”), as well as sophisticated methods for drawing causal conclusions from observational data</p>
+</blockquote>
+<blockquote>
+<p>In all cases, a careful data scientist should always include with a causal conclusion the exact assumptions that must be made in order for the causal conclusion to hold (there always are such assumptions—always ask)</p>
+</blockquote>
+<p><br />
+</p>
+
+<div class="note">
+<p>Establishing and justifying “causal inference” (also redundantly called “causal effects”) and the ‘identification strategy’ for this, is at the core of modern applied Economics and Econometrics. In fact, economists are often surprised by the emphasis on “prediction without causality” in machine learning and business data science work.</p>
+<p><br />
+</p>
+<p><em>Econometric approaches to inferring causality include:</em></p>
+<ul>
+<li><p>Experimentation and exogenous random assignment (arguably the ‘gold standard’)</p></li>
+<li><p>‘Control strategies’ (to try to ‘hold all observables constant’; sometimes drawing on Machine Learning)</p></li>
+<li><p>Natural experiments and ‘instrumental variables’ approaches (e.g., using the variation driven by seemingly ‘exogenous’ factors such as weather)</p></li>
+<li><p>"Restrictive’ assumptions about time and the continuity of relationships <span class="math inline">\(\rightarrow\)</span> ‘difference in differences’, ‘fixed effects’, and ‘regression discontinuity’ approaches</p></li>
+</ul>
+<p><br />
+</p>
+<p>Causality is discussed in popular and non-technical work including by Economists (‘Freakonomics’, ‘the Why Axis’…) and more directly, in ‘The Book of Why’ (by Judea Pearl, a computer scientist). For more formal and mathematical treatments, see Pearl’s other work, as well as, in Econometrics, <span class="citation">(Angrist and Pischke <a href="#ref-angrist2008mostly" role="doc-biblioref">2008</a>)</span>,<span class="citation">(<span class="citeproc-not-found" data-reference-id="cunninghamCausalInferenceMixtape2018"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="hernanCausalInference2010"><strong>???</strong></span>)</span>.</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="sup-vs-unsup" class="section level4" number="18.2.1.1">
+<h4><span class="header-section-number">18.2.1.1</span> Supervised Versus Unsupervised Methods</h4>
+<blockquote>
+<p>Metaphorically, a teacher “supervises” the learner by carefully providing target information along with a set of examples.</p>
+</blockquote>
+<p><br />
+</p>
+<p>The term ‘label’ is important here:*</p>
+<div class="marginnote">
+<p>* A term from Data Science that I’ve not seen in statistics/Econometrics, where we typically refer to an ‘outcome variable’ or ‘dependent variable’.</p>
+</div>
+<blockquote>
+<p>Technically, another condition must be met for supervised data mining: there must be data on the target.</p>
+</blockquote>
+<blockquote>
+<p>The value for the target variable for an individual is often called the individual’s label, emphasizing that often (not always) one must incur expense to actively label the data.</p>
+</blockquote>
+<p><br />
+</p>
+<p>DR: I always tell me dissertation and project students to ‘ask a question with a question mark’, and to consider <a href="https://daaronr.github.io/writing_econ_research/getting-started.html#ask_qn">whether the question could even <em>have</em> a meaningful answer</a>. This more or less characterises a <em>supervised</em> problem.</p>
+<!--todo: link Hitchiker's video here -->
+<blockquote>
+<p>A vital part in the early stages of the data mining process is (i) to decide whether the line of attack will be supervised or unsupervised, and (ii) if supervised, to produce a precise definition of a target variable.</p>
+</blockquote>
+</div>
+</div>
+<div id="data-mining-process" class="section level3" number="18.2.2">
+<h3><span class="header-section-number">18.2.2</span> The Data Mining Process</h3>
+<p>“The CRISP data mining process”</p>
+<div class="figure">
+<img src="../picsfigs/crisp.png" alt="" />
+<p class="caption">From DS for Business</p>
+</div>
+<p>Iterative… questions, data, answers, lather, rinse repeat</p>
+<div id="business-understanding" class="section level4 unnumbered" number="">
+<h4>Business Understanding</h4>
+<blockquote>
+<p>often the key to a great success is a creative problem formulation by some analyst regarding how to cast the business problem as one or more data science problems.</p>
+</blockquote>
+</div>
+<div id="data-understanding" class="section level4 unnumbered" number="">
+<h4>Data Understanding</h4>
+<blockquote>
+<p>Those who commit fraud are a subset of the legitimate users; there is no separate disinterested party who will declare exactly what the “correct” charges should be. Consequently the Medicare billing data have no reliable target variable indicating fraud, and a supervised learning approach that could work for credit card fraud is not applicable. Such a problem usually requires unsupervised approaches such as profiling, clustering, anomaly detection, and co-occurrence grouping.</p>
+</blockquote>
+</div>
+<div id="data-preparation" class="section level4 unnumbered" number="">
+<h4>Data Preparation</h4>
+<p>“Leaks” – variables used in building the model that you can’t actually use in decision-making</p>
+<blockquote>
+<p>One very general and important concern during data preparation is to beware of “leaks” (Kaufman et al. 2012). A leak is a situation where a variable collected in historical data gives information on the target variable—information that appears in historical data but is not actually available when the decision has to be made. As an example, when predicting whether at a particular point in time a website visitor would end her session or continue surfing to another page, the variable “total number of webpages visited in the session” is predictive. However, the total number of webpages visited in the session would not be known until after the session was over (Kohavi et al., 2000)—at which point one would know the value for the target variable! As another illustrative example, consider predicting whether a customer will be a “big spender”; knowing the categories of the items purchased (or worse, the amount of tax paid) are very predictive, but are not known at decision-making time (Kohavi &amp; Parekh, 2003).</p>
+</blockquote>
+</div>
+<div id="evaluation" class="section level4 unnumbered" number="">
+<h4>Evaluation</h4>
+<blockquote>
+<p>assess the data mining results rigorously and to gain confidence that they are valid and reliable before moving</p>
+</blockquote>
+<blockquote>
+<p>test a model first in a controlled laboratory setting. Equally important, the evaluation stage also serves to help ensure that the model satisfies the original business goal</p>
+</blockquote>
+<blockquote>
+<p>A model may be extremely accurate (&gt; 99%) by laboratory standards, but evaluation in the actual business context may reveal that it still produces too many false alarms to be economically feasible. (How much would it cost to provide the staff to deal with all those false alarms?</p>
+</blockquote>
+<blockquote>
+<p>Think about the comprehensibility of the model to stakeholders (not just to the data scientists).</p>
+</blockquote>
+<p><br />
+</p>
+<p>Use an experiment to test the model:</p>
+<blockquote>
+<p>in some cases we may want to extend evaluation into the development environment, for example by instrumenting a live system to be able to conduct random‐ ized experiments. In our churn example, if we have decided from laboratory tests that a data mined model will give us better churn reduction, we may want to move on to an “in vivo” evaluation, in which a live system randomly applies the model to some cus‐ tomers while keeping other customers as a control group (recall our discussion of causal modeling from Chapter 1).</p>
+</blockquote>
+<p>… noting</p>
+<blockquote>
+<p>behavior can change—in some cases, like fraud or spam, in direct response to the deployment of models.</p>
+</blockquote>
+<p><br />
+</p>
+</div>
+<div id="deployment" class="section level4 unnumbered" number="">
+<h4>Deployment</h4>
+<blockquote>
+<p>In deployment the results of data mining—and increasingly the data mining techniques themselves—are put into real use in order to realize some return on investment. The</p>
+</blockquote>
+<p>You may need to ‘deploy the whole data mining system’ (i.e., rebuild the model using newer data?)</p>
+<blockquote>
+<p>Two main reasons for deploying the data mining system itself rather than the models produced by a data mining system are (i) the world may change faster than the data science team can adapt, as with fraud and intrusion detection, and (ii) a business has too many modeling tasks for their data science team to manually curate each model individually.</p>
+</blockquote>
+<p><br />
+</p>
+<p>Difficulties with ‘over the wall’ transfers:</p>
+<blockquote>
+<p>“Your model is not what the data scientists design, it’s what the engineers build.” From a management perspective, it is advisable to have members of the development team involved early on in the data science project.</p>
+</blockquote>
+</div>
+<div id="implications-for-managing-the-data-science-team" class="section level4 unnumbered" number="">
+<h4>Implications for Managing the Data Science Team</h4>
+<blockquote>
+<p>data mining is an exploratory undertaking closer to research and development than it is to engineering</p>
+</blockquote>
+</div>
+<div id="other-analytics-techniques-and-methods" class="section level4 unnumbered" number="">
+<h4>Other analytics techniques and methods</h4>
+<p>Data Warehousing</p>
+</div>
+<div id="database-querying" class="section level4 unnumbered" number="">
+<h4>Database Querying</h4>
+<blockquote>
+<p>s are available to answer one-off or repeating queries about data posed by an analyst. These tools are usually frontends to database systems, based on Structured Query Language (SQL) or a tool with a graphical user interface (GUI) to help formulate queries (e.g., query-by-example, or QBE).</p>
+</blockquote>
+<blockquote>
+<p>On-line Analytical Processing (OLAP) provides an easy-to-use GUI to query large data collections, for the purpose of facilitating data exploration.</p>
+</blockquote>
+</div>
+<div id="machine-learning-and-data-mining" class="section level4 unnumbered" number="">
+<h4>Machine Learning and Data Mining</h4>
+<blockquote>
+<p>because Machine Learning is concerned with many types of performance improvement, it includes subfields such as robotics and computer vision that are not part of KDD. It also is concerned with issues of agency and cognition—how will an intelligent agent use learned knowledge to reason and act in its environment—which are not concerns of Data Mining.</p>
+</blockquote>
+</div>
+<div id="answering-business-questions-with-these-techniques" class="section level4 unnumbered" number="">
+<h4>Answering Business Questions with These Techniques</h4>
+<blockquote>
+<p>consider a set of questions that may arise and the technologies that would be appropriate for answering them. These questions are all related but each is subtly different.</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Who are the most profitable customers?</li>
+<li>Is there really a difference between the profitable customers and the average customer?</li>
+<li>But who really are these customers? Can I characterize them?</li>
+<li>Will some particular new customer be profitable? How much revenue should I expect this customer to generate?</li>
+</ol>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="ch-3-introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation" class="section level2" number="18.3">
+<h2><span class="header-section-number">18.3</span> Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</h2>
+<blockquote>
+<p>we will begin by thinking of predictive modeling as supervised segmentation—how can we segment the population into groups that differ from each other with respect to some quantity of interest. In particular, how can we segment the population with respect to something that we would like to predict or estimate.</p>
+</blockquote>
+<blockquote>
+<p>Tree induction incorporates the idea of supervised segmentation in an elegant manner, repeatedly selecting informative attributes</p>
+</blockquote>
+<blockquote>
+<p>A descriptive model must be judged in part on its intelligibility, and a less accurate model may be preferred if it is easier to understand. A predictive model may be judged solely on its predictive performance, although we will discuss why intelligibility is nonetheless important</p>
+</blockquote>
+<div id="models-induction-and-prediction" class="section level3" number="18.3.1">
+<h3><span class="header-section-number">18.3.1</span> Models, Induction, and Prediction</h3>
+<blockquote>
+<p>The creation of models from data is known as model induction. Induction is a term from philosophy that refers to generalizing from specific cases to general rules (or laws, or truths).</p>
+</blockquote>
+<blockquote>
+<p>Probability Estimation may be overly optimistic about the probability of class membership for segments with very small numbers of instances. At the extreme, if a leaf happens to have only a single instance, should we be willing to say that there is a 100% probability that members of that segment will have the class that this one instance happens to have?</p>
+</blockquote>
+<blockquote>
+<p>Example: Addressing the Churn Problem with Tree InductionLaplace correction, the purpose of which is to moderate the influence of leaves with only a few instances</p>
+</blockquote>
+<blockquote>
+<p>However, the order in which features are chosen for the tree doesn-t exactly correspond to their ranking in Figure 3-17. Why is this? The answer is that the table ranks each feature by how good it is independently, evaluated separately on the entire population of instances. Nodes in a classification tree depend on the instances above them in the tree. Therefore, except for the root node, features in a classification tree are not evaluated on the entire set of instances</p>
+</blockquote>
+</div>
+<div id="supervised-segmentation" class="section level3" number="18.3.2">
+<h3><span class="header-section-number">18.3.2</span> Supervised Segmentation</h3>
+<blockquote>
+<p>If the segmentation is done using values of variables that will be known when the target is not, then these segments can be used to predict the value of the target variable</p>
+</blockquote>
+<blockquote>
+<p>a formula that evaluates how well each attribute splits a set of examples into segments, with respect to a chosen target variable. Such a formula is based on a purity measure. The most common splitting criterion is called information gain, and it is based on a purity measure called entropy.</p>
+</blockquote>
+<blockquote>
+<p>Disorder corresponds to how mixed (impure) the segment is with respect to these properties of interest. So, for example, a mixed up segment with lots of write-offs and lots of non-write-offs would have high entropy. More technically, entropy is defined as:</p>
+</blockquote>
+<p><span class="math display">\[entropy = - p_1 log (p_1) - p_2 log (p_2) - ... \]</span></p>
+<p><br />
+</p>
+<blockquote>
+<p>Each <span class="math inline">\(p_i\)</span> is the probability (the relative percentage) of property i within the set. the logarithm is generally taken as base 2.</p>
+</blockquote>
+<p><img src="../picsfigs/entropy_plot.png" /></p>
+<blockquote>
+<p>Strictly speaking, information gain measures the change in entropy due to any amount of new information being added; here, in the context of supervised segmentation, we consider the information gained by splitting the set on all values of a single attribute.</p>
+</blockquote>
+<p><br />
+</p>
+<blockquote>
+<p>Information gain resulting from some partitioning of the parent set—how much information has this attribute provided? That depends on how much purer the children are than the parent</p>
+</blockquote>
+<blockquote>
+<p>the entropy for each child <span class="math inline">\((c_i)\)</span> is weighted by the proportion of instances be‐ longing to that child, <span class="math inline">\(p(c_i)\)</span></p>
+</blockquote>
+<p><img src="../picsfigs/infogain.png" /></p>
+</div>
+<div id="summary-1" class="section level3" number="18.3.3">
+<h3><span class="header-section-number">18.3.3</span> Summary</h3>
+<blockquote>
+<p>Tree induction recursively finds informative attributes for subsets of the data. In so doing it segments the space of instances into similar regions</p>
+</blockquote>
+<blockquote>
+<p>The resulting tree-structured model partitions the space of all possible instances into a set of segments with different predicted values for the target</p>
+</blockquote>
+</div>
+<div id="note-check-if-there-is-a-gap-here" class="section level3" number="18.3.4">
+<h3><span class="header-section-number">18.3.4</span> NOTE – check if there is a gap here</h3>
+</div>
+</div>
+<div id="ds4bs-model-to-data" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> Ch. 4: Fitting a Model to Data</h2>
+<blockquote>
+<p>The data miner specifies the form of the model and the attributes; the goal of the data mining is to tune the parameters so that the model fits the data as well as possible. This general approach is called parameter learning or parametric modeling</p>
+</blockquote>
+<blockquote>
+<p>What exactly do we mean when we say a model fits the data well ?</p>
+</blockquote>
+<blockquote>
+<p>The methods here can all be generalized to work with multiple (nonbinary) classes, but the generalization com- plicates the description unnecessarily</p>
+</blockquote>
+<div id="classification-via-mathematical-functions" class="section level3" number="18.4.1">
+<h3><span class="header-section-number">18.4.1</span> Classification via Mathematical Functions</h3>
+<blockquote>
+<p>because if we take away the axis-parallel boundaries (see Figure 4-2) we can see that there clearly are other, possibly better, ways to partition</p>
+</blockquote>
+<p>example, we can separate the instances almost perfectly (by class) if we are allowed to introduce a boundary that is still a straight line, but is not perpendicular to the axes (</p>
+<p>dataset of Figure 4-2 with a single linear split. This is called a linear classifier and is essentially a weighted sum of the values for the various attributes, as we will describe next.</p>
+<p>Linear Discriminant Functions</p>
+<blockquote>
+<p>Equation 4-1. Classification function class(-) = { + if 1.0 - Age - 1.5 × Balance + 60 &gt; 0 - if 1.0 × Age - 1.5 × Balance + 60 ≤ 0 This is called a linear discriminant because it discriminates between the classes, and the function of the decision boundary is a linear combination-a weighted sum—of the attributes</p>
+</blockquote>
+<p><span class="math inline">\(f(\cdot) = 60 + 1.0 \times Age - 1.5 \times Balance\)</span></p>
+<p>To use this model as a linear discriminant, for a given instance represented by a feature vector x, we check whether f(x) is positive or negative. As discussed above, in the twodimensional case, this corresponds to seeing whether the instance x falls above or below the line</p>
+<p>We now have a parameterized model: the weights of the linear function (<span class="math inline">\(w_i\)</span>) are the parameters.</p>
+<p>Roughly, the larger the magnitude of a feature’s weight, the more important that feature is for classifying the target with standardization</p>
+<blockquote>
+<p>Optimizing an Objective Function. In fact, there are infinitely many lines (models) that classify this training set perfectly. Which should we pick? underdetermined</p>
+</blockquote>
+<p>for Scoring and Ranking InstancesIn other applications, we do not need a precise probability estimate. We simply need a score that will rank cases by the likelihood of belonging to one class or the other. For example, for targeted marketing we may have a limited budget for targeting prospective customers. We would like to have a list of consumers ranked by their predicted likeli- hood of responding positively to our offer</p>
+<p>for Scoring and Ranking InstancesThus f(x) itself—the output of the linear discriminant function—gives an intuitively satisfying ranking of the instances by their (estimated) likelihood of belong- ing to the class of interest.</p>
+<p>Support Vector Machines, Briefly</p>
+<blockquote>
+<p>In short, support vector machines are linear discriminants</p>
+</blockquote>
+<blockquote>
+<p>SVMs choose based on a simple, elegant idea: instead of thinking about separating with a line, first fit the fattest bar between the classes</p>
+</blockquote>
+<blockquote>
+<p>Then once the widest bar is found, the linear discriminant will be the center line through the bar</p>
+</blockquote>
+<blockquote>
+<p>distance between the dashed parallel lines is called the margin around the linear discriminant, and thus the objective is to maximize the margin.</p>
+</blockquote>
+<blockquote>
+<p>Hopefully they will be distributed similarly to the training data, but they will in fact be different points. In particular, some of the positive examples will likely fall closer to the discriminant boundary than any positive example we have yet seen. All else being equal, the same applies to the negative examples. In other words, they may fall in the margin. The margin-maximizing boundary gives the maximal lee- way for classifying such points</p>
+</blockquote>
+<blockquote>
+<p>original example of Figure 4-2 shows a situa‐ tion in which a single line cannot perfectly separate the data into classes. This is true of most data from complex real-world applications</p>
+</blockquote>
+<blockquote>
+<p>In the case where the data indeed are linearly separable, we incur no penalty and simply maximize the margin. If the data are not linearly separable, the best fit is some balance between a fat margin and a low total error penalty. The penalty for a misclassified point is proportional to the distance from the decision boundary, so if possible the SVM will make only -small" errors</p>
+</blockquote>
+<blockquote>
+<p>known as hinge loss</p>
+</blockquote>
+</div>
+<div id="regression-via-mathematical-functions" class="section level3" number="18.4.2">
+<h3><span class="header-section-number">18.4.2</span> Regression via Mathematical Functions</h3>
+<blockquote>
+<p>Errors have positive distances from the separator in Figure 4-9, while correct classifications have negative distances</p>
+</blockquote>
+<blockquote>
+<p>The hinge loss only becomes positive when an example is on the wrong side of the boundary and beyond the margin. Loss then increases linearly with the example-s distance from the margin, thereby penalizing points more the farther they are from the separating boundary. Zero-one loss, as its name implies, assigns a loss of zero for a correct decision and one for an incorrect decision</p>
+</blockquote>
+<ul>
+<li>not sure I get what the margin means here</li>
+</ul>
+<blockquote>
+<p>For classification, this would apply large penalties to points far over on the “wrong side” of the separating boundary. Unfortunately, using squared error for classification also penalizes points far on the correct side of the decision boundary</p>
+</blockquote>
+<blockquote>
+<p>principle of thinking carefully about whether the loss function is aligned with the business goal</p>
+</blockquote>
+</div>
+<div id="class-probability-estimation-and-logistic-regression" class="section level3" number="18.4.3">
+<h3><span class="header-section-number">18.4.3</span> Class Probability Estimation and Logistic Regression</h3>
+<p>"More pragmatically, analysts often claim to prefer squared error because it strongly penalizes very large errors. Whether the quadratic penalty is actually appro- priate is specific to each application</p>
+<blockquote>
+<p>For least squares regression a serious drawback is that it is very sensitive to the data: erroneous or otherwise outlying data points can severely skew the resultant linear func- tion. For some business applications, we may not have the resources to spend as muchfor systems that build and apply models totally automatically, the modeling needs to be much more robust than when doing a detailed regression analysis -by hand." Therefore, for the former application we may want to use a more robust modeling procedure (e.g., use as the objective function absolute error instead of squared error</p>
+</blockquote>
+<blockquote>
+<p>The director of the fraud control operation may want the analysts to focus not simply on the cases most likely to be fraud, but on the cases where the most money is at stake-that is, accounts where the company’s monetary loss is expected to be the highest. For this we need to estimate the actual probability of fraud</p>
+</blockquote>
+<blockquote>
+<p>model designed to give accurate esti‐ mates of class probability. The most common procedure by which we do this is called logistic regression</p>
+</blockquote>
+<blockquote>
+<p>What exactly is an accurate estimate of class membership probability is a subject of debate beyond the scope of this book. Roughly, we would like (i) the probability estimates to be well calibrated, meaning that if you take 100 cases whose class membership probability is estimated to be 0.2, then about 20 of them will actually belong to the class. We would also like (ii) the probability estimates to be discriminative, in that if possible they give meaningfully different probability estimates to different examples.</p>
+</blockquote>
+<blockquote>
+<p>there another representation of the likelihood of an event that we use in everyday life? If we could come up with one that ranges from -∞ to ∞, then we might model this other notion of likelihood with our linear equation</p>
+</blockquote>
+<blockquote>
+<p>The odds of an event is the ratio of the probability of the event occurring to the probability of the event not occurring</p>
+</blockquote>
+<blockquote>
+<p>Again, the distance from the boundary is between -∞ and ∞, but as we can see from the example, the odds range from 0 to -. Nonetheless, we can solve our garden-path problem simply by taking the logarithm of the odds (called the -log-odds"), since for any number in the range 0 to - its log will be between –∞ to ∞. These</p>
+</blockquote>
+<blockquote>
+<p>The output of the logistic regression model is interpreted as the log-odds of class membership</p>
+</blockquote>
+</div>
+<div id="logistic-regression-some-technical-details" class="section level3" number="18.4.4">
+<h3><span class="header-section-number">18.4.4</span> Logistic Regression: Some Technical Details</h3>
+<blockquote>
+<p>Recall that the distinction between classification and regression is whether the value for the target variable is categorical or numeric</p>
+</blockquote>
+<blockquote>
+<p>Equation 4-4. The logistic function p+ (-) = 1</p>
+</blockquote>
+<blockquote>
+<p>The model can be applied to the training data to produce estimates that each of the training data points belongs to the target class. What would we want? Ideally, any positive example x+ would have p+ (-+) = 1 and any negative example x•</p>
+</blockquote>
+<blockquote>
+<p>model (set of weights) that gives the highest sum is the model that gives the highest -likelihood" to the data—the “maximum likeli‐ hood- model. The maximum likelihood model”on average" gives the highest proba‐ bilities to the positive examples and the lowest probabilities to the negative examples</p>
+</blockquote>
+</div>
+<div id="example-logistic-regression-versus-tree-induction" class="section level3" number="18.4.5">
+<h3><span class="header-section-number">18.4.5</span> Example: Logistic Regression versus Tree Induction</h3>
+<blockquote>
+<p>Though classification trees and linear classifiers both use linear decision boundaries, there are two important differences between them: 1. A classification tree uses decision boundaries that are perpendicular to the instancespace axes (see Figure 4-1), whereas the linear classifier can use decision boundaries of any direction or orientation (see Figure 4-3). This is a direct consequence of the fact that classification trees select a single attribute at a time whereas linear classifiers use a weighted combination of all attributes</p>
+</blockquote>
+<p>classification tree is a “piecewise” classifier that segments the instance space re‐ cursively when it has</p>
+<blockquote>
+<p>linear classifier places a single decision surface through the entire space. It has great freedom in the orien- tation of the surface, but it is limited to a single division into two segments</p>
+</blockquote>
+<p>practically speaking, what are the consequences of these differences?</p>
+<p>A de‐ cision tree, if it is not too large, may be considerably more understandable to someone without a strong statistics or mathematics background. I’m not convinced. but I can imagine it’s easier to implement in production</p>
+</div>
+<div id="nonlinear-functions-support-vector-machines-and-neural-networksthe-two-most-common-families-of-techniques-that-are-based-on-fitting-the-parameters-of-complex-nonlinear-functions-are-nonlinear-supportvector-machines-and-neural-networks." class="section level3" number="18.4.6">
+<h3><span class="header-section-number">18.4.6</span> Nonlinear Functions, Support Vector Machines, and Neural NetworksThe two most common families of techniques that are based on fitting the parameters of complex, nonlinear functions are nonlinear supportvector machines and neural networks.</h3>
+<p>Support vector machines have a so-called “kernel function” that maps the original features to some other feature space. Then a linear model is fit to this new feature space, just as</p>
+<p>implement a nonlinear support vector machine with a “polynomial ker‐ nel,- which essentially means it would consider”higher-order" combinations</p>
+<p>One can think of a neural network as a -stack" of models. On the bottom of the stack are the original features. From these features are learned a variety of relatively simple models. Let-s say these are logistic regressions. Then, each subsequent layer in the stack applies a simple model (let-s say, another logistic regression) to the outputs of the next layer down</p>
+<p>We could think of this very roughly as first creating a set of -experts" in different facets of the problem (the first-layer models), and then learning how to weight the opinions of these different experts (the second-layer model).</p>
+<p>more generally with neural networks target labels for training are provided only for the final layer (the actual target variable).</p>
+<p>The stack of models can be represented by one big parameterized numeric function. The so why consider it in many layers?</p>
+<p>we can then apply an optimization procedure to find the best parameters to this very complex numeric function</p>
+<p>When we’re done, we have the parameters to all the models, and thereby have learned the -best" set of lower-level experts and also the best way to com‐ bine them, all simultaneously "</p>
+<p><strong>OF:</strong> Neural Networks are made up of layers of <em>perceptrons.</em> These models are given an input vector and assign weights to each input. The inputs are combined into a weighted sum which is passed through an “activation function” that decides on the outcome classification. This method is known as “forward propagation”. A useful analogy from (Melania, 2019):</p>
+<blockquote>
+<p>For example, you might get input from several friends on how much they liked a particular movie, but you trust some of those friends’ taste in movies more than others. If the total amount of “friend enthusiasm”—giving more weight to your more trusted friends—is high enough (that is, greater than some unconscious threshold), you decide to go to the movie. This is how a perceptron would decide about movies, if only it had friends.</p>
+</blockquote>
+<p><br />
+It is the way in which these weights are learned that is both mentally and computationally strenuous. The “back-propagation” algorithm is key to the way that weights are learned. The procedure involves multiple stages. Essentially we initialize our model with a random state, feed our input data in and compute the error that our model has made. Then our model works backwards and updates the weights in a manner which provides a prediction consistent with the true data. This updating process can and often is done multiple times.</p>
+</div>
+</div>
+<div id="ds4bs-overfitting" class="section level2" number="18.5">
+<h2><span class="header-section-number">18.5</span> Ch 5: Overfitting and its avoidance</h2>
+<div id="generalization" class="section level3" number="18.5.1">
+<h3><span class="header-section-number">18.5.1</span> Generalization</h3>
+<p>Generalization is the property of a model or modeling process, whereby the model applies to data that were not used to build the model</p>
+</div>
+<div id="holdout-data-and-fitting-graphs" class="section level3" number="18.5.2">
+<h3><span class="header-section-number">18.5.2</span> Holdout Data and Fitting Graphs</h3>
+<blockquote>
+<p>These are not the actual use data, for which we ultimately would like to predict the value of the target variable. Instead, creating holdout data is like creating a -lab test" of generalization performance. We will simulate the use scenario on these holdout data: we will hide from the model (and possibly the modelers) the actual values for the target on the holdout data. The</p>
+</blockquote>
+<blockquote>
+<p>This is known as the base rate, and a classifier that always selects the majority class is called a base rate classifier. A corresponding baseline for a regression model is a simple model that always predicts the mean or median value of the target variable</p>
+</blockquote>
+<p><strong>OF:</strong> Holdout data focuses around the need to train models on data that is separate from the data a model is tested on. If we didn’t use holdout validation then our data would always seem to perform incredibly well in testing and would perform poorly on new data.</p>
+</div>
+<div id="example-overfitting-linear-functions" class="section level3" number="18.5.3">
+<h3><span class="header-section-number">18.5.3</span> Example: Overfitting Linear Functions</h3>
+<blockquote>
+<p>In many modern applications, where large numbers of models are built automatically, and/or where there are very large sets of attributes, manual selection may not be feasible. For example, companies that do data science-driven targeting of online display advertisements can build thousands of models each week, sometimes with mil- lions of possible features. In such cases there is no choice but to employ automatic feature selection (or to ignore feature selection all together).</p>
+</blockquote>
+</div>
+<div id="example-why-is-overfitting-bad" class="section level3" number="18.5.4">
+<h3><span class="header-section-number">18.5.4</span> Example: Why Is Overfitting Bad?</h3>
+<ul>
+<li>It does not explain why overfitting often causes models to become worse I guess this is because the meaningless information that is incorporated causes less attention paid to more meaningful information</li>
+</ul>
+<blockquote>
+<p>From Holdout Evaluation to Cross-ValidationWhile a holdout set will indeed give us an estimate of generalization performance, it is just a single estimate. Should we have any confidence in a single estimate of model accuracy? It might have just been a single particularly lucky (or unlucky) choice of training and test data</p>
+</blockquote>
+</div>
+<div id="from-holdout-evaluation-to-cross-validation" class="section level3" number="18.5.5">
+<h3><span class="header-section-number">18.5.5</span> From Holdout Evaluation to Cross-Validation</h3>
+<blockquote>
+<p>Building the infrastructure for a modeling lab may be costly and time consuming, but after this investment many aspects of model performance can be evaluated quickly in a controlled environment</p>
+</blockquote>
+<blockquote>
+<p>5-9. An illustration of cross-validation</p>
+</blockquote>
+</div>
+<div id="learning-curves" class="section level3" number="18.5.6">
+<h3><span class="header-section-number">18.5.6</span> Learning Curves</h3>
+<blockquote>
+<p>plot of the generalization performance against the amount of training data is called a learning curve. The</p>
+</blockquote>
+<blockquote>
+<p>asset. The learning curve may show that generalization perforance has leveled off so investing in more training data is probably not worthwhile</p>
+</blockquote>
+</div>
+<div id="avoiding-overfitting-with-tree-induction" class="section level3" number="18.5.7">
+<h3><span class="header-section-number">18.5.7</span> Avoiding Overfitting with Tree Induction</h3>
+<blockquote>
+<p>Overfitting Avoidance and Complexity Control</p>
+</blockquote>
+<blockquote>
+<p>To avoid overfitting, we control the complexity of the models induced from the data.</p>
+</blockquote>
+<blockquote>
+<p>The main problem with tree induction is that it will keep growing the tree to fit the training data until it creates pure leaf nodes</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: lower-roman">
+<li>to stop growing the tree before it gets too complex, and (ii) to grow the tree until it is too large, then “prune” it back <strong>OF:</strong> Pruning also has the advantage of improved model interpretation.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>specify a minimum number of instances that must be present in a leaf.</p>
+</blockquote>
+<blockquote>
+<p>this value is below a threshold (often 5%, but problem specific), then the hypothesis test concludes that the difference is likely not due to chance somewhat imprecise</p>
+</blockquote>
+<blockquote>
+<p>So, for stopping tree growth, an alternative to setting a fixed size for the leaves is to conduct a hypothesis test at every leaf to determine whether the observed difference in (say) information gain could have been due to chance. If the hypothesis test concludes that it was likely not due to chance, then the split is accepted and the tree growing continues. (See -Sidebar: Beware of -multiple comparisons"" on page 139.) Overfitting Avoidance and Complexity</p>
+</blockquote>
+</div>
+<div id="a-general-method-for-avoiding-overfitting" class="section level3" number="18.5.8">
+<h3><span class="header-section-number">18.5.8</span> A General Method for Avoiding Overfitting</h3>
+<blockquote>
+<p>One general idea is to estimate whether replacing a set of leaves or a branch with a leaf would reduce accuracy</p>
+</blockquote>
+<blockquote>
+<p>have a collection of models with different complexities, we could choose the best simply by estimating the generalization performance of each. But how could we estimate their generalization performance? On the (labeled) test data? There-s one big problem with that: test data should be strictly independent of model building so that we can get an independent estimate of model accuracy</p>
+</blockquote>
+<blockquote>
+<p>The key is to realize that there was nothing special about the first training/test split we made. Let-s say we are saving the test set for a final assessment. We can take the training set and split it again into a training subset and a testing subset. Then we can build models on this training subset and pick the best model based on this testing subset. Let-s call the former the subtraining set and the latter the validation set for clarity. The validation set is separate from the final test set, on which we are never going to make any modeling decisions. This procedure is often called nested holdout testing. sorts out a key point of confusion</p>
+</blockquote>
+</div>
+<div id="a-general-method-for-avoiding-overfitting-1" class="section level3" number="18.5.9">
+<h3><span class="header-section-number">18.5.9</span> A General Method for Avoiding Overfitting</h3>
+<blockquote>
+<p>we can induce trees of many complexities from the subtraining set, then we can estimate the generalization performance for each from the validation set</p>
+</blockquote>
+<blockquote>
+<p>Then we could use this model as our best choice, possibly estimating the actual generalization performance on the final holdout</p>
+</blockquote>
+<blockquote>
+<p>But once we-ve chosen the complexity, why not induce a new tree with 122 nodes from the whole, original training set? Then we might get the best of both worlds: using the subtraining/ validation split to pick the best complexity without tainting the test set, and building a model of this best complexity on the entire training set (subtraining plus validation)</p>
+</blockquote>
+<blockquote>
+<p>nested holdout procedure</p>
+</blockquote>
+<blockquote>
+<p>Nested cross-validation</p>
+</blockquote>
+<blockquote>
+<p>example, sequential forward selection (SFS) of features uses a nested holdout pro‐ cedure to first pick the best individual feature, by looking at all models built using just one feature. After i don’t entirely get how the nesting works</p>
+</blockquote>
+</div>
+<div id="avoiding-overfitting-for-parameter-optimization" class="section level3" number="18.5.10">
+<h3><span class="header-section-number">18.5.10</span> Avoiding Overfitting for Parameter Optimization</h3>
+<blockquote>
+<p>equations, such as logistic regression, that unlike trees do not automatically select what attributes to include, complexity can be controlled by choosing a -right" set of attributes</p>
+</blockquote>
+<blockquote>
+<p>The general strategy is that instead of just opti‐ mizing the fit to the data, we optimize some combination of fit and simplicity. Models will be better if they fit the data better, but they also will be better if they are simpler. This general methodology is called regularization, a term that is heard often in data science discussions. The rest of</p>
+</blockquote>
+<blockquote>
+<p>Complexity control via regularization works by adding to this objective function a pen‐ alty for complexity: arg max - weight that determines how much importance the optimization procedure should place on the penalty, compared to the data fit. At this point, the mod- eler has to choose - and the penalty function</p>
+</blockquote>
+<blockquote>
+<p>To learn a “regularized” logistic regression model we would instead compute: arg max -</p>
+</blockquote>
+<blockquote>
+<p>most commonly used penalty is the sum of the squares of the weights, sometimes called the -L2-norm" of w ridge like model</p>
+</blockquote>
+<blockquote>
+<p>linear support vector machine learning is almost equivalent to the L2-regularized logistic re- gression just discussed; the only difference is that a support vector machine uses hinge loss instead of likelihood in its optimization. The support vector machine optimizes this equation: arg max - hinge loss term, is negated because lower hinge loss is better.</p>
+</blockquote>
+<blockquote>
+<p>cross-validation would es‐ sentially conduct automated experiments on subsets of the training data and find a good - value. Then this λ would be used to learn a regularized model on all the training data</p>
+</blockquote>
+<blockquote>
+<p>to optimizing the parameter values of a data mining procedure is known as grid search</p>
+</blockquote>
+<blockquote>
+<p>Sidebar: Beware of “multiple comparisons”</p>
+</blockquote>
+<blockquote>
+<p>index, some will be worse, and some will be better. The best one might be a lot better. Now, you liquidate all the funds but the best few, and you present these to the public. You can -honestly" claim that their 5-year return is substantially better than the return of the Russell 2000 index.</p>
+</blockquote>
+<blockquote>
+<p>The underlying reasons for overfitting when building models from data are essentially problems of multiple comparisons (Jensen &amp; Cohen, 2000)</p>
+</blockquote>
+<blockquote>
+<p>if the fitting graph truly has an inverted-U-shape, one can be much more confident that the top represents a -good" complexity than if the curve jumps around randomly</p>
+</blockquote>
+<blockquote>
+<p>e model performance on the training and testing data as a function of model complexity</p>
+</blockquote>
+<blockquote>
+<p>Summary learning curve shows model per‐ formance on testing data plotted against the amount of training data used</p>
+</blockquote>
+<p><strong>OF:</strong> Note the importance of the bias-variance trade-off. As we increase the flexibility of a model, by for example adding more tree nodes, we decrease the bias but increase the variability. This means that the model will tend to perform poorly on newer data. The relative change of bias and variance helps determine whether the mean-squared error increases or decreases. These will vary across models. Highly non-linear models tend to have higher variation.</p>
+</div>
+</div>
+<div id="ds4bs-similarity" class="section level2" number="18.6">
+<h2><span class="header-section-number">18.6</span> Ch 6.: Similarity, Neighbors, and Clusters</h2>
+<blockquote>
+<p>Fundamental concepts: Calculating similarity of objects described by data; Using simi‐ larity for prediction; Clustering as similarity-based segmentation. Exemplary techniques: Searching for similar entities; Nearest neighbor methods; Clus- tering methods; Distance metrics for calculating similarity.</p>
+</blockquote>
+<blockquote>
+<p>example, IBM wants to find companies that are similar to their best business customers, in order to have the sales staff look at them as prospects</p>
+</blockquote>
+<blockquote>
+<p>Hewlett-Packard maintains many highperformance servers for clients; this maintenance is aided by a tool that, given a server configuration, retrieves information on other similarly configured servers. Advertisers often want to serve online ads to consumers who are similar to their current good customers. production function example</p>
+</blockquote>
+<div id="similarity-and-distance" class="section level3" number="18.6.1">
+<h3><span class="header-section-number">18.6.1</span> Similarity and Distance</h3>
+<p>unsupervised segmentation</p>
+</div>
+<div id="similarity-and-distance-1" class="section level3" number="18.6.2">
+<h3><span class="header-section-number">18.6.2</span> Similarity and Distance</h3>
+<blockquote>
+<p>similarity to provide recommen‐ dations of similar products or from similar people</p>
+</blockquote>
+<blockquote>
+<p>The field of Artificial Intelligence has a long history of building systems to help doctors and lawyers with such case-based reasoning. Sim- ilarity judgments are a key component</p>
+</blockquote>
+<blockquote>
+<p>Euclidean distance</p>
+</blockquote>
+<p><strong>OF:</strong> Because of the mechanics of distance measures we <strong>should</strong> range-normalize data before using methods such as KNN. This is because the distance measure is affected by the distance between variables, if variables are all on a different scale then this is equivalent to them having different variances. Data doesn’t need to be normalized for methods such as decision trees as information gain is calculated for each individual variable, thus not taking into account the relationship with other variables.</p>
+<p>The Euclidean and Manhattan distance are special cases of the <strong>Minkowski</strong> distance. Where the higher the value of <span class="math inline">\(p\)</span> the more emphasis is placed on features with a large difference in the values due to these differences being raised to the <span class="math inline">\(p^{th}\)</span> power</p>
+<p><span class="math display">\[
+\text{Minkowski}(\textbf{a}, \textbf{b}) = (\sum_{i=1}^m abs(\textbf{a}[i]-\textbf{b}[i])^p)^{1/p}
+\]</span>
+Source: <span class="citation">(Kelleher, Mac Namee, and D’Arcy <a href="#ref-kelleherFundamentalsMachineLearning2015" role="doc-biblioref">2015</a>)</span></p>
+</div>
+<div id="example-whiskey-analytics" class="section level3" number="18.6.3">
+<h3><span class="header-section-number">18.6.3</span> Example: Whiskey Analytics</h3>
+<blockquote>
+<ol start="19" style="list-style-type: decimal">
+<li>This distance is just a number—it has no units, and no meaningful interpretation this needs more explanation… at least discuss standardising these features</li>
+</ol>
+</blockquote>
+<p>How can we describe single malt Scotch whiskeys as feature vectors, in such a way that we think similar whiskeys will have similar taste</p>
+</div>
+<div id="nearest-neighbors-for-predictive-modeling" class="section level3" number="18.6.4">
+<h3><span class="header-section-number">18.6.4</span> Nearest Neighbors for Predictive Modeling</h3>
+<blockquote>
+<p>Legendre’s representation of whiskeys with Euclidean distance to find similar ones for him. how to do with categorical variables?</p>
+</blockquote>
+<blockquote>
+<p>Figure 6-2. Nearest neighbor classification. The point to be classified, labeled with a question mark, would be classified + because the majority of its nearest (three) neigh- bors are +</p>
+</blockquote>
+<blockquote>
+<p>have some combining function (like voting or averaging) operating on the neighbors- known target values</p>
+</blockquote>
+<blockquote>
+<p>His nearest neighbors (Rachael, John, and Norah) have classes of No, Yes, and Yes, respectively. If we score for the Yes class, so that Yes=1 and No=0, we can average these into a score of 2/3 for David. If we were to do this in practice, we might want to use more than just three nearest neighbors</p>
+</blockquote>
+</div>
+<div id="how-many-neighbors-and-how-much-influence" class="section level3" number="18.6.5">
+<h3><span class="header-section-number">18.6.5</span> How Many Neighbors and How Much Influence?</h3>
+<blockquote>
+<p>assume that David’s three nearest neighbors were again Rachael, John, and Norah. Their respective incomes are 50, 35, and 40 (in thousands). We then use these values to generate a prediction for David-s income. We could use the average (about 42) or the median (40). nn for ’regression,,. kernel models would be an extension of this</p>
+</blockquote>
+<blockquote>
+<p>important to note that in retrieving neighbors we do not use the target variable because we-re trying to predict it</p>
+</blockquote>
+<blockquote>
+<p>Nearest neighbor algorithms are often referred to by the shorthand k-NN, where the k refers to the number of neighbors used, such as 3-NN.</p>
+</blockquote>
+<blockquote>
+<p>nearest-neighbor methods often use weighted voting or similarity moderated voting such that each neighbor-s contribution is scaled by its sim‐ ilarity</p>
+</blockquote>
+<blockquote>
+<p>other sorts of prediction tasks, for example regression and class probability estimation. Generally, we can think of the procedure as weighted scor- ing</p>
+</blockquote>
+<p><strong>OF:</strong> For classification purposes it is a common rule of thumb to use an odd number as the value for <span class="math inline">\(k\)</span>. This is done in order to avoid ties between two label classes.</p>
+</div>
+<div id="geometric-interpretation-overfitting-and-complexity-control" class="section level3" number="18.6.6">
+<h3><span class="header-section-number">18.6.6</span> Geometric Interpretation, Overfitting, and Complexity Control</h3>
+<blockquote>
+<p>related technique in artificial intelligence is Case-Based Reasoning (Kolodner, 1993; Aamodt &amp; Plaza, 1994), abbreviated CBR relevant to meta analysis?!!</p>
+</blockquote>
+<blockquote>
+<p>Although no explicit boundary is created, there are implicit regions created by instance neighborhoods</p>
+</blockquote>
+<blockquote>
+<p>Figure 6-3. Boundaries created by a 1-NN classifier</p>
+</blockquote>
+<blockquote>
+<p>Note also the one negative instance isolated inside the positive in‐ stances creates a -negative island" around itself. This point might be considered noise or an outlier, and another model type might smooth over it.</p>
+</blockquote>
+<blockquote>
+<p>generally, irregular concept bound‐ aries are characteristic of all nearest-neighbor classifiers, because they do not impose any particular geometric form on the classifier</p>
+</blockquote>
+<blockquote>
+<p>The 1-NN classifier predicts perfectly for training examples, but it also can make an often reason- able prediction on other examples: it uses the most similar training example.</p>
+</blockquote>
+<blockquote>
+<p>k in a k-NN classifier is a complexity parameter. At one extreme, we can set k = n and we do not allow much complexity at all in our</p>
+</blockquote>
+</div>
+<div id="issues-with-nearest-neighbor-methods" class="section level3" number="18.6.7">
+<h3><span class="header-section-number">18.6.7</span> Issues with Nearest-Neighbor Methods</h3>
+<blockquote>
+<p>in some fields such as medicine and law, reasoning about similar historical cases is a natural way of coming to a decision about a new case</p>
+</blockquote>
+<blockquote>
+<p>other areas, the lack of an explicit, interpretable model may pose a problem. There are really two aspects to this issue of intelligibility: the justification of a specific decision and the intelligibility of an entire model.</p>
+</blockquote>
+<blockquote>
+<p>With k-NN, it usually is easy to describe how a single instance is decided: the set of neighbors participating in the decision can be presented, along with their contributions.</p>
+</blockquote>
+<blockquote>
+<p>The movie Billy Elliot was recommended based on your interest in Amadeus, The Con‐ stant Gardener and Little Miss Sunshine-</p>
+</blockquote>
+<blockquote>
+<p>e got a recommendation. On the other hand, a mortgage applicant may not be satisfied with the explanation, -We declined your mortgage application because you remind us of the Smiths and the Mitchells, who both defaulted.- Indeed, some legal regulations restrict the sorts of mod‐ els that can be used for credit scoring to models for which very simple explanations can be given based on specific, important variables. For example, with a linear model, one may be able to say: -all else being equal, if your income had been $20,000 higher you would have been granted this particular mortgage.</p>
+</blockquote>
+<blockquote>
+<p>What is difficult is to explain more deeply what “knowledge” has been mined from the data. If a stakeholder asks -What did your system learn from the data about my cus‐ tomers? On what basis does it make its decisions?- there may be no easy answer because there is no explicit model</p>
+</blockquote>
+<blockquote>
+<p>numeric attributes may have vastly different rang‐ es, and unless they are scaled appropriately the effect of one attribute with a wide range can swamp the effect of another with a much smaller range. But scaling</p>
+</blockquote>
+<blockquote>
+<p>example, in the credit card offer domain, a customer database could contain much incidental information such as number of children, length of time at job, house size, median income, make and model of car, average education level, and so on. Conceivably</p>
+</blockquote>
+<blockquote>
+<p>probably most would be irrelevant</p>
+</blockquote>
+<blockquote>
+<p>curse of dimensionality—and this poses problems for nearest neighbor methods</p>
+</blockquote>
+<blockquote>
+<p>feature selection</p>
+</blockquote>
+<blockquote>
+<p>domain knowledge</p>
+</blockquote>
+<blockquote>
+<p>is to tune the similarity/distance function manually. We may know, for example, that the attribute Number of Credit Cards should</p>
+</blockquote>
+<blockquote>
+<p>training is very fast because it usually involves only storing the instances. No effort is expended in creating a model</p>
+</blockquote>
+<blockquote>
+<p>The main computational cost of a nearest neighbor method is borne by the prediction/classifica- tion step, when the database</p>
+</blockquote>
+<blockquote>
+<p>Heterogeneous AttributesThere are techniques for speeding up neighbor retrievals. Specialized data structures like kd-trees and hashing methods (Shakhnarovich, Darrell, &amp; Indyk, 2005; Papadopoulos &amp; Manolopoulos, 2005) are employed in some commerical database and data mining systems to make nearest neighbor queries more efficient</p>
+</blockquote>
+</div>
+<div id="other-distance-functions" class="section level3" number="18.6.8">
+<h3><span class="header-section-number">18.6.8</span> Other Distance Functions</h3>
+<blockquote>
+<p>Euclidean distance</p>
+</blockquote>
+<blockquote>
+<p>general, intuitive and computationally very fast</p>
+</blockquote>
+<blockquote>
+<p>Euclidean(ᅚ, ᅛ) = ֫ ᅚ - ᅛ ֫ 2 = (x1 - y1) 2 + (x2 - y2) -ٴ + 2 Though</p>
+</blockquote>
+<blockquote>
+<p>Manhattan distance or L1-norm is the sum of the (unsquared) pairwise distances,</p>
+</blockquote>
+<blockquote>
+<p>or taxicab</p>
+</blockquote>
+<blockquote>
+<p>Jaccard distance treats the two objects as sets of characteristics</p>
+</blockquote>
+<blockquote>
+<p>Jaccard distance is the proportion of all the characteristics (that either has) that are shared by the two</p>
+</blockquote>
+<blockquote>
+<p>appropriate for problems where the possession of a common characteristic between two items is important, but the common absence of a characteristic is not</p>
+</blockquote>
+<blockquote>
+<p>Cosine distance is often used in text classification to measure the similarity of two docu‐ ments how different from L2 with normalization?</p>
+</blockquote>
+<blockquote>
+<p>three occurrences of transition, and two occurrences of monetary. Docu‐ ment B contains two occurrences of performance, three occurrences of transition, and no occurrences of monetary. The two documents would be represented as vectors of counts of these three words: A = &lt;7,3,2&gt; and B = &lt;2,3,0&gt;. The cosine distance of the two documents is: dcosine(A, B) = 1 - 7, 3, 2 - 2, 3, 0 - 7, 3, 2 ֫ 2 - ֫ 2, 3, 0 ֫ 2 = 1 - 7 - 2 + 3 · 3 + 2 · 0 49 + 9 + 4 - 4 + 9 = 1 - 23 28.4 - 0.19</p>
+</blockquote>
+<blockquote>
+<p>is particularly useful when you want to ignore differences in scale across instances-technically, when you want to ignore the magnitude of the vectors. As a concrete example, in text classification you may want to ignore whether one document is much longer than another, and just concentrate on the textual content</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Other Distance Functions distance or the Levenshtein metric. This metric counts the minimum number of edit operations required to convert one string into the other</li>
+</ul>
+</blockquote>
+</div>
+<div id="stepping-back-solving-a-business-problem-versus-data-exploration" class="section level3" number="18.6.9">
+<h3><span class="header-section-number">18.6.9</span> Stepping Back: Solving a Business Problem Versus Data Exploration</h3>
+<blockquote>
+<p>Recall the CRISP data mining process, replicated in Figure 6-15. We should spend as much time as we can in the business understanding/ data understanding mini-cycle, until we have a concrete, specific definition of the prob- lem we are trying to solve. In predictive modeling applications, we are aided by our need to define the target variable precisely, and</p>
+</blockquote>
+<blockquote>
+<p>In our similarity-matching examples, again we had a very concrete notion of what exactly we were looking for: we want to find similar companies to optimize our efforts, and we will define specifically what it means to be similar.</p>
+</blockquote>
+<blockquote>
+<p>What do we do when in the business understanding phase we conclude: we would like to explore our data, possibly with only a vague notion of the exact problem we are solving? The problems to which we apply clustering often fall into this category. We want to perform unsupervised segmentation</p>
+</blockquote>
+<blockquote>
+<p>igure 6-15. The CRISP data mining process</p>
+</blockquote>
+<blockquote>
+<p>finding groups that “naturally” occur (subject, of course, to how we define our similarity measures).</p>
+</blockquote>
+</div>
+<div id="summary-2" class="section level3" number="18.6.10">
+<h3><span class="header-section-number">18.6.10</span> Summary</h3>
+<p>that for problems where we did not achieve a precise formulation of the problem in the early stages of the data mining process, we have to spend more time later in the process-in the Evaluation stage</p>
+<blockquote>
+<p>Therefore, for clustering, additional creativity and business knowledge must be applied in the Evaluation stage of the data mining process</p>
+</blockquote>
+<blockquote>
+<p>they settled on five clusters that represented very different consumer credit behavior (e.g., those who spend a lot but pay off their cards in full each month versus those who spend a lot and keep their balance near their credit limit). These different sorts of customers can tolerate very different credit lines (in the two examples, extra care must be taken with the latter to avoid default)</p>
+</blockquote>
+<blockquote>
+<p>They used the knowledge to define a precise predictive mod‐ eling problem: using data that are available at the time of credit approval, predict the probability that a customer will fall into each of these clusters</p>
+</blockquote>
+</div>
+</div>
+<div id="ds4bs-decision-thinking" class="section level2" number="18.7">
+<h2><span class="header-section-number">18.7</span> Ch. 7. Decision Analytic Thinking I: What Is a Good Model?</h2>
+<blockquote>
+<p>Fundamental concepts: Careful consideration of what is desired from data science results; Expected value as a key evaluation framework; Consideration of appropriate comparative baselines. Exemplary techniques: Various evaluation metrics; Estimating costs and benefits; Cal- culating expected profit; Creating baseline methods for comparison economics connection</p>
+</blockquote>
+<blockquote>
+<p>Often it is not possible to measure perfectly one-s ultimate goal, for example because the systems are inadequate, or because it is too costly to gather the right data, or because it is difficult to assess causality. So, we might conclude that we need to measure some surrogate for what we’d really like to measure. It is nonetheless crucial to think carefully about what we’d really like to meas‐ ure. If we have to choose a surrogate, we should do it via careful, data-analytic thinking.</p>
+</blockquote>
+<div id="evaluating-classifier" class="section level3" number="18.7.1">
+<h3><span class="header-section-number">18.7.1</span> Evaluating Classifier</h3>
+<blockquote>
+<p>we discussed how for evaluation we should use a holdout test set to assess the generalization performance of the model. But how should we measure generalization performance?</p>
+</blockquote>
+</div>
+<div id="the-confusion-matrix" class="section level3" number="18.7.2">
+<h3><span class="header-section-number">18.7.2</span> The Confusion Matrix</h3>
+<blockquote>
+<p>Here we will reserve accuracy for its specific technical meaning as the proportion of correct decisions: accuracy = Number of correct decisions made Total number of decisions made This is equal to 1-error rate</p>
+</blockquote>
+<blockquote>
+<p>class con‐ fusion and the confusion matrix, which is one sort of contingency table. A confusion matrix for a problem involving n classes is an n - n matrix with the columns labeled with actual classes and the rows labeled with predicted classes. Each example in a test set has an actual class label as well as the class predicted by the classifier (the predicted class), whose combination determines which matrix cell the instance counts into. For simplicity we will deal with two-class problems having 2 - 2 confusion matrices.</p>
+</blockquote>
+<blockquote>
+<p>making explicit how one class is being confused for another</p>
+</blockquote>
+</div>
+<div id="problems-with-unbalanced-classes" class="section level3" number="18.7.3">
+<h3><span class="header-section-number">18.7.3</span> Problems with Unbalanced Classes</h3>
+<blockquote>
+<p>Table 7-1. The layout of a 2 × 2 confusion matrix showing</p>
+</blockquote>
+<blockquote>
+<p>Because the unusual or interesting class is rare among the general population, the class distribution is unbal- anced or skewed</p>
+</blockquote>
+<blockquote>
+<p>Consider a domain where the classes appear in a 999:1 ratio. A simple rule-always choose the most prevalent class—gives 99.9% accuracy</p>
+</blockquote>
+<blockquote>
+<p>Chap‐ ter 5 mentioned the -base rate" of a class, which corresponds to how well a classifier would perform by simply choosing that class for every instance</p>
+</blockquote>
+<blockquote>
+<p>Consider again our cellular-churn example. Let-s say you are a manager at MegaTelCo and as an analyst I report that our churnprediction model generates 80% accuracy. This sounds good, but is it? My coworker reports that her model generates an accuracy of 37%. That-s pretty bad, isn’t it? You might say, wait-we need more information about the data</p>
+</blockquote>
+<blockquote>
+<p>say you know that in these data the baseline churn rate is approximately 10% per month. Let-s consider a customer who churns to be a positive example, so within our population of customers we expect a positive to negative class ratio of 1:9. So if we simply classify everyone as negative we could achieve a base rate accuracy of 90%!</p>
+</blockquote>
+<blockquote>
+<p>My coworker calculated the accuracy on a representative sample from the population, whereas I created artificially balanced datasets for training and testing (both common practices). Now my coworker-s model looks really bad—she could have achieved 90% accuracy, but only got 37%. However, when she applies her model to my balanced data set, she also sees an accuracy of 80% a good practice problem</p>
+</blockquote>
+<blockquote>
+<p>7-1. Two churn models, A and B, can make an equal number of errors on a bal‐ anced population used for training (top) but a very different number of errors when tes- ted against the true population (bottom</p>
+</blockquote>
+<blockquote>
+<p>accuracy: we don’t know how much we care about the different errors and correct decisions. This</p>
+</blockquote>
+</div>
+<div id="generalizing-beyond-classification" class="section level3" number="18.7.4">
+<h3><span class="header-section-number">18.7.4</span> Generalizing Beyond Classification</h3>
+<blockquote>
+<p>Another problem with simple classification accuracy as a metric is that it makes no distinction between false positive and false negative errors</p>
+</blockquote>
+<blockquote>
+<p>Compare this with the opposite error: a patient who has cancer but she is wrongly told she does not. This is a false negative. This second type of error would mean a person with cancer would miss early detection, which could have far more serious consequences</p>
+</blockquote>
+<blockquote>
+<p>consider the cost of giving a customer a re‐ tention incentive which still results in departure (a false positive error). Compare this with the cost of losing a customer because no incentive was offered (a false negative). Whatever costs you might decide for each, it is unlikely they would be equal; and the errors should be counted separately regardless.</p>
+</blockquote>
+<blockquote>
+<p>hard to imagine any domain in which a decision maker can safely be in‐ different to whether she makes a false positive or a false negative</p>
+</blockquote>
+<blockquote>
+<p>Once aggregated, these will produce an expected profit (or expected benefit or expected cost) estimate for the classifier</p>
+</blockquote>
+<blockquote>
+<p>vital to return to the question: what is important in the application? What is the goal? Are we assessing the results of data mining appropriately given the actual goal?</p>
+</blockquote>
+<blockquote>
+<p>Generalizing Beyond Classification recommendation model predicts how many stars a</p>
+</blockquote>
+</div>
+<div id="a-key-analytical-framework-expected-value" class="section level3" number="18.7.5">
+<h3><span class="header-section-number">18.7.5</span> A Key Analytical Framework: Expected Value</h3>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>A course in decision theory would lead you into a thicket of interesting related issues ecoonomics tie in</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>user will give an unseen</p>
+</blockquote>
+<blockquote>
+<p>Why is the mean-squared-error on the predicted number of stars an appro‐ priate metric for our recommendation problem? Is it meaningful? Is there a better met- ric? Hopefully, the analyst has thought this through carefully. It is surprising how often one finds that an analyst has not, and is simply reporting some measure he learned about in a class in school.</p>
+</blockquote>
+<blockquote>
+<p>expected value computation provides a framework that is extremely useful in organizing thinking about data-analytic problems. Specifically, it decomposes data-analytic thinking into (i) the structure of the problem, (ii) the elements of the analysis that can be extracted from the data, and (iii) the elements of the analysis that need to be acquired from other sources (e.g., business knowledge of subject matter experts)</p>
+</blockquote>
+<blockquote>
+<p>In an expected value calculation the possible outcomes of a situation are enumerated. The expected value is then the weighted average of the values of the different possible outcomes, where the weight given to each value is its probability of occurrence. For example, if the outcomes represent different possible levels of profit, an expected profit calculation weights heavily the highly likely levels of profit, while unlikely levels of profit are given little weight. For this book, we will assume that we are considering repeated tasks (like targeting a large number of consumers, or diagnosing a large number of problems) and we are interested in maximizing expected profit.1</p>
+</blockquote>
+<blockquote>
+<p>Equation 7-1. The general form of an expected value calculation EV = p(o1)- v(o1) + p(o2)· v(o2) + p(o3)· v(o3) … Each oi its probability and v(oi ) is its value</p>
+</blockquote>
+<blockquote>
+<p>The probabilities often can be estimated from the data (ii), but the business values often need to be acquired from other sources (</p>
+</blockquote>
+</div>
+<div id="using-expected-value-to-frame-classifier-use" class="section level3" number="18.7.6">
+<h3><span class="header-section-number">18.7.6</span> Using Expected Value to Frame Classifier Use</h3>
+<p>targeted marketing often the probability of response for any individual consumer is very low-maybe one or two percent—so no consumer may seem like a likely responder. If we choose a -common sense" threshold of 50% for deciding what a likely responder is, we would probably not target anyone.</p>
+<blockquote>
+<p>targeted marketing scenario</p>
+</blockquote>
+<blockquote>
+<p>If the offer is not made to a con‐ sumer, the consumer will not buy the product. We have a model, mined from historical data, that gives an estimated probability of response pR (-) for any consumer whose feature vector description x is given as input so it’s all lift</p>
+</blockquote>
+<blockquote>
+<p>whether to target a particular consumer</p>
+</blockquote>
+<blockquote>
+<p>provides a framework for carrying out the analysis. Specifically, let’s calculate the expected benefit (or cost) of targeting consumer x: Expected benefit of targeting = pR (-)· vR + 1 - pR (-) · vNR where vR is the value we get from a response and vNR is the value we get from no response</p>
+</blockquote>
+<blockquote>
+<p>To be concrete, let’s say that a consumer buys the product for $200 and our productrelated costs are $100. To target the consumer with the offer, we also incur a cost. Let’s say that we mail some flashy marketing materials, and the overall cost including postage is $1, yielding a value (profit) of vR = $99 if the consumer responds (buys the product). Now, what about vNR, the value to us if the consumer does not respond? We still mailed the marketing materials, incurring a cost of $1 or equivalently a benefit of -$1. Now we are ready to say precisely whether we want to target this consumer: do we expect to make a profit? Technically, is the expected value (profit) of targeting greater than zero concrete example</p>
+</blockquote>
+</div>
+<div id="using-expected-value-to-frame-classifier-evaluation" class="section level3" number="18.7.7">
+<h3><span class="header-section-number">18.7.7</span> Using Expected Value to Frame Classifier Evaluation</h3>
+<blockquote>
+<p>With these example values, we should target the consumer as long as the estimated probability of responding is greater than 1% is this not obvious to business people?</p>
+</blockquote>
+<blockquote>
+<p>It is likely that each model will make some decisions better than the other model. What we care about is, in aggregate, how well does each model do: what is its expected value.</p>
+</blockquote>
+<blockquote>
+<p>Figure 7-2. A diagram of the expected value calculation.</p>
+</blockquote>
+<blockquote>
+<p>may be that data on customers’ prior usage can be helpful in this estimation. In many cases, average estimated costs and benefits are used rather than individual-specific costs and benefits, for simplicity of problem formulation and calculation but benefits may be correlated to observables and unobservable s</p>
+</blockquote>
+<blockquote>
+<p>Figure 7-4. A cost-benefit matrix for the targeted marketing example</p>
+</blockquote>
+<blockquote>
+<p>Given a matrix of costs and benefits, these are multiplied cell-wise against the matrix of probabilities, then summed into a final value representing the total expected profit</p>
+</blockquote>
+<blockquote>
+<p>A common way of expressing expected profit is to factor out the probabilities of seeing each class, often referred to as the class priors</p>
+</blockquote>
+<blockquote>
+<p>rule of basic probability is: p(x, y) = p(y)- p(x | y)</p>
+</blockquote>
+<blockquote>
+<p>Equation 7-2. Expected profit equation with priors p(p) and p(n) factored. Expected profit</p>
+</blockquote>
+<p>[Formula here]</p>
+<ul>
+<li>how does better information and forecasting boost payoffs?</li>
+<li>better to commit or wait to learn?</li>
+</ul>
+<blockquote>
+<p>easy mistake in formulating cost-benefit matrices is to "dou‐ ble count- by putting a benefit in one cell and a negative cost for the same thing in another cell (or vice versa).</p>
+</blockquote>
+<blockquote>
+<p>useful practical test is to compute the benefit improvement for changing the decision on an example test instance</p>
+</blockquote>
+<blockquote>
+<p>improvement in benefit</p>
+</blockquote>
+<blockquote>
+<p>True positive rate and False negative rate refer to the frequency of being correct and incorrect, respectively, when the instance is actually positive: TP/(TP + FN) and FN/(TP + FN).</p>
+</blockquote>
+<blockquote>
+<p>Precision and Recall are often used, especially in text classification and information retrieval. Recall is the same as true positive rate, while precision is TP/(TP</p>
+</blockquote>
+</div>
+<div id="evaluation-baseline-performance-and-implications-for-investments-in-data" class="section level3" number="18.7.8">
+<h3><span class="header-section-number">18.7.8</span> Evaluation, Baseline Performance, and Implications for Investments in Data</h3>
+<blockquote>
+<ul>
+<li>FP), which is the accuracy over the cases predicted to be positive</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The F-measure is the harmonic mean of precision and recall at a given point, and is: F-measure = 2 - precision -recall precision + recall Practitioners in many fields such as statistics, pattern recognition, and epidemiology speak of the sensitivity and specificity of a classifier: Sensitivity = TN /(TN + FP) = True negative rate = 1 - False positive rate Specificity = TP /(TP + FN ) = True positive rate You may also hear about the positive predictive value, which is the same as precision.</p>
+</blockquote>
+<blockquote>
+<p>Accuracy, as mentioned before, is simply the count of correct decisions divided by the total number of decisions, or: Accuracy = TP + TN</p>
+</blockquote>
+<blockquote>
+<p>what would be a reasonable baseline against which to compare model performance</p>
+</blockquote>
+<blockquote>
+<p>For classification models it is easy to simulate a completely random model and measure its performance</p>
+</blockquote>
+<blockquote>
+<p>There are two basic tests that any weather forecast must pass to demonstrate its merit: It must do better than what meteorologists call persistence: the assumption that the weather will be the same tomorrow (and the next day) as it was today. It must also beat climatology, the long-term historical average of conditions on a particular date in a particular area.</p>
+</blockquote>
+<blockquote>
+<p>For classification tasks, one good baseline is the majority classifier, a naive classifier that always chooses the majority class of the training dataset</p>
+</blockquote>
+<blockquote>
+<p>For regression problems we have a directly analogous baseline: predict the average value over the population (usually the mean or median</p>
+</blockquote>
+<blockquote>
+<p>. If we find the one variable that correlates best with the target, we can build a classification or regression model that uses just that variable, which gives another view of baseline performance: how well does a simple -conditional" model perform?</p>
+</blockquote>
+<blockquote>
+<p>“decision stump” — a decision tree with only one internal node, the root node</p>
+</blockquote>
+<blockquote>
+<p>Robert Holte (1993) showed that decision stumps often produce quite good baseline performance on many of the test datasets used in machine learning research.</p>
+</blockquote>
+<blockquote>
+<p>data as an asset to be invested in. If you are considering building models that integrate data from various sources, you should compare the result to models built from the individual sources. Often</p>
+</blockquote>
+<blockquote>
+<p>To be thorough, for each data source the data science team should compare a model that uses the source to one that does not</p>
+</blockquote>
+<blockquote>
+<p>Beyond comparing simple models (and reduced-data models), it is often useful to implement simple, inexpensive models based on domain knowledge or -received wisdom" and evaluate their performance. For example, in one fraud detection application it was commonly believed that most defrauded accounts would experience a sudden increase in usage, and so checking accounts for sudden jumps in volume was sufficient for catching a large proportion of fraud.</p>
+</blockquote>
+</div>
+<div id="summary-3" class="section level3" number="18.7.9">
+<h3><span class="header-section-number">18.7.9</span> Summary</h3>
+<blockquote>
+<p>They were able to demonstrate that their data mining added significant value beyond this simpler strategy</p>
+</blockquote>
+</div>
+<div id="ranking-instead-of-classifying" class="section level3" number="18.7.10">
+<h3><span class="header-section-number">18.7.10</span> Ranking Instead of Classifying</h3>
+<blockquote>
+<p>discussed how the score assigned by a model can be used to compute a decision for each individual case based on its expected value. A different strategy for making decisions is to rank a set of cases by these scores, and then take actions on the cases at the top of the ranked list</p>
+</blockquote>
+<blockquote>
+<p>some reason we may not be able to obtain accurate probability estimates from the classifier. This happens, for example, in targeted marketing applications when one cannot get a sufficiently representative training sample. The classifier scores may still be very useful for deciding which prospects are better than others</p>
+</blockquote>
+<blockquote>
+<p>A common situation is where you have a budget for actions, such as a fixed marketing budget for a campaign, and so you want to target the most promising candidates</p>
+</blockquote>
+<blockquote>
+<p>With a ranking classifier, a classifier plus threshold produces a single confusion matrix.</p>
+</blockquote>
+</div>
+<div id="profit-curves" class="section level3" number="18.7.11">
+<h3><span class="header-section-number">18.7.11</span> Profit Curves</h3>
+<blockquote>
+<p>with a ranking classifier, we can produce a list of instances and their predicted scores, ranked by decreasing score, and then measure the expected profit that would result from choosing each successive cut-point in the list</p>
+</blockquote>
+<blockquote>
+<p>Graphing these values gives us a profit curve</p>
+</blockquote>
+<blockquote>
+<p>Among the classifiers tested here, the one labeled Clas‐ sifier 2 produces the maximum profit of $200 by targeting the top-ranked 50% of con- sumers. If your goal was simply to maximize profit and you had unlimited resources, you should choose Classifier 2, use it to score your population of customers, and target the top half (highest 50%) of customers on the list. If you believe the validation exercise and the cost benefit estimates</p>
+</blockquote>
+<blockquote>
+<p>Now consider a slightly different but very common situation where you’re constrained by a budget.</p>
+</blockquote>
+<blockquote>
+<p>ROC Graphs and Curves The best-performing model at this performance point is Classifier 1. You should use it to score the entire population, then send offers to the highest-ranked 8,000 cus- tomers. justifying the use of a curve</p>
+</blockquote>
+</div>
+</div>
+<div id="ds4bs-contents" class="section level2" number="18.8">
+<h2><span class="header-section-number">18.8</span> Contents and consideration</h2>
+<div id="introduction-data-analytic-thinking" class="section level4 unnumbered" number="">
+<h4>1. Introduction: Data-Analytic Thinking</h4>
+<div class="marginnote">
+<p>This introduction is extremely relevant and nontechnical</p>
+</div>
+<p>The Ubiquity of Data Opportunities 1 Example: Hurricane Frances 3 Example: Predicting Customer Churn 4 Data Science, Engineering, and Data-Driven Decision Making 4 Data Processing and “Big Data” 7 From Big Data 1.0 to Big Data 2.0 8 Data and Data Science Capability as a Strategic Asset 9 Data-Analytic Thinking 12 This Book 14 Data Mining and Data Science, Revisited 14 Chemistry Is Not About Test Tubes: Data Science Versus the Work of the Data Scientist 15 Summary 16</p>
+</div>
+<div id="business-problems-and-data-science-solutions" class="section level4 unnumbered" number="">
+<h4>2. Business Problems and Data Science Solutions</h4>
+<div class="marginnote">
+<p>Very useful, not too technical)</p>
+</div>
+<p>Fundamental concepts: A set of canonical data mining tasks; The data mining process; Supervised versus unsupervised data mining. From Business Problems to Data Mining Tasks 19 Supervised Versus Unsupervised Methods 24 Data Mining and Its Results 25 The Data Mining Process 26 Business Understanding 27 Data Understanding 28 Data Preparation 29 Modeling 31 Evaluation 31 Implications for Managing the Data Science Team 34 Other Analytics Techniques and Technologies 35 Statistics 35 Database Querying 37 Data Warehousing 38 Regression Analysis 39 Machine Learning and Data Mining 39 Answering Business Questions with These Techniques 40 Summary 41</p>
+</div>
+<div id="introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation" class="section level4 unnumbered" number="">
+<h4>3. Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</h4>
+<div class="marginnote">
+<p>Gets somewhat technical; maybe too much so for C-Suite?</p>
+</div>
+<p>Fundamental concepts: Identifying informative attributes; Segmenting data by progressive attribute selection. Exemplary techniques: Finding correlations; Attribute/variable selection; Tree induction. Models, Induction, and Prediction 44 Supervised Segmentation 48 Selecting Informative Attributes 49 Example: Attribute Selection with Information Gain 56 Supervised Segmentation with Tree-Structured Models 62 Visualizing Segmentations 67 Trees as Sets of Rules 71 Probability Estimation 71 Example: Addressing the Churn Problem with Tree Induction 73 Summary 78</p>
+</div>
+<div id="fitting-a-model-to-data" class="section level4 unnumbered" number="">
+<h4>4. Fitting a Model to Data</h4>
+<div class="marginnote">
+<p>Mostly too technica for C-Suite?</p>
+</div>
+<p>Fundamental concepts: Finding “optimal” model parameters based on data; Choosing the goal for data mining; Objective functions; Loss functions. Exemplary techniques: Linear regression; Logistic regression; Support-vector machines. Classification via Mathematical Functions 83 Linear Discriminant Functions 85 Optimizing an Objective Function 87 An Example of Mining a Linear Discriminant from Data 88 Linear Discriminant Functions for Scoring and Ranking Instances 90 Support Vector Machines, Briefly 91 Regression via Mathematical Functions 94 Class Probability Estimation and Logistic “Regression” 96 * Logistic Regression: Some Technical Details 99 Example: Logistic Regression versus Tree Induction 102 Nonlinear Functions, Support Vector Machines, and Neural Networks 105</p>
+</div>
+<div id="overfitting-and-its-avoidance" class="section level4 unnumbered" number="">
+<h4>5. Overfitting and Its Avoidance</h4>
+<div class="marginnote">
+<p>Should be discussed only in part; largely too technical for C-Suite?</p>
+</div>
+<p>Fundamental concepts: Generalization; Fitting and overfitting; Complexity control. Exemplary techniques: Cross-validation; Attribute selection; Tree pruning; Regularization. Generalization 111 Overfitting 113 Overfitting Examined 113 Holdout Data and Fitting Graphs 113 Overfitting in Tree Induction 116 Overfitting in Mathematical Functions 118 Example: Overfitting Linear Functions 119 * Example: Why Is Overfitting Bad? 124 From Holdout Evaluation to Cross-Validation 126 The Churn Dataset Revisited 129 Learning Curves 130 Overfitting Avoidance and Complexity Control 133 Avoiding Overfitting with Tree Induction 133 A General Method for Avoiding Overfitting 134 * Avoiding Overfitting for Parameter Optimization 136 Summary 140</p>
+</div>
+<div id="similarity-neighbors-and-clusters" class="section level4 unnumbered" number="">
+<h4>6. Similarity, Neighbors, and Clusters</h4>
+<div class="marginnote">
+<p>Should be discussed only briefly; largely too technical for C-Suite?</p>
+</div>
+<p>Fundamental concepts: Calculating similarity of objects described by data; Using similarity for prediction; Clustering as similarity-based segmentation. Exemplary techniques: Searching for similar entities; Nearest neighbor methods; Clustering methods; Distance metrics for calculating similarity. Similarity and Distance 142 Nearest-Neighbor Reasoning 144 Example: Whiskey Analytics 144 Nearest Neighbors for Predictive Modeling 146 How Many Neighbors and How Much Influence? 149 Geometric Interpretation, Overfitting, and Complexity Control 151 Issues with Nearest-Neighbor Methods 154 Some Important Technical Details Relating to Similarities and Neighbors 157 Heterogeneous Attributes 157 * Other Distance Functions 158 * Combining Functions: Calculating Scores from Neighbors 161 Clustering 163 Example: Whiskey Analytics Revisited 163 Hierarchical Clustering 164 Example: Clustering Business News Stories 174 Understanding the Results of Clustering 177 * Using Supervised Learning to Generate Cluster Descriptions 179 Stepping Back: Solving a Business Problem Versus Data Exploration 182 Summary 184</p>
+<p><br />
+OF: <strong>What is clustering and why is it useful?</strong> Clustering analysis is a form of unsupervised learning which focuses around splitting data into groups. The aim of this is to identify key patterns in our data. For example: The supermarket Tesco may wish to identify which products are bought together by consumers. Using clustering may reveal that 80% customers who buy bread also buy milk. Insights such as these could be used in order to alter the layout of a supermarket in order to encourage higher spending.<br />
+Whilst insights such as the one given in the example above are very simple, in larger datasets it can be much more difficult to draw insights such as these. Provided that the correct method is used, clustering is an incredibly powerful tool for exploring big datasets.<br />
+Clustering uses distance measures in order to group similar observations into clusters.</p>
+<p><strong>K-Means</strong>:
+- Simple and easy to implement
+- Efficient
+- Difficult to know the value of K to specify
+- Sensitive to the initial points chosen</p>
+<p><strong>DBSCAN</strong>
+- Very good at dealing with noise
+- Can handle different shaped clusters
+- Tends to perform worse when the density of data varies or when data is highly dimensional</p>
+</div>
+<div id="decision-analytic-thinking-i-what-is-a-good-model" class="section level4 unnumbered" number="">
+<h4>7. Decision Analytic Thinking I: What Is a Good Model?</h4>
+<div class="marginnote">
+<p>Very relevant for C-suite, if they don’t already know these concepts</p>
+</div>
+<p>Fundamental concepts: Careful consideration of what is desired from data science results; Expected value as a key evaluation framework; Consideration of appropriate comparative baselines. Exemplary techniques: Various evaluation metrics; Estimating costs and benefits; Calculating expected profit; Creating baseline methods for comparison. Evaluating Classifiers 188 Plain Accuracy and Its Problems 189 The Confusion Matrix 189 Problems with Unbalanced Classes 190 Problems with Unequal Costs and Benefits 193 Generalizing Beyond Classification 193 A Key Analytical Framework: Expected Value 194 Using Expected Value to Frame Classifier Use 195 Using Expected Value to Frame Classifier Evaluation 196 Evaluation, Baseline Performance, and Implications for Investments in Data 204 Summary 207</p>
+<p><br />
+</p>
+</div>
+<div id="visualizing-model-performance" class="section level4 unnumbered" number="">
+<h4>8. Visualizing Model Performance</h4>
+<p>Fundamental concepts: Visualization of model performance under various kinds of uncertainty; Further consideration of what is desired from data mining results. Exemplary techniques: Profit curves; Cumulative response curves; Lift curves; ROC curves. Ranking Instead of Classifying 209 Profit Curves 212 ROC Graphs and Curves 214 The Area Under the ROC Curve (AUC) 219 Cumulative Response and Lift Curves 219 Example: Performance Analytics for Churn Modeling 223 Summary 231</p>
+</div>
+<div id="evidence-and-probabilities" class="section level4 unnumbered" number="">
+<h4>9. Evidence and Probabilities</h4>
+<p>Fundamental concepts: Explicit evidence combination with Bayes’ Rule; Probabilistic reasoning via assumptions of conditional independence. Exemplary techniques: Naive Bayes classification; Evidence lift. Combining Evidence Probabilistically 235 Joint Probability and Independence 236 Bayes’ Rule 237 Applying Bayes’ Rule to Data Science 239 Conditional Independence and Naive Bayes 240 Advantages and Disadvantages of Naive Bayes 242 A Model of Evidence “Lift” 244 Example: Evidence Lifts from Facebook “Likes” 245 Evidence in Action: Targeting Consumers with Ads 247 Summary 247</p>
+</div>
+<div id="representing-and-mining-text" class="section level4 unnumbered" number="">
+<h4>10. Representing and Mining Text</h4>
+<div class="marginnote">
+<p>Probably less relevant.</p>
+</div>
+<p>Fundamental concepts: The importance of constructing mining-friendly data representations; Representation of text for data mining. Exemplary techniques: Bag of words representation; TFIDF calculation; N-grams; Stemming; Named entity extraction; Topic models. Why Text Is Important 250 Why Text Is Difficult 250 Representation 251 Bag of Words 252 Term Frequency 252 Measuring Sparseness: Inverse Document Frequency 254 Combining Them: TFIDF 256 Example: Jazz Musicians 256 * The Relationship of IDF to Entropy 261 Beyond Bag of Words 263 N-gram Sequences 263 Named Entity Extraction 264 Topic Models 264 Example: Mining News Stories to Predict Stock Price Movement 266 The Task 266 The Data 268 Data Preprocessing 270 Results 271 Summary 275</p>
+</div>
+<div id="decision-analytic-thinking-ii-toward-analytical-engineering" class="section level4 unnumbered" number="">
+<h4>11. Decision Analytic Thinking II: Toward Analytical Engineering</h4>
+<div class="marginnote">
+<p>Seems very relevant and not technical.</p>
+</div>
+<p>Fundamental concept: Solving business problems with data science starts with analytical engineering: designing an analytical solution, based on the data, tools, and techniques available. Exemplary technique: Expected value as a framework for data science solution design. The Expected Value Framework: Decomposing the Business Problem and Recomposing the Solution Pieces 278 A Brief Digression on Selection Bias 280 Our Churn Example Revisited with Even More Sophistication 281 The Expected Value Framework: Structuring a More Complicated Business Problem 281 Assessing the Influence of the Incentive 283 From an Expected Value Decomposition to a Data Science Solution 284 Summary 287</p>
+</div>
+<div id="other-data-science-tasks-and-techniques-." class="section level4 unnumbered" number="">
+<h4>12. Other Data Science Tasks and Techniques .</h4>
+<div class="marginnote">
+<p>Mostly relevant and not too technical.</p>
+</div>
+<p>Fundamental concepts: Our fundamental concepts as the basis of many common data science techniques; The importance of familiarity with the building blocks of data science. Exemplary techniques: Association and co-occurrences; Behavior profiling; Link prediction; Data reduction; Latent information mining; Movie recommendation; Biasvariance decomposition of error; Ensembles of models; Causal reasoning from data. Co-occurrences and Associations: Finding Items That Go Together 290 Measuring Surprise: Lift and Leverage 291 Example: Beer and Lottery Tickets 292 Associations Among Facebook Likes 293 Profiling: Finding Typical Behavior 296 Link Prediction and Social Recommendation 301 Data Reduction, Latent Information, and Movie Recommendation 302 Bias, Variance, and Ensemble Methods 306 Data-Driven Causal Explanation and a Viral Marketing Example 309 Summary 310</p>
+</div>
+<div id="data-science-and-business-strategy" class="section level4 unnumbered" number="">
+<h4>13. Data Science and Business Strategy</h4>
+<div class="marginnote">
+<p>Seems very relevant and not technical.</p>
+</div>
+<p>Fundamental concepts: Our principles as the basis of success for a data-driven business; Acquiring and sustaining competitive advantage via data science; The importance of careful curation of data science capability. Thinking Data-Analytically, Redux 313 Achieving Competitive Advantage with Data Science 315 Sustaining Competitive Advantage with Data Science 316 Formidable Historical Advantage 317 Unique Intellectual Property 317 Unique Intangible Collateral Assets 318 Superior Data Scientists 318 Superior Data Science Management 320 Attracting and Nurturing Data Scientists and Their Teams 321 Be Ready to Accept Creative Ideas from Any Source 324 Be Ready to Evaluate Proposals for Data Science Projects 324 Example Data Mining Proposal 325 Flaws in the Big Red Proposal 326 A Firm’s Data Science Maturity 327</p>
+</div>
+<div id="conclusion" class="section level4 unnumbered" number="">
+<h4>14. Conclusion</h4>
+<div class="marginnote">
+<p>Seems very relevant and not technical. Some references to tech tools may be outdated, however.</p>
+</div>
+<p>The Fundamental Concepts of Data Science 331 Applying Our Fundamental Concepts to a New Problem: Mining Mobile Device Data 334 Changing the Way We Think about Solutions to Business Problems 337 What Data Can’t Do: Humans in the Loop, Revisited 338 Privacy, Ethics, and Mining Data About Individuals 341 Is There More to Data Science? 342 Final Example: From Crowd-Sourcing to Cloud-Sourcing 343 Final Words 344</p>
+</div>
+<div id="proposal-review-guide" class="section level4 unnumbered" number="">
+<h4>Proposal Review Guide</h4>
+</div>
+<div id="another-sample-proposal" class="section level4 unnumbered" number="">
+<h4>Another Sample Proposal</h4>
+<p>Glossary 355</p>
+
+</div>
+</div>
+</div>
+<h3> List of references</h3>
+<div id="refs" class="references">
+<div id="ref-angrist2008mostly">
+<p>Angrist, Joshua D, and Jörn-Steffen Pischke. 2008. <em>Mostly Harmless Econometrics: An Empiricist’s Companion</em>. Princeton university press.</p>
+</div>
+<div id="ref-kelleherFundamentalsMachineLearning2015">
+<p>Kelleher, John D., Brian Mac Namee, and Aoife D’Arcy. 2015. <em>Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies</em>. Cambridge, Massachusetts: The MIT Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bayesian-approaches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

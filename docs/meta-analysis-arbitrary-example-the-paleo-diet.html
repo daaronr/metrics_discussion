@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 IV and its many issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="7 IV and its many issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>16 Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="16 Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 IV and its many issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="16 Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 IV and its many issues | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="16 Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="control-ml.html"/>
-<link rel="next" href="other-paths-to-observational-identification-1.html"/>
+<link rel="prev" href="metaanalysis.html"/>
+<link rel="next" href="bayesian-approaches.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -634,78 +634,54 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="iv-and-its-many-issues-1" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> IV and its many issues</h1>
-<div id="some-casual-discussion" class="section level3 unnumbered" number="">
-<h3>Some casual discussion</h3>
-<p>Ben Balmford:</p>
+<div id="meta-analysis-arbitrary-example-the-paleo-diet" class="section level1" number="16">
+<h1><span class="header-section-number">16</span> Meta-analysis arbitrary example: the ‘Paleo diet’</h1>
+<p>Introduction and discussion</p>
+<p>Summarize the evidence base for the effectiveness of the Paleo diet in reducing obesity (as measured by waist circumference). Please cover: a) the basics of the intervention being studied; b) the research methodology; c) the results.</p>
+<p>What is your conclusion on how effective the Paleo diet is at reducing waist circumference? What do you regard as the key strengths and limitations of the evidence and why?</p>
+<p>Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.</p>
+<div id="thoughts-on-nutritional-studies-and-meta-analysis-issues" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Thoughts on nutritional studies and meta-analysis issues</h2>
+<p>Compliance: ‘Intention to treat’ vs ‘Treatment effects’</p>
+<p>Attrition</p>
+<p>Random effects meta-analyses; Bayesian and frequentist</p>
 <blockquote>
-<p>… IV really is pretty unreliable</p>
-</blockquote>
-<blockquote>
-<p>So <span class="citation">(“Consistency Without Inference: Instrumental Variables in Practical Application* - Google Search,” <a href="#ref-ConsistencyInferenceInstrumental" role="doc-biblioref">n.d.</a>)</span> <a href="http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&amp;hl=en&amp;sa=X&amp;scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&amp;nossl=1&amp;oi=scholarr">Young, 2019</a> by Young highlights that the point estimates seem to not differ that much from OLS estimates…
-which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to.</p>
-</blockquote>
-<p><br />
-</p>
-<p>DR: My concerns tend to be more:</p>
-<ol style="list-style-type: decimal">
-<li><p>With heterogeneity IV is not capturing the <em>average</em> effect, and often finds results that are very much driven by a particular subsample, often accentuating the supposed byas</p></li>
-<li><p>Many IV’s are not defensible and testing the identifying assumptions is basically impossible</p></li>
+<ol style="list-style-type: lower-alpha">
+<li>the basics of the intervention being studied; b) the research methodology; c) the results.</li>
 </ol>
-<p><br />
-</p>
-<p>BB:</p>
-<blockquote>
-<p>And then <span class="citation">(Brodeur, Cook, and Heyes <a href="#ref-brodeurMethodsMatterPhacking2018" role="doc-biblioref">2018</a>)</span> (<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910">link</a>) is I think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much of a surprise. In my chat with one of the authors he pointed out that in IV any changes are less obvious - in DiD (which doesnt perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is [researcher] discretion in the IV approach.</p>
 </blockquote>
-<div class="marginnote">
-<p>BB: Whereas in DiD (which doesnt perform great either)/RD the its really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it’s so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don’t always trust your eyeballs!</p>
 </div>
-<p><br />
-</p>
+<div id="manheimer-et-al" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Manheimer et al</h2>
+<p>Strengths and limitations</p>
+<p>Overall results and interpretation</p>
+<p>Others’ assessment of this meta-analysis
+- Nutrigrade</p>
 </div>
-<div id="instrument-validity-1" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Instrument validity</h2>
+<div id="other-meta-analyses-and-consideration-of-the-paleo-diet" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Other meta-analyses and consideration of the Paleo diet</h2>
+<p>Process of finding relevant work (informal)</p>
+<p>“Top” nutrition journals</p>
+<div id="focus-boers-et-al" class="section level3" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> Focus: Boers et al</h3>
+</div>
+<div id="fentons-letter-criticising-manheimer-et-al" class="section level3" number="16.3.2">
+<h3><span class="header-section-number">16.3.2</span> Fentons’ letter criticising Manheimer et al</h3>
+</div>
+<div id="ghaedi-et-al-meta-analysis" class="section level3" number="16.3.3">
+<h3><span class="header-section-number">16.3.3</span> Ghaedi et al meta-analysis</h3>
+</div>
+</div>
+<div id="overall-analysis" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Overall analysis</h2>
 <ul>
-<li>Exogeneity vs. exclusion</li>
-<li>Very hard to ‘powerfully test’</li>
+<li><p>Apparent limitations of the evidence base</p></li>
+<li><p>Limitations and uncertainties to my own analysis; future steps</p></li>
 </ul>
-<p>IV not credible? Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a <em>direct</em> effect on the outcome (only an indirect effect through the endogenous variable</p>
-</div>
-<div id="heterogeneity-and-late-1" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Heterogeneity and LATE</h2>
-<p><em>Basic consideration: what does IV identify and when:</em>?</p>
-<p>Focusing on a binary endogenous ‘treatment’ variable</p>
-<ul>
-<li>With heterogeneity</li>
-<li>With imperfect compliance</li>
-<li>With one-way compliance</li>
-</ul>
-</div>
-<div id="weak-instruments-other-issues-1" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Weak instruments, other issues</h2>
-<ul>
-<li>With a ‘weak instrument’ … why does that matter?</li>
-</ul>
-</div>
-<div id="intrumenting-interactions" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Intrumenting Interactions</h2>
-<p>In randomized controlled trials it sometimes arises the issue that on is particularly interested in a potentially endogeneous explanatory variable and its interaction with the experimental treatments, that are exogenous by construction. From the stata list and mostly harmless econometrics <a href="http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/"></a>
-&gt;If you have <span class="math inline">\(X_1\)</span> endogenous and an exogenous instrument <span class="math inline">\(Z\)</span> , and your model includes two terms involving <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_1 \times X_2\)</span>, then you should use two instruments: <span class="math inline">\(Z\)</span>, and <span class="math inline">\(Z \times X_2\)</span>.</p>
-</div>
-<div id="reference-to-the-use-of-iv-in-experimentsmediation-1" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> Reference to the use of IV in experiments/mediation</h2>
+<blockquote>
+<p>Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.</p>
+</blockquote>
 
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-brodeurMethodsMatterPhacking2018">
-<p>Brodeur, Abel, Nikolai Cook, and Anthony G. Heyes. 2018. “Methods Matter: P-Hacking and Causal Inference in Economics.”</p>
-</div>
-<div id="ref-ConsistencyInferenceInstrumental">
-<p>“Consistency Without Inference: Instrumental Variables in Practical Application* - Google Search.” n.d. https://www.google.com/search?q=Consistency+without+Inference%3A+Instrumental+Variables+in+Practical+Application*&amp;oq=Consistency+without+Inference%3A+Instrumental+Variables+in+Practical+Application*&amp;aqs=chrome..69i57.176j0j4&amp;sourceid=chrome&amp;ie=UTF-8.</p>
 </div>
 </div>
             </section>
@@ -713,8 +689,8 @@ which i think suggests that IV is not (generally) dealing with the problem of OV
           </div>
         </div>
       </div>
-<a href="control-ml.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-paths-to-observational-identification-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="metaanalysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-approaches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

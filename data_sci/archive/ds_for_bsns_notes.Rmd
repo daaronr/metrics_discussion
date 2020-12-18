@@ -1,6 +1,9 @@
 # Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) {#n_ds4bs}
 
--   Notes by David Reinstein
+-   Notes by David Reinstein and others (Oska Fentem in parts)
+
+
+## Evaluation of this resource
 
 This (2013) book seems to have some slightly outdated focus (terms like 'data-mining') but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is 'meat in this sandwich'.
 
@@ -8,15 +11,23 @@ Terms like 'lift'
 
 > As another example, in evaluating the utility of a pattern, we see a notion of lift--- how much more prevalent a pattern is than would be expected by chance---recurring broadly across data science. It is used to evaluate very different sorts of patterns in different contexts. Algorithms for targeting advertisements are evaluated by computing the lift one gets for the targeted population. Lift is used to judge the weight of evidence for or against a conclusion. Lift helps determine whether a co-occurrence (an association) in data is interesting, as opposed to simply being a natural consequence of popularity.
 
-## Introduction: Data-Analytic Thinking {.unnumbered}
+## Ch 1 Introduction: Data-Analytic Thinking {.unnumbered}
 
-Example: Hurricane Frances... predicting demand to gear inventory ... lead to huge profit for Wal-Mart...
+```{block2,  type='note'}
+
+A range of examples illustrating  applications, techniques, and principles.
+
+```
+
+### Example: During Hurricane Frances... predicting demand to gear inventory and avoid shortages ... lead to huge profit for Wal-Mart {-}
+
+Digging into the day to do some surprising findings:\*
 
 > 'We didn't know in the past that strawberry PopTarts increase in sales, like seven times their normal sales rate, ahead of a hurricane"
 
 > 1.  Classification and class probability estimation attempt to predict, for each individual in a population, which of a (small) set of classes this individual belongs to. Usually the classes are mutually exclusive. An example classification question would be: "Among all the customers of MegaTelCo, which are likely to respond to a given offer?" In this example the two classes could be called will respond and will not respond.
 
-### Example: Predicting Customer Churn
+### Example: Predicting Customer Churn {-}
 
 > Customers switching from one company to another is called churn,
 
@@ -27,11 +38,19 @@ Example: Hurricane Frances... predicting demand to gear inventory ... lead to hu
 > They show that statistically, the more data-driven a firm is, the more productive it is---even controlling for a wide range of possible confounding factors. And the differences are not small. One standard deviation higher on the DDD scale is associated with a 4%--6% increase in productivity. DDD also is correlated with higher return on assets, return on equity, asset utilization, and market value, and the relationship seems to be causal.
 
 ::: {.marginnote}
-DR: I am still somewhat skeptical of the causality here
+\* DR: I am still somewhat skeptical of the causality here!
 :::
 
 > two types: (1) decisions for which "discoveries" need to be made within data, and (2) decisions that repeat, especially at massive scale, and so decision-making can benefit from even small increases in decision-making accuracy based on data analysis
 
+\
+
+**Two types of decisions that data analysis can benefit:**
+
+> (1) decisions for which "discoveries" need to be made within data, and (2) decisions that repeat, especially at massive scale, and so decision-making can benefit from even small increases in decision-making accuracy based on data analysis
+
+
+```{block2,  type='note'}
 Getting the jump on the competition ...
 
 > Target wanted to get a jump on their competition. They were interested in whether they could predict that people are expecting a baby. If they could, they would gain an advantage by making offers before their competitors. Using techniques of data science, Target analyzed historical data on customers who later were revealed to have been pregnant, and were able to extract information that could predict which consumers were pregnant. For example, pregnant mothers often change their diets, their ward‐ robes, their vitamin regimens, and so on. These indicators could be extracted from historical data, assembled into predictive models, and then deployed in marketing campaigns.
@@ -56,7 +75,8 @@ Signet Bank from the 1990s ... key example
 
 > Studies giving clear quantitative demonstrations of the value of a data asset are har find, primarily because firms are hesitant to divulge results of strategic value. One
 
-> The huge val‐ uation of Facebook has been credited to its vast and unique data assets (Sengupta, 2012), including both information about individuals and their likes, as well as information about the structure of the social network. Information about network structure has been shown to be important to predicting and has been shown to be remarkably helpful in building models of who will buy certain products (Hill, Provost, & Volinsky, 2006).\
+> The huge valuation of Facebook has been credited to its vast and unique data assets (Sengupta, 2012), including both information about individuals and their likes, as well as information about the structure of the social network. Information about network structure has been shown to be important to predicting and has been shown to be remarkably helpful in building models of who will buy certain products (Hill, Provost, & Volinsky, 2006).
+\
 
 ### Data-Analytic Thinking
 

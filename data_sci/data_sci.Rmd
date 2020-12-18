@@ -18,7 +18,11 @@ See especially:
 [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
 
-"Data science for business"
+"Data science for business" see [WIP notes here](#n_ds4bs)
+
+
+\
+
 
 "Code and Data for the Social Sciences" (Gentzkow/Shapiro)
 
