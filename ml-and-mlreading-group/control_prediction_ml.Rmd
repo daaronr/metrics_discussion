@@ -1,5 +1,7 @@
 # Control strategies and prediction, Machine Learning (Statistical Learning) approaches {#control-ml}
 
+## See also ["notes on Data Science for Business"](#n_ds4bs)
+
 > 'Identification' of causal effects with a control strategy not credible	
 
 Essentially a 'control strategy' is "control for all  or most of the reasonable determinants of the independent variable so as to make the  remaining unobservable component very small, minimizing the potential for bias in the coefficient of interest". All of the controls must still be exogenous, otherwise this itself can lead to a bias. There is some discussion of how to validate this approach; see, e.g., [@osterUnobservableSelectionCoefficient2019].
@@ -7,6 +9,7 @@ Essentially a 'control strategy' is "control for all  or most of the reasonable 
 ## Machine Learning (statistical learning): Lasso, Ridge, and more
 
 ### Limitations to inference from learning approaches
+
 
 ## Notes Hastie: Statistical Learning with Sparsity
 

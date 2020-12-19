@@ -26,6 +26,11 @@ See especially:
 
 "Code and Data for the Social Sciences" (Gentzkow/Shapiro)
 
+```{block2,  type='note'}
+
+See also ["notes on Data Science for Business"](#n_ds4bs)
+
+```  
 
 ## Data: What/why/where/how
 

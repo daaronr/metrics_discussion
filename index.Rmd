@@ -19,17 +19,12 @@ output:
       fontsettings:
         theme: white
         size: 2
-      sharing:
-        facebook: yes
-        twitter: yes
-        google: no
-        linkedin: yes
-        weibo: yes
-        instapaper: no
-        vk: no
-        all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
     highlight: tango
     download: [pdf, epub, mobi]
+
+bookdown::pdf_book:
+    keep_tex: yes
+
     sharing:
       github: yes
       facebook: no
@@ -95,7 +90,6 @@ install.packages("tufte")
 # or the development version
 # devtools::install_github("rstudio/bookdown")
 ```
-<!-- Download 'backup' bibtex file from dropbox (synced with Zotero), do the rename workaround -->
 
 
 
@@ -104,7 +98,7 @@ install.packages("tufte")
 ```{r pull-in-docs}
 
 
-  try_download("https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE", here::here("data_sci","ds_for_bsns_notes_remote.Rmd"))
+try_download("https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE", here::here("data_sci","ds_for_bsns_notes_remote.Rmd"))
 
 
 
