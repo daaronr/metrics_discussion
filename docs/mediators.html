@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Causal pathways - mediators | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="9 Causal pathways - mediators | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Causal pathways - mediators | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-12-20" />
+<meta name="date" content="2020-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <!-- font families -->
@@ -301,7 +300,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
 <li class="chapter" data-level="1.14.3" data-path="introduction.html"><a href="introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>1.14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
 <li class="chapter" data-level="1.14.4" data-path="introduction.html"><a href="introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>1.14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
 </ul></li>
 <li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.15</b> <span>Making inferences from previous work; Meta-analysis, combining studies</span></a>
@@ -467,7 +466,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>12.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford’?</a></li>
+<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford?’</a></li>
 <li class="chapter" data-level="12.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
@@ -478,7 +477,62 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>13.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>13.2</b> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</a></li>
-<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<li class="chapter" data-level="13.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>13.3</b> The ‘harm to science’ from running underpowered studies</a></li>
+<li class="chapter" data-level="13.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data-1"><i class="fa fa-check"></i><b>13.4</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="13.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data-1"><i class="fa fa-check"></i><b>13.5</b> Power calculations using prior data</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>13.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects-1"><i class="fa fa-check"></i><b>14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="14.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-1"><i class="fa fa-check"></i><b>14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="14.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses-1"><i class="fa fa-check"></i><b>14.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>14.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="14.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
+<li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Meta-analysis and combining studies: Making inferences from previous work</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analysis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
 <li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
@@ -689,7 +743,7 @@ This should be merely the composition of these two functions, or, in the linear 
 <li><p>Each of the three above relationships (as well as the selection equation) may involve heterogeneous functions; i.e., differential treatment effects.</p></li>
 </ol>
 <p>Thus we consult the relevant literature, discussed below.</p>
-<p>The most influential paper in Economics has been <span class="citation">(Heckman, Pinto, and Heckman <a href="#ref-Heckman2013" role="doc-biblioref">2013</a>)</span>.</p>
+<p>The most influential paper in Economics has been <span class="citation">(<a href="references.html#ref-Heckman2013" role="doc-biblioref">Heckman, Pinto, and Heckman 2013</a>)</span>.</p>
 <p>It is cited in more recent applied work such as Fagereng, 2018 (unfold).</p>
 
 <div class="fold">
@@ -707,9 +761,9 @@ observe are uncorrelated with both <span class="math inline">\(\mathbf{X}\)</spa
 <p><strong>Econometric Mediation Analyses: Identifying the Sources of Treatment Effects from Experimentally Estimated Production Technologies with Unmeasured and Mismeasured Inputs</strong></p>
 <p><br />
 </p>
-<div id="relevance-to-parey-et-al" class="section level3 unnumbered" number="">
+<div id="relevance-to-parey-et-al" class="section level3 unnumbered">
 <h3>Relevance to Parey et al</h3>
-<p>We have an instrument for admission to one’s first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these ‘intermediate outcomes’, including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.</p>
+<p>We have an instrument for admission to one’s first-choice institution (and course-subject). Our result show an impact of this admission on future income, for at least some groups. However, this effect could come through any of a number of channels. We observe some of these ‘intermediate outcomes,’ including course enrollment, course completion, medical specialization, and location of residence, but we do not have specific instruments for each of these.</p>
 <div class="marginnote">
 <p>a lot of work might yield an instrument for specialization; I hear there is a lottery at that level as well</p>
 </div>
@@ -754,7 +808,7 @@ observe are uncorrelated with both <span class="math inline">\(\mathbf{X}\)</spa
 </blockquote>
 <p><br />
 </p>
-<p>Here “we can test some of the strong assumptions implicitly invoked”.</p>
+<p>Here “we can test some of the strong assumptions implicitly invoked.”</p>
 <p>“Direct effects” as commonly stated refer to the impact of both channels 2 and 3 above.</p>
 <div class="marginnote">
 <p>DR: Channel 2 isn’t really a direct effect imho (what was this?)</p>
@@ -799,7 +853,7 @@ appropriate values)</p></li>
 </div>
 <div id="common-assumptions-and-their-implications" class="section level3" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> Common assumptions and their implications</h3>
-<p>“The <span class="underline">standard literature</span> on mediation analysis in psychology regresses outputs on mediator inputs” ... often adopts the strong assumptions of:</p>
+<p>“The <u>standard literature</u> on mediation analysis in psychology regresses outputs on mediator inputs” ... often adopts the strong assumptions of:</p>
 <ol style="list-style-type: decimal">
 <li>no variation in unmeasured inputs conditional on the treatment (implying the effects of these are summarized by a treatment dummy)
 and</li>
@@ -815,7 +869,7 @@ specializations.</p>
 </ol>
 <p>... which implies <span class="math inline">\(Y_{d}=f(\mathbf{\theta}_{d}^{p},d,\mathbf{X})\)</span>.<br />
 </p>
-<p><span class="underline">Sequential ignorability (Imai et al, 10, ’11)</span>:
+<p><u>Sequential ignorability (Imai et al, 10, ’11)</u>:
 Essentially, independent randomization of both treatment status and measured inputs.</p>
 <div class="marginnote">
 <p>Cf ‘winning institution’ does not effect the specialization
@@ -831,17 +885,17 @@ third factor.</p>
 <p><br />
 </p>
 <p>This assumption yields the ‘mediation formulas’:</p>
-<p>\begin{aligned}
-E(IE(d)|X)= &amp; E(Y|^{p}=t,D=d,X)<em>{{}} &amp; (9)\
-E(DE(d)|X)= &amp; </em>{}expe_{} &amp; (10)
-\end{aligned}</p>
+<span class="math display">\[\begin{aligned}
+E(IE(d)|X)= &amp; \int E(Y|\theta^{p}=t,D=d,X)\underbrace{\Big(dF_{(\theta^{p}|D=1,X)}(t)-dF_{(\theta^{p}|D=1,X)}(t)\Big)}_{{\text{Difference in distribution of proxy inputs}}} &amp; (9)\\
+E(DE(d)|X)= &amp; \int\underbrace{\Big(E(Y|\theta^{p}=t,D=1,X)-E(Y|\theta^{p}=t,D=0,X)\Big)}_{\text{Dfc in expectations (unobservables, function) between treatments given proxy inputs }}expe\underbrace{{dF_{(\theta^{p}|D=1,X)}(t)}}_{\text{Distn proxy inputs for D=1}} &amp; (10)
+\end{aligned}\]</span>
 <p><em>(??F is presumably the distribution over the observables; where did the
 unobservables go? They are in the expectations, I guess.)</em><br />
-<span class="underline">Difference from RCT</span></p>
+<u>Difference from RCT</u></p>
 <p><em>What RCT doesn’t do:</em></p>
 <blockquote>
-<p>[sequential ignorability] translates into ... <span class="underline">no confounding
-effects</span> on both treatments and measured inputs ... does
+<p>[sequential ignorability] translates into ... <u>no confounding
+effects</u> on both treatments and measured inputs ... does
 not follow from a randomized assignment of treatment ...[which]
 ensures independence between treatment status and counterfactual
 inputs/outputs ... [but <em>not</em>] between proxied inputs
@@ -850,9 +904,9 @@ between counterfactual outputs and measured inputs is assumed in
 condition (ii).]</p>
 </blockquote>
 <p>Cf, randomizing ‘win first-choice institution’ does not guarantee that the choice (potential choice under winning/losing institution) to enter a particular specialty is independent of (potential after winning/losing institution) unobserved human capital gains at an institution. The (potential) choiceof specialty is alsonot guaranteed choice independent of potential incomes (holding proxy inputs like specialty constant) if winning/losing institution.</p>
-<p><em>What RCT</em> <em><span class="underline">does</span></em> <em>do:</em></p>
+<p><em>What RCT</em> <em><u>does</u></em> <em>do:</em></p>
 <p>RCT ensures “independence between treatment status and counterfactual
-inputs/outputs”, thus identifying ’treatment effects for proxied inputs
+inputs/outputs,” thus identifying ’treatment effects for proxied inputs
 and for outputs.</p>
 <p>CF, we can identify the impact of the treatment ‘win first chosen
 institution’ on proxied input like ‘enters a specialization’ and on
@@ -863,7 +917,7 @@ outputs like ‘income in observed years.’</p>
 </div>
 <div id="pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</h2>
-<div id="summary" class="section level3 unnumbered" number="">
+<div id="summary" class="section level3 unnumbered">
 <h3>Summary</h3>
 <ul>
 <li><p>... 4000+ families targeted, incentive to relocate from projects to
@@ -876,7 +930,7 @@ categorical instrumental variables and multiple treatments’</p></li>
 <li><p>Finds significant causal effect on labour market outcomes</p></li>
 </ul>
 </div>
-<div id="relevance-to-parey-et-al-1" class="section level3 unnumbered" number="">
+<div id="relevance-to-parey-et-al-1" class="section level3 unnumbered">
 <h3>Relevance to Parey et al</h3>
 <ol style="list-style-type: decimal">
 <li><p>We also have an instrument (DUO lottery numbers) cleanly identifying
@@ -892,7 +946,7 @@ other institution, enter other course at institution, enter neither)
 ‘lives close to home’)</p></li>
 </ol>
 </div>
-<div id="introduction-2" class="section level3 unnumbered" number="">
+<div id="introduction-2" class="section level3 unnumbered">
 <h3>Introduction</h3>
 <p>The causal link between neighborhood characteristics and resident’s
 outcomes has seldom been assessed.</p>
@@ -919,7 +973,7 @@ being <em>offered</em> voucher on those who don’t use it)</p>
 effects of <em>offering</em> [EA] rent subsidising vouchers to families.</p>
 </blockquote>
 </div>
-<div id="identification-strategy-brief" class="section level3 unnumbered" number="">
+<div id="identification-strategy-brief" class="section level3 unnumbered">
 <h3>Identification strategy brief</h3>
 <ul>
 <li>Vouchers as IVs for choice among 3 neighborhood alternatives (no
@@ -942,7 +996,7 @@ selective [Clampet-Lundquist and M, 08]”</li>
 <li><p>Solution: Uses theory and ‘tools of causal inference. Invokes SARP
 to identify ’set of counterfactual relocation choices that are
 economically justifiable’</p></li>
-<li><p><span class="underline">Identifying assumption</span>: “the overall quality of the
+<li><p><u>Identifying assumption</u>: “the overall quality of the
 neighborhood is not directly caused by the unobserved family
 variables even though neighborhood quality correlates with these
 unobserved family variables due to network sorting”</p></li>
@@ -952,11 +1006,11 @@ estimate the causal effect of neighborhood relocation conditioned on
 these partition sets.’ [<em>what does this mean?</em>]</p></li>
 </ul>
 </div>
-<div id="results-in-brief" class="section level3 unnumbered" number="">
+<div id="results-in-brief" class="section level3 unnumbered">
 <h3>Results in brief</h3>
 <p>“Relocating from housing projects to low poverty neighborhoods generates statistically significant results on labor market outcomes ... 65% higher than the TOT effect for adult earnings.”</p>
 </div>
-<div id="framework-first-for-binarybinary-simplification" class="section level3 unnumbered" number="">
+<div id="framework-first-for-binarybinary-simplification" class="section level3 unnumbered">
 <h3>Framework: first for binary/binary (simplification)</h3>
 <p><strong>First, for binary outcomes (simplified)</strong></p>
 <p><span class="math inline">\(Z_{\omega}\)</span>: whether family <span class="math inline">\(\omega\)</span> receives a voucher <em>(cf
@@ -996,7 +1050,7 @@ if\:P(S_{\omega}=[0,1])=0\end{aligned}\]</span></p>
 of the instrument, is the causal effect for compliers if there are no
 defiers.</p>
 </div>
-<div id="framework-for-mto-multiple-treatment-groups-multiple-choices" class="section level3 unnumbered" number="">
+<div id="framework-for-mto-multiple-treatment-groups-multiple-choices" class="section level3 unnumbered">
 <h3>Framework for MTO multiple treatment groups, multiple choices</h3>
 <ul>
 <li><p><span class="math inline">\(Z_{\omega}\in\{z_{1,}z_{2,}z_{3}\}\)</span> for no voucher, experimental
@@ -1015,7 +1069,7 @@ voucher <span class="math inline">\(z\)</span></p></li>
 <p><em>Cf:</em></p>
 <ul>
 <li><p>Considering the ‘treatments’: ‘1: enter other course at fp-inst, ’2:
-enter course at fp-inst’, ‘3: enter course at non-fp inst’</p>
+enter course at fp-inst,’ ‘3: enter course at non-fp inst’</p>
 <ul>
 <li>(I ignore other course at other institution for now)</li>
 </ul></li>
@@ -1040,12 +1094,6 @@ and otherwise another course at the same institution</p></li>
 <h2><span class="header-section-number">9.5</span> Antonakis approaches</h2>
 <p>Insert notes here</p>
 
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-Heckman2013">
-<p>Heckman, James, Rodrigo Pinto, and James Heckman. 2013. “Econometric Mediation Analyses : Identifying the Sources of Treatment Effects from Experimentally Estimated Production Technologies with Unmeasured and Mismeasured Inputs,” no. 7552.</p>
 </div>
 </div>
             </section>

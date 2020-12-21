@@ -774,6 +774,17 @@ that for problems where we did not achieve a precise formulation of the problem 
 
 > accuracy: we don't know how much we care about the different errors and correct decisions. This
 
+Methods for dealing with imbalanced classes typically fall under:
+- Data resampling: under/over-sampling
+- Cost-sensitive classification: penalizing our model for misclassifying certain categories.
+
+#### Resampling
+The basic idea behind resampling is to adjust our dataset in a way that **removes** the class imbalance we experience in the data. This can be done using either oversampling or undersampling. 
+
+Undersampling aims to reduce the occurence of the majority class in our data. This method removes records which belong to the majority class and can be done in several different ways. We can remove these records at random, use clustering to select the majority samples or use the *Tomek Links* method. 
+
+The Tomek Links method involves using clustering to remove the points belonging to the majority class which are *close* to the points in the minority class. Closeness is assessed using a distance metric such as the Euclidean distance. 
+
 ### Generalizing Beyond Classification
 
 > Another problem with simple classification accuracy as a metric is that it makes no distinction between false positive and false negative errors
@@ -911,6 +922,16 @@ targeted marketing often the probability of response for any individual consumer
 
 > ROC Graphs and Curves The best-performing model at this performance point is Classifier 1. You should use it to score the entire population, then send offers to the highest-ranked 8,000 cus- tomers. justifying the use of a curve
 
+## Ch. 12. Other Data Science Tasks and Techniques
+
+### Association Rule Mining
+Given some transactions we may wish to find rules which allow us to predict occurrence of an item given the occurrence of other items. For example we want an output such as $\{Diaper\} \rightarrow \{Beer\}$ indicating that customers who buy diapers also purchase beer. Clearly this information is very valuable for retail stores who could use this information to re-position products in their physical stores or on their websites. 
+Note that this example comes from an urban myth about an unexpected correlation, between sales of diapers and beer, that was discovered by a Walmart employee. 
+
+The main difficulty in association rule mining (ARM) comes from the large number of possible association rules. If we limited our search to only look for rules concerning two products the total number of association rules would still be $2^n$. This means that the total number of rules grows at an exponential rate. For businesses which sell 1000's of products it is clear that mining all these rules may not be computationally feasible and is definitely not efficient! 
+
+Therefore we need to use algorithms which enable us to limit our search space. 
+
 ## Contents
 
 #### 1. Introduction: Data-Analytic Thinking {.unnumbered}
@@ -962,9 +983,7 @@ Should be discussed only briefly; largely too technical for C-Suite?
 Fundamental concepts: Calculating similarity of objects described by data; Using similarity for prediction; Clustering as similarity-based segmentation. Exemplary techniques: Searching for similar entities; Nearest neighbor methods; Clustering methods; Distance metrics for calculating similarity. Similarity and Distance 142 Nearest-Neighbor Reasoning 144 Example: Whiskey Analytics 144 Nearest Neighbors for Predictive Modeling 146 How Many Neighbors and How Much Influence? 149 Geometric Interpretation, Overfitting, and Complexity Control 151 Issues with Nearest-Neighbor Methods 154 Some Important Technical Details Relating to Similarities and Neighbors 157 Heterogeneous Attributes 157 \* Other Distance Functions 158 \* Combining Functions: Calculating Scores from Neighbors 161 Clustering 163 Example: Whiskey Analytics Revisited 163 Hierarchical Clustering 164 Example: Clustering Business News Stories 174 Understanding the Results of Clustering 177 \* Using Supervised Learning to Generate Cluster Descriptions 179 Stepping Back: Solving a Business Problem Versus Data Exploration 182 Summary 184
 
 \
-OF: **What is clustering and why is it useful?** Clustering analysis is a form of unsupervised learning which focuses around splitting data into groups. The aim of this is to identify key patterns in our data. For example: The supermarket Tesco may wish to identify which products are bought together by consumers. Using clustering may reveal that 80% customers who buy bread also buy milk. Insights such as these could be used in order to alter the layout of a supermarket in order to encourage higher spending. \
-Whilst insights such as the one given in the example above are very simple, in larger datasets it can be much more difficult to draw insights such as these. Provided that the correct method is used, clustering is an incredibly powerful tool for exploring big datasets.  \
-Clustering uses distance measures in order to group similar observations into clusters.
+OF: **What is clustering and why is it useful?** Clustering analysis is a form of unsupervised learning which focuses around splitting data into groups. Clustering uses distance measures in order to group similar observations into clusters.
 
 **K-Means**:
  - Simple and easy to implement
@@ -976,6 +995,7 @@ Clustering uses distance measures in order to group similar observations into cl
  - Very good at dealing with noise
  - Can handle different shaped clusters
  - Tends to perform worse when the density of data varies or when data is highly dimensional
+ - More hyperparameters to specify, makes tuning more difficult
 
 #### 7. Decision Analytic Thinking I: What Is a Good Model? {.unnumbered}
 

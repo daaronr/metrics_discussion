@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-12-20" />
+<meta name="date" content="2020-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <!-- font families -->
@@ -301,7 +300,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
 <li class="chapter" data-level="1.14.3" data-path="introduction.html"><a href="introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>1.14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
 <li class="chapter" data-level="1.14.4" data-path="introduction.html"><a href="introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>1.14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
 </ul></li>
 <li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.15</b> <span>Making inferences from previous work; Meta-analysis, combining studies</span></a>
@@ -467,7 +466,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>12.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford’?</a></li>
+<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford?’</a></li>
 <li class="chapter" data-level="12.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
@@ -478,7 +477,62 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>13.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>13.2</b> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</a></li>
-<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<li class="chapter" data-level="13.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>13.3</b> The ‘harm to science’ from running underpowered studies</a></li>
+<li class="chapter" data-level="13.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data-1"><i class="fa fa-check"></i><b>13.4</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="13.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data-1"><i class="fa fa-check"></i><b>13.5</b> Power calculations using prior data</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>13.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects-1"><i class="fa fa-check"></i><b>14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="14.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-1"><i class="fa fa-check"></i><b>14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="14.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses-1"><i class="fa fa-check"></i><b>14.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>14.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="14.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
+<li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Meta-analysis and combining studies: Making inferences from previous work</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analysis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
 <li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
@@ -645,7 +699,7 @@ Basics: <a href="https://egap.org/resource/10-things-to-know-about-statistical-p
 <div id="what-sort-of-power-calculations-make-sense-and-what-is-the-point-1" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> What sort of ‘power calculations’ make sense, and what is the point?</h2>
 <p>There are several reasons to consider power and to do ‘power calculations’ in advance of running an experiment or doing an analysis.</p>
-<p>An ‘underpowered study’, one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present, is also likely to be an <em>uninformative</em> study. If ‘rejecting a particular null hypothesis’ is important (and please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point), an underpowered test is unlikely to reject this null hypothesis even when it is ‘meaningfully false’.</p>
+<p>An ‘underpowered study,’ one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present, is also likely to be an <em>uninformative</em> study. If ‘rejecting a particular null hypothesis’ is important (and please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point), an underpowered test is unlikely to reject this null hypothesis even when it is ‘meaningfully false.’</p>
 <p>Perhaps more importantly, an underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value is.</p>
 <div id="why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Why do a power analysis? What are the practical benefits of doing a power analysis</h3>
@@ -654,7 +708,7 @@ Basics: <a href="https://egap.org/resource/10-things-to-know-about-statistical-p
 <li><p>Consider and optimise over the tradeoffs in design choices … e.g., introducing more treatments usually involves a loss of power</p></li>
 <li><p>‘Can I have enough funds to gather enough data to make it worth doing a study?’</p></li>
 <li><p>If I am trying to do some sort of replication exercise to diagnose the credibility of previous work I want to ‘have power to do this credibly’ (I’m not sure about this one)</p></li>
-<li><p>Avoiding the general harm ‘underpowered studies’. There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias’.</p></li>
+<li><p>Avoiding the general harm ‘underpowered studies.’ There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias.’</p></li>
 <li><p>An ex-ante power analysis might (I’m not sure on this one, it seems possibly dubious) be useful in making ex-post statements about null effects</p></li>
 </ul>
 </div>
@@ -671,18 +725,18 @@ Basics: <a href="https://egap.org/resource/10-things-to-know-about-statistical-p
 <p><em>Perhaps the most important and debated ingredient:</em></p>
 <p><strong>What ‘metrics of power and effect size’ are we considering, and what are our targets?</strong></p>
 <ul>
-<li><p>Are we simply seeking ‘precise estimates’, estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
-<li><p>Do we seek power to detect some ‘minimal effect size of interest’?</p></li>
+<li><p>Are we simply seeking ‘precise estimates,’ estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
+<li><p>Do we seek power to detect some ‘minimal effect size of interest?’</p></li>
 </ul>
-<p>If so, <em>what is this ‘MESOI’?</em></p>
+<p>If so, <em>what is this ‘MESOI?’</em></p>
 <div class="marginnote">
 <p>Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard ‘power to detect X’ criteria.</p>
 <p>Another criterion might be ‘power to do an equivalency test’… but I need to learn more about this.</p>
 </div>
 <p><br />
 </p>
-<div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered" number="">
-<h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI’?</h4>
+<div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered">
+<h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI?’</h4>
 <p>From David Moss (unfold)</p>
 
 <div class="fold">
@@ -696,7 +750,7 @@ Lakens uses the SESOI approach, which we often do, but SESOI can be specified ba
 </blockquote>
 <p><br />
 </p>
-<p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful’, with particular specific recommendations:</p>
+<p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful,’ with particular specific recommendations:</p>
 
 <div class="fold">
 <blockquote>
@@ -712,8 +766,8 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <p>DR response: Why do we assume previous authors considered MESOI?</p>
 
 <div class="fold">
-<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest”?</p>
-<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects”, But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
+<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest?”</p>
+<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects,” But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
 </div>
 <p>DR: A second reason why one might see that as the “minimum effect size of interest” simply has to do with being able to publish a paper that can in some way “refute” previous claimed findings.</p>
 
@@ -733,6 +787,8 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <div class="marginnote">
 <p>So, when I am designing the study I am almost never able to have the power I want for all possible tests/hypotheses. Where these considerations come into play, is whether to decide to run the study now or wait to get more funding, and in considering which hypotheses to test and which treatments to put in the study, et cetera</p>
 </div>
+</div>
+</div>
 <div id="underpowered" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> The ‘harm to science’ from running underpowered studies</h2>
 <blockquote>
@@ -748,7 +804,7 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <li>“Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?”</li>
 </ol>
 <p>The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ <em>own</em> peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”</p>
-<p>However <span class="citation">(Button et al. <a href="#ref-buttonPowerFailureWhy2013" role="doc-biblioref">2013</a>)</span> point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.</p>
+<p>However <span class="citation">(<a href="references.html#ref-buttonPowerFailureWhy2013" role="doc-biblioref">Button et al. 2013</a>)</span> point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.</p>
 <p>In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects.</p>
 <div class="marginnote">
 <p>DR: However, I speculate that this idea might be less clear-cut than it seems. E.g., if we consider a (“non-sparse”) world where every factor indeed has an effect, lower powered studies are more likely to detect effects that are truly larger, which are arguably more policy-relevant; moreover, overstated effect sizes might be adjusted with a standard correction.</p>
@@ -775,9 +831,9 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <p>While conventional practice seems to involve completely simulated data based on parametric assumptions (normality, etc) we prefer to draw from comparable ‘untreated’ real-world data (see (Barrios 2014) for a related discussion). Assuming the general distribution of outcomes (and covariates) is in some sense constant or predictable over time (perhaps stationarity?), this should give us more accurate estimates of power.</p>
 </blockquote>
 <blockquote>
-<p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect’.</p>
+<p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect.’</p>
 </blockquote>
-<div id="assign-notes" class="section level4 unnumbered" number="">
+<div id="assign-notes" class="section level4 unnumbered">
 <h4>Assignment procedures to consider</h4>
 <p>We consider three categories of possible assignment criteria: (We are coding these <a href="power.html#assign-functions">below</a>.)</p>
 <p><strong>1. Simple data-based</strong></p>
@@ -819,7 +875,7 @@ Blocking process (folded)
 <p>The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws… the smaller the <em>actual</em> effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time). [Note: these latter notes may bot go with the procedure proposed below; these are older.]</p>
 </div>
 <p><strong>Kasy method?</strong></p>
-<p>We may or may not get to considering the method proposed in <span class="citation">(<span class="citeproc-not-found" data-reference-id="Kasy2016b"><strong>???</strong></span>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
+<p>We may or may not get to considering the method proposed in <span class="citation">(<a href="#ref-Kasy2016b" role="doc-biblioref"><strong>Kasy2016b?</strong></a>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
 <div class="fold">
 <p>
 See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
@@ -849,147 +905,143 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p><a href="https://egap.org/resource/script-power-analysis-simulations-in-r/" class="uri">https://egap.org/resource/script-power-analysis-simulations-in-r/</a></p>
 <p><a href="https://egap.org/resource/10-things-to-know-about-statistical-power/" class="uri">https://egap.org/resource/10-things-to-know-about-statistical-power/</a></p>
 </div>
-<div id="assign-functions" class="section level4 unnumbered" number="">
+<div id="assign-functions" class="section level4 unnumbered">
 <h4>Treatment assignment functions, used in power calculations</h4>
 <ol style="list-style-type: decimal">
 <li>simple_assign: assign treatment dummy to first t-share of n rows</li>
 </ol>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="power.html#cb21-1"></a>simple_assign &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">tshare=</span><span class="fl">0.5</span>, <span class="dt">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
-<span id="cb21-2"><a href="power.html#cb21-2"></a>  <span class="kw">mutate</span>(df, <span class="dt">d_t =</span> <span class="kw">row_number</span>() <span class="op">&lt;=</span><span class="st"> </span>(<span class="kw">n</span>() <span class="op">*</span><span class="st"> </span>tshare)) <span class="co">#note: the data must be randomised first!</span></span>
-<span id="cb21-3"><a href="power.html#cb21-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="power.html#cb30-1" aria-hidden="true" tabindex="-1"></a>simple_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
+<span id="cb30-2"><a href="power.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(df, <span class="at">d_t =</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> (<span class="fu">n</span>() <span class="sc">*</span> tshare)) <span class="co">#note: the data must be randomised first!</span></span>
+<span id="cb30-3"><a href="power.html#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><br />
 </p>
 <p><strong>Data-based power calculation: create simulation function</strong> {#power-calc-sim-func}</p>
 <!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="power.html#cb22-1"></a>power_data &lt;-<span class="st"> </span><span class="cf">function</span>(ds, reps, yvar, N, <span class="dt">tshare=</span><span class="fl">0.5</span>, <span class="dt">linTE=</span><span class="dv">0</span>, <span class="dt">propTE=</span><span class="dv">0</span>, <span class="dt">alpha=</span><span class="fl">0.05</span>, <span class="dt">test_nm=</span> wilcox.test, <span class="dt">f_assign=</span>simple_assign, bv) {</span>
-<span id="cb22-2"><a href="power.html#cb22-2"></a></span>
-<span id="cb22-3"><a href="power.html#cb22-3"></a>    results  &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
-<span id="cb22-4"><a href="power.html#cb22-4"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
-<span id="cb22-5"><a href="power.html#cb22-5"></a>    exp_sample &lt;-<span class="st"> </span><span class="kw">sample_n</span>(ds, <span class="dt">size =</span> N, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb22-6"><a href="power.html#cb22-6"></a></span>
-<span id="cb22-7"><a href="power.html#cb22-7"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
-<span id="cb22-8"><a href="power.html#cb22-8"></a>    exp_sample &lt;-<span class="st"> </span>exp_sample <span class="op">%&gt;%</span></span>
-<span id="cb22-9"><a href="power.html#cb22-9"></a><span class="st">      </span><span class="kw">f_assign</span>(<span class="dt">tshare=</span>tshare, <span class="dt">blockvar=</span>bv) <span class="op">%&gt;%</span></span>
-<span id="cb22-10"><a href="power.html#cb22-10"></a></span>
-<span id="cb22-11"><a href="power.html#cb22-11"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
-<span id="cb22-12"><a href="power.html#cb22-12"></a><span class="st">      </span><span class="kw">mutate</span>({{yvar}} <span class="op">:</span><span class="er">=</span><span class="st">   </span><span class="kw">ifelse</span>(</span>
-<span id="cb22-13"><a href="power.html#cb22-13"></a>        d_t <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>, {{yvar}} <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>propTE) <span class="op">+</span><span class="st"> </span>linTE, {{yvar}})) <span class="op">%&gt;%</span></span>
-<span id="cb22-14"><a href="power.html#cb22-14"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
-<span id="cb22-15"><a href="power.html#cb22-15"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">yv :=</span> {{yvar}}) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
-<span id="cb22-16"><a href="power.html#cb22-16"></a></span>
-<span id="cb22-17"><a href="power.html#cb22-17"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
-<span id="cb22-18"><a href="power.html#cb22-18"></a><span class="st">      </span>dplyr<span class="op">::</span><span class="kw">select</span>(yv, d_t)</span>
-<span id="cb22-19"><a href="power.html#cb22-19"></a>    test &lt;-<span class="st"> </span>exp_sample <span class="op">%&gt;%</span></span>
-<span id="cb22-20"><a href="power.html#cb22-20"></a><span class="st">      </span><span class="kw">do</span>(<span class="kw">tidy</span>(<span class="kw">test_nm</span>( yv <span class="op">~</span><span class="st"> </span>d_t, <span class="dt">data =</span> ., <span class="dt">paired =</span> <span class="ot">FALSE</span> )))</span>
-<span id="cb22-21"><a href="power.html#cb22-21"></a>    test<span class="op">$</span>p.value</span>
-<span id="cb22-22"><a href="power.html#cb22-22"></a>    }</span>
-<span id="cb22-23"><a href="power.html#cb22-23"></a>    )</span>
-<span id="cb22-24"><a href="power.html#cb22-24"></a></span>
-<span id="cb22-25"><a href="power.html#cb22-25"></a><span class="co">#5. Output share of p-values below alpha</span></span>
-<span id="cb22-26"><a href="power.html#cb22-26"></a>      <span class="kw">sum</span>(results <span class="op">&lt;</span><span class="st"> </span>alpha) <span class="op">/</span><span class="st"> </span>reps</span>
-<span id="cb22-27"><a href="power.html#cb22-27"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="power.html#cb31-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
+<span id="cb31-2"><a href="power.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="power.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
+<span id="cb31-4"><a href="power.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
+<span id="cb31-5"><a href="power.html#cb31-5" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(ds, <span class="at">size =</span> N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-6"><a href="power.html#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="power.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
+<span id="cb31-8"><a href="power.html#cb31-8" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb31-9"><a href="power.html#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
+<span id="cb31-10"><a href="power.html#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="power.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
+<span id="cb31-12"><a href="power.html#cb31-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
+<span id="cb31-13"><a href="power.html#cb31-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
+<span id="cb31-14"><a href="power.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
+<span id="cb31-15"><a href="power.html#cb31-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
+<span id="cb31-16"><a href="power.html#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="power.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
+<span id="cb31-18"><a href="power.html#cb31-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
+<span id="cb31-19"><a href="power.html#cb31-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb31-20"><a href="power.html#cb31-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
+<span id="cb31-21"><a href="power.html#cb31-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
+<span id="cb31-22"><a href="power.html#cb31-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb31-23"><a href="power.html#cb31-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-24"><a href="power.html#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-25"><a href="power.html#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
+<span id="cb31-26"><a href="power.html#cb31-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
+<span id="cb31-27"><a href="power.html#cb31-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (<code>blockvar</code>)</li>
 </ol>
 <p><em>Note: I am using ‘randomizr’ here to assign blocks</em></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="power.html#cb23-1"></a>block_1d_assign &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
-<span id="cb23-2"><a href="power.html#cb23-2"></a>      block_rand &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(</span>
-<span id="cb23-3"><a href="power.html#cb23-3"></a>        randomizr<span class="op">::</span><span class="kw">block_ra</span>(</span>
-<span id="cb23-4"><a href="power.html#cb23-4"></a>          <span class="dt">blocks =</span>  df[[<span class="kw">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="dt">conditions =</span> <span class="kw">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="dt">prob_each=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>tshare, tshare)</span>
-<span id="cb23-5"><a href="power.html#cb23-5"></a>          )</span>
-<span id="cb23-6"><a href="power.html#cb23-6"></a>        )</span>
-<span id="cb23-7"><a href="power.html#cb23-7"></a>      df &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(<span class="kw">bind_cols</span>(df, block_rand)) <span class="op">%&gt;%</span></span>
-<span id="cb23-8"><a href="power.html#cb23-8"></a><span class="st">        </span><span class="kw">rename</span>(<span class="dt">d_t=</span>value) <span class="op">%&gt;%</span></span>
-<span id="cb23-9"><a href="power.html#cb23-9"></a><span class="st">        </span><span class="kw">mutate</span>(</span>
-<span id="cb23-10"><a href="power.html#cb23-10"></a>          <span class="dt">d_t=</span>(d_t<span class="op">==</span><span class="st">&quot;treat&quot;</span>)</span>
-<span id="cb23-11"><a href="power.html#cb23-11"></a>        )</span>
-<span id="cb23-12"><a href="power.html#cb23-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="power.html#cb32-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
+<span id="cb32-2"><a href="power.html#cb32-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
+<span id="cb32-3"><a href="power.html#cb32-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
+<span id="cb32-4"><a href="power.html#cb32-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
+<span id="cb32-5"><a href="power.html#cb32-5" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb32-6"><a href="power.html#cb32-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb32-7"><a href="power.html#cb32-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="power.html#cb32-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
+<span id="cb32-9"><a href="power.html#cb32-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb32-10"><a href="power.html#cb32-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
+<span id="cb32-11"><a href="power.html#cb32-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb32-12"><a href="power.html#cb32-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered" number="">
+<div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered">
 <h4>Power calculation (just simple examples): adapt to built-in data</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="power.html#cb24-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="power.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
 </div>
 <div id="loop-and-plot-over" class="section level4" number="13.5.1.1">
 <h4><span class="header-section-number">13.5.1.1</span> Loop and plot over…</h4>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="power.html#cb25-1"></a>linTE.try &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
-<span id="cb25-2"><a href="power.html#cb25-2"></a>propTE.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="fl">0.05</span>, <span class="dt">to =</span> <span class="fl">0.2</span>, <span class="dt">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb25-3"><a href="power.html#cb25-3"></a></span>
-<span id="cb25-4"><a href="power.html#cb25-4"></a>outcomes.try &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
-<span id="cb25-5"><a href="power.html#cb25-5"></a>tests.try &lt;-<span class="st"> </span><span class="kw">c</span>(t.test, wilcox.test)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="power.html#cb34-1" aria-hidden="true" tabindex="-1"></a>linTE.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
+<span id="cb34-2"><a href="power.html#cb34-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb34-3"><a href="power.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="power.html#cb34-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
+<span id="cb34-5"><a href="power.html#cb34-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
 <p>Testing equicost parings, determine necessary cost</p>
 <p>With only control and treatment we have</p>
 <p><span class="math display">\[cost = multiplier \times avgcost \times N \times tshare\]</span>
 <span class="math display">\[\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)\]</span></p>
 <p>Setting a 2x multiplier (for the ‘large’) treatment, avgcost=£30 (hard coded) for now, and imagining a £6000 initial budget yields</p>
 <p><span class="math display">\[\rightarrow N = 6000/\big(60 \times tshare\big) \]</span></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="power.html#cb26-1"></a>cost &lt;-<span class="st"> </span><span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
-<span id="cb26-2"><a href="power.html#cb26-2"></a>multip &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb26-3"><a href="power.html#cb26-3"></a>avdon &lt;-<span class="st"> </span><span class="dv">30</span></span>
-<span id="cb26-4"><a href="power.html#cb26-4"></a></span>
-<span id="cb26-5"><a href="power.html#cb26-5"></a>tshare.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="fl">0.1</span>, <span class="dt">to=</span><span class="fl">0.5</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</span>
-<span id="cb26-6"><a href="power.html#cb26-6"></a>sample.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">400</span>, <span class="dt">to=</span><span class="dv">1200</span>, <span class="dt">by=</span><span class="dv">200</span>)</span>
-<span id="cb26-7"><a href="power.html#cb26-7"></a>equi_sample &lt;-<span class="st"> </span>cost<span class="op">/</span>(avdon<span class="op">*</span>multip<span class="op">*</span>tshare.try)</span>
-<span id="cb26-8"><a href="power.html#cb26-8"></a></span>
-<span id="cb26-9"><a href="power.html#cb26-9"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
-<span id="cb26-10"><a href="power.html#cb26-10"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="power.html#cb35-1" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> <span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
+<span id="cb35-2"><a href="power.html#cb35-2" aria-hidden="true" tabindex="-1"></a>multip <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb35-3"><a href="power.html#cb35-3" aria-hidden="true" tabindex="-1"></a>avdon <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb35-4"><a href="power.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="power.html#cb35-5" aria-hidden="true" tabindex="-1"></a>tshare.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.1</span>, <span class="at">to=</span><span class="fl">0.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb35-6"><a href="power.html#cb35-6" aria-hidden="true" tabindex="-1"></a>sample.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">400</span>, <span class="at">to=</span><span class="dv">1200</span>, <span class="at">by=</span><span class="dv">200</span>)</span>
+<span id="cb35-7"><a href="power.html#cb35-7" aria-hidden="true" tabindex="-1"></a>equi_sample <span class="ot">&lt;-</span> cost<span class="sc">/</span>(avdon<span class="sc">*</span>multip<span class="sc">*</span>tshare.try)</span>
+<span id="cb35-8"><a href="power.html#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="power.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
+<span id="cb35-10"><a href="power.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
 </div>
-<div id="for-total-x-outcome-variable" class="section level4 unnumbered" number="">
+<div id="for-total-x-outcome-variable" class="section level4 unnumbered">
 <h4>For ‘total x’ outcome variable</h4>
 <p>(Some sample code below, needs discussion)</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="power.html#cb27-1"></a><span class="co">#Unvarying parameters up here:</span></span>
-<span id="cb27-2"><a href="power.html#cb27-2"></a>linTE &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb27-3"><a href="power.html#cb27-3"></a></span>
-<span id="cb27-4"><a href="power.html#cb27-4"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
-<span id="cb27-5"><a href="power.html#cb27-5"></a>power_vals &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
-<span id="cb27-6"><a href="power.html#cb27-6"></a>  <span class="dt">n_try=</span><span class="ot">NA</span>,</span>
-<span id="cb27-7"><a href="power.html#cb27-7"></a>  <span class="dt">prop_te =</span> <span class="ot">NA</span>,</span>
-<span id="cb27-8"><a href="power.html#cb27-8"></a>  <span class="dt">lin_te=</span><span class="ot">NA</span>,</span>
-<span id="cb27-9"><a href="power.html#cb27-9"></a>  <span class="dt">test=</span><span class="ot">NA</span>,</span>
-<span id="cb27-10"><a href="power.html#cb27-10"></a>  <span class="dt">power_est=</span><span class="ot">NA</span></span>
-<span id="cb27-11"><a href="power.html#cb27-11"></a>)</span>
-<span id="cb27-12"><a href="power.html#cb27-12"></a></span>
-<span id="cb27-13"><a href="power.html#cb27-13"></a><span class="co">#tic() #timer</span></span>
-<span id="cb27-14"><a href="power.html#cb27-14"></a></span>
-<span id="cb27-15"><a href="power.html#cb27-15"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
-<span id="cb27-16"><a href="power.html#cb27-16"></a></span>
-<span id="cb27-17"><a href="power.html#cb27-17"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
-<span id="cb27-18"><a href="power.html#cb27-18"></a></span>
-<span id="cb27-19"><a href="power.html#cb27-19"></a>  df_x &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
-<span id="cb27-20"><a href="power.html#cb27-20"></a><span class="st">    </span><span class="kw">select</span>(outcomes.try)</span>
-<span id="cb27-21"><a href="power.html#cb27-21"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
-<span id="cb27-22"><a href="power.html#cb27-22"></a></span>
-<span id="cb27-23"><a href="power.html#cb27-23"></a>  <span class="co">#loop over tests</span></span>
-<span id="cb27-24"><a href="power.html#cb27-24"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="kw">seq_along</span>(tests.try)) {</span>
-<span id="cb27-25"><a href="power.html#cb27-25"></a>    TEST &lt;-<span class="st"> </span>tests.try[t]</span>
-<span id="cb27-26"><a href="power.html#cb27-26"></a></span>
-<span id="cb27-27"><a href="power.html#cb27-27"></a>    <span class="co">#Loop over proportional TE</span></span>
-<span id="cb27-28"><a href="power.html#cb27-28"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="kw">seq_along</span>(propTE.try)) {</span>
-<span id="cb27-29"><a href="power.html#cb27-29"></a>      PT &lt;-<span class="st"> </span>propTE.try[[p]]</span>
-<span id="cb27-30"><a href="power.html#cb27-30"></a></span>
-<span id="cb27-31"><a href="power.html#cb27-31"></a>      <span class="co">#Loop over sample sizes</span></span>
-<span id="cb27-32"><a href="power.html#cb27-32"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="kw">seq_along</span>(sample.try)) {</span>
-<span id="cb27-33"><a href="power.html#cb27-33"></a>        N &lt;-<span class="st"> </span>sample.try[s]</span>
-<span id="cb27-34"><a href="power.html#cb27-34"></a>        PW &lt;-<span class="st"> </span><span class="kw">power_data</span>(</span>
-<span id="cb27-35"><a href="power.html#cb27-35"></a>            <span class="dt">ds =</span> dfX, <span class="dt">reps =</span> <span class="dv">80</span>, <span class="dt">yvar =</span> sum_don, <span class="dt">N =</span> N, <span class="dt">tshare =</span> <span class="fl">0.5</span>, <span class="dt">linTE =</span> linTE, <span class="dt">propTE =</span> PT, <span class="dt">alpha =</span> <span class="fl">0.05</span></span>
-<span id="cb27-36"><a href="power.html#cb27-36"></a>          )</span>
-<span id="cb27-37"><a href="power.html#cb27-37"></a>        power_vals &lt;-<span class="st"> </span><span class="kw">add_row</span>(</span>
-<span id="cb27-38"><a href="power.html#cb27-38"></a>            power_vals, <span class="dt">n_try =</span> N, <span class="dt">prop_te =</span> PT, <span class="dt">lin_te =</span> linTE, <span class="dt">test =</span> <span class="kw">as.character</span>(TEST), <span class="dt">power_est =</span> PW</span>
-<span id="cb27-39"><a href="power.html#cb27-39"></a>          ) <span class="co">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
-<span id="cb27-40"><a href="power.html#cb27-40"></a>      }</span>
-<span id="cb27-41"><a href="power.html#cb27-41"></a>    }</span>
-<span id="cb27-42"><a href="power.html#cb27-42"></a>  }</span>
-<span id="cb27-43"><a href="power.html#cb27-43"></a></span>
-<span id="cb27-44"><a href="power.html#cb27-44"></a>  <span class="co">#}</span></span>
-<span id="cb27-45"><a href="power.html#cb27-45"></a></span>
-<span id="cb27-46"><a href="power.html#cb27-46"></a><span class="co">#toc()</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="power.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Unvarying parameters up here:</span></span>
+<span id="cb36-2"><a href="power.html#cb36-2" aria-hidden="true" tabindex="-1"></a>linTE <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb36-3"><a href="power.html#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="power.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
+<span id="cb36-5"><a href="power.html#cb36-5" aria-hidden="true" tabindex="-1"></a>power_vals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb36-6"><a href="power.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_try=</span><span class="cn">NA</span>,</span>
+<span id="cb36-7"><a href="power.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_te =</span> <span class="cn">NA</span>,</span>
+<span id="cb36-8"><a href="power.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lin_te=</span><span class="cn">NA</span>,</span>
+<span id="cb36-9"><a href="power.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">test=</span><span class="cn">NA</span>,</span>
+<span id="cb36-10"><a href="power.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">power_est=</span><span class="cn">NA</span></span>
+<span id="cb36-11"><a href="power.html#cb36-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-12"><a href="power.html#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="power.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tic() #timer</span></span>
+<span id="cb36-14"><a href="power.html#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="power.html#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
+<span id="cb36-16"><a href="power.html#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="power.html#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
+<span id="cb36-18"><a href="power.html#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="power.html#cb36-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb36-20"><a href="power.html#cb36-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
+<span id="cb36-21"><a href="power.html#cb36-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
+<span id="cb36-22"><a href="power.html#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="power.html#cb36-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
+<span id="cb36-24"><a href="power.html#cb36-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
+<span id="cb36-25"><a href="power.html#cb36-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
+<span id="cb36-26"><a href="power.html#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="power.html#cb36-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
+<span id="cb36-28"><a href="power.html#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
+<span id="cb36-29"><a href="power.html#cb36-29" aria-hidden="true" tabindex="-1"></a>      PT <span class="ot">&lt;-</span> propTE.try[[p]]</span>
+<span id="cb36-30"><a href="power.html#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="power.html#cb36-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
+<span id="cb36-32"><a href="power.html#cb36-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
+<span id="cb36-33"><a href="power.html#cb36-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
+<span id="cb36-34"><a href="power.html#cb36-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
+<span id="cb36-35"><a href="power.html#cb36-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
+<span id="cb36-36"><a href="power.html#cb36-36" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb36-37"><a href="power.html#cb36-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
+<span id="cb36-38"><a href="power.html#cb36-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
+<span id="cb36-39"><a href="power.html#cb36-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
+<span id="cb36-40"><a href="power.html#cb36-40" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb36-41"><a href="power.html#cb36-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb36-42"><a href="power.html#cb36-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-43"><a href="power.html#cb36-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-44"><a href="power.html#cb36-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb36-45"><a href="power.html#cb36-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-46"><a href="power.html#cb36-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
+<p>OK…</p>
 
 </div>
 </div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-buttonPowerFailureWhy2013">
-<p>Button, Katherine S, John P A Ioannidis, Claire Mokrysz, Brian A Nosek, Jonathan Flint, Emma S J Robinson, and Marcus R Munafò. 2013. “Power Failure: Why Small Sample Size Undermines the Reliability of Neuroscience.” <em>Nature Reviews Neuroscience</em> 14 (5): 365–76. <a href="https://doi.org/10.1038/nrn3475">https://doi.org/10.1038/nrn3475</a>.</p>
 </div>
 </div>
             </section>

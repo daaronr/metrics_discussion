@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Control strategies and prediction, Machine Learning (Statistical Learning) approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
   <meta name="description" content="6 Control strategies and prediction, Machine Learning (Statistical Learning) approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
-  <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Control strategies and prediction, Machine Learning (Statistical Learning) approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2020-12-20" />
+<meta name="date" content="2020-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <!-- font families -->
@@ -301,7 +300,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.14.2" data-path="introduction.html"><a href="introduction.html#randomization-inference"><i class="fa fa-check"></i><b>1.14.2</b> Randomization inference?</a></li>
 <li class="chapter" data-level="1.14.3" data-path="introduction.html"><a href="introduction.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>1.14.3</b> Parametric and nonparametric tests of simple hypotheses</a></li>
 <li class="chapter" data-level="1.14.4" data-path="introduction.html"><a href="introduction.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>1.14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="1.14.5" data-path="introduction.html"><a href="introduction.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>1.14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="1.14.6" data-path="introduction.html"><a href="introduction.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>1.14.6</b> Heterogeneity in an experimental context</a></li>
 </ul></li>
 <li class="chapter" data-level="1.15" data-path="introduction.html"><a href="introduction.html#making-inferences-from-previous-work-meta-analysis-combining-studies"><i class="fa fa-check"></i><b>1.15</b> <span>Making inferences from previous work; Meta-analysis, combining studies</span></a>
@@ -467,7 +466,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments-1"><i class="fa fa-check"></i><b>12.3</b> Efficient assignment of treatments</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>12.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford’?</a></li>
+<li class="chapter" data-level="12.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>12.3.2</b> How many treatment arms can you ‘afford?’</a></li>
 <li class="chapter" data-level="12.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>12.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
@@ -478,7 +477,62 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>13.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="power.html"><a href="power.html#key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>13.2</b> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</a></li>
-<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<li class="chapter" data-level="13.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>13.3</b> The ‘harm to science’ from running underpowered studies</a></li>
+<li class="chapter" data-level="13.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data-1"><i class="fa fa-check"></i><b>13.4</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="13.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data-1"><i class="fa fa-check"></i><b>13.5</b> Power calculations using prior data</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>13.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>14</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects-1"><i class="fa fa-check"></i><b>14.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="14.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-1"><i class="fa fa-check"></i><b>14.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="14.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses-1"><i class="fa fa-check"></i><b>14.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>14.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="14.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>14.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment-1"><i class="fa fa-check"></i><b>14.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="14.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators-1"><i class="fa fa-check"></i><b>14.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
+<li class="chapter" data-level="14.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context-1"><i class="fa fa-check"></i><b>14.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="14.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>14.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>14.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="14.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>14.7.2</b> randomised experiments and validity</a></li>
+<li class="chapter" data-level="14.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>14.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="14.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>14.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="14.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>14.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="14.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>14.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="14.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>14.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="14.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>14.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="14.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>14.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="14.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>14.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="14.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>14.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="14.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>14.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="14.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>14.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="14.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>14.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="14.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>14.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="14.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>14.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="14.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>14.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="14.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>14.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="14.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>14.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="14.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>14.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="14.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>14.7.22</b> 10.3.4 Comparison of Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>15</b> Meta-analysis and combining studies: Making inferences from previous work</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>15.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>15.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="15.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>15.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="15.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>15.1.3</b> Meta-analysis</a></li>
+<li class="chapter" data-level="15.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>15.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="15.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>15.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>15.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>15.2.1</b> Pooling effect sizes</a></li>
 <li class="chapter" data-level="15.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>15.2.2</b> Bayesian Meta-analysis</a></li>
@@ -642,7 +696,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>‘Identification’ of causal effects with a control strategy not credible</p>
 </blockquote>
-<p>Essentially a ‘control strategy’ is “control for all or most of the reasonable determinants of the independent variable so as to make the remaining unobservable component very small, minimizing the potential for bias in the coefficient of interest”. All of the controls must still be exogenous, otherwise this itself can lead to a bias. There is some discussion of how to validate this approach; see, e.g., <span class="citation">(Oster <a href="#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Essentially a ‘control strategy’ is “control for all or most of the reasonable determinants of the independent variable so as to make the remaining unobservable component very small, minimizing the potential for bias in the coefficient of interest.” All of the controls must still be exogenous, otherwise this itself can lead to a bias. There is some discussion of how to validate this approach; see, e.g., <span class="citation">(<a href="references.html#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref">Oster 2019</a>)</span>.</p>
 </div>
 <div id="machine-learning-statistical-learning-lasso-ridge-and-more-1" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Machine Learning (statistical learning): Lasso, Ridge, and more</h2>
@@ -718,7 +772,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <ul>
-<li><p>Bound <span class="math inline">\(t\)</span> acts as a ‘budget’, must be specified by an ‘external procedure’ such as cross-validation</p></li>
+<li><p>Bound <span class="math inline">\(t\)</span> acts as a ‘budget,’ must be specified by an ‘external procedure’ such as cross-validation</p></li>
 <li><p>typically we must <em>standardize the predictors</em> $** so that each column is centered with unit variance … as well as the outcome variables (?) … can ignore intercept</p>
 <ul>
 <li>DR: Not clear here whether standardisation is necessary for the procedure to be valid or just convenient for explaining and deriving its properties.</li>
@@ -801,7 +855,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>“Typical choices … might be 5 or 10, and sometimes N.”</p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>One ‘test’, remaining K-1 ‘training’</p></li>
+<li><p>One ‘test,’ remaining K-1 ‘training’</p></li>
 <li><p>Apply lasso to training data for a range of t values,</p>
 <ul>
 <li>use each fitted model to predict the responses in the test set, recording mean-squared prediction errors for each value of t.</li>
@@ -1197,12 +1251,6 @@ Prediction in Policy</p>
 -no .. can we predict who will gain most from admission? but even if we can what can we report?
 Prediction in Policy</p>
 
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-osterUnobservableSelectionCoefficient2019">
-<p>Oster, Emily. 2019. “Unobservable Selection and Coefficient Stability: Theory and Evidence.” <em>Journal of Business &amp; Economic Statistics</em> 37 (2): 187–204. <a href="https://doi.org/10.1080/07350015.2016.1227711">https://doi.org/10.1080/07350015.2016.1227711</a>.</p>
 </div>
 </div>
             </section>
