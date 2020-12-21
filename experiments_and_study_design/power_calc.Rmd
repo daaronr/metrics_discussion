@@ -394,6 +394,8 @@ equi_sample <- cost/(avdon*multip*tshare.try)
 
 #### For 'total x' outcome variable {-}
 
+(Some sample code below, needs discussion)
+
 ```{r eval=FALSE}
 
 #Unvarying parameters up here:
@@ -442,6 +444,9 @@ power_vals <- tibble(
   #}
 
 #toc()
+  
 ```
+
+OK...
 
 

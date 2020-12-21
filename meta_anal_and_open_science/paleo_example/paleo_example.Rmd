@@ -1,0 +1,104 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
+
+Introduction and discussion
+
+> Summarize the evidence base for the effectiveness of the Paleo diet in reducing obesity (as measured by waist circumference). Please cover: a) the basics of the intervention being studied; b) the research methodology; c) the results.
+
+> What is your conclusion on how effective the Paleo diet is at reducing waist circumference? What do you regard as the key strengths and limitations of the evidence and why?
+
+> Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
+
+There is some evidence supporting the claim that the 'Paleo diet' reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain'standard recommended diets.. At least a small set of randomized trials have concluded that participants in the "Paleo diet treatment" groups reduced their waist circumference more than those in control groups.
+
+This evidence is summarized in the meta-analysis of [@manheimerPaleolithicNutritionMetabolic2015a] who report:
+
+> The Paleolithic diet resulted in greater short-term improvements in metabolic syndrome components than did guideline-based control diets. The available data warrant additional evaluations of the health benefits of Paleolithic nutrition.
+
+More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019, @demenezesInfluencePaleolithicDiet2019a).
+<div class="marginnote">
+According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
+</div>
+ 
+However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*  
+<div class="marginnote">
+\* However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019; @manheimerPaleolithicNutritionMetabolic2015]; both of these meta-analysis would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.
+</div>
+
+[@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015a meta-analysis, arguing it overstated the findings and citing  limitations of the included original studies. \***
+<div class="marginnote">
+\*** While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit sloppy as well as arbitrary in citing statistical norms  without justification.  I return to these issues below.
+</div>
+
+In this brief review I:
+
+- [Consider conceptual issues in defining and measuring the 'impact of a diet' through standard study methodologies](#conceptual)
+
+- [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015aconsidering its methods, findings, and limitations](), 
+  - considering key conceptual and statistical issues
+  - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis
+
+- Assess a particularly promising study [@boersFavourableEffectsConsuming2014] (incorporated into @manheimerPaleolithicNutritionMetabolic2015a)
+
+
+*Disclaimers:* \*\*
+
+<div class="marginnote">
+I am an economist, not a nutritionist or a life scientist. While I am working to build up my expertise in this areaI have only limited experience conducting and for evaluating meta-analyses. The evaluation here is only a limited and shallow exercise done in a 10 hour window for a specific trial. I did not do a broad and systematic review of the literature. I further discuss the limitations in the [final section](#limitations).
+</div>
+
+
+## Conceptual: Thoughts on nutritional studies and meta-analysis issues {#conceptual}
+
+Compliance: 'Intention to treat' vs 'Treatment effects'
+
+Attrition
+
+Random effects meta-analyses; Bayesian and frequentist
+
+Control group: what is being measured?
+
+> a) the basics of the intervention being studied; b) the research methodology; c) the results.
+
+## Manheimer et al {#manheimer}
+
+Strengths and limitations
+
+Overall results and interpretation
+
+Others' assessment of this meta-analysis
+- Nutrigrade
+
+
+### External critiques and evaluations of Manheimer et al, (esp Fenton) authors' response {#critiques}
+
+<!--
+### Ghaedi et al meta-analysis
+--> 
+
+[@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015's focal statistical comparisons appears to result from a mis-reading.\*<div class="marginnote">
+"We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups." [@manheimerReplyTRFenton2016]
+</div>
+ 
+
+
+## Other meta-analyses and consideration of the Paleo diet
+
+Process of finding relevant work (informal)
+
+"Top" nutrition journals
+
+## Focus: Boers et al {#}
+
+
+## Overall analysis
+
+- Apparent limitations of the evidence base
+
+- Limitations and uncertainties to my own analysis; future steps {#limitations}
+
+> Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.

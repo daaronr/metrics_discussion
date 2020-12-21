@@ -7,9 +7,7 @@
 
 This (2013) book seems to have some slightly outdated focus (terms like 'data-mining') but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is 'meat in this sandwich'.
 
-\
-
-E.g., terms like 'lift' bridge business and data science concepts in a meaningful way
+Terms like 'lift'
 
 > As another example, in evaluating the utility of a pattern, we see a notion of lift--- how much more prevalent a pattern is than would be expected by chance---recurring broadly across data science. It is used to evaluate very different sorts of patterns in different contexts. Algorithms for targeting advertisements are evaluated by computing the lift one gets for the targeted population. Lift is used to judge the weight of evidence for or against a conclusion. Lift helps determine whether a co-occurrence (an association) in data is interesting, as opposed to simply being a natural consequence of popularity.
 
@@ -30,8 +28,11 @@ Digging into the day to do some surprising findings:\*
 <div class="marginnote">
 \* Strange results like these might seem like examples of overfitting, but it is also seems reasonable that demand patterns may be predictable (using careful data analysis) even if we don't always have a straightforward intuitive explanation for a 'mechanism'.
 
+
 </div>
 
+
+> 1.  Classification and class probability estimation attempt to predict, for each individual in a population, which of a (small) set of classes this individual belongs to. Usually the classes are mutually exclusive. An example classification question would be: "Among all the customers of MegaTelCo, which are likely to respond to a given offer?" In this example the two classes could be called will respond and will not respond.
 
 ### Example: Predicting Customer Churn {-}
 
@@ -102,9 +103,9 @@ Economic insight: model *profitability*, not just default probability
 
 \
 
-**Evidence for this?** 
+**Evidence for this?**
 
-> Studies giving clear quantitative demonstrations of the value of a data asset are hard to find, primarily because firms are hesitant to divulge results of strategic value. 
+> Studies giving clear quantitative demonstrations of the value of a data asset are hard to find, primarily because firms are hesitant to divulge results of strategic value.
 
 > The huge valuation of Facebook has been credited to its vast and unique data assets (Sengupta, 2012), including both information about individuals and their likes, as well as information about the structure of the social network. Information about network structure has been shown to be important to predicting and has been shown to be remarkably helpful in building models of who will buy certain products (Hill, Provost, & Volinsky, 2006).
 
@@ -144,7 +145,7 @@ And employees interact with these issues:
 <div class="marginnote">
 \* "The Cross Industry Standard Process for Data Mining, abbreviated CRISP-DM (CRISPDM Project, 2000), is one codification of this process"
 </div>
- 
+
 **Key principle: Overfitting**
 
 > The concept of overfitting and its avoidance permeates data science processes, algorithms, and evaluation methods
@@ -155,7 +156,7 @@ And employees interact with these issues:
 \*\* [@christianAlgorithmsLiveComputer2016] also have a chapter on overfitting, but in parts they confound overfitting with the complexity of models. Even very simple models, e.g. involving only one feature and one outcome of interest, can be substantially overfit, while complicated models with many features and parameters can be "penalized" (using techniques such as ridge regression) and validated to detect and avoid overfitting.
 
 </div>
- 
+
 
 **Quantify the benefits of using data**
 
@@ -175,7 +176,7 @@ And employees interact with these issues:
 
 ```{block2,  type='note'}
 Examples of some techniques and applications below...
-```  
+```
 
 ### Types of problems and approaches
 
@@ -192,7 +193,7 @@ Examples of some techniques and applications below...
 <div class="marginnote">
 Some specific techniques: Logit, Multinomial logit, etc.
 </div>
- 
+
 
 \
 
@@ -204,7 +205,7 @@ A *score* or *class probability* is a more informative measure, that can also be
 
 #### Regression ("value estimation") \* {-}
 
->  Regression ("value estimation") attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. An example regression question would be: 
+>  Regression ("value estimation") attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. An example regression question would be:
 
 **"How much will a given customer use the service?"**\
 
@@ -213,7 +214,7 @@ A *score* or *class probability* is a more informative measure, that can also be
 \* (Linear) regression is probably the tool that academics are most familiar with. The idea of a 'line' (or plane) of best fit, is ubiquitous, and one of the major concepts taught in basic statistics and econometrics. Of course it has a million flavors and issues.
 
 </div>
- 
+
 \
 
 > Here we are less interested in explaining a particular dataset as we are in extracting patterns that will generalize to other data, and for the purpose of improving some business process.
@@ -234,7 +235,7 @@ A *score* or *class probability* is a more informative measure, that can also be
 <div class="marginnote">
 DR: To me this seems very close to the classification of class probability problem. If I put two people in the same category, I am suggesting that they are similar. However, I can see how this can be done more flexibly; I can be "similar" to someone in many ways and consideringmany dimensions.
 </div>
- 
+
 
 \
 
@@ -245,7 +246,7 @@ DR: To me this seems very close to the classification of class probability probl
 <div class="marginnote">
 \* DR: This seems very similar and related to similarity matching as well as classification. Perhaps the clusterning technique can be used in these problems.
 </div>
- 
+
 
 \
 
@@ -260,7 +261,7 @@ DR: To me this seems very close to the classification of class probability probl
 <div class="marginnote">
 So, is this indeed a form of clustering or similarity matching?
 </div>
- 
+
 
 
 #### Profiling {-#ds4bs-profiling}
@@ -306,10 +307,10 @@ Establishing and justifying "causal inference" (also redundantly called  "causal
 \
 
 *Econometric approaches to inferring causality include:*
-  
+
 - Experimentation and exogenous random assignment (arguably the 'gold standard')
 
-- 'Control strategies' (to try to 'hold all observables constant'; sometimes drawing on Machine Learning) 
+- 'Control strategies' (to try to 'hold all observables constant'; sometimes drawing on Machine Learning)
 
 - Natural experiments and 'instrumental variables' approaches (e.g., using the variation driven by seemingly 'exogenous' factors such as weather)
 
@@ -319,7 +320,7 @@ Establishing and justifying "causal inference" (also redundantly called  "causal
 
 Causality is discussed in popular and non-technical work including by Economists ('Freakonomics', 'the Why Axis'...) and more directly, in 'The Book of Why' (by Judea Pearl, a computer scientist). For more formal and mathematical treatments, see Pearl's other work, as well as, in Econometrics, [@angrist2008mostly],[@cunninghamCausalInferenceMixtape2018; @hernanCausalInference2010].
 
-```  
+```
 
 \
 
@@ -335,7 +336,7 @@ The term 'label' is important here:\*
 <div class="marginnote">
 \* A term from Data Science that I've not seen in statistics/Econometrics, where we typically refer to an 'outcome variable' or 'dependent variable'.
 </div>
- 
+
 
 > Technically, another condition must be met for supervised data mining: there must be data on the target.
 
@@ -343,7 +344,7 @@ The term 'label' is important here:\*
 
 \
 
-DR: I always tell me dissertation and project students to  'ask a question with a question mark', and to consider [whether the question could even *have* a meaningful answer](https://daaronr.github.io/writing_econ_research/getting-started.html#ask_qn). This more or less characterises a *supervised* problem. 
+DR: I always tell me dissertation and project students to  'ask a question with a question mark', and to consider [whether the question could even *have* a meaningful answer](https://daaronr.github.io/writing_econ_research/getting-started.html#ask_qn). This more or less characterises a *supervised* problem.
 
 <!--todo: link Hitchiker's video here -->
 
@@ -436,7 +437,7 @@ Data Warehousing
 > 3.  But who really are these customers? Can I characterize them?
 > 4.  Will some particular new customer be profitable? How much revenue should I expect this customer to generate?
 
-## Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation 
+## Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation
 
 > we will begin by thinking of predictive modeling as supervised segmentation---how can we segment the population into groups that differ from each other with respect to some quantity of interest. In particular, how can we segment the population with respect to something that we would like to predict or estimate.
 

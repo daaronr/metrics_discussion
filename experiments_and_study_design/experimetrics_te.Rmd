@@ -1,6 +1,5 @@
 # 'Experimetrics' and measurement of treatment effects from RCTs {#experimetrics_te}
 
-
 ## Which error structure? Random effects?
 
 ## Randomization inference?
@@ -14,7 +13,9 @@
 #### Fligner-Policello test
 
 @flignerpolicello1981
+
 Null-hypothesis that the medians in the two groups (samples) are the same.
+
 > Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test.
 
 ```{r Fligner-Policello-test, eval=FALSE, include=FALSE}

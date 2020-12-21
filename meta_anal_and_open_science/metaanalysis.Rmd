@@ -4,7 +4,7 @@ My opinion on why this is so important (unfold):
 
 ```{block2,  type='fold'}
 
-It is lame how often I see 'new experiments' and 'new studies' that tread most of the ground as old studies, spend lots of money, get a publication and ... ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building mrogress. This is why I became involved with a project I called 'ExpArchive', later working with projects such as GESIS' X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute's "revolutionizing philanthropy research" (RPR) project.
+It is lame how often I see 'new experiments' and 'new studies' that tread most of the ground as old studies, spend lots of money, get a publication and ... ignore or pay lip service to the previous findings. There is tons of data out there that can inform new questions and bring better through re-analysis and combination with other data. Otherwise we are not actually building progress. This is why I became involved with a project I called 'ExpArchive', later working with projects such as GESIS' X-Econ to try to encourage and facilitate data sharing in experimental economics, as well as the innovationsinfundraising.org project, which is now collaborating with the Lily Institute's "revolutionizing philanthropy research" (RPR) project.
 
 ```
 
@@ -450,7 +450,7 @@ With a non-informative prior, we are essentially saying that we do not have any 
 
 $$ \mu \sim \mathcal{N}(0,1)$$
 
-Discussion (unfold) 
+Discussion (unfold)
 
 ```{block2,  type='fold'}
 
@@ -467,7 +467,7 @@ A further discussion on 'coherence' in the Bayesian framework versus 'bias' in t
 
 ```{block2,  type='fold'}
 
-SD: 
+SD:
   I think a big part of the discussion here comes from the subjective-objective debate in probability theory, and the way that statistics is studied. Classical statistics postulates that a variable theta is a true, objective, physical value, and that data y is randomly drawn from a distribution with those parameters. Expectation is defined from probability.
 
 Bayesians on the other hand start with the data; y is not random, it is known to us. The parameters theta are random, in that they are unknown to us (and subjectively unknown to each of us). Probability is defined from expectation, and our probability for an event is our subjective best guess estimate for that event. We are not being coherent if our probability is not our best guess estimate, that is, if we can make a better estimate for sure. If we're not not coherent, we're not being consistent with our beliefs.
@@ -582,7 +582,7 @@ This requires careful installation of packages. See [here](https://discourse.mc-
 <div class="marginnote">
 DR:  I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile; we sort this out below.
 </div>
- 
+
 <div class="marginnote">
 2000 iterations seems to be a 'norm'. [source?]
 </div>
@@ -606,7 +606,7 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
 
 \
 
-**Coding tip: use 'update'** 
+**Coding tip: use 'update'**
 
 The brms package has a way of running the model again once it has compiled, without compiling it again. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
 
@@ -919,7 +919,7 @@ Remember, these are not the effect sizes from the original studies. There has be
 
 ## Dealing with publication bias {#pubbias}
 
-- Exacerbated by multiple-hypothesis-testing? 
+- Exacerbated by multiple-hypothesis-testing?
 
 > But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05.
 
@@ -938,55 +938,5 @@ Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main ma
 
 \
 
+## Example: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
 
-# Meta-analysis arbitrary example: the 'Paleo diet'  
-
-Introduction and discussion 
-
-Summarize the evidence base for the effectiveness of the Paleo diet in reducing obesity (as measured by waist circumference). Please cover: a) the basics of the intervention being studied; b) the research methodology; c) the results. 
-
-What is your conclusion on how effective the Paleo diet is at reducing waist circumference? What do you regard as the key strengths and limitations of the evidence and why? 
-
-Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
-
-
-## Thoughts on nutritional studies and meta-analysis issues
-
-Compliance: 'Intention to treat' vs 'Treatment effects'
-
-Attrition
-
-Random effects meta-analyses; Bayesian and frequentist
-
-
-> a) the basics of the intervention being studied; b) the research methodology; c) the results. 
-
-## Manheimer et al
-
-Strengths and limitations
-
-Overall results and interpretation
-
-Others' assessment of this meta-analysis 
-- Nutrigrade
-
-
-## Other meta-analyses and consideration of the Paleo diet
-
-Process of finding relevant work (informal)
-
-"Top" nutrition journals
-
-### Focus: Boers et al 
-
-### Fentons' letter criticising Manheimer et al
-
-### Ghaedi et al meta-analysis 
-
-## Overall analysis
-
-- Apparent limitations of the evidence base
-
-- Limitations and uncertainties to my own analysis; future steps
-
-> Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
