@@ -3,6 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
+
 # Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
 
 Introduction and discussion
@@ -13,48 +14,100 @@ Introduction and discussion
 
 > Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
 
-There is some evidence supporting the claim that the 'Paleo diet' reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain'standard recommended diets.. At least a small set of randomized trials have concluded that participants in the "Paleo diet treatment" groups reduced their waist circumference more than those in control groups.
+There is some evidence supporting the claim that the 'Paleo diet' reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain 'standard recommended diets. At least a small set of randomized trials have concluded that participants in the "Paleo diet treatment" groups reduced their waist circumference more than those in control groups.
 
-This evidence is summarized in the meta-analysis of [@manheimerPaleolithicNutritionMetabolic2015a] who report:
+This evidence is summarized in the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a who report:
 
 > The Paleolithic diet resulted in greater short-term improvements in metabolic syndrome components than did guideline-based control diets. The available data warrant additional evaluations of the health benefits of Paleolithic nutrition.
 
 More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019, @demenezesInfluencePaleolithicDiet2019a).
+
 <div class="marginnote">
 According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
 </div>
- 
-However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*  
+
+However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*
 <div class="marginnote">
 \* However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019; @manheimerPaleolithicNutritionMetabolic2015]; both of these meta-analysis would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.
 </div>
 
-[@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015a meta-analysis, arguing it overstated the findings and citing  limitations of the included original studies. \***
+[@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015a meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. \*\*\*
+
 <div class="marginnote">
-\*** While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit sloppy as well as arbitrary in citing statistical norms  without justification.  I return to these issues below.
+\*\*\* While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification.  I return to these issues below.
 </div>
+
+\
 
 In this brief review I:
 
 - [Consider conceptual issues in defining and measuring the 'impact of a diet' through standard study methodologies](#conceptual)
 
-- [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015aconsidering its methods, findings, and limitations](), 
-  - considering key conceptual and statistical issues
-  - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis
+- [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a considering its methods, findings, and limitations](),
+    - considering key conceptual and statistical issues,
+    - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis,
+    - weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.
 
-- Assess a particularly promising study [@boersFavourableEffectsConsuming2014] (incorporated into @manheimerPaleolithicNutritionMetabolic2015a)
-
+- [Assess a particularly promising study](#boers) [@boersFavourableEffectsConsuming2014] (incorporated into @manheimerPaleolithicNutritionMetabolic2015a)
 
 *Disclaimers:* \*\*
 
 <div class="marginnote">
-I am an economist, not a nutritionist or a life scientist. While I am working to build up my expertise in this areaI have only limited experience conducting and for evaluating meta-analyses. The evaluation here is only a limited and shallow exercise done in a 10 hour window for a specific trial. I did not do a broad and systematic review of the literature. I further discuss the limitations in the [final section](#limitations).
+I am an economist, not a nutritionist or a life scientist. While I am working to build up my expertise in this areaI have only limited experience conducting and for evaluating meta-analyses. The evaluation here is only a limited and shallow exercise done in a 10 hour window for a specific purpose. I did not do a broad and systematic review of the literature. I further discuss the limitations in the [final section](#limitations).
 </div>
 
 
 ## Conceptual: Thoughts on nutritional studies and meta-analysis issues {#conceptual}
 
-Compliance: 'Intention to treat' vs 'Treatment effects'
+### Limited compliance; 'what are we aiming to measure and why?' {#compliance}
+
+Randomized controlled trials on nutrition and diet have important limitations not faced by many other medical RCTs, such as drug trials.
+<div class="marginnote">
+Another important limitation: "RCTs of dietary interventions
+cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns" @schwingshacklPerspectiveNutriGradeScoring2016. They also cite 
+"lack of double blinding... crossover bias, and high dropout rates"; although dropout (attrition) is not an exclusive problem for dietary studies.
+</div>
+
+
+*Limited compliance* is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of *tracking* compliance (e.g. "Diet-associated biomarkers" such as 24-hour urine checks, which are highly-rated  by @schwingshacklPerspectiveNutriGradeScoring2016's Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in @boersFavourableEffectsConsuming2014).
+ 
+However, our consideration of this issue depends on what exactly itis we want to measure, and for what purpose. For example may want to consider either, what I will call... \*
+
+<div class="marginnote">
+\* Note that my terminology below comes from the "treatment effect" literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., @angristIdentificationEstimationLocal1995.
+</div>
+ 
+
+1. "Average Treatment Effect (ATE)": The difference in some medical outcome, averaged over the population of interest... for the 'Treatment diet' if consumed exactly as proposed relative to a 'Control diet.'\*\*
+
+<div class="marginnote">
+\*\* Even here, there may be some ambiguities that need to be clarified. Should these diets specify exact amounts/calories consumed ('isocaloric'), or only the types of foods, allowingconsumption as desired? Do we need to ensure that other patterns, such as exercise, are held constant across diets?  (One might imagine that with random treatment exercise patterns will be identical on average, however, some diet may give people more energy to do exercise. We need to decide whether this is part of the effect we wish  to consider.)
+</div>
+
+*or the* 
+
+2. "Intention to Treat (ITT)" effect:  The difference in some medical outcome, averaged over the population of interest...  for those *assigned* to the treatment diet relative to the control diet. 
+
+
+The ATE measure would seem to be more relevant:
+
+- if we want to get at basic biological mechanisms or
+- if we believe we should recommed a 'best diet' without adjusting for compliance. \*
+
+<div class="marginnote">
+E.g., perhaps we are making recommendations for a context where compliance is not particularly difficult (e.g. perhaps school or military meals).  It may also be reasonable to assume that people reading our analysis (e.g., dieters), will already make these self-control considerations themselves, and simply wish to know which diet would ve best, if they could live up to it.
+</div>
+
+On the other hand the ITT measure might be more relevant if we want to consider which diet to propose "for real people to achieve their best outcomes."  However: 
+
+- while the impact of the diet itself (the ATE)  might be expected to be fairly uniform, as the basic biological mechanisms will be similar for similar groups of people,
+
+- I would expect that the ITT measure tohave more heterogeneity, as 
+compliance with a particular diet might be expected to vary greatly for a variety of psychological and cultural/lifestyle  reasons.
+
+Thus the ITT may  be more sensitive to the representativeness of our sample of dieters. Given self selection and other issues, it may be extremely difficult to recruit a "nationally representative" sample of the targeted group. 
+
+In the discussion of @manheimerPaleolithicNutritionMetabolic2015, it is not clear to me which measure of the studies are targeting. The discussion seems to suggest that they are considering the ATE. However  the designs, most of which seem to involve simply different *recommendations* for treatment and control groups, would seem much more likely to pick up the ITT for their study sample.
 
 Attrition
 
@@ -64,41 +117,98 @@ Control group: what is being measured?
 
 > a) the basics of the intervention being studied; b) the research methodology; c) the results.
 
+\
+
+### What is being tested and how broadly should we interpret the results?
+
+Broadly, the Paleo diet involves:
+
+1. Multiple differences relative to more traditional diets
+
+2. A series of connected claims about the *mechanism* by which it achieves benefits, and about nutrition and health in general
+
+\
+
+It is important to note that even if there is clear evidence that (recommending or implementing)  the 'Paleo diet' causes positive health benefits relative to an older diet:
+
+1. There is some inconsistency in the definition of the Paleo diet, as noted by XXX
+
+2. We don't know *which* of the components of the Paleo diet were beneficial (some may even have been harmful, but outweighed by others which were even more strongly beneficial.
+
+3. We don't have evidence that narrowly supports the claims made by Paleo advocates. Even if elements of the Paleo diet are beneficial, it may be through other mechanisms and channels than those proposed.
+
+
+
 ## Manheimer et al {#manheimer}
 
-Strengths and limitations
+### Strengths and limitations
+
+However, the system of assessing the quality of evidence seems somewhat arbitrary.\*
+
+<div class="marginnote">
+@Quintana2015 note "there are more than 80 tools available to assess the quality and risk of bias in observational studies"... Perhaps there are a similar number of tools for RCT studies. 
+</div>
 
 Overall results and interpretation
 
-Others' assessment of this meta-analysis
-- Nutrigrade
-
+ 
 
 ### External critiques and evaluations of Manheimer et al, (esp Fenton) authors' response {#critiques}
 
 <!--
 ### Ghaedi et al meta-analysis
---> 
+-->
 
 [@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015's focal statistical comparisons appears to result from a mis-reading.\*<div class="marginnote">
 "We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups." [@manheimerReplyTRFenton2016]
 </div>
- 
 
+
+@schwingshacklPerspectiveNutriGradeScoring2016 develops the 'Nutrigrade' scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.\*
+<div class="marginnote">
+\* Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.
+</div>
+Their system and relative points system was independently developed; q major point of contrast with GRADE (@guyattGRADEEmergingConsensus2008) seems to be Nutrigrade's greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as [limited compliance](#compliance). They 'Nutrigrade' the evidence in  @manheimerPaleolithicNutritionMetabolic2015 as 5.75, or 'Low', explained as "there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate." Of 10 randomly meta-analysis studies they rated, this was the fifth-strongest Nutrigrade. 
 
 ## Other meta-analyses and consideration of the Paleo diet
 
-Process of finding relevant work (informal)
+As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As @manheimerPaleolithicNutritionMetabolic2015 note 
 
-"Top" nutrition journals
+> a 2015 US News and World Report ranking of 35 diets with input from a panel of health experts placed the Paleolithic diet dead last, citing a lack of research evidence that showed clinical benefits.
 
-## Focus: Boers et al {#}
+However, more work seems to also support a claim such as 'recommending  the Paleo diet is succesful in reducing waist circumference in the short-term, relative to recommending more traditional diets.' 
 
+
+### Process of finding relevant work (informal)
+
+*Notes*: In the limited time I had available, I did some keyword searches on Google scholar, such as `'paleo diet' AND 'meta-analysis`'` and `paleo diet` AND `randomized controlled trial`
+ I also followed a 'snowball' approach to consider which studies were cited, and which studies cited @manheimerPaleolithicNutritionMetabolic2015, and the papers most prominently cited within.  I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).
+
+
+## Focus: Boers et al {#boers}
+
+Unlike the other trials considered in @manheimerPaleolithicNutritionMetabolic2015, @boersFavourableEffectsConsuming2014  "provided home-delivered Paleolithic and control diet meals to participants". This permits a more direct examination of what I called the [ATE](#compliance). I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.
+
+This study is also particular strong because it has (apparently) a zero attrition rate ('34/34 analyzed'), while attrition in the other cited studies is substantial. Particular forms of non-random attrition can strongly bias estimated treatment effects, biasing both the ATE and ITT mentioned above.\*
+<div class="marginnote">
+\* See @leeTrainingWagesSample2009 for a clear discussion of this, as well as an approach to 'bounding this bias' under a particular monotonicity assumption. 
+</div>
 
 ## Overall analysis
 
-- Apparent limitations of the evidence base
+###  Apparent limitations of the evidence base
 
-- Limitations and uncertainties to my own analysis; future steps {#limitations}
+### Limitations and uncertainties to my own analysis; future steps {#limitations}
 
 > Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.
+
+
+**Steps I would take**
+
+Pursue a better understanding of 
+
+- the reasoning behind standardized protocols for meta-analysis and 'bias-assesment', consulting, e.g., the ['Cochrane Handbook for Systematic Reviews of Interventions'](https://training.cochrane.org/handbook/current)
+
+- How nutritionists and dieticians differentiate what I call the ITT and ATE
+
+-

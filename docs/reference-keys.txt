@@ -4,6 +4,8 @@ tab:unnamed-chunk-71
 fig:unnamed-chunk-75
 fig:unnamed-chunk-76
 fig:unnamed-chunk-78
+basic-options-used-across-files-and-shortcut-functions-e.g.-pp-for-print
+functions-grabbed-from-web-and-created-by-us-for-analysisoutput
 introduction
 conceptual-approaches-to-statisticsinference-and-causalityconceptual
 causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model

@@ -21,16 +21,13 @@ output:
         size: 2
     highlight: tango
     download: [pdf, epub, mobi]
-
 bookdown::pdf_book:
     keep_tex: yes
-
     sharing:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: [support/reinstein_bibtex_dropbox.bib, support/references.bib] #this second one seems to be auto-generated ?
-#
+bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"#
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
@@ -83,6 +80,10 @@ source(here("code", "project_setup.R"))
 
 ```
 
+
+# Basic options used across files and shortcut functions, e.g., 'pp()' for print
+# functions grabbed from web and created by us for analysis/output
+```
 
 ```{r eval=FALSE}
 install.packages("bookdown")

@@ -9,6 +9,7 @@ It is lame how often I see 'new experiments' and 'new studies' that tread most o
 ```
 
 
+
 ## Notes: Christensen et al 2019, ch 5, 'Using all evidence, registration and meta-analysis
 
 > how the research community can systematically collect, organize, and analyze a body of research work
@@ -937,6 +938,11 @@ Remember, these are not the effect sizes from the original studies. There has be
 Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main manuscript](https://docs.google.com/document/d/1z3QBDYr86S9FxGjptZP94jJnZeeN4aQaBQP3VVT89Ec/edit#heading=h.gjdgxs)
 
 \
+
+### Institutional and systematic guidelines
+
+[Cochrane Handbook for Systematic Reviews of Interventions
+ online](https://training.cochrane.org/handbook/current)
 
 ## Example: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
 

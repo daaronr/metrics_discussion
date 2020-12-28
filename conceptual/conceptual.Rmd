@@ -8,13 +8,12 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Interpretation of CI's (aside)
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The fact that 95% of all (correct) CIs contain the true value does not mean that 95% of those that exclude zero do so correctly. You could have (say) 59% correct coverage for 10% excluding zero and 99% for 90% including zero.</p>&mdash; Stephen John Senn (@stephensenn) <a href="https://twitter.com/stephensenn/status/1219680319114227714?ref_src=twsrc%5Etfw">January 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The fact that 95% of all (correct) CIs contain the true value does not mean that 95% of those that exclude zero do so correctly. You could have (say) 59% correct coverage for 10% excluding zero and 99% for 90% including zero.</p>&mdash; Stephen John Senn (\@stephensenn) <a href="https://twitter.com/stephensenn/status/1219680319114227714?ref_src=twsrc%5Etfw">January 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 ## Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
 
 ### DAGs and Potential outcomes
-
-See especially  Imbens, 2019: "Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics"
 
 ## Theory, restrictions, and 'structural vs reduced form'
 

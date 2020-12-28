@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Introduction | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="3 Introduction | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>2 functions grabbed from web and created by us for analysis/output | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="2 functions grabbed from web and created by us for analysis/output | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.20.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Introduction | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="2 functions grabbed from web and created by us for analysis/output | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Introduction | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="2 functions grabbed from web and created by us for analysis/output | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html"/>
-<link rel="next" href="conceptual.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introduction.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -637,376 +637,54 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Introduction</h1>
-<p>My goal in putting this resource is to focus on the practical tools I use and the challenges I (<a href="https://daaronr.github.io/markdown-cv/">David Reinstein</a>) face. But I am open to collaboration with others on this.</p>
-<p><br />
-</p>
-<p><em>My focus:</em> Microeconomics, behavioral economics, focus on charitable giving and ‘returns to education’ type of straightforward problems. (Minimal focus on structural approaches.)</p>
-<p>What I care about: Where we can <em>add value</em> to real econometric (and statistical and experimental design) practice?</p>
-<p><br />
-</p>
-<p>The data I focus on:</p>
-<ul>
-<li><p>Observational (esp. web-scraped and API data and national surveys/admin data)</p></li>
-<li><p>Experimental: esp. where with multiple crossed arms, and where the ‘cleanest design’ may not be possible</p></li>
-</ul>
-<p><br />
-</p>
-<p>I will assume familiarity with most basic statistical concepts like ‘bias’, ‘consistency’, and ‘null hypothesis testing.’ However, I will focus on some concepts that seem to often be misunderstood and mis-applied.</p>
+<div id="functions-grabbed-from-web-and-created-by-us-for-analysisoutput" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> functions grabbed from web and created by us for analysis/output</h1>
+<pre><code>
 
-<div class="note">
-<p>If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content (HERE)[<a href="https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html" class="uri">https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html</a>]. This is from a different project but the setup is basically the same.</p>
-</div>
-<p><br />
-</p>
-<p>A note to potential research assistants and student collaborators (unfold):</p>
+```r
+install.packages(&quot;bookdown&quot;)
+install.packages(&quot;tufte&quot;)
+# or the development version
+# devtools::install_github(&quot;rstudio/bookdown&quot;)</code></pre>
+<p><strong>Pulling in key files from other repos; don’t edit them here</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb7-1"></a><span class="kw">try_download</span>(<span class="st">&quot;https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE&quot;</span>, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data_sci&quot;</span>,<span class="st">&quot;ds_for_bsns_notes_remote.Rmd&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-1"></a><span class="co">#possibly move these to a separate file</span></span>
+<span id="cb9-2"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-2"></a></span>
+<span id="cb9-3"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-3"></a><span class="co">#multi-output text color</span></span>
+<span id="cb9-4"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-4"></a><span class="co">#https://dr-harper.github.io/rmarkdown-cookbook/changing-font-colour.html#multi-output-text-colour</span></span>
+<span id="cb9-5"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-5"></a><span class="co">#We can then use the code as an inline R expression format_with_col(&quot;my text&quot;, &quot;red&quot;)</span></span>
+<span id="cb9-6"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-6"></a></span>
+<span id="cb9-7"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-7"></a>format_with_col =<span class="st"> </span><span class="cf">function</span>(x, color){</span>
+<span id="cb9-8"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-8"></a>  <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_latex_output</span>())</span>
+<span id="cb9-9"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-9"></a>    <span class="kw">paste</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{&quot;</span>,color,<span class="st">&quot;}{&quot;</span>,x,<span class="st">&quot;}&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb9-10"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-10"></a>  <span class="cf">else</span> <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_html_output</span>())</span>
+<span id="cb9-11"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-11"></a>    <span class="kw">paste</span>(<span class="st">&quot;&lt;font color=&#39;&quot;</span>,color,<span class="st">&quot;&#39;&gt;&quot;</span>,x,<span class="st">&quot;&lt;/font&gt;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb9-12"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-12"></a>  <span class="cf">else</span></span>
+<span id="cb9-13"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-13"></a>    x</span>
+<span id="cb9-14"><a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html#cb9-14"></a>}</span></code></pre></div>
+<!---
+Can define text blocks here, refer to them again and again if desired
+-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <html> -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLKFNFTGXX"></script> -->
+<!-- <script> -->
+<!--   window.dataLayer = window.dataLayer || []; -->
+<!--   function gtag(){dataLayer.push(arguments);} -->
+<!--   gtag('js', new Date()); -->
+<!--   gtag('config', 'G-QLKFNFTGXX'); -->
+<!-- </script> -->
+<!-- </html> -->
 
-<div class="fold">
-
-</div>
-<div id="conceptual-approaches-to-statisticsinference-and-causalityconceptual" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> (Conceptual: approaches to statistics/inference and causality)[#conceptual]</h2>
-<div id="bayesian-vs.-frequentist-approaches" class="section level3 unnumbered" number="">
-<h3>Bayesian vs. frequentist approaches</h3>
-<p>Folder: bayesian</p>
-<p>Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
-</div>
-<div id="causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</h3>
-<div id="dags-and-potential-outcomes" class="section level4" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> DAGs and Potential outcomes</h4>
-</div>
-</div>
-<div id="theory-restrictions-and-structural-vs-reduced-form" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Theory, restrictions, and ‘structural vs reduced form’</h3>
-</div>
-</div>
-<div id="getting-cleaning-and-using-data-project-management-and-coding" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> <a href="data-sci.html#data-sci">Getting, cleaning and using data; project management and coding</a></h2>
-<p>This will build on my content <a href="https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data">here</a>, and integrate with it.</p>
-<div id="data-whatwhywherehow" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Data: What/why/where/how</h3>
-</div>
-<div id="organizing-a-project" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Organizing a project</h3>
-</div>
-<div id="dynamic-documents-esp-rmdbookdown" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Dynamic documents (esp Rmd/bookdown)</h3>
-</div>
-<div id="good-coding-practices" class="section level3" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Good coding practices</h3>
-<div id="new-tools-and-approaches-to-data-esp-tidyverse" class="section level4" number="3.2.4.1">
-<h4><span class="header-section-number">3.2.4.1</span> New tools and approaches to data (esp ‘tidyverse’)</h4>
-</div>
-<div id="style-and-consistency" class="section level4" number="3.2.4.2">
-<h4><span class="header-section-number">3.2.4.2</span> Style and consistency</h4>
-<p>Indenting, snake-case, etc</p>
-</div>
-<div id="using-functions-variable-lists-etc.-for-clean-concise-readable-code" class="section level4" number="3.2.4.3">
-<h4><span class="header-section-number">3.2.4.3</span> Using functions, variable lists, etc., for clean, concise, readable code</h4>
-</div>
-</div>
-<div id="data-sharing-and-integrity" class="section level3" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> Data sharing and integrity</h3>
-</div>
-</div>
-<div id="basic-regression-and-statistical-inference-common-mistakes-and-issues" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Basic regression and statistical inference: Common mistakes and issues</h2>
-<div id="bad-control-colliders" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> “Bad control” (“colliders”)</h3>
-<p>Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)</p>
-</div>
-<div id="choices-of-lhs-and-rhs-variables" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Choices of lhs and rhs variables</h3>
-<ul>
-<li>Missing data</li>
-<li>Choice of control variables and interactions</li>
-<li>Which outcome variable/variables</li>
-</ul>
-</div>
-<div id="functional-form" class="section level3" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Functional form</h3>
-<ul>
-<li>Logs and exponentials</li>
-<li>Nonlinear modeling (and interpreting coefficients)</li>
-</ul>
-<div id="testing-for-nonlinear-terms" class="section level4" number="3.3.3.1">
-<h4><span class="header-section-number">3.3.3.1</span> ‘Testing for nonlinear terms’</h4>
-<p>Quadratic regressions are not diagnostic regarding u-shapedness: <a href="http://datacolada.org/62">Simonsohn18</a></p>
-</div>
-</div>
-<div id="ols-and-heterogeneity" class="section level3" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> OLS and heterogeneity</h3>
-<ul>
-<li>OLS does <em>not</em> identify the ATE</li>
-</ul>
-<p><a href="http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT" class="uri">http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT</a></p>
-<ul>
-<li>Modeling heterogeneity: the limits of Quantile re regression</li>
-</ul>
-</div>
-<div id="null-effects" class="section level3" number="3.3.5">
-<h3><span class="header-section-number">3.3.5</span> “Null effects”</h3>
-<p>“While the classical statistical framework is not terribly clear about when one should”“accept”" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a "“zero or minimal effect”" one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
-<p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks”." Harms-lakens-18</p>
-<ul>
-<li><p><strong>Confidence intervals and Bayesian credible intervals</strong></p></li>
-<li><p><strong>Comparing relative parameters</strong></p></li>
-</ul>
-<p>E.g., “the treatment had a heterogeneous effect… we see a statistically significant positive effect for women but not for men”. This doesn’t cut it: we need to see a <em>statistical test</em> for the <em>difference</em> in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).</p>
-</div>
-<div id="multiple-hypothesis-testing-mht" class="section level3" number="3.3.6">
-<h3><span class="header-section-number">3.3.6</span> Multiple hypothesis testing (MHT)</h3>
-</div>
-<div id="interaction-terms-and-pitfalls" class="section level3" number="3.3.7">
-<h3><span class="header-section-number">3.3.7</span> Interaction terms and pitfalls</h3>
-<p>** ‘Moderators’ Confusion with nonlinearity**</p>
-<p>Moderators: Heterogeneity mixed with nonlinearity/corners</p>
-<p>In the presence of nonlinearity, e.g., diminishing returns, if the outcome ‘starts’ at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from ‘the diminishing returns kicking in’. Related to <a href="https://datacolada.org/57" class="uri">https://datacolada.org/57</a> [57] Interactions in Logit Regressions: Why Positive May Mean Negative</p>
-</div>
-<div id="choice-of-test-statistics-including-nonparametric" class="section level3" number="3.3.8">
-<h3><span class="header-section-number">3.3.8</span> Choice of test statistics (including nonparametric)</h3>
-<!-- (Or get to this in the experimetrics section) -->
-</div>
-<div id="how-to-display-and-write-about-regression-results-and-tests" class="section level3" number="3.3.9">
-<h3><span class="header-section-number">3.3.9</span> How to display and write about regression results and tests</h3>
-</div>
-<div id="bayesian-interpretations-of-results" class="section level3" number="3.3.10">
-<h3><span class="header-section-number">3.3.10</span> Bayesian interpretations of results</h3>
-<p>(see ‘the Bayesian Approach’)</p>
-</div>
-</div>
-<div id="ldv-and-discrete-choice-modeling" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> LDV and discrete choice modeling</h2>
-</div>
-<div id="robustness-and-diagnostics-with-integrity" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Robustness and diagnostics, with integrity</h2>
-<div id="how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> (How) can diagnostic tests make sense? Where is the burden of proof?</h3>
-</div>
-<div id="estimating-standard-errors" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Estimating standard errors</h3>
-</div>
-<div id="sensitivity-analysis-interactive-presentation" class="section level3" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Sensitivity analysis: Interactive presentation</h3>
-</div>
-</div>
-<div id="control-strategies-and-prediction-machine-learning-approaches" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> <a href="control-ml.html#control-ml">Control strategies and prediction; Machine Learning approaches</a></h2>
-<div id="machine-learning-statistical-learning-lasso-ridge-and-more" class="section level3" number="3.6.1">
-<h3><span class="header-section-number">3.6.1</span> Machine Learning (statistical learning): Lasso, Ridge, and more</h3>
-</div>
-<div id="limitations-to-inference-from-learning-approaches" class="section level3" number="3.6.2">
-<h3><span class="header-section-number">3.6.2</span> Limitations to inference from learning approaches</h3>
-</div>
-</div>
-<div id="iv-and-its-many-issues" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> IV and its many issues</h2>
-<div id="instrument-validity" class="section level3" number="3.7.1">
-<h3><span class="header-section-number">3.7.1</span> Instrument validity</h3>
-<ul>
-<li>Exogeneity vs. exclusion</li>
-<li>Very hard to ‘powerfully test’</li>
-</ul>
-</div>
-<div id="heterogeneity-and-late" class="section level3" number="3.7.2">
-<h3><span class="header-section-number">3.7.2</span> Heterogeneity and LATE</h3>
-<p><em>Basic consideration: what does IV identify and when:</em>?</p>
-<p>Focusing on a binary endogenous ‘treatment’ variable</p>
-<ul>
-<li>With heterogeneity</li>
-<li>With imperfect compliance</li>
-<li>With one-way compliance</li>
-</ul>
-</div>
-<div id="weak-instruments-other-issues" class="section level3" number="3.7.3">
-<h3><span class="header-section-number">3.7.3</span> Weak instruments, other issues</h3>
-<ul>
-<li>With a ‘weak instrument’ … why does that matter?</li>
-</ul>
-</div>
-<div id="reference-to-the-use-of-iv-in-experimentsmediation" class="section level3" number="3.7.4">
-<h3><span class="header-section-number">3.7.4</span> Reference to the use of IV in experiments/mediation</h3>
-</div>
-</div>
-<div id="other-paths-to-observational-identification" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> <a href="other-paths-to-observational-identification-1.html#other_paths">Other paths to observational identification</a></h2>
-<div id="fixed-effects-and-differencing" class="section level3" number="3.8.1">
-<h3><span class="header-section-number">3.8.1</span> Fixed effects and differencing</h3>
-</div>
-<div id="did" class="section level3" number="3.8.2">
-<h3><span class="header-section-number">3.8.2</span> DiD</h3>
-<p>FE/DiD does not rule out a correlated dynamic unobservable, causing a bias</p>
-</div>
-<div id="rd" class="section level3" number="3.8.3">
-<h3><span class="header-section-number">3.8.3</span> RD</h3>
-</div>
-<div id="time-series-ish-panel-approaches-to-micro" class="section level3" number="3.8.4">
-<h3><span class="header-section-number">3.8.4</span> Time-series-ish panel approaches to micro</h3>
-<p>** Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’**</p>
-</div>
-</div>
-<div id="causal-pathways-mediation-modeling-and-its-massive-limitations" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> Causal pathways: <a href="mediators.html#mediators">Mediation modeling and its massive limitations</a></h2>
-<p>An applied review</p>
-</div>
-<div id="causal-pathways-selection-corners-hurdles-and-conditional-on-estimates" class="section level2" number="3.10">
-<h2><span class="header-section-number">3.10</span> Causal pathways: selection, corners, hurdles, and ‘conditional on’ estimates</h2>
-<div id="corner-solution-or-hurdle-variables-and-conditional-on-positive" class="section level3" number="3.10.1">
-<h3><span class="header-section-number">3.10.1</span> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</h3>
-<p>“Conditional on positive”/“intensive margin” analysis ignores selection</p>
-<p>“Conditional on positive”/“intensive margin” analysis ignores selection <em>identification issue</em> See Angrist and Pischke on “Good CoP, bad CoP”. See also bounding approaches such as <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lee2018"><strong>???</strong></span>)</span> AngristJ.D.2008a,</p>
-<p><br />
-</p>
-<div id="bounding-approaches-lee-manski-etc" class="section level4" number="3.10.1.1">
-<h4><span class="header-section-number">3.10.1.1</span> Bounding approaches (Lee, Manski, etc)</h4>
-<p>See <a href="#notes_lee">Notes on Lee bounds</a></p>
-</div>
-</div>
-</div>
-<div id="experimental-study-design-identifying-meaningful-and-useful-causal-relationships-and-parameters" class="section level2" number="3.11">
-<h2><span class="header-section-number">3.11</span> <a href="#why_experiment_etc">(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a></h2>
-<!-- experiments_and_study_design/why_experiment_design.Rmd -->
-<div id="why-run-an-experiment-or-study" class="section level3" number="3.11.1">
-<h3><span class="header-section-number">3.11.1</span> Why run an experiment or study?</h3>
-<!-- - Sugden and Sitzia critique here, give more motivation -->
-</div>
-<div id="causal-channels-and-identification" class="section level3" number="3.11.2">
-<h3><span class="header-section-number">3.11.2</span> Causal channels and identification</h3>
-<ul>
-<li>Ruling out alternative hypotheses, etc</li>
-</ul>
-</div>
-<div id="types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups" class="section level3" number="3.11.3">
-<h3><span class="header-section-number">3.11.3</span> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</h3>
-</div>
-<div id="generalizability-and-heterogeneity" class="section level3" number="3.11.4">
-<h3><span class="header-section-number">3.11.4</span> Generalizability (and heterogeneity)</h3>
-</div>
-</div>
-<div id="experimental-study-design-background-and-quantitative-issues" class="section level2" number="3.12">
-<h2><span class="header-section-number">3.12</span> (Experimental) Study design: Background and quantitative issues</h2>
-<!-- experiments_and_study_design/quant_design_power.Rmd -->
-<div id="pre-registration-and-pre-analysis-plans" class="section level3" number="3.12.1">
-<h3><span class="header-section-number">3.12.1</span> Pre-registration and Pre-analysis plans</h3>
-<div id="the-hazards-of-specification-searching" class="section level4" number="3.12.1.1">
-<h4><span class="header-section-number">3.12.1.1</span> The hazards of specification-searching</h4>
-</div>
-</div>
-<div id="sequential-and-adaptive-designs" class="section level3" number="3.12.2">
-<h3><span class="header-section-number">3.12.2</span> Sequential and adaptive designs</h3>
-</div>
-<div id="efficient-assignment-of-treatments" class="section level3" number="3.12.3">
-<h3><span class="header-section-number">3.12.3</span> Efficient assignment of treatments</h3>
-<p>(Links back to <a href="power.html#power">power analyses</a></p>
-</div>
-</div>
-<div id="experimental-study-design-ex-ante-power-calculations" class="section level2" number="3.13">
-<h2><span class="header-section-number">3.13</span> (Experimental) Study design: (Ex-ante) Power calculations</h2>
-<div id="what-sort-of-power-calculations-make-sense-and-what-is-the-point" class="section level3" number="3.13.1">
-<h3><span class="header-section-number">3.13.1</span> What sort of ‘power calculations’ make sense, and what is the point?</h3>
-<div id="the-harm-to-science-from-running-underpowered-studies" class="section level4" number="3.13.1.1">
-<h4><span class="header-section-number">3.13.1.1</span> The ‘harm to science’ from running underpowered studies</h4>
-</div>
-</div>
-<div id="power-calculations-without-real-data" class="section level3" number="3.13.2">
-<h3><span class="header-section-number">3.13.2</span> Power calculations without real data</h3>
-</div>
-<div id="power-calculations-using-prior-data" class="section level3" number="3.13.3">
-<h3><span class="header-section-number">3.13.3</span> Power calculations using prior data</h3>
-</div>
-</div>
-<div id="experimetrics-and-measurement-of-treatment-effects-from-rcts" class="section level2" number="3.14">
-<h2><span class="header-section-number">3.14</span> <a href="experimetrics-te.html#experimetrics_te">‘Experimetrics’ and measurement of treatment effects from RCTs</a></h2>
-<div id="which-error-structure-random-effects" class="section level3" number="3.14.1">
-<h3><span class="header-section-number">3.14.1</span> Which error structure? Random effects?</h3>
-</div>
-<div id="randomization-inference" class="section level3" number="3.14.2">
-<h3><span class="header-section-number">3.14.2</span> Randomization inference?</h3>
-</div>
-<div id="parametric-and-nonparametric-tests-of-simple-hypotheses" class="section level3" number="3.14.3">
-<h3><span class="header-section-number">3.14.3</span> Parametric and nonparametric tests of simple hypotheses</h3>
-</div>
-<div id="adjustments-for-exogenous-but-non-random-treatment-assignment" class="section level3" number="3.14.4">
-<h3><span class="header-section-number">3.14.4</span> Adjustments for exogenous (but non-random) treatment assignment</h3>
-</div>
-<div id="iv-in-an-experimental-context-to-get-at-mediators" class="section level3" number="3.14.5">
-<h3><span class="header-section-number">3.14.5</span> IV in an experimental context to get at ‘mediators’?</h3>
-</div>
-<div id="heterogeneity-in-an-experimental-context" class="section level3" number="3.14.6">
-<h3><span class="header-section-number">3.14.6</span> Heterogeneity in an experimental context</h3>
-</div>
-</div>
-<div id="making-inferences-from-previous-work-meta-analysis-combining-studies" class="section level2" number="3.15">
-<h2><span class="header-section-number">3.15</span> <a href="metaanalysis.html#metaanalysis">Making inferences from previous work; Meta-analysis, combining studies</a></h2>
-<div id="publication-bias" class="section level3" number="3.15.1">
-<h3><span class="header-section-number">3.15.1</span> Publication bias</h3>
-</div>
-<div id="combining-a-few-your-own-studiesestimates" class="section level3" number="3.15.2">
-<h3><span class="header-section-number">3.15.2</span> Combining a few (your own) studies/estimates</h3>
-</div>
-<div id="full-meta-analyses" class="section level3" number="3.15.3">
-<h3><span class="header-section-number">3.15.3</span> Full meta-analyses</h3>
-<ul>
-<li>Models to address publication biases</li>
-</ul>
-</div>
-</div>
-<div id="the-bayesian-approach" class="section level2" number="3.16">
-<h2><span class="header-section-number">3.16</span> The Bayesian approach</h2>
-</div>
-<div id="some-key-resources-and-references" class="section level2" number="3.17">
-<h2><span class="header-section-number">3.17</span> Some key resources and references</h2>
-<p><span class="citation">(Angrist J. D. and Pischke <a href="#ref-AngristJ.D.2008a" role="doc-biblioref">2008</a>)</span></p>
-<p>‘The Mixtape’ (Cunningham)</p>
-<p><span class="citation">(Kennedy <a href="#ref-kennedyGuideEconometrics2003" role="doc-biblioref">2003</a>)</span></p>
-<p><span class="citation">(Tibshirani, <a href="#ref-Tibshirani" role="doc-biblioref">n.d.</a>)</span></p>
-<p>OSF guides</p>
-<p>Christensen ea “Transparent and Reproducable Social Science Research”</p>
-<p><span class="citation">(Gentzkow <a href="#ref-Gentzkow2013" role="doc-biblioref">2013</a>; Wooldridge <a href="#ref-wooldridgeEconometricAnalysisCross2002" role="doc-biblioref">2002</a>, <a href="#ref-wooldridgeIntroductoryEconometricsModern2008" role="doc-biblioref">2008</a>)</span></p>
-<p>An Introduction to Statistical Learning with Applications in R</p>
-<p>R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org</p>
-<p>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</p>
-<div id="consider" class="section level3" number="3.17.1">
-<h3><span class="header-section-number">3.17.1</span> Consider:</h3>
-<p>Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017</p>
-<p>Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction .
-Cambridge University Press, 2015</p>
-<p>Judea Pearl</p>
-<p>Imbens: Potential Outcomes versus DAGs</p>
-
-</div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-AngristJ.D.2008a">
-<p>Angrist J. D., and J S Pischke. 2008. “Mostly Harmless Econometrics : An Empiricist ’ S Companion.” <em>Massachusettts I Nstitute of Technology and the London School of Economics</em>, no. March: 290. <a href="https://doi.org/10.1017/CBO9781107415324.004">https://doi.org/10.1017/CBO9781107415324.004</a>.</p>
-</div>
-<div id="ref-Gentzkow2013">
-<p>Gentzkow, Matthew. 2013. “Code and Data for the Social Sciences : A Practitioner ’ S Guide.”</p>
-</div>
-<div id="ref-kennedyGuideEconometrics2003">
-<p>Kennedy, Peter. 2003. <em>A Guide to Econometrics</em>. MIT press.</p>
-</div>
-<div id="ref-Tibshirani">
-<p>Tibshirani, Robert. n.d. “Statistical Learning with Sparsity the Lasso and Generalizations.”</p>
-</div>
-<div id="ref-wooldridgeEconometricAnalysisCross2002">
-<p>Wooldridge, Jeffrey M. 2002. <em>Econometric Analysis of Cross Section and Panel Data</em>. 2. The MIT press. <a href="https://doi.org/10.1515/humr.2003.021">https://doi.org/10.1515/humr.2003.021</a>.</p>
-</div>
-<div id="ref-wooldridgeIntroductoryEconometricsModern2008">
-<p>Wooldridge, J M. 2008. <em>Introductory Econometrics: A Modern Approach</em>. South-Western Pub.</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="functions-grabbed-from-web-and-created-by-us-for-analysisoutput.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conceptual.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
