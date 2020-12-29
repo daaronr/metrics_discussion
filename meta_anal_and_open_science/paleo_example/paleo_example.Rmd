@@ -1,8 +1,12 @@
 ---
 output:
-  pdf_document: default
-  html_document: default
+  tufte::tufte_handout: default
+bibliography: "`r rbbt::bbt_write_bib('biblio.json', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
 ---
+
+```{r setup, include=FALSE}
+library(tufte)
+```
 
 # Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
 
@@ -22,20 +26,15 @@ This evidence is summarized in the meta-analysis of @manheimerPaleolithicNutriti
 
 More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019, @demenezesInfluencePaleolithicDiet2019a).
 
-<div class="marginnote">
-According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
-</div>
+`r margin_note("According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.")`
 
 However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*
-<div class="marginnote">
-\* However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019; @manheimerPaleolithicNutritionMetabolic2015]; both of these meta-analysis would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.
-</div>
+
+`r margin_note("However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019; @manheimerPaleolithicNutritionMetabolic2015]; both of these meta-analysis would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.")`
 
 [@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015a meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. \*\*\*
 
-<div class="marginnote">
-\*\*\* While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification.  I return to these issues below.
-</div>
+`r margin_note("While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification.  I return to these issues below.")`
 
 \
 
@@ -58,27 +57,21 @@ In this brief review I:
 ### Limited compliance; 'what are we aiming to measure and why?' {#compliance}
 
 Randomized controlled trials on nutrition and diet have important limitations not faced by many other medical RCTs, such as drug trials.
-<div class="marginnote">
-Another important limitation: "RCTs of dietary interventions
+`r margin_note('Another important limitation: "RCTs of dietary interventions
 cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns" @schwingshacklPerspectiveNutriGradeScoring2016. They also cite
-"lack of double blinding... crossover bias, and high dropout rates"; although dropout (attrition) is not an exclusive problem for dietary studies.
-</div>
+"lack of double blinding... crossover bias, and high dropout rates"; although dropout (attrition) is not an exclusive problem for dietary studies.')`
 
 
 *Limited compliance* is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of *tracking* compliance (e.g. "Diet-associated biomarkers" such as 24-hour urine checks, which are highly-rated  by @schwingshacklPerspectiveNutriGradeScoring2016's Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in @boersFavourableEffectsConsuming2014).
 
 However, our consideration of this issue depends on what exactly itis we want to measure, and for what purpose. For example may want to consider either, what I will call... \*
 
-<div class="marginnote">
-\* Note that my terminology below comes from the "treatment effect" literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., @angristIdentificationEstimationLocal1995.
-</div>
+`r margin_note('Note that my terminology below comes from the "treatment effect" literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., @angristIdentificationEstimationLocal1995.')`
 
 
 1. "Average Treatment Effect (ATE)": The difference in some medical outcome, averaged over the population of interest... for the 'Treatment diet' if consumed exactly as proposed relative to a 'Control diet.'\*\*
 
-<div class="marginnote">
-\*\* Even here, there may be some ambiguities that need to be clarified. Should these diets specify exact amounts/calories consumed ('isocaloric'), or only the types of foods, allowingconsumption as desired? Do we need to ensure that other patterns, such as exercise, are held constant across diets?  (One might imagine that with random treatment exercise patterns will be identical on average, however, some diet may give people more energy to do exercise. We need to decide whether this is part of the effect we wish  to consider.)
-</div>
+`r margin_note("Even here, there may be some ambiguities that need to be clarified. Should these diets specify exact amounts/calories consumed ('isocaloric'), or only the types of foods, allowingconsumption as desired? Do we need to ensure that other patterns, such as exercise, are held constant across diets?  (One might imagine that with random treatment exercise patterns will be identical on average, however, some diet may give people more energy to do exercise. We need to decide whether this is part of the effect we wish  to consider.")`
 
 *or the*
 
@@ -90,9 +83,7 @@ The ATE measure would seem to be more relevant:
 - if we want to get at basic biological mechanisms or
 - if we believe we should recommed a 'best diet' without adjusting for compliance. \*
 
-<div class="marginnote">
-E.g., perhaps we are making recommendations for a context where compliance is not particularly difficult (e.g. perhaps school or military meals).  It may also be reasonable to assume that people reading our analysis (e.g., dieters), will already make these self-control considerations themselves, and simply wish to know which diet would ve best, if they could live up to it.
-</div>
+`r margin_note("E.g., perhaps we are making recommendations for a context where compliance is not particularly difficult (e.g. perhaps school or military meals).  It may also be reasonable to assume that people reading our analysis (e.g., dieters), will already make these self-control considerations themselves, and simply wish to know which diet would ve best, if they could live up to it.")`
 
 On the other hand the ITT measure might be more relevant if we want to consider which diet to propose "for real people to achieve their best outcomes."  However:
 
@@ -136,18 +127,12 @@ It is important to note that even if there is clear evidence that (recommending 
 ### Strengths and limitations
 
 The authors follow standard protocols and recommendations. However, these systems themselves may merit some further examination.\*
-<div class="marginnote">
-\*  E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has *determined* the weights for different categories of 'quality' chosen. @Quintana2015 note "there are more than 80 tools available to assess the quality and risk of bias in observational studies"... Perhaps there are a similar number of tools for RCT studies.
-</div>
+`r margin_note('E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has *determined* the weights for different categories of "quality" chosen. @Quintana2015 note "there are more than 80 tools available to assess the quality and risk of bias in observational studies"... Perhaps there are a similar number of tools for RCT studies.')`
 
 They have:
 
 1. Prospectively (in advance) [registered their protocol with PROSPERO](http://www.crd.york.ac.uk/PROSPERO\*\*
-<div class="marginnote">
-\*\*
-This reduces the risk of "hypothesizing after the results are known" ... 'HARKing' @kerrHARKingHypothesizingResults1998", as noted by @Quintana2015.
-However it is difficult to verify when a meta-analysis was actually started, even privately. Here pre-registration partially depends on an honor and trust system.
-</div>
+`r margin_note('This reduces the risk of "hypothesizing after the results are known" ... "HARKing" @kerrHARKingHypothesizingResults1998", as noted by @Quintana2015. However it is difficult to verify when a meta-analysis was actually started, even privately. Here pre-registration partially depends on an honor and trust system.')`
 
 
 2. Searched a broad collection of appropriate databases:
@@ -167,8 +152,7 @@ They also claim to have contacted "experts in the field" (these should have been
 
 > Although there is moderate quality evidence from randomized controlled intervention studies to suggest that the Paleolithic diet can improve metabolic syndrome components, we believe that more studies are required before Paleolithic nutrition can be recommended in future guidelines. (p. 928).
 
-<div class="marginnote">
-\* However, I would have liked to see their code and data made available, or at least more prominently noted (I may have overlooked it). </div>
+`r margin_note("However, I would have liked to see their code and data made available, or at least more prominently noted (I may have overlooked it).")`
 
 #### Limitations
 
@@ -216,17 +200,12 @@ The reported meta-analytic estimate is an average of 2.38 cm greater loss in Pal
 *Does this imply a large relative effect of Paleo?* *Does it bound the effect as 'small at best'*?
 
 To consider the magnitude of an effect such as this, it is helpful to consider overall averages and spreads.
-The average US male WC is roughly 102 cm (@fryarMeanBodyWeight2018) and 98 cm for women...\*
-<div class="marginnote">
-I could not quickly find a reputable source for averages in Sweden and Netherlands, where most of the studies were conducted, but [secondhand reports](https://www.dailymail.co.uk/health/article-2441250/Average-BMI-Artist-compares-sizes-men-various-countries.html) suggest it is somewhat smaller, perhaps 90 cm.
+The average US male WC is roughly 102 cm (@fryarMeanBodyWeight2018) and 98 cm for women... \
+`r margin_note("I could not quickly find a reputable source for averages in Sweden and Netherlands, where most of the studies were conducted, but [secondhandreports](https://www.dailymail.co.uk/health/article-2441250/Average-BMI-Artist-compares-sizes-men-various-countries.html) suggest it is somewhat smaller, perhaps 90 cm.")`
 
-</div>
-... which (for men) is also approximately the [threshold circumference  considered a risk factor for metabolic syndrome](https://www.heart.org/en/health-topics/metabolic-syndrome/about-metabolic-syndrome) (accessed 29 Dec 2020). I quickly, (and perhaps incorrectly) imputed a standard-deviation of roughly 52 cm.\*\*
+... which (for men) is also approximately the [threshold circumference  considered a risk factor for metabolic syndrome](https://www.heart.org/en/health-topics/metabolic-syndrome/about-metabolic-syndrome) (accessed 29 Dec 2020). I quickly, (and perhaps incorrectly) imputed a standard-deviation of roughly 52 cm.
 
-<div class="marginnote">
-\*\* Drawing from @fryarMeanBodyWeight2018 statistics, I multiplied the square root of the reported sample size ($\sqrt(43169
-)$) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn't make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.
-</div>
+Drawing from @fryarMeanBodyWeight2018 statistics, I multiplied the square root of the reported sample size ($\sqrt(43169)$) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn't make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.
 
 \
 
@@ -234,14 +213,10 @@ I could not quickly find a reputable source for averages in Sweden and Netherlan
 
 The evidence also suggest between-study heterogeneity; at least we do not have strong evidence that would allow us to rule this out. Prima facie, we see strong differences between the studies. In particular, the one study with a strongly  different methodology (Boers et al), finds a much smaller (near-zero effect). In their formal measures, we see an $I^2$ of 52%, conventionally classified as "moderate heterogeneity". I believe $\tau^2 of 2.81$  can be interpreted as a 'standard deviation in true effect size between studies' of $\tau =$ `r sqrt(2.81)`, which seems, again, 'moderate'.\*\*\* 
 
-<div class="marginnote">
-\*\*\* I  suspect that if we allowed a variety of other methods of estimating and reporting this (including Bayesian) and we reported the confidence/credible intervals on this between-study variance, the results might suggest the possibility of more substantial heterogeneity. 
-</div>
+`r margin_note("I  suspect that if we allowed a variety of other methods of estimating and reporting this (including Bayesian) and we reported the confidence/credible intervals on this between-study variance, the results might suggest the possibility of more substantial heterogeneity.")`
 
 Although the NHST for heterogeneity is not significant by standard measures ($P=0.10$), a simple 'failure to reject in a diagnostic test' does not constitute substantial reason to ignore a potentially-important concern.\*
-<div class="marginnote">
-A 'failure to reject the null' is not in itself, strong evidence for the null hypothesis. Among other things, I suspect a lack of power to detect heterogeneity with only four studies.
-</div>
+`r margin_note("A 'failure to reject the null' is not in itself, strong evidence for the null hypothesis. Among other things, I suspect a lack of power to detect heterogeneity with only four studies.")`
  
 
 
@@ -258,15 +233,15 @@ A 'failure to reject the null' is not in itself, strong evidence for the null hy
 ### Ghaedi et al meta-analysis
 -->
 
-[@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015's focal statistical comparisons appears to result from a mis-reading.\*<div class="marginnote">
-"We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups." [@manheimerReplyTRFenton2016]
-</div>
+[@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015's focal statistical comparisons appears to result from a mis-reading.\*
+
+`r margin_note('"We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups." [@manheimerReplyTRFenton2016]')`
 
 
 @schwingshacklPerspectiveNutriGradeScoring2016 develops the 'Nutrigrade' scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.\*
-<div class="marginnote">
-\* Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.
-</div>
+
+`r margin_note("Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.")`
+
 Their system and relative points system was independently developed; a major point of contrast with GRADE (@guyattGRADEEmergingConsensus2008) seems to be Nutrigrade's greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as [limited compliance](#compliance). They 'Nutrigrade' the evidence in  @manheimerPaleolithicNutritionMetabolic2015 as 5.75, or 'Low', explained as "there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate." Of 10 randomly meta-analysis studies they rated, this was the fifth-highest 'Nutrigrade'.
 
 
@@ -295,9 +270,9 @@ In particular, @ghaediEffectsPaleolithicDiet2019 perform a meta-analysis of eigh
 Unlike the other trials considered in @manheimerPaleolithicNutritionMetabolic2015, @boersFavourableEffectsConsuming2014  "provided home-delivered Paleolithic and control diet meals to participants". This permits a more direct examination of what I called the [ATE](#compliance). I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.
 
 This study is also particular strong because it has (apparently) a zero attrition rate ('34/34 analyzed'), while attrition in the other cited studies is substantial. Particular forms of non-random attrition can strongly bias estimated treatment effects, biasing both the ATE and ITT mentioned above.\*
-<div class="marginnote">
-\* See @leeTrainingWagesSample2009 for a clear discussion of this, as well as an approach to 'bounding this bias' under a particular monotonicity assumption.
-</div>
+
+`r margin_note("See @leeTrainingWagesSample2009 for a clear discussion of this, as well as an approach to 'bounding this bias' under a particular monotonicity assumption.")`
+
 
 ## Overall analysis
 
@@ -352,9 +327,7 @@ If I had better answers to question like these, I would know which types of stud
 
 - @manheimerPaleolithicNutritionMetabolic2015's code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.\*
 
-<div class="marginnote">
-\* For example, as explained in the excellent tutorial @harrerDoingMetaanalysisHandson2019Mathias, [there are a range of popular estimators for $\tau^2$](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2), the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.
-</div>
+`r margin_note("For example, as explained in the excellent tutorial @harrer2019doing, [there are a range of popular estimators for $\tau^2$](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2), the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.")`
 
 - The particularly promising @boersFavourableEffectsConsuming2014 study  as [noted above](#boers)
 
