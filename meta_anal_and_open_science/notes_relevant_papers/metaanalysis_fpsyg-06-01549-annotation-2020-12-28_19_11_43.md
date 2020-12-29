@@ -16,7 +16,7 @@ Although they focus on 'correlational data', the insights are mostly relevant to
 > pre-registration helps avoids bias by providing evidence of a priori analysis intentions. Like other types of empirical research, meta-analysis is susceptible to hypothesizing after the results are known, otherwise known as "HARKing” (Kerr, 1998)
 
 <div class="marginnote">
-Note however that it is difficult to verify when a meta-analysis was actually started, even privately. Thus, even pre-registration is somewhat based on an honor and trust system here.
+Note however that it is difficult to verify when a meta-analysis was actually started, even privately. Thus, in this context, pre-registration partially depends on an honor and trust system.
 </div>
 
 
@@ -73,8 +73,7 @@ Note however that it is difficult to verify when a meta-analysis was actually st
 > Forest plots visualize the effect sizes and CIs from the included studies
 
 
-> The summary effect size is represented by the polygon at the bottom of the plot, with the width
-of the polygon representing the 95% CI
+> The summary effect size is represented by the polygon at the bottom of the plot, with the width of the polygon representing the 95% CI
 
 
 > Studies with larger squares have contributed more to the summary effect
@@ -93,10 +92,7 @@ of the polygon representing the 95% CI
 > these points should be equivalently spread on both sides of the line (Figure 5
 
 
-> if a significant positive effect were
-found for the summary effect size, for instance, the vertical line
-would be situated to the right of zero. Any study with a nonsignificant effect would lie around zero, thus if the funnel is uneven with more positively associated studies to the right of the line this provides evidence for publication bias. Figure
-
+> if a significant positive effect were found for the summary effect size, for instance, the vertical line would be situated to the right of zero. Any study with a nonsignificant effect would lie around zero, thus if the funnel is uneven with more positively associated studies to the right of the line this provides evidence for publication bias. Figure
 
  > The trim and fill procedure imputes missing studies (hollow circles) to create a more symmetrical funnel plot (C)
 

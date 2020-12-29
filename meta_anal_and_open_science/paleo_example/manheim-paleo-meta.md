@@ -91,8 +91,8 @@ of the metabolic syndrome
 -
 
 
-> Short-termefficacy dietarytrialsare generallyconsideredto be best
-suitedto answerthis question becausethey have higher compliance
+> Short-term efficacy dietary trials are generally considered to be best
+suited to answer this question becausethey have higher compliance
 and fewer losses to follow-up
 - citation?
 
