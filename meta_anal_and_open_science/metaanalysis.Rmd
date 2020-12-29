@@ -202,8 +202,6 @@ Coding meta-analyses in R
 <!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? -->
 
 
-</div>
-
 \ The $I^2$ stat is a measure of the proportion of total variation attributed to cross-study variation; if $\hat{\sigma}_j$ is the same across all studies we have:
 $I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
 
@@ -563,7 +561,7 @@ A quick look at the data we're using here:
 
 ```{r}
 
-str(ThirdWave[,1:3])
+str(madata[,1:3])
 ```
 
 `TE`:  calculated effect size of each study, expressed as the Standardized Mean Difference (SMD)
@@ -598,7 +596,7 @@ SD: It will take some time to compile the model, and this is inevitable (it take
 
 (
 m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
-             data = ThirdWave,
+             data = madata,
              prior = priors,
              iter = 2000)
 )
