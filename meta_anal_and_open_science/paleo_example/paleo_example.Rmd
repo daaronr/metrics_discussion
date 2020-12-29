@@ -2,6 +2,7 @@
 output:
   tufte::tufte_handout: default
 bibliography: "`r rbbt::bbt_write_bib('biblio.json', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +27,9 @@ This evidence is summarized in the meta-analysis of @manheimerPaleolithicNutriti
 
 More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019, @demenezesInfluencePaleolithicDiet2019a).
 
-`r margin_note("According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.")`
+```{marginfigure} 
+According to [https://www.scimagojr.com/journalrank.php?category=2916](www.scimagojr.com), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
+```
 
 However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*
 
