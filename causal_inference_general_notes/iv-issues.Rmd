@@ -11,12 +11,11 @@ Ben Balmford:
 > So [@ConsistencyInferenceInstrumental] [Young,  2019](http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&hl=en&sa=X&scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&nossl=1&oi=scholarr) by Young highlights that the point estimates seem to not differ that much from OLS estimates...
 which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to.
 
-
 \
 
 DR: My concerns tend to be more:
 
-1. With heterogeneity IV is not capturing the *average* effect, and often finds results that are very much driven by a particular subsample, often accentuating the supposed byas
+1. With heterogeneity IV is not capturing the *average* effect, and often finds results that are very much driven by a particular subsample, often accentuating the supposed bias
 
 2. Many IV's are not defensible and testing the identifying assumptions is basically impossible
 
@@ -28,7 +27,7 @@ BB:
 
 <div class="marginnote">
  
-BB: Whereas in DiD (which doesnt perform great either)/RD the its really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it's so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don't always trust your eyeballs!
+BB: Whereas in DiD (which doesn't perform great either)/RD the its really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it's so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don't always trust your eyeballs!
 
 </div>
 
@@ -55,9 +54,9 @@ Focusing on a binary endogenous 'treatment' variable
 
 - With a 'weak instrument' ... why does that matter?
 
-## Intrumenting Interactions 
+## Instrumenting Interactions 
 
-In randomized controlled trials it sometimes arises the issue that on is particularly interested in a potentially endogeneous explanatory variable and its interaction with the experimental treatments, that are exogenous by construction. From the stata list and mostly harmless econometrics [](http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/)
+In randomized controlled trials it sometimes arises the issue that one is particularly interested in a potentially endogeneous explanatory variable and its interaction with the experimental treatments, that are exogenous by construction. From the stata list and mostly harmless econometrics [](http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/)
 >If you have \(X_1\) endogenous and an exogenous instrument \(Z\) , and your model includes two terms involving \(X_1\) and \(X_1 \times X_2\), then you should use two instruments: \(Z\), and \(Z \times X_2\). 
 
 ## Reference to the use of IV in experiments/mediation
