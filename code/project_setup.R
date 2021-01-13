@@ -9,12 +9,13 @@ library(here)
 #library(checkpoint) #TODO ... in to avoid differential processing from different package versions
 library(pacman)
 
-p_load(GGally,Hmisc,broom,codebook,corx,data.table,dataMaid,devtools,dplyr,glue,gtools,here,hrbrthemes,janitor,kableExtra,knitr,lubridate,magrittr,pastecs,plyr,purrr, pryr, readr,scales,sjlabelled,
+p_load(GGally,Hmisc,broom,codebook, corx,data.table,dataMaid,devtools,dplyr,glue,gtools,here,hrbrthemes,janitor,kableExtra,knitr,lubridate,magrittr,pastecs,plyr,purrr, pryr, readr,scales,sjlabelled,
        snakecase,summarytools,tictoc,tidyr,tidyverse,todor,xtable)
 
 #Set function defaults
 here <- here::here
 where <- pryr::where
+
 
 #### Sourcing R scripts and HTML formatting ####
 
@@ -36,7 +37,7 @@ try_download <- function(url, path) {
 #Downloading html Formatting
 try_download("https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/header.html", here("support", "header.html"))
 
-try_download("https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", here("support", "tufte_plusX.css"))
+try_download("https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", here("support", "tufte_plus.css"))
 
 try_download("https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", here("support", "reinstein_bibtex_dropbox.bib"))
 

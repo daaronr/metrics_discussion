@@ -76,7 +76,7 @@ Try downloading and accessing some functions here:
     here <- here::here()
     try_download("https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/project_setup.R", here::here("code","project_setup.R"))
 
-source(here("code", "project_setup.R"))
+source(here::here("code", "project_setup.R"))
 
 ```
 
