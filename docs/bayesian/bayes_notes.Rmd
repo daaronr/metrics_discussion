@@ -1,4 +1,4 @@
-# Bayesian approaches
+# Bayesian approaches {#bayes}
 
 
 ```{block2,  type='note'}

@@ -257,13 +257,18 @@ An applied review
 
 [@kennedyGuideEconometrics2003]
 
-[@Tibshirani]
+
+Tibshirani, Robert. n.d. “Statistical Learning with Sparsity the Lasso and Generalizations.”
+
+<!--[Tibshirani] -->
 
 OSF guides
 
 Christensen ea "Transparent and Reproducable Social Science Research"
 
-[@Gentzkow2013; @wooldridgeEconometricAnalysisCross2002; @wooldridgeIntroductoryEconometricsModern2008]
+[@wooldridgeEconometricAnalysisCross2002; @wooldridgeIntroductoryEconometricsModern2008]
+
+Gentzkow and Shapiro (2013) <!-- Add reference -->
 
 
 An Introduction to Statistical Learning with Applications in R

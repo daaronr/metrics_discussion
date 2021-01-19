@@ -12,7 +12,7 @@
 
 #### Fligner-Policello test
 
-@flignerpolicello1981
+@randlesAsymptoticallyDistributionfreeTest1980
 
 Null-hypothesis that the medians in the two groups (samples) are the same.
 
@@ -106,7 +106,7 @@ Recommend small strata but not too small as variances cannot be estimated within
 
 - Other experimetrics methodology surveys mentioned (Duflo et al '06, Glennerster and T '13, Glennerster '16); present one is more theoretical
 
-### randomised experiments and validity
+### Randomised experiments and validity
 
 Defined as settings "where the assignment mechanism does not depend on characteristics of the units"
 - That seems to be "pure randomisation"

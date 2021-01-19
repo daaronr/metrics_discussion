@@ -1,7 +1,198 @@
 # Survey design and implementation; analysis of survey data {#surveys}
 
+
+**Resources consulted/to consult**
+
+Wikipedia entries on
+
+- ['survey sampling'](https://en.wikipedia.org/wiki/Survey_sampling)
+-
+
+ Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
+
+
 ## Survey sampling/intake
 
 ### Probability sampling
 
+<div class="marginnote">
+Here: naive notes based on wikipedia, will be improved.
+</div>
+
+
 > A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in [Wiki](https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling))
+
+<div class="marginnote">
+Note that the 'sampling frame',  'the source material or device from which a sample is drawn', e.g, a telephone directory, may not exactly contain all elements of the 'population of interest' (e.g., the population with and without listed numbers).
+
+See 'Missing elements', 'Foreign elements', 'Duplicate entries' and 'Groups or clusters' ...
+
+Also note that 'Not all frames explicitly list population elements; some list only 'clusters'. For example, a street map can be used as a frame for a door-to-door survey.'
+
+</div>
+
+- Simple random versus stratified and cluster sampling
+
+
+\
+
+*Issues*\*
+
+<div class="marginnote">
+Many of these also seem relevant for our ['social movement' case of interest below.](#jazz-case)
+</div>
+
+
+- Non-response bias (biggest issue?)
+
+-
+
+
+
+### Non-probability sampling
+
+
+## Case: Surveying an unmeasured and rare population surrounding a 'social movement' {#jazz-case}
+
+
+### Background and setup {-}
+
+*Consider a case where:*
+
+1. We have a **population-of-interest** based on an affiliation, certain actions, or a set of ideas.
+Some examples:
+
+- Vegetarians
+- 'Tea party conservatives' in the US
+- Jews, both religious and 'culturally Jewish'
+- Jazz musicians
+
+For this writeup, we will call the targeted group 'the Jazz Movement' or 'the Jazz population'. Individuals will either be 'Jazzy' (J) or 'non-Jazzy' (NJ).
+
+
+There are some **disagreements about how to define this group**.
+
+\
+
+2. We have **no 'gold standard' to benchmark against.**
+
+- There is no 'actual targeted and measured outcome' such as voting in an election.
+- There are no other surveys or enumerations (e.g., Censuses) to inform our results.
+
+\
+
+3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years
+
+... based on advertising and word-of-mouth in a variety of outlets ('referrers') associated with the 'movement'.
+
+<div class="marginnote">
+Particularly:
+
+- A discussion forum
+- A newsletter
+- A popular website and hub for the movement
+
+</div>
+
+
+- We can identify *which* 'referrer' lead someone to our survey.
+
+- All participants are given a similar 'donation' incentive, an incentive that might tend to particularly attract members of the Movement.
+
+<div class="marginnote">
+Given the context, we might reasonably expect that willingness to complete the survey might be associated with depth of support for the movement.
+</div>
+
+
+- We can link some individuals across years.
+
+- Some questions repeat across years.
+
+
+\
+
+4. We have (self-reported) **measures** of
+
+- Demographics (age, gender, etc),
+- Attitudes and beliefs (e.g., support for the death penalty),
+- Retrospectives (esp. 'year you became Jazzy'), and
+- Behaviors (e.g., charitable donations).
+
+
+\
+
+5. Our **research goals include** measuring:
+
+- The size of the movement (challenging),
+- The demographics (and psychographics, etc) of the movement,
+- The attitudes, beliefs and behaviors of people in the movement,
+- The (causal) drivers of joining the movement and actively participating in the movement (or leaving the movement),
+
+- ... and the trends/changes in all of the above.
+
+\
+
+
+**Why do we care?** *We want to know these things for several reasons, including...*
+
+
+To find ways to build membership (perhaps 'expand and diversify') and participation in the movement (including specific behaviors like donating),especially through...
+
+- Funding causal drivers that 'work', and
+- Profiling and targeting 'likely Jazzers' from outside the movement
+
+\
+
+To understand and better represent the attitudes of the movement's members in our movement-wide activities.
+
+\
+
+'For general understanding of the movement and its members', to inform a wide range of decisions across the movement, and further research into the movement.
+
+
+### Our 'convenience' method; issues, alternatives
+
+
+Our current approach seems to be some combination of what is called 'convenience sampling' and 'snowball sampling'. The major distinction from probability sampling (as I see it) is...
+
+*Probability sampling* identifies a *population of interest* and a *sample frame* meant to capture this population. Rather than appealing to this entire population/frame, PS randomly (or stratified/clustered) samples a 'probability share' (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze ---and perhaps adjust for---the rate of non-response.
+
+
+In contrast,
+
+<div class="marginnote">
+ I have heard that 'internet surveys', if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.
+</div>
+
+\
+
+
+Wikipedia entry on 'convenience sampling'
+
+> Another example would be a gaming company that wants to know how one of their games is doing in the market one day after its release. Its analyst may choose to create an online survey on Facebook to rate that game.
+
+> **Bias** The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on 'Convenience sampling',  cites Borenstein et al, 2017)
+
+
+*This statement is deeply pessimistic...* 'the bias cannot be measured'. We might dig more deeply to see if there are potential approaches to dealing with this
+
+
+\
+
+### Notes and considerations:
+
+
+
+- 'Whether we can do better’ sort of questions ... we should try to pin down what our metrics and targets are
+
+- What do we mean when we say the ‘actual Jazz population’?
+
+- What sorts of questions/claims are we interested in most/what ‘parameters’ are we trying to measure?
+
+- For the second point, I think that some methods might yield plausibly unbiased/reliable estimates of certain parameters (e.g., year-to-year changes) but not others.
+
+\
+
+Moss:
+
+some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others

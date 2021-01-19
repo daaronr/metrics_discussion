@@ -19,7 +19,7 @@ I claim an experiment should:
 
 This paper is a critique of how models are claimed to be "tested", through a literal implementation, in the laboratory. They argue this misinterprets the intention of a model, and use of economic modelling in general. Ultimately, such experiments (they say) don't really tell us one way or another about the truth or usefulness of the model for the real-world domain that was intended. Some key quotes..
 
-> My reductio ad absurdum on this is an experimenter who 'tests mechanism-design' by asking subjects "do you want to choose this optimal mechanism and earn £20, or this inefficient mechanism and earn £10"? -- @givingtools on twitter
+> My reductio ad absurdum on this is an experimenter who 'tests mechanism-design' by asking subjects "do you want to choose this optimal mechanism and earn £20, or this inefficient mechanism and earn £10"? -- givingtools on twitter
 
 They single-out  two examples of well-published experiments  for criticism: "an investigation of price dispersion by John Morgan,
 

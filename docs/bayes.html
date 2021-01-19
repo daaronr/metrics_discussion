@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Conceptual: approaches to statistics/inference and causality | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="2 Conceptual: approaches to statistics/inference and causality | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>16 Bayesian approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="16 Bayesian approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Conceptual: approaches to statistics/inference and causality | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="16 Bayesian approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Conceptual: approaches to statistics/inference and causality | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="16 Bayesian approaches | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="data-sci.html"/>
+<link rel="prev" href="metaanalysis.html"/>
+<link rel="next" href="n-ds4bs.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -633,31 +633,1000 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conceptual" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Conceptual: approaches to statistics/inference and causality</h1>
-<div id="bayesian-vs.-frequentist-approaches" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Bayesian vs. frequentist approaches</h2>
-<p>Folder: bayesian
-Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
-<div id="interpretation-of-cis-aside" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Interpretation of CI’s (aside)</h3>
+<div id="bayes" class="section level1" number="16">
+<h1><span class="header-section-number">16</span> Bayesian approaches</h1>
+
+<div class="note">
+I take notes on several different resources/texts below. Ultimately I’ll try to integrate these into a single set of notes.
+</div>
+<div id="my-david-reinsteins-uses-for-bayesian-approaches-brainstorm" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</h2>
+<div id="meta-analysis-of-previous-evidence" class="section level3" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Meta-analysis of previous evidence</h3>
+<ul>
+<li><p>Of prior work, especially on motivators of (effective) charitable giving and responses to effectiveness information</p></li>
+<li><p>Of my own series’ of experiments (potentially joint with prior work)</p></li>
+</ul>
+</div>
+<div id="inference-particularly-about-null-effects" class="section level3" number="16.1.2">
+<h3><span class="header-section-number">16.1.2</span> Inference, particularly about ‘null effects’</h3>
+<p>When/what can we say about the ‘absence of an effect’</p>
+<p>How to integrate into inferences from diagnostic testing (e.g., common-trend assumption)?</p>
+</div>
+<div id="policy-and-business-implications-and-recommendations" class="section level3" number="16.1.3">
+<h3><span class="header-section-number">16.1.3</span> ‘Policy’ and business implications and recommendations</h3>
+<p>In particular, in a charitable giving social-media fundraising context, we might consider whether it is worth offering ‘seed contributions’ to encourage giving on existing pages. If so, ‘which pages should we seed and how much?’</p>
+<p><br />
+</p>
+</div>
+<div id="theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings" class="section level3" number="16.1.4">
+<h3><span class="header-section-number">16.1.4</span> Theory-driven inference about optimizing agents, esp. in strategic settings</h3>
+<ul>
+<li>Especially in the context od ‘predicted contributions to public goods… and 2nd order beliefs’</li>
+</ul>
+</div>
+<div id="experimental-design" class="section level3" number="16.1.5">
+<h3><span class="header-section-number">16.1.5</span> Experimental design</h3>
+<ul>
+<li><p>Optimal treatment assignment, with previous observables and a track record</p></li>
+<li><p>Sequential designs</p></li>
+<li><p>Bayesian Power calculation<br />
+</p></li>
+</ul>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="bayes.html#cb83-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
+<p>Package loadings from Kurtz:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="bayes.html#cb84-1"></a>pacman<span class="op">::</span><span class="kw">p_unload</span>(pacman<span class="op">::</span><span class="kw">p_loaded</span>(), <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb84-2"><a href="bayes.html#cb84-2"></a>ggplot2<span class="op">::</span><span class="kw">theme_set</span>(ggplot2<span class="op">::</span><span class="kw">theme_grey</span>())</span>
+<span id="cb84-3"><a href="bayes.html#cb84-3"></a>bayesplot<span class="op">::</span><span class="kw">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb84-4"><a href="bayes.html#cb84-4"></a></span>
+<span id="cb84-5"><a href="bayes.html#cb84-5"></a><span class="kw">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
+</div>
+</div>
+<div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> ‘Statistical thinking’ (McElreath) and <a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurtz ‘recoded’ (bookdown)</a>: highlights and notes</h2>
+
+<div class="note">
+<p>McElreath’s course and text looks great. I’m taking selective notes here; I’ll try to incorporate content from both text and <a href="https://www.youtube.com/watch?v=4WVelCswXo4&amp;list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI">youtube video lectures</a>.</p>
+<p><a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurtz has re-written the code</a> using the <code>brms</code> package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?</p>
+I’m planning to through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
+</div>
+<div class="marginnote">
+<p>I’ve also forked Kurtz’s repo <a href="https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse">here</a>, which I may play with.</p>
+</div>
+<div id="the-golem-of-prague-chapter-1" class="section level3" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> The Golem of Prague (Chapter 1)</h3>
+<p>Don’t let your model or approach turn into a Golem you can’t control. Don’t ‘believe the model’; continuously validate it. The map is not the territory.</p>
+<p>‘Statistical decision trees’ lend a false sense of security… and almost never fit the actual case we are dealing with. (fig 1.1)<br />
+</p>
+<p>Statistical models are non-unique maps to ‘process models’ which are non-unique maps to <em>hypotheses</em>. (He offers the example of neutral evolutionary selection’ example.)</p>
+<p>This makes strict falsification impossible: How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses?<br />
+</p>
+<p>But this warning is at least as relevant for Bayesian analyses, which must be based on specifically defined (term) models of the DGP etc. Thus he recommends caution and continuous (?) interplay between the model and the data. (See next chapter … ‘small worlds and large worlds’.)<br />
+</p>
+<p>He also suggests we refer not to ‘Confidence intervals’ or even ‘Credible intervals’, but to ‘Consistent intervals’ … as in ‘these intervals are consistent with the model and data’.</p>
+<p><br />
+</p>
+<p>And…</p>
+<blockquote>
+<p>[so you should] ‘…Explicitly compare predictions of more than one model’</p>
+</blockquote>
+<div id="rethinking-is-nhst-falsificationist" class="section level4 unnumbered" number="">
+<h4>Rethinking: Is NHST falsificationist?</h4>
+<div class="figure" style="text-align: center">
+<img src="images/failure_of_falsification.png" alt="From McElreath video lecture 1" width="70%" />
+<p class="caption">
+(#fig:failure_of_falsification.png)From McElreath video lecture 1
+</p>
+</div>
+<blockquote>
+<p>Null hypothesis significance testing, NHST, is often identified with the falsificationist, or Popperian, philosophy of science. However, usually NHST is used to falsify a null hypothesis, not the actual research hypothesis. So the falsification is being done to something other than the explanatory model. This seems the reverse from Karl Popper’s philosophy.</p>
+</blockquote>
+<div class="marginnote">
+<p>I.e., scientists have turned things upside down; originally the idea was that you had substitute of hypotheses that you would want to falsify and now we try to falsify silly null hypotheses that “nothing is going on”. You should try to really build a hypothesis and test it not just reject that nothing is going on.</p>
+</div>
+</div>
+<div id="books-foci" class="section level4" number="16.2.1.1">
+<h4><span class="header-section-number">16.2.1.1</span> Book’s foci</h4>
+<ol style="list-style-type: decimal">
+<li>Bayesian data analysis</li>
+<li>Multilevel modeling</li>
+<li>Model comparison using information criteria</li>
+</ol>
+<p><br />
+</p>
+</div>
+</div>
+<div id="small-worlds-and-large-worlds-ch-2" class="section level3" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Small Worlds and Large Worlds (Ch 2)</h3>
+<blockquote>
+<p>… The way that Bayesian models learn from evidence is arguably optimal in the small world. When their assumptions approximate reality, they also perform well in the large world. But large world performance has to be demonstrated rather than logically deduced. (p. 20)</p>
+</blockquote>
+<p><br />
+</p>
+<p>We imagine a bag filled with four marbles, each of which is blue or white.</p>
+<p>“So, if we’re willing to code the marbles as 0 =”white" 1 = “blue”, we can arrange the possibility data in a tibble as follows." I.e., we can consider the five possible worlds, in each of which the bag has a different number of white and blue marbles, and represent each of these worlds as a column vector:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="bayes.html#cb85-1"></a>d &lt;-</span>
+<span id="cb85-2"><a href="bayes.html#cb85-2"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="dv">0</span>,</span>
+<span id="cb85-3"><a href="bayes.html#cb85-3"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
+<span id="cb85-4"><a href="bayes.html#cb85-4"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb85-5"><a href="bayes.html#cb85-5"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
+<span id="cb85-6"><a href="bayes.html#cb85-6"></a>         <span class="dt">p_5 =</span> <span class="dv">1</span>)</span>
+<span id="cb85-7"><a href="bayes.html#cb85-7"></a></span>
+<span id="cb85-8"><a href="bayes.html#cb85-8"></a>d</span></code></pre></div>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-72">
+<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-72">Table 16.1: </span> </caption><col><col><col><col><col><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_1</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_2</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_3</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_4</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_5</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1</td></tr>
+</table>
+
+<p><br />
+</p>
+<p>We visualize this in the plot below, where each column is one ‘world’:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="bayes.html#cb86-1"></a>d <span class="op">%&gt;%</span></span>
+<span id="cb86-2"><a href="bayes.html#cb86-2"></a><span class="st">  </span><span class="kw">gather</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
+<span id="cb86-3"><a href="bayes.html#cb86-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
+<span id="cb86-4"><a href="bayes.html#cb86-4"></a>         <span class="dt">possibility =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each =</span> <span class="dv">4</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#distributing the &#39;which world&#39; index</span></span>
+<span id="cb86-5"><a href="bayes.html#cb86-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> possibility,</span>
+<span id="cb86-6"><a href="bayes.html#cb86-6"></a>             <span class="dt">fill =</span> value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.character</span>())) <span class="op">+</span></span>
+<span id="cb86-7"><a href="bayes.html#cb86-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></span>
+<span id="cb86-8"><a href="bayes.html#cb86-8"></a><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="op">+</span></span>
+<span id="cb86-9"><a href="bayes.html#cb86-9"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
+<span id="cb86-10"><a href="bayes.html#cb86-10"></a><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
+<span id="cb86-11"><a href="bayes.html#cb86-11"></a>                  <span class="dt">ylim =</span> <span class="kw">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="op">+</span></span>
+<span id="cb86-12"><a href="bayes.html#cb86-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-73-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
+<p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="bayes.html#cb87-1"></a><span class="kw">tibble</span>(<span class="dt">draw    =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,</span>
+<span id="cb87-2"><a href="bayes.html#cb87-2"></a>       <span class="dt">marbles =</span> <span class="dv">4</span>) <span class="op">%&gt;%</span></span>
+<span id="cb87-3"><a href="bayes.html#cb87-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">possibilities =</span> marbles <span class="op">^</span><span class="st"> </span>draw) <span class="op">%&gt;%</span></span>
+<span id="cb87-4"><a href="bayes.html#cb87-4"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+draw
+</th>
+<th style="text-align:right;">
+marbles
+</th>
+<th style="text-align:right;">
+possibilities
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note">
+<p>Next, there is a huge amount of code explaining how to make the ‘garden of forking paths’ diagrams. I’m basically going to skip all that code, and paste in a few images. You can find all the code <a href="https://bookdown.org/content/3890/small-worlds-and-large-worlds.html#the-garden-of-forking-data">HERE</a></p>
+</div>
+<p><br />
+</p>
+<p>Suppose there is only one blue ball and three white balls, possibility ‘2’ above. For this world, we see the full ‘garden of forking paths’ — the number of ways to select 1, 2, and 3 balls (with replacement) — below.</p>
+<p>Every path starting from the center is a possible (sequence of) draws.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-76"></span>
+<img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-13-1.png" alt="All possible draws of three balls" width="50%" />
+<p class="caption">
+Figure 16.1: All possible draws of three balls
+</p>
+</div>
+<p><br />
+</p>
+<p>Now the inferential exercise: we want to know (the likelihood) of each of the five possible ‘worlds’. As we draw data we know we are proceeding along one of some subset of the forking paths.<br />
+</p>
+<p>For example, under possible world 2, if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-77"></span>
+<img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-14-1.png" alt="All possible draws of three balls" width="50%" />
+<p class="caption">
+Figure 16.2: All possible draws of three balls
+</p>
+</div>
+<p>We see that under World 2 there are 3 ways of getting this sequence. 3 out of <span class="math inline">\(4^3\)</span> equally likely paths under World 2, or a <span class="math inline">\(3/64\)</span> chance (about 5%).</p>
+<p><br />
+</p>
+<p>We can do similar for the other possible worlds; multiplying the ‘ways to produce each draw’ in the path yields the ‘total ways to produce the path’, under each world.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="bayes.html#cb88-1"></a><span class="co"># if we make two custom functions, here, it will simplify the code within `mutate()`, below</span></span>
+<span id="cb88-2"><a href="bayes.html#cb88-2"></a>n_blue &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb88-3"><a href="bayes.html#cb88-3"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;b&quot;</span>)</span>
+<span id="cb88-4"><a href="bayes.html#cb88-4"></a>}</span>
+<span id="cb88-5"><a href="bayes.html#cb88-5"></a></span>
+<span id="cb88-6"><a href="bayes.html#cb88-6"></a>n_white &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb88-7"><a href="bayes.html#cb88-7"></a>  <span class="kw">rowSums</span>(x <span class="op">==</span><span class="st"> &quot;w&quot;</span>)</span>
+<span id="cb88-8"><a href="bayes.html#cb88-8"></a>}</span>
+<span id="cb88-9"><a href="bayes.html#cb88-9"></a></span>
+<span id="cb88-10"><a href="bayes.html#cb88-10"></a>t &lt;-</span>
+<span id="cb88-11"><a href="bayes.html#cb88-11"></a><span class="st">  </span><span class="co"># for the first four columns, `p_` indexes position</span></span>
+<span id="cb88-12"><a href="bayes.html#cb88-12"></a><span class="st">  </span><span class="kw">tibble</span>(<span class="dt">p_1 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)),</span>
+<span id="cb88-13"><a href="bayes.html#cb88-13"></a>         <span class="dt">p_2 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)),</span>
+<span id="cb88-14"><a href="bayes.html#cb88-14"></a>         <span class="dt">p_3 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)),</span>
+<span id="cb88-15"><a href="bayes.html#cb88-15"></a>         <span class="dt">p_4 =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">times =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb88-16"><a href="bayes.html#cb88-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">draw 1: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.),</span>
+<span id="cb88-17"><a href="bayes.html#cb88-17"></a>         <span class="st">`</span><span class="dt">draw 2: white</span><span class="st">`</span> =<span class="st"> </span><span class="kw">n_white</span>(.),</span>
+<span id="cb88-18"><a href="bayes.html#cb88-18"></a>         <span class="st">`</span><span class="dt">draw 3: blue</span><span class="st">`</span>  =<span class="st"> </span><span class="kw">n_blue</span>(.)) <span class="op">%&gt;%</span></span>
+<span id="cb88-19"><a href="bayes.html#cb88-19"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 2: white</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">draw 3: blue</span><span class="st">`</span>)</span>
+<span id="cb88-20"><a href="bayes.html#cb88-20"></a></span>
+<span id="cb88-21"><a href="bayes.html#cb88-21"></a>t <span class="op">%&gt;%</span></span>
+<span id="cb88-22"><a href="bayes.html#cb88-22"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+p_1
+</th>
+<th style="text-align:left;">
+p_2
+</th>
+<th style="text-align:left;">
+p_3
+</th>
+<th style="text-align:left;">
+p_4
+</th>
+<th style="text-align:right;">
+draw 1: blue
+</th>
+<th style="text-align:right;">
+draw 2: white
+</th>
+<th style="text-align:right;">
+draw 3: blue
+</th>
+<th style="text-align:right;">
+ways to produce
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>Among of all possible worlds, we see the most number of ways to get B-W-B in a world 4; with three blues and one white – here there are 9 ways in total to get B-W-B. Under world 4 this sequence occurs 9/64, or roughly 14% of the time.</p>
+<p><br />
+</p>
+<p>We can see this in the following plot. (We leave out the worlds with only one color ball, as these will have no paths that produce B-W-B). Below, each partitioned section represents one world, and the paths in that world that could produce B-W-B are shown.</p>
+<p><br />
+</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-79"></span>
+<img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-20-1.png" alt="All possible draws of three balls" width="50%" />
+<p class="caption">
+Figure 16.3: All possible draws of three balls
+</p>
+</div>
+<p>Three paths, versus 8 paths, versus nine paths…</p>
+<p>Does this reveal world 4 to be the most likely contents of the present bag? Not necessarily. Suppose we knew ex-ante, from the factory, that ‘99 bags out of 100 have equal numbers of whites and blues.’ Then, it would be much more likely that this bag was from an equal-color bag (world 3), even though this <em>draw</em> is more likely conditional on the bag being from world 4. We need will to consider the base-rate probabilities as well.</p>
+<div class="marginnote">
+<p>This in turn motivates the standard ‘false positive/false negative HIV test’ example.</p>
+</div>
+</div>
+<div id="using-prior-information" class="section level3" number="16.2.3">
+<h3><span class="header-section-number">16.2.3</span> Using prior information</h3>
+<blockquote>
+<p>We may have prior information about the relative plausibility of each conjecture. This prior information could arise from knowledge of how the contents of the bag were generated. It could also arise from previous data. Or we might want to act as if we had prior information, so we can build conservatism into the analysis. Whatever the source, it would help to have a way to use prior information. Luckily there is a natural solution: Just multiply the prior count by the new count. (p. 25)</p>
+</blockquote>
+<p>This seems to easy to be true, but our garden illustration helps us understand why it is the case.</p>
+<div id="multiply-in-new-information" class="section level4" number="16.2.3.1">
+<h4><span class="header-section-number">16.2.3.1</span> “Multiply in” new information</h4>
+<p>First consider, what if we had another draw from the bag, how would this adjust the ‘number of paths’ for each world? Remember, each draw is independent (replacement). We simply record the number of ways (permutations) that could lead to this draw in each world, and we <em>multiply</em> the previous count by this number. You can consider this visually in seeing how ‘adding an additional fork at the end of each path’ changes the count.</p>
+<p><br />
+</p>
+<p>This is given in the table below:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="bayes.html#cb89-1"></a>t &lt;-</span>
+<span id="cb89-2"><a href="bayes.html#cb89-2"></a><span class="st">  </span>t <span class="op">%&gt;%</span></span>
+<span id="cb89-3"><a href="bayes.html#cb89-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span>,</span>
+<span id="cb89-4"><a href="bayes.html#cb89-4"></a>         <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">draw 1: blue</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb89-5"><a href="bayes.html#cb89-5"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">ways to produce</span><span class="st">`</span>, <span class="st">`</span><span class="dt">previous counts</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb89-6"><a href="bayes.html#cb89-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">ways to produce</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">previous counts</span><span class="st">`</span>)</span>
+<span id="cb89-7"><a href="bayes.html#cb89-7"></a></span>
+<span id="cb89-8"><a href="bayes.html#cb89-8"></a>t <span class="op">%&gt;%</span></span>
+<span id="cb89-9"><a href="bayes.html#cb89-9"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+p_1
+</th>
+<th style="text-align:left;">
+p_2
+</th>
+<th style="text-align:left;">
+p_3
+</th>
+<th style="text-align:left;">
+p_4
+</th>
+<th style="text-align:right;">
+ways to produce
+</th>
+<th style="text-align:right;">
+previous counts
+</th>
+<th style="text-align:right;">
+new count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+How to incorporate <em>prior</em> information about the probability of each world?<br />
+</p>
+<p>Suppose your friend in the factory tells you (reliably) that “we produce 3 bags with (just) 1 blue for every 2 bags with equal counts, for every 1 bag with 3 blues.”</p>
+<p>We can think of the ‘factory choosing which bag to produce’ as another draw, thus another path.</p>
+<p><br />
+Here the <em>sequence</em> in which the information is recieved shouldn’t matter. The draws are independent (we presume).</p>
+<p>We can thus multiply the number of paths for each marbles-in-bag world by the (relative) frequency with which the factory ‘draws’ that bag… as shown below:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="bayes.html#cb90-1"></a>t &lt;-<span class="st"> </span>t <span class="op">%&gt;%</span></span>
+<span id="cb90-2"><a href="bayes.html#cb90-2"></a><span class="st">  </span><span class="kw">select</span>(p_<span class="dv">1</span><span class="op">:</span>p_<span class="dv">4</span>, <span class="st">`</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb90-3"><a href="bayes.html#cb90-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="st">`</span><span class="dt">prior count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">new count</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb90-4"><a href="bayes.html#cb90-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">factory count</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb90-5"><a href="bayes.html#cb90-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">new count</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">prior count</span><span class="st">`</span> <span class="op">*</span><span class="st"> `</span><span class="dt">factory count</span><span class="st">`</span>)</span>
+<span id="cb90-6"><a href="bayes.html#cb90-6"></a></span>
+<span id="cb90-7"><a href="bayes.html#cb90-7"></a>t <span class="op">%&gt;%</span></span>
+<span id="cb90-8"><a href="bayes.html#cb90-8"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+p_1
+</th>
+<th style="text-align:left;">
+p_2
+</th>
+<th style="text-align:left;">
+p_3
+</th>
+<th style="text-align:left;">
+p_4
+</th>
+<th style="text-align:right;">
+prior count
+</th>
+<th style="text-align:right;">
+factory count
+</th>
+<th style="text-align:right;">
+new count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+w
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="from-counts-to-probability." class="section level3" number="16.2.4">
+<h3><span class="header-section-number">16.2.4</span> From counts to probability.</h3>
+<p><br />
+</p>
+</div>
+</div>
+<div id="third-videochapter" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Third video/chapter</h2>
+<p>Regression is a useful simplification, similar to the Ptolomeic geocentric model</p>
+<div id="normal-distributions" class="section level3" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> Normal distributions</h3>
+<p>Normal distributions are hugely common in nature because it is ‘the product of adding small fluctutations’; there are the most combinations that produce ‘no movement from the center’</p>
+<p>But this means that seeing a normal distribution tells you little about the underlying process</p>
+<p>Addition, ‘the mathematical function where order doesn’t matter’ (not even adding 0’s), leads to Normal distributions</p>
+</div>
+</div>
+<div id="title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</h2>
+<p><em>Content from notes from this lecture</em></p>
+<div id="why-and-when-use-bayesian-mcmc-methods" class="section level3" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> Why and when use Bayesian (MCMC) methods?</h3>
+<div id="pros" class="section level4" number="16.4.1.1">
+<h4><span class="header-section-number">16.4.1.1</span> Pros</h4>
+<ol style="list-style-type: decimal">
+<li><p>No need for asymptotics … good when sample sizes are small</p></li>
+<li><p>Incorporate previous information</p></li>
+</ol>
+<p>You can consider the ‘robustness to other priors’</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Fit complex nonstandard models
+… e.g., with difficult functional forms or likelihood settings (more computation, less thinking)</p></li>
+<li><p>Easy to make predictions (e.g., simulate scenarios) after estimation</p></li>
+<li><p>Incorporate evidence, results, expert judgement</p></li>
+</ol>
+<p>(‘restrictions’ with some lee-way?)</p>
+<p>(ISn’t this the same as number 2?)</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Cleaner treatment/imputation of missing values … these are just parameters</li>
+</ol>
+</div>
+<div id="cons" class="section level4" number="16.4.1.2">
+<h4><span class="header-section-number">16.4.1.2</span> Cons</h4>
+<ol style="list-style-type: decimal">
+<li><p>Must specify prior distributions … allows subjective judgement</p></li>
+<li><p>Different way of thinking about stats and inference; probability distributions and simulations, not much about p-values, point estimates and standard errors … path dependence</p></li>
+<li><p>Computational cost</p></li>
+</ol>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+</div>
+<div id="why-more-popular-today" class="section level4" number="16.4.1.3">
+<h4><span class="header-section-number">16.4.1.3</span> Why more popular today?</h4>
+<ul>
+<li>Starting from around 2005 in Political Science and Sociology</li>
+</ul>
+<p>Computational revolution comes from Markov chain Monte Carlo (MCMC) methods … don’t need analytical solutions</p>
+<p>Software implementations – many in R, specialised software like EWinBugs, JAGS, STAN; also increasingly in Stata</p>
+</div>
+</div>
+<div id="theory" class="section level3" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> Theory</h3>
+<p>Bayes theorem … inverting conditional probability thing … ‘inversion’ to make inferences about the parameters</p>
+<ul>
+<li>In Bayesian stats the <em>parameters</em> (and sometimes missing values) are random variables, we make probability statements about them</li>
+</ul>
+<p><span class="math display">\[P(A|B)=P(B|A)P(A)/P(B)\]</span></p>
+<p>Frequentist: Point estimates, unknown fixed parameters, data from a hyol repeataable random sample</p>
+<p>Bayesian: Fixed data (from the experiment), parameters are random variables … results based on probability distributions about rthese</p>
+<p>Classical statistics: likelihood of data given parameter: <span class="math inline">\(p(y|\theta)\)</span></p>
+<p>Bayes we want, <span class="math inline">\(p(\theta|y) = p(y|\theta)p(\theta)/p(y)\)</span></p>
+<p><span class="math inline">\(p(y)\)</span> is a ‘constant’ in our estimation … the data is fixed.</p>
+<p>So it’s proportional to <span class="math inline">\(p(\theta|y) = p(y|\theta)\times p(\theta)\)</span></p>
+<p><span class="math inline">\(p(y|\theta)\)</span> is what we max when we do ML</p>
+<p>$ p()$: prior distribution capturing beliefs about <span class="math inline">\(\theta\)</span></p>
+<div id="so-how-do-we-estimate-it" class="section level4" number="16.4.2.1">
+<h4><span class="header-section-number">16.4.2.1</span> So how do we estimate it?</h4>
+<ol style="list-style-type: decimal">
+<li><p>Specify a probability model, a distribution for Y (likelihood function) and the priors for <span class="math inline">\(\theta\)</span></p></li>
+<li><p>Solve (find) the posterior distribution <span class="math inline">\(p(\theta|Y)\)</span> and summarise the parameters of interest</p></li>
+</ol>
+<p>In practice, step 2 is usually done via MCMC simulation rather than analytically.</p>
+<p>… via simulations, I approach the ‘true’ value on <span class="math inline">\(\theta\)</span></p>
+<p>(Given ‘regularity conditions’)</p>
+</div>
+<div id="linear-regression-model-example" class="section level4" number="16.4.2.2">
+<h4><span class="header-section-number">16.4.2.2</span> Linear regression model example</h4>
+<p><span class="math display">\[Y = x&#39;\beta+\epsilon\]</span> with n obs</p>
+<p>only random term is epsilon … natural candidate is a normal distribution, so <span class="math inline">\(Y \sim N(x&#39;\beta,\sigma^2_e)\)</span></p>
+<p>So we want to find <span class="math inline">\(p(\beta, \sigma^2_\epsilon|Y,X)\)</span>. This depends on the choices of <span class="math inline">\(p(\beta)\)</span> and <span class="math inline">\(p(\epsilon)\)</span>. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.</p>
+<p>Can yield a joint posterior.</p>
+<p>Instead, let’s assume that the latter (variance) parameter is known, you can show that the posterior for <span class="math inline">\(\beta\)</span> is also normally distributed. (Conjugate)</p>
+<p>Similarly, if we assume <span class="math inline">\(\beta\)</span> is known, if the variance term had an inverse gamma distribution (prior), so will the posterior.</p>
+<p>In these conjugate priors, the posterior mean will be a weighted average of the priors and the data.</p>
+</div>
+<div id="gibbs" class="section level4" number="16.4.2.3">
+<h4><span class="header-section-number">16.4.2.3</span> Gibbs</h4>
+<p>Needs closed form conditional posterior for every parameter.</p>
+<p>What Gibbs sampler does is break the parameter space into sets of parameters</p>
+<ol style="list-style-type: decimal">
+<li><p>Choose starting values, <span class="math inline">\(\theta^0_1,...\theta^0_k\)</span></p></li>
+<li><p>sample from the first parameter’s distribution given the others
+… the second one, … the k’th one .</p></li>
+<li><p>Repeat step 2 … thousands of times (starting with the parameters from the previous iteration)
+Eventually ‘we obtain samples of <span class="math inline">\(p(\theta|y)\)</span>’</p></li>
+</ol>
+<p><em>But if we don’t have a closed form, we cannot simply sample from known distributions in each step</em></p>
+<p>E.g., in case of Logit distribution.</p>
+</div>
+<div id="metropolis-hastings" class="section level4" number="16.4.2.4">
+<h4><span class="header-section-number">16.4.2.4</span> Metropolis Hastings</h4>
+<ol style="list-style-type: decimal">
+<li>Choose ‘proposal distribution’ to sample parameter values (a candidate like normal, uniform)</li>
+<li>Start w a prelim guess for parameter values <span class="math inline">\(\theta_0\)</span></li>
+<li>At iteration t sample a proposal <span class="math inline">\(\theta_t\)</span> from <span class="math inline">\(p(\theta_t|\theta_{t-1})\)</span> ?? what does this come from?</li>
+<li>If <span class="math inline">\(p(\theta_t|y)&gt;p(\theta_{t-1}|y)\)</span> accept it as the new value of <span class="math inline">\(\theta\)</span>. ??? how is this computed if we don’t have conjugate closed-form posteriors?</li>
+<li>Otherwise flip a coin with probability r = (ratio of those probabilities)</li>
+</ol>
+<ul>
+<li>if coin tosses heads, accept as new theta, otherwise stay at previous theta</li>
+<li>allows algorithm to avoid getting stuck at local maxima</li>
+</ul>
+<p>Commonly used proposal: random walk sample: <span class="math inline">\(\theta_t=\theta_{t-1}+z_t\)</span>, <span class="math inline">\(z_t \sim f\)</span></p>
+<p>?? I do this because there is no analytical way to derive this, unlike in the conjugate case, where we might use the Gibbs</p>
+<ul>
+<li>can combine Gibbs with Metropolis steps; relevant to some problems</li>
+</ul>
+</div>
+<div id="assessing-convergence" class="section level4" number="16.4.2.5">
+<h4><span class="header-section-number">16.4.2.5</span> Assessing convergence</h4>
+<ul>
+<li>previous … ‘eyeballing’</li>
+<li>formal:
+<ul>
+<li>single-chain tests (Geweke/Heidel) … is the last part of the chain stable (stationary)… compare simulation at middle and end, is there much variation?</li>
+<li>multiple-chain test… (starting from different values), do they end similar … Gelman-Rubin diagnosting <span class="math inline">\(\hat{R}\)</span></li>
+<li>typically either a very long chain and use GH convergence, or multiple shorter chains and use <span class="math inline">\(\hat{R}\)</span></li>
+</ul></li>
+</ul>
+<p>Gabriel: Gelman-Rubin is probably preferred; more conservative</p>
+<p>?? What am I iterating towards? Converging on what?</p>
+</div>
+<div id="assesing-fit-in-bayesian" class="section level4" number="16.4.2.6">
+<h4><span class="header-section-number">16.4.2.6</span> Assesing ‘fit’ in Bayesian</h4>
+<ul>
+<li>No r-squared</li>
+<li>Typical measure is ‘posterior predictive comparisons’</li>
+</ul>
+<p><span class="math inline">\(p(y_{replicated}|y_{observed}= ...\)</span></p>
+<ol style="list-style-type: decimal">
+<li>Simulate data from estimated parameters</li>
+<li>Compare to observed data</li>
+<li>Use an overall fit measure to assess model fit</li>
+</ol>
+<p>E.g., percent correct predictions (binary), whether the true data is within the 95% CI of the replicates, deviance</p>
+<p>For each replicate Choose statistic D, compare the replicated</p>
+<p><span class="math inline">\(D(y^s_{replicated})\)</span>
+against <span class="math inline">\(D(y^s_{observed})\)</span></p>
+<p>Quantify the discrepancy … percent of correct predictions, proportion of times replicated y is below true y … compute ‘bayesian p-value’s’</p>
+<p>Systematic differences between replicate and actual data indicate model limitations</p>
+<p>(?? what are reasonable values here??)</p>
+</div>
+</div>
+<div id="comparing-models-equivalent-of-likelihood" class="section level3" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> Comparing models … Equivalent of ‘likelihood’</h3>
+<p>‘Deviance Information Criterion’ (most used); specific for MCMC simulations: compares expected LL of the model (of the data given the estimated parameters; average here across much of the later points in the chain) against the llhd at the posterior parameter mean. Always select model with lowest DIC.</p>
+<p>Bayes Factor (less used): Ratio of llhd of the models; higher BF means model is more supported; BF&gt;10 seen to provide strong evidence for model w higher value</p>
+</div>
+<div id="on-choosing-priors" class="section level3" number="16.4.4">
+<h3><span class="header-section-number">16.4.4</span> On choosing priors</h3>
+<p>Most social scientists use non-informative or vague priors; i.e., large variance… e.g., <span class="math inline">\(\beta \sim N(0,1000)\)</span></p>
+<p>But its often useful to incorporate information into your priors</p>
+<p>Small pilot to test, <span class="math inline">\(\rightarrow\)</span> data <span class="math inline">\(Y_1\)</span>, another study gives data <span class="math inline">\(Y_2\)</span>; repeated application of Bayes theorem gives the posterior.</p>
+<p>Same result whether you obtained these together, or whether you did one and then updated (e.g., via an MCMC, starting with the first one as a prior)</p>
+<p>Conjugate priors (mentioned before)</p>
+<ul>
+<li>Jeffrey’s priors (??)</li>
+</ul>
+</div>
+<div id="implementation" class="section level3" number="16.4.5">
+<h3><span class="header-section-number">16.4.5</span> Implementation</h3>
+<p>If you don’t need to do fancy things, and don’t want to (?) generate the full posterior distribution (or something)</p>
+<p>Some Stata/R commands that make Bayesian look frequentist.</p>
+<p>In Jags and Winbugs, we only have to specify the prior… rest is done for us</p>
+<p>Jags is great … you only need to do self-coding with lots of data and super complicated models as it can freeze up</p>
+<p>We went through it the fancy way in Probit.R</p>
+<p>Then the easy way with ‘script probit Jags.R’</p>
+</div>
+<div id="generate-predictions-from-a-winbugs-model" class="section level3" number="16.4.6">
+<h3><span class="header-section-number">16.4.6</span> Generate predictions from a WinBUGS model</h3>
+<p>You can just generate these outcomes …</p>
+<p>Prediction: generate a new observation #note, he is doing one per iteration, but since these are convergent it would be basically the same if you just chose a random iteration and did all the draws from that one</p>
+</div>
+<div id="missing-data-case" class="section level3" number="16.4.7">
+<h3><span class="header-section-number">16.4.7</span> Missing data case</h3>
+<p>One solution – multiple imputation</p>
+<ul>
+<li>choose imputation model to predict missings,</li>
+<li>generate many copies of orig data set, imputing missibg value for each</li>
+<li>2 more steps here</li>
+</ul>
+<p>Need a model for X|alpha, because missing variables are random variables</p>
+</div>
+<div id="stata" class="section level3" number="16.4.8">
+<h3><span class="header-section-number">16.4.8</span> Stata</h3>
+<p>Has some rather simple implementations; e.g., just using commands like <code>bayes: regress y x</code></p>
+</div>
+<div id="r-mcmc-pac" class="section level3" number="16.4.9">
+<h3><span class="header-section-number">16.4.9</span> R mcmc pac</h3>
+<p>Also simple code; great for standard use</p>
+<p>Speedup with parallelization; see “script for parallel probit.R” and “parallelprobit.R”</p>
+<p>More advanced: C++; can integrate it with Rcpp, or even use Exeter’s ISCA cluster</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="bayes.html#cb91-1"></a><span class="kw">summary</span>(cars)</span></code></pre></div>
+<pre><code>##      speed           dist    
+##  Min.   : 4.0   Min.   :  2  
+##  1st Qu.:12.0   1st Qu.: 26  
+##  Median :15.0   Median : 36  
+##  Mean   :15.4   Mean   : 43  
+##  3rd Qu.:19.0   3rd Qu.: 56  
+##  Max.   :25.0   Max.   :120</code></pre>
+</div>
+</div>
+<div id="other-resources-and-notes-to-integrate" class="section level2" number="16.5">
+<h2><span class="header-section-number">16.5</span> Other resources and notes to integrate</h2>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
-The fact that 95% of all (correct) CIs contain the true value does not mean that 95% of those that exclude zero do so correctly. You could have (say) 59% correct coverage for 10% excluding zero and 99% for 90% including zero.
+Hey stats twitter: got a very sharp psych UG student wanting to dive into Bayes. Many resources are too technical (i.e., not good teaching texts for UG level, but useful references). Where should I point her?
 </p>
-— Stephen John Senn (@stephensenn) <a href="https://twitter.com/stephensenn/status/1219680319114227714?ref_src=twsrc%5Etfw">January 21, 2020</a>
+— Tom Carpenter (@tcarpenter216) <a href="https://twitter.com/tcarpenter216/status/1223406990325534720?ref_src=twsrc%5Etfw">February 1, 2020</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-</div>
-<div id="causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</h2>
-<div id="dags-and-potential-outcomes" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> DAGs and Potential outcomes</h3>
-</div>
-</div>
-<div id="theory-restrictions-and-structural-vs-reduced-form" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Theory, restrictions, and ‘structural vs reduced form’</h2>
 
 </div>
 </div>
@@ -666,8 +1635,8 @@ The fact that 95% of all (correct) CIs contain the true value does not mean that
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-sci.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="metaanalysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="n-ds4bs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

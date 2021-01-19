@@ -241,7 +241,7 @@ The intuition: The smaller the largest difference in mean total donations (betwe
 
 **Kasy method?**
 
-We may or may not get to considering the method proposed in . It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)
+We may or may not get to considering the method proposed in @kasyWhyExperimentersMight2016. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)
 
 ```{block, type='fold'}
 
