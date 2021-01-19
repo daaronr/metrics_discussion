@@ -6,6 +6,7 @@ fig:unnamed-chunk-77
 fig:unnamed-chunk-79
 fig:unnamed-chunk-89
 introduction
+survey-design-and-implementation-analysis-of-survey-data
 experimental-study-design-ex-ante-power-calculations
 making-inferences-from-previous-work-meta-analysis-combining-studies
 publication-bias
@@ -110,6 +111,13 @@ section-3-identification-of-bounds-on-treatment-effects-the-main-meat-of-the-mod
 section-4-estimation-and-inference
 section-5-empirical-results
 section-6-conclusions-implications-and-applications
+surveys
+survey-samplingintake
+probability-sampling
+non-probability-sampling
+jazz-case
+our-convenience-method-issues-alternatives
+notes-and-considerations
 why_experiment_design
 why-run-an-experiment-or-study
 sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do

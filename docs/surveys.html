@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="15 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 ‘Experimetrics’ and measurement of treatment effects from RCTs | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="power.html"/>
-<link rel="next" href="metaanalysis.html"/>
+<link rel="prev" href="selection-cop.html"/>
+<link rel="next" href="why-experiment-design.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -648,693 +648,171 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="experimetrics_te" class="section level1" number="15">
-<h1><span class="header-section-number">15</span> ‘Experimetrics’ and measurement of treatment effects from RCTs</h1>
-<div id="which-error-structure-random-effects" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> Which error structure? Random effects?</h2>
-</div>
-<div id="randomization-inference" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> Randomization inference?</h2>
-</div>
-<div id="parametric-and-nonparametric-tests-of-simple-hypotheses" class="section level2" number="15.3">
-<h2><span class="header-section-number">15.3</span> Parametric and nonparametric tests of simple hypotheses</h2>
-<div id="parametric-tests" class="section level3" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> Parametric tests</h3>
-</div>
-<div id="non-parametric-tests" class="section level3" number="15.3.2">
-<h3><span class="header-section-number">15.3.2</span> Non-parametric tests</h3>
-<div id="fligner-policello-test" class="section level4" number="15.3.2.1">
-<h4><span class="header-section-number">15.3.2.1</span> Fligner-Policello test</h4>
-<p><span class="citation">Randles et al. (<a href="#ref-randlesAsymptoticallyDistributionfreeTest1980" role="doc-biblioref">1980</a>)</span></p>
-<p>Null-hypothesis that the medians in the two groups (samples) are the same.</p>
-<blockquote>
-<p>Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<div id="adjustments-for-exogenous-but-non-random-treatment-assignment" class="section level2" number="15.4">
-<h2><span class="header-section-number">15.4</span> Adjustments for exogenous (but non-random) treatment assignment</h2>
-</div>
-<div id="iv-in-an-experimental-context-to-get-at-mediators" class="section level2" number="15.5">
-<h2><span class="header-section-number">15.5</span> IV in an experimental context to get at ‘mediators’?</h2>
-</div>
-<div id="heterogeneity-in-an-experimental-context" class="section level2" number="15.6">
-<h2><span class="header-section-number">15.6</span> Heterogeneity in an experimental context</h2>
-</div>
-<div id="incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens" class="section level2" number="15.7">
-<h2><span class="header-section-number">15.7</span> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</h2>
-<p>(with an eye towards giving experiments_</p>
-<p>Page 7</p>
-<blockquote>
-<p>Fundamentally, most concerns with external validity are related to treatment effect heterogeneity …
-[ considering extrapolation between settings A and B] Units in the two settings may differ in observed or unobserved characteristics, or treatments may differ in some aspect.
-to assess these issues it is helpful to have … randomized experiments, in multiple settings [varying] in the distribution of characteristics of the units, and possibly … the nature of the treatments or the treatment rate, in order to assess the credibility of generalizing to other settings</p>
-</blockquote>
+<div id="surveys" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Survey design and implementation; analysis of survey data</h1>
+<p><strong>Resources consulted/to consult</strong></p>
+<p>Wikipedia entries on</p>
 <ul>
-<li><p>Shall we do Fisher’s test based on computing the distribution of differences in means randomly reassigning the “treatment”?</p></li>
-<li><p>F-tests to consider multiple outcomes for any cases?</p></li>
-<li><p>(When) shall we use covariates (esp those for interactions) in the ‘deviations from mean’ form?</p></li>
-<li><p>Considering when to use controls (and interactions?)</p></li>
+<li><a href="https://en.wikipedia.org/wiki/Survey_sampling">‘survey sampling’</a></li>
+<li>Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.</li>
 </ul>
+<div id="survey-samplingintake" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Survey sampling/intake</h2>
+<div id="probability-sampling" class="section level3" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Probability sampling</h3>
+<div class="marginnote">
+<p>Here: naive notes based on wikipedia, will be improved.</p>
+</div>
 <blockquote>
-<p>the asymptotic variance for <span class="math inline">\(\hat{\tau}}\)</span> is less than that of the simple difference estimator by a factor equal to <span class="math inline">\(1-R^2\)</span> from including the covariates relative to not including the covariates
-If… the covariates have very skewed distributions, the finite sample bias in the linear regression estimates may be substantial</p>
-</blockquote>
-<ul>
-<li><p>DR: Could there not ever be a loss from doing interactions dividing up the sample too fine in doing this interactive estimation? This should depend on the true <span class="math inline">\(R^2\)</span> I think. Try to remember what is the real tradeoff?</p></li>
-<li><p>Statistics adjusted for stratification:</p></li>
-</ul>
-<blockquote>
-<p>One can always use the variance that ignores the stratification: this is conservative if the stratification did in fact reduce the variance</p>
+<p>A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in <a href="https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling">Wiki</a>)</p>
 </blockquote>
 <div class="marginnote">
-DR: Is it valid to simply say “we choose the lower value of the estimated variances”? Are they advocating this? Such a procedure seems like it would have a bias.
+<p>Note that the ‘sampling frame’, ‘the source material or device from which a sample is drawn’, e.g, a telephone directory, may not exactly contain all elements of the ‘population of interest’ (e.g., the population with and without listed numbers).</p>
+<p>See ‘Missing elements’, ‘Foreign elements’, ‘Duplicate entries’ and ‘Groups or clusters’ …</p>
+<p>Also note that ‘Not all frames explicitly list population elements; some list only ’clusters’. For example, a street map can be used as a frame for a door-to-door survey.’</p>
 </div>
-<p>** Things to potential incorporate in NL HE lottery paper(s) **</p>
 <ul>
-<li>(When) shall we use covariates (esp those for interactions) in the ‘deviations from mean’ form?</li>
+<li>Simple random versus stratified and cluster sampling</li>
 </ul>
-<p>“randomization that validates comparisons by treatment status does not validate comparisons by post-treatment variables such as the treatment received”</p>
-<ul>
-<li><p>Consider a “partial identification or bounds analysis” to deal with noncompliance at each margin</p></li>
-<li><p>Look up “randomization-based approach to IV” (Imbens and Rosenbaum, 2005)</p></li>
-</ul>
-<div id="abstract-and-intro" class="section level3" number="15.7.1">
-<h3><span class="header-section-number">15.7.1</span> Abstract and intro</h3>
-<ol style="list-style-type: decimal">
-<li>randomisation-based inference as opposed to sampling based inference</li>
-</ol>
-<ul>
-<li>DR: I Disagree as the object of interest is ultimately not the experimental sample, particularly not in the lab</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>efficiency gains from stratification into small strata, adjust se to capture these gains (We have only done this to a limited extent)</li>
-<li>(Non-compliance, intention-to-treat, and IV)</li>
-<li>Estimation and inference for <strong>heterogeneous treatment with covariates… </strong> subpopulations… Maintaining the ability to construct valid confidence (mht etc). “Conditional average treatment effects”</li>
-<li>(interaction between units)</li>
-</ol>
-<p>Why careful statistics are important even for randomised experiments</p>
-<p>“Randomisation approach”: potential outcomes fixed, Assignment to treatments random</p>
-<p>Example of why the randomisation-based inference approach matters:</p>
-<p>“in the conventional sampling paradigm… Controlling for observable heterogeneity using a regression model” required for the assumptions to be justified with this approach. With randomisation approach it makes more sense to put data into strata by covariates, analyse within-group experiments and average results.</p>
-<p>Recommend small strata but not too small as variances cannot be estimated within pairs</p>
-<ul>
-<li><p>DR: Section 10 on heterogeneity is particularly relevant for us</p></li>
-<li><p>Other experimetrics methodology surveys mentioned (Duflo et al ’06, Glennerster and T ’13, Glennerster ’16); present one is more theoretical</p></li>
-</ul>
+<p><br />
+</p>
+<p><em>Issues</em>*</p>
+<div class="marginnote">
+<p>Many of these also seem relevant for our <a href="surveys.html#jazz-case">‘social movement’ case of interest below.</a></p>
 </div>
-<div id="randomised-experiments-and-validity" class="section level3" number="15.7.2">
-<h3><span class="header-section-number">15.7.2</span> Randomised experiments and validity</h3>
-<p>Defined as settings “where the assignment mechanism does not depend on characteristics of the units”
-- That seems to be “pure randomisation”</p>
-<p>… Debate about the supremacy of randomised experiments</p>
-<p>Definition of internal validity (DR:: it is a bit imprecise here).</p>
-<p><br />
-</p>
-<p>Typical argument about how external validity is no more guaranteed in observational studies then and randomised experiments “there is nothing in non-experimental methods which made some superior randomised experiments with the same population and sample size in this regard.”</p>
-<p>-DR: I think this is a bit of a strawman and a weak argument here
-- GR: This is the Deaton argument, very strange</p>
-<p>They argue for experiments in multiple settings varying in the characteristics of the units and perhaps the treatments to assess the credibility of generalizing to other settings.</p>
-<p><br />
-</p>
-<p>(?Graphical methods to deal with external validity issues?)</p>
-<p><br />
-</p>
-<p><strong>Finite population versus random sample from super-population</strong></p>
-<p>We can interpret the uncertainty as unobserved potential outcomes rather than sampling uncertainty.</p>
 <ul>
-<li>DR: I don’t see why these are mutually exclusive.</li>
-<li>GR: agreed</li>
-<li>DR: Viewing the sample of the full population of interest may not even work I’m considering some experiments such as those using within subject treatments</li>
-</ul>
-<p><br />
-</p>
-<p>The differences in these approaches matter in some settings but not others.
-Sometimes “…conventional sampling-based standard errors will be unnecessarily conservative”</p>
-<ul>
-<li>DR: This could be helpful</li>
-</ul>
-</div>
-<div id="potential-outcomes-rubin-causal-model-framework-covered-earlier" class="section level3" number="15.7.3">
-<h3><span class="header-section-number">15.7.3</span> Potential outcomes/ Rubin causal model framework (covered earlier)</h3>
-<p>(This is somewhat familiar by now)</p>
-<p><br />
-</p>
-<p><strong>Potential outcomes</strong></p>
-<p>If we do not impose limitations on interactions between units (like SUTVA) there will be a dimensionality problem</p>
-<p><span class="math display">\[p\:\{0,1\}^N \times Y^{2N}\times X^N \rightarrow [0,1]\]</span></p>
-<ul>
-<li>DR: I am not sure I understand this notation, particularly the <span class="math inline">\(\{0,1\}\)</span> bit</li>
-</ul>
-<p><br />
-</p>
-<p>" For randomized experiments we disallow dependence on the potential outcomes, and we assume that the functional form of the assignment mechanism is known"
-(this goes further than “completely randomized”)</p>
-</div>
-<div id="classification-of-assignment-mechanisms" class="section level3" number="15.7.4">
-<h3><span class="header-section-number">15.7.4</span> 3.2 Classification of assignment mechanisms</h3>
-<p>(Formula for probabilities of each assignment combination of control and treatment given for each one)</p>
-<ol style="list-style-type: decimal">
-<li><p>Completely Randomized: <span class="math inline">\(N_t\)</span> Units drawn at random from a population of <span class="math inline">\(N\)</span> to receive the treatment, remaining <span class="math inline">\(N_c\)</span> get control.</p></li>
-<li><p>Stratified randomized: Partition into <span class="math inline">\(G\)</span> strata based on covariates values, “Disallowing assignments that are likely to be uninformative about the treatment effects of interest”</p></li>
-<li><p>Paired randomized (Extreme stratification)</p></li>
-<li><p>Cluster randomized: Treatments assigned randomly to entire clusters. Maybe cheaper to implement and more valid in the presence of interactions between units within but not across clusters.</p></li>
-</ol>
-</div>
-<div id="the-analysis-of-completely-randomized-experiments" class="section level3" number="15.7.5">
-<h3><span class="header-section-number">15.7.5</span> The analysis of Completely randomized experiments</h3>
-
-<div class="note">
-Aside: see the limitations of the Fisher test when not considering a lady tasting tea (known shares of outcomes). One response: <a href="https://statmodeling.stat.columbia.edu/2009/10/13/what_is_the_bay/">a Bayesian approach</a>
-</div>
-<p><strong>Exact p-values for sharp null hypotheses (Fisher etc)</strong></p>
-<p>“Sharp”: “Under which we can an for all the missing potential outcomes from the observed data” … So we can infer the distribution of any statistics under the Null.</p>
-<p>E.g., <span class="math inline">\(H0\)</span>, The treatment has no effect <span class="math inline">\(Y_i(0)=Y_i(1)\forall i\)</span>, vs <span class="math inline">\(Ha\)</span>, At least one unit i has <span class="math inline">\(Y_i(0)\neq Y_i(1)\)</span></p>
-<p><br />
-</p>
-<p>Difference in means by treatment status: Calculate the probability over the randomization distribution of a value with as large an absolute value as the one observed given the actual assignments.</p>
-<p>This is done by reassigning what we call the “treatments” to all possible combinations (keeping the number of treated units constant) and calculating the “placebo” treatment effect. Calculate the fraction of assignment vectors with statistic at least as large (in absolute value) as the observed one.</p>
-<ul>
-<li><p>DR: What is the statistic called and is there preprogrammed code? Is it the Fisher’s exact test?</p></li>
-<li><p>Can do for means or means of the ranks by treatment status (rank sum?) or any stat.</p>
-<ul>
-<li>Latter is less sensitive to outliers and thick-tailed distributions</li>
-</ul></li>
-</ul>
-<p><br />
-</p>
-<p>With multiple outcomes, multiple comparisons issues</p>
-<ul>
-<li><p>Use statistics it takes into account all the outcomes (e.g., F-stat, calculate exact P value using the ‘Fisher randomization distribution’ as in Young, ’16)</p></li>
-<li><p>Or use adjustments to P values e.g., Bonferroni or tighter bounds (Which are still more conservative than the Fisher thing); Romano ea survey (2010)</p></li>
-<li><p>Rosenbaum ’92 on estimating treatment effects based on rank statistics (DR: I don’t get this at all)</p></li>
-</ul>
-</div>
-<div id="randomization-inference-for-average-treatment-effects" class="section level3" number="15.7.6">
-<h3><span class="header-section-number">15.7.6</span> Randomization inference for Average treatment effects</h3>
-<p>Neyman wanted to estimate the ATE for the sample at hand</p>
-<p><span class="math display">\[\tau=\frac{1}{N}\sum_{i=1..N}{(Y_i(1)-Y_i(0)i)}=\bar{Y}(1)-\bar{Y}(0)\]</span></p>
-<ul>
-<li><p>DR: Again, this is really not what we care about particularly not in a small-scale experiment.</p>
-<p><br />
-</p></li>
-</ul>
-<p>Proposed the estimator “Difference in average outcomes by treatment status” (DR: Same as in last section)</p>
-<p><br />
-</p>
-<p>Defining <span class="math inline">\(D_i\)</span>, a term representing “assignment minus the average assignment”</p>
-<p>Allows a restatement of the estimator which makes it clear that this is unbiased for the average treatment effect <span class="math inline">\(\tau\)</span></p>
-<p><span class="math display">\[\hat{i\tau}=\tau+\frac{1}{N}\sum_{i=1..N}{(D_i(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)}\]</span></p>
-<p>Sampling variance of <span class="math inline">\(\hat{\tau}\)</span> over the randomization distribution decomposed as</p>
-<p><span class="math display">\[V({\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}\]</span></p>
-<p>Where <span class="math inline">\(S_c^2\)</span> and <span class="math inline">\(S_t^2\)</span> Are the variances of the control and treated outcomes,
-and <span class="math inline">\(S_{tc}^2\)</span> is the variance of the unit level treatment effect (DR: This must be related to the covariance)</p>
-<p>We can estimate rhe first two terms but not the latter term as we have no observations with both a control and a treatment.</p>
-<p><br />
-</p>
-<p>In practice researchers ignore the third term, which leads to an upward bias for the <em>sample</em> treatment effect but an unbiased estimator of the population ATE</p>
-<ul>
-<li>DR: Any intuition for this?</li>
-</ul>
-<p><br />
-</p>
-<p>We still need to make large sample approximations to construct confidence intervals for the ATE.</p>
-<ul>
-<li>DR: Does this yield any practical strategy for us to use?</li>
-</ul>
-</div>
-<div id="quantile-treatment-effect-infinite-population-context" class="section level3" number="15.7.7">
-<h3><span class="header-section-number">15.7.7</span> Quantile treatment effect (Infinite population context)</h3>
-<p>Usefulness:</p>
-<ol style="list-style-type: decimal">
-<li><p>Uncover “Treatment effects in the tails”</p></li>
-<li><p>Results robust to thick tails</p></li>
-</ol>
-<p>S-th quantile treatment effect defined as the difference in quantiles between the <span class="math inline">\(Y_i(1)\)</span> and<span class="math inline">\(Y_i(0)\)</span> distributions:</p>
-<p><span class="math display">\[\tau_s=q_{Y(1)}(s)-q_{Y(0)}(s)\]</span> …</p>
-<ul>
-<li>this is distinct from the “quantile of the differences”: <span class="math inline">\(q_{Y(1)-Y(0)}(s)\)</span>, which is in general not identified
-<ul>
-<li>DR: the letter is truly more interesting; we care about the distribution of the <em>impact of the treatment</em> and not so much about the impact of the treatment on the distribution of outcomes.</li>
-</ul></li>
-<li>the two are equal if there is “perfect rank correlation between the two potential outcomes” (DR: I think this simply means that the unit ranked n’th if not treated would also be the unit ranked n’th if treated … no crossing over).</li>
-</ul>
-<p><br />
-</p>
-<p>Making lemonade: they argue here that the (identifiable) difference in quantiles would be more interesting to a policymaker considering exposing all units to the treatment … (DR: presumably because she should not care <em>who</em> get the particular outcome but only about the distribution of outcomes, a common axiom for social
-welfare functions).</p>
-<p><br />
-</p>
-<p>Estimates and tests: use the difference in quantiles as a statistic in and exact P value computation … results for such exact tests are quite different than those based on estimated effects and standard errors because “Quantile estimates are far from normally distributed.”</p>
-</div>
-<div id="covariates-if-not-stratified-in-completely-randomized-experiments" class="section level3" number="15.7.8">
-<h3><span class="header-section-number">15.7.8</span> Covariates (if not stratified) in completely randomized experiments</h3>
-<p>(They strongly recommend stratifying instead of ex post controls.)</p>
-<p>Why use controls if a simple difference in means is unbiased for the ATE?</p>
-<ol style="list-style-type: decimal">
-<li>“incorporating covariates may make analyses more informative” (greater precision)</li>
-</ol>
-<ul>
-<li><p>Can incorporate covariates in exact P value analysis, or estimate average treatment effects within subpopulations and average these up appropriately</p></li>
-<li><p>DR: How to do these things in practice?</p></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>correcting for compromised randomization … which may occur because of missing data and selective attrition</li>
-</ol>
-<p><br />
-They give an example with the data from Lalonde where they estimate the average treatment effect for two groups those with and without prior earnings. They then add these up weighted by the estimated probability of being in each group.</p>
-<ul>
-<li>DR: I understand this correctly, as they do not define all variables
-<ul>
-<li>also, how do they compute the standard error of the combined estimator here?!</li>
-<li>this seems more like an interaction than a standard control here, which would allow a different intercept (control outcome) but not a different treatment effect.</li>
-</ul></li>
-</ul>
-<p>? se of
-<span class="math display">\[\hat{p}(\bar{Y}_t|Y^{t-1}=0-\bar{Y}_c|Y^{t-1}=0)+(1-\hat{p})(\bar{Y}_t|Y^{t-1}=1-\bar{Y}_c|Y^{t-1}=1)\]</span></p>
-<ul>
-<li><p>DR: I think there is a simple formula for difference in means that could be applied to this</p>
-<p><br />
-</p></li>
-</ul>
-</div>
-<div id="randomization-inference-and-regression-estimators" class="section level3" number="15.7.9">
-<h3><span class="header-section-number">15.7.9</span> Randomization inference and regression estimators</h3>
-<p>They urge caution in using reg. “Since randomization does not justify the models, almost anything can happen” (Freedman 08)</p>
-<p>But using only “indicator variables based on partitioning the covariate space” preserves many of the finite simple properties of simple comparisons of means.<br />
-</p>
-<p><strong>Regression estimators for average treatment effects</strong></p>
-<p>With a single variable, the least-squares estimate of <span class="math inline">\(\tau\)</span> is identical to the simple difference in means:</p>
-<p><span class="math display">\[\hat{tau}_{ols} = \bar{Y^o}_t - \bar{Y}^o_c\]</span></p>
-<p>The intercept is the control value of course: <span class="math inline">\(\hat{\alpha}_{ols}=\bar{Y}^o-\hat{\tau_{ols}}\bar{W}=\bar{Y^0}_c\)</span>.</p>
-<p><em>Conceptually important:</em></p>
-<blockquote>
-<p>the unbiasedness claim in the Neyman analysis is conceptually different from the one in conventional regression analysis: in the first case the repeated sampling paradigm keeps the potential outcomes fixed and varies the assignments, whereas in the latter the realized outcomes and assignments are fixed but different units with different residuals, but the same treatment status, are sampled.</p>
-</blockquote>
-<p><br />
-</p>
-<p>Redefining the residual in randomisation-based inference terms</p>
-<blockquote>
-<p>Now the error term has a clear meaning as the difference between potential outcomes and their population expectation
-[DR: I think they mean the expectation conditional on treatment]</p>
-</blockquote>
-<blockquote>
-<p>The randomization implies that the average residuals for treated and control units are zero …</p>
-</blockquote>
-<p>DR: They mean it implies mean independence (?) but not full independence, heteroskedasticity still likely</p>
-<blockquote>
-<p>Because the general robust variance estimator has no natural degrees-of-freedom adjustment [DR: ??], these standard [Randomisation-based?] robust variance estimators differs slightly from the Neyman unbiased variance estimator <span class="math inline">\(\hat{V}_{neyman}\)</span></p>
-</blockquote>
-<p><br />
-</p>
-<p><span class="math inline">\(\hat{V}_{robust} =\frac{s^2_c}{N_c}\frac{N_c-1}{N_c}+\frac{s^2_t}{N_t}\frac{N_t-1}{N_t}\)</span></p>
-<p>Compared to the previously stated estimator for the TE variance for the sample (which we argued overstates the true sample TE variance)</p>
-<p><br />
-</p>
-<p><span class="math inline">\(\hat{V}_{neyman} =\frac{s^2_c}{N_c}+\frac{s^2_t}{N_t}\)</span></p>
-<p><br />
-</p>
-<blockquote>
-<p>The Eicker-Huber-White variance estimator is not unbiased, and in settings where one of the treatment arms is rare, the difference may matter</p>
-</blockquote>
-<p>They give an example where it does not matter.</p>
-<ul>
-<li>DR: This point seems ignorable for most of our designs, as we intentionally avoid such rare arms (but in NL lottery maybe)</li>
-</ul>
-</div>
-<div id="regression-estimators-with-additional-covariates-dr-seems-important" class="section level3" number="15.7.10">
-<h3><span class="header-section-number">15.7.10</span> Regression Estimators with Additional Covariates [DR: seems important]</h3>
-<p>For now they continue to focus on ‘pure randomisation’, not stratified nor merely exogenous conditional on observables</p>
-<p><br />
-</p>
-<ol style="list-style-type: decimal">
-<li>Can include these additively:</li>
-</ol>
-<p><span class="math display">\[Y^{obs}_i=\alpha+\tau W_i + \beta&#39;\dot{X}_i +  \epsilon_i\]</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Can allow a ‘full set of interactions’</li>
-</ol>
-<p><br />
-</p>
-<p><span class="math inline">\(Y^{obs}_i=\alpha+\tau W_i + \beta&#39;\dot{X}_i + \gamma&#39;\dot{X}_i W_i + \epsilon_i\)</span></p>
-<p><br />
-</p>
-<ul>
-<li>DR: They do not do much discussion here of whether to do additive or full interactions; maybe it comes later (causal trees etc)</li>
-</ul>
-<p><br />
-</p>
-<blockquote>
-<p>In general the least squares estimates based on these regression functions are not unbiased for the average treatment effects over the randomization distribution given the finite population.</p>
-</blockquote>
-<ul>
-<li><p>DR: Why not? Intuition? Which regression function of the ones above is referred to here?</p></li>
-<li><p>DR: The discussion below suggests it will <em>still</em> be consistent (asymptotically unbiased)</p></li>
-</ul>
-<p><br />
-</p>
-<blockquote>
-<p>There is one exception. If the covariates are all indicators and they partition the population, and we estimate the model with a full set of interactions, Equation (5.4), then the least squares estimate of <span class="math inline">\(\tau\)</span> is unbiased for the average treatment effect</p>
-</blockquote>
-<p><br />
-</p>
-<p>If <span class="math inline">\(\bar{X}\)</span> is the average value of <span class="math inline">\(X_i\)</span> in the sample, then =_1{X}+_0(1−{X})$, and <span class="math inline">\(\hat{\gamma}=\hat{\tau}_1-\hat{\tau}_0\)</span></p>
-<p><br />
-</p>
-<p>With large sample approximations we can ‘say something about the case with multivalued covariates’ … “<span class="math inline">\(\tau\)</span> [DR: estimated how?] is asymptotically unbiased for the average treatment effect …”</p>
-<blockquote>
-<p>the asymptotic variance for <span class="math inline">\(\hat{\tau}}\)</span> is less than that of the simple difference estimator by a factor equal to <span class="math inline">\(1-R^2\)</span> from including the covariates relative to not including the covariates</p>
-</blockquote>
-<ul>
-<li>DR: This motivates the use of covariates even in a randomized design, and even if we don’t take the ‘model of the covariates’ seriously.
-<ul>
-<li>“results do not rely on the regression model being true in the sense that the conditional expectation of Y obs i is actually linear in the covariates and the treatment indicator in the population”</li>
-</ul></li>
-<li>DR: Is this for the linear controls model or for the full interactions model?</li>
-</ul>
-<p>However, …</p>
-<blockquote>
-<p>If… the covariates have very skewed distributions, the finite sample bias in the linear regression estimates may be substantial</p>
-</blockquote>
-<ul>
-<li>DR: Intuition?</li>
-</ul>
-<p>The presence of non-zero values for γ imply treatment effect heterogeneity.</p>
-<p><em>Best argument for using only binary/categorical interactions: interpretation</em></p>
-<p>“Only if the covariates partition the population do these <span class="math inline">\(\gamma\)</span> have a clear interpretation as differences in average treatment effects.”</p>
-<p><br />
-</p>
-<ul>
-<li>DR: Could there not ever be a loss from including interactions and dividing up the sample too fine in doing this interactive estimation? This should depend on the true <span class="math inline">\(R^2\)</span> I think. Try to remember what is the real tradeoff.</li>
-</ul>
-<p>** 6 The Analysis of Stratified and paired randomized experiments **</p>
-</div>
-<div id="stratified-randomized-experiments-analysis" class="section level3" number="15.7.11">
-<h3><span class="header-section-number">15.7.11</span> Stratified randomized experiments: analysis</h3>
-<p><em>Case for stratification</em></p>
-<blockquote>
-<p>capture the gains from ex post regression adjustment without the potential costs of linear regression, and the potential costs of linear regression, and therefore stratification is generally preferable over regression adjustment</p>
-</blockquote>
-<blockquote>
-<p>Within this stratum we can estimate the average effect as the difference in average outcomes for treated and control units: <span class="math inline">\(\tauˆg = \bar{Y}^{obs}_{t,g} − \bar{Y}^{obs}_{c,g}\)</span>,</p>
-</blockquote>
-<blockquote>
-<p>and we can estimate the within-stratum variance, using the Neyman results, as</p>
-</blockquote>
-<p><span class="math inline">\(\hat{V}(\hat{\tau}) =\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}\)</span></p>
-<blockquote>
-<p>where the g-subscript indexes the stratum [They wrote ‘j’ but I think its a typo]</p>
-</blockquote>
-<p>Next just average weighted by stratum shares:</p>
-<p><span class="math inline">\(\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}\)</span></p>
-<p>with estimated variance <span class="math inline">\(\sum_{g=1..G}\)</span>(_g)()^2$</p>
-<ul>
-<li>DR: Presumably they mean the above mentioned Neyman variance
-<ul>
-<li>Also note the squared term in the variance estimation, this may be how they computed the variance in the above empirical example</li>
-</ul></li>
-</ul>
-<p>“Special case”: proportion treat units the same in all strata <span class="math inline">\(\rightarrow\)</span> ATE estimator equals difference in means by treatment status:</p>
-<p><span class="math display">\[\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c\]</span></p>
-<p>… same as estimator for completely randomized experiment</p>
-<p>But the estimated variance for the latter will be overly conservative.</p>
-<ul>
-<li>DR: But I thought stratifying sometime ends up yielding a larger <em>estimated</em> variance?</li>
-</ul>
-<p>##Paired randomized experiments: analysis</p>
-<p>(Skipping note-taking for now)</p>
-</div>
-<div id="the-design-of-randomised-experiments-and-the-benefits-of-stratification" class="section level3" number="15.7.12">
-<h3><span class="header-section-number">15.7.12</span> 7 The Design of randomised experiments and the benefits of stratification</h3>
-<blockquote>
-<p>… Our recommendation is that one should always stratify as much as possible, up to the point that each stratum contains at least two treated and two control units</p>
-</blockquote>
-</div>
-<div id="power-calculations" class="section level3" number="15.7.13">
-<h3><span class="header-section-number">15.7.13</span> 7.1 Power calculations</h3>
-<ul>
-<li>DR: This section is fairly basic and trivial, largely what we already know</li>
-</ul>
-<blockquote>
-<p>we largely focus on the formulation where the output is the minimum sample size required to find treatment effects of a pre-specified size with a pre-specified probability</p>
-</blockquote>
-<ul>
-<li><p>DR: My usual formulation</p></li>
-<li><p>DR: Why are they doing these calculations based on the t-statistic, when they recommend using other measures?</p></li>
-<li><p>DR: They claim equal sample sizes is “typically close to optimal” in cases without homoskedasticity. I think this is pure speculation.</p></li>
-</ul>
-</div>
-<div id="stratified-randomized-experiments-benefits" class="section level3" number="15.7.14">
-<h3><span class="header-section-number">15.7.14</span> Stratified randomized experiments: Benefits</h3>
-<blockquote>
-<p>Stratifying does not remove any bias, it simply leads more precise inferences than complete randomization</p>
-</blockquote>
-<blockquote>
-<p>confusion in the literature concerning the benefits of stratification in small samples if this correlation is weak [between the stratifying variables and the outcome]</p>
-</blockquote>
-<blockquote>
-<p>in fact there is no tradeoff. We present formal results that show that in terms of expected-squared-error, stratification (with the same treatment probabilities in each stratum) cannot be worse than complete randomization.</p>
-</blockquote>
-<blockquote>
-<p>if one stratifies on a covariate that is independent of all other variables, then stratification is obviously equivalent to complete randomization.</p>
-</blockquote>
-<blockquote>
-<p>Ex ante, committing to stratification can only improve precision, not lower it</p>
-</blockquote>
-<p><em>Qualifications to this:</em></p>
-<ol style="list-style-type: decimal">
+<li><p>Non-response bias (biggest issue?)</p></li>
 <li></li>
+</ul>
+</div>
+<div id="non-probability-sampling" class="section level3" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Non-probability sampling</h3>
+</div>
+</div>
+<div id="jazz-case" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Case: Surveying an unmeasured and rare population surrounding a ‘social movement’</h2>
+<div id="background-and-setup" class="section level3 unnumbered" number="">
+<h3>Background and setup</h3>
+<p><em>Consider a case where:</em></p>
+<ol style="list-style-type: decimal">
+<li>We have a <strong>population-of-interest</strong> based on an affiliation, certain actions, or a set of ideas.
+Some examples:</li>
 </ol>
-<blockquote>
-<p>Ex-post, given the joint distribution of the covariates in the sample, a particular stratification may be inferior to complete randomization.</p>
-</blockquote>
+<ul>
+<li>Vegetarians</li>
+<li>‘Tea party conservatives’ in the US</li>
+<li>Jews, both religious and ‘culturally Jewish’</li>
+<li>Jazz musicians</li>
+</ul>
+<p>For this writeup, we will call the targeted group ‘the Jazz Movement’ or ‘the Jazz population’. Individuals will either be ‘Jazzy’ (J) or ‘non-Jazzy’ (NJ).</p>
+<p>There are some <strong>disagreements about how to define this group</strong>.</p>
+<p><br />
+</p>
 <ol start="2" style="list-style-type: decimal">
-<li></li>
+<li>We have <strong>no ‘gold standard’ to benchmark against.</strong></li>
 </ol>
-<blockquote>
-<p>… Second, the result requires that the sample can be viewed as a (stratified) random sample from an infinitely large population… guarantees that outcomes within strata cannot be negatively correlated.</p>
-</blockquote>
-<p>(Note)</p>
-<blockquote>
-<p>The lack of any finite sample cost … contrasts with … regression adjustment. [which] may increase the finite sample variance, and in fact it will strictly increase the variance for any sample size, if the covariates have no predictive power at all.</p>
-</blockquote>
+<ul>
+<li>There is no ‘actual targeted and measured outcome’ such as voting in an election.</li>
+<li>There are no other surveys or enumerations (e.g., Censuses) to inform our results.</li>
+</ul>
+<p><br />
+</p>
 <ol start="3" style="list-style-type: decimal">
-<li><blockquote>
-<p>Although there is no cost to stratification in terms of the variance, there is a cost in terms of estimation of the variance.</p>
-</blockquote></li>
+<li>We have collected survey responses from <strong>self-selected ‘convenience’ samples</strong> (=‘internet surveys’?) across several years</li>
 </ol>
-<p><em>Still</em></p>
-<blockquote>
-<p>One can always use the variance that ignores the stratification: this is conservative if the stratification did in fact reduce the variance</p>
-</blockquote>
+<p>… based on advertising and word-of-mouth in a variety of outlets (‘referrers’) associated with the ‘movement’.</p>
+<div class="marginnote">
+<p>Particularly:</p>
 <ul>
-<li>DR: Is it valid to simply say “we choose the lower value of the estimated variances”? Are they advocating this? Such a procedure seems like it would have a bias.</li>
-</ul>
-<blockquote>
-<p>exact variance for a completely randomized experiment can be written as … variance for the corresponding stratified randomized experiment is… the difference in the two variances is <span class="math inline">\(V_C − V_S =... \geq 0\)</span></p>
-</blockquote>
-<ul>
-<li>DR: I am curious how these terms are derived and compared</li>
-</ul>
-<blockquote>
-<p>if the strata we draw from are small, say litters of puppies, it may well be that the within-stratum correlation is negative, but that is not possible if all the strata are large: in that case the correlation has to be non-negative</p>
-</blockquote>
-<ul>
-<li>DR: unless sutva violated perhaps (?)</li>
-</ul>
-<blockquote>
-<p>consider two estimators for the variance [both unbiased]</p>
-</blockquote>
-<p><span class="math inline">\(\hat{V}_C=\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}\)</span>
-&gt; the natural estimator for the variance under the completely randomized experiment is: <span class="math inline">\(\hat{V}_c=\frac{s^2_{t}}{N_{t}} + \frac{s^2_{c,g}}{N_{c,g}}\)</span></p>
-<blockquote>
-<p>or a stratified randomized experiment the natural variance estimator, taking into account the stratification, is:
-<span class="math inline">\(\hat{V}_S=\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{fc}}{N_{fc}}\frac{s^2_{ft}}{N_{ft}}\Big)+\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{mc}}{N_{mc}}\frac{s^2_{mt}}{N_{mt}}\Big)\)</span></p>
-</blockquote>
-<blockquote>
-<p>Hence, <span class="math inline">\(E\hat{V}_S\leq\hat{V}_C\)</span>.</p>
-</blockquote>
-<ul>
-<li>DR: Because we know both are unbiased and we know the true variance of <span class="math inline">\(\hat{V}_C\)</span> is larger.</li>
-</ul>
-<p>Nevertheless, the reverse may hold in a particular sample</p>
-<blockquote>
-<p>where the stratification is not related to the potential outcomes … the two variances are identical in expectation</p>
-</blockquote>
-<p>but the <span class="math inline">\(var\Big(hat{V}_S\Big) &lt; var\Big(hat{V}_C\Big)\)</span></p>
-<ul>
-<li>DR: This seems contradictory at first but I think it’s correct. The expectation of the estimated variance can be smaller or identical, while the <em>variance of the estimated variance</em> can still be larger.</li>
+<li>A discussion forum</li>
+<li>A newsletter</li>
+<li>A popular website and hub for the movement</li>
 </ul>
 </div>
-<div id="re-randomization" class="section level3" number="15.7.15">
-<h3><span class="header-section-number">15.7.15</span> Re-randomization</h3>
-<p>Basically, they argue that if the first pre-implementation experiment comes out very unbalanced, you can randomize again – this will be an indirect method of stratifying.</p>
-<p>P-values could/should be adjusted to take into account that you are basically stratifying imprecisely.</p>
-</div>
-<div id="analysis-of-clustered-randomised-experiments" class="section level3" number="15.7.16">
-<h3><span class="header-section-number">15.7.16</span> Analysis of Clustered Randomised Experiments</h3>
-<blockquote>
-<p>our main recommendation is to include analyses that are based on the cluster as the unit of analysis. Although more sophisticated analyses may be more informative than simple analyses using the clusters as units, it is rare that these differences in precision are substantial, and a cluster-based analysis has the virtue of great transparency</p>
-</blockquote>
-<p><em>DR: skipping most of this section for now</em></p>
-</div>
-<div id="noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments" class="section level3" number="15.7.17">
-<h3><span class="header-section-number">15.7.17</span> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</h3>
-<blockquote>
-<p>randomization that validates comparisons by treatment status does not validate comparisons by post-treatment variables such as the treatment received.</p>
-</blockquote>
 <ul>
-<li>DR: good quote for Nlmed</li>
+<li><p>We can identify <em>which</em> ‘referrer’ lead someone to our survey.</p></li>
+<li><p>All participants are given a similar ‘donation’ incentive, an incentive that might tend to particularly attract members of the Movement.</p></li>
 </ul>
-<p>Responses to noncompliance:</p>
-<ol style="list-style-type: decimal">
-<li>ITT</li>
-<li>LATE</li>
-<li>Partial identification or bounds analysis</li>
+<div class="marginnote">
+<p>Given the context, we might reasonably expect that willingness to complete the survey might be associated with depth of support for the movement.</p>
+</div>
+<ul>
+<li><p>We can link some individuals across years.</p></li>
+<li><p>Some questions repeat across years.</p></li>
+</ul>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>We have (self-reported) <strong>measures</strong> of</li>
 </ol>
 <ul>
-<li>Latter: “to obtain the range of values for the average causal effect of the receipt of treatment for the full population.”</li>
-</ul>
-<blockquote>
-<p>Another approach, not further discussed here, is the randomization-based approach to instrumental variables developed in Imbens and Rosenbaum (2005).
-[check into that]</p>
-</blockquote>
-<p>They recommend against:
-&gt; The first of these is an as-treated analysis, where units are compared by the treatment received; this relies on an unconfoundedness or selectionon-observables assumption. A second type of analysis is a per protocol analysis, where units are dropped who do not receive the treatment they were assigned to. We need some additional notation in this section.</p>
-<ul>
-<li>DR: Skipping full note-taking on this for now but <em>COME BACK TO IT</em> as it is very relevant to NL Med; the bounds analysis could be particularly interesting</li>
-</ul>
-</div>
-<div id="heterogenous-treatment-effects-and-pretreatment-variables" class="section level3" number="15.7.18">
-<h3><span class="header-section-number">15.7.18</span> Heterogenous Treatment Effects and Pretreatment Variables</h3>
-<ul>
-<li>Crump et al setup (?)</li>
-</ul>
-<p>Multiple splits and tests may lead to overstated statistical significance for differences in TE’s.</p>
-<ul>
-<li>Bonferroni “overly conservative in an environment where many covariates are correlated with one another”
-<ul>
-<li>List, Shaikh, and Xu (2016) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct</li>
-</ul></li>
-</ul>
-<p>** 10.3 Estimating Treatment Effect Heterogeneity **</p>
-<ul>
-<li>Parametric estimators, ‘all interactions’ (presumably with a correction as noted above)</li>
-<li>Nonparametric estimator of <span class="math inline">\(\tau(x)\)</span></li>
-</ul>
-<blockquote>
-<p>The approach of List, Shaikh, and Xu (2016) works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.</p>
-</blockquote>
-</div>
-<div id="data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects" class="section level3" number="15.7.19">
-<h3><span class="header-section-number">15.7.19</span> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</h3>
-<ul>
-<li>Partition sample by “region of covariate space”</li>
-<li>Determine which partition produces subgroups that differ the most in terms of treatment effects.</li>
-<li>The method avoids introducing biases in the estimated average treatment effects and allows for valid confidence intervals using “sample splitting,” or “honest” estimation</li>
-<li>Output of the method … is a set of subgroups, selected to optimize for treatment effect heterogeneity (to minimize expected mean-squared error of treatment effects), together with treatment effect estimates and standard errors for each subgroup.</li>
+<li>Demographics (age, gender, etc),</li>
+<li>Attitudes and beliefs (e.g., support for the death penalty),</li>
+<li>Retrospectives (esp. ‘year you became Jazzy’), and</li>
+<li>Behaviors (e.g., charitable donations).</li>
 </ul>
 <p><br />
 </p>
-<p>If instead…
-&gt; we estimate the average treatment effect on the two subsamples using the same sample, the fact that this particular split led to a high value of the criterion would often imply that the average treatment effect estimate is biased.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Our <strong>research goals include</strong> measuring:</li>
+</ol>
+<ul>
+<li><p>The size of the movement (challenging),</p></li>
+<li><p>The demographics (and psychographics, etc) of the movement,</p></li>
+<li><p>The attitudes, beliefs and behaviors of people in the movement,</p></li>
+<li><p>The (causal) drivers of joining the movement and actively participating in the movement (or leaving the movement),</p></li>
+<li><p>… and the trends/changes in all of the above.</p></li>
+</ul>
 <p><br />
 </p>
-<p>But here ,,,
-&gt; The treatment effect estimates are unbiased on the two subsamples, and the corresponding confidence intervals are valid, even in settings with a large number of pretreatment variables or covariates.</p>
+<p><strong>Why do we care?</strong> <em>We want to know these things for several reasons, including…</em></p>
+<p>To find ways to build membership (perhaps ‘expand and diversify’) and participation in the movement (including specific behaviors like donating),especially through…</p>
+<ul>
+<li>Funding causal drivers that ‘work’, and</li>
+<li>Profiling and targeting ‘likely Jazzers’ from outside the movement</li>
+</ul>
 <p><br />
 </p>
-<p>Because unit level TE is not observed, it is difficult to use standard protocols<br />
+<p>To understand and better represent the attitudes of the movement’s members in our movement-wide activities.</p>
+<p><br />
 </p>
-<p>… suggest transforming outcome from Y_i^{obs} to <span class="math inline">\(Y_i^\ast=Y_i^{obs}\frac{W_i−p}{p(1−p)}\)</span></p>
-<p>… “so that standard methods for recursive partitioning based on prediction apply”</p>
-<p>Which implies <span class="math inline">\(E[Y_i^\ast|X_i=x]=\tau(x)=E[Y_i(1)−Y_i(0)|X_i = x]\)</span></p>
-<ul>
-<li>DR: Are these p’s conditional on the x’s? Probably it doesn’t matter here as they are assuming pure randomisation.</li>
-</ul>
-<p>AI criterion</p>
-<blockquote>
-<p>focuses directly on the expected squared error of the treatment effect estimator … which turns out to depend both on the t-statistic and on the fit measures.
-… further modified to anticipate … that the treatment effects will be re-estimated on an independent sample after the subgroups are selected</p>
-</blockquote>
-<ul>
-<li>This penalises too small groups and too much variance,</li>
-<li>(in general) rewards explain outcomes but not treatment effect heterogeneity…enables a lower-variance estimate of the treatment effect.</li>
-</ul>
-<p>Wager and W argue for inflating SE’s rather than partitioning
-- DR: I see an advantage there, as the AI approach throws away data</p>
+<p>‘For general understanding of the movement and its members’, to inform a wide range of decisions across the movement, and further research into the movement.</p>
 </div>
-<div id="non-parametric-estimation-of-treatment-effect-heterogeneity" class="section level3" number="15.7.20">
-<h3><span class="header-section-number">15.7.20</span> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</h3>
-<ul>
-<li><p>Many allow descriptive evidence and prediction, but few methods available that allow for confidence intervals</p></li>
-<li><p>K-nearest neighbors, hurdle methods</p>
-<ul>
-<li>Do not prioritise ‘more important’ covariates</li>
-</ul></li>
-</ul>
-<blockquote>
-<p>… can work well and provide satisfactory coverage of confidence intervals with one or two covariates, but performance deteriorates quickly after that.
-The output of the nonparametric estimator is a treatment effect for an arbitrary x. The estimates generally must be further summarized or visualized since the model produces a distinct prediction for each x.</p>
-</blockquote>
-<blockquote>
-<p>A key problem with kernels and nearest neighbor matching is that all covariates are treated symmetrically; if one unit is close to another in 20 dimensions, the units are probably not particularly similar in any given dimension. We would ideally like to prioritize dimensions that are most important for heterogeneous treatment effects, as is done in many machine learning methods, including the highly successful random forest algorithm.</p>
-</blockquote>
-<p>But these are often “bias-dominated asymptotically” … except the ones proposed by Wager and Athey (2015) :)</p>
-<blockquote>
-<p>asymptotically normal and centered on the true value of the treatment effect,… consistent estimator for the asymptotic variance.</p>
-</blockquote>
-<blockquote>
-<p>Averages over the many “trees” of the form developed in Athey and Imbens (2016)</p>
-</blockquote>
-<blockquote>
-<p>… different subsamples are used for each tree [plus some randomness]
-Each tree is “honest,” in that one subsample is used to determine a partition and [another] to estimate treatment effects within the leaves.
-Unlike the case of a single tree, no data is “wasted” because each observation is used to determine the partition in some trees and used to estimate treatment effects in other trees, and subsampling is already an inherent part of the method.</p>
-</blockquote>
-<p>What does this mean?:</p>
-<blockquote>
-<p>can obtain nominal coverage with more covariates than K-Nearest Neighbour matching or kernel methods,</p>
-</blockquote>
-<p>(but still “eventually becomes bias-dominated when the number of covariates grows” … but “much more robust to irrelevant covariates than kernels or nearest neighbor matching.”)</p>
-<ul>
-<li><p>Also, approaches fitting separately for treatment and control</p></li>
-<li><p>Also, Bayesian perspectives on this: Green and Kern (2011), Hill (2012), others … but unknown asymptotic properties (DR: do we care?)</p></li>
-</ul>
+<div id="our-convenience-method-issues-alternatives" class="section level3" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Our ‘convenience’ method; issues, alternatives</h3>
+<p>Our current approach seems to be some combination of what is called ‘convenience sampling’ and ‘snowball sampling’. The major distinction from probability sampling (as I see it) is…</p>
+<p><em>Probability sampling</em> identifies a <em>population of interest</em> and a <em>sample frame</em> meant to capture this population. Rather than appealing to this entire population/frame, PS randomly (or stratified/clustered) samples a ‘probability share’ (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze —and perhaps adjust for—the rate of non-response.</p>
+<p>In contrast,</p>
+<div class="marginnote">
+<p>I have heard that ‘internet surveys’, if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.</p>
 </div>
-<div id="treatment-effect-heterogeneity-using-regularized-regression" class="section level3" number="15.7.21">
-<h3><span class="header-section-number">15.7.21</span> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</h3>
-<ul>
-<li><p>Lasso-like (Imai and Ratkovic (2013), etc.)</p></li>
-<li><p>With few important covariates (a ‘sparse’ model), can derive valid CI’s w/o sample-splitting</p></li>
-<li><p>Some proposed modeling heterogeneity separately for treatment and control;… can be inefficient if the covariates that affect the level of outcomes are distinct from those that affect treatment effect heterogeneity.</p>
-<ul>
-<li>alternative … incorporate interactions … as covariates, and then allow LASSO to select which covariates are important.</li>
-</ul></li>
-</ul>
+<p><br />
+</p>
+<p>Wikipedia entry on ‘convenience sampling’</p>
+<blockquote>
+<p>Another example would be a gaming company that wants to know how one of their games is doing in the market one day after its release. Its analyst may choose to create an online survey on Facebook to rate that game.</p>
+</blockquote>
+<blockquote>
+<p><strong>Bias</strong> The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on ‘Convenience sampling’, cites Borenstein et al, 2017)</p>
+</blockquote>
+<p><em>This statement is deeply pessimistic…</em> ‘the bias cannot be measured’. We might dig more deeply to see if there are potential approaches to dealing with this</p>
+<p><br />
+</p>
 </div>
-<div id="comparison-of-methods" class="section level3" number="15.7.22">
-<h3><span class="header-section-number">15.7.22</span> 10.3.4 Comparison of Methods</h3>
+<div id="notes-and-considerations" class="section level3" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Notes and considerations:</h3>
 <ul>
-<li>Lasso: more sparsity restrictions, better handle linear or polynomial relationships between covariates and outcomes;
-<ul>
-<li>outputs a regression; but CI’s justified only under strict conditions</li>
-</ul></li>
-<li>Random forest methods … are more localized, … capture complex, multi-dimensional interactions among covariates, or highly nonlinear interactions.
-<ul>
-<li>Less sensitive to sparsity, CI’s do not ‘deteriorate’ as covariates grow (but MSE of predictions suffer)</li>
-<li>Inference more justifiable by random assignment (Lasso requires stronger assumptions)</li>
-</ul></li>
+<li><p>‘Whether we can do better’ sort of questions … we should try to pin down what our metrics and targets are</p></li>
+<li><p>What do we mean when we say the ‘actual Jazz population’?</p></li>
+<li><p>What sorts of questions/claims are we interested in most/what ‘parameters’ are we trying to measure?</p></li>
+<li><p>For the second point, I think that some methods might yield plausibly unbiased/reliable estimates of certain parameters (e.g., year-to-year changes) but not others.</p></li>
 </ul>
+<p><br />
+</p>
+<p>Moss:</p>
+<p>some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others</p>
 
 </div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-randlesAsymptoticallyDistributionfreeTest1980">
-<p>Randles, Ronald H., Michael A. Fligner, George E. Policello, and Douglas A. Wolfe. 1980. “An Asymptotically Distribution-Free Test for Symmetry Versus Asymmetry.” <em>Journal of the American Statistical Association</em> 75 (369): 168–72.</p>
 </div>
 </div>
             </section>
@@ -1342,8 +820,8 @@ Unlike the case of a single tree, no data is “wasted” because each observati
           </div>
         </div>
       </div>
-<a href="power.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="metaanalysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="selection-cop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="why-experiment-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
