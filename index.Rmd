@@ -27,7 +27,7 @@ bookdown::pdf_book:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"#
+bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
@@ -81,9 +81,9 @@ source(here("code", "project_setup.R"))
 ```
 
 
-# Basic options used across files and shortcut functions, e.g., 'pp()' for print
-# functions grabbed from web and created by us for analysis/output
-```
+#Basic options used across files and shortcut functions, e.g., 'pp()' for print
+#functions grabbed from web and created by us for analysis/output
+
 
 ```{r eval=FALSE}
 install.packages("bookdown")

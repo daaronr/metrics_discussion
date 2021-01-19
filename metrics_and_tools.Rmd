@@ -27,7 +27,7 @@ bookdown::pdf_book:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"#
+bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
@@ -81,9 +81,9 @@ source(here("code", "project_setup.R"))
 ```
 
 
-# Basic options used across files and shortcut functions, e.g., 'pp()' for print
-# functions grabbed from web and created by us for analysis/output
-```
+#Basic options used across files and shortcut functions, e.g., 'pp()' for print
+#functions grabbed from web and created by us for analysis/output
+
 
 ```{r eval=FALSE}
 install.packages("bookdown")
@@ -166,13 +166,14 @@ Can define text blocks here, refer to them again and again if desired
 
 # Introduction
 
-My goal in putting this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this.
+My goal in putting this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson)
 
 \
 
 *My focus:* Microeconomics, behavioral economics, focus on charitable giving and 'returns to education' type of straightforward problems. (Minimal focus on structural approaches.)
 
 What I care about: Where we can *add value* to real econometric (and statistical and experimental design) practice?
+
 
 \
 
@@ -200,35 +201,34 @@ A note to potential research assistants and student collaborators (unfold):
 
 ```
 
-## (Conceptual: approaches to statistics/inference and causality)[#conceptual]
+## (Conceptual: approaches to statistics/inference and causality)[#conceptual] {-}
 
-### Bayesian vs. frequentist approaches {-}
-
+-  Bayesian vs. frequentist approaches
 
 Folder: bayesian
-
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
-### Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
+-  Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
 
-#### DAGs and Potential outcomes
+<!-- #### DAGs and Potential outcomes -->
 
-### Theory, restrictions, and 'structural vs reduced form'
+-  Theory, restrictions, and 'structural vs reduced form'
 
-## [Getting, cleaning and using data; project management and coding](#data-sci)
+## [Getting, cleaning and using data; project management and coding](#data-sci) {-}
 
+<div class="marginnote">
 This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.
+</div>
+ 
+- Data: What/why/where/how
 
-### Data: What/why/where/how
+- Organizing a project
 
-### Organizing a project
+-  Dynamic documents (esp Rmd/bookdown)
 
-### Dynamic documents (esp Rmd/bookdown)
+-  Good coding practices
 
-### Good coding practices
-
-
-#### New tools and approaches to data (esp 'tidyverse')
+<!--- #### New tools and approaches to data (esp 'tidyverse')
 
 #### Style and consistency
 
@@ -236,204 +236,172 @@ Indenting, snake-case, etc
 
 #### Using functions, variable lists, etc., for clean, concise, readable code
 
-### Data sharing and integrity
+--> 
+
+-  Data sharing and integrity
 
 
-## Basic regression and statistical inference: Common mistakes and issues
+## Basic regression and statistical inference: Common mistakes and issues {-}
 
-### "Bad control" ("colliders")
+- "Bad control" ("colliders")
+- Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
 
-Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
-
-### Choices of lhs and rhs variables
-
+- Choices of lhs and rhs variables
 - Missing data
 - Choice of control variables and interactions
 - Which outcome variable/variables
 
-### Functional form
-
-- Logs and exponentials
-- Nonlinear modeling (and interpreting coefficients)
-
-
-#### 'Testing for nonlinear terms'
-
-Quadratic regressions are not diagnostic regarding u-shapedness: [Simonsohn18]( http://datacolada.org/62)
+-  Functional form
+  - Logs and exponentials
+  - Nonlinear modeling (and interpreting coefficients)
 
 
-### OLS and heterogeneity
-
-- OLS does *not* identify the ATE
-
-http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT
+- 'Testing for nonlinear terms'
 
 
-- Modeling heterogeneity: the limits of Quantile re regression
+-  OLS and heterogeneity
+  - OLS does *not* identify the ATE
+  - See: ['your go-to regression specification is biased...'](http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT)
 
-### "Null effects"
+  - Modeling heterogeneity: the limits of Quantile regression
 
-"While the classical statistical framework is not terribly clear about when one should ""accept"" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ""zero or minimal effect"" one would want to find these closely bounded around zero under a variety of conditions for generalizability.
+-  "Null effects"
 
-In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks”."	Harms-lakens-18
+- Confidence intervals and Bayesian credible intervals
 
-- **Confidence intervals and Bayesian credible intervals**
+- Comparing relative parameters
 
-- **Comparing relative parameters**
+-  Multiple hypothesis testing (MHT)
 
-E.g., "the treatment had a heterogeneous effect... we see a statistically significant positive effect for women but not for men".   This doesn't cut it: we need to see a *statistical test* for the *difference* in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).
+-  Interaction terms and pitfalls
 
-
-### Multiple hypothesis testing (MHT)
-
-### Interaction terms and pitfalls
-
-** 'Moderators' Confusion with nonlinearity**
-
-Moderators: Heterogeneity mixed with nonlinearity/corners
-
-In the presence of nonlinearity, e.g., diminishing returns, if the outcome 'starts' at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from 'the diminishing returns kicking in'.  Related to https://datacolada.org/57 [57] Interactions in Logit Regressions: Why Positive May Mean Negative
+- 'Moderators' Confusion with nonlinearity
 
 
-### Choice of test statistics (including nonparametric)
+
+-  Choice of test statistics (including nonparametric)
 
 <!-- (Or get to this in the experimetrics section) -->
 
-### How to display and write about regression results and tests
+-  How to display and write about regression results and tests
 
-### Bayesian interpretations of results
+- Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 
-(see 'the Bayesian Approach')
+## LDV and discrete choice modeling {-}
 
-## LDV and discrete choice modeling
+## Robustness and diagnostics, with integrity {-}
 
-## Robustness and diagnostics, with integrity
+- (How) can diagnostic tests make sense? Where is the burden of proof?
 
-### (How) can diagnostic tests make sense? Where is the burden of proof?
+- Estimating standard errors
 
-### Estimating standard errors
+-  Sensitivity analysis: Interactive presentation
 
-### Sensitivity analysis: Interactive presentation
+## [Control strategies and prediction; Machine Learning approaches](#control-ml) {-}
 
-## [Control strategies and prediction; Machine Learning approaches](#control-ml)
+-  Machine Learning (statistical learning): Lasso, Ridge, and more
 
-### Machine Learning (statistical learning): Lasso, Ridge, and more
+-  Limitations to inference from learning approaches
 
-### Limitations to inference from learning approaches
+## IV and its many issues {-}
 
-## IV and its many issues
-
-
-### Instrument validity
-
+-  Instrument validity
 - Exogeneity vs. exclusion
 - Very hard to 'powerfully test'
 
 
-### Heterogeneity and LATE
+-  Heterogeneity and LATE
 
 *Basic consideration: what does IV identify and when:*?
 
-Focusing on a binary endogenous 'treatment' variable
+-  Weak instruments, other issues
 
-- With heterogeneity
-- With imperfect compliance
-- With one-way compliance
+- Reference to the use of IV in experiments/mediation
 
-### Weak instruments, other issues
+## [Other paths to observational identification](#other_paths) {-}
 
-- With a 'weak instrument' ... why does that matter?
+- Fixed effects and differencing
 
-### Reference to the use of IV in experiments/mediation
+-  DiD
 
-## [Other paths to observational identification](#other_paths)
+-  RD
 
-### Fixed effects and differencing
+-  Time-series-ish panel approaches to micro
 
-### DiD
-
-FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
-
-### RD
-
-### Time-series-ish panel approaches to micro
-
-** Lagged dependent variable and fixed effects --> 'Nickel bias'**
-
-## Causal pathways: [Mediation modeling and its massive limitations](#mediators)
+## Causal pathways: [Mediation modeling and its massive limitations](#mediators) {-}
 
 An applied review
 
-## Causal pathways: selection, corners, hurdles, and 'conditional on' estimates
+## Causal pathways: [selection, corners, hurdles, and 'conditional on' estimates](#selection_cop) {-}
 
 
-### 'Corner solution' or hurdle variables and 'Conditional on Positive'
+- Corner solution' or hurdle variables and 'Conditional on Positive'
 
 "Conditional on positive"/"intensive margin" analysis ignores selection
 
-"Conditional on positive"/"intensive margin" analysis ignores selection *identification issue* 	See Angrist and Pischke on "Good CoP, bad CoP".  See also bounding approaches such as [@Lee2018]	AngristJ.D.2008a,
 
 \
 
-#### Bounding approaches (Lee, Manski, etc)
-
-See [Notes on Lee bounds](#notes_lee)
+- Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
 
 
-## [(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_etc)
+## [(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_etc) {-}
 
 <!-- experiments_and_study_design/why_experiment_design.Rmd -->
 
-### Why run an experiment or study?
+- Why run an experiment or study?
 
 <!-- - Sugden and Sitzia critique here, give more motivation -->
 
-### Causal channels and identification
+- Causal channels and identification
 
 - Ruling out alternative hypotheses, etc
 
-### Types of experiments, 'demand effects' and more artifacts of artifical setups
+-Types of experiments, 'demand effects' and more artifacts of artifical setups
 
-### Generalizability (and heterogeneity)
+-Generalizability (and heterogeneity)
 
-## (Experimental) Study design: Background and quantitative issues
+## (Experimental) Study design: Background and quantitative issues {-}
 
 <!-- experiments_and_study_design/quant_design_power.Rmd -->
 
-### Pre-registration and Pre-analysis plans
+- Pre-registration and Pre-analysis plans
 
-#### The hazards of specification-searching
+-The hazards of specification-searching
 
-### Sequential and adaptive designs
+-Sequential and adaptive designs
 
-### Efficient assignment of treatments
+-Efficient assignment of treatments
 
-(Links back to [power analyses](#power)
+(Links back to [power analyses](#power))
 
 
 ## (Experimental) Study design: (Ex-ante) Power calculations
 
-### What sort of 'power calculations' make sense, and what is the point?
+- What sort of 'power calculations' make sense, and what is the point?
 
-#### The 'harm to science' from running underpowered studies
+- The 'harm to science' from running underpowered studies
 
-### Power calculations without real data
+- Power calculations without real data
 
-### Power calculations using prior data
+- Power calculations using prior data
 
-## ['Experimetrics' and measurement of treatment effects from RCTs](#experimetrics_te)
+## ['Experimetrics' and measurement of treatment effects from RCTs](#experimetrics_te) {-}
 
-### Which error structure? Random effects?
+<!-- Which error structure? Random effects?
 
-### Randomization inference?
+- Randomization inference?
 
-### Parametric and nonparametric tests of simple hypotheses
+- Parametric and nonparametric tests of simple hypotheses
 
-### Adjustments for exogenous (but non-random) treatment assignment
+- Adjustments for exogenous (but non-random) treatment assignment
 
-### IV in an experimental context to get at 'mediators'?
 
-### Heterogeneity in an experimental context
+-  IV in an experimental context to get at 'mediators'?
+
+- Heterogeneity in an experimental context
+
+--> 
 
 ## [Making inferences from previous work; Meta-analysis, combining studies](#metaanalysis)
 
@@ -449,7 +417,7 @@ See [Notes on Lee bounds](#notes_lee)
 
 ## Some key resources and references
 
-[@AngristJ.D.2008a]
+[@angrist2008mostly]
 
 'The Mixtape' (Cunningham)
 
@@ -2841,7 +2809,7 @@ A caveat to this is that we may be able to pool some of the pairings to answer c
 
 ### Other notes and resources
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">ICYMI:<br>Recording of my talk on experimental design in the Chamberlain seminar, with discussions by <a href="https://twitter.com/dmckenzie001?ref_src=twsrc%5Etfw">@dmckenzie001</a> and Max Tabord-Meehan:<a href="https://t.co/xKtTrH8X1U">https://t.co/xKtTrH8X1U</a> <a href="https://t.co/e7Cq90D6Sl">https://t.co/e7Cq90D6Sl</a></p>&mdash; Maximilian Kasy (@maxkasy) <a href="https://twitter.com/maxkasy/status/1264966489595162627?ref_src=twsrc%5Etfw">May 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">ICYMI:<br>Recording of my talk on experimental design in the Chamberlain seminar, with discussions by <a href="https://twitter.com/dmckenzie001?ref_src=twsrc%5Etfw">dmckenzie001</a> and Max Tabord-Meehan:<a href="https://t.co/xKtTrH8X1U">https://t.co/xKtTrH8X1U</a> <a href="https://t.co/e7Cq90D6Sl">https://t.co/e7Cq90D6Sl</a></p>&mdash; Maximilian Kasy (maxkasy) <a href="https://twitter.com/maxkasy/status/1264966489595162627?ref_src=twsrc%5Etfw">May 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <!--chapter:end:experiments_and_study_design/quant_design_power.Rmd-->
 
@@ -4954,7 +4922,7 @@ Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main ma
 
 <!--chapter:end:meta_anal_and_open_science/metaanalysis.Rmd-->
 
-# Bayesian approaches
+# Bayesian approaches {#bayes}
 
 
 ```{block2,  type='note'}
@@ -6726,16 +6694,6 @@ Glossary 355
 
 <!--chapter:end:data_sci/ds_for_bsns_notes_remote.Rmd-->
 
----
-output:
-  html_document:
-    df_print: paged
-  tufte::tufte_handout: default
-  pdf_document: default
-bibliography: "`r rbbt::bbt_write_bib('biblio.json', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
-link-citations: yes
----
-
 # Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
 
 Introduction and discussion
@@ -6777,7 +6735,7 @@ In this brief review I:
 - [Consider conceptual issues in defining and measuring the 'impact of a diet' through standard study methodologies](#conceptual)
 
 - [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a considering its methods, findings, and limitations](#limitations-p),
-    - considering key conceptual and statistical issues,
+    - [considering key conceptual and statistical issuess]((#man-results),
     - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis,
     - weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.
 
@@ -6914,13 +6872,19 @@ As noted below, the evidence does not allow us to rule out heterogeneity across 
 
 \
 
-***
-**Note**: This suggests the limitations of the evidence, not a weakness of the authors' analysis. To me their inclusion criteria seem reasonable. I agree, e.g.,  with their decision that:
+
+
+**Note**: This suggests the limitations of the evidence, not a weakness of the authors' analysis.
+
+```{block2,  type='fold'}
+
+To me their inclusion criteria seem reasonable. I agree, e.g.,  with their decision that:
 
 > Crossover RCTs were eligible for inclusion, but we used data from only the first phase before the crossover occurred because we considered the risk of carryover effects to be high
 
 However, particularly in line with the points made in @schwingshacklPerspectiveNutriGradeScoring2016, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.
-***
+
+```
 
 \
 

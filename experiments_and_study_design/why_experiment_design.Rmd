@@ -8,9 +8,9 @@ I claim an experiment should:
 
 2. The realized outcome should meaningfully inform  our understanding of the world in other words. In other words, if the outcome comes out one way it should cause us to update our beliefs about a particular hypothesis about the world in one direction (and if it comes out the other way we should update in the other direction.)
 
-> Experimenter should always ask: "What uncertainty (about real-world  preferences, decision-making etc.) is 'entangled' (ala @ESYudkowsky) with the results of this experiment?"... i.e., 'how might my beliefs change depending on the results?'
+> Experimenter should always ask: "What uncertainty (about real-world  preferences, decision-making etc.) is 'entangled' (ala Eliezer Yudkowsky) with the results of this experiment?"... i.e., 'how might my beliefs change depending on the results?'
 
-- @givingtools on twitter
+- givingtools on twitter
 
 
 ### Sitzia and Sugden on what theoretically driven experiments can and should do

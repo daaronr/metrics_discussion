@@ -1,0 +1,7 @@
+# Survey design and implementation; analysis of survey data {#surveys}
+
+## Survey sampling/intake
+
+### Probability sampling
+
+> A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in [Wiki](https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling))

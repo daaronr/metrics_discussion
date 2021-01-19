@@ -1,13 +1,3 @@
----
-output:
-  html_document:
-    df_print: paged
-  tufte::tufte_handout: default
-  pdf_document: default
-bibliography: "`r rbbt::bbt_write_bib('biblio.json', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
-link-citations: yes
----
-
 # Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
 
 Introduction and discussion
@@ -49,7 +39,7 @@ In this brief review I:
 - [Consider conceptual issues in defining and measuring the 'impact of a diet' through standard study methodologies](#conceptual)
 
 - [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a considering its methods, findings, and limitations](#limitations-p),
-    - considering key conceptual and statistical issues,
+    - [considering key conceptual and statistical issuess]((#man-results),
     - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis,
     - weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.
 
@@ -186,13 +176,19 @@ As noted below, the evidence does not allow us to rule out heterogeneity across 
 
 \
 
-***
-**Note**: This suggests the limitations of the evidence, not a weakness of the authors' analysis. To me their inclusion criteria seem reasonable. I agree, e.g.,  with their decision that:
+
+
+**Note**: This suggests the limitations of the evidence, not a weakness of the authors' analysis.
+
+```{block2,  type='fold'}
+
+To me their inclusion criteria seem reasonable. I agree, e.g.,  with their decision that:
 
 > Crossover RCTs were eligible for inclusion, but we used data from only the first phase before the crossover occurred because we considered the risk of carryover effects to be high
 
 However, particularly in line with the points made in @schwingshacklPerspectiveNutriGradeScoring2016, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.
-***
+
+```
 
 \
 

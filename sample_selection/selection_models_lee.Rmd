@@ -74,7 +74,7 @@ it is not immediately clear how this could be adapted to instrumental variables;
 
 In Lee's paper, the estimate seems to give very narrow and informative bounds even though they have a great many people who do not earn any wages as a share of the population, about 54\%. These are much narrower than the bounds proposed by Horowitz and M then what those bounds produce.
 
-<!- ask @Gerhard whether his Horowitz/Manski estimator incorporated the natural bounds on the outcome. -->
+<!-- ask Gerhard whether his Horowitz/Manski estimator incorporated the natural bounds on the outcome. -->
 
 
 ##### The National Job  Corps Study and Sample Selection [prior approaches]
@@ -186,11 +186,20 @@ Experimental or random assignment ensures that each of the potential outcomes (a
 
 The second assumption is monotonicity: treatment assignment can only affect sample selection in one direction.
 
-– DR: For our (substitution) experiments, it is in fact not clear to me whether this should necessarily be the case, as some (less generous?) people may be induced to leave because of having been asked to donate, while potentially other (more generous people) might be induced to return given that they were asked to donate. (This proposed nonmonotonicity implies that the 'asked twice' sample tends to weed out the less generous, which would lead to a bias *against* substitution, strengthening the case for our result.)
-    - DR, aside: However, even though the paper doesn't say it, I suspect this assumption could be weakened and you would still get some similar bounds.
+\
+
+*Some discussion from my own research projects on this ...  
+```{block2,  type='fold'}
+
+DR: For our (substitution) experiments, it is in fact not clear to me whether this should necessarily be the case, as some (less generous?) people may be induced to leave because of having been asked to donate, while potentially other (more generous people) might be induced to return given that they were asked to donate. (This proposed nonmonotonicity implies that the 'asked twice' sample tends to weed out the less generous, which would lead to a bias *against* substitution, strengthening the case for our result.)
+ 
+ DR, aside: However, even though the paper doesn't say it, I suspect this assumption could be weakened and you would still get some similar bounds.
 To put it another way, I would imagine that these bounds could be adjusted based on some reasonable ad hoc assumptions about the share of the population who is affected in either direction.
 
-– \@NL: I'm coming to think that our Dutch data problems are more things involving "hurdle models". Can this technique also be applied to such hurdle models?
+
+– NL: I'm coming to think that our Dutch data problems are more things involving "hurdle models". Can this technique also be applied to such hurdle models?
+     
+```
 
 Next proposition 1a states that given these assumptions we can derive sharp lower and upper bounds for the average treatment effect (conditional on 'would be observed in both states'). Note that for this estimator if the probability of observation is greater under the treatment we need to trim the treatment groups outcome distribution and if the probability of observation is greater under the control we need to trim the control group's outcome distribution.
 
@@ -274,7 +283,7 @@ Intervals are 1/14 the width of  the equivalent Horowitz/Manski bounds
 
 > Any baseline covariate will do, as will any function of all the baseline covariates. In the analysis here, a single baseline covariate—which is meant to be a proxy for the predicted wage potential for each individual—is constructed from a linear combination of all observed baseline characteristics. This single covariate is then discretized, so that effectively five groups are formed according to whether the predicted wage is within intervals defined by $6·75, $7, $7·50, and $8·50.
 
-- @Substitution: this is essentially what I propose we do, but using Ridge Regressions or something similar
+- (Substitution): this is essentially what I propose we do, but using Ridge Regressions or something similar
 
 > To compute the bounds for the overall average...the group-specific bounds must be averaged, weighted by the proportion (sPr Group J|S0=1,S1=1)
 
