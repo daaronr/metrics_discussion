@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -418,7 +418,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>14.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>14.2</b> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</a></li>
+<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#key-ingredients-for-doing-a-power-analysis-and-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>14.2</b> Key ingredients for doing a power analysis (and designing a study in light of this)</a></li>
 <li class="chapter" data-level="14.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>14.3</b> The ‘harm to science’ from running underpowered studies</a></li>
 <li class="chapter" data-level="14.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>14.4</b> Power calculations without real data</a></li>
 <li class="chapter" data-level="14.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>14.5</b> Power calculations using prior data</a>
@@ -650,30 +650,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="power" class="section level1" number="14">
 <h1><span class="header-section-number">14</span> (Experimental) Study design: (Ex-ante) Power calculations</h1>
-<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular <em>true effect size</em> (parameter magnitude). Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’). Considering standard frequentist null hypothesis testing ‘the power of a test’ (or analysis) represents one minus the probability of a type-II error (something like 1- the false negative rate).</p>
+<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular <em>true effect size</em> (parameter magnitude), or an effect size stated as relative to the underlying dispersion.* Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’).</p>
+<p>Considering standard frequentist null hypothesis testing ‘the power of a test’ (or analysis) represents one minus the probability of a type-II error (something like ‘one minus the false-negative rate’).</p>
 <p><br />
-Basics: <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">egap</a></p>
-<p>Note: sometimes put together as measure like ‘d’ of ’effect relative to noise…. effect size/SD<br />
 </p>
+<div class="marginnote">
+<p>* E.g., we may see power calculated as a function of a measure of ‘effect relative to variation’ … like Cohen’s <span class="math inline">\(d\)</span> of … effect size/SD.</p>
+</div>
+<p><br />
+</p>
+<p><em>Basics:</em> <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">egap - 10 things to know about statistical power</a></p>
 <div id="what-sort-of-power-calculations-make-sense-and-what-is-the-point" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> What sort of ‘power calculations’ make sense, and what is the point?</h2>
 <p>There are several reasons to consider power and to do ‘power calculations’ in advance of running an experiment or doing an analysis.</p>
-<p>An ‘underpowered study’, one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present, is also likely to be an <em>uninformative</em> study. If ‘rejecting a particular null hypothesis’ is important (and please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point), an underpowered test is unlikely to reject this null hypothesis even when it is ‘meaningfully false’.</p>
-<p>Perhaps more importantly, an underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value is.</p>
+<p>An ‘underpowered study’, one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present, is also likely to be an <em>uninformative</em> study. If ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘meaningfully false’.</p>
+<div class="marginnote">
+<p>** But please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point.</p>
+</div>
+<p>Perhaps more importantly, an underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value (of the parameter or effect of interest) is.</p>
 <div id="why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis" class="section level3" number="14.1.1">
 <h3><span class="header-section-number">14.1.1</span> Why do a power analysis? What are the practical benefits of doing a power analysis</h3>
+<p>A power analysis may allow you to:</p>
 <ul>
-<li><p>Considering the cost/benefits of ‘more data’ to determine ‘how much to collect’</p></li>
-<li><p>Consider and optimise over the tradeoffs in design choices … e.g., introducing more treatments usually involves a loss of power</p></li>
-<li><p>‘Can I have enough funds to gather enough data to make it worth doing a study?’</p></li>
-<li><p>If I am trying to do some sort of replication exercise to diagnose the credibility of previous work I want to ‘have power to do this credibly’ (I’m not sure about this one)</p></li>
-<li><p>Avoiding the general harm ‘underpowered studies’. There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias’.</p></li>
-<li><p>An ex-ante power analysis might (I’m not sure on this one, it seems possibly dubious) be useful in making ex-post statements about null effects</p></li>
+<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you8 determine ‘how much to collect’,</p></li>
+<li><p>consider and <strong>optimise over the tradeoffs in design choices</strong> (e.g., introducing more treatments usually involves a loss of power), and</p></li>
+<li><p>understand whether you ‘<strong>have enough funds</strong> to gather enough data to make it worth doing a study?’,</p></li>
+<li><p>(maybe) be more credible in making ex-post statements about null effects*</p></li>
 </ul>
+Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim ‘I have power to do this credibly’.*
+<div class="marginnote">
+<p>* I’m not sure about these latter point, this needs to be stated more carefully</p>
+</div>
+<p><br />
+</p>
+<p>In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from ‘underpowered studies’. There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias’.</p>
 </div>
 </div>
-<div id="key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this" class="section level2" number="14.2">
-<h2><span class="header-section-number">14.2</span> Key ingredients necessary for doing a power analysis(and designing a study in light of this)</h2>
+<div id="key-ingredients-for-doing-a-power-analysis-and-designing-a-study-in-light-of-this" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Key ingredients for doing a power analysis (and designing a study in light of this)</h2>
 <ul>
 <li><p>Our assumptions (or existing prior data used for simulations) over the data-generating-process … in particular, what do we expect the distribution of the outcomes to look like, and with what dispersion?</p></li>
 <li><p>The nature of the sampling or assignment to experimental treatments</p></li>

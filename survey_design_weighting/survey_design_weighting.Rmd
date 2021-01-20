@@ -52,6 +52,29 @@ Many of these also seem relevant for our ['social movement' case of interest bel
 ### Non-probability sampling
 
 
+Potentially useful references:
+
+[Non-Probability Sampling - report of the aapor task force on non-probability sampling](https://www.aapor.org/Education-Resources/Reports/Non-Probability-Sampling.aspx)
+
+
+see 'river sampling'
+
+\
+
+
+#### Sampling from rare populations {-}
+
+ [sampling and estimation in hidden populations using respondent-driven sampling, matthew j. salganik* douglas d.    heckathorny](https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf)
+ 
+- 'Standard' approach ... Construct a sample frame of 'all the injection drug users in a large city'; 'probably impossible' 
+
+
+- Or 'reach a large number of people via random digit dialing and then screen them for membership in the hidden population. Again, this approach is extremely costly and potentially very inaccurate.' 
+
+- Or 'take a sample of target population members in an institutional setting—for example, injection drug users in a drug rehabilitation program.'
+  - But 'a nonrandom sample from the hidden population, ... impossible to use to ... make accurate estimates about the entire hidden population'
+
+
 ## Case: Surveying an unmeasured and rare population surrounding a 'social movement' {#jazz-case}
 
 
@@ -66,6 +89,7 @@ Some examples:
 - 'Tea party conservatives' in the US
 - Jews, both religious and 'culturally Jewish'
 - Jazz musicians
+- Goths ... 'ethnography'; Paul Hodkinson
 
 For this writeup, we will call the targeted group 'the Jazz Movement' or 'the Jazz population'. Individuals will either be 'Jazzy' (J) or 'non-Jazzy' (NJ).
 
@@ -124,11 +148,15 @@ Given the context, we might reasonably expect that willingness to complete the s
 5. Our **research goals include** measuring:
 
 - The size of the movement (challenging),
-- The demographics (and psychographics, etc) of the movement,
+- The demographics (and economic status, psychographics, etc) of the movement,
 - The attitudes, beliefs and behaviors of people in the movement,
 - The (causal) drivers of joining the movement and actively participating in the movement (or leaving the movement),
 
 - ... and the trends/changes in all of the above.
+
+
+And particularly interested in the most avid and engaged Jazzers.
+Knowing about self-reported challenges. 
 
 \
 
@@ -136,14 +164,14 @@ Given the context, we might reasonably expect that willingness to complete the s
 **Why do we care?** *We want to know these things for several reasons, including...*
 
 
-To find ways to build membership (perhaps 'expand and diversify') and participation in the movement (including specific behaviors like donating),especially through...
+To find ways to build membership (perhaps 'expand and diversify') and increase participation in the movement (including specific behaviors like donating), especially through...
 
-- Funding causal drivers that 'work', and
+- Funding causal drivers (policies) that 'work', and
 - Profiling and targeting 'likely Jazzers' from outside the movement
 
 \
 
-To understand and better represent the attitudes of the movement's members in our movement-wide activities.
+To understand and better represent the attitudes of the movement's members in our movement-wide activities. <!-- See -->
 
 \
 
@@ -180,8 +208,6 @@ Wikipedia entry on 'convenience sampling'
 \
 
 ### Notes and considerations:
-
-
 
 - 'Whether we can do better’ sort of questions ... we should try to pin down what our metrics and targets are
 

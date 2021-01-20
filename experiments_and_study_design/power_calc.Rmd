@@ -1,39 +1,58 @@
 # (Experimental) Study design: (Ex-ante) Power calculations {#power}
 
-The 'statistical power' of an analysis is the probability that this analysis  diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular *true effect size* (parameter magnitude). Thus one often sees the power of an analysis  'plotted' against particular effect sizes (sometimes 'alternative hypotheses'). Considering standard frequentist null hypothesis testing 'the power of a test' (or analysis) represents one minus the probability of a type-II error (something like 1- the false negative rate).
+The 'statistical power' of an analysis is the probability that this analysis diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular *true effect size* (parameter magnitude), or an effect size stated as relative to the underlying dispersion.\* Thus one often sees the power of an analysis  'plotted' against particular effect sizes (sometimes 'alternative hypotheses'). 
 
+Considering standard frequentist null hypothesis testing 'the power of a test' (or analysis) represents one minus the probability of a type-II error (something like 'one minus the false-negative rate').
 
 \
-Basics: [egap](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
-Note: sometimes put together as measure like 'd' of 'effect relative to noise.... effect size/SD
+<div class="marginnote">
+\* E.g., we may see power calculated as a function of a measure of 'effect relative to variation' ... like Cohen's $d$ of ... effect size/SD.
+</div>
+ 
 \
+
+*Basics:* [egap - 10 things to know about statistical power](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
 
 ## What sort of 'power calculations' make sense, and what is the point?
 
 There are several reasons to consider power and to do 'power calculations' in advance of running an experiment or doing an analysis. 
 
-An 'underpowered study', one with a low likelihood of diagnosing a 'substantial' effect is present when it *is* present, is also likely to be an *uninformative* study. If 'rejecting a particular null hypothesis' is important (and please see McElreath and other's discussion about the follies of the ways NHST is used in science on this point), an underpowered test is unlikely to reject this null hypothesis even when it is 'meaningfully false'. 
+An 'underpowered study', one with a low likelihood of diagnosing a 'substantial' effect is present when it *is* present, is also likely to be an *uninformative* study. If 'rejecting a particular null hypothesis' is important\*\*, an underpowered test is unlikely to reject this null hypothesis even when it is 'meaningfully false'. 
 
-Perhaps more importantly, an underpowered study is likely to yield wide 'confidence intervals' (or wide 'posterior Bayesian credible intervals'). Simply put, after an underpowered study (at least in isolation), we still won't have a good sense of what the true value is. 
+<div class="marginnote">
+\*\* But please see McElreath and other's discussion about the follies of the ways NHST is used in science on this point.
+</div>
+ 
+
+Perhaps more importantly, an underpowered study is likely to yield wide 'confidence intervals' (or wide 'posterior Bayesian credible intervals'). Simply put, after an underpowered study (at least in isolation), we still won't have a good sense of what the true value (of the parameter or effect of interest) is. 
 
 
 ### Why do a power analysis? What are the practical benefits of doing a power analysis 
 
-- Considering the cost/benefits of 'more data' to determine 'how much to collect'
+A power analysis may allow you to:
 
-- Consider and optimise over the tradeoffs in design choices ... e.g., introducing more treatments usually involves a loss of power
+- consider the **cost/benefits of 'more data'**, to help you8 determine 'how much to collect',
 
-- 'Can I have enough funds to gather enough data to make it worth doing a study?'
+-  consider and **optimise over the tradeoffs in design choices** (e.g., introducing more treatments usually involves a loss of power), and
 
-- If I am trying to do some sort of replication exercise to diagnose the credibility of previous work I want to 'have power to do this credibly' (I'm not sure about this one)
+- understand whether you '**have enough funds** to gather enough data to make it worth doing a study?', 
 
-- Avoiding the general harm 'underpowered studies'. There are arguments that individual ['underpowered' studies may undermine science](#underpowered), particular in conjunction with 'publication bias'. 
+- (maybe) be more credible in making ex-post statements about null effects\*
 
-- An ex-ante power analysis might (I'm not sure on this one, it seems possibly dubious) be useful in making ex-post statements about null effects
 
-## Key ingredients necessary for doing a power analysis(and designing a study in light of this)
+Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim 'I have power to do this credibly'.\*
+<div class="marginnote">
+\* I'm not sure about these latter point, this needs to be stated more carefully
+</div>
+ 
+\
+
+In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from 'underpowered studies'. There are arguments that individual ['underpowered' studies may undermine science](#underpowered), particular in conjunction with 'publication bias'. 
+
+
+## Key ingredients for doing a power analysis (and designing a study in light of this)
 
 - Our assumptions (or existing prior data used for simulations) over the data-generating-process ... in particular, what do we expect the distribution of the outcomes to look like, and with what dispersion?
 

@@ -136,7 +136,7 @@ other-notes-and-resources
 power
 what-sort-of-power-calculations-make-sense-and-what-is-the-point
 why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis
-key-ingredients-necessary-for-doing-a-power-analysisand-designing-a-study-in-light-of-this
+key-ingredients-for-doing-a-power-analysis-and-designing-a-study-in-light-of-this
 underpowered
 power-calculations-without-real-data
 power-calculations-using-prior-data
