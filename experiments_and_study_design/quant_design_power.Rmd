@@ -1,9 +1,11 @@
-# (Experimental) Study design: Background and quantitative issues {#quant_design_power}
+# Robust experimental design: pre-registration and efficient assignment of treatments {#quant_design_power}
 
 ## Pre-registration and Pre-analysis plans {#pre-reg-pap}
 
 
 ### The benefits and costs of pre-registration:  a typical discussion
+
+```{block2,  type='fold'}
 
 > BB: That said, I would be interested to think about the benefits – and more importantly limitations to – pre-registration. I think it could solve some of the p-hacking problems but not much else. How to not relegate exploratory analyses too far is also unclear to me.
 
@@ -47,6 +49,7 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 > We might also consider offering some reward careerwise to experiments that fail -- in terms of being deeply inconclusive-- for some arbitrary or random reason even though they were well-planned and executed.  But I think it is hard to get the incentives right for the latter.
 
+```
 
 
 ### The hazards of specification-searching

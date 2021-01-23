@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="14 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
+  <meta name="description" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 (Experimental) Study design: (Ex-ante) Power calculations | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -384,10 +384,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#background-and-setup"><i class="fa fa-check"></i>Background and setup</a></li>
 <li class="chapter" data-level="11.2.1" data-path="surveys.html"><a href="surveys.html#our-convenience-method-issues-alternatives"><i class="fa fa-check"></i><b>11.2.1</b> Our ‘convenience’ method; issues, alternatives</a></li>
-<li class="chapter" data-level="11.2.2" data-path="surveys.html"><a href="surveys.html#notes-and-considerations"><i class="fa fa-check"></i><b>11.2.2</b> Notes and considerations:</a></li>
+<li class="chapter" data-level="11.2.2" data-path="surveys.html"><a href="surveys.html#potential-alternative-approaches"><i class="fa fa-check"></i><b>11.2.2</b> Potential alternative approaches</a></li>
+<li class="chapter" data-level="11.2.3" data-path="surveys.html"><a href="surveys.html#notes-and-considerations"><i class="fa fa-check"></i><b>11.2.3</b> Notes and considerations:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>12.1</b> Why run an experiment or study?</a>
 <ul>
@@ -397,7 +398,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#types-of-experiments-demand-effects-and-more-artifacts-of-artifical-setups"><i class="fa fa-check"></i><b>12.3</b> Types of experiments, ‘demand effects’ and more artifacts of artifical setups</a></li>
 <li class="chapter" data-level="12.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>12.4</b> Generalizability (and heterogeneity)</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>13</b> (Experimental) Study design: Background and quantitative issues</a>
+<li class="chapter" data-level="13" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>13</b> Robust experimental design: pre-registration and efficient assignment of treatments</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>13.1</b> Pre-registration and Pre-analysis plans</a>
 <ul>
@@ -412,30 +413,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Experimental) Study design: (Ex-ante) Power calculations</a>
+<li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-sort-of-power-calculations-make-sense-and-what-is-the-point"><i class="fa fa-check"></i><b>14.1</b> What sort of ‘power calculations’ make sense, and what is the point?</a>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations’?</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis"><i class="fa fa-check"></i><b>14.1.1</b> Why do a power analysis? What are the practical benefits of doing a power analysis</a></li>
+<li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#key-ingredients-for-doing-a-power-analysis-and-designing-a-study-in-light-of-this"><i class="fa fa-check"></i><b>14.2</b> Key ingredients for doing a power analysis (and designing a study in light of this)</a></li>
+<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#power-ingredients"><i class="fa fa-check"></i><b>14.2</b> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</a></li>
 <li class="chapter" data-level="14.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>14.3</b> The ‘harm to science’ from running underpowered studies</a></li>
 <li class="chapter" data-level="14.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>14.4</b> Power calculations without real data</a></li>
 <li class="chapter" data-level="14.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>14.5</b> Power calculations using prior data</a>
 <ul>
 <li class="chapter" data-level="14.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>14.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.6</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>15.1</b> Which error structure? Random effects?</a></li>
-<li class="chapter" data-level="15.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>15.2</b> Randomization inference?</a></li>
-<li class="chapter" data-level="15.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>15.3</b> Parametric and nonparametric tests of simple hypotheses</a>
-<ul>
-<li class="chapter" data-level="15.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>15.3.1</b> Parametric tests</a></li>
-<li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.6.1</b> How to measure and consider the precision of Likert-item responses</a></li>
+<li class="chapter" data-level="14.6.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.6.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
 <li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
@@ -649,33 +645,54 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="power" class="section level1" number="14">
-<h1><span class="header-section-number">14</span> (Experimental) Study design: (Ex-ante) Power calculations</h1>
-<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular <em>true effect size</em> (parameter magnitude), or an effect size stated as relative to the underlying dispersion.* Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’).</p>
-<p>Considering standard frequentist null hypothesis testing ‘the power of a test’ (or analysis) represents one minus the probability of a type-II error (something like ‘one minus the false-negative rate’).</p>
-<p><br />
-</p>
+<h1><span class="header-section-number">14</span> (Ex-ante) Power calculations for (Experimental) study design</h1>
+<blockquote>
+<p>Power is the ability to distinguish signal from noise.
+- <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Coppock</a></p>
+</blockquote>
+<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of)</p>
+<ul>
+<li>a particular <em>true effect size</em> (parameter magnitude),</li>
+<li>or an effect size stated as relative to the underlying dispersion,</li>
+<li>or as ‘the probability of achieving a certain desired precision’.*</li>
+</ul>
+<p>Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’).</p>
 <div class="marginnote">
 <p>* E.g., we may see power calculated as a function of a measure of ‘effect relative to variation’ … like Cohen’s <span class="math inline">\(d\)</span> of … effect size/SD.</p>
 </div>
+<p>Considering standard frequentist null hypothesis testing, ‘the power of a test’ (or analysis) represents one minus the probability of a type-II error (approximately ‘one minus the false-negative rate’).</p>
+<div class="marginnote">
+<p>Todo: an aside here about power calculations in a Bayesian context.</p>
+</div>
 <p><br />
 </p>
-<p><em>Basics:</em> <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">egap - 10 things to know about statistical power</a></p>
-<div id="what-sort-of-power-calculations-make-sense-and-what-is-the-point" class="section level2" number="14.1">
-<h2><span class="header-section-number">14.1</span> What sort of ‘power calculations’ make sense, and what is the point?</h2>
+<p><em>A basic primer:</em> <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Egap - 10 things to know about statistical power</a></p>
+<div id="what-is-the-point-of-doing-a-power-analysis-or-power-calculations" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> What is the point of doing a ‘power analysis’ or ‘power calculations’?</h2>
 <p>There are several reasons to consider power and to do ‘power calculations’ in advance of running an experiment or doing an analysis.</p>
-<p>An ‘underpowered study’, one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present, is also likely to be an <em>uninformative</em> study. If ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘meaningfully false’.</p>
+<p>An ‘underpowered study’ is one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present. Such a study is also likely to be an <em>uninformative</em> study. Furthermore, if ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘substantially and meaningfully false’.</p>
 <div class="marginnote">
 <p>** But please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point.</p>
 </div>
-<p>Perhaps more importantly, an underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value (of the parameter or effect of interest) is.</p>
-<div id="why-do-a-power-analysis-what-are-the-practical-benefits-of-doing-a-power-analysis" class="section level3" number="14.1.1">
-<h3><span class="header-section-number">14.1.1</span> Why do a power analysis? What are the practical benefits of doing a power analysis</h3>
+<p>An underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value (of the parameter or effect of interest) is.</p>
+<p><br />
+</p>
+<p>All else equal, you want to run a study that is <em>as high-powered as possible</em> (or a study that is part of a larger project that collectively yields substantial power) because:</p>
+<ol style="list-style-type: decimal">
+<li><p>you want your study to be informative and to contribute to science (empirical analysis) and</p></li>
+<li><p>‘low powered studies’ (at least in certain publication contexts) can potentially <a href="underpowered">harm the accuracy of our scientific consensus</a>.</p></li>
+</ol>
+<div class="marginnote">
+<p>Other than perhaps being ‘too costly’, is it bad for a study to be ‘overpowered’? <a href="https://twitter.com/GivingTools/status/1350259972786057216">I argue that this is <em>not</em> a problem.</a></p>
+</div>
+<div id="practical-power" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> What are the practical benefits of doing a power analysis</h3>
 <p>A power analysis may allow you to:</p>
 <ul>
-<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you8 determine ‘how much to collect’,</p></li>
+<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you determine ‘how much to collect’,</p></li>
 <li><p>consider and <strong>optimise over the tradeoffs in design choices</strong> (e.g., introducing more treatments usually involves a loss of power), and</p></li>
 <li><p>understand whether you ‘<strong>have enough funds</strong> to gather enough data to make it worth doing a study?’,</p></li>
-<li><p>(maybe) be more credible in making ex-post statements about null effects*</p></li>
+<li><p>(maybe) be more credible in making ex-post statements about null effects.*</p></li>
 </ul>
 Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim ‘I have power to do this credibly’.*
 <div class="marginnote">
@@ -686,17 +703,29 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <p>In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from ‘underpowered studies’. There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias’.</p>
 </div>
 </div>
-<div id="key-ingredients-for-doing-a-power-analysis-and-designing-a-study-in-light-of-this" class="section level2" number="14.2">
-<h2><span class="header-section-number">14.2</span> Key ingredients for doing a power analysis (and designing a study in light of this)</h2>
-<ul>
-<li><p>Our assumptions (or existing prior data used for simulations) over the data-generating-process … in particular, what do we expect the distribution of the outcomes to look like, and with what dispersion?</p></li>
-<li><p>The nature of the sampling or assignment to experimental treatments</p></li>
-<li><p>The specific proposed statistical test (or procedure) to be used</p></li>
-</ul>
+<div id="power-ingredients" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</h2>
+<ol style="list-style-type: decimal">
+<li>Our assumptions (or existing prior data used that we can use for simulations) over the data-generating-process. In particular, ‘what do we expect the distribution of the outcomes to look like’ (e.g., ‘normally distributed’), and ‘with what dispersion’?*</li>
+</ol>
+<div class="marginnote">
+<p>However, a measure of dispersion is not necessary for <em>all</em> power calculations. As noted throughout, we can calculate the power to detect an effect of a particular size <em>relative to the dispersion</em>, or to attain a particular confidence interval over such an effect.</p>
+<p>Also note that for binary outcomes the choice of a ‘distribution function’ is obvious and ‘dispersion’ only depends on the share of units with each outcome.</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>The nature of the sampling or assignment to experimental treatments *, **</li>
+</ol>
+<div class="marginnote">
+<p>* E.g., <a href="https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html">"complete random assignment</a> to two a single treatments and a single control, each with probability 1/2".)</p>
+<p>** Remember, here we are focusing on power calculations in <em>experimental</em> contexts. However, power calculations are also relevant in other empirical contexts, particularly where data-collection is costly.</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>The specific proposed statistical test (or procedure) to be used (e.g., a t-test or a rank-sum test)</li>
+</ol>
 <p><br />
 </p>
-<p><em>Perhaps the most important and debated ingredient:</em></p>
-<p><strong>What ‘metrics of power and effect size’ are we considering, and what are our targets?</strong></p>
+<p><em>and perhaps the most important and debated ingredient:</em></p>
+<p>*4. Which ‘metrics of power and effect size’ are we considering, and what are our targets?**</p>
 <ul>
 <li><p>Are we simply seeking ‘precise estimates’, estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
 <li><p>Do we seek power to detect some ‘minimal effect size of interest’?</p></li>
@@ -704,12 +733,12 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <p>If so, <em>what is this ‘MESOI’?</em></p>
 <div class="marginnote">
 <p>Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard ‘power to detect X’ criteria.</p>
-<p>Another criterion might be ‘power to do an equivalency test’… but I need to learn more about this.</p>
+<p>Another criterion might be “power to do an ‘equivalency test’”… but I need to learn more about this.</p>
 </div>
 <p><br />
 </p>
 <div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered" number="">
-<h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI’?</h4>
+<h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI?’</h4>
 <p>From David Moss (unfold)</p>
 
 <div class="fold">
@@ -718,9 +747,9 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <p>… not basing power calculations on previously observed effect sizes?</p>
 </blockquote>
 <blockquote>
-Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">though obviously there’s a bunch of ways to do it</a>
-</div>
+<p>Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">though obviously there are a bunch of ways to do it</a></p>
 </blockquote>
+</div>
 <p><br />
 </p>
 <p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful’, with particular specific recommendations:</p>
@@ -1011,12 +1040,88 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <span id="cb28-44"><a href="power.html#cb28-44"></a>  <span class="co">#}</span></span>
 <span id="cb28-45"><a href="power.html#cb28-45"></a></span>
 <span id="cb28-46"><a href="power.html#cb28-46"></a><span class="co">#toc()</span></span></code></pre></div>
-<p>OK…</p>
+<p><br />
+</p>
+</div>
+</div>
+</div>
+<div id="survey-power-likert" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</h2>
+<div id="how-to-measure-and-consider-the-precision-of-likert-item-responses" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> How to measure and consider the precision of Likert-item responses</h3>
+<p>Considering ‘precision of Likert-item responses’ and sample-size calculations:</p>
+<p>What are commonly used/justifiable measures of central tendency and dispersion for Likert-items?</p>
+<p>How can we think about ‘precision of estimated Likert-item responses?’ and attaining sufficient precision, and a metric for this?</p>
+<p>“How precise is precise, and by what metric?”</p>
+<p><br />
+</p>
+<p><br />
+</p>
+<div id="a-simple-naive-approach" class="section level4 unnumbered" number="">
+<h4>A simple naive approach?</h4>
+<p>Interval coding: <span class="math inline">\(y=\[1,2,3,4,5\]\)</span> for a 5-item</p>
+<p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
+<p>Measure of dispersion: <span class="math inline">\(\hat{s}\)</span> := Sample standard deviation of y *</p>
+<div class="marginnote">
+<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares/</p>
+</div>
+<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span></p>
+<p>If we assume <span class="math inline">\(y\)</span> is normally distributed (which obviously can’t be precisely the case)…**</p>
+<div class="marginnote">
+<p>* * but Wiki (Derrick and White 2017?) claim “responses often show a quasi-normal distribution.”</p>
+</div>
+<p>… then a 95% confidence interval for <span class="math inline">\(\bar{y}\)</span> would be</p>
+<p><span class="math display">\[\bar{y} \pm  1.96 \: \hat{SE_m}\]</span></p>
+<p><br />
+</p>
+<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit’,
+i.e.,</p>
+<p><span class="math display">\[2 * 1.96 \: \hat{SE_m} &lt; 1\]</span> *</p>
+<div class="marginnote">
+<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>”.</p>
+</div>
+<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
+<p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
+<div class="marginnote">
+<p>To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).</p>
+</div>
+<p><br />
+</p>
+<p><strong>B. ‘Relative’ metric?</strong>: Target a 95% CI range below <span class="math inline">\(B\)</span> sd of the Likert-item-integer-response <span class="math inline">\(y\)</span>:
+i.e.,</p>
+<p><span class="math display">\[2*1.96 SE_m &lt; B*sd(y)\]</span></p>
+<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt(n) &lt; B*s\)</span>,
+i.e., <span class="math inline">\(2*1.96/\sqrt(n) &lt; B\)</span>
+i.e., <span class="math inline">\(\sqrt(n) &gt; 2*1.96/B\)</span>
+i.e.,</p>
+<p><span class="math display">\[n &gt;  15.3664/(B^2)\]</span></p>
+<p>… where <span class="math inline">\(sd(y)\)</span> is the true standard deviation of the outcome.</p>
+<div class="marginnote">
+<p>Note: This <span class="math inline">\(n\)</span> gives should give us an estimated CI with a range of B standard deviations of the outcome. I’m not sure if it implies that, after collecting the sample, our estimates of the CI will always have a range equal to the estimated sd. Need to think about this more.</p>
+</div>
+<p>As you can see (caveat: calculations need doublechecking), if we assume the Likert-integer-thing is normally distributed, the calculation of ‘how big a sample size (n) we need in order to get, on average, a CI of 1 sd or smaller’ is straightforward.</p>
+</div>
+</div>
+<div id="computing-sample-size-to-achieve-this-precision" class="section level3" number="14.6.2">
+<h3><span class="header-section-number">14.6.2</span> Computing sample size to achieve this precision</h3>
+<p>Initial thoughts (unfold):</p>
 
-</div>
-</div>
-</div>
-</div>
+<div class="fold">
+<p>If we assume normality, there should be a simple analytical formula for</p>
+<p>’Minimum sample size….
+… for (e.g.) 80% likelihood …
+… of achieving an (e.g.) 95% “confidence interval (CI) over the mean” of a variable…
+… that is within (e.g.) 1 standard deviation of the variable on either side</p>
+<p><em>Notes:</em></p>
+<ul>
+<li><p>This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable.</p></li>
+<li><p>For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)</p></li>
+<li><p>I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about</p></li>
+<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales
+`
+``</p></li>
+</ul>
+
 <h3> List of references</h3>
 <div id="refs" class="references">
 <div id="ref-buttonPowerFailureWhy2013">

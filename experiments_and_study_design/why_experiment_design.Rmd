@@ -1,4 +1,4 @@
-# (Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters  {#why_experiment_design}
+# Experimental design: Identifying meaningful and useful (causal) relationships and parameters  {#why_experiment_design}
 
 ## Why run an experiment or study?
 

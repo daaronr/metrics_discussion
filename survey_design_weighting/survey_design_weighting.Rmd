@@ -6,7 +6,7 @@
 Wikipedia entries on
 
 - ['survey sampling'](https://en.wikipedia.org/wiki/Survey_sampling)
--
+
 
  Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
 
@@ -19,11 +19,31 @@ Wikipedia entries on
 Here: naive notes based on wikipedia, will be improved.
 </div>
 
+In my own words:
+
+```{block2,  type='fold'}
+
+Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.
+
+The basic idea, if I understand correctly, is to define a population of interest and a ‘sample frame’ (the place we are actually drawing from, the empirical analogue of the population of interest perhaps).
+Essentially, rather than advertising or trying to recruit everyone, or have people enter by self selection, probability sampling select from the sample frame with a particular probability, and then actively tries to get the selected individuals to complete the survey. As only a smaller number of people are selected to be interviewed/fill out the survey, you can spend more time and money/incentives, trying to make sure they respond.
+
+Probability sampling also allows ‘stratification’, and oversampling of harder to reach groups.  We  potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.
+
+*If we have an informative estimate of the  TRUE shares in each strata* we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
+    
+```
+
+\
+
+
 
 > A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in [Wiki](https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling))
 
 <div class="marginnote">
-Note that the 'sampling frame',  'the source material or device from which a sample is drawn', e.g, a telephone directory, may not exactly contain all elements of the 'population of interest' (e.g., the population with and without listed numbers).
+Note that the 'sampling frame', 'the source material or device from which a sample is drawn', e.g, a telephone directory, may not exactly contain all elements of the 'population of interest' (e.g., the population with and without listed numbers).
+
+On the other hand this terminology doesn't seem to be everywhere consistent, e.g., Salganik and H refer to it as 'a list of all of the members in the population'.
 
 See 'Missing elements', 'Foreign elements', 'Duplicate entries' and 'Groups or clusters' ...
 
@@ -45,38 +65,76 @@ Many of these also seem relevant for our ['social movement' case of interest bel
 
 - Non-response bias (biggest issue?)
 
--
-
 
 
 ### Non-probability sampling
 
-
-Potentially useful references:
+@bakerSummaryReportAAPOR2013
 
 [Non-Probability Sampling - report of the aapor task force on non-probability sampling](https://www.aapor.org/Education-Resources/Reports/Non-Probability-Sampling.aspx)
 
 
-see 'river sampling'
+'River sampling'
 
 \
 
 
-#### Sampling from rare populations {-}
+#### Respondent-driven sampling (from rare or 'hidden' populations) {-}
 
- [sampling and estimation in hidden populations using respondent-driven sampling, matthew j. salganik* douglas d.    heckathorny](https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf)
+** [sampling and estimation in hidden populations using respondent-driven sampling, matthew j. salganik* douglas d.    heckathorny](https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf)** @salganikSamplingEstimationHidden2004
+ 
+ 
+ >  Standard sampling and estimation techniques require the researcher to select sample members with a known probability of selection. In most cases this requirement means that researchers must have a sampling frame, a list of all members in the population. However, for many populations of interest such a list does not exist.
  
 - 'Standard' approach ... Construct a sample frame of 'all the injection drug users in a large city'; 'probably impossible' 
-
 
 - Or 'reach a large number of people via random digit dialing and then screen them for membership in the hidden population. Again, this approach is extremely costly and potentially very inaccurate.' 
 
 - Or 'take a sample of target population members in an institutional setting—for example, injection drug users in a drug rehabilitation program.'
   - But 'a nonrandom sample from the hidden population, ... impossible to use to ... make accurate estimates about the entire hidden population'
 
+Targeted sampling ('street outreach') is cost-effective but very hard to know what you are getting. Time-space sampling can deal with certain limitations to this, but its far from a complete remedy
+
+The authors propose  
+
+> respondent-driven sampling, is a variation of chain-referral sampling methods that were first introduced by Coleman (1958) under the name snowball sampling.
+
+> select a small number of seeds who are the first people to participate in the study. These seeds then recruit others to participate in the study. This process of existing sample members recruiting future sample members continues until the desired sample size is reached   
+
+While.. 
+
+> chain-referral methods produce samples that are not even close to simple random samples 
+
+> researchers believed that any small bias in selecting the seeds would be compounded in unknown ways as the sampling process continued
+
+and also ... 
+>  This research is fairly well summarized by Berg(1988) when he writes, ‘as a rule, a snowball sample will be strongly biased toward inclusion of those who have many interrelationships with or are coupled to, a large number of individuals. In the absence of knowledge of individual inclusion probabilities in different waves of the snowball sample, unbiased estimation is not possible.
+
+<div class="marginnote">
+**"Biased toward inclusion of those who have many interrelationships..."**
+
+This would seem to suggest a solution, perhaps driving the approach the authors use. If we can measure the likelihood that an individual is reached as a function of their network, we may be able to downweight those individuals that are more likely to be sampled.
+</div>
+ 
+
+But the authors believe they have a solution
+
+>  We believe that previous researchers have been overly pessimistic about chain-referral samples. In this paper we will show that it is possible to make unbiased estimates about hidden populations from
+these types of samples. Further, we will show that these estimates are asymptotically unbiased no matter how the seeds are select
+
+How does it work?: 
+
+> First ,the sample is used to make estimates about the social network connectingthe population. Then, this information about the social network is used to derive the proportion of the population in different groups (forexample, HIV- or HIV+)
+
+There are some intricate and interesting calculations involving network analysis 
+
+They show the unbiasedness of this approach under specified conditions, and its robustness to the seed choice. They also give a monte-carlo simulation illustrating the same. 
+Finally, they do some sort of comparison of their approach and previous approaches in real settings (I didn't read it carefully).
+
 
 ## Case: Surveying an unmeasured and rare population surrounding a 'social movement' {#jazz-case}
 
+[Related question/post on ResearchGate here](https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_web-based_what_to_do_read)
 
 ### Background and setup {-}
 
@@ -105,7 +163,7 @@ There are some **disagreements about how to define this group**.
 
 \
 
-3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years
+3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years; this most resembles **'river sampling'**
 
 ... based on advertising and word-of-mouth in a variety of outlets ('referrers') associated with the 'movement'.
 
@@ -185,7 +243,6 @@ Our current approach seems to be some combination of what is called 'convenience
 
 *Probability sampling* identifies a *population of interest* and a *sample frame* meant to capture this population. Rather than appealing to this entire population/frame, PS randomly (or stratified/clustered) samples a 'probability share' (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze ---and perhaps adjust for---the rate of non-response.
 
-
 In contrast,
 
 <div class="marginnote">
@@ -207,6 +264,17 @@ Wikipedia entry on 'convenience sampling'
 
 \
 
+### Potential alternative approaches
+
+
+**Analysis adjustments**
+
+**Design adjustments**
+
+- Respondent-driven sampling (with network-analysis based adjustments)
+
+
+
 ### Notes and considerations:
 
 - 'Whether we can do better’ sort of questions ... we should try to pin down what our metrics and targets are
@@ -221,4 +289,4 @@ Wikipedia entry on 'convenience sampling'
 
 Moss:
 
-some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
+Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others

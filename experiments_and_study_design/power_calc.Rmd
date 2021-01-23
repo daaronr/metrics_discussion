@@ -1,45 +1,71 @@
-# (Experimental) Study design: (Ex-ante) Power calculations {#power}
+# (Ex-ante) Power calculations for (Experimental) study design {#power}
 
-The 'statistical power' of an analysis is the probability that this analysis diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) a particular *true effect size* (parameter magnitude), or an effect size stated as relative to the underlying dispersion.\* Thus one often sees the power of an analysis  'plotted' against particular effect sizes (sometimes 'alternative hypotheses'). 
+> Power is the ability to distinguish signal from noise. 
+> - [Coppock](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
-Considering standard frequentist null hypothesis testing 'the power of a test' (or analysis) represents one minus the probability of a type-II error (something like 'one minus the false-negative rate').
 
-\
+The 'statistical power' of an analysis is the probability that this analysis diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) 
+
+- a particular *true effect size* (parameter magnitude), 
+- or an effect size stated as relative to the underlying dispersion, 
+- or as 'the probability of achieving a certain desired precision'.\*
+
+Thus one often sees the power of an analysis 'plotted' against particular effect sizes (sometimes 'alternative hypotheses'). 
 
 <div class="marginnote">
 \* E.g., we may see power calculated as a function of a measure of 'effect relative to variation' ... like Cohen's $d$ of ... effect size/SD.
 </div>
+
+Considering standard frequentist null hypothesis testing, 'the power of a test' (or analysis) represents one minus the probability of a type-II error (approximately 'one minus the false-negative rate').
+
+<div class="marginnote">
+Todo: an aside here about power calculations in a Bayesian context.
+</div>
+ 
  
 \
 
-*Basics:* [egap - 10 things to know about statistical power](https://egap.org/resource/10-things-to-know-about-statistical-power/)
+*A basic primer:* [Egap - 10 things to know about statistical power](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
 
-## What sort of 'power calculations' make sense, and what is the point?
+## What is the point of doing a 'power analysis' or 'power calculations'?
 
 There are several reasons to consider power and to do 'power calculations' in advance of running an experiment or doing an analysis. 
 
-An 'underpowered study', one with a low likelihood of diagnosing a 'substantial' effect is present when it *is* present, is also likely to be an *uninformative* study. If 'rejecting a particular null hypothesis' is important\*\*, an underpowered test is unlikely to reject this null hypothesis even when it is 'meaningfully false'. 
+An 'underpowered study' is one with a low likelihood of diagnosing a 'substantial' effect is present when it *is* present. Such a study is also likely to be an *uninformative* study. Furthermore, if 'rejecting a particular null hypothesis' is important\*\*, an underpowered test is unlikely to reject this null hypothesis even when it is 'substantially and meaningfully false'. 
 
 <div class="marginnote">
 \*\* But please see McElreath and other's discussion about the follies of the ways NHST is used in science on this point.
 </div>
  
+An underpowered study is likely to yield wide 'confidence intervals' (or wide 'posterior Bayesian credible intervals'). Simply put, after an underpowered study (at least in isolation), we still won't have a good sense of what the true value (of the parameter or effect of interest) is. 
 
-Perhaps more importantly, an underpowered study is likely to yield wide 'confidence intervals' (or wide 'posterior Bayesian credible intervals'). Simply put, after an underpowered study (at least in isolation), we still won't have a good sense of what the true value (of the parameter or effect of interest) is. 
+\
 
 
-### Why do a power analysis? What are the practical benefits of doing a power analysis 
+All else equal, you want to run a study that is *as high-powered as possible* (or a study that is part of a larger project that collectively yields substantial power) because:
+
+1. you want your study to be informative and to contribute to science (empirical analysis) and
+
+2. 'low powered studies' (at least in certain publication contexts) can potentially [harm the accuracy of our scientific consensus](underpowered).
+
+<div class="marginnote">
+Other than perhaps being 'too costly', is it bad for a study to be 'overpowered'? [I argue that this is *not* a problem.](https://twitter.com/GivingTools/status/1350259972786057216)
+</div>
+ 
+
+
+###  What are the practical benefits of doing a power analysis {#practical-power}
 
 A power analysis may allow you to:
 
-- consider the **cost/benefits of 'more data'**, to help you8 determine 'how much to collect',
+- consider the **cost/benefits of 'more data'**, to help you determine 'how much to collect',
 
 -  consider and **optimise over the tradeoffs in design choices** (e.g., introducing more treatments usually involves a loss of power), and
 
 - understand whether you '**have enough funds** to gather enough data to make it worth doing a study?', 
 
-- (maybe) be more credible in making ex-post statements about null effects\*
+- (maybe) be more credible in making ex-post statements about null effects.\*
 
 
 Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim 'I have power to do this credibly'.\*
@@ -52,19 +78,34 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from 'underpowered studies'. There are arguments that individual ['underpowered' studies may undermine science](#underpowered), particular in conjunction with 'publication bias'. 
 
 
-## Key ingredients for doing a power analysis (and designing a study in light of this)
+## Key ingredients for doing a power analysis (and designing an experimental study in light of this) {#power-ingredients}
 
-- Our assumptions (or existing prior data used for simulations) over the data-generating-process ... in particular, what do we expect the distribution of the outcomes to look like, and with what dispersion?
+1. Our assumptions (or existing prior data used that we can use for simulations) over the data-generating-process.  In particular, 'what do we expect the distribution of the outcomes to look like' (e.g., 'normally distributed'), and 'with what dispersion'?\*
 
-- The nature of the sampling or assignment to experimental treatments
+<div class="marginnote">
+ 
+However, a measure of dispersion is not necessary for *all* power calculations. As noted throughout, we can calculate the power to detect an effect of a particular size *relative to the dispersion*, or to attain a particular confidence interval over such an effect. 
 
-- The specific proposed statistical test (or procedure) to be used
+Also note that for binary outcomes the choice of a 'distribution function' is obvious and 'dispersion' only depends on the share of units with each outcome.
+
+</div>
+
+2. The nature of the sampling or assignment to experimental treatments \*, \*\*
+
+<div class="marginnote">
+\* E.g., ["complete random assignment](https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html) to two a single treatments and a single control, each with probability 1/2".)
+
+\*\* Remember, here we are focusing on power calculations in *experimental* contexts. However, power calculations are also relevant in other empirical contexts, particularly where data-collection is costly.
+</div>
+ 
+
+3. The specific proposed statistical test (or procedure) to be used (e.g., a t-test or a rank-sum test)
 
 \
 
-*Perhaps the most important and debated ingredient:* 
+*and perhaps the most important and debated ingredient:* 
 
-**What 'metrics of power and effect size' are we considering, and what are our targets?** 
+*4. Which 'metrics of power and effect size' are we considering, and what are our targets?**
 
 - Are we simply seeking 'precise estimates', estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision? 
 
@@ -75,12 +116,12 @@ If so, *what is this 'MESOI'?*
 <div class="marginnote">
 Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard 'power to detect X' criteria.
 
-Another criterion might be 'power to do an equivalency test'... but I need to learn more about this. 
+Another criterion might be "power to do an 'equivalency test'"... but I need to learn more about this. 
 </div>
  \
  
 
-#### Considering: 'should I use a function of previous estimated effect sizes to determine the MESOI'? {-}
+#### Considering: 'should I use a function of previous estimated effect sizes to determine the MESOI?' {-}
 
 From David Moss (unfold)
 
@@ -90,12 +131,13 @@ Moss:
 
 > ... not basing power calculations on previously observed effect sizes?
 
-> Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature [though obviously there's a bunch of ways to do it](https://journals.sagepub.com/doi/10.1177/2515245918770963) 
+> Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature [though obviously there are a bunch of ways to do it](https://journals.sagepub.com/doi/10.1177/2515245918770963) 
+
 ```
 
 \
 
-Moss, citing  Lakens: ... use earlier work to decide which effect sizes are deemed to be 'meaningful', with particular specific recommendations:
+Moss, citing Lakens: ... use earlier work to decide which effect sizes are deemed to be 'meaningful', with particular specific recommendations:
 
 ```{block2,  type='fold'}
 
@@ -466,6 +508,124 @@ power_vals <- tibble(
   
 ```
 
-OK...
+\
+
+
+## Survey design digression: sample size for a "precise estimate of a 'population parameter'" (focus: mean of a Likert scale response) {#survey-power-likert}
+
+### How to measure and consider the precision of Likert-item responses 
+
+Considering ‘precision of Likert-item responses’ and sample-size calculations:
+
+What are commonly used/justifiable measures of central tendency and dispersion for Likert-items?
+
+How can we think about ‘precision of estimated Likert-item responses?’ and attaining sufficient precision, and a metric for this?
+
+
+"How precise is precise, and by what metric?"
+
+\
+
+
+
+
+\
+
+#### A simple naive approach? {-}
+
+Interval coding:  $y=\[1,2,3,4,5\]$ for a 5-item
+
+Outcome: $\bar{y} :=$ Sample mean of numeric-coded responses,
+
+Measure of dispersion:  $\hat{s}$ := Sample standard deviation of y \*
+
+<div class="marginnote">
+Perhaps with the $n-1$ correction, but who cares/
+</div>
+
+
+Measure of (inverse of) precision: estimated standard error of the mean $\hat{SE_m} = s/\sqrt(n)$
+
+If we assume $y$ is normally distributed (which obviously can’t be precisely the case)...\*\*
+
+<div class="marginnote">
+\* \* but Wiki (Derrick and White 2017?) claim "responses often show a quasi-normal distribution."
+</div>
+ 
+
+... then a 95% confidence interval for $\bar{y}$ would be
+
+$$\bar{y} \pm  1.96 \: \hat{SE_m}$$
+
+\
+
+**A. ‘Absolute’ metric?:** Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit’,
+i.e.,
+
+$$2 * 1.96 \: \hat{SE_m} < 1$$ \*
+
+<div class="marginnote">
+\* Or perhaps considering the actual rather than estimated 95% CI this should be  “$2 * 1.96 \: SE_m < 1$”.
+</div>
+ 
+Recall that $\hat{SE_m} = s/\sqrt(n)$.
+
+Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of $s$, the standard deviation of $y$, perhaps based on previous data.\*\*
+
+<div class="marginnote">
+To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).
+</div>
+
+
+
+\
+
+**B. ‘Relative’ metric?**:  Target a 95% CI range below $B$ sd of the Likert-item-integer-response $y$:
+i.e.,
+
+$$2*1.96 SE_m < B*sd(y)$$
+
+i.e., $2*1.96 * s/\sqrt(n) < B*s$,
+i.e., $2*1.96/\sqrt(n) < B$
+i.e., $\sqrt(n) > 2*1.96/B$
+i.e.,
+
+$$n >  15.3664/(B^2)$$
+
+... where $sd(y)$ is the true standard deviation of the outcome.
+
+<div class="marginnote">
+Note: This $n$ gives should give us an estimated CI with a range of B standard deviations of the outcome. I’m not sure if it implies that, after collecting the sample, our estimates of the CI will always have a range equal to the estimated sd. Need to think about this more.
+</div>
+ 
+As you can see (caveat: calculations need doublechecking), if we assume the Likert-integer-thing is normally distributed, the calculation of ‘how big a sample size (n) we need in order to get, on average, a CI of 1 sd or smaller’ is straightforward.
+ 
+
+
+
+### Computing sample size to achieve this precision
+
+Initial thoughts (unfold):
+
+```{block2,  type='fold'}
+
+If we assume normality, there should be a simple analytical formula for
+
+’Minimum sample size….
+… for (e.g.) 80% likelihood …
+… of achieving an (e.g.) 95% “confidence interval (CI) over the mean” of a variable…
+… that is within (e.g.) 1 standard deviation of the variable on either side
+
+*Notes:*
+  
+- This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable. 
+
+- For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)
+
+- I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about
+
+-  Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales
+`
+``
 
 
