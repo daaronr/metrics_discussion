@@ -431,7 +431,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.6.1</b> How to measure and consider the precision of Likert-item responses</a></li>
 <li class="chapter" data-level="14.6.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.6.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>15.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="15.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>15.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="15.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>15.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>15.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
 <li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
@@ -1055,8 +1065,6 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p>“How precise is precise, and by what metric?”</p>
 <p><br />
 </p>
-<p><br />
-</p>
 <div id="a-simple-naive-approach" class="section level4 unnumbered" number="">
 <h4>A simple naive approach?</h4>
 <p>Interval coding: <span class="math inline">\(y=\[1,2,3,4,5\]\)</span> for a 5-item</p>
@@ -1117,11 +1125,13 @@ i.e.,</p>
 <li><p>This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable.</p></li>
 <li><p>For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)</p></li>
 <li><p>I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about</p></li>
-<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales
-`
-``</p></li>
+<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.</p>
+</div></li>
 </ul>
 
+</div>
+</div>
+</div>
 <h3> List of references</h3>
 <div id="refs" class="references">
 <div id="ref-buttonPowerFailureWhy2013">

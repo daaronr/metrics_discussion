@@ -529,7 +529,6 @@ How can we think about ‘precision of estimated Likert-item responses?’ and a
 
 
 
-\
 
 #### A simple naive approach? {-}
 
@@ -624,8 +623,7 @@ If we assume normality, there should be a simple analytical formula for
 
 - I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about
 
--  Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales
-`
-``
+-  Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.
+```
 
 

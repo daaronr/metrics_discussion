@@ -287,6 +287,6 @@ Wikipedia entry on 'convenience sampling'
 
 \
 
-Moss:
 
-Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
+<!-- Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
+-->

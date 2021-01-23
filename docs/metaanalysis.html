@@ -431,7 +431,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.6.1</b> How to measure and consider the precision of Likert-item responses</a></li>
 <li class="chapter" data-level="14.6.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.6.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>15.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="15.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>15.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="15.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>15.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>15.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
 <li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
@@ -1186,8 +1196,8 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.2e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+## Chain 1: Gradient evaluation took 1.3e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -1204,9 +1214,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.457333 seconds (Warm-up)
-## Chain 1:                0.537062 seconds (Sampling)
-## Chain 1:                0.994395 seconds (Total)
+## Chain 1:  Elapsed Time: 0.481941 seconds (Warm-up)
+## Chain 1:                0.548891 seconds (Sampling)
+## Chain 1:                1.03083 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 2).
@@ -1229,15 +1239,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.486856 seconds (Warm-up)
-## Chain 2:                0.545725 seconds (Sampling)
-## Chain 2:                1.03258 seconds (Total)
+## Chain 2:  Elapsed Time: 0.458655 seconds (Warm-up)
+## Chain 2:                0.531587 seconds (Sampling)
+## Chain 2:                0.990242 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 1.1e-05 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
+## Chain 3: Gradient evaluation took 1.3e-05 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
@@ -1254,15 +1264,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.503586 seconds (Warm-up)
-## Chain 3:                0.475248 seconds (Sampling)
-## Chain 3:                0.978834 seconds (Total)
+## Chain 3:  Elapsed Time: 0.439395 seconds (Warm-up)
+## Chain 3:                0.459258 seconds (Sampling)
+## Chain 3:                0.898653 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 1e-05 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 4: Gradient evaluation took 1.2e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -1279,9 +1289,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.525554 seconds (Warm-up)
-## Chain 4:                0.553692 seconds (Sampling)
-## Chain 4:                1.07925 seconds (Total)
+## Chain 4:  Elapsed Time: 0.460351 seconds (Warm-up)
+## Chain 4:                0.481813 seconds (Sampling)
+## Chain 4:                0.942164 seconds (Total)
 ## Chain 4:</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="metaanalysis.html#cb47-1"></a>model2</span></code></pre></div>
 <pre><code>##  Family: gaussian 
