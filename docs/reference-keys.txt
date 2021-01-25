@@ -119,6 +119,7 @@ jazz-case
 our-convenience-method-issues-alternatives
 potential-alternative-approaches
 notes-and-considerations
+brainstorm-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population
 why_experiment_design
 why-run-an-experiment-or-study
 sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do

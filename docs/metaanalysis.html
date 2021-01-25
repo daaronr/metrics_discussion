@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2021-01-23" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -386,6 +386,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2.1" data-path="surveys.html"><a href="surveys.html#our-convenience-method-issues-alternatives"><i class="fa fa-check"></i><b>11.2.1</b> Our ‘convenience’ method; issues, alternatives</a></li>
 <li class="chapter" data-level="11.2.2" data-path="surveys.html"><a href="surveys.html#potential-alternative-approaches"><i class="fa fa-check"></i><b>11.2.2</b> Potential alternative approaches</a></li>
 <li class="chapter" data-level="11.2.3" data-path="surveys.html"><a href="surveys.html#notes-and-considerations"><i class="fa fa-check"></i><b>11.2.3</b> Notes and considerations:</a></li>
+<li class="chapter" data-level="11.2.4" data-path="surveys.html"><a href="surveys.html#brainstorm-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population"><i class="fa fa-check"></i><b>11.2.4</b> Brainstorm: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
@@ -1196,8 +1197,8 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.3e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
+## Chain 1: Gradient evaluation took 1.2e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -1214,9 +1215,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.481941 seconds (Warm-up)
-## Chain 1:                0.548891 seconds (Sampling)
-## Chain 1:                1.03083 seconds (Total)
+## Chain 1:  Elapsed Time: 0.481992 seconds (Warm-up)
+## Chain 1:                0.548637 seconds (Sampling)
+## Chain 1:                1.03063 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 2).
@@ -1239,15 +1240,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.458655 seconds (Warm-up)
-## Chain 2:                0.531587 seconds (Sampling)
-## Chain 2:                0.990242 seconds (Total)
+## Chain 2:  Elapsed Time: 0.444921 seconds (Warm-up)
+## Chain 2:                0.508389 seconds (Sampling)
+## Chain 2:                0.95331 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 1.3e-05 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
+## Chain 3: Gradient evaluation took 1.2e-05 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
@@ -1264,15 +1265,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.439395 seconds (Warm-up)
-## Chain 3:                0.459258 seconds (Sampling)
-## Chain 3:                0.898653 seconds (Total)
+## Chain 3:  Elapsed Time: 0.427623 seconds (Warm-up)
+## Chain 3:                0.461051 seconds (Sampling)
+## Chain 3:                0.888674 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 1.2e-05 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+## Chain 4: Gradient evaluation took 1e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -1289,9 +1290,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.460351 seconds (Warm-up)
-## Chain 4:                0.481813 seconds (Sampling)
-## Chain 4:                0.942164 seconds (Total)
+## Chain 4:  Elapsed Time: 0.523019 seconds (Warm-up)
+## Chain 4:                0.476694 seconds (Sampling)
+## Chain 4:                0.999713 seconds (Total)
 ## Chain 4:</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="metaanalysis.html#cb47-1"></a>model2</span></code></pre></div>
 <pre><code>##  Family: gaussian 

@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein," />
 
 
-<meta name="date" content="2021-01-23" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -386,6 +386,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2.1" data-path="surveys.html"><a href="surveys.html#our-convenience-method-issues-alternatives"><i class="fa fa-check"></i><b>11.2.1</b> Our ‘convenience’ method; issues, alternatives</a></li>
 <li class="chapter" data-level="11.2.2" data-path="surveys.html"><a href="surveys.html#potential-alternative-approaches"><i class="fa fa-check"></i><b>11.2.2</b> Potential alternative approaches</a></li>
 <li class="chapter" data-level="11.2.3" data-path="surveys.html"><a href="surveys.html#notes-and-considerations"><i class="fa fa-check"></i><b>11.2.3</b> Notes and considerations:</a></li>
+<li class="chapter" data-level="11.2.4" data-path="surveys.html"><a href="surveys.html#brainstorm-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population"><i class="fa fa-check"></i><b>11.2.4</b> Brainstorm: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
@@ -761,7 +762,7 @@ Finally, they do some sort of comparison of their approach and previous approach
 </div>
 <div id="jazz-case" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Case: Surveying an unmeasured and rare population surrounding a ‘social movement’</h2>
-<p><a href="https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_web-based_what_to_do_read">Related question/post on ResearchGate here</a></p>
+<p><a href="https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_G-based_what_to_do_read">Related question/post on ResearchGate here</a></p>
 <div id="background-and-setup" class="section level3 unnumbered" number="">
 <h3>Background and setup</h3>
 <p><em>Consider a case where:</em></p>
@@ -893,6 +894,70 @@ Knowing about self-reported challenges.</p>
 </p>
 <!-- Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
 -->
+</div>
+<div id="brainstorm-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population" class="section level3" number="11.2.4">
+<h3><span class="header-section-number">11.2.4</span> Brainstorm: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</h3>
+<p>I suspect there must be substantial work on this, but I’m just going to flesh out how I think it would probably go:</p>
+<p><br />
+</p>
+<p><strong>Parameters/values:</strong>*</p>
+<p>We consider both latent/unobservable ‘true’ population parameters and our observed values.</p>
+<p><em>Movement population and composition (latent)</em>: The movement has a population (henceforth ‘our population’) of unknown size <span class="math inline">\(\Pi\)</span> and composition <span class="math inline">\(\delta\)</span>.</p>
+<p>‘Demographics’ <span class="math inline">\(\delta\)</span> can either represent a single proportion, e.g., the female share of our population, or a vector of these proportions for various demographics.* For now, for simplicity, we will focus on a single demographic. Let <span class="math inline">\(\delta_0\)</span> be the male share and <span class="math inline">\(\delta_1 = 1- \delta_0\)</span> the non-male share. For indexing this simple case, we refer to demographics <span class="math inline">\(\delta_k\)</span> for <span class="math inline">\(k=0,1\)</span>.</p>
+<div class="marginnote">
+<p>…or even a matrix or array describing each pairing of demographics.</p>
+</div>
+<p>E.g., if the male share is 70%, we have be <span class="math inline">\(\Pi_0= \delta_0 \Pi = 0.7\times 100 = 70\)</span> males in our population.**</p>
+<div class="marginnote">
+<p>Naturally, <span class="math inline">\(\Pi_1 = \delta_1 \Pi = (1-\delta_0)\Pi = \Pi - \Pi_0 = 100-30 = 30\)</span> non-males in our population.</p>
+</div>
+<p><br />
+</p>
+<p>As noted below, we will be targeting the population via several “referrers” <span class="math inline">\(r=0,1,...,R\)</span>. For now, we will assume each member of the population also only “belongs” to a single referrer. This is also described by <em>latent</em> parameters: we do not know what share of the population belongs to each referrer, nor how this breaks down by demographics.</p>
+<p>For simplicity, consider only two referrers (<span class="math inline">\(r=0,1\)</span>), the ‘wide and narrow referrers’, respectively, and let <span class="math inline">\(\rho_0\)</span> denote the share of our population that belongs to the wider referrer (and <span class="math inline">\(\rho_1 = 1-\rho_0\)</span> the share belonging to the narrower referrer).***</p>
+<div class="marginnote">
+<p>*** For the case in mind when I built this example, this embodies in a place of assumption that is too strong. In fact each of our members may belong to one or more referrers, or in fact to none at all.</p>
+</div>
+<p>Thus, supposing 80% of our population belongs to the wider referrer, we have <span class="math inline">\(R_0= \rho_0 \Pi = 0.8\times 100 = 80\)</span> members of our population belonging to the wider referrer. (Note that we let <span class="math inline">\(R_0\)</span> denote the ‘number of members of our population belonging to the wider referrer.’)</p>
+<p>Again, we do not know how this breaks down by demographics, and it may not be even. Thus, we need to define <em>the shares of each demographic belonging to each referrer</em>:</p>
+<p><span class="math inline">\(\rho_{r_k}=pr(k=k|r=r)\)</span>: The share of the ‘population of referrer r’ that also both belongs to demographic <span class="math inline">\(k\)</span>.</p>
+<div class="marginnote">
+<p>(Note – I’m not sure if I should use this ‘cross proportion’ or instead use two separate proportions, i.e., conditional probabilities.)</p>
+</div>
+<p>In general (and defining the corresponding ‘number of observations’ notation):</p>
+<p><span class="math inline">\(\Pi_{rk}=\Pi\times\rho_r\times\rho_{r_k}\)</span></p>
+<p>Thus, e.g., given the shares mentioned above, and assuming that 70% of the narrower referrer’s population is male (<span class="math inline">\(\rho_{1_0}=pr(k=0|r=1)) = 0.7\)</span>, our true population of ‘males in the narrower referrer’ is</p>
+<p><span class="math inline">\(\Pi_{10}=\Pi\times\rho_1\times\rho_{1_0}=100\times0.2\times0.7 = 14\)</span></p>
+<p><br />
+</p>
+<p><em>Surveys/referrers and response/participation rates (observed)</em></p>
+<p>We have an opt-in web survey that has been administered yearly in years <span class="math inline">\(t=0,...,T\)</span>. (Skipping the zero index here for readability.)</p>
+In each year, the survey has been advertised in one of the two referrers noted above.*.
+<div class="marginnote">
+<p>More generally, in <span class="math inline">\(R\)</span> referrers … <span class="math inline">\(r=0,1,...,R\)</span>.</p>
+</div>
+<p>We observe the number of participants coming from each referrer <span class="math inline">\(r\)</span> with each demographic <span class="math inline">\(k\)</span> in each year <span class="math inline">\(t\)</span></p>
+<p><span class="math inline">\(n_{r,k,t} \forall \: r,k,t\)</span></p>
+<p>Suppose there are the survey has only been run for 2 years.</p>
+<p>Thus, e.g., we may observe <span class="math inline">\(n_{1,0,1}=20\)</span> from the narrower referrer, who are male, in the first year (year ‘0’).</p>
+<p><br />
+</p>
+<p><em>Participation ‘model’:</em></p>
+<p>I suggested above, we assume that each member of our population only observes (or only “meaningfully observes”) the survey from at most one referrer, the one they ‘belong to’.</p>
+If an individual indeed observes the survey, they then decide whether to participate.*
+<div class="marginnote">
+<p>* In future, we might model these participation decisions as the outcome of optimization problems, perhaps giving us insight into the direction of the bias (e.g., according to opportunity cost and concern for the outcome of the survey).</p>
+</div>
+<p>This is perhaps a “double hurdle”: the individual may or may not observe the survey, and then may or may not decide whether it is worth participating. Separating these two processes would seem to separate the “coverage” and “differential response/participation” issues.</p>
+<p>As a result, we may have an unobserved “propensity to participate” for each participant, in each year, which may vary by referrer and by demographic.</p>
+<p>For now, we will simplify things; We will not model the two hurdles separately, but simply refer to a “latent propensity to (observe and) participate” for each subgroup:</p>
+<p><span class="math inline">\(\alpha_{r,k,t}\)</span>: The true probability that an individual belonging to referrer <span class="math inline">\(r\)</span>, who is in demographic <span class="math inline">\(k\)</span> (in year <span class="math inline">\(t\)</span>) participates (returns the survey) in year <span class="math inline">\(t\)</span>.</p>
+<p>If we had an (unbiased?) estimate of <span class="math inline">\(\alpha_{r,k,t} \forall r,k,t\)</span> (and if we observe responses from each combination of these, and if the some share of each group belongs to each referrer) we should be able to use inverse probability weighting to gain an unbiased estimate of the true demographic population shares as well as the overall true population size (?).</p>
+<p><br />
+</p>
+<p><em>The parameters and the priors:</em></p>
+<p>Specify some informative but still somewhat diffuse prior distribution over these parameters; Including true population shares and probabilities of response within each group.</p>
+<p>Update and iterate towards ‘our best posteriors’?</p>
 
 </div>
 </div>
