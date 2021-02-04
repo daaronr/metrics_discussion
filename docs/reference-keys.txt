@@ -127,6 +127,7 @@ the-benefits-and-costs-of-pre-registration-a-typical-discussion
 the-hazards-of-specification-searching
 designs-for-decision-making
 sequential
+adaptive
 efficient-assignment-of-treatments
 see-also-multiple-hypothesis-testing
 how-many-treatment-arms-can-you-afford

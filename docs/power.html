@@ -404,7 +404,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a></li>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a>
+<ul>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-1"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.3.1</b> Adaptive</a></li>
+</ul></li>
 <li class="chapter" data-level="13.4" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.4</b> Efficient assignment of treatments</a>
 <ul>
 <li class="chapter" data-level="13.4.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.4.1</b> See also <span>multiple hypothesis testing</span></a></li>
@@ -1139,7 +1143,10 @@ i.e.,</p>
 <h2><span class="header-section-number">14.7</span> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</h2>
 <p>We want to know what the ‘best title for our new movie’ is. Twenty titles have been suggested. We have funds to do a survey of a relevant representative audience.</p>
 <p>We need to decide on a general experimental design, a statistical analysis, and on sample sizes considering power (or perhaps ‘lift’).</p>
-<p>Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a ‘reinforcement learning’ problem.</p>
+<p>Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a ‘reinforcement learning’ problem.*</p>
+<div class="marginnote">
+<p>* See Max Kasy’s slides and articles on <a href="https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf">adaptive field experiments</a>, particularly considering ‘exploration sampling’.</p>
+</div>
 <p><br />
 </p>
 <div id="design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order" class="section level3" number="14.7.1">
@@ -1190,11 +1197,15 @@ i.e.,</p>
 </p></li>
 </ol>
 <p>Given such a procedure, we can now simulate (or perhaps calculate) the power of our design and test against the above HA.</p>
-<p>For each simulated sample <span class="math inline">\(t\)</span>:
-- Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population’,
-- with 20 ranks being drawn for each of the <span class="math inline">\(N\)</span> individuals
-- with one title (the same one always) having a 2/20 probability of being drawn for the first rank, and the other 19 titles each having a 1/20 probability of being drawn for the first rank (OK, this doesn’t add up, adjust the fraction slightly)
-- Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span> and then <span class="math inline">\(P(N, [\bar{R^1_j}]^t) \equiv [P]^t\)</span></p>
+<p>For each simulated sample <span class="math inline">\(t\)</span>:</p>
+<ul>
+<li>Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population’,
+<ul>
+<li>with 20 ranks being drawn for each of the <span class="math inline">\(N\)</span> individuals</li>
+<li>with one title (the same one always) having a 2/20 probability of being drawn for the first rank, and the other 19 titles each having a 1/20 probability of being drawn for the first rank (OK, this doesn’t add up, adjust the fraction slightly)</li>
+</ul></li>
+<li>Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span> and then <span class="math inline">\(P(N, [\bar{R^1_j}]^t) \equiv [P]^t\)</span></li>
+</ul>
 Over a sufficient number of simulations, determine the average probability of ‘rejecting the null’ in favor of the above HA (specifically for the ‘correct’ title <span class="math inline">\(j\)</span>).** This is the power of the test.
 <div class="marginnote">
 <p>** This last point is a wrinkle I’ve not seen in previous work involving power calculations, so I hope I am not missing something here.</p>

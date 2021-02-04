@@ -709,6 +709,7 @@ To test for this in we would follow a certain procedure, e.g., (and I am not sur
 Given such a procedure, we can now simulate (or perhaps calculate) the power of our design and test against the above HA.
 
 For each simulated sample $t$:
+
 - Draw $N$ observations from an imagined 'true population', 
   - with 20 ranks being drawn for each of the $N$ individuals 
   - with one title (the same one always) having a 2/20 probability of being drawn for the first rank, and the other 19 titles each having a 1/20 probability of being drawn for the first rank (OK, this doesn't add up, adjust the fraction slightly)
