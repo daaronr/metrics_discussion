@@ -8,12 +8,14 @@ Wikipedia entries on
 - ['survey sampling'](https://en.wikipedia.org/wiki/Survey_sampling)
 
 
- Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
+<div class="marginnote">
+See: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
+</div>
 
 
 ## Survey sampling/intake
 
-### Probability sampling
+### Probability sampling {-}
 
 <div class="marginnote">
 Here: naive notes based on wikipedia, will be improved.
@@ -51,6 +53,8 @@ Also note that 'Not all frames explicitly list population elements; some list on
 
 </div>
 
+\
+
 - Simple random versus stratified and cluster sampling
 
 
@@ -59,7 +63,7 @@ Also note that 'Not all frames explicitly list population elements; some list on
 *Issues*\*
 
 <div class="marginnote">
-Many of these also seem relevant for our ['social movement' case of interest below.](#jazz-case)
+\* Many of these also seem relevant for our ['social movement' case of interest below.](#jazz-case)
 </div>
 
 
@@ -67,7 +71,7 @@ Many of these also seem relevant for our ['social movement' case of interest bel
 
 
 
-### Non-probability sampling
+### Non-probability sampling {-#np-sampling}
 
 @bakerSummaryReportAAPOR2013
 
@@ -81,34 +85,43 @@ Many of these also seem relevant for our ['social movement' case of interest bel
 
 #### Respondent-driven sampling (from rare or 'hidden' populations) {-}
 
-** [sampling and estimation in hidden populations using respondent-driven sampling, matthew j. salganik* douglas d.    heckathorny](https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf)** @salganikSamplingEstimationHidden2004
+ [sampling and estimation in hidden populations using respondent-driven sampling](https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf) @salganikSamplingEstimationHidden2004
  
+<div class="marginnote">
+
+They suggest a way to use 'RDS' and then recover representativeness, under certain assumptions.
+ </div>
  
- >  Standard sampling and estimation techniques require the researcher to select sample members with a known probability of selection. In most cases this requirement means that researchers must have a sampling frame, a list of all members in the population. However, for many populations of interest such a list does not exist.
+
+>  Standard sampling and estimation techniques require the researcher to select sample members with a known probability of selection. In most cases this requirement means that researchers must have a sampling frame, a list of all members in the population. However, for many populations of interest such a list does not exist.
  
 - 'Standard' approach ... Construct a sample frame of 'all the injection drug users in a large city'; 'probably impossible' 
 
 - Or 'reach a large number of people via random digit dialing and then screen them for membership in the hidden population. Again, this approach is extremely costly and potentially very inaccurate.' 
 
-- Or 'take a sample of target population members in an institutional setting—for example, injection drug users in a drug rehabilitation program.'
-  - But 'a nonrandom sample from the hidden population, ... impossible to use to ... make accurate estimates about the entire hidden population'
+- Or "take a sample of target population members in an institutional setting—for example, injection drug users in a drug rehabilitation program."  But "a nonrandom sample from the hidden population, ... impossible to use to ... make accurate estimates about the entire hidden population"
 
-Targeted sampling ('street outreach') is cost-effective but very hard to know what you are getting. Time-space sampling can deal with certain limitations to this, but its far from a complete remedy
+Targeted sampling ('street outreach') is cost-effective but it is very hard to know what you are getting. Time-space sampling can deal with certain limitations to this, but it's far from a complete remedy.
 
-The authors propose  
+\
+
+The authors propose:  
 
 > respondent-driven sampling, is a variation of chain-referral sampling methods that were first introduced by Coleman (1958) under the name snowball sampling.
 
 > select a small number of seeds who are the first people to participate in the study. These seeds then recruit others to participate in the study. This process of existing sample members recruiting future sample members continues until the desired sample size is reached   
 
+\
+
 While.. 
 
 > chain-referral methods produce samples that are not even close to simple random samples 
 
-> researchers believed that any small bias in selecting the seeds would be compounded in unknown ways as the sampling process continued
+> researchers believed that any small bias in selecting the seeds would be compounded in unknown ways as the sampling process continued.
 
-and also ... 
->  This research is fairly well summarized by Berg(1988) when he writes, ‘as a rule, a snowball sample will be strongly biased toward inclusion of those who have many interrelationships with or are coupled to, a large number of individuals. In the absence of knowledge of individual inclusion probabilities in different waves of the snowball sample, unbiased estimation is not possible.
+and also ...
+
+>  This research is fairly well summarized by Berg(1988) when he writes, "as a rule, a snowball sample will be strongly biased toward inclusion of those who have many interrelationships with or are coupled to, a large number of individuals." In the absence of knowledge of individual inclusion probabilities in different waves of the snowball sample, unbiased estimation is not possible.
 
 <div class="marginnote">
 **"Biased toward inclusion of those who have many interrelationships..."**
@@ -117,37 +130,45 @@ This would seem to suggest a solution, perhaps driving the approach the authors 
 </div>
  
 
+\
+
 But the authors believe they have a solution
 
->  We believe that previous researchers have been overly pessimistic about chain-referral samples. In this paper we will show that it is possible to make unbiased estimates about hidden populations from
+> We believe that previous researchers have been overly pessimistic about chain-referral samples. In this paper we will show that it is possible to make unbiased estimates about hidden populations from
 these types of samples. Further, we will show that these estimates are asymptotically unbiased no matter how the seeds are select
 
 How does it work?: 
 
-> First ,the sample is used to make estimates about the social network connectingthe population. Then, this information about the social network is used to derive the proportion of the population in different groups (forexample, HIV- or HIV+)
+> First, the sample is used to make estimates about the social network connectingthe population. Then, this information about the social network is used to derive the proportion of the population in different groups (forexample, HIV- or HIV+)
+
+\
 
 There are some intricate and interesting calculations involving network analysis 
 
 They show the unbiasedness of this approach under specified conditions, and its robustness to the seed choice. They also give a monte-carlo simulation illustrating the same. 
-Finally, they do some sort of comparison of their approach and previous approaches in real settings (I didn't read it carefully).
+
+Finally, they do some sort of comparison of their approach and previous approaches in real settings.\*\*
+
+<div class="marginnote">
+\*\* DR: I didn't read the latter carefully. Worth following up, perhaps.
+</div>
+ 
 
 
 ## Case: Surveying an unmeasured and rare population surrounding a 'social movement' {#jazz-case}
 
-[Related question/post on ResearchGate here](https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_G-based_what_to_do_read)
+<div class="marginnote">
+ 
+See: [Related question/post on ResearchGate here](https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_G-based_what_to_do_read)
+
+</div>
+
 
 ### Background and setup {-}
 
 *Consider a case where:*
 
-1. We have a **population-of-interest** based on an affiliation, certain actions, or a set of ideas.
-Some examples:
-
-- Vegetarians
-- 'Tea party conservatives' in the US
-- Jews, both religious and 'culturally Jewish'
-- Jazz musicians
-- Goths ... 'ethnography'; Paul Hodkinson
+1. We have a **population-of-interest** based on an affiliation, certain actions, or a set of ideas. E.g., Vegetarians; 'Tea party conservatives' in the US;  Jews, both religious and 'culturally Jewish', Jazz musicians, "Goths" ('ethnography'; Paul Hodkinson)
 
 For this writeup, we will call the targeted group 'the Jazz Movement' or 'the Jazz population'. Individuals will either be 'Jazzy' (J) or 'non-Jazzy' (NJ).
 
@@ -159,16 +180,16 @@ There are some **disagreements about how to define this group**.
 2. We have **no 'gold standard' to benchmark against.**
 
 - There is no 'actual targeted and measured outcome' such as voting in an election.
-- There are no other surveys or enumerations (e.g., Censuses) to inform our results.
+- There are no other surveys or enumerations (e.g., censuses) to inform our results.
 
 \
 
-3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years; this most resembles **'river sampling'**
+3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years; this most resembles *'river sampling'*
 
-... based on advertising and word-of-mouth in a variety of outlets ('referrers') associated with the 'movement'.
+... based on advertising and word-of-mouth in a variety of outlets ('referrers') associated with the 'movement'.\*
 
 <div class="marginnote">
-Particularly:
+\*Particularly:
 
 - A discussion forum
 - A newsletter
@@ -178,18 +199,16 @@ Particularly:
 
 
 - We can identify *which* 'referrer' lead someone to our survey.
+- All participants are given a similar 'donation' incentive, an incentive that might tend to particularly attract members of the Movement.\*\*
 
-- All participants are given a similar 'donation' incentive, an incentive that might tend to particularly attract members of the Movement.
 
 <div class="marginnote">
-Given the context, we might reasonably expect that willingness to complete the survey might be associated with depth of support for the movement.
+\*\* Given the context, we might reasonably expect that willingness to complete the survey might be associated with depth of support for the movement.
 </div>
 
 
 - We can link some individuals across years.
-
 - Some questions repeat across years.
-
 
 \
 
@@ -205,43 +224,51 @@ Given the context, we might reasonably expect that willingness to complete the s
 
 5. Our **research goals include** measuring:
 
-- The size of the movement (challenging),
-- The demographics (and economic status, psychographics, etc) of the movement,
-- The attitudes, beliefs and behaviors of people in the movement,
-- The (causal) drivers of joining the movement and actively participating in the movement (or leaving the movement),
+The size of the movement (challenging),
 
-- ... and the trends/changes in all of the above.
+... The demographics (and economic status, psychographics, etc) of the movement,
+
+... The attitudes, beliefs and behaviors of people in the movement,
+
+... The (causal) drivers of joining the movement and actively participating in the movement (or leaving the movement),
+
+... and the trends/changes in all of the above.
 
 
-And particularly interested in the most avid and engaged Jazzers.
-Knowing about self-reported challenges. 
+We are particularly interested in the most avid and engaged Jazzers, and in knowing about self-reported challenges to participation. 
 
 \
 
 
 **Why do we care?** *We want to know these things for several reasons, including...*
 
+<div class="marginnote">
+Our 'theory of change'.
+</div>
+ 
+```{block2,  type='fold'}
 
-To find ways to build membership (perhaps 'expand and diversify') and increase participation in the movement (including specific behaviors like donating), especially through...
+
+To find ways to build membership (perhaps 'expand and diversify'), and increase participation in the movement (including specific behaviors like donating), especially through...
 
 - Funding causal drivers (policies) that 'work', and
 - Profiling and targeting 'likely Jazzers' from outside the movement
 
-\
 
 To understand and better represent the attitudes of the movement's members in our movement-wide activities. <!-- See -->
 
-\
 
 'For general understanding of the movement and its members', to inform a wide range of decisions across the movement, and further research into the movement.
 
+```
 
-### Our 'convenience' method; issues, alternatives
+\
 
+### Our 'convenience' method; issues, alternatives {-}
 
-Our current approach seems to be some combination of what is called 'convenience sampling' and 'snowball sampling'. The major distinction from probability sampling (as I see it) is...
+Our current approach may be described as a combination of 'convenience sampling' ('river sampling' and 'opt-in') and 'snowball sampling'. The major distinction from probability sampling (as I see it) is...
 
-*Probability sampling* identifies a *population of interest* and a *sample frame* meant to capture this population. Rather than appealing to this entire population/frame, PS randomly (or stratified/clustered) samples a 'probability share' (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze ---and perhaps adjust for---the rate of non-response.
+*Probability sampling* identifies a *population of interest* and a *sample frame* meant to capture this population. Rather than appealing to this entire population/frame, probability sampling randomly (or using stratification/clustering) samples a 'probability share' (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze ---and perhaps adjust for---the rate of non-response.
 
 In contrast,
 
@@ -264,18 +291,29 @@ Wikipedia entry on 'convenience sampling'
 
 \
 
-### Potential alternative approaches
+ 
+### Our methodological questions {-}
 
+**Analysis:** Are there any approaches that would be better than 'reporting the unweighted raw results' (e.g., weighting, cross-validating something or other) to using this “convenience/river” sample to either:
+ 
+i. Getting results (either levels or changes) likely 'to be more 'representative of the movement as a whole' than our unweighted raw measures of the responses in each year?
+ 
+ii. Getting measures of the extent to which our reports are likely to be biased due to undercoverage, ‘overcoverage’, and differential participation rates, ... perhaps bounds on this bias.
+ 
+ \
+ 
+**Survey design:** In designing future years' surveys, is there a better approach?
 
-**Analysis adjustments**
-
-**Design adjustments**
+- Probability sampling of a 'large group' or within each outlet (with larger incentives/inducements), or even a nationally representative sample
 
 - Respondent-driven sampling (with network-analysis based adjustments)
 
+- Comparisons to other data points from other surveys and measures, comparisons to other groups and within groups 
 
 
-### Notes and considerations:
+
+<!-- 
+Notes:
 
 - 'Whether we can do better’ sort of questions ... we should try to pin down what our metrics and targets are
 
@@ -283,18 +321,59 @@ Wikipedia entry on 'convenience sampling'
 
 - What sorts of questions/claims are we interested in most/what ‘parameters’ are we trying to measure?
 
-- For the second point, I think that some methods might yield plausibly unbiased/reliable estimates of certain parameters (e.g., year-to-year changes) but not others.
+- For the second point, I think that some methods might yieldplausibly unbiased/reliable estimates of certain parameters (e.g., year-to-year changes) but not others.
 
-\
+-->
 
 
 <!-- Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
 -->
 
-### Brainstorm: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population
+
+#### Sensitivity testing ideas {-}
+
+As we can separately measure demographics (as well as stated beliefs/attitudes) for respondents from each referrer, we could consider testing the sensitivity of the results to "how we weight responses from each referrer".
+
+- How much would results vary if we compare the widest group to the most motivated “first responders” to our regular posted survey?
+- Use demographics derived from some weighted estimate of surveys in all previous years to re-weight the survey data in the present year to be “more representative”? (But how to weight and judge previous surveys and referrers?)
+
+- A Bayesian meta-analytic approach where the ‘true population parameters’ are unknown and each survey provides an imperfect window. 
+  - As noted we subjectively think that some referrers are more representative than others, so maybe we can do something with this using Bayesian tools.)
+  We may have some measures of the demographics of participants on some of the referrers, which might be used to consider weighting to deal with differential non-response
+
+```{block2,  type='note'}
+Weighting may not be appropriate as a means of gaining ‘complete representativeness’, as we have no gold standard. Even if we had a nationally-representative sample/survey this could yield differential response rates among different types of EA-ers. An approach to ‘convergent validation’ may be possible in the future, but it will take time to learn/develop a methodology.
+ 
+However,  we can measure and test the sensitivity of our results to variation along several ‘dimensions’
+
+- Ease of response/dedication (maybe compare first to later responders, responders after reminders, future -- compare those with additional incentives and pressure)
+
+- Referrers with different characteristics (‘large pool’ vs ‘small pool’ or something)
+
+
+- Demographics and ‘clusters/vectors of demographics’
+
+- (Possibly) re-weighting to match the demographics of some known group 
+
+*We may do this in an a-theoretical ad-hoc way for now, unless we can identify and use a systematic framework for this.*
+```  
+
+
+
+
+
+### Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population
+
+
+<!-- Private case-specific work: see https://docs.google.com/document/d/1_z7OcUvhqY3NvdKBfmQhcq_u6cr_zgEt5eqpiaJr3fk/edit#   --> 
+
+
+<div class="marginnote">
 
 I suspect there must be substantial work on this, but I'm just going to flesh out how I think it would probably go:
 
+</div>
+ 
 \
 
 **Parameters/values:***
@@ -308,7 +387,7 @@ We consider both latent/unobservable 'true' population parameters and our observ
 
 
 <div class="marginnote">
-...or even a matrix or array describing each pairing of demographics. 
+\* ...or even a matrix or array describing each pairing of demographics. 
 </div>
 
 
@@ -359,7 +438,7 @@ $\Pi_{10}=\Pi\times\rho_1\times\rho_{1_0}=100\times0.2\times0.7 = 14$
 
 *Surveys/referrers and response/participation rates (observed)*
 
-We have an opt-in web survey that has been administered yearly in years $t=0,...,T$.  (Skipping the zero index here for readability.)
+We have an opt-in web survey that has been administered yearly in years $t=0,...,T$. 
 
 In each year, the survey has been advertised in one of the two referrers noted above.\*.
 <div class="marginnote">
@@ -370,7 +449,7 @@ We observe the number of participants coming from each referrer $r$ with each de
 
 $n_{r,k,t} \forall \: r,k,t$
 
-Suppose there are the survey has only been run for 2 years. 
+Suppose that the survey has only been run for 2 years. 
 
 Thus, e.g., we may observe $n_{1,0,1}=20$ from the narrower referrer, who are male, in the first year (year '0').
 
@@ -394,7 +473,6 @@ For now, we will simplify things; We will not model the two hurdles separately, 
 $\alpha_{r,k,t}$: The true probability that an individual belonging to referrer $r$, who is in demographic $k$ (in year $t$) participates (returns the survey) in year $t$. 
 
 If we had an (unbiased?) estimate of $\alpha_{r,k,t} \forall r,k,t$ (and if we observe responses from each combination of these, and if the some share of each group belongs to each referrer) we should be able to use inverse probability weighting to gain an unbiased estimate of the true demographic population shares as well as the overall true population size (?).
-
 
 
 \

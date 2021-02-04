@@ -54,19 +54,29 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 ### The hazards of specification-searching
 
+## Designs for *decision-making*
 
-## Sequential and adaptive designs
+See 'reinforcement learning', 'lift', and multi-armed bandit explore/exploit tradeoffs (with emphasis on the explore part)
+
+## Sequential and adaptive designs {#sequential}
+
+### Sequential {-}
 
 Needs to adjust significance tests for augmenting data/sequential analysis/peeking	Statistics/econometrics	new-statistics		sagarin_2014			http://www.paugmented.com/	resubmit_letterJpube.tex, http://andrewgelman.com/2014/02/13/stopping-rules-bayesian-analysis/
 
 Yet ...
-
 
 $P_{augmented}$ may *overstate* type-1 error rate	Statistics/econometrics	response to referees, new-statistics	"
 
 A process involving stopping "whenever the nominal $p < 0.05$" and gathering more data otherwise (even rarely) must yield a type-1 error rate above 5\%. Even if the subsequent data suggested a "one in a million chance of arising under the null" the overall process yields a 5\%+ error rate. The NHST frequentist framework can not adjust ex-post to consider the "likelihood of the null hypothesis" given the observed data, in light of the shocking one-in-a-million result. While Bayesian approaches can address this, we are not highly familiar with these methods; however, we are willing to pursue this if you feel it is appropriate.
 
 Considering the calculations in \ref{sagarin2014}, it is clear that $p_{augmented}$ should \textit{overstate} the type-1 error of the process if there is a positive probability that after an initial experiment attains p$<0.05$, more data is collected.  A headline $p<0.05$ does \textit{not} imply that this result will enter the published record. Referees may be skeptical of other parts of the design or framework or motivation. They may also choose to reject the paper specifically because of this issue; they believe the author would have continued collecting data had the result yielded $p>0.05$, thus they think it is better to demand more evidence or a more stringent critical value. Prompted by the referee, the author may collect more data even though $p<0.05$. Or, she may decide to collect more data even without a referee report/rejection demanding it, for various reasons (as we did after our Valentine's experiment).  Thus, we might imagine that there is some probability that after (e.g.) an initial experiment attaining p<0.05, more data is collected, implying that $p_{augmented}$ as calculated above overstates the type I error rate that would arise  from these practices. As referees and editors, we should be concerned about the status of knowledge as accepted by the profession, i.e., in published papers. If we recognize the possibility of data augmentation after any paper is rejected, it might be a better practice to require a significance standard substantially below $p=0.05$, in order to attain a type-1 error rate of 5% or less in our published corpus."
+
+### Adaptive
+
+See Max Kasy's slides and articles on [adaptive field experiments](https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf), particularly considering 'exploration sampling'.
+
+This also relates to 'reinforcement learning'. 
 
 ## Efficient assignment of treatments
 
@@ -85,6 +95,34 @@ A guiding principle might be:
 
 A caveat to this is that we may be able to pool some of the pairings to answer certain questions, but then it is only worth having the distinct variations that are being pooled if that doing so gives us power to answer some other question.
 -->
+
+
+#### A side conversation: who runs more treatments, academics or practicioners? {-}
+
+```{block2,  type='fold'}
+
+
+> R: In a “policy” context, where we want to decide which message to use, and we are not necessarily trying to establish a very robust general result for scientific purposes, I would err on the side of more messages perhaps
+
+> M: That’s very interesting. I may just defer to what you think, but my intuitions would have been the reverse in terms of the practical policy vs academic/generalisation
+
+
+OK it really depends on the context and the cost/benefit of having confidence in a particular result.
+
+E.g., p<0.01 vs profitable Bayesian updating (‘lift’ etc)
+In academia (Economics anyway) there is still the old-line insistence that ‘the result you present must be strongly statistically significant in a frequentist test or it is not publishable’.
+In business practice a result may be highly valuable even if it is something like “there is an 80% chance that message A works better than message B, and the mean additional ‘lift’ of message A is +$50,000, with an 80% credible interval of (0,$50,000) and a 95% CI of (-$20k, +$70K)
+
+But academia also cares about ‘deep’ and ‘fancy’ mechanisms stuff: academia asks ’is this question interesting, can you rule out alternative hypothesis, etc … motivating one to have more treatments/outcomes as long as you can ‘get p<0.01’ for rejecting a (perhaps trivial null). So academia compares A1,A2,A3, B1,B2,B3, C1, C2,... etc.
+While business might find it more valuable to gain greater insight into ‘whether A outperforms B’ even  if we don’t know why. It may not care about testing A1 vs A2 if there is little practical difference between the two.
+
+And ‘academic publication incentives’ doesn’t care much about precision after we ‘get p<0.01’
+E.g., if my paper shows that the some ‘early donation seed’ raises (p<0.01 significantly) more  funds than no such seed, ‘publication-wise’ I may not care much about bounding the size of this effect, nor about bounding a measure the size of the optimal seed.
+
+But as a business (or EA org etc) I know these seeds are costly, and I may only want to do it if I have a certain level of confidence that it will be substantially above the cost of the seed, perhaps considering the risk/return tradeoffs. I may also find it valuable to have an extremely precise measure of the optimal seed.
+
+
+```
 
 ### Other notes and resources
 

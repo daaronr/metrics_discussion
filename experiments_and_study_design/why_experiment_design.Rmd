@@ -78,7 +78,9 @@ Relating back to the discussion of the different conceptions of theory:
 
 - Ruling out alternative hypotheses, etc
 
-## Types of experiments, 'demand effects' and more artifacts of artifical setups
+## Types of experiments, 'demand effects' and more artifacts of artificial setups {#artifacts}
+
+## Within vs between-subject designs {#ws-bs}
 
 ## Generalizability (and heterogeneity)
 
@@ -111,3 +113,4 @@ In fact I consider peer review and rating as the important outcome, not the publ
 \
 
 [A thought: Replace reviews (accept/reject/R&R) with ratings (0-10)?](https://twitter.com/GivingTools/status/1258704179306147841?s=20)
+

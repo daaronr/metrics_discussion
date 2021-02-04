@@ -10,23 +10,23 @@ Introduction and discussion
 
 There is some evidence supporting the claim that the 'Paleo diet' reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain 'standard recommended diets. At least a small set of randomized trials have concluded that participants in the "Paleo diet treatment" groups reduced their waist circumference more than those in control groups.
 
-This evidence is summarized in the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a who report:
+This evidence is summarized in the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015 who report:
 
 > The Paleolithic diet resulted in greater short-term improvements in metabolic syndrome components than did guideline-based control diets. The available data warrant additional evaluations of the health benefits of Paleolithic nutrition.
 
-More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019a, @demenezesInfluencePaleolithicDiet2019a).
+More recent meta-analyses in reputable journals have also found favorable results (@ghaediEffectsPaleolithicDiet2019, @demenezesInfluencePaleolithicDiet2019a).
 
 <div class="marginnote">
-According to [Scimago](https://www.scimagojr.com/journalrank.php?category=2916), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015a) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019a) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
+According to [Scimago](https://www.scimagojr.com/journalrank.php?category=2916), American Journal of Clinical Nutrition (@manheimerPaleolithicNutritionMetabolic2015) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (@ghaediEffectsPaleolithicDiet2019) is ranked fourth, and Nutrition Journal (@demenezesInfluencePaleolithicDiet2019a) is ranked 35th.
 </div>
 
 However, the Paleo diet remains controversial; it is still referred to as a 'fad diet' on [Wikipedia](https://en.wikipedia.org/wiki/Paleolithic_diet) (accessed 20 Dec 2020), which claims 'there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome'.\*
 
 <div class="marginnote">
-\* However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019a; @manheimerPaleolithicNutritionMetabolic2015a]; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.
+\* However, this Wikipedia article references [@ghaediEffectsPaleolithicDiet2019; @manheimerPaleolithicNutritionMetabolic2015]; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.
 </div>
 
-[@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015a meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. \*\*\*
+[@fentonPaleoDietStill2016] criticized the @manheimerPaleolithicNutritionMetabolic2015 meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. \*\*\*
 
 <div class="marginnote">
 \*\*\* While I agree with some of the conceptual issues [@fentonPaleoDietStill2016] raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification.  I return to these issues below.
@@ -38,12 +38,12 @@ In this brief review I:
 
 - [Consider conceptual issues in defining and measuring the 'impact of a diet' through standard study methodologies](#conceptual)
 
-- [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015a considering its methods, findings, and limitations](#limitations-p),
+- [Focus (as suggested) on the meta-analysis of @manheimerPaleolithicNutritionMetabolic2015 considering its methods, findings, and limitations](#limitations-p),
     - [considering key conceptual and statistical issuess]((#man-results),
     - considering the [critiques of @fentonPaleoDietStill2016 and Manheimer's responses](#critiques), as well as other evaluations of this meta-analysis,
     - weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.
 
-- [Assess a particularly promising study](#boers) [@boersFavourableEffectsConsuming2014] (incorporated into @manheimerPaleolithicNutritionMetabolic2015a)
+- [Assess a particularly promising study](#boers) [@boersFavourableEffectsConsuming2014] (incorporated into @manheimerPaleolithicNutritionMetabolic2015)
 
 *Disclaimers:* (See ['limitations'](#limitations-p) below).
 
@@ -96,7 +96,7 @@ On the other hand the ITT measure might be more relevant if we want to consider 
 
 Thus the ITT may  be more sensitive to the representativeness of our sample of dieters. Given self selection and other issues, it may be extremely difficult to recruit a "nationally representative" sample of the targeted group.
 
-In the discussion of @manheimerPaleolithicNutritionMetabolic2015a, it is not clear to me which measure of the studies are targeting. The discussion ("whether Paleolithic *nutrition* has any effect in improving metabolic risk factors", emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different *recommendations* for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.
+In the discussion of @manheimerPaleolithicNutritionMetabolic2015, it is not clear to me which measure of the studies are targeting. The discussion ("whether Paleolithic *nutrition* has any effect in improving metabolic risk factors", emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different *recommendations* for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.
 
 
 ### Control group: what is being measured?
@@ -198,9 +198,9 @@ However, particularly in line with the points made in @schwingshacklPerspectiveN
 - The study was 'Supported in part by the National Center for Complementary and Alternative Medicine of the US NIH (grant R24 AT001293; EWM)', a group that I might suspect to be somewhat sympathetic to the anti-establishment linked 'back to nature' philosophy of the Paleo diet.
 
 
-### Overall results, interpretation, consideration of evidence presented in  @manheimerPaleolithicNutritionMetabolic2015a
+### Overall results, interpretation, consideration of evidence presented in  @manheimerPaleolithicNutritionMetabolic2015
 
-I reproduce the most relevant part of @manheimerPaleolithicNutritionMetabolic2015a's results below:
+I reproduce the most relevant part of @manheimerPaleolithicNutritionMetabolic2015's results below:
 
 ```{r  fig.cap = 'Forest plot from Manheimer et al: Waist circumference', out.width='90%', fig.asp=.8, fig.align='center',  echo = FALSE}
  knitr::include_graphics(here("images","waist_manheim.png"))
@@ -261,7 +261,7 @@ A 'failure to reject the null' is not in itself, strong evidence for the null hy
 ### Ghaedi et al meta-analysis
 -->
 
-[@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015a's focal statistical comparisons appears to result from a mis-reading.\*<div class="marginnote">
+[@fentonPaleoDietStill2016]'s critique of @manheimerPaleolithicNutritionMetabolic2015's focal statistical comparisons appears to result from a mis-reading.\*<div class="marginnote">
 \* "We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups." [@manheimerReplyTRFenton2016]
 </div>
 
@@ -270,7 +270,7 @@ A 'failure to reject the null' is not in itself, strong evidence for the null hy
 <div class="marginnote">
 \* Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.
 </div>
-Their system and relative points system was independently developed; a major point of contrast with GRADE (@guyattGRADEEmergingConsensus2008) seems to be Nutrigrade's greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as [limited compliance](#compliance). They 'Nutrigrade' the evidence in  @manheimerPaleolithicNutritionMetabolic2015a as 5.75, or 'Low', explained as "there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate." Of 10 randomly meta-analysis studies they rated, this was the fifth-highest 'Nutrigrade'.
+Their system and relative points system was independently developed; a major point of contrast with GRADE (@guyattGRADEEmergingConsensus2008) seems to be Nutrigrade's greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as [limited compliance](#compliance). They 'Nutrigrade' the evidence in  @manheimerPaleolithicNutritionMetabolic2015 as 5.75, or 'Low', explained as "there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate." Of 10 randomly meta-analysis studies they rated, this was the fifth-highest 'Nutrigrade'.
 
 
 Overall, the 'reviews' of the strength of evidence meta-analysis are fair to middling. All, including the original authors, seem to agree that the  "the current evidence on the paleo diet might be considered early or preliminary and that further research is critically needed" (@manheimerReplyTRFenton2016), although there seems to be some disagreement about how promising an avenue this is for further inquiry.
@@ -278,23 +278,23 @@ Overall, the 'reviews' of the strength of evidence meta-analysis are fair to mid
 
 ## Other meta-analyses and consideration of the Paleo diet
 
-As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As @manheimerPaleolithicNutritionMetabolic2015a note
+As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As @manheimerPaleolithicNutritionMetabolic2015 note
 
 > a 2015 US News and World Report ranking of 35 diets with input from a panel of health experts placed the Paleolithic diet dead last, citing a lack of research evidence that showed clinical benefits.
 
 However, more work also seems to  support a claim such as 'recommending  the Paleo diet is succesful in reducing waist circumference in the short-term, relative to recommending more traditional diets.'
 
-In particular, @ghaediEffectsPaleolithicDiet2019a perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find "a [Paleo diet] significantly reduced ...  waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm)". These results are rather similar to those of @manheimerPaleolithicNutritionMetabolic2015a. Time-permitting, I would like to examine this meta-analyis in more detail.
+In particular, @ghaediEffectsPaleolithicDiet2019 perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find "a [Paleo diet] significantly reduced ...  waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm)". These results are rather similar to those of @manheimerPaleolithicNutritionMetabolic2015. Time-permitting, I would like to examine this meta-analyis in more detail.
 
 
 ### Process of finding relevant work (informal)
 
-*Notes*: In the limited time I had available, I did some keyword searches on Google scholar, such as `'paleo diet' AND 'meta-analysis`'` and `paleo diet` AND `randomized controlled trial`. I also followed a 'snowball' approach to consider which studies were cited, and which studies cited @manheimerPaleolithicNutritionMetabolic2015a, and the papers most prominently cited within.  I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).
+*Notes*: In the limited time I had available, I did some keyword searches on Google scholar, such as `'paleo diet' AND 'meta-analysis`'` and `paleo diet` AND `randomized controlled trial`. I also followed a 'snowball' approach to consider which studies were cited, and which studies cited @manheimerPaleolithicNutritionMetabolic2015, and the papers most prominently cited within.  I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).
 
 
 ## Focus: Boers et al {#boers}
 
-Unlike the other trials considered in @manheimerPaleolithicNutritionMetabolic2015a, @boersFavourableEffectsConsuming2014  "provided home-delivered Paleolithic and control diet meals to participants". This permits a more direct examination of what I called the [ATE](#compliance). I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.
+Unlike the other trials considered in @manheimerPaleolithicNutritionMetabolic2015, @boersFavourableEffectsConsuming2014  "provided home-delivered Paleolithic and control diet meals to participants". This permits a more direct examination of what I called the [ATE](#compliance). I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.
 
 This study is also particular strong because it has (apparently) a zero attrition rate ('34/34 analyzed'), while attrition in the other cited studies is substantial. Particular forms of non-random attrition can strongly bias estimated treatment effects, biasing both the ATE and ITT mentioned above.\*
 <div class="marginnote">
@@ -320,7 +320,7 @@ Furthermore, there also appears to be **limited evidence**;  I am not highly con
 
 **Caveats:** I am an economist, not a nutritionist or a life scientist. While I am working to build up my expertise in this area I have only limited experience conducting and for evaluating meta-analyses. The evaluation here was only a limited and shallow exercise done in a 10 hour window for a specific purpose. I did not do a broad and systematic review of the literature.
 
-I was only able to take a narrow focus for this exercise, mainly considering only@manheimerPaleolithicNutritionMetabolic2015a  review, as well as some connected work. To gain a more reliable answer to this question, there are a number of further , involving gaining better understanding, digging deeper into the data and analysis, and consulting a range of experts.
+I was only able to take a narrow focus for this exercise, mainly considering only@manheimerPaleolithicNutritionMetabolic2015  review, as well as some connected work. To gain a more reliable answer to this question, there are a number of further , involving gaining better understanding, digging deeper into the data and analysis, and consulting a range of experts.
 
 \
 
@@ -351,11 +351,11 @@ If I had better answers to question like these, I would know which types of stud
 
 4. More closely inspect and evaluate
 
-- @manheimerPaleolithicNutritionMetabolic2015a's code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.\*
+- @manheimerPaleolithicNutritionMetabolic2015's code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.\*
 <div class="marginnote">
 \* For example, as explained in the excellent tutorial @harrerDoingMetaanalysisHandson2019, [there are a range of popular estimators for $\tau^2$](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2), the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.
 </div>
 
 - The particularly promising @boersFavourableEffectsConsuming2014 study  as [noted above](#boers)
 
-- @ghaediEffectsPaleolithicDiet2019a, and  @demenezesInfluencePaleolithicDiet2019a, and any other promising analyses that come from the aforementioned systematic literature survey.
+- @ghaediEffectsPaleolithicDiet2019, and  @demenezesInfluencePaleolithicDiet2019a, and any other promising analyses that come from the aforementioned systematic literature survey.

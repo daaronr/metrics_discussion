@@ -526,10 +526,6 @@ How can we think about ‘precision of estimated Likert-item responses?’ and a
 
 \
 
-
-
-
-
 #### A simple naive approach? {-}
 
 Interval coding:  $y=\[1,2,3,4,5\]$ for a 5-item
@@ -625,5 +621,112 @@ If we assume normality, there should be a simple analytical formula for
 
 -  Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.
 ```
+
+
+## Digression: Power calculations/optimal sample size for 'lift' in a ranking case
+
+We want to know what the 'best title for our new movie' is. Twenty titles have been suggested. We have funds to do a survey of a relevant representative audience. 
+
+We need to decide on a general experimental design, a statistical analysis, and on sample sizes considering power (or perhaps 'lift').
+
+Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a 'reinforcement learning' problem.\*
+
+<div class="marginnote">
+
+\* See Max Kasy's slides and articles on [adaptive field experiments](https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf), particularly considering 'exploration sampling'.
+
+</div>
+ 
+
+\
+
+### Design: Which questions to ask the audience about the proposed titles, and in what order
+
+This is an 'experimental design for internal identification and external generalisability' question. (See ['Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_design))
+
+\
+
+Some possibilities: 
+
+- Subjects asked to rank (or rate) all 20 titles
+- Subjects asked to identify 'top N' and 'bottom N' (e.g., top and bottom 3) titles
+- Subjects presented a series of pairwise comparisons
+- Subjects asked to rate (or say whether they would attend) a single title, with between-subject variation
+
+
+### Which statistical test(s)/analyses to run (if any) and what measures to report?  {-}
+
+Suppose we asked each subject to rank all 20 titles. 
+
+How could we **test if there were any 'substantial difference in the title rankings'** and what would be a meaningful measure of the 'extent' of this difference? We might want to consider some 'minimum effect size of interest' and ensure that we have a large enough sample to diagnose such an effect with (e.g.) 80% probability (while maintaining a false-positive type-1 error rate of less than 5%).\*
+
+<div class="marginnote">
+\* However, it is not clear why this is the most relevant question. Simply determining 'there is a difference of some minimum size' doesn't tell us how confident we are about the best title, nor how much value is gained by choosing that title. This suggests a reinforcement learning approach. 
+</div>
+ 
+
+[Friedman's Q](https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages), is a measure of whether 'any (at least one?) items are systematically ranked higher or lower'.  $Q$ can be normalized into, [Kendall's W](https://en.wikipedia.org/wiki/Kendall%27s_W), a measure of 'inter-rater agreement' going from 0 to 1. There is a significant test for W "against a null hypothesis of no agreement (i.e. random rankings)".
+
+[Kendalls uses the Cohen’s interpretation guidelines of 0.1 to 0.3  being a 'small effect'](https://rdrr.io/cran/rstatix/man/friedman_effsize.html)
+
+
+"A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different", with multiple testing corrections.  [datanovia website](https://www.datanovia.com/en/lessons/friedman-test-in-r/)
+
+
+\
+
+### How to assign the 'treatments', and how large a sample is optimal, considering 'power' (or 'lift')? {-}
+
+#### Simple assignment {-}
+
+Suppose we are restricted to a single allocation of treatments across the 20 titles.  Suppose we asked all subjects to rank all of the 20 titles, or perhaps only to focus on the 'best' and 'worst' titles. 
+
+\
+
+*We might frame our test and power calculation as the following:*
+
+Suppose the 'Minimal effect of interest' that we want to be able to detect is (sort of the 'alternative hypothesis HA')...\*
+ 
+HA: "One title is ranked by a share of the population that is one and a half times as high as any other title."
+
+If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if assuming this, the computations below should *underestimate* the necessary sample size.
+
+I.e., defining $r_{i,j}$ as the rank given title $i$ by subject $j$, and letting $\bar{R^1_j}=\frac{1}{n}\sum I(r_{i,j}=1)$ be the share of the sample ranking title $j$ as first, we may consider a case where $\bar{R^1_j} > \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}$. (I think the latter term may simply be \frac{3}{2}\frac{19}{2}, or something similar, the 'average rank'.) 
+
+... perhaps, we want to power our test so, in such a case, we have an 80% chance that we ‘find an effect’. I.e., an 80% chance that our test statistic (whatever it is) tells us that "it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”
+
+(But I don’t really think that that is what we are looking for.)
+
+To test for this in we would follow a certain procedure, e.g., (and I am not sure this is an appropriate procedure) 
+
+1. Find the title 'j' that has the most people ranking it first in our sample, share $\bar{R^1_j}$
+
+2. Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size $N$ (our actual sample size), the average rank of the highest-ranked title would be as high as $\bar{R^1_j}$.
+
+3. If this computed probability of such an extreme result, given our sample size, $P(N, \bar{R^1_j})$ is below our threshold $0.05$ we 'reject the null.'
+\
+
+Given such a procedure, we can now simulate (or perhaps calculate) the power of our design and test against the above HA.
+
+For each simulated sample $t$:
+- Draw $N$ observations from an imagined 'true population', 
+  - with 20 ranks being drawn for each of the $N$ individuals 
+  - with one title (the same one always) having a 2/20 probability of being drawn for the first rank, and the other 19 titles each having a 1/20 probability of being drawn for the first rank (OK, this doesn't add up, adjust the fraction slightly)
+- Compute $[\bar{R^1_j}]^t$ and then $P(N, [\bar{R^1_j}]^t) \equiv [P]^t$
+
+Over a sufficient number of simulations, determine the average probability of 'rejecting the null' in favor of the above HA (specifically for the 'correct' title $j$).\*\* This is the power of the test.
+<div class="marginnote">
+\*\* This last point is a wrinkle I've not seen in previous work involving power calculations, so I hope I am not missing something here. 
+</div>
+ 
+
+#### Sequential/adaptive designs, multi-armed bandits {-}
+
+<div class="marginnote">
+More generally, see \@ref(sequential). 
+</div>
+ 
+
+
 
 

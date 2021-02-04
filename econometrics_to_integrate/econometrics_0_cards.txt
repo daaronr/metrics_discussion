@@ -1,0 +1,412 @@
+Law of iterated expectations	[$] E(Y)=E[E(Y|X)] [/$]	
+"<img src=""paste-2087354105857.jpg"" /><div><br /></div><div>X is a...</div>"	... X is a collider (graph)	
+"<img src=""paste-2688649527297.jpg"" /><div>X is a ...</div>"	&nbsp;... X is a confounder (graph)	
+Law of iterated expectations intuition	The average value of an outcome for a population is the proportion-weighted average of the subpopulations	
+Diagonal matrix	"All off diagonal elements are 0<div><img src=""paste-2572685410305.jpg"" /></div>"	
+Identity matrix (<b>I</b>)	"Unity/one in each diagonal position, zero elsewhere<div><img src=""paste-2834678415361.jpg"" /></div>"	
+Matrix addition	"Two matrices with same dimension, adding each element together<div><img src=""paste-2916282793985.jpg"" /></div>"	
+Scalar multiplication	"Real number (scalar)&nbsp;γ<div><img src=""paste-3496103378945.jpg"" /></div>"	
+Matrix multiplication	<div>Matrix <b>A</b>&nbsp;(<i>m</i> x <i>n</i>) must have same number of columns (<i>n </i>x <i>p</i>) as rows in <b>B</b></div>(i, j)<sup>th</sup>&nbsp;element of new matrix <b>AB</b>&nbsp;is obtained by multiplying each element in i<sup>th</sup>&nbsp;row of <b>A</b>&nbsp;with corresponding element in j<sup>th</sup>&nbsp;row of <b>B</b>&nbsp;and then summing the <i>n</i>&nbsp;products	
+Transpose of a matrix	"<b>A'</b>&nbsp;(prime) is exchanging the rows with the columns<div><img src=""paste-4475355922433.jpg"" /></div>"	
+Symmetric matrix	Square matrix <b>A</b>&nbsp;is ... iff <b>A' </b>=<b> A</b>	
+Trace of a matrix	"Defined only for square matrices<div>The sum of its diagonal elements</div><div><img src=""paste-4952097292289.jpg"" /></div>"	
+Matrix inverse	[latex] $A^{-1} A = I_n = AA^{-1}$[/latex]	
+Determinant of matrix	"|A|&nbsp;<div><img src=""paste-5471788335105.jpg"" /></div>"	
+Linearly independent vectors	No vectors in the set can be written as a linear combination of the others	
+Rank of a matrix	The maximum number of linearly independent rows or columns of the matrix (always the same number)	
+Positive definite matrix	Matrix with diagonal elements that are strictly positive	
+Positive semi-definite matrix	Matrix that has nonnegative diagonal elements	
+Idempotent matrix	Matrix is ... iff <b>AA = A</b>	
+Chi-square random variable	"Sum of squared independent standard normal random variables with degrees of freedom equal to the number of variables<div><br /><div><img src=""paste-3925600108545.jpg"" /></div><div>Where Z<sub>i</sub>&nbsp;are standard normal random variables</div></div>"	
+Requirement for matrix multiplication	Matrix&nbsp;<b>A</b>&nbsp;(<i>m</i>&nbsp;x&nbsp;<i>n</i>) must have same number of columns (<i>n&nbsp;</i>x&nbsp;<i>p</i>) as rows in&nbsp;<b>B</b>	
+[latex]$\mathbb{N}$[/latex]<br>	Natural numbers symbol	
+[latex]$\mathbb{R}$[/latex]	Real (rational and irrational) numbers symbol	
+[latex]$\mathbb{C}$[/latex]	Complex numbers symbol	
+[latex]$\mathbb{N}_+$[/latex]	Positive (negative) values of the set symbol	
+[latex]$\mathbb{N}^d$[/latex]	Dimensionality (number of dimensions) symbol	
+Natural numbers meaning	All positive integers (and maybe 0)	
+Rational numbers	All numbers that can be expressed as a ratio of two integers	
+Real numbers meaning	The set of all rational and irrational numbers together	
+Finite set	There are only so many elements in the set, and no more	
+Infinite set	There is no limit to the number of elements in the set	
+Countable set	A set for which each of the elements can be associated with a natural number (or an integer)	
+Uncountable set	A set where we cannot associate each of the elements with a natural number (e.g. the set of all real numbers between 0 and 1)	
+Bounded set	A set with finite size (but potentially infinite elements)	
+Unbounded set	A set without a finite size	
+Set with lower bound	There is some number u, such that every element in the set is no smaller than it	
+Set with upper bound	There is some number v such that every element in the set is no bigger than it	
+[latex]$ x \in A$[/latex]<br>	x is an element of the set A	
+[latex]$ x \notin A$[/latex]<br>	x is not an element of the set A	
+{{c1::Curly braces {} }} denote {{c2::discrete}} sets		
+{{c1::Square braces []}} denote {{c2::inclusive, continuous}} sets		
+{{c1::Parentheses ()}} denote {{c2::continuous exclusive}} sets		
+[latex]$A \subset B $[/latex]<br>	A is a proper subset of B, i.e. B contains all the elements in A plus a least one more, or alternatively, if all x that are elements in A are also elements in B	
+[latex]$A \subseteq B $[/latex]	A is a subset of B (A and B are allowed to be the same)	
+[latex]$\vert A \vert$&nbsp;<div><br></div><div>set notation[/latex]<br></div>	Cardinality of set A, the number of elements in set A	
+A singleton	A set with only one element, i.e. a cardinality of 1	
+[latex]$ \emptyset $[/latex]<br>	The empty set or null set with nothing in it	
+Difference between two sets<div>[latex]$ A \setminus B$ [/latex]<br></div>	The set containing all the elements of A that are not also in B, i.e.&nbsp; \(x \in A\) but&nbsp; \(x \notin B\)	
+Complement of a set<div>[latex]$A'$ or $A^c$ [/latex]<br></div>	The set that contains the elements that are not contained in A	
+Intersection of two sets<div>[latex]$ A \cap B$[/latex]<br></div>	The set of elements common to both sets (name + symbol)	
+Union of two sets<div>[latex]$A \cup B$[/latex]<br></div>	The set of all elements contained in either set	
+Set partition	The collection of subsets whose union forms the set	
+(5) Set partitions of set A = {B, C, D}&nbsp;	{B}, {C}, {D}<div>{B, C}, {D}</div><div>{B}, {C, D}</div><div>{B, D}, {C}</div><div>{B, C, D}</div>	
+Cartesian product&nbsp;<div>[latex] $ A \times B$ [/latex]</div>	The set consisting of all possible ordered pairs \((a, b)\)<div>e.g. \({(a_1, b_1), (a_1, b_2), (a_2, b_1), (a_2, b_2)}\)</div>	
+Ordinal	Mathematical relationships between values, but distance between two values does not measure a constant quantity across the values the variable might take	
+Interval level measures	Measures where the intervals between numbers are constant across the range of values, a change of + or - x on the scale is the same distance regardless of where on is on the scale	
+Ratio level variables	Interval level variables that have a meaningful zero value, so the same ratio at two points on the scale conveys the same meaning	
+Total derivative with respect to&nbsp;[latex]$ x$[/latex] symbol	[latex]$ \frac{d}{dx} $[/latex]	
+Partial derivative with respect to&nbsp;[latex]$ x$[/latex] symbol	[latex]$ \frac{\partial}{\partial x} $[/latex]	
+A corollary	A type of proposition that follows directly from the proof of another proposition and does not require further proof	
+A and B are sufficient to produce D	A and B =&gt; D	
+A and B are necessary to produce D	A and B &lt;= D	
+A and B are necessary and sufficient for D	A and B &lt;=&gt; D	
+Logic and symbol	[latex]$\land$[/latex]<br>	
+Logic or symbol	[latex]$\lor$[/latex]	
+Logic negation symbol	[latex]$\neg$[/latex]	
+Converse of an implication	Switching a necessary statement to a sufficient one or vice versa<div><br></div><div>A and B =&gt; D, goes to A and B &lt;= D</div>	
+Contrapositive of an implication	Negating the converse of an implication	
+[latex]Contrapositive of&nbsp;$A$ and $B \Rightarrow D$[/latex]	[latex]$\neg D \Rightarrow (\neg A) \lor (\neg B)$[/latex]	
+\(ln({{c2::e}}) = {{c1::1}}\)		
+\(ln({{c2::1}}) = {{c1::0}}\)		
+there exists at least one symbol	[latex]$\exists$[/latex]	
+for all symbol	[latex]$\forall$[/latex]<br>	
+Associative properties	(a + b) + c = a + (b + c)<div>(a x b) x c = a x (b x c)<br></div>	
+Commutative properties	a + b = b + a<div>a x b = b x a</div>	
+Distributive property	a(b + c) = ab + ac	
+Identity properties	x + 0 = x<div>x . 1 = x</div>	
+Inverse properties for real and rational numbers	there exists -x such that -x + x =0<div>there exists x^-1 such that x^-1 . x = 1</div>	
+Inverse property for integers	there exists -x such that -x + x =0<div>but no equivalent multiplicative inverse</div>	
+percentage change formula	[latex]$\frac{x_{t+1} - x_t}{x_t}$[/latex]<br>	
+a function	a relation that assigns one element of the range (y) to each element of the domain (x)	
+a correspondence	a relation that assigns a subset of the range (y) to each element of the domain (x)	
+[latex]$f(x) \colon A \to B $[/latex]<br>	f maps A into B	
+Domain of a function	The set of elements over which the function is defined	
+The codomain of a function	The set from which values of f(x) may be drawn (but depending on the domain, not all values in this set may be reached)	
+The range (or image) of a function	The set of all values actually reached by running each x in A. Necessarily a subset of the codomain	
+Function composition	[latex]$g \circ f(x)$ or $g(f(x))$ read as `g composed with f' or $g$ of $f$ of $x$[/latex]<br>	
+Identity function description	Elements in domain are mapped to identical elements in codomain	
+Inverse function	Function that when composed with original function returns identity function<div>&nbsp;[latex]$f^{-1}(&nbsp; f(x) )= x = f(f^{-1}(x)) $[/latex]</div>	
+Surjective (onto)	Every value in codomain produced by some value in domain	
+Injective (one-to-one)	Each value in range comes from only one value in domain	
+Bijective (invertible)	Both surjective and injective; function has an inverse	
+Monotonic function	A function that preserves the order of elements from the domain in the range	
+a linear equation is ...	an equation that contains only terms of order x^1 and x^0 = 1	
+2 linear function properties	[latex]Any function with the properties of:<div>\begin{itemize}</div><div>&nbsp;\item Additivity (superposition): $f(x_1 + x_2) = f(x_1) + f(x_2)$</div><div>&nbsp;\item Scaling (homogeneity): $f(ax) = af(x)$ for all $a$</div><div>\end{itemize}<br><div>[/latex]<br></div></div>	
+"an affine function<span style=""color: rgb(34, 34, 34);"">&nbsp;&nbsp;</span><br>"	"<span style=""color: rgb(34, 34, 34);"">a&nbsp;</span>function<span style=""color: rgb(34, 34, 34);"">&nbsp;composed of a&nbsp;</span>linear function<span style=""color: rgb(34, 34, 34);"">&nbsp;+ a constant and its graph is a straight line</span>"	
+A series definition	The sum of a sequence, a sequence with addition operators between each of the elements	
+[latex]<div>A {{c1::limit of a sequence ${x_i}$}} is a number $L$ such that {{c2::$lim_{i \rightarrow \infty} x_i = L$}}</div><div>[/latex]<br></div>		
+A sequence {{c1::converges}} if {{c2::it has a finite limit}}		
+A sequence {{c1::diverges}} if {{c2::it has no limit or a limit of + or - infinity}}		
+{{c1::The limit of a series}} is {{c2::what the sum of the elements in an infinite sequence tend to as i tends to infinity}}		
+[latex]The {{c1::limit of a function $y = f(x)$}} is {{c2::the value of $y$ that the function tends toward given arbitrarily small movements toward a specific value of $x$}} [/latex]		
+If x approaches c from above	[latex]<div>$lim_{x \rightarrow c^+} f(x) = L^+$</div><div>[/latex]<br></div>	
+if x approaches c from below	[latex]<div>$lim_{x \rightarrow c^-} f(x) = L^-$</div><div>[/latex]</div>	
+An open set	A set in which there is some (arbitrarily small) distance that you may move in any direction and within the set and stay in the set	
+A closed set	A set that contains all its limit points	
+Compact set	A set that is both closed and bounded, i.e. it contains all its limit points and can itself be contained within some finite boundary	
+Convex set	A set for which every pair of points in the set is joined by a straight line that is also in the set	
+The convex hull of set A	Set A plus all the points needed to make A convex	
+A continuous function (2)	1. a function without sudden breaks in it.<div>2. a function for which an arbitrarily small&nbsp;change in x causes an arbitrarily small change in y for all values of x.<div><br></div></div>	
+[latex]<div>A function is {{c1::continuous at a point}} if {{c2::the limit of the function at that point exists and is equal to the value of the function at that point}}. In the language of math: {{c3::$f(x)$ is continuous at $x = c$ if and only if $lim_{x \rightarrow c} f(x) = f(c)$}}.</div><div>[/latex]</div>		
+First difference of a variable	the value of that variable at time <i>t</i> minus the value of that variable at time <i>t</i> - 1	
+A secant	A line that intersects two points on a curve	
+A tangent	A line that just touches the curve at a given point	
+Derivative sum rule	[latex]$(f+g)' = f' + g'$[/latex]<br>	
+Derivative difference rule	[latex]$(f-g)' = f' - g'$[/latex]	
+Chain rule	[latex] $ \frac{d}{dx} [g(f(x))] = g'(f(x)) \cdot f'(x) $[/latex]<br>	
+Product rule	[latex] $ \frac{d(f(x)g(x))}{dx} = \frac{df(x)}{dx}g(x) + f(x)\frac{dg(x)}{dx} = f'g + fg' $ [/latex]<br>	
+Quotient rule	[latex] $ \frac{d}{dx} \frac{f(x)}{g(x)} = \frac{\frac{df(x)}{dx}g(x) - f(x) \frac{dg(x)}{dx}}{g(x)^2} =\frac{f'g - fg'}{g^2}$ [/latex]<br>	
+Power rule for derivatives	[latex] $ \frac{d x^n}{dx} = n x ^{n-1} $ [/latex]<br>	
+Multiply by constant rule for derivatives	[latex] $f'(ax) = a f'(x)$[/latex]<br>	
+[latex] $ {{c2::(sin(x))}}' = {{c1::cos(x)}} $[/latex]		
+[latex] $ {{c2::(cos(x))}}' = {{c1::-sin(x)}} $[/latex]		
+[latex] $ {{c2::(tan(x))}}' = {{c1::1 + tan^2(x)}} $[/latex]		
+[latex]$\sum_{t=0}^{\infty} \delta^t = ...$ where $t&lt;1$[/latex]	[latex] $... = \frac{1}{1-\delta} $[/latex]	
+the definite integral	[latex] $ \int_a^b f(x) dx $[/latex]<br>	
+the area under a function with discrete notation	[latex] $ lim_{\Delta x \rightarrow 0} \sum_i f(x_i) \Delta x $ [/latex]<br>	
+the integrand	[latex]the $f(x)$ in $\int f(x) dx$[/latex]<br>	
+[latex] The {{c2::antiderivative of $f(x)$}} is denoted {{c1::$F(x)$}}[/latex]		
+indefinite integral symbol	[latex]$\int f(x) dx = F(x)$[/latex]<br>	
+Difference between what a definite and indefinite integral return	The definite integral returns a value, the area under the curve&nbsp;<div><br></div><div>The indefinite integral returns a function that when differentiated reproduces the integrand</div>	
+The fundamental theorem of calculus	[latex]$ \int_a^b f(X) dx = F(b) - F(a) $[/latex]<br>	
+[latex]$ F(x) \rvert_a^b$ means ...[/latex]<br>	[latex]... means evaluate the antiderivative $F(x)$ at $b$, and subtract the antiderivative evaluated at $a$[/latex]	
+3 rules for bounds of integrals	[latex]$\int_a^b f(x) dx = - \int_b^a f(x) dx$<div><br></div><div>$\int_a^a f(x) dx = 0$<br></div><div><br></div><div>if $c \in [a,b]$, then $\int_a^b f(x) dx = \int_a^c f(x) dx + \int_c^b f(x) dx$[/latex]</div>	
+Integrating powers	[latex]$\int x^n dx = \frac{x^{n+1}}{n+1} + C$ if $ n \neq -1$[/latex]<br>	
+[latex] $\int x^{-1} dx = {{c1::ln(x) + C}}$[/latex]		
+[latex] $\int e^x dx = {{c1::e^x +C}}$[/latex]		
+[latex]$ \frac{d}{dx} ln(f(x)) = {{c1:: \frac{f'(x)}{f(x)} }} $[/latex]<br>		
+[latex] $\int a^x dx = {{c1::\frac{a^x}{ln(a)} + C}}$[/latex]		
+[latex] $\int ln(x) dx = {{c1::xln(x) - x + C}}$[/latex]		
+Express 'the integral is a linear operator' in math terms	[latex] $\int (af(x) + bg(x)) dx = a \int f(x) dx + b \int g(x) dx $[/latex]	
+Integration by substitution	[latex] $ \int_a^b f(g(u)) g'(u) du = \int_{g(a)}^{g(b)} f(x) dx $ [/latex]<br>	
+Integration by parts	[latex] $ \int f(x) g'(x) dx = f(x) g(x) - \int f'(x) g(x) dx $<div><br></div><div>or</div><div><br></div><div>$\int udv = uv - \int vdu $ [/latex]<br></div>	
+Analytic procedure for computing integrals of complex functions	1. check if linear rule is sufficient<div>2. attempt integration by substitution</div><div>3. try integration by parts</div>	
+[latex]$\int ln(ax) dx = ...$[/latex]<br>	[latex]$... = xln(ax) -x $ + C[/latex]	
+How to do integration by substitution	write u = f(x) and du = f'(x) dx<div>substitute u and du into integrand</div><div>integrate u du</div>	
+the supremum	the least upper bound of any set	
+the infimum&nbsp;	the greatest lower bound of any set	
+A function that has {{c2::a continuous n-th derivative}} is {{c1::a member of the set C<sup>n</sup>}}		
+For {{c1::increasing functions}}, a {{c2::concave function}} is one where {{c3::the rate of increase slows as the value of the functions gets bigger}}		
+For {{c1::increasing functions}}, a {{c2::convex function}} is one where {{c3::the rate of increase speeds up as the value of the functions gets bigger}}		
+A concave function mathematically	[latex]<div>If for any points $x_1, x_2$ in the domain and any weight $\lambda \in [0,1]$:</div><div><br></div><div>$f(\lambda x_1 + (1-\lambda) x_2) \geq \lambda f(x_1) + (1-\lambda) f(x_2)$[/latex]<br></div>	
+Graphical intuition for concavity	"<img src=""paste-c9a3534511984e5d8098e8d46bee6cd17a145b60.jpg"">"	
+Intuition in words for concavity	The line between two points of the function is always lower than the value of the function at each point at the line	
+[latex]Convex combination of $x_1$ and $x_2$[/latex]	[latex] $\lambda x_1 + (1-\lambda) x_2$[/latex]	
+Convex function mathematically	[latex]<div>If for any points $x_1, x_2$ in the domain and any weight $\lambda \in [0,1]$:</div><div><br></div><div>$f(\lambda x_1 + (1-\lambda) x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2)$[/latex]</div>	
+Convex function intuitively in words	A secant drawn between any two points on the function must be above the function itself&nbsp;	
+Taylor series requirements	An analytic function <i>f(x)</i> which is infinitely differentiable close to some number <i>a</i>	
+Taylor series formula	[latex]$$f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + ... \\<div>= \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n $$ [/latex]</div>	
+A critical point definition, intuitively and mathematically	[latex]any point $x^*$ such that either $f'(x^*) = 0$ or $f'(x^*)$ doesn't exist, i.e. points in the function's domain at which things happen[/latex]<br>	
+Stationary points definition	[latex]Points at which the value of the function is, however briefly, not changing. $f'(x^*)=0$[/latex]<br>	
+Inflection points in words	Points at which the graph of the functions changes from concave to convex or vice versa	
+Saddle points definition	[latex]Points where both $f'(x^*)=0$ and $f''(x^*)=0$ and $x^*$ is an inflection point[/latex]<br>	
+Saddle point image	"<img src=""1200px-Saddle_point.svg.png"">"	
+Finding stationary points (3)	Take the first derivative of the function, set it equal to zero (the first-order condition) and solve for <i>x.&nbsp;</i><div>Then plug these values of <i>x<sup>*</sup>&nbsp;</i>back into f(x) to get the y values.&nbsp;</div><div>These are either local minima, local maxima or inflection points</div>	
+Second derivative test	Take second derivative f''(x) of original function f(x)<div>Substitute stationary points x<sup>*</sup> found from first-order condition into f''(x)</div><div>If f''(x) is negative, then stationary point is a maximum, if positive then a minimum. If equal to zero then maybe an inflection point</div>	
+Extreme value theorem in words	A real-valued function that is continuous on a closed and bounded interval [<i>a,b</i>] must attain both its global minimum and its global maximum on that interval, at least once each	
+Extreme value theorem mathematically	[latex]$\exists x_{min} , x_{max} \in [a,b]$ such that $f(x_{min}) \leq f(x) \leq f(x_{max}) \forall x \in [a,b]$[/latex]<br>	
+Mean value theorem in words	There is a point <i>c</i>&nbsp;at which the instantaneous rate of change equals the mean, or average, rate of change across the interval. There exists a point between two other points at which the tangent has the same slope as the secant between the two endpoints	
+Mean value theorem in mathematics	[latex]for a differentiable function $f$ on an interval $(a,b)$, there exists a $c$ such that $f'(c) = \frac{f(b) - f(a)}{b - a}$[/latex]<br>	
+Consequence of extreme value theorem	If a funtion is continuous and its domain is bounded, the global extrema (minimum and maximum) exist and are either at a critical point or at the boundary of the domain	
+Quadratic formula	[latex]$ x = \frac{-b \pm \sqrt{b^2 -4ac} }{2a}$[/latex]<br>	
+Use of supremum and infimum	Open sets don't have a maximum or a minimum on the bounds, so these capture the element that the maximum or minimum tend towards	
+For {{c1::decreasing functions}}, a {{c2::concave function}} is one where {{c3::the rate of decrease increases as the value of the function gets smaller}}		
+For {{c1::decreasing functions}}, a {{c2::convex function}} is one where {{c3::the rate of decrease decreases as the value of the function gets smaller}}		
+What to do when f''(x<sup>*</sup>) = 0 and how to evaluate this	Keep computing further derivatives until you get one that is non-zero.<div>If the first non-zero derivative is odd then you have an inflection point</div><div>If the first non-zero derivative is even then you have a minima or maxima, evaluated the same way as you evaluate the second derivative&nbsp;</div>	
+Bayes rule	[latex]$Pr (\theta | y) = \frac{&nbsp;Pr (y | \theta) Pr(\theta)}{Pr(y)} $[/latex]<br>	
+[latex]$ (f^{-1}(x))' = {{c1:: \frac{1}{f'(f^{-1}(x))}&nbsp;}} $[/latex]		
+[latex] $ \frac{d a^x}{dx} = {{c1:: a^x (ln(a)) }} $ [/latex]		
+Objective account of probability	Based on theory or observations from data	
+Subjective account of probability	Concerns the beliefs of human beings	
+Two types of objective probability	Classical and empirical	
+Classical account of probability	The ratio of an outcome to all possible outcomes	
+Empirical account of probability	The ratio of the frequency with which a given outcome actually occurs relative to all other outcomes that occur	
+Sample space definition	The set of all possible outcomes, a list of each event we might observe	
+A simple event	A single outcome that we represent as having occured to an individual or group	
+A compound event	An event composed of two or more simple events which we can break down into constituent parts	
+Two events are {{c1::independent}} if {{c2::the probability that one occurs does not change as a consequence of the other event's occuring}}		
+Two {{c1::random variables}} are {{c2::independent}} if {{c3::the probability of variable <i>a</i> taking value <i>i</i> is not changed as a result of variable <i>b</i> taking a particular value <i>j</i>}}		
+Two events are {{c1::mutually exclusive}} when {{c2::one cannot occur if the other has occured}}		
+{{c1::Collective exhaustivity}} means that {{c2::each and every event fits into at least one of the categories}}		
+Events that are {{c2::mutually exclusive and collectively exhaustive}} (2) are not {{c1::independent}}		
+A {{c1::joint probability}} is {{c2::the probability of a compound event}}		
+If {{c1::the simple events of a compound event are independent}}, then {{c2::their joint probability}} is {{c3::the product of the probabilities of each simple event}}		
+[latex]$ {{c2::Pr(A \cap B)}} = {{c1::Pr(B|A)Pr(A) = Pr(A|B)Pr(B)}} $ (2)[/latex]<br>		
+[latex]$ {{c2::Pr(A \cup B)}} = {{c1::Pr(A) + Pr(B) - Pr(A \cap B)}}$[/latex]<br>		
+A {{c1::combination}} is {{c2::a way of choosing <i>k</i>&nbsp;objects from <i>n </i>objects when one does not care about the order in which one chooses the objects}}		
+A {{c1::permutation}} is {{c2::a way of choosing&nbsp;<i>k</i>&nbsp;objects from&nbsp;<i>n&nbsp;</i>objects when one <i>does</i> care about the order in which one chooses the objects}}		
+[latex] $ {{c1:: \binom{n}{k}&nbsp;}} =&nbsp; {{c2:: \frac{n!}{k!(n-k!)} }} $ [/latex]<br>		
+{{c1:: \({n \choose k} = \frac{n!}{k! (n-k)!}\)}} used for {{c2::computing combinations (where order doesn't matter)}}		
+[latex]$ P(n,k) = {{c1::\frac{n!}{(n-k)!} }} $ used for {{c2::computing permutations (where order matters)}} [/latex]<br>		
+Odds ratio of two events x<sub>1</sub> and x<sub>2</sub>	[latex]$\frac{Pr(x_1) / Pr(\neg x_1)}{Pr(x_2) / Pr( \neg x_2)} $[/latex]<br>	
+Odds of an event	[latex]The ratio of the probability of the event's occuring and the probability that it does not occur<div><br></div><div>$\frac{Pr(y)}{Pr(\neg y)}$[/latex]<br></div>	
+Random variable definition	A variable that can take some array of values, with the probability that it takes any particular value defined acording to some random process	
+The distribution of a random variable	The set of values the variable might take and the (relative) likelihood it takes those values	
+The realisation of a random variable	The particular value that that variable takes	
+The support of a distribution	The set of all values for which the probability that the random variables takes on that value is greater than zero	
+Marginal probability of event A in words	The probability that A will occur unconditional on all the other events on which A may depend	
+Marginal probability of event A in mathematics	[latex]$Pr(A) = \sum_{i=1}^n Pr(A|B_i) Pr(B_i) $[/latex]<br>	
+The {{c1::probability mass function}} is {{c2::a function that specifies the probabilities of drawing discrete values}}		
+{{c1::Parameter}} refers {{c2::to a term of known or unknown value in the function that specifies the precise mathematial relationship among the variables}}		
+The {{c1::parameter space}} is {{c2::the set of all values the parameters can take}}		
+The {{c1::location parameter}} specifies {{c2::the location of the center of the distribution}} and its empirical referent is {{c3::the mean}}		
+The {{c2::scale parameter}} provides information about {{c1::the spread of the distribution around its central location}} and its empirical referent is&nbsp;{{c3::the standard deviation}}		
+The {{c1::dispersion parameter}} is {{c2::the square of the scale parameter}} and its empirical referent is {{c3::the variance}}		
+The {{c1::standard form of a distribution}} is one in which {{c2::the location parameter is set to zero and the scale parameter is set to one}}		
+The {{c3::cumulative distribution function}} describes&nbsp;{{c1::the function that covers a range of values below a specific value}} and is defined for {{c2::both discrete and continuous random variables}}		
+Cumulative distribution function for discrete variables in mathematics	[latex]$Pr(Y \leq y) = \sum_{i \leq y} p(i) $[/latex]<br>	
+Bernoulli distribution	[latex]<br><div>\begin{equation}</div><div>&nbsp;Pr(Y= y | p) = \left\{&nbsp;</div><div>\begin{array}{cc}&nbsp;</div><div>p &amp; \mathrm{for\ } y=1 \\&nbsp;</div><div>1-p &amp; \mathrm{for\ } y=0 \\</div><div>&nbsp;\end{array} \right.&nbsp;</div><div>\end{equation}</div><div><br></div><div>\centering OR</div><div><br></div><div>$$ Pr(Y=y|p) = p^y (1-p)^{1-y} $$</div><div>[/latex]<br></div>	
+Binomial distribution	[latex]$Pr(Y=y | n,p) = {n \choose y} p^y (1-p)^{n-y}$[/latex]<br>	
+4 requirements for binomial distribution	1. each observation is composed of a binary outcome<div>2. the observations are independent</div><div>3. we have a record of the number of times one value was obtained</div><div>4. three or more observations</div>	
+Multinomial distribution description	An extension of the binomial distribution to cases where more than two mutually exclusive (and collectively exhaustive) outcomes can occur. It counts the number of times each one of <i>k</i>&nbsp;different outcomes happens	
+Multinomial distribution in mathematics	"<div><img src=""paste-3c0dec50b20f195b0a662fecec41aa75cdc7d3b7.jpg""><br></div>"	
+Poisson distribution	[latex]$ Pr(Y=y | \mu) = \frac{\mu^y}{y! \times e^\mu}&nbsp; $<div><br></div><div>where $\mu&gt;0$ is the expected number of events, $y$ is a positive integer representing the number of events observed, and the variance $\sigma^2 = \mu$[/latex]</div>	
+The {{c1::Poisson distribution}} describes {{c2::event counts}} produced by a process that meets three criteria; {{c3::integer count, independence, and a known mean}}		
+Negative binomial distribution usage	To get the expected event count prior to the occurence of a set number of non-events	
+Negative binomial distribution PMF	[latex]$$ Pr(Y=y | r,p) = {y + r - 1 \choose y } p^y (1-p)^r$$<div><br></div><div>where $y$ is the number of observed events, $r$ is the number of observed non-events, $p$ is the probability of any particular event.[/latex]</div>	
+An experiment which follows a negative binomial distribution satisies the 4 following requirements:	1. the experiment consists of a sequence of independent trials&nbsp;<div>2. each trial has two possible outcomes, S or F</div><div>3. The probability of success, <i>Pi = Pr(S)</i>, is constant from one trial to another</div><div>4. The experiment continues until a total of <i>r</i>&nbsp;successes are observed, where <i>r</i>&nbsp;is fixed in advance</div>	
+Expected value of a discrete random variable	[latex]$E_X [X] = \sum_i x_i \cdot Pr(X = x_i) $ [/latex]<br>	
+{{c1::Moments of a distribution}} are {{c2::the expected values of particular functions of the random variable across the distribution}}, such that {{c3:: the \(k\)th moment of a variable \(X\)&nbsp;}} can be represented as {{c4:: \(E[X^k]\) }}		
+The equation for moments about zero of discrete variables	[latex]<div>$ \sum_i x_i^k \cdot Pr(X=x_i) $<div><br></div><div>where $k$ is the $k$th moment about zero</div><div>[/latex]<br></div></div>	
+Equation for moments about the mean	[latex]$$ \sum_i (x_i - \mu)^k \cdot Pr(X=x_i) $$ where $\mu$ is the mean, and $k$ is the $k$th moment[/latex]	
+Skewness measure	[latex]$E \left[ \left( \frac{X - \mu}{\sigma} \right) ^3 \right] = \frac{\mu_3}{\sigma^3}$[/latex]<br>	
+When {{c1::skewness is zero}}, {{c2::the distribution is symmetric}}		
+Kurtosis measure	[latex]$E \left[ \left( \frac{X - \mu}{\sigma} \right) ^4 \right] = \frac{\mu_4}{\sigma^4}$[/latex]	
+{{c1::The kurtosis}} measures {{c2::the flatness or peakedness of the distribution relative to a standard normal distribution}}		
+The {{c1::probability density function}} is a function that {{c2::describes the smooth curve that connects the various probabilities of specific ranges of values for a sample}}		
+A {{c1::PDF differs from a PMF}}&nbsp;in that {{c2::it does not describe the chance that any particular value of the random variable is drawn at random from the distribution}}. Rather, it describes {{c3::the relative likelihood of drawing any specific value, and the exact probability of drawing a value within some range}}. This is why it is called a {{c4::density function rather than a mass function}}		
+[latex]Probability of variable in range $[a,b]$ in mathematics[/latex]	[latex]$ Pr(X \in [a,b]) = \int_a^b f(x) dx $[/latex]<br>	
+Cumulative density function for a continuous variable	[latex]$ P(X \leq x) = F(x) = \int_{-\infty}^x f(t) dt $[/latex]<br>	
+Joint PMF for two discrete random variables written as	[latex]$ f(x,y) = Pr (X = x \cap Y = y) $[/latex]<br>	
+If {{c1::two random variables are independent}}, then {{c2::\(f(x, y) = f(x) f(y)\)}}&nbsp;		
+[latex] $ {{c1::E_{X} [X]}} = {{c2::\int_{-\infty}^{\infty} x f(x) dx}} $ (of a continuous $x$) [/latex]<br>		
+[latex]$ {{c1::EU(X)}} = {{c2::\int_{-\infty}^{\infty} u(x) f(x) dx}} $[/latex]		
+PDF of the uniform distribution	"<img src=""paste-334d6e2d646b699e00077547ea7574222e1422ad.jpg"">"	
+CDF of the uniform distribution	"<img src=""paste-1c07d1f074f741c9cd2a94e24394dc923419f07a.jpg"">"	
+Correlation coefficient	[latex]$ \rho_{xy} = \frac{\sigma_{xy}}{\sigma_x \sigma_y} $[/latex]<br>	
+[latex]{{c2::$f(x)$ first-order stochastically dominates (FOSD) $g(x)$}} if {{c1::their CDFs obey $F(x) \leq G(x)$ for all $x$}}[/latex]<br>		
+F first order stochastic dominates G graph	"<img src=""paste-346caf2641525b10f4a4381edf986da2eab42f91.jpg"">"	
+{{c2::\(f(x)\) second-order stochastically dominates (SOSD) \(g(x)\)}} if {{c1:: \(\int_{-\infty}^{\infty} u(x) f(x) dx \geq \int_{-\infty}^{\infty} u(x) g(x) dx\) for all increasing concave functions \(u(x)\) }}		
+PDF of normal distribution	"<img src=""paste-051f6ca4ee9208cbe1b5d9bc75f081ba4bab0334.jpg"">"	
+Standard normal PDF symbol	[latex]$ \phi (x)$[/latex]<br>	
+Standard normal CDF symbol	[latex]$ \Phi (x)$[/latex]	
+Difference between logistic and normal distribution	"Logistic distibution has considerably thicker tails<div><img src=""paste-0af8ac4bd0a88d35ac5dc81b63c0de35a9a4dd42.jpg""><br></div>"	
+Exponential distribution PDF	[latex]$ f(x; \mu) = \frac{1}{\mu} e ^{- \frac{x}{\mu}} = \lambda e^{-\lambda x} $<div><br></div><div>where $\mu&gt;0$ is the mean duration between events, $\lambda = 1/\mu$ [/latex]<br></div>	
+PDF for Pareto distribution	"<img src=""paste-d59fa995fba2eace795bcc790787c583111ed0bc.jpg"">"	
+{{c2::Exponential distribution}} is useful for&nbsp;{{c1::processes with a constant risk of failure}}		
+Gamma distribution pdf	"<img src=""paste-8d1332b475177d11d24f8301c5a9583b4ac073d5.jpg""><div>for x&gt;= 0, and alpha (shape parameter) and beta (scale parameter) &gt; 0</div>"	
+A {{c1::scalar}} is {{c2::any single element of some set}}		
+The {{c1::length of a vector}} tells us {{c2::how big it is}}, not {{c3::its dimension}}		
+[latex] The {{c1::length of vector $\textbf{a}$ of dimension $n$ }}&nbsp; is {{c2:: $ \sqrt{a_1^2 + a_2^2 + ... a_n^2} $ }}[/latex]<br>		
+A vector is {{c1::normalised}} if {{c2::it has length 1}}		
+Vector addition	[latex]$ \textbf{a} + \textbf{b} = (a_1 + b_1, a_2 + b_2, ..., a_n + b_n)&nbsp; $[/latex]<br>	
+The triangle inequality	<div>[latex]<br></div>The length of a sum of vectors is never greater than the sum of the lengths of the individual vectors<div><br></div><div>$ || \textbf{a} + \textbf{b} || \leq || \textbf{a} || + || \textbf{b} || $</div><div><div><br></div><div>[/latex]<br></div></div>	
+{{c1::The scalar or dot product \(\textbf{a} \cdot \textbf{b}\) }}&nbsp;\(=\) {{c2::\(a_1 b_1 + a_2 b_2 + ... + a_n b_n = \sum_{i=1}^n a_i b_i\)&nbsp; }}&nbsp;		
+Cauchy-Schwartz inequality	[latex]$ | \textbf{a} \cdot \textbf{b} | \leq || \textbf{a} || || \textbf{b} || $[/latex]<br>	
+A lower triangular matrix	"<img src=""paste-43fb2fef3b9d4ffb017594ed20deb3fb6a822b24.jpg""><div>a matrix that has non-zero elements only on or below the main diagonal</div>"	
+An upper triangular matrix	"<img src=""paste-719baa892a9b9a58331828e6463c9bb83b89e96b.jpg""><div>A matrix that has non-zero elements only on or above the main diagonal</div>"	
+A submatrix of an element&nbsp;	"<div>the matrix that remains when we take out the row and column in which the element is in</div><div><img src=""paste-b83688ce0f6e50d38552154425dfe672d213c30c.jpg""><br></div><div>the ... for a<sub>21</sub></div><br>"	
+A permutation matrix	"A matrix in which there is only a single value of 1 in any row and column, with all other elements 0. Identity matrix is a special case<div><img src=""paste-bd64221529059a312616516c1a6dc8e603bdc36a.jpg""><br></div>"	
+A singular matrix	A matrix that has a determinant of 0	
+A nonsingular matrix	A matrix that has a determinant that is not 0, which means it has an inverse	
+A block or partitioned matrix	"A matrix composed of other smaller matrices, e.g. if A, B, C, D are 3x3 matrices&nbsp;<div><img src=""paste-f4ccf6c796d644c0d2e549055ab7ddea7725e56c.jpg""><br></div>"	
+A block diagonal matrix	"A matrix that has blocks only on the diagonal, e.g. B and C would be 3x3 zero matrices below<div><img src=""paste-f4ccf6c796d644c0d2e549055ab7ddea7725e56c.jpg""><br></div>"	
+An orthogonal matrix	A matrix in which all the columns of the matrix are orthogonal, or perpendicular to each other	
+An orthonormal matrix&nbsp;	An orthogonal matrix in which the length of each column is 1	
+Kronecker product	"<img src=""paste-3493a91fcd1a1caa8ad1f05b09efa1d0e9307c79.jpg"">"	
+The Kronecker product of matrix A with dimensions \(m \times&nbsp;n\), and matrix B with dimensions \(p \times&nbsp;q\), has dimensions...	\(mp \times nq\)	
+"Determinant of 2x2 matrix<div><img src=""paste-bea47214a64b60441e308371d98971702e3419c0.jpg""><br></div>"	"<img src=""paste-c04ac0bcf8d5d860d26f73499cba92e610dbf5fb.jpg"">"	
+3 matrix and vector properties	Associative: (AB)C = A(BC)<div>Additive distributive: (A+B)C = AC + BC</div><div>Scalar commutative: xAB = (xA)B = A(xB) = ABx</div>	
+a vector space	a set of vectors that satisfy certain properties (addition, scalar multiplication, dot products, computable length)	
+the norm or length of a vector	[latex] $|| a || = \sqrt{ a \cdot a}$ [/latex]	
+a linear combination of n vectors	\(a_1 x_1 + ... + a_n x_n\), where \(a_i\) are scalars and \(x_i\) are vectors in some vector space	
+a hyperplane	a surface that has one fewer dimension than the space in which it is embedded	
+formally a set of vectors is linearly independent if...	... whenever \(a_1 v_1 + a_2 v_2 + ... a_n v_n = 0\), then \(a_1 = a_2 = ... = a_n = 0\)<div><br></div><div>In words, the only to get all the weighted vectors to add to zero is for all the coefficients on all the vectors to be zero</div>	
+a set of vectors {{c1::spans a vector space}} if {{c2::every vector in that vector space can be written as a linear combination of vectors from that set}}		
+a {{c2::set of linearly independent vectors that span a vector space}} is called {{c1::a basis of that vector space}}		
+If {{c1::a square matrix has full rank}} this means that {{c2::its rank is equal to its number of rows or columns}}		
+{{c1::the minor of an element in a matrix}} is {{c2::the determinant of the submatrix of that element}}		
+{{c1::a cofactor}} is {{c2::a minor with a prescribed sign, alternating +s and -s}}		
+Laplace expansion	the determinant of an \(n\times n\) matrix, where \(n&gt;2\), is the sum of the products of each element and its cofactor for any row or column	
+formula for inverse of a 2x2 matrix	"<img src=""paste-f3f79fc88dc077495198845cda9145090697dfcf.jpg""><div>swap the elements of the diagonal, take the negative of the off diagonals, and divide each element by the original determinant</div>"	
+formula for general way to compute a matrix inverse	"<img src=""paste-888943ad862ff7236b7d9c1e4daa9f57fb328978.jpg""><div>where \(C^T\) is the transpose of the matrix of cofactors of \(A\)</div>"	
+requirements for Cramer's rule	... requires a square matrix (i.e. an equal number of equations and unknowns) which is nonsingular	
+Cramer's rule formula&nbsp;	<div>\(x_i = \frac{|B_i |}{|A|}\) where \(B_i\) is formed by replacing the \(i\)th column of \(A\) with \(b\), the RHS of the system of equations</div>	
+{{c1::Determinants and traces}} (2) are only defined for {{c2::square}} matrices		
+Practically, {{c1::spanning a vector space}} means that {{c2::the particular vectors that span the vector space can generate all the vectors in that vector space}}		
+the {{c1::dimension of a vector space}}&nbsp;is equal to the {{c2::number of vectors in its basis}}		
+The {{c1::Geman word eigen}} translates to {{c2::English as characteristic}}.&nbsp;		
+A {{c2::characteristic equation}} is&nbsp;{{c1::polynomial equation with order \(n\), where \(n\) is the number of rows and columns of the (square) matrix}}		
+{{c2::Eigenvalues}} may be computed for {{c1::any square matrix}}		
+An {{c1::eigenvalue of a matrix}} is {{c2::the solution to the equation \(Ax = \lambda x\)}}, which is called {{c3::the eigenvalue equation}}. The \(x\) in this equation is the {{c4::eigenvector}}. The \(\lambda\) is an {{c5::eigenvalue and there are n of them}} (2)		
+the {{c1::eigenvalue equation&nbsp;\(Ax = \lambda x\)}} can be rearranged to imply that {{c2::\(| A - \lambda I | = 0\)}}		
+If {{c1::the largest eigenvalue is greater than one}}, then {{c2::the vector gets bigger and bigger without bound with each application of A}}.		
+{{c1::stable}} systems have a largest eigenvalue of {{c2::1 or less}}.		
+A {{c1::perfectly&nbsp;stable system, one that maintains a constant value over time}}, has a largest&nbsp;eigenvalue of {{c2::exactly 1}}.		
+A system with a largest eigenvalue that is {{c1::less than 1}} is {{c2::shrinking}}		
+A {{c2::difference equation}} is {{c1::one in which past values (at discrete times) of the variable of interest are included in the equation.}}		
+The {{c1::order}} of a {{c3::difference equation}} is {{c2::the number of lags included in it}}		
+An {{c1::eigenvector}} is {{c2::the vector that makes the eigenvalue equation true for a particular eigenvalue}}		
+{{c1::eigenvectors}} are determined {{c2::only up to a multiplicative constant}}, i.e. {{c3::if (1, 0, 3) is an eigenvector for some eigenvalue then (2, 0, 6) is also an eigenvector for the same eigenvalue}}		
+{{c1::Spectral or eigenvector decomposition}} is possible when {{c2::all&nbsp;\(n\) eigenvalues are distinct}}		
+Spectral/eigenvector decomposition	\(A = Q D Q^{-1}\)<br><div><br></div><div>where&nbsp;\(D\) is a diagonal matrix with all the eigenvalues along the diagonal, and&nbsp;\(Q\) is a matrix with columns composed of the corresponding eigenvectors.</div>	
+the {{c1::determinant of a diagonal matrix}} is {{c2::the product of the elements on the diagonal}}		
+A {{c1::Markov chain}} is {{c2::ergodic}} if it {{c3::(1) has a unique limiting distribution and (2) converges to that distribution from all initial distributions}} (2)		
+If the {{c1::determinant of a matrix}} is {{c2::non-zero}}, the {{c3::vectors are linearly independent}}		
+If the {{c1::determinant of a matrix}} is {{c2::zero}}, the {{c3::vectors are linearly dependent}}		
+A {{c1::multidimensional function is linear}} if {{c2::\(f_i (x+y) = f_i (\textbf{x}) + f_i (\textbf{y})\) and \(f_i(r\textbf{x}) = rf_i (\textbf{x})\)}} (2) for {{c3::each component \(f_i\) of \(\textbf{f}\), each scalar \(r\), and each vector \(\textbf{x}\) and \(\textbf{y}\)}} (3)		
+{{c1::Quadratic forms}} look like \(Q = \mathbf{x}^T \mathbf{A x}\) where \(\mathbf{A}\) is {{c2::a symmetric matrix}}		
+A {{c1::level set}} is when {{c2::you hold one particular variable constant as you vary the other ones}}		
+a {{c1::partial derivative}} represents {{c2::the instantaneous rate of change in \(y\) due to \(x\) while holding the other variables, \(z\), constant}}		
+A gradient vector	"A vector of all possible first-order partial derivatives<div><img src=""paste-7c4c61511726214541710b5ca9bf52c239bc9f10.jpg""><br></div>"	
+The {{c1::gradient vector}} points in the direction in which {{c2::the function \(f\) increases most rapidly}}, and {{c3::its magnitude is the rate of this increase}}		
+To calculate {{c1::how fast a multivariate function increases in some direction}}, take {{c2::the dot product of the gradient of the function with a vector in the direction of interest: \(\nabla f(\mathbf{x}) \cdot \mathbf{v}\)}}		
+Total derivative formula	"<img src=""paste-d71a7e8522d5ad682bfc3d89cac1bb9c5619db6f.jpg""><div>or</div><div><img src=""paste-125ea2e3dda7fabb4f31c636a35cded9a8234a18.jpg""><br></div>"	
+Total derivative in English	Adding all the ways in which changing&nbsp;\(t\) leads to a change in&nbsp;\(f\). First term is a direct effect of \(t\) on \(f\) and the other terms are indirect of \(t\) on \(f\) mediated through \(x_i\)	
+The total differential	"The total derivative without the \(\frac{\partial f}{\partial t}\)<div><img src=""paste-d68a6f06ef8c16757c4ca67e8ae37870edf4aa36.jpg""><br></div>"	
+The {{c1::Jacobian matrix, \(J\) or \(\mathbf{Df}\),}} of the function \(\mathbf{f}\) is {{c2::the matrix in which element \((i,k)\) is the partial derivative of component \(f_i\) with respect to variable \(x_k\)}}. Element \(j_{ik} = {{c3::\frac{\partial f_i}{\partial x_k} }}\)		
+Cross-partial or mixed-partial derivative	\(\frac{\partial^2 f}{\partial x_i \partial x_j}\)	
+{{c1::Order of differentiation}} {{c2::doesn't}} matter when doing {{c3::cross-partial derivatives}}		
+The {{c1::Hessian matrix}} is similar to the {{c2::Jacobian matrix}} but with {{c3::second-order partial derivatives rather than first}}. Elements off the diagonal are {{c4::cross-partial derivatives}} and the matrix is {{c5::symmetric}}		
+For almost all social science purposes, we can {{c1::do double integerals in any order}} and {{c2::ignore other variables when integrating over one of them}}		
+A multivariate function is {{c1::concave}} iff {{c2::\(f(\mathbf{x_2}) - f(\mathbf{x_1}) \leq \nabla&nbsp;f(\mathbf{x_1}) \cdot (\mathbf{x_2} - \mathbf{x_1})\)}}. In words, roughly, {{c3::the gradient/tangent of the function is more steeply sloped than the secant to the function, implying that the rate of increase is decreasing.}}		
+A multivariate function is {{c1::convex}} iff \({{c2::f(\mathbf{x_2}) - f(\mathbf{x_1}) \geq \nabla f(\mathbf{x_1}) \cdot (\mathbf{x_2} - \mathbf{x_1})}}\). In words, roughly, {{c3::the gradient/tangent of the function is less steeply sloped than the secant to the function, implying that the rate of increase is increasing.}}		
+If the Hessian is {{c1::negative semidefinite}} (so {{c2::it has eigenvalues that are 0 or negative at all points x}}) then {{c3::the function f is concave}}		
+If the Hessian is {{c1::positive semidefinite}} (so {{c2::it has eigenvalues that are 0 or positive at all points x}}) then {{c3::the function f is convex}}		
+If the Hessian is {{c1::negative definite}} (so {{c2::it has eigenvalues that are all negative at all points x}}) then {{c3::the function f is strictly concave}}		
+If the Hessian is {{c1::positive definite}} (so {{c2::it has eigenvalues that are all positive at all points x}}) then {{c3::the function f is strictly convex}}		
+{{c1::\(\frac{d}{dx} (a^{f(x)})\)}}&nbsp; \(=\) {{c2::\(ln(a) \cdot a^{f(x)} \cdot f'(x)\)}}		
+If {{c1::all the eigenvalues}} of {{c2::the Hessian at a point}} are {{c3::positive}}, then {{c4::the matrix is positive definite there and we have a minimum.}}		
+If {{c1::all the eigenvalues}} of {{c2::the Hessian at a point}} are&nbsp;{{c3::negative}}, then {{c4::the matrix is negative definite there and we have a minimum.}}		
+If {{c1::some eigenvalues are positive and some are negative}} of {{c2::the Hessian at a point}}, then {{c4::the Hessian is indeterminate and we have a saddle point}}		
+Bordered Hessian	"<img src=""paste-3a9d32cfcd87a274e15c7bfc67057da875f39170.jpg""><div>Hessian with constraints as well. Second derivative of the Lagrange function with respect to all variables, including the Lagrange multipliers</div>"	
+A {{c1::principal minor of order \(k\)}} given a square \(m \times m\) matrix, is formed by {{c2::deleting&nbsp;\(m-k\) columns and the corresponding&nbsp;\(m-k\) rows}} and then {{c3::taking the determinant of the resulting matrix}}		
+A {{c1::leading principal minor of order \(k\)}} is formed by {{c2::deleting the last \(m-k\) rows and columns of a matrix and then taking the determinant of the resulting matrix}}		
+the {{c1::leading principal minor of order \(m\)}}&nbsp;deletes {{c2::nothing}}, and so is {{c3::the determinant of the original matrix}}		
+Any {{c3::symmetric matrix}} is {{c1::positive definite}} if {{c2::all its leading principal minors are positive}}		
+Any {{c3::symmetric matrix}} is {{c1::negative definite}} if {{c2::all its leading principal minors alternate in sign, with the first one being negative}}		
+Lagrange-type function for inequality constrained optimisation when maximising	\(\Lambda(\mathbf{x, \lambda, \mu}) = f(\mathbf{x}) - \sum_i \lambda_i g_i (\mathbf{x}) - \sum_j \mu_j h_j (\mathbf{x})\)	
+Lagrange-type function for inequality constrained optimisation when minimising	\(\Lambda(\mathbf{x, \lambda, \mu}) = f(\mathbf{x}) - \sum_i \lambda_i g_i (\mathbf{x}) + \sum_j \mu_j h_j (\mathbf{x})\)	
+{{c2::Kuhn-Tucker conditions}} are used for&nbsp;{{c1::finding optimum with inequality constraints}}		
+Complementary slackness condition	\(\mu_j h_j (\mathbf{x}^*) = 0&nbsp;\)	
+Envelope theorem	"<img src=""paste-01028a839f09ee052e1ddea88309dfcd1da052e0.jpg""><div>i.e., when evaluated at the optimum, the first term of the total derivative below is zero so we can focus on the partial derivative</div><div><img src=""paste-d463a27aecaf49abbbf2096d3da471a1caf78524.jpg""><br></div>"	
+Learning about {{c3::causal effects}} requires&nbsp;{{c1::multiple units}}, some of which {{c2::are exposed to the active treatment, and some of which are exposed to the alternative treatment}}. Different units include (2):&nbsp;{{c4::the same object at different points of time, or different objects at similar points in time}}		
+Stable unit treatment value assumption 1&nbsp;	No inteference - the potential outcomes for any unit do not vary with the treatments assigned to other units	
+Stable unit treatment value assumption 2	No hidden treatment variation - For each unit, there are no different forms or versions of each treatment level, which lead to different potential outcomes.	
+The assignment mechanism	How each individual came to receive the treatment level actually received	
+Three uses for covariates in causal inference	1. make estimates more precise<div>2. look at causal effect on subgroups</div><div>3. make assumptions about the assignment mechanism more plausible</div>	
+Three possible restrictions on assignment mechanisms	1. individualistic assignment<div>2. probabilistic assignment</div><div>3. unconfounded assignment</div>	
+Individualistic assignment	a particular unit's assignment probability does not depend (or only depends in a limited way) on the values of covariates and potential outcomes for other units	
+Probabilistic assignment	The assignment mechanism gives a non-zero probability for each treatment value, for every unit	
+Unconfounded assignment	The assignment mechanism does not depend on potential outcomes	
+Potential outcomes distinction between experiments and observational studies	In experiments the assignment mechanism is known and controlled by the researcher. In observational studies, the researcher neither knows nor observes the assignment mechanism	
+Classical randomised experiments	The assignment mechanism satisfies individualistic, probabilistic and unconfoundedness restrictions and the researcher knows and controls the assignment mechanism	
+Regular assignment mechanisms	The assignment mechanism satisfies individualistic, probabilistic and unconfoundedness restrictions but the assignment mechanism need not be known by or under control of the researcher, so assumptions are necessary	
+Assignment mechanism formal definition	"<img src=""paste-bf5e67708c18be06ebfcf7101c787e113ad5eb04.jpg""><div><br></div><div>a function that gives the probability of a particular value for the full assignment \(\mathbf{W}\) vector, (rather than an individual element) conditional on covariates and potential outcomes</div>"	
+Row exchangeable function	The order in which we list the \(N\) units within the vectors or matrices is irrelevant	
+Unit assignment probability definition	"<br><img src=""paste-825d313bc9eb3ec3828a3ff40dfb575d92757d0e.jpg""><div>summing probabilities of assignment vectors across all assignment vectors \(\mathbf{W}\) in which \(W_i = 1\)</div>"	
+Finite population propensity score	"<img src=""paste-1efedc34050157b9c9d8f3dae15f3b5755ee3dea.jpg"">"	
+Individualistic assignment formal definition	"<img src=""paste-73a9afce02a693163529473f43e62f21b5efd88d.jpg"">"	
+Probabilistic assignment formal definition	"<img src=""paste-70bd577327b3acfb9f1c1fb7b691180481fcd4f5.jpg"">"	
+Unconfounded assignment formal definition	"<img src=""paste-ffebc98bdd66ab9b882a844e420a9e8f17aed75c.jpg"">"	
+Given {{c1::individualistic assignment}}, {{c2::the combination of probabilistic and unconfounded assignment}} is referred to as {{c3::strongly ignorable treatment assignment}}		
+Ignorable treatment assignment	When the assignment mechanism can be written in terms of \(\mathbf{W}\), \(\mathbf{X}\), and \(\mathbf{Y}^{obs}\)&nbsp;only, without dependence on \(\mathbf{Y}^{mis}\)	
+Randomised experiment formal definition (2)	An assignment mechanism that is (1) probabilistic, and (2) has a known functional form that is controlled by the researcher	
+A completely randomised experiment	A classical randomised experiment where <i>a priori</i>&nbsp;the number of treated units \(N_t\) is fixed (and therefore the number of control units is too)	
+Observational study formal definition	An assignment mechanism where the functional form of the assignment mechanism is unknown	
+Regular assignment mechanism definition (3)	An assignment mechanism which is:<div>1. individualistic</div><div>2. probabilistic</div><div>3. unconfounded</div>	
+Irregular assignment mechanisms	When the assignment to treatment itself is unconfounded, but receipt of treatment may be confounded	
+Number of permuations is {{c1::more}} than number of combinations		
+Number of combinations&nbsp;is {{c1::less}} than number of permuations		
+Four common classes of classical randomised experiments	1. Bernoulli trials<div>2. completely randomised experiments</div><div>3. stratified randomised experiments</div><div>4. pairwise randomised experiments</div>	
+Assignment mechanism of Bernoulli trial	"<img src=""paste-d5c74f0536dfc507e0966f6cf502756d91d3f982.jpg"">"	
+Disadvantage of Bernoulli trials	Independence of assignment across all units mean that there is always positive probability that all units receive the same treatment	
+Assignment mechanism for completely randomised experiment	"<img src=""paste-36d59f79efaa2bb064b7d7d45da270a26eb875f5.jpg"">"	
+Disadvantage of completely randomised experiments	Ignores covariates so you could have all men treated and women untreated, so differences could be due to group differences rather than treatment effects	
+Stratified randomised experiments intuition	Completely randomised experiments within blocks/strata defined by covariates, with assignments being independent across blocks	
+Stratified randomised experiment assignment mechanism	"<img src=""paste-445d75843ca0c8566f7d3c090797bc94f18d71b5.jpg"">"	
+Paired randomised experiments intuition	Extreme version of randomised block experiment when there are only two units within each block, and assignment probability for each is 0.5	
+Paired randomised experiment assignment mechanism	"<img src=""paste-dee8a32187034d0f814345ee3aa8c9e7b02c05f9.jpg"">"	
+Simple randomisation inference test statistic	"<img src=""paste-2b7a43bcba475905fa270a00a1371eb6c79cc1aa.jpg"">"	
+Sharp null hypothesis	The treatment effect for all units is some constant (often zero) or some multiplicative value (by taking logarithms)	
+Sharp null hypothesis after taking logs	\(Y_i (1) / Y_i (0) = C\) for all units	
+A {{c2::statistic \(T\)}} is {{c1::a known, real-valued function \(T(\mathbf{W},\mathbf{Y}^{obs},\mathbf{X})\) of: the vector of assignments, \(\mathbf{W}\); the vector of observed outcomes, \(\mathbf{Y}^{obs}\) (itself a function of \(\mathbf{W}\) and the potential outcomes \(\mathbf{Y}(0)\) and \(\mathbf{Y}(1)\)); and the matrix of pre-treatment variables, \(\mathbf{X}\).}}		
+Test of null hypothesis of equal means, with unequal variances in the two groups	"<img src=""paste-13e3dec2bab9e5ef4c4a6b91270bd7d49c36e478.jpg"">"	
+Kolmogorov-Smirnov test statistic	"<img src=""paste-b9a6b66cc5e7e872e432db5e8eaea6a23609492c.jpg"">"	
+The sampling variance of \(\hat{\tau}^{dif} = \bar{Y}_t^{obs} - \bar{Y}_c^{obs}\) is ...	... is \(\mathbb{V}_W (\bar{Y}_t^{obs} - \bar{Y}_c^{obs}) = \frac{S_c^2}{N_c} + \frac{S_t^2}{N_t} - \frac{S_{tc}^2}{N}\)	
+845ff75200b54fcf90e110dff7f5c276-oa-1		"<img src=""tmplx0qbjv7.png"" />"						"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-1-Q.svg"" />"	"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-1-A.svg"" />"	"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-O.svg"" />"	
+845ff75200b54fcf90e110dff7f5c276-oa-2		"<img src=""tmplx0qbjv7.png"" />"						"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-2-Q.svg"" />"	"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-2-A.svg"" />"	"<img src=""845ff75200b54fcf90e110dff7f5c276-oa-O.svg"" />"	
+\({{c1::\hat{\mathbb{V} }^{\rho_{tc} = 1} }} = {{c2::s^2_c \cdot \frac{N_t}{N \cdot N_c} + s^2_t \cdot \frac{N_c}{N \cdot N_t} + s_c \cdot s_t \cdot \frac{2}{N} }}\)		
+\( {{c1::\hat{\mathbb{V} }^{const} }} = {{c2::s^2 \cdot \left( \frac{1}{N_c} + \frac{1}{N_t} \right)}} \)		
+\( {{c1::\hat{\mathbb{V} }^{neyman} }} = {{c2::\frac{s^2_c}{N_c} + \frac{s^2_t}{N_t}&nbsp;}} \)		
+634416ea5f594b8d80791675b92aae1b-oa-1		"<img src=""tmppk7aarda.png"" />"						"<img src=""634416ea5f594b8d80791675b92aae1b-oa-1-Q.svg"" />"	"<img src=""634416ea5f594b8d80791675b92aae1b-oa-1-A.svg"" />"	"<img src=""634416ea5f594b8d80791675b92aae1b-oa-O.svg"" />"	
+634416ea5f594b8d80791675b92aae1b-oa-2		"<img src=""tmppk7aarda.png"" />"						"<img src=""634416ea5f594b8d80791675b92aae1b-oa-2-Q.svg"" />"	"<img src=""634416ea5f594b8d80791675b92aae1b-oa-2-A.svg"" />"	"<img src=""634416ea5f594b8d80791675b92aae1b-oa-O.svg"" />"	
+Four features of OLS models for estimating treatment effects	1. models of observed outcomes, not potential outcomes<div>2. models of conditional mean, rather than full distribution</div><div>3. estimand, an average treatment effect, is a parameter of a statistical model</div><div>4. whether models accurately describe conditional mean doesn't matter for unbiasedness of OLS estimator of ATE</div>	
+All methods for {{c3::causal inference}} can be viewed as {{c1::imputation methods}} because {{c2::all causal estimands depend on missing potential outcomes}}		
+3 inputs for model-based approach to causal inference	1. model for joint distribution of the two potential outcomes, \(f(\mathbb{Y}(0), \mathbb{Y}(1))\)<div>2. the prior distribution of \(\theta\), a parameter of \(f(Y_i(0), Y_i(1) \mid \theta)\), \(p(\theta)\)</div><div>3. (only in observational studies), the conditional distribution of&nbsp;\(\mathbb{W}\) given the potential outcomes, i.e., the assignment mechanism&nbsp;\(f(\mathbb{W} \mid \mathbb{Y}(0), \mathbb{Y}(1))\)</div>	
+Step 1 to go from inputs to distribution of estimand with model-based approach	Deriving conditional distribution \(f(Y^{mis} \mid Y^{obs}, W, \theta)\)	
+Step 2 to go from inputs to distribution of estimand with model-based approach	Deriving the posterior distribution of \(\theta, f(\theta \mid Y^{obs}, W)\)	
+Step 3 to go from inputs to distribution of estimand with model-based approach	Combining conditional distribution and posterior distribution to obtain conditional distribution of missing data given the observed data, \(f(Y^{mis} \mid Y^{obs}, W)\) (i.e. integrating their product over \(\theta\))&nbsp;	
+Step 4 to go from inputs to distribution of estimand with model-based approach	Using estimand definition \(\tau = \tau(Y(0), Y(1))\) and conditional distribution \(f(Y^{mis} | Y^{obs}, W)\) to obtain conditional distribution of estimand given observed values, \(f(\tau \mid Y^{obs}, W)\)	
+What does OLS estimate in a stratified experiment (without fixed effects)?	"<img src=""paste-ba27a6e2c39d706492d963474c8a5339637df425.jpg""><div>a weighted average of the within-stratum average effects, with weights proportional to the product of the fraction of observations in the stratum and the probabilities of receiving and not receiving treatment</div>"	

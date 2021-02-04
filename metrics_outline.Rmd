@@ -1,12 +1,12 @@
 # Introduction
 
-My goal in putting this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson)
+My goal in putting this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson.)
 
 \
 
 *My focus:* Microeconomics, behavioral economics, focus on charitable giving and 'returns to education' type of straightforward problems. (Minimal focus on structural approaches.)
 
-What I care about: Where we can *add value* to real econometric (and statistical and experimental design) practice?
+What I care about: Where we can *add value* to real econometric (and statistical,  experimental, survey design, and data science) practice?
 
 
 \
@@ -15,11 +15,11 @@ The data I focus on:
 
 - Observational (esp. web-scraped and API data and national surveys/admin data)
 
-- Experimental: esp. where with multiple crossed arms, and where the 'cleanest design' may not be possible
+- Experimental: esp.  with multiple crossed arms, and where the 'cleanest design' may not be possible
 
 \
 
-I will assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied.
+I will assume familiarity with most basic statistical concepts like 'bias', 'consistency', and 'null hypothesis testing.' However, I will focus on some concepts that seem to often be misunderstood and mis-applied, and I will give and link definitions as time permits.
 
 ```{block2,  type='note'}
 
@@ -27,20 +27,15 @@ If you are involved with this project, you can find a brief guide (somewhat WIP)
 
 ```
 
-\
-
-A note to potential research assistants and student collaborators (unfold):
-
-```{block2,  type='fold'}
-
-```
-
-## (Conceptual: approaches to statistics/inference and causality)[#conceptual] {-}
+## [Conceptual: approaches to statistics/inference and causality](#conceptual) {-}
 
 -  Bayesian vs. frequentist approaches
 
+<div class="marginnote">
 Folder: bayesian
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
+</div>
+ 
 
 -  Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
 
@@ -55,12 +50,11 @@ This will build on my content [here](https://daaronr.github.io/writing_econ_rese
 </div>
  
 - Data: What/why/where/how
-
 - Organizing a project
+- Dynamic documents (esp Rmd/bookdown)
+- Good coding practices
+- Data sharing and integrity
 
--  Dynamic documents (esp Rmd/bookdown)
-
--  Good coding practices
 
 <!--- #### New tools and approaches to data (esp 'tidyverse')
 
@@ -72,94 +66,66 @@ Indenting, snake-case, etc
 
 --> 
 
--  Data sharing and integrity
 
 
 ## Basic regression and statistical inference: Common mistakes and issues {-}
 
-- "Bad control" ("colliders")
-- Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
+Simple identification issues: "Bad control" ("colliders"); Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
 
-- Choices of lhs and rhs variables
-- Missing data
-- Choice of control variables and interactions
-- Which outcome variable/variables
+odMeling choices: Choices of lhs and rhs variables, choice of control variables and interactions, which outcome variable/variables; i
 
--  Functional form
-  - Logs and exponentials
-  - Nonlinear modeling (and interpreting coefficients)
+Functional form: Logs and exponentials, Nonlinear modeling (and interpreting coefficients), 'Testing for nonlinear terms'
+
+Missing data
 
 
-- 'Testing for nonlinear terms'
+OLS and heterogeneity:  OLS does *not* identify the ATE. See: ['your go-to regression specification is biased...'](http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT). Modeling heterogeneity: the limits of Quantile regression.
 
+Interpretation and inference: 
 
--  OLS and heterogeneity
-  - OLS does *not* identify the ATE
-  - See: ['your go-to regression specification is biased...'](http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT)
-
-  - Modeling heterogeneity: the limits of Quantile regression
-
--  "Null effects"
-
-- Confidence intervals and Bayesian credible intervals
-
-- Comparing relative parameters
-
--  Multiple hypothesis testing (MHT)
-
+- "Null effects" (or move to previous 'conceptual' chapter), confidence intervals and Bayesian credible intervals
 -  Interaction terms and pitfalls
-
-- 'Moderators' Confusion with nonlinearity
-
-
-
--  Choice of test statistics (including nonparametric)
+- Comparing relative parameters
+-  Multiple hypothesis testing (MHT)
+- 'Moderators', confusion with nonlinearity
+- Choice of test statistics (including nonparametric)
 
 <!-- (Or get to this in the experimetrics section) -->
 
--  How to display and write about regression results and tests
+How to display and write about regression results and tests
 
-- Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
+Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 
 ## LDV and discrete choice modeling {-}
 
 ## Robustness and diagnostics, with integrity {-}
 
 - (How) can diagnostic tests make sense? Where is the burden of proof?
-
 - Estimating standard errors
-
 -  Sensitivity analysis: Interactive presentation
 
 ## [Control strategies and prediction; Machine Learning approaches](#control-ml) {-}
 
 -  Machine Learning (statistical learning): Lasso, Ridge, and more
-
 -  Limitations to inference from learning approaches
 
 ## IV and its many issues {-}
 
--  Instrument validity
+- Instrument validity
 - Exogeneity vs. exclusion
 - Very hard to 'powerfully test'
-
-
 -  Heterogeneity and LATE
 
 *Basic consideration: what does IV identify and when:*?
 
 -  Weak instruments, other issues
-
 - Reference to the use of IV in experiments/mediation
 
 ## [Other paths to observational identification](#other_paths) {-}
 
 - Fixed effects and differencing
-
 -  DiD
-
 -  RD
-
 -  Time-series-ish panel approaches to micro
 
 ## Causal pathways: [Mediation modeling and its massive limitations](#mediators) {-}
@@ -168,48 +134,39 @@ An applied review
 
 ## Causal pathways: [selection, corners, hurdles, and 'conditional on' estimates](#selection_cop) {-}
 
-
-- Corner solution' or hurdle variables and 'Conditional on Positive'
+'Corner solution' or hurdle variables and 'Conditional on Positive'
 
 "Conditional on positive"/"intensive margin" analysis ignores selection
 
-
 \
 
-- Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
+Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
 
 
 ## [Survey design and implementation; analysis of survey data](#surveys)
-
-
 
 ## [(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_etc) {-}
 
 <!-- experiments_and_study_design/why_experiment_design.Rmd -->
 
-- Why run an experiment or study?
+Why run an experiment or study?
 
 <!-- - Sugden and Sitzia critique here, give more motivation -->
 
-- Causal channels and identification
+Causal channels and identification, ruling out alternative hypotheses, etc
 
-- Ruling out alternative hypotheses, etc
+Types of experiments, 'demand effects' and more artifacts of artifical setups
 
--Types of experiments, 'demand effects' and more artifacts of artifical setups
-
--Generalizability (and heterogeneity)
+Generalizability (and heterogeneity)
 
 ## (Experimental) Study design: Background and quantitative issues {-}
 
 <!-- experiments_and_study_design/quant_design_power.Rmd -->
 
 - Pre-registration and Pre-analysis plans
-
--The hazards of specification-searching
-
--Sequential and adaptive designs
-
--Efficient assignment of treatments
+- The hazards of specification-searching
+- Sequential and adaptive designs
+- Efficient assignment of treatments
 
 (Links back to [power analyses](#power))
 
@@ -217,11 +174,8 @@ An applied review
 ## (Experimental) Study design: (Ex-ante) Power calculations
 
 - What sort of 'power calculations' make sense, and what is the point?
-
 - The 'harm to science' from running underpowered studies
-
 - Power calculations without real data
-
 - Power calculations using prior data
 
 ## ['Experimetrics' and measurement of treatment effects from RCTs](#experimetrics_te) {-}
@@ -261,7 +215,6 @@ An applied review
 
 [@kennedyGuideEconometrics2003]
 
-
 Tibshirani, Robert. n.d. “Statistical Learning with Sparsity the Lasso and Generalizations.”
 
 <!--[Tibshirani] -->
@@ -281,13 +234,17 @@ R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org
 
 Statistical Rethinking: A Bayesian Course with Examples in R and Stan
 
-### Consider:
+
+<div class="marginnote">
+
+Consider:
 
 Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017
 
-Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction .
-Cambridge University Press, 2015
+Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction . Cambridge University Press, 2015
 
 Judea Pearl
 
 Imbens: Potential Outcomes versus DAGs
+
+</div>
