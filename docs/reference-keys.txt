@@ -141,11 +141,11 @@ power-calculations-without-real-data
 power-calculations-using-prior-data
 from-reinstein-upcoming-experiment-preregistration
 loop-and-plot-over
+digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case
+design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order
 survey-power-likert
 how-to-measure-and-consider-the-precision-of-likert-item-responses
 computing-sample-size-to-achieve-this-precision
-digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case
-design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order
 experimetrics_te
 which-error-structure-random-effects
 randomization-inference

@@ -429,10 +429,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="14.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>14.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.6</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.6.1</b> How to measure and consider the precision of Likert-item responses</a></li>
-<li class="chapter" data-level="14.6.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.6.2</b> Computing sample size to achieve this precision</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.7.1</b> How to measure and consider the precision of Likert-item responses</a></li>
+<li class="chapter" data-level="14.7.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.7.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
@@ -1058,81 +1064,8 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 </div>
 </div>
 </div>
-<div id="survey-power-likert" class="section level2" number="14.6">
-<h2><span class="header-section-number">14.6</span> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</h2>
-<div id="how-to-measure-and-consider-the-precision-of-likert-item-responses" class="section level3" number="14.6.1">
-<h3><span class="header-section-number">14.6.1</span> How to measure and consider the precision of Likert-item responses</h3>
-<p>Considering ‘precision of Likert-item responses’ and sample-size calculations:</p>
-<p>What are commonly used/justifiable measures of central tendency and dispersion for Likert-items?</p>
-<p>How can we think about ‘precision of estimated Likert-item responses?’ and attaining sufficient precision, and a metric for this?</p>
-<p>“How precise is precise, and by what metric?”</p>
-<p><br />
-</p>
-<div id="a-simple-naive-approach" class="section level4 unnumbered" number="">
-<h4>A simple naive approach?</h4>
-<p>Interval coding: <span class="math inline">\(y=\[1,2,3,4,5\]\)</span> for a 5-item</p>
-<p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
-<p>Measure of dispersion: <span class="math inline">\(\hat{s}\)</span> := Sample standard deviation of y *</p>
-<div class="marginnote">
-<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares/</p>
-</div>
-<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span></p>
-<p>If we assume <span class="math inline">\(y\)</span> is normally distributed (which obviously can’t be precisely the case)…**</p>
-<div class="marginnote">
-<p>* * but Wiki (Derrick and White 2017?) claim “responses often show a quasi-normal distribution.”</p>
-</div>
-<p>… then a 95% confidence interval for <span class="math inline">\(\bar{y}\)</span> would be</p>
-<p><span class="math display">\[\bar{y} \pm  1.96 \: \hat{SE_m}\]</span></p>
-<p><br />
-</p>
-<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit’,
-i.e.,</p>
-<p><span class="math display">\[2 * 1.96 \: \hat{SE_m} &lt; 1\]</span> *</p>
-<div class="marginnote">
-<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>”.</p>
-</div>
-<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
-<p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
-<div class="marginnote">
-<p>To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).</p>
-</div>
-<p><br />
-</p>
-<p><strong>B. ‘Relative’ metric?</strong>: Target a 95% CI range below <span class="math inline">\(B\)</span> sd of the Likert-item-integer-response <span class="math inline">\(y\)</span>:
-i.e.,</p>
-<p><span class="math display">\[2*1.96 SE_m &lt; B*sd(y)\]</span></p>
-<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt(n) &lt; B*s\)</span>,
-i.e., <span class="math inline">\(2*1.96/\sqrt(n) &lt; B\)</span>
-i.e., <span class="math inline">\(\sqrt(n) &gt; 2*1.96/B\)</span>
-i.e.,</p>
-<p><span class="math display">\[n &gt;  15.3664/(B^2)\]</span></p>
-<p>… where <span class="math inline">\(sd(y)\)</span> is the true standard deviation of the outcome.</p>
-<div class="marginnote">
-<p>Note: This <span class="math inline">\(n\)</span> gives should give us an estimated CI with a range of B standard deviations of the outcome. I’m not sure if it implies that, after collecting the sample, our estimates of the CI will always have a range equal to the estimated sd. Need to think about this more.</p>
-</div>
-<p>As you can see (caveat: calculations need doublechecking), if we assume the Likert-integer-thing is normally distributed, the calculation of ‘how big a sample size (n) we need in order to get, on average, a CI of 1 sd or smaller’ is straightforward.</p>
-</div>
-</div>
-<div id="computing-sample-size-to-achieve-this-precision" class="section level3" number="14.6.2">
-<h3><span class="header-section-number">14.6.2</span> Computing sample size to achieve this precision</h3>
-<p>Initial thoughts (unfold):</p>
-
-<div class="fold">
-<p>If we assume normality, there should be a simple analytical formula for</p>
-<p>’Minimum sample size….
-… for (e.g.) 80% likelihood …
-… of achieving an (e.g.) 95% “confidence interval (CI) over the mean” of a variable…
-… that is within (e.g.) 1 standard deviation of the variable on either side</p>
-<p><em>Notes:</em></p>
-<ul>
-<li><p>This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable.</p></li>
-<li><p>For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)</p></li>
-<li><p>I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about</p></li>
-<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.</p>
-</div></li>
-</ul>
-<div id="digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case" class="section level2" number="14.7">
-<h2><span class="header-section-number">14.7</span> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</h2>
+<div id="digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</h2>
 <p>We want to know what the ‘best title for our new movie’ is. Twenty titles have been suggested. We have funds to do a survey of a relevant representative audience.</p>
 <p>We need to decide on a general experimental design, a statistical analysis, and on sample sizes considering power (or perhaps ‘lift’).</p>
 <p>Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a ‘reinforcement learning’ problem.*</p>
@@ -1141,8 +1074,8 @@ i.e.,</p>
 </div>
 <p><br />
 </p>
-<div id="design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order" class="section level3" number="14.7.1">
-<h3><span class="header-section-number">14.7.1</span> Design: Which questions to ask the audience about the proposed titles, and in what order</h3>
+<div id="design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Design: Which questions to ask the audience about the proposed titles, and in what order</h3>
 <p>This is an ‘experimental design for internal identification and external generalisability’ question. (See <a href="why-experiment-design.html#why_experiment_design">’Identifying meaningful and useful (causal) relationships and parameters</a>)</p>
 <p><br />
 </p>
@@ -1203,14 +1136,9 @@ i.e.,</p>
 <li><p>Find the title ‘j’ that has the most people in our <em>sample</em> who rank it first; call this share <span class="math inline">\(\bar{R^1_j}\)</span></p></li>
 <li><p>Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size <span class="math inline">\(N\)</span> (our actual sample size), the average rank of the highest-ranked title would be as high as <span class="math inline">\(\bar{R^1_j}\)</span>.****</p>
 <div class="marginnote">
-<p>**** Ideally there is an analytical formula for this; worth looking up.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li>If this computed ‘probability of such an extreme result’, given our sample size <span class="math inline">\(N\)</span>—<span class="math inline">\(P(N, \bar{R^1_j})\)</span>— is below our threshold <span class="math inline">\(\alpha=0.05\)</span> we ‘reject the null.’</li>
+<p>**** Ideally there is an analytical formula for this; worth looking up.</p>
+</div></li>
+<li><p>If this computed ‘probability of such an extreme result’, given our sample size <span class="math inline">\(N\)</span>—<span class="math inline">\(P(N, \bar{R^1_j})\)</span>— is below our threshold <span class="math inline">\(\alpha=0.05\)</span> we ‘reject the null.’</p></li>
 </ol>
 <p><br />
 </p>
@@ -1233,6 +1161,7 @@ i.e.,</p>
 </div>
 <p><br />
 </p>
+</div>
 <div id="calc.-2-find-a-title-in-the-top-eta-e.g.-third-of-the-value-of-title-distribution-with-simple-assignment" class="section level4 unnumbered" number="">
 <h4>Calc. 2: Find a title in the top <span class="math inline">\(\eta\)</span> (e.g., third) of the ‘value of title’ distribution (with simple assignment)</h4>
 <p>For any target outcome (movie box office, general acclaim, etc.), each of the (<span class="math inline">\(K=20\)</span>) titles will have some <em>true population parameter</em>.</p>
@@ -1276,8 +1205,83 @@ Note that choosing a title that is “most likely to be in the top third” is n
 <div class="marginnote">
 <p>More generally, see <a href="quant-design-power.html#sequential">13.3</a>.</p>
 </div>
-
 </div>
+</div>
+</div>
+<div id="survey-power-likert" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</h2>
+<div id="how-to-measure-and-consider-the-precision-of-likert-item-responses" class="section level3" number="14.7.1">
+<h3><span class="header-section-number">14.7.1</span> How to measure and consider the precision of Likert-item responses</h3>
+<p>Considering ‘precision of Likert-item responses’ and sample-size calculations:</p>
+<p>What are commonly used/justifiable measures of central tendency and dispersion for Likert-items?</p>
+<p>How can we think about ‘precision of estimated Likert-item responses?’ and attaining sufficient precision, and a metric for this?</p>
+<p>“How precise is precise, and by what metric?”</p>
+<p><br />
+</p>
+<div id="a-simple-naive-approach" class="section level4 unnumbered" number="">
+<h4>A simple naive approach?</h4>
+<p>Interval coding: <span class="math inline">\(y=[1,2,3,4,5]\)</span> for a 5-item</p>
+<p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
+<p>Measure of dispersion: <span class="math inline">\(\hat{s}\)</span> := Sample standard deviation of y *</p>
+<div class="marginnote">
+<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares/</p>
+</div>
+<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span></p>
+<p>If we assume <span class="math inline">\(y\)</span> is normally distributed (which obviously can’t be precisely the case)…**</p>
+<div class="marginnote">
+<p>* * but Wiki (Derrick and White 2017?) claim “responses often show a quasi-normal distribution.”</p>
+</div>
+<p>… then a 95% confidence interval for <span class="math inline">\(\bar{y}\)</span> would be</p>
+<p><span class="math display">\[\bar{y} \pm  1.96 \: \hat{SE_m}\]</span></p>
+<p><br />
+</p>
+<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit’,
+i.e.,</p>
+<p><span class="math display">\[2 * 1.96 \: \hat{SE_m} &lt; 1\]</span> *</p>
+<div class="marginnote">
+<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>”.</p>
+</div>
+<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
+<p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
+<div class="marginnote">
+<p>To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).</p>
+</div>
+<p><br />
+</p>
+<p><strong>B. ‘Relative’ metric?</strong>: Target a 95% CI range below <span class="math inline">\(B\)</span> sd of the Likert-item-integer-response <span class="math inline">\(y\)</span>:
+i.e.,</p>
+<p><span class="math display">\[2*1.96 SE_m &lt; B*sd(y)\]</span></p>
+<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt(n) &lt; B*s\)</span>,
+i.e., <span class="math inline">\(2*1.96/\sqrt(n) &lt; B\)</span>
+i.e., <span class="math inline">\(\sqrt(n) &gt; 2*1.96/B\)</span>
+i.e.,</p>
+<p><span class="math display">\[n &gt;  15.3664/(B^2)\]</span></p>
+<p>… where <span class="math inline">\(sd(y)\)</span> is the true standard deviation of the outcome.</p>
+<div class="marginnote">
+<p>Note: This <span class="math inline">\(n\)</span> gives should give us an estimated CI with a range of B standard deviations of the outcome. I’m not sure if it implies that, after collecting the sample, our estimates of the CI will always have a range equal to the estimated sd. Need to think about this more.</p>
+</div>
+<p>As you can see (caveat: calculations need doublechecking), if we assume the Likert-integer-thing is normally distributed, the calculation of ‘how big a sample size (n) we need in order to get, on average, a CI of 1 sd or smaller’ is straightforward.</p>
+</div>
+</div>
+<div id="computing-sample-size-to-achieve-this-precision" class="section level3" number="14.7.2">
+<h3><span class="header-section-number">14.7.2</span> Computing sample size to achieve this precision</h3>
+<p>Initial thoughts (unfold):</p>
+
+<div class="fold">
+<p>If we assume normality, there should be a simple analytical formula for</p>
+<p>’Minimum sample size….
+… for (e.g.) 80% likelihood …
+… of achieving an (e.g.) 95% “confidence interval (CI) over the mean” of a variable…
+… that is within (e.g.) 1 standard deviation of the variable on either side</p>
+<p><em>Notes:</em></p>
+<ul>
+<li><p>This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable.</p></li>
+<li><p>For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)</p></li>
+<li><p>I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about</p></li>
+<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.</p></li>
+</ul>
+</div>
+
 </div>
 </div>
 </div>

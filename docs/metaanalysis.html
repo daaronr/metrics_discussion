@@ -429,10 +429,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="14.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>14.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.6</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#digression-power-calculationsoptimal-sample-size-for-lift-in-a-ranking-case"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.6.1</b> How to measure and consider the precision of Likert-item responses</a></li>
-<li class="chapter" data-level="14.6.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.6.2</b> Computing sample size to achieve this precision</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.7.1</b> How to measure and consider the precision of Likert-item responses</a></li>
+<li class="chapter" data-level="14.7.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.7.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
@@ -1199,8 +1205,8 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 2.7e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.27 seconds.
+## Chain 1: Gradient evaluation took 1.1e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -1217,15 +1223,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.499652 seconds (Warm-up)
-## Chain 1:                0.526255 seconds (Sampling)
-## Chain 1:                1.02591 seconds (Total)
+## Chain 1:  Elapsed Time: 0.472222 seconds (Warm-up)
+## Chain 1:                0.522614 seconds (Sampling)
+## Chain 1:                0.994836 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 2).
 ## Chain 2: 
-## Chain 2: Gradient evaluation took 1e-05 seconds
-## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 2: Gradient evaluation took 1.3e-05 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 2: Adjust your expectations accordingly!
 ## Chain 2: 
 ## Chain 2: 
@@ -1242,15 +1248,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.472711 seconds (Warm-up)
-## Chain 2:                0.501161 seconds (Sampling)
-## Chain 2:                0.973872 seconds (Total)
+## Chain 2:  Elapsed Time: 0.483494 seconds (Warm-up)
+## Chain 2:                0.488978 seconds (Sampling)
+## Chain 2:                0.972472 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 1e-05 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 3: Gradient evaluation took 1.2e-05 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
@@ -1267,15 +1273,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.405168 seconds (Warm-up)
-## Chain 3:                0.434029 seconds (Sampling)
-## Chain 3:                0.839197 seconds (Total)
+## Chain 3:  Elapsed Time: 0.412799 seconds (Warm-up)
+## Chain 3:                0.44899 seconds (Sampling)
+## Chain 3:                0.861789 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 1.2e-05 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+## Chain 4: Gradient evaluation took 1.4e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -1292,9 +1298,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.432511 seconds (Warm-up)
-## Chain 4:                0.471791 seconds (Sampling)
-## Chain 4:                0.904302 seconds (Total)
+## Chain 4:  Elapsed Time: 0.44947 seconds (Warm-up)
+## Chain 4:                0.477521 seconds (Sampling)
+## Chain 4:                0.926991 seconds (Total)
 ## Chain 4:</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="metaanalysis.html#cb47-1"></a>model2</span></code></pre></div>
 <pre><code>##  Family: gaussian 
