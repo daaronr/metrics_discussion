@@ -648,15 +648,15 @@ This is an 'experimental design for internal identification and external general
 
 Some possibilities: 
 
-- Subjects asked to rank (or rate) all 20 titles
-- Subjects asked to identify 'top N' and 'bottom N' (e.g., top and bottom 3) titles
+- Subjects asked to rank (or rate) all $K=20$ titles (titles $k=1,2,...,K=20$)
+- Subjects asked to identify 'top $C$' and 'bottom $C$' (e.g., top and bottom 3) titles
 - Subjects presented a series of pairwise comparisons
 - Subjects asked to rate (or say whether they would attend) a single title, with between-subject variation
 
 
 ### Which statistical test(s)/analyses to run (if any) and what measures to report?  {-}
 
-Suppose we asked each subject to rank all 20 titles. 
+Suppose we asked each subject to rank all $K=20$ titles. 
 
 How could we **test if there were any 'substantial difference in the title rankings'** and what would be a meaningful measure of the 'extent' of this difference? We might want to consider some 'minimum effect size of interest' and ensure that we have a large enough sample to diagnose such an effect with (e.g.) 80% probability (while maintaining a false-positive type-1 error rate of less than 5%).\*
 
@@ -679,47 +679,128 @@ How could we **test if there were any 'substantial difference in the title ranki
 
 #### Simple assignment {-}
 
-Suppose we are restricted to a single allocation of treatments across the 20 titles.  Suppose we asked all subjects to rank all of the 20 titles, or perhaps only to focus on the 'best' and 'worst' titles. 
+Suppose we are restricted to a single allocation of treatments across the 20 titles.  Suppose we asked all subjects to rank all of the $K=20$ titles, or perhaps only to focus on the 'best' and 'worst' $C$ titles. 
+
+The true population has a large number of subjects (individuals). In our survey we are sampling some number $N$ of individuals. Let each subject be indexed by $i$, so a particular sample will contain subjects $i=1,...,N$.
 
 \
+
+#### Calc. 1: Detect 'minimally important effect?' (with simple assignment) {-}
 
 *We might frame our test and power calculation as the following:*
 
-Suppose the 'Minimal effect of interest' that we want to be able to detect is (sort of the 'alternative hypothesis HA')...\*
+Suppose the 'Minimal effect of interest' that we want to be able to detect is (sort of the 'alternative hypothesis HA')...
  
-HA: "One title is ranked by a share of the population that is one and a half times as high as any other title."
+> HA: "One title is ranked by a share of the population that is one and a half times as high as any other title."
 
-If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if assuming this, the computations below should *underestimate* the necessary sample size.
+If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if we assume all other titles share the same average ranking, the computations (below) should *underestimate* the necessary sample size.
 
-I.e., defining $r_{i,j}$ as the rank given title $i$ by subject $j$, and letting $\bar{R^1_j}=\frac{1}{n}\sum I(r_{i,j}=1)$ be the share of the sample ranking title $j$ as first, we may consider a case where $\bar{R^1_j} > \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}$. (I think the latter term may simply be \frac{3}{2}\frac{19}{2}, or something similar, the 'average rank'.) 
+I.e., defining $r_{k,i}$ as the rank given to title $k$ by subject $i$, and letting $\bar{R^1_i}=\frac{1}{N}\sum I(r_{k,i}=1)$ be the share of the sampled population (subjects) ranking title $k$ as first...
 
-... perhaps, we want to power our test so, in such a case, we have an 80% chance that we ‘find an effect’. I.e., an 80% chance that our test statistic (whatever it is) tells us that "it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”
+we may consider a case where $\bar{R^1_j} > \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}$ for some title $j$ relative to all other titles $k$.\* 
 
-(But I don’t really think that that is what we are looking for.)
+<div class="marginnote">
+I think the latter term may simply be $\frac{3}{2}\frac{19}{2}$, or something similar, the 'average rank'.
+</div>
 
-To test for this in we would follow a certain procedure, e.g., (and I am not sure this is an appropriate procedure) 
-
-1. Find the title 'j' that has the most people ranking it first in our sample, share $\bar{R^1_j}$
-
-2. Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size $N$ (our actual sample size), the average rank of the highest-ranked title would be as high as $\bar{R^1_j}$.
-
-3. If this computed probability of such an extreme result, given our sample size, $P(N, \bar{R^1_j})$ is below our threshold $0.05$ we 'reject the null.'
 \
 
-Given such a procedure, we can now simulate (or perhaps calculate) the power of our design and test against the above HA.
+ 
+**Perhaps, we want to power our test so, for the "HA" described above, we have an 80% chance that we ‘find an effect’.** I.e., an 80% chance that our test statistic (whatever it is) tells us that "it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”\*\*
 
-For each simulated sample $t$:
-
-- Draw $N$ observations from an imagined 'true population', 
-  - with 20 ranks being drawn for each of the $N$ individuals 
-  - with one title (the same one always) having a 2/20 probability of being drawn for the first rank, and the other 19 titles each having a 1/20 probability of being drawn for the first rank (OK, this doesn't add up, adjust the fraction slightly)
-- Compute $[\bar{R^1_j}]^t$ and then $P(N, [\bar{R^1_j}]^t) \equiv [P]^t$
-
-Over a sufficient number of simulations, determine the average probability of 'rejecting the null' in favor of the above HA (specifically for the 'correct' title $j$).\*\* This is the power of the test.
 <div class="marginnote">
-\*\* This last point is a wrinkle I've not seen in previous work involving power calculations, so I hope I am not missing something here. 
+\*\* However,  I don’t really think that that is *really* what we are looking for, as we are facing a *decision* problem.
 </div>
  
+**To test for this** we would follow a certain procedure, e.g.,\*\*
+
+<div class="marginnote">
+\*\*\*  I am not sure this is an appropriate procedure.
+</div>
+ 
+1. Find the title 'j' that has the most people in our *sample* who rank it first; call this share $\bar{R^1_j}$
+
+2. Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size $N$ (our actual sample size), the average rank of the highest-ranked title would be as high as $\bar{R^1_j}$.\*\*\*\*
+<div class="marginnote">
+\*\*\*\* Ideally there is an analytical formula for this; worth looking up.
+</div>
+ 
+3. If this computed 'probability of such an extreme result', given our sample size $N$---$P(N, \bar{R^1_j})$--- is below our threshold $\alpha=0.05$ we 'reject the null.'
+
+\
+
+We have defined a (design and) testing procedure. We can now **simulate** (or perhaps analytically calculate) **the power (of our design and test) to detect the above HA**, as follows. 
+
+Run $T$ simulations $(t=1,...,T)$.  For each simulated sample $t$:
+
+- Draw $N$ observations from an imagined 'true population', i.e., 
+  - for each of the $N$ subjects drawn, say, 'subject $i$', for each of their 'ranks $r=1,2,..,20$', draw a title (by random) to be assigned this rank ($r_{k,i}=r$), 
+  - with one title (the same one always) having a $\frac{2}{21}$ probability of being drawn for the first rank, and the other 19 titles each having a $\frac{1}{21}$ probability of being drawn for the first rank
+- Compute $[\bar{R^1_j}]^t$: the average rank for each title in simulation $t$,
+  - and then compute (or simulate)  $P(N, [\bar{R^1_j}]^t) \equiv [P]^t$, the test statistic as defined above, the 'likelihood of such an extreme result under the null hypothesis of random ranks'
+
+Over a sufficient number of simulations, determine the average probability of 'rejecting the null' in favor of the above HA (specifically for the 'correct' title $j$).\* This is the estimated power of the test.
+
+<div class="marginnote">
+\* This last point is a wrinkle I've not seen in previous work involving power calculations, so I hope I am not missing something here.  Perhaps we should say something like "power of the test in the right direction".
+</div>
+ 
+ \
+ 
+
+#### Calc. 2: Find a title in the top $\eta$ (e.g., third) of the 'value of title' distribution (with simple assignment) {-}
+
+For any target outcome (movie box office, general acclaim, etc.), each of the ($K=20$) titles will have some *true population parameter*. 
+
+Let us call the parameter of interest $\theta_k$ for title $k$, which we will call the 'value of title $k$'. For now, let us assume that this 'population parameter' represents the mean (or some other function?) of something that we can observe in our survey from each sampled subject.\*
+<div class="marginnote">
+\* Of course, for this example, and in general, there are many reasons why we may not be able to observe exactly the thing that informs our parameter from a particular survey. Our survey/experiment design may not be able to get subjects to tell us exactly what we want to know about their impressions of the title. (E.g., they may not themselves know which title would be most likely to get them to attend the film. Even if we ask them something related to this like, "would you like us to email you a discount coupon for a movie with his title?", this may not perfectly track with movie-attendance choices in other contexts.
+</div>
+
+Consider a '(prior) distribution over parameter $\theta_k$ for each title $k$'.\*\*
+<div class="marginnote">
+\*\* I won't get into the details here about what this distribution means in a philosophical sense. There are various types of Bayesian conceptions of this. Perhaps another way of thinking about it is that each title was as if randomly drawn from some distribution of titles.
+</div>
+ 
+Without further information, we might let (our belief about) the distribution of this parameter for each title be the same. We might consider that, e.g., the "expected revenue from each title" is Normally distributed $\theta_k \sim N(\mu,\sigma^2) \forall k$.
+
+Perhaps each subject's ranking of titles is monotonic (i.e., rank-preserving) in the true probability that they would attend a movie with each of these titles.
+
+\
+
+Perhaps, we want to choose a sample size such that the title we claim has the "best overall ranking in our sample" has a $B=0.8$ or greater chance of being in the top-third of the true most-profitable titles. 
+
+Note that choosing a title that is "most likely to be in the top third" is not necessarily the same as "choosing the title with the greatest expected profit". Our ranks are a multi-dimensional measure; thus one title need not 'dominate' the other title. E.g., in a sample of $N=100$ title $A$ may be ranked first by 10 people and last by 90 people, while title $B$ may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.\*
+<div class="marginnote">
+\* E.g., perhaps this implies a 90% probability that $B$ will be more profitable than $A$, but for the 10% of the states-of-the world when is more profitable than $B$, $A$ is 100 times more profitable. This would imply that title $A$ has a greater expected value profit, but also involves more risk.
+</div>
+ 
+\
+
+**Nonetheless**,
+
+Consider whether title $k$ is among the titles that is 'ranked in the top-third' by the largest   share of the population. More specifically, consider $\bar{R}^{7+}_k \equiv E[r_{k}\leq7]$ as the  'share of the population ranking title $k$ top 7 out of 20 or better. Let $D_k=1$ if $\sum_{k,j}1\big(\bar{R}^{7+}_k>\bar{R}^{7+}_j\big)\geq7$; i.e., if $k$ is one of the top-7 titles in terms of the measure 'ranked in the top third'.
+
+
+We might want to... 
+
+1. based on our sample (and some assumptions?) choose the title with the highest chance of being ranked in the top-third by the population as a whole ($k^\ast \equiv argmax_k\big(P(D_k=1)\big)$), and
+
+2. sample $N$ large enough so that this 'chosen title' has a $\beta=0.8$ chance of indeed being ranked in the top-third by the population as a whole, i.e., $P(D_{k^\ast}=1)>\beta=0.8$.
+
+\
+
+I imagine that under certain (overly restrictive?) assumptions about the distribution of rankings, we would be able to calculate:
+
+1. The appropriate procedure for selecting the title that is best by the above metric ($k^\ast$)
+
+2. Determine the minimum neccesary $N$ to achieve this $\beta=0.8$ chance of ...
+
+
+*But do we want to do this?!*
+
+
+
 
 #### Sequential/adaptive designs, multi-armed bandits {-}
 
