@@ -1,9 +1,17 @@
----
-title: "multilevel models, qstep, Gabriel KAtz"
-output: html_document
----
+# Multi-level models 
 
-#Introduction
+Sources:
+
+- qstep, Gabriel Katz
+- [Statistical rethinking](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded/multilevel-models.html)
+
+
+McElreath:
+
+> When it comes to regression, multilevel regression deserves to be the default approach.
+
+
+## Introduction
 
 - Came from test scores modeling, education literature
 
@@ -20,13 +28,13 @@ Accounts for heterogeneity and dependence
 
 - correlated behaviors within the same group (??)
 
-# Some basic theory
+## Some basic theory
 
 Example: student i, score $y_i$, i=1,...l
 
 Characteristics of i $X_i$ and of school j
 
-## Level 1 model
+### Level 1 model
 
 $y_i = \alpha_j + \beta x_i + \epsilon_i$
 
@@ -36,7 +44,7 @@ Intercept varies across schools
 New approach allows you to make the random effect term as much of a function of ?? to give it more flexibility
 
 
-## Level 2
+### Level 2
 
 $\alpha_j=\lambda + \delta z_j + v_j$
 
@@ -65,19 +73,20 @@ Could also have a 'random slope' model; the model with heterogeneity
 
 Could affect the impact of student effort; could affect students' average marks, or both
 
-### Intra-cluster correlations
+#### Intra-cluster correlations {-}
+
 From David McKenzie's WorldBank blog. [Tools of the Trade: Intra-cluster Correlations](https://blogs.worldbank.org/impactevaluations/tools-of-the-trade-intra-cluster-correlations) 
 
 You can calculate the ICC using ANOVA estimation.
 
-```{r}
+```
 icc_anova <- aov(outcome ~ group,data = df) %>% summary
 icc <- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 
 ```
 
 
-## Alternative/Naive approaches
+### Alternative/Naive approaches
 
 1. Could also do 'one regression per school'
 
@@ -90,7 +99,7 @@ icc <- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 
 3. Add both? no, these are perfectly collinear (although there are some attempts to relax this)
 
-## 'old way': two-stage regression
+### 'old way': two-stage regression
 
 - i. school dummies in individual regression
 - ii. regress dummies on school covariates
@@ -101,7 +110,7 @@ Problems:
 - ignoring error terms of dummy estimates $\rightarrow$ spurious significance
 
 
-## How many higher-level units do you need?
+### How many higher-level units do you need?
 
 - Debate in the literature ... conventional answers ask for 25; this only pertains to frequentist work, not Bayesian
 ... because it is not based on asymptotics
@@ -110,15 +119,15 @@ Problems:
 
 
 
-## Other names: Random effects hierarchical, etc.
+### Other names: Random effects hierarchical, etc.
 
-# Fitting mlm in practicce
+## Fitting mlm in practicce
 
 R and Stata good for simple standard models
 
 Winbugs enables complicated models (there is a package that derives the posteriors for you)
 
-# Stata notes
+## Stata notes
 
 'xtreg, re' is random intercept
 ... there is also 'mreg'

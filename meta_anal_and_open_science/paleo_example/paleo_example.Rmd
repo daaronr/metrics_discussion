@@ -1,4 +1,4 @@
-# Meta-analysis arbitrary example: the 'Paleo diet' {#paleo-example}
+# Meta-analysis arbitrary example: the 'Paleo diet' {-#paleo-example}
 
 Introduction and discussion
 

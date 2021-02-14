@@ -1,4 +1,6 @@
-# Causal pathways - mediators {#mediators}
+# **CAUSAL PATHS AND LEVELS OF AGGREGATION** {-}
+
+# Mediation modeling and its massive limitations {#mediators}
 
 ## Mediators (and selection and Roy models): a review, considering two research applications
 

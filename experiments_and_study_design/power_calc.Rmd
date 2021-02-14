@@ -510,7 +510,7 @@ power_vals <- tibble(
 
 \
 
-## Digression: Power calculations/optimal sample size for 'lift' in a ranking case
+## Digression: Power calculations/optimal sample size for 'lift' in a ranking case {#lift-test}
 
 We want to know what the 'best title for our new movie' is. Twenty titles have been suggested. We have funds to do a survey of a relevant representative audience. 
 

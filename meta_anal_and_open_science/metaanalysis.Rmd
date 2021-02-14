@@ -1,3 +1,5 @@
+# **OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS** {-#other_approaches}
+
 # Meta-analysis and combining studies: Making inferences from previous work {#metaanalysis}
 
 My opinion on why this is so important (unfold):

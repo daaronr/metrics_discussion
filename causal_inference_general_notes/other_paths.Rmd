@@ -1,4 +1,4 @@
-# [Other paths to observational identification]{#other_paths}
+# [Causal inference: Other paths to observational identification]{#other_paths}
 
 
 ## Fixed effects and differencing

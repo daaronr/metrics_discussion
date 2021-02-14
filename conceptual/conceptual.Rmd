@@ -1,12 +1,30 @@
-#  Conceptual: approaches to statistics/inference and causality {#conceptual}
+# **BASIC STATISTICAL APPROACHES AND FRAMEWORKS**  {#conceptual}
+
+
+The first theme in this book: *what is statistics and what is trying to do?* 
+
+After a conceptual discussion, we go over some 
+
+*Conceptual: approaches to statistics/inference and causality*
+
+## 'Learning and optimization' as an alternative to statistical inference
+
+In many real-world cases we use data and 'statistics' *not* to learn about the world for its own sake, but simply in order to make the 'best' decision.  
+
+These 'decision optimization' cases are referred to as 'reinforcement learning' (I think). In collecting data and planning our analysis and experimental interventions (if any), we need not be directly concerned with 'statistical power' nor with hypothesis testing for its own sake. We might prefer to learn *a little bit* about each of many possible options, with a very low chance of finding a 'statistically significant result', over learning a lot about one or two particular options. See the 'movie titles' example discussed in section \@ref{#lift-test}.
+
+## Statistical inference 
 
 ## Bayesian vs. frequentist approaches
 
+
+<!-- 
 Folder: bayesian
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
+-->
 
 
-### Interpretation of CI's (aside)
+### Interpretation of frequentist CI's (aside)
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The fact that 95% of all (correct) CIs contain the true value does not mean that 95% of those that exclude zero do so correctly. You could have (say) 59% correct coverage for 10% excluding zero and 99% for 90% including zero.</p>&mdash; Stephen John Senn (\@stephensenn) <a href="https://twitter.com/stephensenn/status/1219680319114227714?ref_src=twsrc%5Etfw">January 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -16,4 +34,6 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 ### DAGs and Potential outcomes
 
 ## Theory, restrictions, and 'structural vs reduced form'
+
+
 

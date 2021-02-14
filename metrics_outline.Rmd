@@ -27,7 +27,7 @@ If you are involved with this project, you can find a brief guide (somewhat WIP)
 
 ```
 
-## [Conceptual: approaches to statistics/inference and causality](#conceptual) {-}
+## [Basic statistical approaches and frameworks](#conceptual) {-}
 
 -  Bayesian vs. frequentist approaches
 
@@ -43,7 +43,11 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 -  Theory, restrictions, and 'structural vs reduced form'
 
-## [Getting, cleaning and using data; project management and coding](#data-sci) {-}
+## [Regression and control approaches, robustness](#reg_control) {-}
+
+<!--
+
+[Getting, cleaning and using data; project management and coding](#data-sci) {-}
 
 <div class="marginnote">
 This will build on my content [here](https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data), and integrate with it.
@@ -55,7 +59,7 @@ This will build on my content [here](https://daaronr.github.io/writing_econ_rese
 - Good coding practices
 - Data sharing and integrity
 
-
+-->
 <!--- #### New tools and approaches to data (esp 'tidyverse')
 
 #### Style and consistency
@@ -66,8 +70,7 @@ Indenting, snake-case, etc
 
 --> 
 
-
-
+<!--
 ## Basic regression and statistical inference: Common mistakes and issues {-}
 
 Simple identification issues: "Bad control" ("colliders"); Endogenous control: Are the control variables you use endogenous? (E.g., because FDI may itself affect GDP per capita)
@@ -89,14 +92,18 @@ Interpretation and inference:
 -  Multiple hypothesis testing (MHT)
 - 'Moderators', confusion with nonlinearity
 - Choice of test statistics (including nonparametric)
+-->
 
-<!-- (Or get to this in the experimetrics section) -->
+<!-- (Or get to this in the experimetrics section) 
 
 How to display and write about regression results and tests
 
 Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 
-## LDV and discrete choice modeling {-}
+--> 
+
+
+<!-- ## LDV and discrete choice modeling {-}
 
 ## Robustness and diagnostics, with integrity {-}
 
@@ -109,7 +116,14 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 -  Machine Learning (statistical learning): Lasso, Ridge, and more
 -  Limitations to inference from learning approaches
 
-## IV and its many issues {-}
+--> 
+
+
+## Causal inference through observation{-#caus_inf_obs} {-}
+
+
+<!-- 
+##  [Causal inference: IV (instrumental variables) and its limitations]  {-#iv_limitations}
 
 - Instrument validity
 - Exogeneity vs. exclusion
@@ -121,18 +135,25 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 -  Weak instruments, other issues
 - Reference to the use of IV in experiments/mediation
 
-## [Other paths to observational identification](#other_paths) {-}
+## [Causal inference: Other paths to observational identification](#other_paths) {-}
 
 - Fixed effects and differencing
 -  DiD
 -  RD
 -  Time-series-ish panel approaches to micro
 
-## Causal pathways: [Mediation modeling and its massive limitations](#mediators) {-}
+
+-->
+
+
+## Causal paths and levels of aggregation {-}
+
+<!-- 
+## Causal paths: [Mediation modeling and its massive limitations](#mediators) {-}
 
 An applied review
 
-## Causal pathways: [selection, corners, hurdles, and 'conditional on' estimates](#selection_cop) {-}
+## Causal paths: [selection, corners, hurdles, and 'conditional on' estimates](#selection_cop) {-}
 
 'Corner solution' or hurdle variables and 'Conditional on Positive'
 
@@ -141,28 +162,35 @@ An applied review
 \
 
 Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
+-->
 
 
-## [Survey design and implementation; analysis of survey data](#surveys)
+## Experiments and surveys: design and analysis {-} 
+
+<!-- 
+## [Survey design and implementation; analysis of survey data](-#surveys)
 
 ## [(Experimental) Study design: Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_etc) {-}
 
-<!-- experiments_and_study_design/why_experiment_design.Rmd -->
+-->
 
+<!-- experiments_and_study_design/why_experiment_design.Rmd 
 Why run an experiment or study?
 
-<!-- - Sugden and Sitzia critique here, give more motivation -->
+- Sugden and Sitzia critique here, give more motivation -->
 
+<!--
 Causal channels and identification, ruling out alternative hypotheses, etc
 
 Types of experiments, 'demand effects' and more artifacts of artifical setups
 
 Generalizability (and heterogeneity)
 
+
 ## (Experimental) Study design: Background and quantitative issues {-}
-
+-->
 <!-- experiments_and_study_design/quant_design_power.Rmd -->
-
+<!-- 
 - Pre-registration and Pre-analysis plans
 - The hazards of specification-searching
 - Sequential and adaptive designs
@@ -171,14 +199,16 @@ Generalizability (and heterogeneity)
 (Links back to [power analyses](#power))
 
 
-## (Experimental) Study design: (Ex-ante) Power calculations
+
+## (Experimental) Study design: (Ex-ante) Power calculations {-}
 
 - What sort of 'power calculations' make sense, and what is the point?
 - The 'harm to science' from running underpowered studies
 - Power calculations without real data
 - Power calculations using prior data
 
-## ['Experimetrics' and measurement of treatment effects from RCTs](#experimetrics_te) {-}
+## ['Experimetrics' and measurement of treatment effects from RCTs](-#experimetrics_te) {-}
+-->
 
 <!-- Which error structure? Random effects?
 
@@ -195,19 +225,24 @@ Generalizability (and heterogeneity)
 
 --> 
 
-## [Making inferences from previous work; Meta-analysis, combining studies](#metaanalysis)
+# [Other approaches, techniques, and applications](#other_approaches) {-}
 
-### Publication bias
+<!--
+## [Making inferences from previous work; Meta-analysis, combining studies](-#metaanalysis)
 
-### Combining a few (your own) studies/estimates
+- Publication bias 
 
-### Full meta-analyses
+- Combining a few (your own) studies/estimates
+
+- Full meta-analyses
 
 - Models to address publication biases
 
-## The Bayesian approach
+## The Bayesian approach {-}
 
-## Some key resources and references
+-->
+
+## Some key resources and references {-}
 
 [@angrist2008mostly]
 

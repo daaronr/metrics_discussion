@@ -1,4 +1,6 @@
-# IV and its many issues
+# **CAUSAL INFERENCE THROUGH OBSERVATION** {-#caus_inf_obs}
+
+# Causal inference: IV (instrumental variables) and its limitations {#iv_limitations}
 
 
 ### Some casual discussion {-}

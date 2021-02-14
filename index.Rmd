@@ -98,9 +98,7 @@ install.packages("tufte")
 
 ```{r pull-in-docs}
 
-
 try_download("https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE", here::here("data_sci","ds_for_bsns_notes_remote.Rmd"))
-
 
 
 ```

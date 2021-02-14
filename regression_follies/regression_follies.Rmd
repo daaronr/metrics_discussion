@@ -1,5 +1,6 @@
-# Basic statistical inference and regressions: Common mistakes and issues {#reg-follies}
+# **REGRESSION AND CONTROL APPROACHES, ROBUSTNESS** {-#reg_control}
 
+# Basic statistical inference and regressions: Common mistakes and issues {#reg-follies}
 
 ## Basic regression and statistical inference: Common mistakes and issues briefly listed
 
