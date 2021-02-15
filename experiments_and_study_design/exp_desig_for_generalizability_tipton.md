@@ -27,7 +27,7 @@ Education researchers seemed to target particular schools, geographically, and i
 Consider sources of TE heterogeneity
 
 
-## What would statisticians like?
+  ## What would statisticians like?
 
 If the goal is to estimate a PATE, researchers would define clearly:
 - A target population;

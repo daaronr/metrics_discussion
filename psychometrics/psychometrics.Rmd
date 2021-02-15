@@ -1,0 +1,86 @@
+# **OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS** {-#other_approaches}
+
+# Boiling down: Construct validation/reliability, Factor analysis, and Psychometrics {#psychometrics}
+
+
+## Constructs and construct validation and reliability
+
+*Reliability vs validity:*
+
+Reliability [wiki](https://en.wikipedia.org/wiki/Reliability_(statistics)): "similar[ity] of results under similar conditions"
+
+Validity of a tool [wiki]: -- "the degree to which the tool measures what it claims to measure"
+
+### Validity: general discussion 
+
+> In psychometrics, validity has a particular application known as test validity: "the degree to which evidence and theory support the interpretations of test scores" ("as entailed by proposed uses of tests").[3]
+
+
+> Construct validity refers to the extent to which operationalizations of a construct (e.g., practical tests developed from a theory) measure a construct as defined by a theory. It subsumes all other types of validity.
+
+There are a number of other measures and types of validity defined, some of which seem to involve subjective judgement, others of which are formalizable
+
+\
+
+### Reliability: general discussion 
+
+Reliability of measurements and multicomponent measuring instruments:
+
+- Inter-rater reliability
+- Test-retest reliability
+- Inter-method reliability
+- Internal consistency reliability ("across items within a test."[6]")
+
+\
+"Classical test theory"
+
+> measurement errors are essentially random. ... they are not correlated with true scores or with errors on other tests.
+
+> variance of obtained scores is simply the sum of the variance of true scores plus the variance of errors of measurement.[7]
+
+$$\sigma _{X}^{2}=\sigma _{T}^{2}+\sigma _{E}^{2}}\sigma _{X}^{2}=\sigma _{T}^{2}+\sigma _{E}^{2}$$
+
+> The reliability coefficient is defined as the ratio of true score variance to the total variance of test scores.
+
+<div class="marginnote">
+Why is a larger reliability coefficient a good thing? I guess because it indicates that made the measurement error part as small as possible given the true score variance. But wouldn't it be better to choose a measure with a lower 'true score variance'?
+</div>
+ 
+
+
+
+### @raykovMetaanalysisScaleReliability2013
+
+
+@raykovMetaanalysisScaleReliability2013
+
+**The basic problem** (?)
+
+Paraphrasing...
+
+> frequently ... in empirical social and behavioral research, we consider a measuring instrument consisting of a prespecified set of $p$ congeneric [related?] components denoted $X_1, ..., X_p$. ... 
+
+> Let $T_1, ..., T_p$ and $E_1, ..., E_p$ be their corresponding true scores and error scores, respectively, with the latter assumed uncorrelated [to each other]
+
+... Like 'measurement error' in Econometrics
+
+> The scale components thus measure the same underlying latent dimension, designated $\xi$, with possibly different units and origins of measurement as well as error variances; that is,
+
+$$X_i= T_i + E_i = \alpha_i + \beta_i \xi + E_i$$
+
+Often used, of concern: the "composite (scale) score" $Z = X_1 + X_2 + ... + X_k$  (e.g., Likert scale index)
+
+
+\
+
+- Convergent and discriminant validity: Things meant to measure similar things should correlate, things meant to not be related are not
+
+- "analysis of composite reliability"
+
+Latent factors/latent variables 
+
+## Factor analysis and principal-component analysis
+
+## Other
+
+"Common methods bias"

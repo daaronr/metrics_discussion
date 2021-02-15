@@ -1,4 +1,3 @@
-# **OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS** {-#other_approaches}
 
 # Meta-analysis and combining studies: Making inferences from previous work {#metaanalysis}
 

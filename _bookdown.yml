@@ -10,7 +10,7 @@ rmd_files:
   "causal_inference_general_notes/iv-issues.Rmd",  "causal_inference_general_notes/other_paths.Rmd", 
   "mediation/mediators_lit_pinto_etc.Rmd", "sample_selection/selection_models_lee.Rmd", "multilevel-models/multilevel_models_qstep.Rmd",
   "survey_design_weighting/survey_design_weighting.Rmd", "experiments_and_study_design/why_experiment_design.Rmd", "experiments_and_study_design/quant_design_power.Rmd", "experiments_and_study_design/power_calc.Rmd", "experiments_and_study_design/experimetrics_te.Rmd",
-  "meta_anal_and_open_science/metaanalysis.Rmd", "bayesian/bayes_notes.Rmd",
+  "psychometrics/psychometrics.Rmd", "meta_anal_and_open_science/metaanalysis.Rmd", "bayesian/bayes_notes.Rmd",
   "data_sci/ds_for_bsns_notes_remote.Rmd", "meta_anal_and_open_science/paleo_example/paleo_example.Rmd", "data_sci/data_sci.Rmd", "references.Rmd"]
 clean: ["support"]
   

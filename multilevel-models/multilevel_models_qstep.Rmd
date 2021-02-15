@@ -1,26 +1,34 @@
-# Multi-level models 
+# Multi-level models {#mlm}
 
 Sources:
 
 - qstep, Gabriel Katz
 - [Statistical rethinking](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded/multilevel-models.html)
-
+@McElreath2015
 
 McElreath:
+
+> Multilevel models… remember features of each cluster in the data as they learn about all of the clusters. 
 
 > When it comes to regression, multilevel regression deserves to be the default approach.
 
 
-## Introduction
 
-- Came from test scores modeling, education literature
+<div class="marginnote">
+DR: When I first heard about this MLM stuff, coming from an econometric background, it seemed like trying to 'have your cake and eat it too.' If you 'control' at the level of clusters, how can you also make inferences about things that vary within clusters. I think I was wrong about this.
+</div>
+ 
 
-- Determinants at multiple levels ... e.g,. students' own characteristics and school characteristics
+See also: gelmanChapterMRPNoncensus 
 
 
-Standard response: clustered standard errors; this is essentially the same as the 'random intercept model'
+## Introduction (Qstep)
 
-There is not necessarily a hierarchy; school versus neighborhood... may overlap $\rightarrow$ 'cross-nested'/'cross-classified'; can have a hierarchy within some levels, not others
+(Gabriel or MLM?) came from test scores modeling, education literature.  Determinants at multiple levels ... e.g,. students' own characteristics and school characteristics
+
+Standard response: clustered standard errors; this is essentially the same as the 'random intercept model'.
+
+NoteThere is not necessarily a hierarchy; school versus neighborhood... may overlap $\rightarrow$ 'cross-nested'/'cross-classified'; can have a hierarchy within some levels, not others
 
 Panel/longitudinal (time/individual)
 
@@ -118,7 +126,7 @@ Problems:
 ?can't you also use simulation in frequentist models (bootstrap the MSE)...?
 
 
-
+@juddTreatingStimuliRandom2012
 ### Other names: Random effects hierarchical, etc.
 
 ## Fitting mlm in practicce
@@ -127,8 +135,15 @@ R and Stata good for simple standard models
 
 Winbugs enables complicated models (there is a package that derives the posteriors for you)
 
-## Stata notes
-
-'xtreg, re' is random intercept
+Stata:  'xtreg, re' is random intercept
 ... there is also 'mreg'
+
+
+## "Stimuli" (treatments) as a random factor
+
+
+"Treating Stimuli as a Random Factor in Social Psychology: A New and Comprehensive Solution to a Pervasive but Largely Ignored Problem"
+
+(John List talks a lot about 'randomizing across context' maybe there's an experimental econ literature on this too?)
+
 
