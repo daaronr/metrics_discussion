@@ -13,6 +13,8 @@ In many real-world cases we use data and 'statistics' *not* to learn about the w
 
 These 'decision optimization' cases are referred to as 'reinforcement learning' (I think). In collecting data and planning our analysis and experimental interventions (if any), we need not be directly concerned with 'statistical power' nor with hypothesis testing for its own sake. We might prefer to learn *a little bit* about each of many possible options, with a very low chance of finding a 'statistically significant result', over learning a lot about one or two particular options. See the 'movie titles' example discussed in section \@ref{#lift-test}.
 
+<!-- also see https://docs.google.com/document/d/1v_LflrtZP8ZEP8Xk_L8pKqHazmKcqEn6j4MYrTKrir4/edit -->
+
 ## Statistical inference 
 
 ## Bayesian vs. frequentist approaches

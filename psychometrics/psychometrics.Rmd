@@ -1,6 +1,6 @@
 # **OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS** {-#other_approaches}
 
-# Boiling down: Construct validation/reliability, Factor analysis, and Psychometrics {#psychometrics}
+# Boiling down: Construct validation/reliability, dimension reduction, factor analysis, and Psychometrics {#psychometrics}
 
 
 ## Constructs and construct validation and reliability
@@ -38,14 +38,13 @@ Reliability of measurements and multicomponent measuring instruments:
 
 > variance of obtained scores is simply the sum of the variance of true scores plus the variance of errors of measurement.[7]
 
-$$\sigma _{X}^{2}=\sigma _{T}^{2}+\sigma _{E}^{2}}\sigma _{X}^{2}=\sigma _{T}^{2}+\sigma _{E}^{2}$$
+$$\sigma_{X}^{2}=\sigma_{T}^{2}+\sigma_{E}^{2}}\sigma_{X}^{2}=\sigma_{T}^{2}+\sigma_{E}^{2}$$
 
 > The reliability coefficient is defined as the ratio of true score variance to the total variance of test scores.
 
 <div class="marginnote">
 Why is a larger reliability coefficient a good thing? I guess because it indicates that made the measurement error part as small as possible given the true score variance. But wouldn't it be better to choose a measure with a lower 'true score variance'?
 </div>
- 
 
 
 
