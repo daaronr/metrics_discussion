@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>11 Survey design and implementation; analysis of survey data | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
+  <meta name="description" content="11 Survey design and implementation; analysis of survey data | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="11 Survey design and implementation; analysis of survey data | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Survey design and implementation; analysis of survey data | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="11 Survey design and implementation; analysis of survey data | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   
   
   
 
-<meta name="author" content="Dr. David Reinstein," />
+<meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-02-15" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -100,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-
+<!-- 
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -124,7 +123,7 @@ function toggle_R() {
 
 document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
 
-</script>
+</script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
@@ -137,11 +136,562 @@ document.write('<input onclick="toggle_R();" type="button" value="Hide Global" i
 </script>
 -->
 
+<!-- FOLDING TEXT BOXES -->
+
+<script>
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: collapse.js v3.3.7
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+
++function ($) {
+  'use strict';
+
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
+
+  var Collapse = function (element, options) {
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.transitioning = null
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+    }
+
+    if (this.options.toggle) this.toggle()
+  }
+
+  Collapse.VERSION  = '3.3.7'
+
+  Collapse.TRANSITION_DURATION = 350
+
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
+
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
+
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var activesData
+    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+    if (actives && actives.length) {
+      activesData = actives.data('bs.collapse')
+      if (activesData && activesData.transitioning) return
+    }
+
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    if (actives && actives.length) {
+      Plugin.call(actives, 'hide')
+      activesData || actives.data('bs.collapse', null)
+    }
+
+    var dimension = this.dimension()
+
+    this.$element
+      .removeClass('collapse')
+      .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
+
+    this.$trigger
+      .removeClass('collapsed')
+      .attr('aria-expanded', true)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse in')[dimension]('')
+      this.transitioning = 0
+      this.$element
+        .trigger('shown.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse in')
+      .attr('aria-expanded', false)
+
+    this.$trigger
+      .addClass('collapsed')
+      .attr('aria-expanded', false)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse')
+        .trigger('hidden.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+  }
+
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  }
+
+  Collapse.prototype.getParent = function () {
+    return $(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+
+  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+    var isOpen = $element.hasClass('in')
+
+    $element.attr('aria-expanded', isOpen)
+    $trigger
+      .toggleClass('collapsed', !isOpen)
+      .attr('aria-expanded', isOpen)
+  }
+
+  function getTargetFromTrigger($trigger) {
+    var href
+    var target = $trigger.attr('data-target')
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+    return $(target)
+  }
+
+
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
+  $.fn.collapse.Constructor = Collapse
+
+
+  // COLLAPSE NO CONFLICT
+  // ====================
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+  // COLLAPSE DATA-API
+  // =================
+
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+    var $this   = $(this)
+
+    if (!$this.attr('data-target')) e.preventDefault()
+
+    var $target = getTargetFromTrigger($this)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+
+    Plugin.call($target, option)
+  })
+
+}(jQuery);
+</script>
+<script>
+window.initializeCodeFolding = function(show) {
+
+  // handlers for show-all and hide all
+  $("#rmd-show-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('show');
+    });
+  });
+  $("#rmd-hide-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('hide');
+    });
+  });
+
+  // index for unique code element ids
+  var currentIndex = 1;
+
+  // select all R code blocks
+  var rCodeBlocks = $('pre.sourceCode, pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.js');
+  rCodeBlocks.each(function() {
+
+    // create a collapsable div to wrap the code in
+    var div = $('<div class="collapse r-code-collapse"></div>');
+    if (show)
+      div.addClass('in');
+    var id = 'rcode-643E0F36' + currentIndex++;
+    div.attr('id', id);
+    $(this).before(div);
+    $(this).detach().appendTo(div);
+
+    // add a show code button right above
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
+    showCodeButton.append(showCodeText);
+    showCodeButton
+        .attr('data-toggle', 'collapse')
+        .attr('data-target', '#' + id)
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
+
+    var buttonRow = $('<div class="row"></div>');
+    var buttonCol = $('<div class="col-md-12"></div>');
+
+    buttonCol.append(showCodeButton);
+    buttonRow.append(buttonCol);
+
+    div.before(buttonRow);
+
+    // update state of button on show/hide
+    div.on('hidden.bs.collapse', function () {
+      showCodeText.text('Code');
+    });
+    div.on('show.bs.collapse', function () {
+      showCodeText.text('Hide');
+    });
+  });
+
+}
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.3.7
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle="dropdown"]'
+  var Dropdown = function (element) {
+    $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.VERSION = '3.3.7'
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+  function clearMenus(e) {
+    if (e && e.which === 3) return
+    $(backdrop).remove()
+    $(toggle).each(function () {
+      var $this         = $(this)
+      var $parent       = getParent($this)
+      var relatedTarget = { relatedTarget: this }
+
+      if (!$parent.hasClass('open')) return
+
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+    })
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we use a backdrop because click events don't delegate
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
+      }
+
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
+
+      $parent
+        .toggleClass('open')
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+    }
+
+    return false
+  }
+
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+    var $this = $(this)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
+    }
+
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
+
+    if (!$items.length) return
+
+    var index = $items.index(e.target)
+
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
+
+    $items.eq(index).trigger('focus')
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
+
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+</script>
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+.row { display: flex; }
+.collapse { display: none; }
+.in { display:block }
+.pull-right > .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<script>
+document.write('<div class="btn-group pull-right" style="position: absolute; top: 10%; right: 15%; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>')
+</script>
+
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -388,22 +938,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
 <li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a>
+<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
 <ul>
-<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-1"><i class="fa fa-check"></i>Sequential</a></li>
-<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.3.1</b> Adaptive</a></li>
+<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.4</b> Efficient assignment of treatments</a>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.4.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="13.4.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.4.2</b> How many treatment arms can you ‘afford’?</a></li>
-<li class="chapter" data-level="13.4.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.4.3</b> Other notes and resources</a></li>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations’?</a>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
@@ -416,9 +966,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
-<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
@@ -436,7 +986,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
 <ul>
@@ -471,7 +1021,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
 <li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation">Raykov and Marcoulides (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
 <li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
@@ -625,7 +1175,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
 <ul>
 <li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
-<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation">Manheimer et al. (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
 <li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
 <li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
 </ul></li>
@@ -673,7 +1223,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics, econometrics, experiment and survey methods, data science: Notes</a>
           </h1>
         </div>
 
@@ -693,7 +1243,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="survey-samplingintake" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Survey sampling/intake</h2>
-<div id="probability-sampling" class="section level3 unnumbered" number="">
+<div id="probability-sampling" class="section level3 unnumbered">
 <h3>Probability sampling</h3>
 <div class="marginnote">
 <p>Here: naive notes based on wikipedia, will be improved.</p>
@@ -704,7 +1254,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.</p>
 <p>The basic idea, if I understand correctly, is to define a population of interest and a ‘sample frame’ (the place we are actually drawing from, the empirical analogue of the population of interest perhaps).
 Essentially, rather than advertising or trying to recruit everyone, or have people enter by self selection, probability sampling select from the sample frame with a particular probability, and then actively tries to get the selected individuals to complete the survey. As only a smaller number of people are selected to be interviewed/fill out the survey, you can spend more time and money/incentives, trying to make sure they respond.</p>
-<p>Probability sampling also allows ‘stratification’, and oversampling of harder to reach groups. We potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.</p>
+<p>Probability sampling also allows ‘stratification,’ and oversampling of harder to reach groups. We potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.</p>
 <em>If we have an informative estimate of the TRUE shares in each strata</em> we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
 </div>
 <p><br />
@@ -713,10 +1263,10 @@ Essentially, rather than advertising or trying to recruit everyone, or have peop
 <p>A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in <a href="https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling">Wiki</a>)</p>
 </blockquote>
 <div class="marginnote">
-<p>Note that the ‘sampling frame’, ‘the source material or device from which a sample is drawn’, e.g, a telephone directory, may not exactly contain all elements of the ‘population of interest’ (e.g., the population with and without listed numbers).</p>
-<p>On the other hand this terminology doesn’t seem to be everywhere consistent, e.g., Salganik and H refer to it as ‘a list of all of the members in the population’.</p>
-<p>See ‘Missing elements’, ‘Foreign elements’, ‘Duplicate entries’ and ‘Groups or clusters’ …</p>
-<p>Also note that ‘Not all frames explicitly list population elements; some list only ’clusters’. For example, a street map can be used as a frame for a door-to-door survey.’</p>
+<p>Note that the ‘sampling frame,’ ‘the source material or device from which a sample is drawn,’ e.g, a telephone directory, may not exactly contain all elements of the ‘population of interest’ (e.g., the population with and without listed numbers).</p>
+<p>On the other hand this terminology doesn’t seem to be everywhere consistent, e.g., Salganik and H refer to it as ‘a list of all of the members in the population.’</p>
+<p>See ‘Missing elements,’ ‘Foreign elements,’ ‘Duplicate entries’ and ‘Groups or clusters’ …</p>
+<p>Also note that ‘Not all frames explicitly list population elements; some list only ’clusters.’ For example, a street map can be used as a frame for a door-to-door survey.’</p>
 </div>
 <p><br />
 </p>
@@ -733,16 +1283,16 @@ Essentially, rather than advertising or trying to recruit everyone, or have peop
 <li>Non-response bias (biggest issue?)</li>
 </ul>
 </div>
-<div id="np-sampling" class="section level3 unnumbered" number="">
+<div id="np-sampling" class="section level3 unnumbered">
 <h3>Non-probability sampling</h3>
-<p><span class="citation">Baker et al. (<a href="#ref-bakerSummaryReportAAPOR2013" role="doc-biblioref">2013</a>)</span></p>
+<p><span class="citation"><a href="references.html#ref-bakerSummaryReportAAPOR2013" role="doc-biblioref">Baker et al.</a> (<a href="references.html#ref-bakerSummaryReportAAPOR2013" role="doc-biblioref">2013</a>)</span></p>
 <p><a href="https://www.aapor.org/Education-Resources/Reports/Non-Probability-Sampling.aspx">Non-Probability Sampling - report of the aapor task force on non-probability sampling</a></p>
 <p>‘River sampling’</p>
 <p><br />
 </p>
-<div id="respondent-driven-sampling-from-rare-or-hidden-populations" class="section level4 unnumbered" number="">
+<div id="respondent-driven-sampling-from-rare-or-hidden-populations" class="section level4 unnumbered">
 <h4>Respondent-driven sampling (from rare or ‘hidden’ populations)</h4>
-<p><a href="https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf">sampling and estimation in hidden populations using respondent-driven sampling</a> <span class="citation">Salganik and Heckathorn (<a href="#ref-salganikSamplingEstimationHidden2004" role="doc-biblioref">2004</a>)</span></p>
+<p><a href="https://www.bebr.ufl.edu/sites/default/files/Sampling%20and%20Estimation%20in%20Hidden%20Populations.pdf">sampling and estimation in hidden populations using respondent-driven sampling</a> <span class="citation"><a href="references.html#ref-salganikSamplingEstimationHidden2004" role="doc-biblioref">Salganik and Heckathorn</a> (<a href="references.html#ref-salganikSamplingEstimationHidden2004" role="doc-biblioref">2004</a>)</span></p>
 <div class="marginnote">
 They suggest a way to use ‘RDS’ and then recover representativeness, under certain assumptions.
 </div>
@@ -808,13 +1358,13 @@ these types of samples. Further, we will show that these estimates are asymptoti
 <div class="marginnote">
 <p>See: <a href="https://www.researchgate.net/post/Measuring_composition_attitudes_of_rare_hidden_population_with_convenience_samples_river_sample_opt-in_G-based_what_to_do_read">Related question/post on ResearchGate here</a></p>
 </div>
-<div id="background-and-setup" class="section level3 unnumbered" number="">
+<div id="background-and-setup" class="section level3 unnumbered">
 <h3>Background and setup</h3>
 <p><em>Consider a case where:</em></p>
 <ol style="list-style-type: decimal">
-<li>We have a <strong>population-of-interest</strong> based on an affiliation, certain actions, or a set of ideas. E.g., Vegetarians; ‘Tea party conservatives’ in the US; Jews, both religious and ‘culturally Jewish’, Jazz musicians, “Goths” (‘ethnography’; Paul Hodkinson)</li>
+<li>We have a <strong>population-of-interest</strong> based on an affiliation, certain actions, or a set of ideas. E.g., Vegetarians; ‘Tea party conservatives’ in the US; Jews, both religious and ‘culturally Jewish,’ Jazz musicians, “Goths” (‘ethnography’; Paul Hodkinson)</li>
 </ol>
-<p>For this writeup, we will call the targeted group ‘the Jazz Movement’ or ‘the Jazz population’. Individuals will either be ‘Jazzy’ (J) or ‘non-Jazzy’ (NJ).</p>
+<p>For this writeup, we will call the targeted group ‘the Jazz Movement’ or ‘the Jazz population.’ Individuals will either be ‘Jazzy’ (J) or ‘non-Jazzy’ (NJ).</p>
 <p>There are some <strong>disagreements about how to define this group</strong>.</p>
 <p><br />
 </p>
@@ -828,9 +1378,9 @@ these types of samples. Further, we will show that these estimates are asymptoti
 <p><br />
 </p>
 <ol start="3" style="list-style-type: decimal">
-<li>We have collected survey responses from <strong>self-selected ‘convenience’ samples</strong> (=‘internet surveys’?) across several years; this most resembles <em>‘river sampling’</em></li>
+<li>We have collected survey responses from <strong>self-selected ‘convenience’ samples</strong> (=‘internet surveys?’) across several years; this most resembles <em>‘river sampling’</em></li>
 </ol>
-<p>… based on advertising and word-of-mouth in a variety of outlets (‘referrers’) associated with the ‘movement’.*</p>
+<p>… based on advertising and word-of-mouth in a variety of outlets (‘referrers’) associated with the ‘movement.’*</p>
 <div class="marginnote">
 <p>*Particularly:</p>
 <ul>
@@ -876,28 +1426,28 @@ these types of samples. Further, we will show that these estimates are asymptoti
 </p>
 <p><strong>Why do we care?</strong> <em>We want to know these things for several reasons, including…</em></p>
 <div class="marginnote">
-<p>Our ‘theory of change’.</p>
+<p>Our ‘theory of change.’</p>
 </div>
 
 <div class="fold">
 <p>To find ways to build membership (perhaps ‘expand and diversify’), and increase participation in the movement (including specific behaviors like donating), especially through…</p>
 <ul>
-<li>Funding causal drivers (policies) that ‘work’, and</li>
+<li>Funding causal drivers (policies) that ‘work,’ and</li>
 <li>Profiling and targeting ‘likely Jazzers’ from outside the movement</li>
 </ul>
 <p>To understand and better represent the attitudes of the movement’s members in our movement-wide activities. <!-- See --></p>
-<p>‘For general understanding of the movement and its members’, to inform a wide range of decisions across the movement, and further research into the movement.</p>
+<p>‘For general understanding of the movement and its members,’ to inform a wide range of decisions across the movement, and further research into the movement.</p>
 </div>
 <p><br />
 </p>
 </div>
-<div id="our-convenience-method-issues-alternatives" class="section level3 unnumbered" number="">
+<div id="our-convenience-method-issues-alternatives" class="section level3 unnumbered">
 <h3>Our ‘convenience’ method; issues, alternatives</h3>
-<p>Our current approach may be described as a combination of ‘convenience sampling’ (‘river sampling’ and ‘opt-in’) and ‘snowball sampling’. The major distinction from probability sampling (as I see it) is…</p>
+<p>Our current approach may be described as a combination of ‘convenience sampling’ (‘river sampling’ and ‘opt-in’) and ‘snowball sampling.’ The major distinction from probability sampling (as I see it) is…</p>
 <p><em>Probability sampling</em> identifies a <em>population of interest</em> and a <em>sample frame</em> meant to capture this population. Rather than appealing to this entire population/frame, probability sampling randomly (or using stratification/clustering) samples a ‘probability share’ (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze —and perhaps adjust for—the rate of non-response.</p>
 <p>In contrast,</p>
 <div class="marginnote">
-<p>I have heard that ‘internet surveys’, if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.</p>
+<p>I have heard that ‘internet surveys,’ if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.</p>
 </div>
 <p><br />
 </p>
@@ -906,18 +1456,18 @@ these types of samples. Further, we will show that these estimates are asymptoti
 <p>Another example would be a gaming company that wants to know how one of their games is doing in the market one day after its release. Its analyst may choose to create an online survey on Facebook to rate that game.</p>
 </blockquote>
 <blockquote>
-<p><strong>Bias</strong> The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on ‘Convenience sampling’, cites Borenstein et al, 2017)</p>
+<p><strong>Bias</strong> The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on ‘Convenience sampling,’ cites Borenstein et al, 2017)</p>
 </blockquote>
-<p><em>This statement is deeply pessimistic…</em> ‘the bias cannot be measured’. We might dig more deeply to see if there are potential approaches to dealing with this</p>
+<p><em>This statement is deeply pessimistic…</em> ‘the bias cannot be measured.’ We might dig more deeply to see if there are potential approaches to dealing with this</p>
 <p><br />
 </p>
 </div>
-<div id="our-methodological-questions" class="section level3 unnumbered" number="">
+<div id="our-methodological-questions" class="section level3 unnumbered">
 <h3>Our methodological questions</h3>
 <p><strong>Analysis:</strong> Are there any approaches that would be better than ‘reporting the unweighted raw results’ (e.g., weighting, cross-validating something or other) to using this “convenience/river” sample to either:</p>
 <ol style="list-style-type: lower-roman">
 <li><p>Getting results (either levels or changes) likely ‘to be more ’representative of the movement as a whole’ than our unweighted raw measures of the responses in each year?</p></li>
-<li><p>Getting measures of the extent to which our reports are likely to be biased due to undercoverage, ‘overcoverage’, and differential participation rates, … perhaps bounds on this bias.</p></li>
+<li><p>Getting measures of the extent to which our reports are likely to be biased due to undercoverage, ‘overcoverage,’ and differential participation rates, … perhaps bounds on this bias.</p></li>
 </ol>
 <p><br />
 </p>
@@ -941,12 +1491,12 @@ Notes:
 -->
 <!-- Some flexibility/two-way interaction here in that we have a lot of different goals with the survey (i.e. different kinds of questions being posed) and depending on the answers you discern, we might give up on some of these questions and focus on others
 -->
-<div id="sensitivity-testing-ideas" class="section level4 unnumbered" number="">
+<div id="sensitivity-testing-ideas" class="section level4 unnumbered">
 <h4>Sensitivity testing ideas</h4>
-<p>As we can separately measure demographics (as well as stated beliefs/attitudes) for respondents from each referrer, we could consider testing the sensitivity of the results to “how we weight responses from each referrer”.</p>
+<p>As we can separately measure demographics (as well as stated beliefs/attitudes) for respondents from each referrer, we could consider testing the sensitivity of the results to “how we weight responses from each referrer.”</p>
 <ul>
 <li><p>How much would results vary if we compare the widest group to the most motivated “first responders” to our regular posted survey?</p></li>
-<li><p>Use demographics derived from some weighted estimate of surveys in all previous years to re-weight the survey data in the present year to be “more representative”? (But how to weight and judge previous surveys and referrers?)</p></li>
+<li><p>Use demographics derived from some weighted estimate of surveys in all previous years to re-weight the survey data in the present year to be “more representative?” (But how to weight and judge previous surveys and referrers?)</p></li>
 <li><p>A Bayesian meta-analytic approach where the ‘true population parameters’ are unknown and each survey provides an imperfect window.</p>
 <ul>
 <li>As noted we subjectively think that some referrers are more representative than others, so maybe we can do something with this using Bayesian tools.)
@@ -955,7 +1505,7 @@ We may have some measures of the demographics of participants on some of the ref
 </ul>
 
 <div class="note">
-<p>Weighting may not be appropriate as a means of gaining ‘complete representativeness’, as we have no gold standard. Even if we had a nationally-representative sample/survey this could yield differential response rates among different types of EA-ers. An approach to ‘convergent validation’ may be possible in the future, but it will take time to learn/develop a methodology.</p>
+<p>Weighting may not be appropriate as a means of gaining ‘complete representativeness,’ as we have no gold standard. Even if we had a nationally-representative sample/survey this could yield differential response rates among different types of EA-ers. An approach to ‘convergent validation’ may be possible in the future, but it will take time to learn/develop a methodology.</p>
 <p>However, we can measure and test the sensitivity of our results to variation along several ‘dimensions’</p>
 <ul>
 <li><p>Ease of response/dedication (maybe compare first to later responders, responders after reminders, future – compare those with additional incentives and pressure)</p></li>
@@ -989,7 +1539,7 @@ We may have some measures of the demographics of participants on some of the ref
 <p><br />
 </p>
 <p>As noted below, we will be targeting the population via several “referrers” <span class="math inline">\(r=0,1,...,R\)</span>. For now, we will assume each member of the population also only “belongs” to a single referrer. This is also described by <em>latent</em> parameters: we do not know what share of the population belongs to each referrer, nor how this breaks down by demographics.</p>
-<p>For simplicity, consider only two referrers (<span class="math inline">\(r=0,1\)</span>), the ‘wide and narrow referrers’, respectively, and let <span class="math inline">\(\rho_0\)</span> denote the share of our population that belongs to the wider referrer (and <span class="math inline">\(\rho_1 = 1-\rho_0\)</span> the share belonging to the narrower referrer).***</p>
+<p>For simplicity, consider only two referrers (<span class="math inline">\(r=0,1\)</span>), the ‘wide and narrow referrers,’ respectively, and let <span class="math inline">\(\rho_0\)</span> denote the share of our population that belongs to the wider referrer (and <span class="math inline">\(\rho_1 = 1-\rho_0\)</span> the share belonging to the narrower referrer).***</p>
 <div class="marginnote">
 <p>*** For the case in mind when I built this example, this embodies in a place of assumption that is too strong. In fact each of our members may belong to one or more referrers, or in fact to none at all.</p>
 </div>
@@ -1018,7 +1568,7 @@ In each year, the survey has been advertised in one of the two referrers noted a
 <p><br />
 </p>
 <p><em>Participation ‘model’:</em></p>
-<p>I suggested above, we assume that each member of our population only observes (or only “meaningfully observes”) the survey from at most one referrer, the one they ‘belong to’.</p>
+<p>I suggested above, we assume that each member of our population only observes (or only “meaningfully observes”) the survey from at most one referrer, the one they ‘belong to.’</p>
 If an individual indeed observes the survey, they then decide whether to participate.*
 <div class="marginnote">
 <p>* In future, we might model these participation decisions as the outcome of optimization problems, perhaps giving us insight into the direction of the bias (e.g., according to opportunity cost and concern for the outcome of the survey).</p>
@@ -1032,18 +1582,9 @@ If an individual indeed observes the survey, they then decide whether to partici
 </p>
 <p><em>The parameters and the priors:</em></p>
 <p>Specify some informative but still somewhat diffuse prior distribution over these parameters; Including true population shares and probabilities of response within each group.</p>
-<p>Update and iterate towards ‘our best posteriors’?</p>
+<p>Update and iterate towards ‘our best posteriors?’</p>
 
 </div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-bakerSummaryReportAAPOR2013">
-<p>Baker, Reg, J. Michael Brick, Nancy A. Bates, Mike Battaglia, Mick P. Couper, Jill A. Dever, Krista J. Gile, and Roger Tourangeau. 2013. “Summary Report of the AAPOR Task Force on Non-Probability Sampling.” <em>Journal of Survey Statistics and Methodology</em> 1 (2): 90–143. <a href="https://doi.org/10/ggmdn5">https://doi.org/10/ggmdn5</a>.</p>
-</div>
-<div id="ref-salganikSamplingEstimationHidden2004">
-<p>Salganik, Matthew J., and Douglas D. Heckathorn. 2004. “Sampling and Estimation in Hidden Populations Using Respondent-Driven Sampling.” <em>Sociological Methodology</em> 34 (1): 193–240. <a href="https://doi.org/10/bzv8kr">https://doi.org/10/bzv8kr</a>.</p>
 </div>
 </div>
             </section>

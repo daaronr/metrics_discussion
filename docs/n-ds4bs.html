@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
+  <meta name="description" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="19 Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013) | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   
   
   
 
-<meta name="author" content="Dr. David Reinstein," />
+<meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-02-15" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -100,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-
+<!-- 
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -124,7 +123,7 @@ function toggle_R() {
 
 document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
 
-</script>
+</script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
@@ -137,11 +136,562 @@ document.write('<input onclick="toggle_R();" type="button" value="Hide Global" i
 </script>
 -->
 
+<!-- FOLDING TEXT BOXES -->
+
+<script>
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: collapse.js v3.3.7
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+
++function ($) {
+  'use strict';
+
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
+
+  var Collapse = function (element, options) {
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.transitioning = null
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+    }
+
+    if (this.options.toggle) this.toggle()
+  }
+
+  Collapse.VERSION  = '3.3.7'
+
+  Collapse.TRANSITION_DURATION = 350
+
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
+
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
+
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var activesData
+    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+    if (actives && actives.length) {
+      activesData = actives.data('bs.collapse')
+      if (activesData && activesData.transitioning) return
+    }
+
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    if (actives && actives.length) {
+      Plugin.call(actives, 'hide')
+      activesData || actives.data('bs.collapse', null)
+    }
+
+    var dimension = this.dimension()
+
+    this.$element
+      .removeClass('collapse')
+      .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
+
+    this.$trigger
+      .removeClass('collapsed')
+      .attr('aria-expanded', true)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse in')[dimension]('')
+      this.transitioning = 0
+      this.$element
+        .trigger('shown.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse in')
+      .attr('aria-expanded', false)
+
+    this.$trigger
+      .addClass('collapsed')
+      .attr('aria-expanded', false)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse')
+        .trigger('hidden.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+  }
+
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  }
+
+  Collapse.prototype.getParent = function () {
+    return $(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+
+  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+    var isOpen = $element.hasClass('in')
+
+    $element.attr('aria-expanded', isOpen)
+    $trigger
+      .toggleClass('collapsed', !isOpen)
+      .attr('aria-expanded', isOpen)
+  }
+
+  function getTargetFromTrigger($trigger) {
+    var href
+    var target = $trigger.attr('data-target')
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+    return $(target)
+  }
+
+
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
+  $.fn.collapse.Constructor = Collapse
+
+
+  // COLLAPSE NO CONFLICT
+  // ====================
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+  // COLLAPSE DATA-API
+  // =================
+
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+    var $this   = $(this)
+
+    if (!$this.attr('data-target')) e.preventDefault()
+
+    var $target = getTargetFromTrigger($this)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+
+    Plugin.call($target, option)
+  })
+
+}(jQuery);
+</script>
+<script>
+window.initializeCodeFolding = function(show) {
+
+  // handlers for show-all and hide all
+  $("#rmd-show-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('show');
+    });
+  });
+  $("#rmd-hide-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('hide');
+    });
+  });
+
+  // index for unique code element ids
+  var currentIndex = 1;
+
+  // select all R code blocks
+  var rCodeBlocks = $('pre.sourceCode, pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.js');
+  rCodeBlocks.each(function() {
+
+    // create a collapsable div to wrap the code in
+    var div = $('<div class="collapse r-code-collapse"></div>');
+    if (show)
+      div.addClass('in');
+    var id = 'rcode-643E0F36' + currentIndex++;
+    div.attr('id', id);
+    $(this).before(div);
+    $(this).detach().appendTo(div);
+
+    // add a show code button right above
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
+    showCodeButton.append(showCodeText);
+    showCodeButton
+        .attr('data-toggle', 'collapse')
+        .attr('data-target', '#' + id)
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
+
+    var buttonRow = $('<div class="row"></div>');
+    var buttonCol = $('<div class="col-md-12"></div>');
+
+    buttonCol.append(showCodeButton);
+    buttonRow.append(buttonCol);
+
+    div.before(buttonRow);
+
+    // update state of button on show/hide
+    div.on('hidden.bs.collapse', function () {
+      showCodeText.text('Code');
+    });
+    div.on('show.bs.collapse', function () {
+      showCodeText.text('Hide');
+    });
+  });
+
+}
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.3.7
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle="dropdown"]'
+  var Dropdown = function (element) {
+    $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.VERSION = '3.3.7'
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+  function clearMenus(e) {
+    if (e && e.which === 3) return
+    $(backdrop).remove()
+    $(toggle).each(function () {
+      var $this         = $(this)
+      var $parent       = getParent($this)
+      var relatedTarget = { relatedTarget: this }
+
+      if (!$parent.hasClass('open')) return
+
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+    })
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we use a backdrop because click events don't delegate
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
+      }
+
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
+
+      $parent
+        .toggleClass('open')
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+    }
+
+    return false
+  }
+
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+    var $this = $(this)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
+    }
+
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
+
+    if (!$items.length) return
+
+    var index = $items.index(e.target)
+
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
+
+    $items.eq(index).trigger('focus')
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
+
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+</script>
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+.row { display: flex; }
+.collapse { display: none; }
+.in { display:block }
+.pull-right > .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<script>
+document.write('<div class="btn-group pull-right" style="position: absolute; top: 10%; right: 15%; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>')
+</script>
+
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -388,22 +938,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
 <li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a>
+<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
 <ul>
-<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-1"><i class="fa fa-check"></i>Sequential</a></li>
-<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.3.1</b> Adaptive</a></li>
+<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.4</b> Efficient assignment of treatments</a>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.4.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="13.4.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.4.2</b> How many treatment arms can you ‘afford’?</a></li>
-<li class="chapter" data-level="13.4.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.4.3</b> Other notes and resources</a></li>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations’?</a>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
@@ -416,9 +966,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
-<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
@@ -436,7 +986,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
 <ul>
@@ -471,7 +1021,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
 <li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation">Raykov and Marcoulides (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
 <li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
@@ -625,7 +1175,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
 <ul>
 <li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
-<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation">Manheimer et al. (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
 <li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
 <li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
 </ul></li>
@@ -673,7 +1223,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics, econometrics, experiment and survey methods, data science: Notes</a>
           </h1>
         </div>
 
@@ -688,26 +1238,26 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="evaluation-of-this-resource" class="section level2" number="19.1">
 <h2><span class="header-section-number">19.1</span> Evaluation of this resource</h2>
-<p>This (2013) book seems to have some slightly outdated focus (terms like ‘data-mining’) but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is ‘meat in this sandwich’.</p>
+<p>This (2013) book seems to have some slightly outdated focus (terms like ‘data-mining’) but it is nonetheless very useful, both conceptually and in many specifics. It does a good job of giving actual insight into mathematical, statistical, and data-science techniques, and uses a reasonable amount of actual maths and some literal code. There is ‘meat in this sandwich.’</p>
 <p>Terms like ‘lift’</p>
 <blockquote>
 <p>As another example, in evaluating the utility of a pattern, we see a notion of lift— how much more prevalent a pattern is than would be expected by chance—recurring broadly across data science. It is used to evaluate very different sorts of patterns in different contexts. Algorithms for targeting advertisements are evaluated by computing the lift one gets for the targeted population. Lift is used to judge the weight of evidence for or against a conclusion. Lift helps determine whether a co-occurrence (an association) in data is interesting, as opposed to simply being a natural consequence of popularity.</p>
 </blockquote>
 </div>
-<div id="ch-1-introduction-data-analytic-thinking" class="section level2 unnumbered" number="">
+<div id="ch-1-introduction-data-analytic-thinking" class="section level2 unnumbered">
 <h2>Ch 1 Introduction: Data-Analytic Thinking</h2>
 
 <div class="note">
 <p>A range of examples illustrating applications, techniques, and principles.</p>
 </div>
-<div id="example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart" class="section level3 unnumbered" number="">
+<div id="example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart" class="section level3 unnumbered">
 <h3>Example: During Hurricane Frances… predicting demand to gear inventory and avoid shortages … lead to huge profit for Wal-Mart</h3>
 <p>Digging into the day to do some surprising findings:*</p>
 <blockquote>
 <p>’We didn’t know in the past that strawberry PopTarts increase in sales, like seven times their normal sales rate, ahead of a hurricane"</p>
 </blockquote>
 <div class="marginnote">
-<p>* Strange results like these might seem like examples of overfitting, but it is also seems reasonable that demand patterns may be predictable (using careful data analysis) even if we don’t always have a straightforward intuitive explanation for a ‘mechanism’.</p>
+<p>* Strange results like these might seem like examples of overfitting, but it is also seems reasonable that demand patterns may be predictable (using careful data analysis) even if we don’t always have a straightforward intuitive explanation for a ‘mechanism.’</p>
 </div>
 <blockquote>
 <ol style="list-style-type: decimal">
@@ -715,7 +1265,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </blockquote>
 </div>
-<div id="example-predicting-customer-churn" class="section level3 unnumbered" number="">
+<div id="example-predicting-customer-churn" class="section level3 unnumbered">
 <h3>Example: Predicting Customer Churn</h3>
 <blockquote>
 <p>Customers switching from one company to another is called churn,</p>
@@ -758,7 +1308,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p><br />
 </p>
-<div id="signet-bank-from-the-1990s-a-key-example-of-data-as-a-strategic-asset" class="section level4 unnumbered" number="">
+<div id="signet-bank-from-the-1990s-a-key-example-of-data-as-a-strategic-asset" class="section level4 unnumbered">
 <h4>Signet Bank from the 1990s … a key example of ‘data as a strategic asset’</h4>
 <blockquote>
 <p>, but at the time, credit cards essentially had uniform pricing, for two reasons: (1) … [lack of] information systems to deal with differential pricing at massive scale, and (2) bank management believed customers would not stand for price discrimination.</p>
@@ -782,7 +1332,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Different terms were offered at random to different customers. This may seem foolish outside the context of data-analytic thinking: you’re likely to lose money! This is true. In this case, losses are the cost of data acquisition. Losses continued for a few years while the data scientists worked to build predictive models from the data,*</p>
 </blockquote>
 <div class="marginnote">
-<p>* This falls under the category of ‘experimentation’, ‘A/B testing’, or ‘split testing’. In general, more efficient experimentation will be ‘adaptive, involving optimal dynamic allocation into different “treatments”. Algorithm-wise, this is a ’multi-armed bandit’ problem. Popular discussion of this: <span class="citation">(Christian and Griffiths <a href="#ref-christianAlgorithmsLiveComputer2016" role="doc-biblioref">2016</a>)</span>, chapter 2 “Explore/Exploit”.</p>
+<p>* This falls under the category of ‘experimentation,’ ‘A/B testing,’ or ‘split testing.’ In general, more efficient experimentation will be ‘adaptive, involving optimal dynamic allocation into different “treatments.” Algorithm-wise, this is a ’multi-armed bandit’ problem. Popular discussion of this: <span class="citation">(<a href="references.html#ref-christianAlgorithmsLiveComputer2016" role="doc-biblioref">Christian and Griffiths 2016</a>)</span>, chapter 2 “Explore/Exploit.”</p>
 </div>
 <p><br />
 </p>
@@ -837,7 +1387,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p><a href="n-ds4bs.html#ds4bs-overfitting">Chapter 5</a> is devoted to this.**</p>
 <div class="marginnote">
-<p>** <span class="citation">(Christian and Griffiths <a href="#ref-christianAlgorithmsLiveComputer2016" role="doc-biblioref">2016</a>)</span> also have a chapter on overfitting, but in parts they confound overfitting with the complexity of models. Even very simple models, e.g. involving only one feature and one outcome of interest, can be substantially overfit, while complicated models with many features and parameters can be “penalized” (using techniques such as ridge regression) and validated to detect and avoid overfitting.</p>
+<p>** <span class="citation">(<a href="references.html#ref-christianAlgorithmsLiveComputer2016" role="doc-biblioref">Christian and Griffiths 2016</a>)</span> also have a chapter on overfitting, but in parts they confound overfitting with the complexity of models. Even very simple models, e.g. involving only one feature and one outcome of interest, can be substantially overfit, while complicated models with many features and parameters can be “penalized” (using techniques such as ridge regression) and validated to detect and avoid overfitting.</p>
 </div>
 <p><strong>Quantify the benefits of using data</strong></p>
 <blockquote>
@@ -863,7 +1413,7 @@ Examples of some techniques and applications below…
 </div>
 <div id="types-of-problems-and-approaches" class="section level3" number="19.2.1">
 <h3><span class="header-section-number">19.2.1</span> Types of problems and approaches</h3>
-<div id="classification-and-class-probability-estimation" class="section level4 unnumbered" number="">
+<div id="classification-and-class-probability-estimation" class="section level4 unnumbered">
 <h4>Classification and class probability estimation</h4>
 <p><em>Example: “Among all the customers of MegaTelCo, which are likely to respond to a given offer?”</em></p>
 
@@ -884,7 +1434,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="regression-value-estimation" class="section level4 unnumbered" number="">
+<div id="regression-value-estimation" class="section level4 unnumbered">
 <h4>Regression (“value estimation”) *</h4>
 <blockquote>
 <p>Regression (“value estimation”) attempts to estimate or predict, for each individual, the numerical value of some variable for that individual. An example regression question would be:</p>
@@ -905,7 +1455,7 @@ Examples of some techniques and applications below…
 </p>
 </div>
 </div>
-<div id="sim-matching" class="section level4 unnumbered" number="">
+<div id="sim-matching" class="section level4 unnumbered">
 <h4>Similarity matching</h4>
 <blockquote>
 <p>Similarity matching attempts to identify similar individuals based on data known about them. Similarity matching can be used directly to find similar entities. For example, IBM is interested in finding companies similar to their best business customers, in order to focus their sales force on the best opportunities</p>
@@ -919,7 +1469,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="ds4bs-clustering-intro" class="section level4 unnumbered" number="">
+<div id="ds4bs-clustering-intro" class="section level4 unnumbered">
 <h4>Clustering</h4>
 <blockquote>
 <p>… attempts to group individuals in a population together by their similarity, but not driven by any specific purpose. An example clustering question would be: “Do our customers form natural groups or segments?” Clustering is useful in preliminary domain exploration to see which natural groups exist because these groups in turn may suggest other data mining tasks or approaches. *</p>
@@ -930,7 +1480,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="co-occurance" class="section level4 unnumbered" number="">
+<div id="co-occurance" class="section level4 unnumbered">
 <h4>Co-occurrence grouping</h4>
 <p><em>What items are commonly purchased together?</em></p>
 <blockquote>
@@ -943,7 +1493,7 @@ Examples of some techniques and applications below…
 <p>So, is this indeed a form of clustering or similarity matching?</p>
 </div>
 </div>
-<div id="ds4bs-profiling" class="section level4 unnumbered" number="">
+<div id="ds4bs-profiling" class="section level4 unnumbered">
 <h4>Profiling</h4>
 <p><em>“What is the typical cell phone usage of this customer segment?”</em></p>
 <blockquote>
@@ -956,7 +1506,7 @@ Examples of some techniques and applications below…
 </p>
 <p>This seems like a ‘descriptive and soft’ measure, but it can also be formalized.</p>
 </div>
-<div id="link-predict" class="section level4 unnumbered" number="">
+<div id="link-predict" class="section level4 unnumbered">
 <h4>Link prediction</h4>
 <p><em>"Since you and Karen share 10 friends, maybe you’d like to be Karen’s friend?</em></p>
 <blockquote>
@@ -965,7 +1515,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="data-reduction" class="section level4 unnumbered" number="">
+<div id="data-reduction" class="section level4 unnumbered">
 <h4>Data reduction</h4>
 <blockquote>
 <p>attempts to take a large set of data and replace it with a smaller set of data that contains much of the important information in the larger set.</p>
@@ -973,7 +1523,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="causal-modeling" class="section level4 unnumbered" number="">
+<div id="causal-modeling" class="section level4 unnumbered">
 <h4>Causal modeling</h4>
 <blockquote>
 <p>Techniques for causal modeling include those involving a substantial investment in data, such as randomized controlled experiments (e.g., so-called “A/B tests”), as well as sophisticated methods for drawing causal conclusions from observational data</p>
@@ -993,11 +1543,11 @@ Examples of some techniques and applications below…
 <li><p>Experimentation and exogenous random assignment (arguably the ‘gold standard’)</p></li>
 <li><p>‘Control strategies’ (to try to ‘hold all observables constant’; sometimes drawing on Machine Learning)</p></li>
 <li><p>Natural experiments and ‘instrumental variables’ approaches (e.g., using the variation driven by seemingly ‘exogenous’ factors such as weather)</p></li>
-<li><p>"Restrictive’ assumptions about time and the continuity of relationships <span class="math inline">\(\rightarrow\)</span> ‘difference in differences’, ‘fixed effects’, and ‘regression discontinuity’ approaches</p></li>
+<li><p>"Restrictive’ assumptions about time and the continuity of relationships <span class="math inline">\(\rightarrow\)</span> ‘difference in differences,’ ‘fixed effects,’ and ‘regression discontinuity’ approaches</p></li>
 </ul>
 <p><br />
 </p>
-<p>Causality is discussed in popular and non-technical work including by Economists (‘Freakonomics’, ‘the Why Axis’…) and more directly, in ‘The Book of Why’ (by Judea Pearl, a computer scientist). For more formal and mathematical treatments, see Pearl’s other work, as well as, in Econometrics, <span class="citation">(Angrist and Pischke <a href="#ref-angrist2008mostly" role="doc-biblioref">2008</a>)</span>,<span class="citation">(Cunningham <a href="#ref-cunninghamCausalInferenceMixtape2018" role="doc-biblioref">2018</a>; Hernán and Robins <a href="#ref-hernanCausalInference2010" role="doc-biblioref">2010</a>)</span>.</p>
+<p>Causality is discussed in popular and non-technical work including by Economists (‘Freakonomics,’ ‘the Why Axis’…) and more directly, in ‘The Book of Why’ (by Judea Pearl, a computer scientist). For more formal and mathematical treatments, see Pearl’s other work, as well as, in Econometrics, <span class="citation">(<a href="references.html#ref-angrist2008mostly" role="doc-biblioref">Joshua D. Angrist and Pischke 2008</a>)</span>,<span class="citation">(<a href="references.html#ref-cunninghamCausalInferenceMixtape2018" role="doc-biblioref">Cunningham 2018</a>; <a href="references.html#ref-hernanCausalInference2010" role="doc-biblioref">Hernán and Robins 2010</a>)</span>.</p>
 </div>
 <p><br />
 </p>
@@ -1011,7 +1561,7 @@ Examples of some techniques and applications below…
 </p>
 <p>The term ‘label’ is important here:*</p>
 <div class="marginnote">
-<p>* A term from Data Science that I’ve not seen in statistics/Econometrics, where we typically refer to an ‘outcome variable’ or ‘dependent variable’.</p>
+<p>* A term from Data Science that I’ve not seen in statistics/Econometrics, where we typically refer to an ‘outcome variable’ or ‘dependent variable.’</p>
 </div>
 <blockquote>
 <p>Technically, another condition must be met for supervised data mining: there must be data on the target.</p>
@@ -1021,7 +1571,7 @@ Examples of some techniques and applications below…
 </blockquote>
 <p><br />
 </p>
-<p>DR: I always tell me dissertation and project students to ‘ask a question with a question mark’, and to consider <a href="https://daaronr.github.io/writing_econ_research/getting-started.html#ask_qn">whether the question could even <em>have</em> a meaningful answer</a>. This more or less characterises a <em>supervised</em> problem.</p>
+<p>DR: I always tell me dissertation and project students to ‘ask a question with a question mark,’ and to consider <a href="https://daaronr.github.io/writing_econ_research/getting-started.html#ask_qn">whether the question could even <em>have</em> a meaningful answer</a>. This more or less characterises a <em>supervised</em> problem.</p>
 <!--todo: link Hitchiker's video here -->
 <blockquote>
 <p>A vital part in the early stages of the data mining process is (i) to decide whether the line of attack will be supervised or unsupervised, and (ii) if supervised, to produce a precise definition of a target variable.</p>
@@ -1036,26 +1586,26 @@ Examples of some techniques and applications below…
 <p class="caption">From DS for Business</p>
 </div>
 <p>Iterative… questions, data, answers, lather, rinse repeat</p>
-<div id="business-understanding" class="section level4 unnumbered" number="">
+<div id="business-understanding" class="section level4 unnumbered">
 <h4>Business Understanding</h4>
 <blockquote>
 <p>often the key to a great success is a creative problem formulation by some analyst regarding how to cast the business problem as one or more data science problems.</p>
 </blockquote>
 </div>
-<div id="data-understanding" class="section level4 unnumbered" number="">
+<div id="data-understanding" class="section level4 unnumbered">
 <h4>Data Understanding</h4>
 <blockquote>
 <p>Those who commit fraud are a subset of the legitimate users; there is no separate disinterested party who will declare exactly what the “correct” charges should be. Consequently the Medicare billing data have no reliable target variable indicating fraud, and a supervised learning approach that could work for credit card fraud is not applicable. Such a problem usually requires unsupervised approaches such as profiling, clustering, anomaly detection, and co-occurrence grouping.</p>
 </blockquote>
 </div>
-<div id="data-preparation" class="section level4 unnumbered" number="">
+<div id="data-preparation" class="section level4 unnumbered">
 <h4>Data Preparation</h4>
 <p>“Leaks” – variables used in building the model that you can’t actually use in decision-making</p>
 <blockquote>
 <p>One very general and important concern during data preparation is to beware of “leaks” (Kaufman et al. 2012). A leak is a situation where a variable collected in historical data gives information on the target variable—information that appears in historical data but is not actually available when the decision has to be made. As an example, when predicting whether at a particular point in time a website visitor would end her session or continue surfing to another page, the variable “total number of webpages visited in the session” is predictive. However, the total number of webpages visited in the session would not be known until after the session was over (Kohavi et al., 2000)—at which point one would know the value for the target variable! As another illustrative example, consider predicting whether a customer will be a “big spender”; knowing the categories of the items purchased (or worse, the amount of tax paid) are very predictive, but are not known at decision-making time (Kohavi &amp; Parekh, 2003).</p>
 </blockquote>
 </div>
-<div id="evaluation" class="section level4 unnumbered" number="">
+<div id="evaluation" class="section level4 unnumbered">
 <h4>Evaluation</h4>
 <blockquote>
 <p>assess the data mining results rigorously and to gain confidence that they are valid and reliable before moving</p>
@@ -1082,7 +1632,7 @@ Examples of some techniques and applications below…
 <p><br />
 </p>
 </div>
-<div id="deployment" class="section level4 unnumbered" number="">
+<div id="deployment" class="section level4 unnumbered">
 <h4>Deployment</h4>
 <blockquote>
 <p>In deployment the results of data mining—and increasingly the data mining techniques themselves—are put into real use in order to realize some return on investment. The</p>
@@ -1098,17 +1648,17 @@ Examples of some techniques and applications below…
 <p>“Your model is not what the data scientists design, it’s what the engineers build.” From a management perspective, it is advisable to have members of the development team involved early on in the data science project.</p>
 </blockquote>
 </div>
-<div id="implications-for-managing-the-data-science-team" class="section level4 unnumbered" number="">
+<div id="implications-for-managing-the-data-science-team" class="section level4 unnumbered">
 <h4>Implications for Managing the Data Science Team</h4>
 <blockquote>
 <p>data mining is an exploratory undertaking closer to research and development than it is to engineering</p>
 </blockquote>
 </div>
-<div id="other-analytics-techniques-and-methods" class="section level4 unnumbered" number="">
+<div id="other-analytics-techniques-and-methods" class="section level4 unnumbered">
 <h4>Other analytics techniques and methods</h4>
 <p>Data Warehousing</p>
 </div>
-<div id="database-querying" class="section level4 unnumbered" number="">
+<div id="database-querying" class="section level4 unnumbered">
 <h4>Database Querying</h4>
 <blockquote>
 <p>s are available to answer one-off or repeating queries about data posed by an analyst. These tools are usually frontends to database systems, based on Structured Query Language (SQL) or a tool with a graphical user interface (GUI) to help formulate queries (e.g., query-by-example, or QBE).</p>
@@ -1117,13 +1667,13 @@ Examples of some techniques and applications below…
 <p>On-line Analytical Processing (OLAP) provides an easy-to-use GUI to query large data collections, for the purpose of facilitating data exploration.</p>
 </blockquote>
 </div>
-<div id="machine-learning-and-data-mining" class="section level4 unnumbered" number="">
+<div id="machine-learning-and-data-mining" class="section level4 unnumbered">
 <h4>Machine Learning and Data Mining</h4>
 <blockquote>
 <p>because Machine Learning is concerned with many types of performance improvement, it includes subfields such as robotics and computer vision that are not part of KDD. It also is concerned with issues of agency and cognition—how will an intelligent agent use learned knowledge to reason and act in its environment—which are not concerns of Data Mining.</p>
 </blockquote>
 </div>
-<div id="answering-business-questions-with-these-techniques" class="section level4 unnumbered" number="">
+<div id="answering-business-questions-with-these-techniques" class="section level4 unnumbered">
 <h4>Answering Business Questions with These Techniques</h4>
 <blockquote>
 <p>consider a set of questions that may arise and the technologies that would be appropriate for answering them. These questions are all related but each is subtly different.</p>
@@ -1349,7 +1899,7 @@ Examples of some techniques and applications below…
 <p>The stack of models can be represented by one big parameterized numeric function. The so why consider it in many layers?</p>
 <p>we can then apply an optimization procedure to find the best parameters to this very complex numeric function</p>
 <p>When we’re done, we have the parameters to all the models, and thereby have learned the -best" set of lower-level experts and also the best way to com‐ bine them, all simultaneously "</p>
-<p><strong>OF:</strong> Neural Networks are made up of layers of <em>perceptrons.</em> These models are given an input vector and assign weights to each input. The inputs are combined into a weighted sum which is passed through an “activation function” that decides on the outcome classification. This method is known as “forward propagation”. A useful analogy from (Melania, 2019):</p>
+<p><strong>OF:</strong> Neural Networks are made up of layers of <em>perceptrons.</em> These models are given an input vector and assign weights to each input. The inputs are combined into a weighted sum which is passed through an “activation function” that decides on the outcome classification. This method is known as “forward propagation.” A useful analogy from (Melania, 2019):</p>
 <blockquote>
 <p>For example, you might get input from several friends on how much they liked a particular movie, but you trust some of those friends’ taste in movies more than others. If the total amount of “friend enthusiasm”—giving more weight to your more trusted friends—is high enough (that is, greater than some unconscious threshold), you decide to go to the movie. This is how a perceptron would decide about movies, if only it had friends.</p>
 </blockquote>
@@ -1543,7 +2093,7 @@ It is the way in which these weights are learned that is both mentally and compu
 <p><span class="math display">\[
 \text{Minkowski}(\textbf{a}, \textbf{b}) = (\sum_{i=1}^m abs(\textbf{a}[i]-\textbf{b}[i])^p)^{1/p}
 \]</span>
-Source: <span class="citation">(Kelleher, Mac Namee, and D’Arcy <a href="#ref-kelleherFundamentalsMachineLearning2015" role="doc-biblioref">2015</a>)</span></p>
+Source: <span class="citation">(<a href="references.html#ref-kelleherFundamentalsMachineLearning2015" role="doc-biblioref">Kelleher, Mac Namee, and D’Arcy 2015</a>)</span></p>
 </div>
 <div id="example-whiskey-analytics" class="section level3" number="19.6.3">
 <h3><span class="header-section-number">19.6.3</span> Example: Whiskey Analytics</h3>
@@ -2000,42 +2550,42 @@ Source: <span class="citation">(Kelleher, Mac Namee, and D’Arcy <a href="#ref-
 </div>
 <div id="ds4bs-contents" class="section level2" number="19.8">
 <h2><span class="header-section-number">19.8</span> Contents and consideration</h2>
-<div id="introduction-data-analytic-thinking" class="section level4 unnumbered" number="">
+<div id="introduction-data-analytic-thinking" class="section level4 unnumbered">
 <h4>1. Introduction: Data-Analytic Thinking</h4>
 <div class="marginnote">
 <p>This introduction is extremely relevant and nontechnical</p>
 </div>
 <p>The Ubiquity of Data Opportunities 1 Example: Hurricane Frances 3 Example: Predicting Customer Churn 4 Data Science, Engineering, and Data-Driven Decision Making 4 Data Processing and “Big Data” 7 From Big Data 1.0 to Big Data 2.0 8 Data and Data Science Capability as a Strategic Asset 9 Data-Analytic Thinking 12 This Book 14 Data Mining and Data Science, Revisited 14 Chemistry Is Not About Test Tubes: Data Science Versus the Work of the Data Scientist 15 Summary 16</p>
 </div>
-<div id="business-problems-and-data-science-solutions" class="section level4 unnumbered" number="">
+<div id="business-problems-and-data-science-solutions" class="section level4 unnumbered">
 <h4>2. Business Problems and Data Science Solutions</h4>
 <div class="marginnote">
 <p>Very useful, not too technical)</p>
 </div>
 <p>Fundamental concepts: A set of canonical data mining tasks; The data mining process; Supervised versus unsupervised data mining. From Business Problems to Data Mining Tasks 19 Supervised Versus Unsupervised Methods 24 Data Mining and Its Results 25 The Data Mining Process 26 Business Understanding 27 Data Understanding 28 Data Preparation 29 Modeling 31 Evaluation 31 Implications for Managing the Data Science Team 34 Other Analytics Techniques and Technologies 35 Statistics 35 Database Querying 37 Data Warehousing 38 Regression Analysis 39 Machine Learning and Data Mining 39 Answering Business Questions with These Techniques 40 Summary 41</p>
 </div>
-<div id="introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation" class="section level4 unnumbered" number="">
+<div id="introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation" class="section level4 unnumbered">
 <h4>3. Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</h4>
 <div class="marginnote">
 <p>Gets somewhat technical; maybe too much so for C-Suite?</p>
 </div>
 <p>Fundamental concepts: Identifying informative attributes; Segmenting data by progressive attribute selection. Exemplary techniques: Finding correlations; Attribute/variable selection; Tree induction. Models, Induction, and Prediction 44 Supervised Segmentation 48 Selecting Informative Attributes 49 Example: Attribute Selection with Information Gain 56 Supervised Segmentation with Tree-Structured Models 62 Visualizing Segmentations 67 Trees as Sets of Rules 71 Probability Estimation 71 Example: Addressing the Churn Problem with Tree Induction 73 Summary 78</p>
 </div>
-<div id="fitting-a-model-to-data" class="section level4 unnumbered" number="">
+<div id="fitting-a-model-to-data" class="section level4 unnumbered">
 <h4>4. Fitting a Model to Data</h4>
 <div class="marginnote">
 <p>Mostly too technica for C-Suite?</p>
 </div>
 <p>Fundamental concepts: Finding “optimal” model parameters based on data; Choosing the goal for data mining; Objective functions; Loss functions. Exemplary techniques: Linear regression; Logistic regression; Support-vector machines. Classification via Mathematical Functions 83 Linear Discriminant Functions 85 Optimizing an Objective Function 87 An Example of Mining a Linear Discriminant from Data 88 Linear Discriminant Functions for Scoring and Ranking Instances 90 Support Vector Machines, Briefly 91 Regression via Mathematical Functions 94 Class Probability Estimation and Logistic “Regression” 96 * Logistic Regression: Some Technical Details 99 Example: Logistic Regression versus Tree Induction 102 Nonlinear Functions, Support Vector Machines, and Neural Networks 105</p>
 </div>
-<div id="overfitting-and-its-avoidance" class="section level4 unnumbered" number="">
+<div id="overfitting-and-its-avoidance" class="section level4 unnumbered">
 <h4>5. Overfitting and Its Avoidance</h4>
 <div class="marginnote">
 <p>Should be discussed only in part; largely too technical for C-Suite?</p>
 </div>
 <p>Fundamental concepts: Generalization; Fitting and overfitting; Complexity control. Exemplary techniques: Cross-validation; Attribute selection; Tree pruning; Regularization. Generalization 111 Overfitting 113 Overfitting Examined 113 Holdout Data and Fitting Graphs 113 Overfitting in Tree Induction 116 Overfitting in Mathematical Functions 118 Example: Overfitting Linear Functions 119 * Example: Why Is Overfitting Bad? 124 From Holdout Evaluation to Cross-Validation 126 The Churn Dataset Revisited 129 Learning Curves 130 Overfitting Avoidance and Complexity Control 133 Avoiding Overfitting with Tree Induction 133 A General Method for Avoiding Overfitting 134 * Avoiding Overfitting for Parameter Optimization 136 Summary 140</p>
 </div>
-<div id="similarity-neighbors-and-clusters" class="section level4 unnumbered" number="">
+<div id="similarity-neighbors-and-clusters" class="section level4 unnumbered">
 <h4>6. Similarity, Neighbors, and Clusters</h4>
 <div class="marginnote">
 <p>Should be discussed only briefly; largely too technical for C-Suite?</p>
@@ -2055,7 +2605,7 @@ Clustering uses distance measures in order to group similar observations into cl
 - Can handle different shaped clusters
 - Tends to perform worse when the density of data varies or when data is highly dimensional</p>
 </div>
-<div id="decision-analytic-thinking-i-what-is-a-good-model" class="section level4 unnumbered" number="">
+<div id="decision-analytic-thinking-i-what-is-a-good-model" class="section level4 unnumbered">
 <h4>7. Decision Analytic Thinking I: What Is a Good Model?</h4>
 <div class="marginnote">
 <p>Very relevant for C-suite, if they don’t already know these concepts</p>
@@ -2064,75 +2614,57 @@ Clustering uses distance measures in order to group similar observations into cl
 <p><br />
 </p>
 </div>
-<div id="visualizing-model-performance" class="section level4 unnumbered" number="">
+<div id="visualizing-model-performance" class="section level4 unnumbered">
 <h4>8. Visualizing Model Performance</h4>
 <p>Fundamental concepts: Visualization of model performance under various kinds of uncertainty; Further consideration of what is desired from data mining results. Exemplary techniques: Profit curves; Cumulative response curves; Lift curves; ROC curves. Ranking Instead of Classifying 209 Profit Curves 212 ROC Graphs and Curves 214 The Area Under the ROC Curve (AUC) 219 Cumulative Response and Lift Curves 219 Example: Performance Analytics for Churn Modeling 223 Summary 231</p>
 </div>
-<div id="evidence-and-probabilities" class="section level4 unnumbered" number="">
+<div id="evidence-and-probabilities" class="section level4 unnumbered">
 <h4>9. Evidence and Probabilities</h4>
 <p>Fundamental concepts: Explicit evidence combination with Bayes’ Rule; Probabilistic reasoning via assumptions of conditional independence. Exemplary techniques: Naive Bayes classification; Evidence lift. Combining Evidence Probabilistically 235 Joint Probability and Independence 236 Bayes’ Rule 237 Applying Bayes’ Rule to Data Science 239 Conditional Independence and Naive Bayes 240 Advantages and Disadvantages of Naive Bayes 242 A Model of Evidence “Lift” 244 Example: Evidence Lifts from Facebook “Likes” 245 Evidence in Action: Targeting Consumers with Ads 247 Summary 247</p>
 </div>
-<div id="representing-and-mining-text" class="section level4 unnumbered" number="">
+<div id="representing-and-mining-text" class="section level4 unnumbered">
 <h4>10. Representing and Mining Text</h4>
 <div class="marginnote">
 <p>Probably less relevant.</p>
 </div>
 <p>Fundamental concepts: The importance of constructing mining-friendly data representations; Representation of text for data mining. Exemplary techniques: Bag of words representation; TFIDF calculation; N-grams; Stemming; Named entity extraction; Topic models. Why Text Is Important 250 Why Text Is Difficult 250 Representation 251 Bag of Words 252 Term Frequency 252 Measuring Sparseness: Inverse Document Frequency 254 Combining Them: TFIDF 256 Example: Jazz Musicians 256 * The Relationship of IDF to Entropy 261 Beyond Bag of Words 263 N-gram Sequences 263 Named Entity Extraction 264 Topic Models 264 Example: Mining News Stories to Predict Stock Price Movement 266 The Task 266 The Data 268 Data Preprocessing 270 Results 271 Summary 275</p>
 </div>
-<div id="decision-analytic-thinking-ii-toward-analytical-engineering" class="section level4 unnumbered" number="">
+<div id="decision-analytic-thinking-ii-toward-analytical-engineering" class="section level4 unnumbered">
 <h4>11. Decision Analytic Thinking II: Toward Analytical Engineering</h4>
 <div class="marginnote">
 <p>Seems very relevant and not technical.</p>
 </div>
 <p>Fundamental concept: Solving business problems with data science starts with analytical engineering: designing an analytical solution, based on the data, tools, and techniques available. Exemplary technique: Expected value as a framework for data science solution design. The Expected Value Framework: Decomposing the Business Problem and Recomposing the Solution Pieces 278 A Brief Digression on Selection Bias 280 Our Churn Example Revisited with Even More Sophistication 281 The Expected Value Framework: Structuring a More Complicated Business Problem 281 Assessing the Influence of the Incentive 283 From an Expected Value Decomposition to a Data Science Solution 284 Summary 287</p>
 </div>
-<div id="other-data-science-tasks-and-techniques-." class="section level4 unnumbered" number="">
+<div id="other-data-science-tasks-and-techniques-." class="section level4 unnumbered">
 <h4>12. Other Data Science Tasks and Techniques .</h4>
 <div class="marginnote">
 <p>Mostly relevant and not too technical.</p>
 </div>
 <p>Fundamental concepts: Our fundamental concepts as the basis of many common data science techniques; The importance of familiarity with the building blocks of data science. Exemplary techniques: Association and co-occurrences; Behavior profiling; Link prediction; Data reduction; Latent information mining; Movie recommendation; Biasvariance decomposition of error; Ensembles of models; Causal reasoning from data. Co-occurrences and Associations: Finding Items That Go Together 290 Measuring Surprise: Lift and Leverage 291 Example: Beer and Lottery Tickets 292 Associations Among Facebook Likes 293 Profiling: Finding Typical Behavior 296 Link Prediction and Social Recommendation 301 Data Reduction, Latent Information, and Movie Recommendation 302 Bias, Variance, and Ensemble Methods 306 Data-Driven Causal Explanation and a Viral Marketing Example 309 Summary 310</p>
 </div>
-<div id="data-science-and-business-strategy" class="section level4 unnumbered" number="">
+<div id="data-science-and-business-strategy" class="section level4 unnumbered">
 <h4>13. Data Science and Business Strategy</h4>
 <div class="marginnote">
 <p>Seems very relevant and not technical.</p>
 </div>
 <p>Fundamental concepts: Our principles as the basis of success for a data-driven business; Acquiring and sustaining competitive advantage via data science; The importance of careful curation of data science capability. Thinking Data-Analytically, Redux 313 Achieving Competitive Advantage with Data Science 315 Sustaining Competitive Advantage with Data Science 316 Formidable Historical Advantage 317 Unique Intellectual Property 317 Unique Intangible Collateral Assets 318 Superior Data Scientists 318 Superior Data Science Management 320 Attracting and Nurturing Data Scientists and Their Teams 321 Be Ready to Accept Creative Ideas from Any Source 324 Be Ready to Evaluate Proposals for Data Science Projects 324 Example Data Mining Proposal 325 Flaws in the Big Red Proposal 326 A Firm’s Data Science Maturity 327</p>
 </div>
-<div id="conclusion" class="section level4 unnumbered" number="">
+<div id="conclusion" class="section level4 unnumbered">
 <h4>14. Conclusion</h4>
 <div class="marginnote">
 <p>Seems very relevant and not technical. Some references to tech tools may be outdated, however.</p>
 </div>
 <p>The Fundamental Concepts of Data Science 331 Applying Our Fundamental Concepts to a New Problem: Mining Mobile Device Data 334 Changing the Way We Think about Solutions to Business Problems 337 What Data Can’t Do: Humans in the Loop, Revisited 338 Privacy, Ethics, and Mining Data About Individuals 341 Is There More to Data Science? 342 Final Example: From Crowd-Sourcing to Cloud-Sourcing 343 Final Words 344</p>
 </div>
-<div id="proposal-review-guide" class="section level4 unnumbered" number="">
+<div id="proposal-review-guide" class="section level4 unnumbered">
 <h4>Proposal Review Guide</h4>
 </div>
-<div id="another-sample-proposal" class="section level4 unnumbered" number="">
+<div id="another-sample-proposal" class="section level4 unnumbered">
 <h4>Another Sample Proposal</h4>
 <p>Glossary 355</p>
 
 </div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-angrist2008mostly">
-<p>Angrist, Joshua D, and Jörn-Steffen Pischke. 2008. <em>Mostly Harmless Econometrics: An Empiricist’s Companion</em>. Princeton university press.</p>
-</div>
-<div id="ref-christianAlgorithmsLiveComputer2016">
-<p>Christian, Brian, and Tom Griffiths. 2016. <em>Algorithms to Live by: The Computer Science of Human Decisions</em>. Macmillan.</p>
-</div>
-<div id="ref-cunninghamCausalInferenceMixtape2018">
-<p>Cunningham, Scott. 2018. <em>Causal Inference: The Mixtape</em>. Yale University Press.</p>
-</div>
-<div id="ref-hernanCausalInference2010">
-<p>Hernán, Miguel A., and James M. Robins. 2010. <em>Causal Inference</em>. CRC Boca Raton, FL;</p>
-</div>
-<div id="ref-kelleherFundamentalsMachineLearning2015">
-<p>Kelleher, John D., Brian Mac Namee, and Aoife D’Arcy. 2015. <em>Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies</em>. Cambridge, Massachusetts: The MIT Press.</p>
 </div>
 </div>
             </section>

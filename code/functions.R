@@ -21,7 +21,7 @@ hijack <- function (FUN, ...) {
 
 
 
-############## Automation helpers
+############## Automation helpers ####
 
 #### Function to filter by given string: ####
 
@@ -248,6 +248,11 @@ just_x  <- function(df) {
 
 
 ####  summary tables function(s) ####
+
+
+
+#### ... Sumtabs by 'treatment' ... from substitution project
+
 sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
   caption = "") {
   df %>%
@@ -326,9 +331,7 @@ sumtab2_func_plus <- function(df = ADSX, depvar = donation, treatvar = TreatFirs
 
 #### tabsum and simple tables ####
 
-
-tabsum <- function(df = ADSX, yvar = donation, xvar = Stage,
-  treatvar = Treatment) {
+tabsum <- function(df = ADSX, yvar = donation, xvar = Stage, treatvar = Treatment) {
   yvar <- enquo(yvar)
   xvar <- enquo(xvar)
   treatvar <- enquo(treatvar)
@@ -376,8 +379,7 @@ adornme_not <- function(atabyl, adorn = "row", digits = 2, cap = "",
 
 
 
-
-# formatting default options for tabyl
+# ... formatting default options for tabyl ####
 tabylstuff <- function(df, cap = "") {
   adorn_totals(df, c("row", "col")) %>% adorn_percentages("row") %>%
     adorn_pct_formatting(digits = 1) %>% adorn_ns() %>% kable(caption = cap) %>%
@@ -393,7 +395,7 @@ tabylstuff_nocol <- function(df,cap=""){
     kable_styling(latex_options = "scale_down")
 }
 
-# Plotting functions:
+# Plotting functions: ####
 
 plot_histogram <- function(df, feature) {
   chart_title <- substitute(paste("Histogram of ", feature,
@@ -407,7 +409,7 @@ plot_histogram <- function(df, feature) {
   print(plt)
 }
 
-# Multiple histogram:
+# ... Multiple histogram: ####
 
 plot_multi_histogram <- function(df, feature, label_column) {
   chart_title <- substitute(paste("Histograms of ", feature,
@@ -475,7 +477,7 @@ boxplot_func <- function(df = ADSX, yvar = donation, treatvar = Treatment, facet
 
 
 
-# Options and formatting code elements
+# Options and formatting code elements ####
 
 sidebyside <- function(..., width = 60) {
   l <- list(...)
@@ -562,7 +564,7 @@ parallel_gather <- function(x, key, ..., convert = FALSE, factor_key = FALSE) {
   dplyr::bind_cols(id_data, gathered)
 }
 
-# TABLE HELPER FUNCTIONS
+# TABLE HELPER FUNCTIONS ####
 
 treat_recode <- function(df) {
   mutate(TreatRow = fct_recode(as.factor(TreatRow), `Do-Do` = "1",
@@ -580,7 +582,7 @@ unite_spread <- function(df) {
     Results)
 }
 
-################# Treatment assignment functions
+################# Treatment assignment functions ####
 
 # Power test simulation functions
 
@@ -598,7 +600,7 @@ clean_sink <- function(df) {
     step_other(all_nominal())
 }
 
-############### Formatting stuff
+############### Formatting stuff ####
 
 # Color options for either version of markdown slides
 
@@ -633,7 +635,7 @@ format_with_col = function(x, color){
     x
 }
 
-################# Coding shortcuts
+################# Coding shortcuts ####
 
 Sm <- function(df, X) dplyr::select(df, matches({X},  ignore.case = FALSE))  # Sm<t_úX>("x") selects variables matching string 'x', case-sensitive
 sm <- function(df, X) dplyr::select(df, matches({X})) # ... not case-sensitive

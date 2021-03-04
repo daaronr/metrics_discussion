@@ -1,10 +1,10 @@
-tab:unnamed-chunk-72
-fig:unnamed-chunk-76
-fig:unnamed-chunk-77
-fig:unnamed-chunk-79
-fig:unnamed-chunk-89
-tab:unnamed-chunk-92
-tab:unnamed-chunk-93
+tab:unnamed-chunk-76
+fig:unnamed-chunk-80
+fig:unnamed-chunk-81
+fig:unnamed-chunk-83
+fig:unnamed-chunk-93
+tab:unnamed-chunk-96
+tab:unnamed-chunk-97
 introduction
 conceptual
 learning-and-optimization-as-an-alternative-to-statistical-inference
@@ -114,7 +114,7 @@ pre-reg-pap
 the-benefits-and-costs-of-pre-registration-a-typical-discussion
 the-hazards-of-specification-searching
 designs-for-decision-making
-sequential
+notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling
 adaptive
 efficient-assignment-of-treatments
 see-also-multiple-hypothesis-testing

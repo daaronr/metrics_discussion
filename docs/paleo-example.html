@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
+  <meta name="description" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   
   
   
 
-<meta name="author" content="Dr. David Reinstein," />
+<meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-02-15" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -100,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-
+<!-- 
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -124,7 +123,7 @@ function toggle_R() {
 
 document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
 
-</script>
+</script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
@@ -137,11 +136,562 @@ document.write('<input onclick="toggle_R();" type="button" value="Hide Global" i
 </script>
 -->
 
+<!-- FOLDING TEXT BOXES -->
+
+<script>
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: collapse.js v3.3.7
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+
++function ($) {
+  'use strict';
+
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
+
+  var Collapse = function (element, options) {
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.transitioning = null
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+    }
+
+    if (this.options.toggle) this.toggle()
+  }
+
+  Collapse.VERSION  = '3.3.7'
+
+  Collapse.TRANSITION_DURATION = 350
+
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
+
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
+
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var activesData
+    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+    if (actives && actives.length) {
+      activesData = actives.data('bs.collapse')
+      if (activesData && activesData.transitioning) return
+    }
+
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    if (actives && actives.length) {
+      Plugin.call(actives, 'hide')
+      activesData || actives.data('bs.collapse', null)
+    }
+
+    var dimension = this.dimension()
+
+    this.$element
+      .removeClass('collapse')
+      .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
+
+    this.$trigger
+      .removeClass('collapsed')
+      .attr('aria-expanded', true)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse in')[dimension]('')
+      this.transitioning = 0
+      this.$element
+        .trigger('shown.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse in')
+      .attr('aria-expanded', false)
+
+    this.$trigger
+      .addClass('collapsed')
+      .attr('aria-expanded', false)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse')
+        .trigger('hidden.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+  }
+
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  }
+
+  Collapse.prototype.getParent = function () {
+    return $(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+
+  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+    var isOpen = $element.hasClass('in')
+
+    $element.attr('aria-expanded', isOpen)
+    $trigger
+      .toggleClass('collapsed', !isOpen)
+      .attr('aria-expanded', isOpen)
+  }
+
+  function getTargetFromTrigger($trigger) {
+    var href
+    var target = $trigger.attr('data-target')
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+    return $(target)
+  }
+
+
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
+  $.fn.collapse.Constructor = Collapse
+
+
+  // COLLAPSE NO CONFLICT
+  // ====================
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+  // COLLAPSE DATA-API
+  // =================
+
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+    var $this   = $(this)
+
+    if (!$this.attr('data-target')) e.preventDefault()
+
+    var $target = getTargetFromTrigger($this)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+
+    Plugin.call($target, option)
+  })
+
+}(jQuery);
+</script>
+<script>
+window.initializeCodeFolding = function(show) {
+
+  // handlers for show-all and hide all
+  $("#rmd-show-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('show');
+    });
+  });
+  $("#rmd-hide-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('hide');
+    });
+  });
+
+  // index for unique code element ids
+  var currentIndex = 1;
+
+  // select all R code blocks
+  var rCodeBlocks = $('pre.sourceCode, pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.js');
+  rCodeBlocks.each(function() {
+
+    // create a collapsable div to wrap the code in
+    var div = $('<div class="collapse r-code-collapse"></div>');
+    if (show)
+      div.addClass('in');
+    var id = 'rcode-643E0F36' + currentIndex++;
+    div.attr('id', id);
+    $(this).before(div);
+    $(this).detach().appendTo(div);
+
+    // add a show code button right above
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
+    showCodeButton.append(showCodeText);
+    showCodeButton
+        .attr('data-toggle', 'collapse')
+        .attr('data-target', '#' + id)
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
+
+    var buttonRow = $('<div class="row"></div>');
+    var buttonCol = $('<div class="col-md-12"></div>');
+
+    buttonCol.append(showCodeButton);
+    buttonRow.append(buttonCol);
+
+    div.before(buttonRow);
+
+    // update state of button on show/hide
+    div.on('hidden.bs.collapse', function () {
+      showCodeText.text('Code');
+    });
+    div.on('show.bs.collapse', function () {
+      showCodeText.text('Hide');
+    });
+  });
+
+}
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.3.7
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle="dropdown"]'
+  var Dropdown = function (element) {
+    $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.VERSION = '3.3.7'
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+  function clearMenus(e) {
+    if (e && e.which === 3) return
+    $(backdrop).remove()
+    $(toggle).each(function () {
+      var $this         = $(this)
+      var $parent       = getParent($this)
+      var relatedTarget = { relatedTarget: this }
+
+      if (!$parent.hasClass('open')) return
+
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+    })
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we use a backdrop because click events don't delegate
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
+      }
+
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
+
+      $parent
+        .toggleClass('open')
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+    }
+
+    return false
+  }
+
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+    var $this = $(this)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
+    }
+
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
+
+    if (!$items.length) return
+
+    var index = $items.index(e.target)
+
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
+
+    $items.eq(index).trigger('focus')
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
+
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+</script>
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+.row { display: flex; }
+.collapse { display: none; }
+.in { display:block }
+.pull-right > .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<script>
+document.write('<div class="btn-group pull-right" style="position: absolute; top: 10%; right: 15%; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>')
+</script>
+
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -388,22 +938,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
 <li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a>
+<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
 <ul>
-<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-1"><i class="fa fa-check"></i>Sequential</a></li>
-<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.3.1</b> Adaptive</a></li>
+<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.4</b> Efficient assignment of treatments</a>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.4.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="13.4.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.4.2</b> How many treatment arms can you ‘afford’?</a></li>
-<li class="chapter" data-level="13.4.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.4.3</b> Other notes and resources</a></li>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations’?</a>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
@@ -416,9 +966,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
-<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
@@ -436,7 +986,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
 <ul>
@@ -471,7 +1021,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
 <li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation">Raykov and Marcoulides (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
 <li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
@@ -625,7 +1175,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
 <ul>
 <li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
-<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation">Manheimer et al. (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
 <li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
 <li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
 </ul></li>
@@ -673,7 +1223,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics, econometrics, experiment and survey methods, data science: Notes</a>
           </h1>
         </div>
 
@@ -681,7 +1231,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="paleo-example" class="section level1 unnumbered" number="">
+<div id="paleo-example" class="section level1 unnumbered">
 <h1>Meta-analysis arbitrary example: the ‘Paleo diet’</h1>
 <p>Introduction and discussion</p>
 <blockquote>
@@ -694,34 +1244,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.</p>
 </blockquote>
 <p>There is some evidence supporting the claim that the ‘Paleo diet’ reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain ’standard recommended diets. At least a small set of randomized trials have concluded that participants in the “Paleo diet treatment” groups reduced their waist circumference more than those in control groups.</p>
-<p>This evidence is summarized in the meta-analysis of <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> who report:</p>
+<p>This evidence is summarized in the meta-analysis of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> who report:</p>
 <blockquote>
 <p>The Paleolithic diet resulted in greater short-term improvements in metabolic syndrome components than did guideline-based control diets. The available data warrant additional evaluations of the health benefits of Paleolithic nutrition.</p>
 </blockquote>
-<p>More recent meta-analyses in reputable journals have also found favorable results (<span class="citation">Ghaedi et al. (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, <span class="citation">de Menezes et al. (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>).</p>
+<p>More recent meta-analyses in reputable journals have also found favorable results (<span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, <span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>).</p>
 <div class="marginnote">
-<p>According to <a href="https://www.scimagojr.com/journalrank.php?category=2916">Scimago</a>, American Journal of Clinical Nutrition (<span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (<span class="citation">Ghaedi et al. (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>) is ranked fourth, and Nutrition Journal (<span class="citation">de Menezes et al. (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>) is ranked 35th.</p>
+<p>According to <a href="https://www.scimagojr.com/journalrank.php?category=2916">Scimago</a>, American Journal of Clinical Nutrition (<span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (<span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>) is ranked fourth, and Nutrition Journal (<span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>) is ranked 35th.</p>
 </div>
-<p>However, the Paleo diet remains controversial; it is still referred to as a ‘fad diet’ on <a href="https://en.wikipedia.org/wiki/Paleolithic_diet">Wikipedia</a> (accessed 20 Dec 2020), which claims ‘there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome’.*</p>
+<p>However, the Paleo diet remains controversial; it is still referred to as a ‘fad diet’ on <a href="https://en.wikipedia.org/wiki/Paleolithic_diet">Wikipedia</a> (accessed 20 Dec 2020), which claims ‘there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome.’*</p>
 <div class="marginnote">
-<p>* However, this Wikipedia article references <span class="citation">(Ghaedi et al. <a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>; Manheimer et al. <a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.</p>
+<p>* However, this Wikipedia article references <span class="citation">(<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al. 2019</a>; <a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a>)</span>; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.</p>
 </div>
-<p><span class="citation">(Fenton and Fenton <a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">2016</a>)</span> criticized the <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. ***</p>
+<p><span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> criticized the <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. ***</p>
 <div class="marginnote">
-<p>*** While I agree with some of the conceptual issues <span class="citation">(Fenton and Fenton <a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">2016</a>)</span> raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification. I return to these issues below.</p>
+<p>*** While I agree with some of the conceptual issues <span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification. I return to these issues below.</p>
 </div>
 <p><br />
 </p>
 <p>In this brief review I:</p>
 <ul>
 <li><p><a href="conceptual.html#conceptual">Consider conceptual issues in defining and measuring the ‘impact of a diet’ through standard study methodologies</a></p></li>
-<li><p><span class="citation">(Focus (as suggested) on the meta-analysis of Manheimer et al. <a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a> considering its methods, findings, and limitations)</span>(#limitations-p),</p>
+<li><p><span class="citation">(Focus (as suggested) on the meta-analysis of <a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a> considering its methods, findings, and limitations)</span>(#limitations-p),</p>
 <ul>
 <li>[considering key conceptual and statistical issuess]((#man-results),</li>
-<li>considering the <span class="citation">(critiques of Fenton and Fenton <a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">2016</a> and Manheimer’s responses)</span>(#critiques), as well as other evaluations of this meta-analysis,</li>
+<li>considering the <span class="citation">(critiques of <a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a> and Manheimer’s responses)</span>(#critiques), as well as other evaluations of this meta-analysis,</li>
 <li>weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.</li>
 </ul></li>
-<li><p><a href="paleo-example.html#boers">Assess a particularly promising study</a> <span class="citation">(Boers et al. <a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> (incorporated into <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>)</p></li>
+<li><p><a href="paleo-example.html#boers">Assess a particularly promising study</a> <span class="citation">(<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al. 2014</a>)</span> (incorporated into <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>)</p></li>
 </ul>
 <p><em>Disclaimers:</em> (See <a href="paleo-example.html#limitations-p">‘limitations’</a> below).</p>
 <div id="conceptual" class="section level2" number="19.9">
@@ -731,13 +1281,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 Randomized controlled trials on nutrition and diet have important limitations not faced by many other medical RCTs, such as drug trials.
 <div class="marginnote">
 <p>Another important limitation: “RCTs of dietary interventions
-cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns” <span class="citation">Schwingshackl et al. (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>. They also cite
+cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns” <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>. They also cite
 “lack of double blinding… crossover bias, and high dropout rates”; although dropout (attrition) is not an exclusive problem for dietary studies.</p>
 </div>
-<p><em>Limited compliance</em> is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of <em>tracking</em> compliance (e.g. “Diet-associated biomarkers” such as 24-hour urine checks, which are highly-rated by <span class="citation">Schwingshackl et al. (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>’s Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in <span class="citation">Boers et al. (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span>).</p>
+<p><em>Limited compliance</em> is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of <em>tracking</em> compliance (e.g. “Diet-associated biomarkers” such as 24-hour urine checks, which are highly-rated by <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>’s Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span>).</p>
 <p>However, our consideration of this issue depends on what exactly itis we want to measure, and for what purpose. For example may want to consider either, what I will call… *</p>
 <div class="marginnote">
-<p>* Note that my terminology below comes from the “treatment effect” literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., <span class="citation">Angrist and Imbens (<a href="#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">1995</a>)</span>.</p>
+<p>* Note that my terminology below comes from the “treatment effect” literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., <span class="citation"><a href="references.html#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">Joshua D. Angrist and Imbens</a> (<a href="references.html#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">1995</a>)</span>.</p>
 </div>
 <ol style="list-style-type: decimal">
 <li>“Average Treatment Effect (ATE)”: The difference in some medical outcome, averaged over the population of interest… for the ‘Treatment diet’ if consumed exactly as proposed relative to a ‘Control diet.’**</li>
@@ -763,7 +1313,7 @@ cannot be controlled with true placebos, but rather with certain constraints on 
 <li><p>I would expect that the ITT measure to have more heterogeneity and variation, as compliance with a particular diet might be expected to vary greatly for a variety of psychological and cultural/lifestyle reasons.</p></li>
 </ul>
 <p>Thus the ITT may be more sensitive to the representativeness of our sample of dieters. Given self selection and other issues, it may be extremely difficult to recruit a “nationally representative” sample of the targeted group.</p>
-<p>In the discussion of <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, it is not clear to me which measure of the studies are targeting. The discussion (“whether Paleolithic <em>nutrition</em> has any effect in improving metabolic risk factors”, emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different <em>recommendations</em> for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.</p>
+<p>In the discussion of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, it is not clear to me which measure of the studies are targeting. The discussion (“whether Paleolithic <em>nutrition</em> has any effect in improving metabolic risk factors,” emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different <em>recommendations</em> for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.</p>
 </div>
 <div id="control-group-what-is-being-measured" class="section level3" number="19.9.2">
 <h3><span class="header-section-number">19.9.2</span> Control group: what is being measured?</h3>
@@ -782,7 +1332,7 @@ cannot be controlled with true placebos, but rather with certain constraints on 
 </p>
 <p>It is important to note that even if there is clear evidence that (recommending or implementing) the ‘Paleo diet’ causes positive health benefits relative to an older diet:</p>
 <ol style="list-style-type: decimal">
-<li><p>There is some inconsistency and much heterogeneity in the definition of the Paleo diet, as noted by <span class="citation">Zazpe et al. (<a href="#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">2020</a>)</span>, who propose a particular ‘PaleoDiet’ score</p></li>
+<li><p>There is some inconsistency and much heterogeneity in the definition of the Paleo diet, as noted by <span class="citation"><a href="references.html#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">Zazpe et al.</a> (<a href="references.html#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">2020</a>)</span>, who propose a particular ‘PaleoDiet’ score</p></li>
 <li><p>We don’t know <em>which</em> of the components of the Paleo diet were beneficial (some may even have been harmful, but outweighed by others which were even more strongly beneficial.</p></li>
 <li><p>We don’t have evidence that narrowly supports the claims made by Paleo advocates. Even if elements of the Paleo diet are beneficial, it may be through other mechanisms and channels than those proposed.</p></li>
 </ol>
@@ -794,14 +1344,14 @@ cannot be controlled with true placebos, but rather with certain constraints on 
 <h3><span class="header-section-number">19.10.1</span> Strengths and limitations</h3>
 The authors follow standard protocols and recommendations. However, these systems themselves may merit some further examination.*
 <div class="marginnote">
-<p>* E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has <em>determined</em> the weights for different categories of ‘quality’ chosen. <span class="citation">Quintana (<a href="#ref-Quintana2015" role="doc-biblioref">2015</a>)</span> note “there are more than 80 tools available to assess the quality and risk of bias in observational studies”… Perhaps there are a similar number of tools for RCT studies.</p>
+<p>* E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has <em>determined</em> the weights for different categories of ‘quality’ chosen. <span class="citation"><a href="references.html#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="references.html#ref-Quintana2015" role="doc-biblioref">2015</a>)</span> note “there are more than 80 tools available to assess the quality and risk of bias in observational studies”… Perhaps there are a similar number of tools for RCT studies.</p>
 </div>
 <p>They have:</p>
 <ol style="list-style-type: decimal">
 <li>Prospectively (in advance) [registered their protocol with PROSPERO](<a href="http://www.crd.york.ac.uk/PROSPERO\*\" class="uri">http://www.crd.york.ac.uk/PROSPERO\*\</a>*
 <div class="marginnote">
 <p>**
-This reduces the risk of “hypothesizing after the results are known” … ‘HARKing’ kerrHARKingHypothesizingResults1998a", as noted by <span class="citation">Quintana (<a href="#ref-Quintana2015" role="doc-biblioref">2015</a>)</span>.
+This reduces the risk of “hypothesizing after the results are known” … ‘HARKing’ kerrHARKingHypothesizingResults1998a", as noted by <span class="citation"><a href="references.html#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="references.html#ref-Quintana2015" role="doc-biblioref">2015</a>)</span>.
 However it is difficult to verify when a meta-analysis was actually started, even privately. Here pre-registration partially depends on an honor and trust system.</p>
 </div></li>
 <li>Searched a broad collection of appropriate databases:</li>
@@ -810,7 +1360,7 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <li>both literature databases such as PubMed</li>
 <li>and databases of clinical trials</li>
 </ul>
-<p>They also claim to have contacted “experts in the field” (these should have been named) to consider whether any trials had been overlooked. This seems to have been a well-planned and adequate search, not neglecting the “gray literature” (<span class="citation">Paez (<a href="#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">2017</a>)</span>) and limiting “file drawer” bias (<span class="citation">Kennedy (<a href="#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">2004</a>)</span>). They carefully explained their selection method, and illustrated it in a flow diagram.</p>
+<p>They also claim to have contacted “experts in the field” (these should have been named) to consider whether any trials had been overlooked. This seems to have been a well-planned and adequate search, not neglecting the “gray literature” (<span class="citation"><a href="references.html#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">Paez</a> (<a href="references.html#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">2017</a>)</span>) and limiting “file drawer” bias (<span class="citation"><a href="references.html#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">D. Kennedy</a> (<a href="references.html#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">2004</a>)</span>). They carefully explained their selection method, and illustrated it in a flow diagram.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Broadly assessed the quality of the evidence following the GRADE protocol, finding the overall evidence to be of ‘moderate’ quality (for waist circumference).</p></li>
 <li><p>Analyzed the overall evidence using a frequentist Random-Effects model, estimating both a mean effect and a heterogeneity term. I find this approach to be reasonably appropriate, but I would prefer a <em>Bayesian</em> meta-analysis.</p></li>
@@ -842,7 +1392,7 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <blockquote>
 <p>Crossover RCTs were eligible for inclusion, but we used data from only the first phase before the crossover occurred because we considered the risk of carryover effects to be high</p>
 </blockquote>
-<p>However, particularly in line with the points made in <span class="citation">Schwingshackl et al. (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.</p>
+<p>However, particularly in line with the points made in <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.</p>
 </div>
 <p><br />
 </p>
@@ -850,14 +1400,14 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <li>Possible signs of authors’ pre-judgement and funding pressure</li>
 </ol>
 <ul>
-<li>The study was ‘Supported in part by the National Center for Complementary and Alternative Medicine of the US NIH (grant R24 AT001293; EWM)’, a group that I might suspect to be somewhat sympathetic to the anti-establishment linked ‘back to nature’ philosophy of the Paleo diet.</li>
+<li>The study was ‘Supported in part by the National Center for Complementary and Alternative Medicine of the US NIH (grant R24 AT001293; EWM),’ a group that I might suspect to be somewhat sympathetic to the anti-establishment linked ‘back to nature’ philosophy of the Paleo diet.</li>
 </ul>
 </div>
 </div>
 <div id="overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015" class="section level3" number="19.10.2">
-<h3><span class="header-section-number">19.10.2</span> Overall results, interpretation, consideration of evidence presented in <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span></h3>
-<p>I reproduce the most relevant part of <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s results below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-89"></span>
+<h3><span class="header-section-number">19.10.2</span> Overall results, interpretation, consideration of evidence presented in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span></h3>
+<p>I reproduce the most relevant part of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s results below:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-93"></span>
 <img src="images/waist_manheim.png" alt="Forest plot from Manheimer et al: Waist circumference" width="90%" />
 <p class="caption">
 Figure 19.1: Forest plot from Manheimer et al: Waist circumference
@@ -873,18 +1423,18 @@ Figure 19.1: Forest plot from Manheimer et al: Waist circumference
 </p>
 <p><em>Does this imply a large relative effect of Paleo?</em> <em>Does it bound the effect as ‘small at best’</em>?</p>
 To consider the magnitude of an effect such as this, it is helpful to consider overall averages and spreads.
-The average US male WC is roughly 102 cm (<span class="citation">Fryar et al. (<a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span>) and 98 cm for women…*
+The average US male WC is roughly 102 cm (<span class="citation"><a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span>) and 98 cm for women…*
 <div class="marginnote">
 <p>* I could not quickly find a reputable source for averages in Sweden and Netherlands, where most of the studies were conducted, but <a href="https://www.dailymail.co.uk/health/article-2441250/Average-BMI-Artist-compares-sizes-men-various-countries.html">secondhand reports</a> suggest it is somewhat smaller, perhaps 90 cm.</p>
 </div>
 … which (for men) is also approximately the <a href="https://www.heart.org/en/health-topics/metabolic-syndrome/about-metabolic-syndrome">threshold circumference considered a risk factor for metabolic syndrome</a> (accessed 29 Dec 2020). I quickly, (and perhaps incorrectly) imputed a standard-deviation of roughly 52 cm.**
 <div class="marginnote">
-<p>** Drawing from <span class="citation">Fryar et al. (<a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span> statistics, I multiplied the square root of the reported sample size (<span class="math inline">\(\sqrt(43169 )\)</span>) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn’t make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.</p>
+<p>** Drawing from <span class="citation"><a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span> statistics, I multiplied the square root of the reported sample size (<span class="math inline">\(\sqrt(43169 )\)</span>) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn’t make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.</p>
 </div>
 <p><br />
 </p>
 <p><strong>Heterogeneity</strong></p>
-The evidence also suggest between-study heterogeneity; at least we do not have strong evidence that would allow us to rule this out. Prima facie, we see strong differences between the studies. In particular, the one study with a strongly different methodology (Boers et al), finds a much smaller (near-zero effect). In their formal measures, we see an <span class="math inline">\(I^2\)</span> of 52%, conventionally classified as “moderate heterogeneity”. I believe <span class="math inline">\(\tau^2 of 2.81\)</span> can be interpreted as a ‘standard deviation in true effect size between studies’ of <span class="math inline">\(\tau =\)</span> 1.68, which seems, again, ‘moderate’.***
+The evidence also suggest between-study heterogeneity; at least we do not have strong evidence that would allow us to rule this out. Prima facie, we see strong differences between the studies. In particular, the one study with a strongly different methodology (Boers et al), finds a much smaller (near-zero effect). In their formal measures, we see an <span class="math inline">\(I^2\)</span> of 52%, conventionally classified as “moderate heterogeneity.” I believe <span class="math inline">\(\tau^2 of 2.81\)</span> can be interpreted as a ‘standard deviation in true effect size between studies’ of <span class="math inline">\(\tau =\)</span> 1.68, which seems, again, ‘moderate.’***
 <div class="marginnote">
 <p>*** I suspect that if we allowed a variety of other methods of estimating and reporting this (including Bayesian) and we reported the confidence/credible intervals on this between-study variance, the results might suggest the possibility of more substantial heterogeneity.</p>
 </div>
@@ -905,34 +1455,34 @@ Although the NHST for heterogeneity is not significant by standard measures (<sp
 <!--
 ### Ghaedi et al meta-analysis
 -->
-<span class="citation">(Fenton and Fenton <a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">2016</a>)</span>’s critique of <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s focal statistical comparisons appears to result from a mis-reading.*
+<span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span>’s critique of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s focal statistical comparisons appears to result from a mis-reading.*
 <div class="marginnote">
-<p>* “We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups.” <span class="citation">(Manheimer <a href="#ref-manheimerReplyTRFenton2016" role="doc-biblioref">2016</a>)</span></p>
+<p>* “We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups.” <span class="citation">(<a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer 2016</a>)</span></p>
 </div>
-<span class="citation">Schwingshackl et al. (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span> develops the ‘Nutrigrade’ scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.*
+<span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span> develops the ‘Nutrigrade’ scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.*
 <div class="marginnote">
 <p>* Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.</p>
 </div>
-<p>Their system and relative points system was independently developed; a major point of contrast with GRADE (<span class="citation">Guyatt et al. (<a href="#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">2008</a>)</span>) seems to be Nutrigrade’s greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as <a href="paleo-example.html#compliance">limited compliance</a>. They ‘Nutrigrade’ the evidence in <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> as 5.75, or ‘Low’, explained as “there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate.” Of 10 randomly meta-analysis studies they rated, this was the fifth-highest ‘Nutrigrade’.</p>
-<p>Overall, the ‘reviews’ of the strength of evidence meta-analysis are fair to middling. All, including the original authors, seem to agree that the “the current evidence on the paleo diet might be considered early or preliminary and that further research is critically needed” (<span class="citation">Manheimer (<a href="#ref-manheimerReplyTRFenton2016" role="doc-biblioref">2016</a>)</span>), although there seems to be some disagreement about how promising an avenue this is for further inquiry.</p>
+<p>Their system and relative points system was independently developed; a major point of contrast with GRADE (<span class="citation"><a href="references.html#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">Guyatt et al.</a> (<a href="references.html#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">2008</a>)</span>) seems to be Nutrigrade’s greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as <a href="paleo-example.html#compliance">limited compliance</a>. They ‘Nutrigrade’ the evidence in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> as 5.75, or ‘Low,’ explained as “there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate.” Of 10 randomly meta-analysis studies they rated, this was the fifth-highest ‘Nutrigrade.’</p>
+<p>Overall, the ‘reviews’ of the strength of evidence meta-analysis are fair to middling. All, including the original authors, seem to agree that the “the current evidence on the paleo diet might be considered early or preliminary and that further research is critically needed” (<span class="citation"><a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer</a> (<a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">2016</a>)</span>), although there seems to be some disagreement about how promising an avenue this is for further inquiry.</p>
 </div>
 </div>
 <div id="other-meta-analyses-and-consideration-of-the-paleo-diet" class="section level2" number="19.11">
 <h2><span class="header-section-number">19.11</span> Other meta-analyses and consideration of the Paleo diet</h2>
-<p>As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> note</p>
+<p>As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> note</p>
 <blockquote>
 <p>a 2015 US News and World Report ranking of 35 diets with input from a panel of health experts placed the Paleolithic diet dead last, citing a lack of research evidence that showed clinical benefits.</p>
 </blockquote>
 <p>However, more work also seems to support a claim such as ‘recommending the Paleo diet is succesful in reducing waist circumference in the short-term, relative to recommending more traditional diets.’</p>
-<p>In particular, <span class="citation">Ghaedi et al. (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span> perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find “a [Paleo diet] significantly reduced … waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm)”. These results are rather similar to those of <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>. Time-permitting, I would like to examine this meta-analyis in more detail.</p>
+<p>In particular, <span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span> perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find “a [Paleo diet] significantly reduced … waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm).” These results are rather similar to those of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>. Time-permitting, I would like to examine this meta-analyis in more detail.</p>
 <div id="process-of-finding-relevant-work-informal" class="section level3" number="19.11.1">
 <h3><span class="header-section-number">19.11.1</span> Process of finding relevant work (informal)</h3>
-<p><em>Notes</em>: In the limited time I had available, I did some keyword searches on Google scholar, such as <code>'paleo diet' AND 'meta-analysis</code>‘<code>and</code>paleo diet<code>AND</code>randomized controlled trial`. I also followed a ’snowball’ approach to consider which studies were cited, and which studies cited <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, and the papers most prominently cited within. I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).</p>
+<p><em>Notes</em>: In the limited time I had available, I did some keyword searches on Google scholar, such as <code>'paleo diet' AND 'meta-analysis</code>‘<code>and</code>paleo diet<code>AND</code>randomized controlled trial`. I also followed a ’snowball’ approach to consider which studies were cited, and which studies cited <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, and the papers most prominently cited within. I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).</p>
 </div>
 </div>
 <div id="boers" class="section level2" number="19.12">
 <h2><span class="header-section-number">19.12</span> Focus: Boers et al</h2>
-<p>Unlike the other trials considered in <span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, <span class="citation">Boers et al. (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> “provided home-delivered Paleolithic and control diet meals to participants”. This permits a more direct examination of what I called the <a href="paleo-example.html#compliance">ATE</a>. I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.</p>
+<p>Unlike the other trials considered in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> “provided home-delivered Paleolithic and control diet meals to participants.” This permits a more direct examination of what I called the <a href="paleo-example.html#compliance">ATE</a>. I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.</p>
 This study is also particular strong because it has (apparently) a zero attrition rate (‘34/34 analyzed’), while attrition in the other cited studies is substantial. Particular forms of non-random attrition can strongly bias estimated treatment effects, biasing both the ATE and ITT mentioned above.*
 <div class="marginnote">
 <p>* See 1 for a clear discussion of this, as well as an approach to ‘bounding this bias’ under a particular monotonicity assumption.</p>
@@ -943,7 +1493,7 @@ This study is also particular strong because it has (apparently) a zero attritio
 <p>My overall impression from the above is that the meta-analytic results do suggest some benefit of the Paleo diet in reducing waist circumference for groups that are vulnerable to the metabolic syndrome.</p>
 <p>However:</p>
 <ul>
-<li><p>The evidence plausibly suggests that the benefit of this diet comes largely through greater adherence, rather than through a direct nutritional advantage. Perhaps, as is popular conventional wisdom “eating more proteinssimply makes it easier to feel full and thus not overeat”.</p></li>
+<li><p>The evidence plausibly suggests that the benefit of this diet comes largely through greater adherence, rather than through a direct nutritional advantage. Perhaps, as is popular conventional wisdom “eating more proteinssimply makes it easier to feel full and thus not overeat.”</p></li>
 <li><p>The studies I have seen compare the diet only to a traditional diet, rather than to another low carbohydrate diet. Thus, I do not see any strong evidence that the Paleo diet offers advantages (or disadvantages) over, e.g., the ‘South Beach’ or ‘Keto’ diets. Thus the evidence does not support (nor refute) the <em>mechanism and diet philopsophy</em> behind Paleo.<br />
 </p></li>
 </ul>
@@ -975,7 +1525,7 @@ This study is also particular strong because it has (apparently) a zero attritio
 <li>Pursue a better understanding of</li>
 </ol>
 <ul>
-<li><p>the reasoning behind standardized protocols for meta-analysis and ‘bias-assessment’, consulting, e.g., the <a href="https://training.cochrane.org/handbook/current">‘Cochrane Handbook for Systematic Reviews of Interventions’</a></p></li>
+<li><p>the reasoning behind standardized protocols for meta-analysis and ‘bias-assessment,’ consulting, e.g., the <a href="https://training.cochrane.org/handbook/current">‘Cochrane Handbook for Systematic Reviews of Interventions’</a></p></li>
 <li><p>How nutritionists and dieticians differentiate (what I call above) the ITT and ATE</p></li>
 <li><p>The argument for particular meta-analytic approaches in nutrition and health studies (in comparison to my area of greater expertise, economics and social science)</p></li>
 </ul>
@@ -985,63 +1535,15 @@ This study is also particular strong because it has (apparently) a zero attritio
 <li>More closely inspect and evaluate</li>
 </ol>
 <ul>
-<li><p><span class="citation">Manheimer et al. (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.*</p>
+<li><p><span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.*</p>
 <div class="marginnote">
-<p>* For example, as explained in the excellent tutorial <span class="citation">Harrer et al. (<a href="#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">2019</a>)</span>, <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2">there are a range of popular estimators for <span class="math inline">\(\tau^2\)</span></a>, the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.</p>
+<p>* For example, as explained in the excellent tutorial <span class="citation"><a href="references.html#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">Harrer et al.</a> (<a href="references.html#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">2019</a>)</span>, <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2">there are a range of popular estimators for <span class="math inline">\(\tau^2\)</span></a>, the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.</p>
 </div></li>
-<li><p>The particularly promising <span class="citation">Boers et al. (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> study as <a href="paleo-example.html#boers">noted above</a></p></li>
-<li><p><span class="citation">Ghaedi et al. (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation">de Menezes et al. (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>, and any other promising analyses that come from the aforementioned systematic literature survey.</p></li>
+<li><p>The particularly promising <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> study as <a href="paleo-example.html#boers">noted above</a></p></li>
+<li><p><span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>, and any other promising analyses that come from the aforementioned systematic literature survey.</p></li>
 </ul>
 
 </div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-angristIdentificationEstimationLocal1995">
-<p>Angrist, Joshua D., and Guido W. Imbens. 1995. “Identification and Estimation of Local Average Treatment Effects.” National Bureau of Economic Research.</p>
-</div>
-<div id="ref-boersFavourableEffectsConsuming2014">
-<p>Boers, Inge, Frits AJ Muskiet, Evert Berkelaar, Erik Schut, Ria Penders, Karine Hoenderdos, Harry J. Wichers, and Miek C. Jong. 2014. “Favourable Effects of Consuming a Palaeolithic-Type Diet on Characteristics of the Metabolic Syndrome: A Randomized Controlled Pilot-Study.” <em>Lipids in Health and Disease</em> 13 (1): 160. <a href="https://doi.org/10/f22cxq">https://doi.org/10/f22cxq</a>.</p>
-</div>
-<div id="ref-fentonPaleoDietStill2016">
-<p>Fenton, Tanis R., and Carol J. Fenton. 2016. “Paleo Diet Still Lacks Evidence.” <em>The American Journal of Clinical Nutrition</em> 104 (3): 844–44. <a href="https://doi.org/10/ghqb6v">https://doi.org/10/ghqb6v</a>.</p>
-</div>
-<div id="ref-fryarMeanBodyWeight2018">
-<p>Fryar, Cheryl D., Deanna Kruszan-Moran, Qiuping Gu, and Cynthia L. Ogden. 2018. “Mean Body Weight, Weight, Waist Circumference, and Body Mass Index Among Adults: United States, 1999–2000 Through 2015–2016.”</p>
-</div>
-<div id="ref-ghaediEffectsPaleolithicDiet2019">
-<p>Ghaedi, Ehsan, Mohammad Mohammadi, Hamed Mohammadi, Nahid Ramezani-Jolfaie, Janmohamad Malekzadeh, Mahdieh Hosseinzadeh, and Amin Salehi-Abargouei. 2019. “Effects of a Paleolithic Diet on Cardiovascular Disease Risk Factors: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.” <em>Advances in Nutrition</em> 10 (4): 634–46. <a href="https://doi.org/10/ghp383">https://doi.org/10/ghp383</a>.</p>
-</div>
-<div id="ref-guyattGRADEEmergingConsensus2008">
-<p>Guyatt, Gordon H., Andrew D. Oxman, Gunn E. Vist, Regina Kunz, Yngve Falck-Ytter, Pablo Alonso-Coello, and Holger J. Schünemann. 2008. “GRADE: An Emerging Consensus on Rating Quality of Evidence and Strength of Recommendations.” <em>Bmj</em> 336 (7650): 924–26. <a href="https://doi.org/10/dqmphq">https://doi.org/10/dqmphq</a>.</p>
-</div>
-<div id="ref-harrerDoingMetaanalysisHandson2019">
-<p>Harrer, M., P. Cuijpers, T. A. Furukawa, and D. D. Ebert. 2019. “Doing Meta-Analysis in R: A Hands-on Guide.” <em>PROTECT Lab Erlangen</em>.</p>
-</div>
-<div id="ref-kennedyOldFiledrawerProblem2004">
-<p>Kennedy, Donald. 2004. “The Old File-Drawer Problem.” <em>Science</em> 305 (5683): 451–52. <a href="https://doi.org/10/dz778j">https://doi.org/10/dz778j</a>.</p>
-</div>
-<div id="ref-manheimerReplyTRFenton2016">
-<p>Manheimer, Eric W. 2016. “Reply to TR Fenton and CJ Fenton.” <em>The American Journal of Clinical Nutrition</em> 104 (3): 845. <a href="https://doi.org/10/ghqb6t">https://doi.org/10/ghqb6t</a>.</p>
-</div>
-<div id="ref-manheimerPaleolithicNutritionMetabolic2015">
-<p>Manheimer, Eric W., Esther J. van Zuuren, Zbys Fedorowicz, and Hanno Pijl. 2015. “Paleolithic Nutrition for Metabolic Syndrome: Systematic Review and Meta-Analysis.” <em>The American Journal of Clinical Nutrition</em> 102 (4): 922–32. <a href="https://doi.org/10/gf9r2v">https://doi.org/10/gf9r2v</a>.</p>
-</div>
-<div id="ref-demenezesInfluencePaleolithicDiet2019a">
-<p>Menezes, Ehrika Vanessa Almeida de, Helena Alves de Carvalho Sampaio, Antônio Augusto Ferreira Carioca, Nara Andrade Parente, Filipe Oliveira Brito, Thereza Maria Magalhães Moreira, Ana Célia Caetano de Souza, and Soraia Pinheiro Machado Arruda. 2019. “Influence of Paleolithic Diet on Anthropometric Markers in Chronic Diseases: Systematic Review and Meta-Analysis.” <em>Nutrition Journal</em> 18 (1): 41. <a href="https://doi.org/10/ghqb6s">https://doi.org/10/ghqb6s</a>.</p>
-</div>
-<div id="ref-paezGrayLiteratureImportant2017">
-<p>Paez, Arsenio. 2017. “Gray Literature: An Important Resource in Systematic Reviews.” <em>Journal of Evidence-Based Medicine</em> 10 (3): 233–40. <a href="https://doi.org/10/gbtnr9">https://doi.org/10/gbtnr9</a>.</p>
-</div>
-<div id="ref-Quintana2015">
-<p>Quintana, Daniel S. 2015. “From Pre-Registration to Publication: A Non-Technical Primer for Conducting a Meta-Analysis to Synthesize Correlational Data.” <em>Frontiers in Psychology</em> 6 (OCT): 1–9. <a href="https://doi.org/10.3389/fpsyg.2015.01549">https://doi.org/10.3389/fpsyg.2015.01549</a>.</p>
-</div>
-<div id="ref-schwingshacklPerspectiveNutriGradeScoring2016">
-<p>Schwingshackl, Lukas, Sven Knüppel, Carolina Schwedhelm, Georg Hoffmann, Benjamin Missbach, Marta Stelmach-Mardas, Stefan Dietrich, Fabian Eichelmann, Evangelos Kontopanteils, and Khalid Iqbal. 2016. “Perspective: NutriGrade: A Scoring System to Assess and Judge the Meta-Evidence of Randomized Controlled Trials and Cohort Studies in Nutrition Research.” <em>Advances in Nutrition</em> 7 (6): 994–1004. <a href="https://doi.org/10/ghqzgr">https://doi.org/10/ghqzgr</a>.</p>
-</div>
-<div id="ref-zazpeScopingReviewPaleolithic2020">
-<p>Zazpe, Itziar, J. Alfredo Martínez, Susana Santiago, Silvia Carlos, M. Ángeles Zulet, and Miguel Ruiz-Canela. 2020. “Scoping Review of Paleolithic Dietary Patterns: A Definition Proposal.” <em>Nutrition Research Reviews</em>, 1–29.</p>
 </div>
 </div>
             </section>

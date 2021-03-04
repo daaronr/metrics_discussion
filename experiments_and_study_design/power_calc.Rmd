@@ -524,12 +524,98 @@ Note that although we are mainly framing this in terms of statistical inference,
 
 </div>
  
+ 
+A long debate on this in the folds below:
+
+**Is classical statistical inference the right framing here?**
+
+```{block2,  type='fold'}
+ 
+David: I think classical statistical inference is the wrong framing here* o think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling
+
+> Matt: I’m (currently) not sure there is any meaningful alternative (or, therefore, a better alternative)
+
+David: The reinforcement-learning and value-maximization (lift) framework used in industry (I believe). The challenge here would be to map between the survey responses given and the actual outcomes of interest... e.g., if a person responds “I would definitely watch a movie with this title”, what is the probability they actually will, relative to someone who responds “I might watch…” (also, what is the ‘population size’ we are sampling from, to understand the scale)
+
+> Matt  (“The challenge here would be to map between the survey responses given and the actual outcomes of interest”) This is  the thing I’m just assuming we cannot do. Given that, it’s just not clear how reinforcement learning framework helps us?
+  
+
+David: why not make reasonable assumptions about the above, for example?  But even if we framed it strictly in terms of ‘what we learn about how the population would respond to similar questions asked in the survey’, I still don’t see why (e.g.) our goal should be to be “strongly powered to reject an H0 that ‘all titles rank just as highly on average”. Instead we want to ‘learn as much as possible about whatever we think, in the survey,  is likely to be the most valuable response’
+
+
+```
+\
+
+**Is there a better approach to determining sample size?**
+
+```{block2,  type='fold'}
+
+
+> Matt: **What is the better approach to determining sample size?** 
+  
+David: It’s a cost/benefit calculation. If we are cost-constrained, this question becomes ‘how many arms (titles)’ and ‘is this worth doing’. NHST framework logic  may say ‘given your budget, only try 2 titles, and even if you have to choose them at random’ and/or “don’t bother, the chance of statistical significance is too low”. 
+
+In contrast (my loosely-informed guess is that) a RL approach says that (if we cannot do adaptive learning, if the ‘client’ finds it equally likely that all 20 titles are optimal, the ‘most value-increasing learning’ (highest ‘lift’) will simply come from dividing their budget equally across all 20 titles and choosing the one that ‘performs best’ (obviously ‘performs best’ is another can of worms) … even if this yields little power for strong statistical inference.
+ 
+> Matt: The approach I describe/propose (using classical approach to power analysis/hypothesis testing) also involves cost/benefit calculation. So I think this misdescribes the contrast.  
+
+David: You write “can detect Y size effects for X dollars while testing 20 titles vs can detect Z size effects for X dollars  while testing 10 titles”. But I don’t think ‘can detect Y effect sizes’ is entirely accurate/descriptive. 
+
+CLASSICAL (NHST):  At a certain cost you can achieve a certain probability (power) that you will conclude that a particular difference is ‘less than 5% likely to occur by chance under H0’. However: 1. Even if you don’t ‘reject the null’, the evidence (if interpreted using Bayesian methods) may already suggest that the null is very unlikely and the center of your belief distribution should be substantially shifted. 2. How does the Classical approach weigh the benefit of learning more about a few titles  vs less about many titles? 
+  
+> Matt: (setting aside number of titles question): NHST approach doesn’t tell us what sample size is best given the cost/benefit. NHST just tells us what sample size we need to have power to do X. Our overall judgement about what sample size to use (and what design etc.) is based on our independent judgements about what amount of cost/power is optimal..
+
+> Matt: I think may explain some of the apparent disagreement where you propose some approach to cost/benefit as some alternative to NHST, whereas I think NHST  and the cost/benefit calculation of what we should do are separate questions On my approach we also judge cost/benefit of having a given level of power to detect an effect of a given size (and a given number of titles). So what’s the alternative approach to establishing sample size required for [a certain level of precision/ability to detect effect.. construed in whatever terms you like], and separately judging what level is optimal given the cost?
+  
+DR: I think these are linked questions, and it is not meaningful to simply state 'power to detect an effect' ... as there are something like 20 x 20 possible 'effects' we could be looking for here.
+  
+  
+```
+
+
+\
+**Related discussion: should "Achieving a minimum statistical significance for a particular comparison”  be our criterion?**
+
+```{block2,  type='fold'}
+
+David:  “Achieving a minimum statistical significance for a particular comparison” should probably not be our criterion … we can generate a lot of value even without being able to make a strong statistical inference (‘rejecting the null… meh’)
+
+> Matt:  This seems a separate question. 
+The fundamental Q here just seems to be how much confidence we want/need to think this valuable to our decision-making. Statistical significance is an arbitrary threshold: but point remains that <significant results give less value Concretely, I would update little on noisy, less significant differences results
+
+David: My impression is that ‘optimal’ Bayesian updating, even starting with diffuse priors,  actually does move a lot in response to data that would not yield strongly significant results. Yes, it does update less with less data and more noisy data, but it still updates a lot in ways that substantially change decisions and add value even in cases where NHST yawns and says ‘nothing to see here, move on’. If “p=0.25” in a NHST statistical test, that (very loosely and probably not strictly correct here) might suggest that ‘there is a 25% chance that one option is substantially better’.  (I do think there is a place for NHST in scientific inquiry and ‘establishing results without giving the benefit of the doubt. But where you ‘must make a decision’ a different approach is justified IMHO).
+
+
+> Matt:  I agree that non-sig results can be worth updating on and potentially useful for practical purposes.  We could have a meaningful discussion about how confident/precise we want our estimates to be / how small an effect is worth measuring without thereby ditching NHST: and you could argue that we should shoot for a lower level of power.  It’s not clear there’s a simply better alternative framework for approaching the question. (Even translating these discussions into Bayesian terms seems to just leave us in exactly same position)
+
+David: Not sure if it’s the same position; see above (previous fold, "it's a cost/benefit calculation")
+
+Mostly I agree with what you are saying but you may be missing some of the complications here. The problem is not uni-dimensional, as we are asked to consider a large set of (20) titles. 
+I am claiming that you might gain more value, and indeed substantial value, from learning “a little about 20 titles” instead of “a lot about 2 randomly selected titles”
+
+> Matt:  Question of the value of 20 titles vs 2 titles seems distinct from the question of how much we can learn from noisy/sub-significant results.  (Links other post...)
+
+> ...  informed guess about what would be worth measuring.. In the simple case, this just involves comparing $X vs can detect Y size effects In the slightly more complex case this also involves comparing: 'can detect Y size effects for X dollars while testing 20 titles' vs 'can detect Z size effects for X dollars while testing 10 titles.' 
+
+> Concretely I have been informing my judgement of how small an effect we might want to detect based on our prior XXX  message testing which found (by convention) small effects, and which seems as reasonable a proxy for what we might expect to find here. As noted, the key ingredient to better knowing how big an effect we want to be able to detect would be knowing how well these ratings correspond to real world differences, but we do not know that… Of course there is also a hard ceiling on [costs] i.e. our client won't/can't pay more than X dollars ...
+
+
+> I agree that focusing on 2 random titles out of the 20  would probably provide little practical value as to which out of the proposed titles is best (due to providing no data about 18/20 titles). 
+
+David: :)
+
+> At the other extreme: if a test with 100 titles would only be able to detect effects that were  enormous (given resource constraints on our sample size)- then it’s likely we should change test/test fewer titles, because a test that won’t be able to detect reasonable effect sizes with reasonable power, won’t be able to offer practically significant evidence.
+
+David: I was thinking of the same reductio that I think you are getting at here, and I think the answer may be ‘strictly speaking yes, if our prior is that all titles have identical distributions on average, better to test each title 1x than to test some titles 2x or more. For decision-making purposes, you learn the most and update the most from the first piece of evidence. So I think it actually would be practically significant to the decision problem.  Highly recommended: read/listen to that Bayes Rule chapter of Algorithms to live by.
+
+```
 
 \
 
-### Design: Which questions to ask the audience about the proposed titles, and in what order
+### Design: Which questions to ask the audience about the proposed titles, and in what order?
 
-This is an 'experimental design for internal identification and external generalisability' question. (See ['Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_design))
+This is an 'experimental design for internal identification and external generalisability' question. 
+(See ['Identifying meaningful and useful (causal) relationships and parameters](#why_experiment_design))
 
 \
 

@@ -58,6 +58,33 @@ My thinking was that 'we can simply make downward adjustments to the estimates r
 
 See 'reinforcement learning', 'lift', and multi-armed bandit explore/exploit tradeoffs (with emphasis on the explore part)
 
+
+
+### Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling 
+
+
+
+From a conversation 
+
+```{block2,  type='fold'}
+
+: "Ah interesting, my understanding is that Thompson sampling is used to balance out statistical power with treatment effectiveness?"
+
+
+
+Sort of. None of this is really isometric to 'statistical power' imho. 
+
+My impression is that 
+
+- Thompson sampling is used to optimise in a  case where we simultaneously explore (learn what's best) and exploit (use what's best)
+
+- Kasy's "exploration sampling"  is used to optimise in a case where we have a defined *exploration period* (testing period) during which exploitation is not important 
+
+Thompson's sampling converges to a single treatment to optimise exploitative benefit. Exploration sampling converges to two treatments to maximise 'learning for future benefit'.
+
+```
+
+Q
 ## Sequential and adaptive designs {#sequential}
 
 ### Sequential {-}
@@ -114,6 +141,7 @@ In academia (Economics anyway) there is still the old-line insistence that ‘th
 In business practice a result may be highly valuable even if it is something like “there is an 80% chance that message A works better than message B, and the mean additional ‘lift’ of message A is +$50,000, with an 80% credible interval of (0,$50,000) and a 95% CI of (-$20k, +$70K)
 
 But academia also cares about ‘deep’ and ‘fancy’ mechanisms stuff: academia asks ’is this question interesting, can you rule out alternative hypothesis, etc … motivating one to have more treatments/outcomes as long as you can ‘get p<0.01’ for rejecting a (perhaps trivial null). So academia compares A1,A2,A3, B1,B2,B3, C1, C2,... etc.
+
 While business might find it more valuable to gain greater insight into ‘whether A outperforms B’ even  if we don’t know why. It may not care about testing A1 vs A2 if there is little practical difference between the two.
 
 And ‘academic publication incentives’ doesn’t care much about precision after we ‘get p<0.01’

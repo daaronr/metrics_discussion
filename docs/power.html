@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</title>
-  <meta name="description" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <title>14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
+  <meta name="description" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta property="og:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   <meta name="github-repo" content="daaronr/metrics_discussion_work" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus" />
+  <meta name="twitter:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   
   
   
 
-<meta name="author" content="Dr. David Reinstein," />
+<meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-02-15" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,6 @@ div.abstract{
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -100,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-
+<!-- 
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -124,7 +123,7 @@ function toggle_R() {
 
 document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
 
-</script>
+</script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
@@ -137,11 +136,562 @@ document.write('<input onclick="toggle_R();" type="button" value="Hide Global" i
 </script>
 -->
 
+<!-- FOLDING TEXT BOXES -->
+
+<script>
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: collapse.js v3.3.7
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+
++function ($) {
+  'use strict';
+
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
+
+  var Collapse = function (element, options) {
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.transitioning = null
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+    }
+
+    if (this.options.toggle) this.toggle()
+  }
+
+  Collapse.VERSION  = '3.3.7'
+
+  Collapse.TRANSITION_DURATION = 350
+
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
+
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
+
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var activesData
+    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+    if (actives && actives.length) {
+      activesData = actives.data('bs.collapse')
+      if (activesData && activesData.transitioning) return
+    }
+
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    if (actives && actives.length) {
+      Plugin.call(actives, 'hide')
+      activesData || actives.data('bs.collapse', null)
+    }
+
+    var dimension = this.dimension()
+
+    this.$element
+      .removeClass('collapse')
+      .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
+
+    this.$trigger
+      .removeClass('collapsed')
+      .attr('aria-expanded', true)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse in')[dimension]('')
+      this.transitioning = 0
+      this.$element
+        .trigger('shown.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse in')
+      .attr('aria-expanded', false)
+
+    this.$trigger
+      .addClass('collapsed')
+      .attr('aria-expanded', false)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse')
+        .trigger('hidden.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+  }
+
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  }
+
+  Collapse.prototype.getParent = function () {
+    return $(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+
+  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+    var isOpen = $element.hasClass('in')
+
+    $element.attr('aria-expanded', isOpen)
+    $trigger
+      .toggleClass('collapsed', !isOpen)
+      .attr('aria-expanded', isOpen)
+  }
+
+  function getTargetFromTrigger($trigger) {
+    var href
+    var target = $trigger.attr('data-target')
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+    return $(target)
+  }
+
+
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
+  $.fn.collapse.Constructor = Collapse
+
+
+  // COLLAPSE NO CONFLICT
+  // ====================
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+  // COLLAPSE DATA-API
+  // =================
+
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+    var $this   = $(this)
+
+    if (!$this.attr('data-target')) e.preventDefault()
+
+    var $target = getTargetFromTrigger($this)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+
+    Plugin.call($target, option)
+  })
+
+}(jQuery);
+</script>
+<script>
+window.initializeCodeFolding = function(show) {
+
+  // handlers for show-all and hide all
+  $("#rmd-show-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('show');
+    });
+  });
+  $("#rmd-hide-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('hide');
+    });
+  });
+
+  // index for unique code element ids
+  var currentIndex = 1;
+
+  // select all R code blocks
+  var rCodeBlocks = $('pre.sourceCode, pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.js');
+  rCodeBlocks.each(function() {
+
+    // create a collapsable div to wrap the code in
+    var div = $('<div class="collapse r-code-collapse"></div>');
+    if (show)
+      div.addClass('in');
+    var id = 'rcode-643E0F36' + currentIndex++;
+    div.attr('id', id);
+    $(this).before(div);
+    $(this).detach().appendTo(div);
+
+    // add a show code button right above
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
+    showCodeButton.append(showCodeText);
+    showCodeButton
+        .attr('data-toggle', 'collapse')
+        .attr('data-target', '#' + id)
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
+
+    var buttonRow = $('<div class="row"></div>');
+    var buttonCol = $('<div class="col-md-12"></div>');
+
+    buttonCol.append(showCodeButton);
+    buttonRow.append(buttonCol);
+
+    div.before(buttonRow);
+
+    // update state of button on show/hide
+    div.on('hidden.bs.collapse', function () {
+      showCodeText.text('Code');
+    });
+    div.on('show.bs.collapse', function () {
+      showCodeText.text('Hide');
+    });
+  });
+
+}
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.3.7
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle="dropdown"]'
+  var Dropdown = function (element) {
+    $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.VERSION = '3.3.7'
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+  function clearMenus(e) {
+    if (e && e.which === 3) return
+    $(backdrop).remove()
+    $(toggle).each(function () {
+      var $this         = $(this)
+      var $parent       = getParent($this)
+      var relatedTarget = { relatedTarget: this }
+
+      if (!$parent.hasClass('open')) return
+
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+    })
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we use a backdrop because click events don't delegate
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
+      }
+
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
+
+      $parent
+        .toggleClass('open')
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+    }
+
+    return false
+  }
+
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+    var $this = $(this)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
+    }
+
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
+
+    if (!$items.length) return
+
+    var index = $items.index(e.target)
+
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
+
+    $items.eq(index).trigger('focus')
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
+
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+</script>
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+.row { display: flex; }
+.collapse { display: none; }
+.in { display:block }
+.pull-right > .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<script>
+document.write('<div class="btn-group pull-right" style="position: absolute; top: 10%; right: 15%; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>')
+</script>
+
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -388,22 +938,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
 <li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i><b>13.3</b> Sequential and adaptive designs</a>
+<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
 <ul>
-<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential-1"><i class="fa fa-check"></i>Sequential</a></li>
-<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.3.1</b> Adaptive</a></li>
+<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.4</b> Efficient assignment of treatments</a>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.4.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="13.4.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.4.2</b> How many treatment arms can you ‘afford’?</a></li>
-<li class="chapter" data-level="13.4.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.4.3</b> Other notes and resources</a></li>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations’?</a>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
 <ul>
 <li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
@@ -416,9 +966,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order</a></li>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
-<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
@@ -436,7 +986,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators’?</a></li>
+<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
 <li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
 <li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
 <ul>
@@ -471,7 +1021,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
 <li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation">Raykov and Marcoulides (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
 <li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
@@ -625,7 +1175,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
 <ul>
 <li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
-<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation">Manheimer et al. (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
 <li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
 <li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
 </ul></li>
@@ -673,7 +1223,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics, econometrics, experiment and survey methods, data science: Notes</a>
           </h1>
         </div>
 
@@ -691,7 +1241,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>a particular <em>true effect size</em> (parameter magnitude),</li>
 <li>or an effect size stated as relative to the underlying dispersion,</li>
-<li>or as ‘the probability of achieving a certain desired precision’.*</li>
+<li>or as ‘the probability of achieving a certain desired precision.’*</li>
 </ul>
 <p>Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’).</p>
 <div class="marginnote">
@@ -705,9 +1255,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <p><em>A basic primer:</em> <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Egap - 10 things to know about statistical power</a></p>
 <div id="what-is-the-point-of-doing-a-power-analysis-or-power-calculations" class="section level2" number="14.1">
-<h2><span class="header-section-number">14.1</span> What is the point of doing a ‘power analysis’ or ‘power calculations’?</h2>
+<h2><span class="header-section-number">14.1</span> What is the point of doing a ‘power analysis’ or ‘power calculations?’</h2>
 <p>There are several reasons to consider power and to do ‘power calculations’ in advance of running an experiment or doing an analysis.</p>
-<p>An ‘underpowered study’ is one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present. Such a study is also likely to be an <em>uninformative</em> study. Furthermore, if ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘substantially and meaningfully false’.</p>
+<p>An ‘underpowered study’ is one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present. Such a study is also likely to be an <em>uninformative</em> study. Furthermore, if ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘substantially and meaningfully false.’</p>
 <div class="marginnote">
 <p>** But please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point.</p>
 </div>
@@ -720,30 +1270,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><p>‘low powered studies’ (at least in certain publication contexts) can potentially <a href="underpowered">harm the accuracy of our scientific consensus</a>.</p></li>
 </ol>
 <div class="marginnote">
-<p>Other than perhaps being ‘too costly’, is it bad for a study to be ‘overpowered’? <a href="https://twitter.com/GivingTools/status/1350259972786057216">I argue that this is <em>not</em> a problem.</a></p>
+<p>Other than perhaps being ‘too costly,’ is it bad for a study to be ‘overpowered?’ <a href="https://twitter.com/GivingTools/status/1350259972786057216">I argue that this is <em>not</em> a problem.</a></p>
 </div>
 <div id="practical-power" class="section level3" number="14.1.1">
 <h3><span class="header-section-number">14.1.1</span> What are the practical benefits of doing a power analysis</h3>
 <p>A power analysis may allow you to:</p>
 <ul>
-<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you determine ‘how much to collect’,</p></li>
+<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you determine ‘how much to collect,’</p></li>
 <li><p>consider and <strong>optimise over the tradeoffs in design choices</strong> (e.g., introducing more treatments usually involves a loss of power), and</p></li>
-<li><p>understand whether you ‘<strong>have enough funds</strong> to gather enough data to make it worth doing a study?’,</p></li>
+<li><p>understand whether you ‘<strong>have enough funds</strong> to gather enough data to make it worth doing a study?’</p></li>
 <li><p>(maybe) be more credible in making ex-post statements about null effects.*</p></li>
 </ul>
-Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim ‘I have power to do this credibly’.*
+Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim ‘I have power to do this credibly.’*
 <div class="marginnote">
 <p>* I’m not sure about these latter point, this needs to be stated more carefully</p>
 </div>
 <p><br />
 </p>
-<p>In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from ‘underpowered studies’. There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias’.</p>
+<p>In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from ‘underpowered studies.’ There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias.’</p>
 </div>
 </div>
 <div id="power-ingredients" class="section level2" number="14.2">
 <h2><span class="header-section-number">14.2</span> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</h2>
 <ol style="list-style-type: decimal">
-<li>Our assumptions (or existing prior data used that we can use for simulations) over the data-generating-process. In particular, ‘what do we expect the distribution of the outcomes to look like’ (e.g., ‘normally distributed’), and ‘with what dispersion’?*</li>
+<li>Our assumptions (or existing prior data used that we can use for simulations) over the data-generating-process. In particular, ‘what do we expect the distribution of the outcomes to look like’ (e.g., ‘normally distributed’), and ‘with what dispersion?’*</li>
 </ol>
 <div class="marginnote">
 <p>However, a measure of dispersion is not necessary for <em>all</em> power calculations. As noted throughout, we can calculate the power to detect an effect of a particular size <em>relative to the dispersion</em>, or to attain a particular confidence interval over such an effect.</p>
@@ -764,17 +1314,17 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <p><em>and perhaps the most important and debated ingredient:</em></p>
 <p>*4. Which ‘metrics of power and effect size’ are we considering, and what are our targets?**</p>
 <ul>
-<li><p>Are we simply seeking ‘precise estimates’, estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
-<li><p>Do we seek power to detect some ‘minimal effect size of interest’?</p></li>
+<li><p>Are we simply seeking ‘precise estimates,’ estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
+<li><p>Do we seek power to detect some ‘minimal effect size of interest?’</p></li>
 </ul>
-<p>If so, <em>what is this ‘MESOI’?</em></p>
+<p>If so, <em>what is this ‘MESOI?’</em></p>
 <div class="marginnote">
 <p>Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard ‘power to detect X’ criteria.</p>
 <p>Another criterion might be “power to do an ‘equivalency test’”… but I need to learn more about this.</p>
 </div>
 <p><br />
 </p>
-<div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered" number="">
+<div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered">
 <h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI?’</h4>
 <p>From David Moss (unfold)</p>
 
@@ -789,7 +1339,7 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 </div>
 <p><br />
 </p>
-<p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful’, with particular specific recommendations:</p>
+<p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful,’ with particular specific recommendations:</p>
 
 <div class="fold">
 <blockquote>
@@ -805,8 +1355,8 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <p>DR response: Why do we assume previous authors considered MESOI?</p>
 
 <div class="fold">
-<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest”?</p>
-<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects”, But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
+<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest?”</p>
+<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects,” But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
 </div>
 <p>DR: A second reason why one might see that as the “minimum effect size of interest” simply has to do with being able to publish a paper that can in some way “refute” previous claimed findings.</p>
 
@@ -843,7 +1393,7 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <li>“Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?”</li>
 </ol>
 <p>The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ <em>own</em> peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”</p>
-<p>However <span class="citation">(Button et al. <a href="#ref-buttonPowerFailureWhy2013" role="doc-biblioref">2013</a>)</span> point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.</p>
+<p>However <span class="citation">(<a href="references.html#ref-buttonPowerFailureWhy2013" role="doc-biblioref">Button et al. 2013</a>)</span> point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.</p>
 <p>In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects.</p>
 <div class="marginnote">
 <p>DR: However, I speculate that this idea might be less clear-cut than it seems. E.g., if we consider a (“non-sparse”) world where every factor indeed has an effect, lower powered studies are more likely to detect effects that are truly larger, which are arguably more policy-relevant; moreover, overstated effect sizes might be adjusted with a standard correction.</p>
@@ -870,9 +1420,9 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <p>While conventional practice seems to involve completely simulated data based on parametric assumptions (normality, etc) we prefer to draw from comparable ‘untreated’ real-world data (see (Barrios 2014) for a related discussion). Assuming the general distribution of outcomes (and covariates) is in some sense constant or predictable over time (perhaps stationarity?), this should give us more accurate estimates of power.</p>
 </blockquote>
 <blockquote>
-<p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect’.</p>
+<p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect.’</p>
 </blockquote>
-<div id="assign-notes" class="section level4 unnumbered" number="">
+<div id="assign-notes" class="section level4 unnumbered">
 <h4>Assignment procedures to consider</h4>
 <p>We consider three categories of possible assignment criteria: (We are coding these <a href="power.html#assign-functions">below</a>.)</p>
 <p><strong>1. Simple data-based</strong></p>
@@ -914,7 +1464,7 @@ Blocking process (folded)
 <p>The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws… the smaller the <em>actual</em> effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time). [Note: these latter notes may bot go with the procedure proposed below; these are older.]</p>
 </div>
 <p><strong>Kasy method?</strong></p>
-<p>We may or may not get to considering the method proposed in <span class="citation">Kasy (<a href="#ref-kasyWhyExperimentersMight2016" role="doc-biblioref">2016</a>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
+<p>We may or may not get to considering the method proposed in <span class="citation"><a href="references.html#ref-kasyWhyExperimentersMight2016" role="doc-biblioref">Kasy</a> (<a href="references.html#ref-kasyWhyExperimentersMight2016" role="doc-biblioref">2016</a>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
 <div class="fold">
 <p>
 See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
@@ -944,139 +1494,139 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p><a href="https://egap.org/resource/script-power-analysis-simulations-in-r/" class="uri">https://egap.org/resource/script-power-analysis-simulations-in-r/</a></p>
 <p><a href="https://egap.org/resource/10-things-to-know-about-statistical-power/" class="uri">https://egap.org/resource/10-things-to-know-about-statistical-power/</a></p>
 </div>
-<div id="assign-functions" class="section level4 unnumbered" number="">
+<div id="assign-functions" class="section level4 unnumbered">
 <h4>Treatment assignment functions, used in power calculations</h4>
 <ol style="list-style-type: decimal">
 <li>simple_assign: assign treatment dummy to first t-share of n rows</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="power.html#cb14-1"></a>simple_assign &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">tshare=</span><span class="fl">0.5</span>, <span class="dt">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
-<span id="cb14-2"><a href="power.html#cb14-2"></a>  <span class="kw">mutate</span>(df, <span class="dt">d_t =</span> <span class="kw">row_number</span>() <span class="op">&lt;=</span><span class="st"> </span>(<span class="kw">n</span>() <span class="op">*</span><span class="st"> </span>tshare)) <span class="co">#note: the data must be randomised first!</span></span>
-<span id="cb14-3"><a href="power.html#cb14-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="power.html#cb15-1" aria-hidden="true" tabindex="-1"></a>simple_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
+<span id="cb15-2"><a href="power.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(df, <span class="at">d_t =</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> (<span class="fu">n</span>() <span class="sc">*</span> tshare)) <span class="co">#note: the data must be randomised first!</span></span>
+<span id="cb15-3"><a href="power.html#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><br />
 </p>
 <p><strong>Data-based power calculation: create simulation function</strong> {#power-calc-sim-func}</p>
 <!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="power.html#cb15-1"></a>power_data &lt;-<span class="st"> </span><span class="cf">function</span>(ds, reps, yvar, N, <span class="dt">tshare=</span><span class="fl">0.5</span>, <span class="dt">linTE=</span><span class="dv">0</span>, <span class="dt">propTE=</span><span class="dv">0</span>, <span class="dt">alpha=</span><span class="fl">0.05</span>, <span class="dt">test_nm=</span> wilcox.test, <span class="dt">f_assign=</span>simple_assign, bv) {</span>
-<span id="cb15-2"><a href="power.html#cb15-2"></a></span>
-<span id="cb15-3"><a href="power.html#cb15-3"></a>    results  &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
-<span id="cb15-4"><a href="power.html#cb15-4"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
-<span id="cb15-5"><a href="power.html#cb15-5"></a>    exp_sample &lt;-<span class="st"> </span><span class="kw">sample_n</span>(ds, <span class="dt">size =</span> N, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb15-6"><a href="power.html#cb15-6"></a></span>
-<span id="cb15-7"><a href="power.html#cb15-7"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
-<span id="cb15-8"><a href="power.html#cb15-8"></a>    exp_sample &lt;-<span class="st"> </span>exp_sample <span class="op">%&gt;%</span></span>
-<span id="cb15-9"><a href="power.html#cb15-9"></a><span class="st">      </span><span class="kw">f_assign</span>(<span class="dt">tshare=</span>tshare, <span class="dt">blockvar=</span>bv) <span class="op">%&gt;%</span></span>
-<span id="cb15-10"><a href="power.html#cb15-10"></a></span>
-<span id="cb15-11"><a href="power.html#cb15-11"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
-<span id="cb15-12"><a href="power.html#cb15-12"></a><span class="st">      </span><span class="kw">mutate</span>({{yvar}} <span class="op">:</span><span class="er">=</span><span class="st">   </span><span class="kw">ifelse</span>(</span>
-<span id="cb15-13"><a href="power.html#cb15-13"></a>        d_t <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>, {{yvar}} <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>propTE) <span class="op">+</span><span class="st"> </span>linTE, {{yvar}})) <span class="op">%&gt;%</span></span>
-<span id="cb15-14"><a href="power.html#cb15-14"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
-<span id="cb15-15"><a href="power.html#cb15-15"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">yv :=</span> {{yvar}}) <span class="op">%&gt;%</span><span class="st">  </span><span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
-<span id="cb15-16"><a href="power.html#cb15-16"></a></span>
-<span id="cb15-17"><a href="power.html#cb15-17"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
-<span id="cb15-18"><a href="power.html#cb15-18"></a><span class="st">      </span>dplyr<span class="op">::</span><span class="kw">select</span>(yv, d_t)</span>
-<span id="cb15-19"><a href="power.html#cb15-19"></a>    test &lt;-<span class="st"> </span>exp_sample <span class="op">%&gt;%</span></span>
-<span id="cb15-20"><a href="power.html#cb15-20"></a><span class="st">      </span><span class="kw">do</span>(<span class="kw">tidy</span>(<span class="kw">test_nm</span>( yv <span class="op">~</span><span class="st"> </span>d_t, <span class="dt">data =</span> ., <span class="dt">paired =</span> <span class="ot">FALSE</span> )))</span>
-<span id="cb15-21"><a href="power.html#cb15-21"></a>    test<span class="op">$</span>p.value</span>
-<span id="cb15-22"><a href="power.html#cb15-22"></a>    }</span>
-<span id="cb15-23"><a href="power.html#cb15-23"></a>    )</span>
-<span id="cb15-24"><a href="power.html#cb15-24"></a></span>
-<span id="cb15-25"><a href="power.html#cb15-25"></a><span class="co">#5. Output share of p-values below alpha</span></span>
-<span id="cb15-26"><a href="power.html#cb15-26"></a>      <span class="kw">sum</span>(results <span class="op">&lt;</span><span class="st"> </span>alpha) <span class="op">/</span><span class="st"> </span>reps</span>
-<span id="cb15-27"><a href="power.html#cb15-27"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="power.html#cb16-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
+<span id="cb16-2"><a href="power.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="power.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
+<span id="cb16-4"><a href="power.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
+<span id="cb16-5"><a href="power.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(ds, <span class="at">size =</span> N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-6"><a href="power.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="power.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
+<span id="cb16-8"><a href="power.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="power.html#cb16-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
+<span id="cb16-10"><a href="power.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="power.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
+<span id="cb16-12"><a href="power.html#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
+<span id="cb16-13"><a href="power.html#cb16-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href="power.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
+<span id="cb16-15"><a href="power.html#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
+<span id="cb16-16"><a href="power.html#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="power.html#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
+<span id="cb16-18"><a href="power.html#cb16-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
+<span id="cb16-19"><a href="power.html#cb16-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb16-20"><a href="power.html#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
+<span id="cb16-21"><a href="power.html#cb16-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
+<span id="cb16-22"><a href="power.html#cb16-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-23"><a href="power.html#cb16-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-24"><a href="power.html#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="power.html#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
+<span id="cb16-26"><a href="power.html#cb16-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
+<span id="cb16-27"><a href="power.html#cb16-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (<code>blockvar</code>)</li>
 </ol>
 <p><em>Note: I am using ‘randomizr’ here to assign blocks</em></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="power.html#cb16-1"></a>block_1d_assign &lt;-<span class="st"> </span><span class="cf">function</span>(df, <span class="dt">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
-<span id="cb16-2"><a href="power.html#cb16-2"></a>      block_rand &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(</span>
-<span id="cb16-3"><a href="power.html#cb16-3"></a>        randomizr<span class="op">::</span><span class="kw">block_ra</span>(</span>
-<span id="cb16-4"><a href="power.html#cb16-4"></a>          <span class="dt">blocks =</span>  df[[<span class="kw">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="dt">conditions =</span> <span class="kw">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="dt">prob_each=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>tshare, tshare)</span>
-<span id="cb16-5"><a href="power.html#cb16-5"></a>          )</span>
-<span id="cb16-6"><a href="power.html#cb16-6"></a>        )</span>
-<span id="cb16-7"><a href="power.html#cb16-7"></a>      df &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(<span class="kw">bind_cols</span>(df, block_rand)) <span class="op">%&gt;%</span></span>
-<span id="cb16-8"><a href="power.html#cb16-8"></a><span class="st">        </span><span class="kw">rename</span>(<span class="dt">d_t=</span>value) <span class="op">%&gt;%</span></span>
-<span id="cb16-9"><a href="power.html#cb16-9"></a><span class="st">        </span><span class="kw">mutate</span>(</span>
-<span id="cb16-10"><a href="power.html#cb16-10"></a>          <span class="dt">d_t=</span>(d_t<span class="op">==</span><span class="st">&quot;treat&quot;</span>)</span>
-<span id="cb16-11"><a href="power.html#cb16-11"></a>        )</span>
-<span id="cb16-12"><a href="power.html#cb16-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power.html#cb17-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
+<span id="cb17-2"><a href="power.html#cb17-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
+<span id="cb17-3"><a href="power.html#cb17-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
+<span id="cb17-4"><a href="power.html#cb17-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
+<span id="cb17-5"><a href="power.html#cb17-5" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb17-6"><a href="power.html#cb17-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb17-7"><a href="power.html#cb17-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="power.html#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="power.html#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb17-10"><a href="power.html#cb17-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
+<span id="cb17-11"><a href="power.html#cb17-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb17-12"><a href="power.html#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered" number="">
+<div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered">
 <h4>Power calculation (just simple examples): adapt to built-in data</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power.html#cb17-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="power.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
 </div>
 <div id="loop-and-plot-over" class="section level4" number="14.5.1.1">
 <h4><span class="header-section-number">14.5.1.1</span> Loop and plot over…</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="power.html#cb18-1"></a>linTE.try &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
-<span id="cb18-2"><a href="power.html#cb18-2"></a>propTE.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="fl">0.05</span>, <span class="dt">to =</span> <span class="fl">0.2</span>, <span class="dt">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb18-3"><a href="power.html#cb18-3"></a></span>
-<span id="cb18-4"><a href="power.html#cb18-4"></a>outcomes.try &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
-<span id="cb18-5"><a href="power.html#cb18-5"></a>tests.try &lt;-<span class="st"> </span><span class="kw">c</span>(t.test, wilcox.test)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="power.html#cb19-1" aria-hidden="true" tabindex="-1"></a>linTE.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="power.html#cb19-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb19-3"><a href="power.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="power.html#cb19-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
+<span id="cb19-5"><a href="power.html#cb19-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
 <p>Testing equicost parings, determine necessary cost</p>
 <p>With only control and treatment we have</p>
 <p><span class="math display">\[cost = multiplier \times avgcost \times N \times tshare\]</span>
 <span class="math display">\[\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)\]</span></p>
 <p>Setting a 2x multiplier (for the ‘large’) treatment, avgcost=£30 (hard coded) for now, and imagining a £6000 initial budget yields</p>
 <p><span class="math display">\[\rightarrow N = 6000/\big(60 \times tshare\big) \]</span></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="power.html#cb19-1"></a>cost &lt;-<span class="st"> </span><span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
-<span id="cb19-2"><a href="power.html#cb19-2"></a>multip &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb19-3"><a href="power.html#cb19-3"></a>avdon &lt;-<span class="st"> </span><span class="dv">30</span></span>
-<span id="cb19-4"><a href="power.html#cb19-4"></a></span>
-<span id="cb19-5"><a href="power.html#cb19-5"></a>tshare.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="fl">0.1</span>, <span class="dt">to=</span><span class="fl">0.5</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</span>
-<span id="cb19-6"><a href="power.html#cb19-6"></a>sample.try &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">400</span>, <span class="dt">to=</span><span class="dv">1200</span>, <span class="dt">by=</span><span class="dv">200</span>)</span>
-<span id="cb19-7"><a href="power.html#cb19-7"></a>equi_sample &lt;-<span class="st"> </span>cost<span class="op">/</span>(avdon<span class="op">*</span>multip<span class="op">*</span>tshare.try)</span>
-<span id="cb19-8"><a href="power.html#cb19-8"></a></span>
-<span id="cb19-9"><a href="power.html#cb19-9"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
-<span id="cb19-10"><a href="power.html#cb19-10"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="power.html#cb20-1" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> <span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
+<span id="cb20-2"><a href="power.html#cb20-2" aria-hidden="true" tabindex="-1"></a>multip <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb20-3"><a href="power.html#cb20-3" aria-hidden="true" tabindex="-1"></a>avdon <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb20-4"><a href="power.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="power.html#cb20-5" aria-hidden="true" tabindex="-1"></a>tshare.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.1</span>, <span class="at">to=</span><span class="fl">0.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb20-6"><a href="power.html#cb20-6" aria-hidden="true" tabindex="-1"></a>sample.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">400</span>, <span class="at">to=</span><span class="dv">1200</span>, <span class="at">by=</span><span class="dv">200</span>)</span>
+<span id="cb20-7"><a href="power.html#cb20-7" aria-hidden="true" tabindex="-1"></a>equi_sample <span class="ot">&lt;-</span> cost<span class="sc">/</span>(avdon<span class="sc">*</span>multip<span class="sc">*</span>tshare.try)</span>
+<span id="cb20-8"><a href="power.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="power.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
+<span id="cb20-10"><a href="power.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
 </div>
-<div id="for-total-x-outcome-variable" class="section level4 unnumbered" number="">
+<div id="for-total-x-outcome-variable" class="section level4 unnumbered">
 <h4>For ‘total x’ outcome variable</h4>
 <p>(Some sample code below, needs discussion)</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="power.html#cb20-1"></a><span class="co">#Unvarying parameters up here:</span></span>
-<span id="cb20-2"><a href="power.html#cb20-2"></a>linTE &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb20-3"><a href="power.html#cb20-3"></a></span>
-<span id="cb20-4"><a href="power.html#cb20-4"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
-<span id="cb20-5"><a href="power.html#cb20-5"></a>power_vals &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
-<span id="cb20-6"><a href="power.html#cb20-6"></a>  <span class="dt">n_try=</span><span class="ot">NA</span>,</span>
-<span id="cb20-7"><a href="power.html#cb20-7"></a>  <span class="dt">prop_te =</span> <span class="ot">NA</span>,</span>
-<span id="cb20-8"><a href="power.html#cb20-8"></a>  <span class="dt">lin_te=</span><span class="ot">NA</span>,</span>
-<span id="cb20-9"><a href="power.html#cb20-9"></a>  <span class="dt">test=</span><span class="ot">NA</span>,</span>
-<span id="cb20-10"><a href="power.html#cb20-10"></a>  <span class="dt">power_est=</span><span class="ot">NA</span></span>
-<span id="cb20-11"><a href="power.html#cb20-11"></a>)</span>
-<span id="cb20-12"><a href="power.html#cb20-12"></a></span>
-<span id="cb20-13"><a href="power.html#cb20-13"></a><span class="co">#tic() #timer</span></span>
-<span id="cb20-14"><a href="power.html#cb20-14"></a></span>
-<span id="cb20-15"><a href="power.html#cb20-15"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
-<span id="cb20-16"><a href="power.html#cb20-16"></a></span>
-<span id="cb20-17"><a href="power.html#cb20-17"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
-<span id="cb20-18"><a href="power.html#cb20-18"></a></span>
-<span id="cb20-19"><a href="power.html#cb20-19"></a>  df_x &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></span>
-<span id="cb20-20"><a href="power.html#cb20-20"></a><span class="st">    </span><span class="kw">select</span>(outcomes.try)</span>
-<span id="cb20-21"><a href="power.html#cb20-21"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
-<span id="cb20-22"><a href="power.html#cb20-22"></a></span>
-<span id="cb20-23"><a href="power.html#cb20-23"></a>  <span class="co">#loop over tests</span></span>
-<span id="cb20-24"><a href="power.html#cb20-24"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="kw">seq_along</span>(tests.try)) {</span>
-<span id="cb20-25"><a href="power.html#cb20-25"></a>    TEST &lt;-<span class="st"> </span>tests.try[t]</span>
-<span id="cb20-26"><a href="power.html#cb20-26"></a></span>
-<span id="cb20-27"><a href="power.html#cb20-27"></a>    <span class="co">#Loop over proportional TE</span></span>
-<span id="cb20-28"><a href="power.html#cb20-28"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="kw">seq_along</span>(propTE.try)) {</span>
-<span id="cb20-29"><a href="power.html#cb20-29"></a>      PT &lt;-<span class="st"> </span>propTE.try[[p]]</span>
-<span id="cb20-30"><a href="power.html#cb20-30"></a></span>
-<span id="cb20-31"><a href="power.html#cb20-31"></a>      <span class="co">#Loop over sample sizes</span></span>
-<span id="cb20-32"><a href="power.html#cb20-32"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="kw">seq_along</span>(sample.try)) {</span>
-<span id="cb20-33"><a href="power.html#cb20-33"></a>        N &lt;-<span class="st"> </span>sample.try[s]</span>
-<span id="cb20-34"><a href="power.html#cb20-34"></a>        PW &lt;-<span class="st"> </span><span class="kw">power_data</span>(</span>
-<span id="cb20-35"><a href="power.html#cb20-35"></a>            <span class="dt">ds =</span> dfX, <span class="dt">reps =</span> <span class="dv">80</span>, <span class="dt">yvar =</span> sum_don, <span class="dt">N =</span> N, <span class="dt">tshare =</span> <span class="fl">0.5</span>, <span class="dt">linTE =</span> linTE, <span class="dt">propTE =</span> PT, <span class="dt">alpha =</span> <span class="fl">0.05</span></span>
-<span id="cb20-36"><a href="power.html#cb20-36"></a>          )</span>
-<span id="cb20-37"><a href="power.html#cb20-37"></a>        power_vals &lt;-<span class="st"> </span><span class="kw">add_row</span>(</span>
-<span id="cb20-38"><a href="power.html#cb20-38"></a>            power_vals, <span class="dt">n_try =</span> N, <span class="dt">prop_te =</span> PT, <span class="dt">lin_te =</span> linTE, <span class="dt">test =</span> <span class="kw">as.character</span>(TEST), <span class="dt">power_est =</span> PW</span>
-<span id="cb20-39"><a href="power.html#cb20-39"></a>          ) <span class="co">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
-<span id="cb20-40"><a href="power.html#cb20-40"></a>      }</span>
-<span id="cb20-41"><a href="power.html#cb20-41"></a>    }</span>
-<span id="cb20-42"><a href="power.html#cb20-42"></a>  }</span>
-<span id="cb20-43"><a href="power.html#cb20-43"></a></span>
-<span id="cb20-44"><a href="power.html#cb20-44"></a>  <span class="co">#}</span></span>
-<span id="cb20-45"><a href="power.html#cb20-45"></a></span>
-<span id="cb20-46"><a href="power.html#cb20-46"></a><span class="co">#toc()</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="power.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Unvarying parameters up here:</span></span>
+<span id="cb21-2"><a href="power.html#cb21-2" aria-hidden="true" tabindex="-1"></a>linTE <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-3"><a href="power.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="power.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
+<span id="cb21-5"><a href="power.html#cb21-5" aria-hidden="true" tabindex="-1"></a>power_vals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb21-6"><a href="power.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_try=</span><span class="cn">NA</span>,</span>
+<span id="cb21-7"><a href="power.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_te =</span> <span class="cn">NA</span>,</span>
+<span id="cb21-8"><a href="power.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lin_te=</span><span class="cn">NA</span>,</span>
+<span id="cb21-9"><a href="power.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">test=</span><span class="cn">NA</span>,</span>
+<span id="cb21-10"><a href="power.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">power_est=</span><span class="cn">NA</span></span>
+<span id="cb21-11"><a href="power.html#cb21-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-12"><a href="power.html#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="power.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tic() #timer</span></span>
+<span id="cb21-14"><a href="power.html#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="power.html#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
+<span id="cb21-16"><a href="power.html#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="power.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
+<span id="cb21-18"><a href="power.html#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="power.html#cb21-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb21-20"><a href="power.html#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
+<span id="cb21-21"><a href="power.html#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
+<span id="cb21-22"><a href="power.html#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="power.html#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
+<span id="cb21-24"><a href="power.html#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
+<span id="cb21-25"><a href="power.html#cb21-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
+<span id="cb21-26"><a href="power.html#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-27"><a href="power.html#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
+<span id="cb21-28"><a href="power.html#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
+<span id="cb21-29"><a href="power.html#cb21-29" aria-hidden="true" tabindex="-1"></a>      PT <span class="ot">&lt;-</span> propTE.try[[p]]</span>
+<span id="cb21-30"><a href="power.html#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-31"><a href="power.html#cb21-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
+<span id="cb21-32"><a href="power.html#cb21-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
+<span id="cb21-33"><a href="power.html#cb21-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
+<span id="cb21-34"><a href="power.html#cb21-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
+<span id="cb21-35"><a href="power.html#cb21-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
+<span id="cb21-36"><a href="power.html#cb21-36" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb21-37"><a href="power.html#cb21-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
+<span id="cb21-38"><a href="power.html#cb21-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
+<span id="cb21-39"><a href="power.html#cb21-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
+<span id="cb21-40"><a href="power.html#cb21-40" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb21-41"><a href="power.html#cb21-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-42"><a href="power.html#cb21-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-43"><a href="power.html#cb21-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-44"><a href="power.html#cb21-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb21-45"><a href="power.html#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-46"><a href="power.html#cb21-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -1088,13 +1638,85 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p>We need to decide on a general experimental design, a statistical analysis, and on sample sizes considering power (or perhaps ‘lift’).</p>
 <p>Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a ‘reinforcement learning’ problem.*</p>
 <div class="marginnote">
-<p>* See Max Kasy’s slides and articles on <a href="https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf">adaptive field experiments</a>, particularly considering ‘exploration sampling’.</p>
+<p>* See Max Kasy’s slides and articles on <a href="https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf">adaptive field experiments</a>, particularly considering ‘exploration sampling.’</p>
+</div>
+<p>A long debate on this in the folds below:</p>
+<p><strong>Is classical statistical inference the right framing here?</strong></p>
+
+<div class="fold">
+<p>David: I think classical statistical inference is the wrong framing here* o think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling</p>
+<blockquote>
+<p>Matt: I’m (currently) not sure there is any meaningful alternative (or, therefore, a better alternative)</p>
+</blockquote>
+<p>David: The reinforcement-learning and value-maximization (lift) framework used in industry (I believe). The challenge here would be to map between the survey responses given and the actual outcomes of interest… e.g., if a person responds “I would definitely watch a movie with this title,” what is the probability they actually will, relative to someone who responds “I might watch…” (also, what is the ‘population size’ we are sampling from, to understand the scale)</p>
+<blockquote>
+<p>Matt (“The challenge here would be to map between the survey responses given and the actual outcomes of interest”) This is the thing I’m just assuming we cannot do. Given that, it’s just not clear how reinforcement learning framework helps us?</p>
+</blockquote>
+<p>David: why not make reasonable assumptions about the above, for example? But even if we framed it strictly in terms of ‘what we learn about how the population would respond to similar questions asked in the survey,’ I still don’t see why (e.g.) our goal should be to be “strongly powered to reject an H0 that ‘all titles rank just as highly on average”. Instead we want to ‘learn as much as possible about whatever we think, in the survey, is likely to be the most valuable response’</p>
+</div>
+<p><br />
+</p>
+<p><strong>Is there a better approach to determining sample size?</strong></p>
+
+<div class="fold">
+<blockquote>
+<p>Matt: <strong>What is the better approach to determining sample size?</strong></p>
+</blockquote>
+<p>David: It’s a cost/benefit calculation. If we are cost-constrained, this question becomes ‘how many arms (titles)’ and ‘is this worth doing.’ NHST framework logic may say ‘given your budget, only try 2 titles, and even if you have to choose them at random’ and/or “don’t bother, the chance of statistical significance is too low.”</p>
+<p>In contrast (my loosely-informed guess is that) a RL approach says that (if we cannot do adaptive learning, if the ‘client’ finds it equally likely that all 20 titles are optimal, the ‘most value-increasing learning’ (highest ‘lift’) will simply come from dividing their budget equally across all 20 titles and choosing the one that ‘performs best’ (obviously ‘performs best’ is another can of worms) … even if this yields little power for strong statistical inference.</p>
+<blockquote>
+<p>Matt: The approach I describe/propose (using classical approach to power analysis/hypothesis testing) also involves cost/benefit calculation. So I think this misdescribes the contrast.</p>
+</blockquote>
+<p>David: You write “can detect Y size effects for X dollars while testing 20 titles vs can detect Z size effects for X dollars while testing 10 titles.” But I don’t think ‘can detect Y effect sizes’ is entirely accurate/descriptive.</p>
+<p>CLASSICAL (NHST): At a certain cost you can achieve a certain probability (power) that you will conclude that a particular difference is ‘less than 5% likely to occur by chance under H0.’ However: 1. Even if you don’t ‘reject the null,’ the evidence (if interpreted using Bayesian methods) may already suggest that the null is very unlikely and the center of your belief distribution should be substantially shifted. 2. How does the Classical approach weigh the benefit of learning more about a few titles vs less about many titles?</p>
+<blockquote>
+<p>Matt: (setting aside number of titles question): NHST approach doesn’t tell us what sample size is best given the cost/benefit. NHST just tells us what sample size we need to have power to do X. Our overall judgement about what sample size to use (and what design etc.) is based on our independent judgements about what amount of cost/power is optimal..</p>
+</blockquote>
+<blockquote>
+<p>Matt: I think may explain some of the apparent disagreement where you propose some approach to cost/benefit as some alternative to NHST, whereas I think NHST and the cost/benefit calculation of what we should do are separate questions On my approach we also judge cost/benefit of having a given level of power to detect an effect of a given size (and a given number of titles). So what’s the alternative approach to establishing sample size required for [a certain level of precision/ability to detect effect.. construed in whatever terms you like], and separately judging what level is optimal given the cost?</p>
+</blockquote>
+<p>DR: I think these are linked questions, and it is not meaningful to simply state ‘power to detect an effect’ … as there are something like 20 x 20 possible ‘effects’ we could be looking for here.</p>
+</div>
+<p><br />
+<strong>Related discussion: should “Achieving a minimum statistical significance for a particular comparison” be our criterion?</strong></p>
+
+<div class="fold">
+<p>David: “Achieving a minimum statistical significance for a particular comparison” should probably not be our criterion … we can generate a lot of value even without being able to make a strong statistical inference (‘rejecting the null… meh’)</p>
+<blockquote>
+<p>Matt: This seems a separate question.
+The fundamental Q here just seems to be how much confidence we want/need to think this valuable to our decision-making. Statistical significance is an arbitrary threshold: but point remains that &lt;significant results give less value Concretely, I would update little on noisy, less significant differences results</p>
+</blockquote>
+<p>David: My impression is that ‘optimal’ Bayesian updating, even starting with diffuse priors, actually does move a lot in response to data that would not yield strongly significant results. Yes, it does update less with less data and more noisy data, but it still updates a lot in ways that substantially change decisions and add value even in cases where NHST yawns and says ‘nothing to see here, move on.’ If “p=0.25” in a NHST statistical test, that (very loosely and probably not strictly correct here) might suggest that ‘there is a 25% chance that one option is substantially better.’ (I do think there is a place for NHST in scientific inquiry and ‘establishing results without giving the benefit of the doubt. But where you ‘must make a decision’ a different approach is justified IMHO).</p>
+<blockquote>
+<p>Matt: I agree that non-sig results can be worth updating on and potentially useful for practical purposes. We could have a meaningful discussion about how confident/precise we want our estimates to be / how small an effect is worth measuring without thereby ditching NHST: and you could argue that we should shoot for a lower level of power. It’s not clear there’s a simply better alternative framework for approaching the question. (Even translating these discussions into Bayesian terms seems to just leave us in exactly same position)</p>
+</blockquote>
+<p>David: Not sure if it’s the same position; see above (previous fold, “it’s a cost/benefit calculation”)</p>
+<p>Mostly I agree with what you are saying but you may be missing some of the complications here. The problem is not uni-dimensional, as we are asked to consider a large set of (20) titles.
+I am claiming that you might gain more value, and indeed substantial value, from learning “a little about 20 titles” instead of “a lot about 2 randomly selected titles”</p>
+<blockquote>
+<p>Matt: Question of the value of 20 titles vs 2 titles seems distinct from the question of how much we can learn from noisy/sub-significant results. (Links other post…)</p>
+</blockquote>
+<blockquote>
+<p>… informed guess about what would be worth measuring.. In the simple case, this just involves comparing $X vs can detect Y size effects In the slightly more complex case this also involves comparing: ‘can detect Y size effects for X dollars while testing 20 titles’ vs ‘can detect Z size effects for X dollars while testing 10 titles.’</p>
+</blockquote>
+<blockquote>
+<p>Concretely I have been informing my judgement of how small an effect we might want to detect based on our prior XXX message testing which found (by convention) small effects, and which seems as reasonable a proxy for what we might expect to find here. As noted, the key ingredient to better knowing how big an effect we want to be able to detect would be knowing how well these ratings correspond to real world differences, but we do not know that… Of course there is also a hard ceiling on [costs] i.e. our client won’t/can’t pay more than X dollars …</p>
+</blockquote>
+<blockquote>
+<p>I agree that focusing on 2 random titles out of the 20 would probably provide little practical value as to which out of the proposed titles is best (due to providing no data about 18/20 titles).</p>
+</blockquote>
+<p>David: :)</p>
+<blockquote>
+<p>At the other extreme: if a test with 100 titles would only be able to detect effects that were enormous (given resource constraints on our sample size)- then it’s likely we should change test/test fewer titles, because a test that won’t be able to detect reasonable effect sizes with reasonable power, won’t be able to offer practically significant evidence.</p>
+</blockquote>
+<p>David: I was thinking of the same reductio that I think you are getting at here, and I think the answer may be ‘strictly speaking yes, if our prior is that all titles have identical distributions on average, better to test each title 1x than to test some titles 2x or more. For decision-making purposes, you learn the most and update the most from the first piece of evidence. So I think it actually would be practically significant to the decision problem. Highly recommended: read/listen to that Bayes Rule chapter of Algorithms to live by.</p>
 </div>
 <p><br />
 </p>
 <div id="design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order" class="section level3" number="14.6.1">
-<h3><span class="header-section-number">14.6.1</span> Design: Which questions to ask the audience about the proposed titles, and in what order</h3>
-<p>This is an ‘experimental design for internal identification and external generalisability’ question. (See <a href="why-experiment-design.html#why_experiment_design">’Identifying meaningful and useful (causal) relationships and parameters</a>)</p>
+<h3><span class="header-section-number">14.6.1</span> Design: Which questions to ask the audience about the proposed titles, and in what order?</h3>
+<p>This is an ‘experimental design for internal identification and external generalisability’ question.
+(See <a href="why-experiment-design.html#why_experiment_design">’Identifying meaningful and useful (causal) relationships and parameters</a>)</p>
 <p><br />
 </p>
 <p>Some possibilities:</p>
@@ -1105,29 +1727,29 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <li>Subjects asked to rate (or say whether they would attend) a single title, with between-subject variation</li>
 </ul>
 </div>
-<div id="which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report" class="section level3 unnumbered" number="">
+<div id="which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report" class="section level3 unnumbered">
 <h3>Which statistical test(s)/analyses to run (if any) and what measures to report?</h3>
 <p>Suppose we asked each subject to rank all <span class="math inline">\(K=20\)</span> titles.</p>
 <p>How could we <strong>test if there were any ‘substantial difference in the title rankings’</strong> and what would be a meaningful measure of the ‘extent’ of this difference? We might want to consider some ‘minimum effect size of interest’ and ensure that we have a large enough sample to diagnose such an effect with (e.g.) 80% probability (while maintaining a false-positive type-1 error rate of less than 5%).*</p>
 <div class="marginnote">
 <p>* However, it is not clear why this is the most relevant question. Simply determining ‘there is a difference of some minimum size’ doesn’t tell us how confident we are about the best title, nor how much value is gained by choosing that title. This suggests a reinforcement learning approach.</p>
 </div>
-<p><a href="https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages">Friedman’s Q</a>, is a measure of whether ‘any (at least one?) items are systematically ranked higher or lower’. <span class="math inline">\(Q\)</span> can be normalized into, <a href="https://en.wikipedia.org/wiki/Kendall%27s_W">Kendall’s W</a>, a measure of ‘inter-rater agreement’ going from 0 to 1. There is a significant test for W “against a null hypothesis of no agreement (i.e. random rankings)”.</p>
+<p><a href="https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages">Friedman’s Q</a>, is a measure of whether ‘any (at least one?) items are systematically ranked higher or lower.’ <span class="math inline">\(Q\)</span> can be normalized into, <a href="https://en.wikipedia.org/wiki/Kendall%27s_W">Kendall’s W</a>, a measure of ‘inter-rater agreement’ going from 0 to 1. There is a significant test for W “against a null hypothesis of no agreement (i.e. random rankings).”</p>
 <p><a href="https://rdrr.io/cran/rstatix/man/friedman_effsize.html">Kendalls uses the Cohen’s interpretation guidelines of 0.1 to 0.3 being a ‘small effect’</a></p>
-<p>“A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different”, with multiple testing corrections. <a href="https://www.datanovia.com/en/lessons/friedman-test-in-r/">datanovia website</a></p>
+<p>“A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different,” with multiple testing corrections. <a href="https://www.datanovia.com/en/lessons/friedman-test-in-r/">datanovia website</a></p>
 <p><br />
 </p>
 </div>
-<div id="how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift" class="section level3 unnumbered" number="">
-<h3>How to assign the ‘treatments’, and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</h3>
-<div id="simple-assignment" class="section level4 unnumbered" number="">
+<div id="how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift" class="section level3 unnumbered">
+<h3>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</h3>
+<div id="simple-assignment" class="section level4 unnumbered">
 <h4>Simple assignment</h4>
 <p>Suppose we are restricted to a single allocation of treatments across the 20 titles. Suppose we asked all subjects to rank all of the <span class="math inline">\(K=20\)</span> titles, or perhaps only to focus on the ‘best’ and ‘worst’ <span class="math inline">\(C\)</span> titles.</p>
 <p>The true population has a large number of subjects (individuals). In our survey we are sampling some number <span class="math inline">\(N\)</span> of individuals. Let each subject be indexed by <span class="math inline">\(i\)</span>, so a particular sample will contain subjects <span class="math inline">\(i=1,...,N\)</span>.</p>
 <p><br />
 </p>
 </div>
-<div id="calc.-1-detect-minimally-important-effect-with-simple-assignment" class="section level4 unnumbered" number="">
+<div id="calc.-1-detect-minimally-important-effect-with-simple-assignment" class="section level4 unnumbered">
 <h4>Calc. 1: Detect ‘minimally important effect?’ (with simple assignment)</h4>
 <p><em>We might frame our test and power calculation as the following:</em></p>
 <p>Suppose the ‘Minimal effect of interest’ that we want to be able to detect is (sort of the ‘alternative hypothesis HA’)…</p>
@@ -1138,11 +1760,11 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p>I.e., defining <span class="math inline">\(r_{k,i}\)</span> as the rank given to title <span class="math inline">\(k\)</span> by subject <span class="math inline">\(i\)</span>, and letting <span class="math inline">\(\bar{R^1_i}=\frac{1}{N}\sum I(r_{k,i}=1)\)</span> be the share of the sampled population (subjects) ranking title <span class="math inline">\(k\)</span> as first…</p>
 <p>we may consider a case where <span class="math inline">\(\bar{R^1_j} &gt; \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}\)</span> for some title <span class="math inline">\(j\)</span> relative to all other titles <span class="math inline">\(k\)</span>.*</p>
 <div class="marginnote">
-<p>I think the latter term may simply be <span class="math inline">\(\frac{3}{2}\frac{19}{2}\)</span>, or something similar, the ‘average rank’.</p>
+<p>I think the latter term may simply be <span class="math inline">\(\frac{3}{2}\frac{19}{2}\)</span>, or something similar, the ‘average rank.’</p>
 </div>
 <p><br />
 </p>
-<p><strong>Perhaps, we want to power our test so, for the “HA” described above, we have an 80% chance that we ‘find an effect’.</strong> I.e., an 80% chance that our test statistic (whatever it is) tells us that “it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”**</p>
+<p><strong>Perhaps, we want to power our test so, for the “HA” described above, we have an 80% chance that we ‘find an effect.’</strong> I.e., an 80% chance that our test statistic (whatever it is) tells us that “it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”**</p>
 <div class="marginnote">
 <p>** However, I don’t really think that that is <em>really</em> what we are looking for, as we are facing a <em>decision</em> problem.</p>
 </div>
@@ -1156,16 +1778,16 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <div class="marginnote">
 <p>**** Ideally there is an analytical formula for this; worth looking up.</p>
 </div></li>
-<li><p>If this computed ‘probability of such an extreme result’, given our sample size <span class="math inline">\(N\)</span>—<span class="math inline">\(P(N, \bar{R^1_j})\)</span>— is below our threshold <span class="math inline">\(\alpha=0.05\)</span> we ‘reject the null.’</p></li>
+<li><p>If this computed ‘probability of such an extreme result,’ given our sample size <span class="math inline">\(N\)</span>—<span class="math inline">\(P(N, \bar{R^1_j})\)</span>— is below our threshold <span class="math inline">\(\alpha=0.05\)</span> we ‘reject the null.’</p></li>
 </ol>
 <p><br />
 </p>
 <p>We have defined a (design and) testing procedure. We can now <strong>simulate</strong> (or perhaps analytically calculate) <strong>the power (of our design and test) to detect the above HA</strong>, as follows.</p>
 <p>Run <span class="math inline">\(T\)</span> simulations <span class="math inline">\((t=1,...,T)\)</span>. For each simulated sample <span class="math inline">\(t\)</span>:</p>
 <ul>
-<li>Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population’, i.e.,
+<li>Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population,’ i.e.,
 <ul>
-<li>for each of the <span class="math inline">\(N\)</span> subjects drawn, say, ‘subject <span class="math inline">\(i\)</span>’, for each of their ‘ranks <span class="math inline">\(r=1,2,..,20\)</span>’, draw a title (by random) to be assigned this rank (<span class="math inline">\(r_{k,i}=r\)</span>),</li>
+<li>for each of the <span class="math inline">\(N\)</span> subjects drawn, say, ‘subject <span class="math inline">\(i\)</span>,’ for each of their ‘ranks <span class="math inline">\(r=1,2,..,20\)</span>,’ draw a title (by random) to be assigned this rank (<span class="math inline">\(r_{k,i}=r\)</span>),</li>
 <li>with one title (the same one always) having a <span class="math inline">\(\frac{2}{21}\)</span> probability of being drawn for the first rank, and the other 19 titles each having a <span class="math inline">\(\frac{1}{21}\)</span> probability of being drawn for the first rank</li>
 </ul></li>
 <li>Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span>: the average rank for each title in simulation <span class="math inline">\(t\)</span>,
@@ -1175,19 +1797,19 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 </ul>
 <p>Over a sufficient number of simulations, determine the average probability of ‘rejecting the null’ in favor of the above HA (specifically for the ‘correct’ title <span class="math inline">\(j\)</span>).* This is the estimated power of the test.</p>
 <div class="marginnote">
-<p>* This last point is a wrinkle I’ve not seen in previous work involving power calculations, so I hope I am not missing something here. Perhaps we should say something like “power of the test in the right direction”.</p>
+<p>* This last point is a wrinkle I’ve not seen in previous work involving power calculations, so I hope I am not missing something here. Perhaps we should say something like “power of the test in the right direction.”</p>
 </div>
 <p><br />
 </p>
 </div>
-<div id="calc.-2-find-a-title-in-the-top-eta-e.g.-third-of-the-value-of-title-distribution-with-simple-assignment" class="section level4 unnumbered" number="">
+<div id="calc.-2-find-a-title-in-the-top-eta-e.g.-third-of-the-value-of-title-distribution-with-simple-assignment" class="section level4 unnumbered">
 <h4>Calc. 2: Find a title in the top <span class="math inline">\(\eta\)</span> (e.g., third) of the ‘value of title’ distribution (with simple assignment)</h4>
 <p>For any target outcome (movie box office, general acclaim, etc.), each of the (<span class="math inline">\(K=20\)</span>) titles will have some <em>true population parameter</em>.</p>
-Let us call the parameter of interest <span class="math inline">\(\theta_k\)</span> for title <span class="math inline">\(k\)</span>, which we will call the ‘value of title <span class="math inline">\(k\)</span>’. For now, let us assume that this ‘population parameter’ represents the mean (or some other function?) of something that we can observe in our survey from each sampled subject.*
+Let us call the parameter of interest <span class="math inline">\(\theta_k\)</span> for title <span class="math inline">\(k\)</span>, which we will call the ‘value of title <span class="math inline">\(k\)</span>.’ For now, let us assume that this ‘population parameter’ represents the mean (or some other function?) of something that we can observe in our survey from each sampled subject.*
 <div class="marginnote">
-<p>* Of course, for this example, and in general, there are many reasons why we may not be able to observe exactly the thing that informs our parameter from a particular survey. Our survey/experiment design may not be able to get subjects to tell us exactly what we want to know about their impressions of the title. (E.g., they may not themselves know which title would be most likely to get them to attend the film. Even if we ask them something related to this like, “would you like us to email you a discount coupon for a movie with his title?”, this may not perfectly track with movie-attendance choices in other contexts.</p>
+<p>* Of course, for this example, and in general, there are many reasons why we may not be able to observe exactly the thing that informs our parameter from a particular survey. Our survey/experiment design may not be able to get subjects to tell us exactly what we want to know about their impressions of the title. (E.g., they may not themselves know which title would be most likely to get them to attend the film. Even if we ask them something related to this like, “would you like us to email you a discount coupon for a movie with his title?” this may not perfectly track with movie-attendance choices in other contexts.</p>
 </div>
-Consider a ‘(prior) distribution over parameter <span class="math inline">\(\theta_k\)</span> for each title <span class="math inline">\(k\)</span>’.**
+Consider a ‘(prior) distribution over parameter <span class="math inline">\(\theta_k\)</span> for each title <span class="math inline">\(k\)</span>.’**
 <div class="marginnote">
 <p>** I won’t get into the details here about what this distribution means in a philosophical sense. There are various types of Bayesian conceptions of this. Perhaps another way of thinking about it is that each title was as if randomly drawn from some distribution of titles.</p>
 </div>
@@ -1196,14 +1818,14 @@ Consider a ‘(prior) distribution over parameter <span class="math inline">\(\t
 <p><br />
 </p>
 <p>Perhaps, we want to choose a sample size such that the title we claim has the “best overall ranking in our sample” has a <span class="math inline">\(B=0.8\)</span> or greater chance of being in the top-third of the true most-profitable titles.</p>
-Note that choosing a title that is “most likely to be in the top third” is not necessarily the same as “choosing the title with the greatest expected profit”. Our ranks are a multi-dimensional measure; thus one title need not ‘dominate’ the other title. E.g., in a sample of <span class="math inline">\(N=100\)</span> title <span class="math inline">\(A\)</span> may be ranked first by 10 people and last by 90 people, while title <span class="math inline">\(B\)</span> may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.*
+Note that choosing a title that is “most likely to be in the top third” is not necessarily the same as “choosing the title with the greatest expected profit.” Our ranks are a multi-dimensional measure; thus one title need not ‘dominate’ the other title. E.g., in a sample of <span class="math inline">\(N=100\)</span> title <span class="math inline">\(A\)</span> may be ranked first by 10 people and last by 90 people, while title <span class="math inline">\(B\)</span> may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.*
 <div class="marginnote">
 <p>* E.g., perhaps this implies a 90% probability that <span class="math inline">\(B\)</span> will be more profitable than <span class="math inline">\(A\)</span>, but for the 10% of the states-of-the world when is more profitable than <span class="math inline">\(B\)</span>, <span class="math inline">\(A\)</span> is 100 times more profitable. This would imply that title <span class="math inline">\(A\)</span> has a greater expected value profit, but also involves more risk.</p>
 </div>
 <p><br />
 </p>
 <p><strong>Nonetheless</strong>,</p>
-<p>Consider whether title <span class="math inline">\(k\)</span> is among the titles that is ‘ranked in the top-third’ by the largest share of the population. More specifically, consider <span class="math inline">\(\bar{R}^{7+}_k \equiv E[r_{k}\leq7]\)</span> as the ‘share of the population ranking title <span class="math inline">\(k\)</span> top 7 out of 20 or better. Let <span class="math inline">\(D_k=1\)</span> if <span class="math inline">\(\sum_{k,j}1\big(\bar{R}^{7+}_k&gt;\bar{R}^{7+}_j\big)\geq7\)</span>; i.e., if <span class="math inline">\(k\)</span> is one of the top-7 titles in terms of the measure ’ranked in the top third’.</p>
+<p>Consider whether title <span class="math inline">\(k\)</span> is among the titles that is ‘ranked in the top-third’ by the largest share of the population. More specifically, consider <span class="math inline">\(\bar{R}^{7+}_k \equiv E[r_{k}\leq7]\)</span> as the ‘share of the population ranking title <span class="math inline">\(k\)</span> top 7 out of 20 or better. Let <span class="math inline">\(D_k=1\)</span> if <span class="math inline">\(\sum_{k,j}1\big(\bar{R}^{7+}_k&gt;\bar{R}^{7+}_j\big)\geq7\)</span>; i.e., if <span class="math inline">\(k\)</span> is one of the top-7 titles in terms of the measure ’ranked in the top third.’</p>
 <p>We might want to…</p>
 <ol style="list-style-type: decimal">
 <li><p>based on our sample (and some assumptions?) choose the title with the highest chance of being ranked in the top-third by the population as a whole (<span class="math inline">\(k^\ast \equiv argmax_k\big(P(D_k=1)\big)\)</span>), and</p></li>
@@ -1218,10 +1840,10 @@ Note that choosing a title that is “most likely to be in the top third” is n
 </ol>
 <p><em>But do we want to do this?!</em></p>
 </div>
-<div id="sequentialadaptive-designs-multi-armed-bandits" class="section level4 unnumbered" number="">
+<div id="sequentialadaptive-designs-multi-armed-bandits" class="section level4 unnumbered">
 <h4>Sequential/adaptive designs, multi-armed bandits</h4>
 <div class="marginnote">
-<p>More generally, see <a href="quant-design-power.html#sequential">13.3</a>.</p>
+<p>More generally, see <a href="quant-design-power.html#sequential"><strong>??</strong></a>.</p>
 </div>
 </div>
 </div>
@@ -1236,7 +1858,7 @@ Note that choosing a title that is “most likely to be in the top third” is n
 <p>“How precise is precise, and by what metric?”</p>
 <p><br />
 </p>
-<div id="a-simple-naive-approach" class="section level4 unnumbered" number="">
+<div id="a-simple-naive-approach" class="section level4 unnumbered">
 <h4>A simple naive approach?</h4>
 <p>Interval coding: <span class="math inline">\(y=[1,2,3,4,5]\)</span> for a 5-item</p>
 <p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
@@ -1253,11 +1875,11 @@ Note that choosing a title that is “most likely to be in the top third” is n
 <p><span class="math display">\[\bar{y} \pm  1.96 \: \hat{SE_m}\]</span></p>
 <p><br />
 </p>
-<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit’,
+<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit,’
 i.e.,</p>
 <p><span class="math display">\[2 * 1.96 \: \hat{SE_m} &lt; 1\]</span> *</p>
 <div class="marginnote">
-<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>”.</p>
+<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>.”</p>
 </div>
 <p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
 <p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
@@ -1301,15 +1923,6 @@ i.e.,</p>
 </div>
 
 </div>
-</div>
-</div>
-<h3> List of references</h3>
-<div id="refs" class="references">
-<div id="ref-buttonPowerFailureWhy2013">
-<p>Button, Katherine S, John P A Ioannidis, Claire Mokrysz, Brian A Nosek, Jonathan Flint, Emma S J Robinson, and Marcus R Munaf‘o. 2013. “Power Failure: Why Small Sample Size Undermines the Reliability of Neuroscience.” <em>Nature Reviews Neuroscience</em> 14 (5): 365–76. <a href="https://doi.org/10/k9d">https://doi.org/10/k9d</a>.</p>
-</div>
-<div id="ref-kasyWhyExperimentersMight2016">
-<p>Kasy, Maximilian. 2016. “Why Experimenters Might Not Always Want to Randomize, and What They Could Do Instead.” <em>Political Analysis</em> 24 (3): 324–38. <a href="https://doi.org/10.1093/pan/mpw012">https://doi.org/10.1093/pan/mpw012</a>.</p>
 </div>
 </div>
             </section>

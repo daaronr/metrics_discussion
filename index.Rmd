@@ -1,6 +1,6 @@
 ---
-title: "Econometrics, statistics, and data science: Reinstein notes with a Micro, Behavioral, and Experimental focus"
-author: "Dr. David Reinstein, "
+title: "Statistics, econometrics, experiment and survey methods, data science: Notes"
+author: "Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others "
 abstract: "This 'book' organizes my/our notes and helps others engage, understand, learn, and respond"
 #cover-image: "images/cardcatalogue.JPG"
 date: "`r Sys.Date()`"
@@ -33,7 +33,7 @@ link-citations: yes
 github-repo: daaronr/metrics_discussion_work
 description: ""
 #url: 'https\://daaronr.github.io//'
-tags: [Econometrics, Statistics, Data Science, Experiments, Notes, Methodology]
+tags: [Econometrics, Statistics, Data Science, Experiments, Survey methods, Notes, Methodology]
 ---
 
 
