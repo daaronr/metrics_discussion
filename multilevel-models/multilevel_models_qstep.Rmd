@@ -129,7 +129,7 @@ Problems:
 @juddTreatingStimuliRandom2012
 ### Other names: Random effects hierarchical, etc.
 
-## Fitting mlm in practicce
+## Fitting mlm in practice
 
 R and Stata good for simple standard models
 
@@ -142,7 +142,11 @@ Stata:  'xtreg, re' is random intercept
 ## "Stimuli" (treatments) as a random factor
 
 
-"Treating Stimuli as a Random Factor in Social Psychology: A New and Comprehensive Solution to a Pervasive but Largely Ignored Problem"
+"Treating Stimuli as a Random Factor in Social Psychology: A New and Comprehensive Solution to a Pervasive but Largely Ignored Problem" - Judd et al, 2012
+
+
+> In this article, we present a comprehensive solution using mixed models for the
+analysis of data with crossed random factors (e.g., participants and stimuli).
 
 (John List talks a lot about 'randomizing across context' maybe there's an experimental econ literature on this too?)
 

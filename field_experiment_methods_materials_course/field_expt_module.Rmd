@@ -1,0 +1,15 @@
+#  Course outline: Field Experiments---design, organization, implementation, (pre)-analysis, transparency
+
+
+I'm planning a short course on this, which I will outline and flesh out here.
+This will include "all the important, non-obvious, and teachable stuff"
+
+Things like:
+
+- Why run an experiment/how to frame a question (always illustrating this with 'non-obvious mistakes')
+- Pre-registration and PaP; reasonable statistical methods and tests
+- Finding and keeping project partners (but I'll go light on this because it is not so 'teachable')
+- Organizing and documenting your project (including folder structure, github, literate code/dynamic docs)
+- Power analysis and calculations
+- Randomization and efficient allocation of treatments
+- Scientific inference versus 'reinforcement learning'; tradeoffs

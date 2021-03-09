@@ -37,5 +37,24 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ## Theory, restrictions, and 'structural vs reduced form'
 
+## 'Hypothesis testing' 
+
+### McElreath's critique 
+
+### Bayesian vs. frequentist hypothesis 'testing'
+
+### Individual vs. joint hypothesis testing: what does it mean?
+
+### Other issues
+
+(Mention, link to later discussion: issues of the overall false error rate/coverage with MHT)
+
+
+
+
+
+
+
+
 
 

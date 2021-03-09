@@ -52,4 +52,35 @@ Ben: Ferraro has a couple of paper which together i think basically just caution
 </div>
 
 
+
 ### Lagged dependent variable and fixed effects --> 'Nickel bias'
+
+### Age-period-cohort effects {#apc-effects}
+
+From [Columbia Public health](https://www.publichealth.columbia.edu/research/population-health-methods/age-period-cohort-analysis), in the context of epidemiology:
+
+> **Age effects** are variations linked to biological and social processes of aging specific to individuals ... unrelated to the time period or birth cohort to which an individual belongs.
+
+We might want to further disentangle this (at least conceptually) into:
+
+```{block2,  type='fold'}
+ 
+- overall-age effectsL effect of an individual, organization, or any "unit's"  age in years *vs* 
+
+- 'tenure effects': the effect of time spent participating (e.g., time in the labor force or as part of a political movement)
+
+
+```
+ 
+
+> **Period effects**  result from external factors that equally affect all age groups at a particular calendar time. ... [e.g.] environmental, social and economic factors, e.g. war, famine, economic crisis.
+
+> **Cohort effects**  are variations resulting from the unique experience/exposure of a group of subjects (cohort) as they move across time. The most commonly defined group in epidemiology is the birth cohort based on year of birth and it is described as difference in the risk of a health outcome based on birth year. 
+
+
+> "identification problem” in APC... s due to the exact linear dependency among age, period, and cohort: Period – Age = Cohort; that is, given the calendar year and age, one can determine the cohort (birth year)
+
+
+
+[This apc package writeup looks promising both as a tool and an explanation](https://www.nuffield.ox.ac.uk/economics/Papers/2014/nielsen_apc_package.pdf)
+

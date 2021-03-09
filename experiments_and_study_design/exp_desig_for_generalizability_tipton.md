@@ -7,11 +7,11 @@ Speaker: Elizabeth Tipton (Northwestern University)
 
 A tool: https://www.thegeneralizer.org/
 
-Sample ATE ≠ Population ATE
+Sample ATE $\neq$ Population ATE
 
 Clearly if treatment impacts vary and the sample differs in distribution
 on moderators underlying this variation:
-PATE ≠ SATE
+$PATE \neq SATE$
 
 This is not simply academic:
 - This bias can be on the same order as bias from non-random
@@ -60,15 +60,15 @@ important tool for reducing variance / increasing similarity.
 
 But now we seek such balance on a large set of covariates, those that
 may explain variation in treatment impacts:
-• We aren’t sure in advance which variables explain variation in
+-  We aren’t sure in advance which variables explain variation in
 treatment impacts;
-• We’d like good balance between the sample and population, even
+-  We’d like good balance between the sample and population, even
 with small samples.
 
 We want a sample selection strategy such that:
-• The sample that results is closer to being a “miniature” of the
+-  The sample that results is closer to being a “miniature” of the
 population
-• On the set of covariates the explain variation in treatment impacts.
+-  On the set of covariates the explain variation in treatment impacts.
 
 This last condition is the Sampling Ignorability condition in
 generalization:

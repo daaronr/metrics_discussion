@@ -13,6 +13,33 @@ I claim an experiment should:
 - givingtools on twitter
 
 
+\
+
+```{block2,  type='note'}
+
+**Example:** ["Giving to charity to signal smarts: evidence from a lab experiment"](https://www.sciencedirect.com/science/article/abs/pii/S2214804318303896)
+
+
+Highlights: "We propose individuals give to charity to signal smarts. We designed a laboratory experiment to test this hypothesis. We randomize the publicity of a donation and the degree of meritocracy. We find suggestive evidence that donations are used to signal smarts."
+  
+  
+But "what is the thing in the real world that needs testing in the lab?"
+
+
+It is not 'do people want to signal smarts in general' (or if it is, there is no need for the experiment to link it to charity).
+
+It is more like:
+
+1. 'do people think that donating is a signal of intelligence?' and/or
+
+2. 'do people even consider using donations in this way'?
+
+But in the lab experiment both (1) and (2) are guaranteed just by the setup of the treatment. So they don't offer a way to test these, unless I'm missing something.
+
+This is the "Sugden and Sitzia" critique.
+
+```  
+
 ### Sitzia and Sugden on what theoretically driven experiments can and should do
 
 **"Sitzia, Stefania, and Robert Sugden. "Implementing theoretical models in the laboratory, and what this can and cannot achieve." Journal of Economic Methodology 18.4 (2011): 323-343.**
