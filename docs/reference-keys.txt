@@ -1,10 +1,10 @@
-tab:unnamed-chunk-76
-fig:unnamed-chunk-80
-fig:unnamed-chunk-81
+tab:unnamed-chunk-78
+fig:unnamed-chunk-82
 fig:unnamed-chunk-83
-fig:unnamed-chunk-93
-tab:unnamed-chunk-96
-tab:unnamed-chunk-97
+fig:unnamed-chunk-85
+fig:unnamed-chunk-95
+tab:unnamed-chunk-98
+tab:unnamed-chunk-99
 introduction
 conceptual
 learning-and-optimization-as-an-alternative-to-statistical-inference
@@ -14,6 +14,11 @@ interpretation-of-frequentist-cis-aside
 causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model
 dags-and-potential-outcomes
 theory-restrictions-and-structural-vs-reduced-form
+hypothesis-testing
+mcelreaths-critique
+bayesian-vs.-frequentist-hypothesis-testing
+individual-vs.-joint-hypothesis-testing-what-does-it-mean
+other-issues
 reg-follies
 basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed
 bad-control
@@ -70,6 +75,7 @@ did
 rd
 time-series-ish-panel-approaches-to-micro
 lagged-dependent-variable-and-fixed-effects-nickel-bias
+apc-effects
 mediators
 mediators-and-selection-and-roy-models-a-review-considering-two-research-applications
 dr-initial-thoughts-for-nl-education-paper
@@ -96,7 +102,7 @@ level-2
 alternativenaive-approaches
 old-way-two-stage-regression
 how-many-higher-level-units-do-you-need
-fitting-mlm-in-practicce
+fitting-mlm-in-practice
 stimuli-treatments-as-a-random-factor
 surveys
 survey-samplingintake

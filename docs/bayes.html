@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -789,6 +789,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes"><i class="fa fa-check"></i><b>2.4.1</b> DAGs and Potential outcomes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.5</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.6" data-path="conceptual.html"><a href="conceptual.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.6</b> ‘Hypothesis testing’</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="conceptual.html"><a href="conceptual.html#mcelreaths-critique"><i class="fa fa-check"></i><b>2.6.1</b> McElreath’s critique</a></li>
+<li class="chapter" data-level="2.6.2" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-hypothesis-testing"><i class="fa fa-check"></i><b>2.6.2</b> Bayesian vs. frequentist hypothesis ‘testing’</a></li>
+<li class="chapter" data-level="2.6.3" data-path="conceptual.html"><a href="conceptual.html#individual-vs.-joint-hypothesis-testing-what-does-it-mean"><i class="fa fa-check"></i><b>2.6.3</b> Individual vs. joint hypothesis testing: what does it mean?</a></li>
+<li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
+</ul></li>
 </ul></li>
 <li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
 <li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
@@ -857,6 +864,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
 </ul></li>
 </ul></li>
 <li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
@@ -901,7 +909,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
 <li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practicce"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practicce</a></li>
+<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
 <li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
 </ul></li>
 <li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
@@ -1351,8 +1359,8 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <span id="cb78-6"><a href="bayes.html#cb78-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_5 =</span> <span class="dv">1</span>)</span>
 <span id="cb78-7"><a href="bayes.html#cb78-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-8"><a href="bayes.html#cb78-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-76">
-<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-76">Table 18.1: </span> </caption><col><col><col><col><col><tr>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-78">
+<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-78">Table 18.1: </span> </caption><col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_1</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_2</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_3</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_4</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_5</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1</td></tr>
@@ -1379,7 +1387,7 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <span id="cb79-10"><a href="bayes.html#cb79-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
 <span id="cb79-11"><a href="bayes.html#cb79-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="sc">+</span></span>
 <span id="cb79-12"><a href="bayes.html#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-77-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-79-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
@@ -1445,7 +1453,7 @@ possibilities
 </p>
 <p>Suppose there is only one blue ball and three white balls, possibility ‘2’ above. For this world, we see the full ‘garden of forking paths’ — the number of ways to select 1, 2, and 3 balls (with replacement) — below.</p>
 <p>Every path starting from the center is a possible (sequence of) draws.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-80"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-82"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-13-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 18.1: All possible draws of three balls
@@ -1456,7 +1464,7 @@ Figure 18.1: All possible draws of three balls
 <p>Now the inferential exercise: we want to know (the likelihood) of each of the five possible ‘worlds.’ As we draw data we know we are proceeding along one of some subset of the forking paths.<br />
 </p>
 <p>For example, under possible world 2, if we draw Blue, then White, then Blue, this could have occured with any of the following paths (consider a draw of each of the white balls as distinct):</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-81"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-83"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-14-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 18.2: All possible draws of three balls
@@ -1656,7 +1664,7 @@ b
 <p>We can see this in the following plot. (We leave out the worlds with only one color ball, as these will have no paths that produce B-W-B). Below, each partitioned section represents one world, and the paths in that world that could produce B-W-B are shown.</p>
 <p><br />
 </p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-83"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-85"></span>
 <img src="https://bookdown.org/content/3890/02_files/figure-gfm/unnamed-chunk-20-1.png" alt="All possible draws of three balls" width="50%" />
 <p class="caption">
 Figure 18.3: All possible draws of three balls

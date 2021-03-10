@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -789,6 +789,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes"><i class="fa fa-check"></i><b>2.4.1</b> DAGs and Potential outcomes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.5</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.6" data-path="conceptual.html"><a href="conceptual.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.6</b> ‘Hypothesis testing’</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="conceptual.html"><a href="conceptual.html#mcelreaths-critique"><i class="fa fa-check"></i><b>2.6.1</b> McElreath’s critique</a></li>
+<li class="chapter" data-level="2.6.2" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-hypothesis-testing"><i class="fa fa-check"></i><b>2.6.2</b> Bayesian vs. frequentist hypothesis ‘testing’</a></li>
+<li class="chapter" data-level="2.6.3" data-path="conceptual.html"><a href="conceptual.html#individual-vs.-joint-hypothesis-testing-what-does-it-mean"><i class="fa fa-check"></i><b>2.6.3</b> Individual vs. joint hypothesis testing: what does it mean?</a></li>
+<li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
+</ul></li>
 </ul></li>
 <li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
 <li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
@@ -857,6 +864,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
 </ul></li>
 </ul></li>
 <li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
@@ -901,7 +909,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
 <li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practicce"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practicce</a></li>
+<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
 <li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
 </ul></li>
 <li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
@@ -1697,7 +1705,7 @@ I think a big part of the discussion here comes from the subjective-objective de
 <p><br />
 </p>
 <p>Half-Cauchy distribution for varying <span class="math inline">\(s\)</span>, with <span class="math inline">\(x_0=0\)</span>:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-50-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-52-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>HC is ’heavy-tailed;… gives some probability to very high values but low values are still more likely.</p>
 <p>One might consider <span class="math inline">\(s=0.3\)</span></p>
 <p>Note that the Half-Cauchy distribution has an undefined mean, variance, skewness, and kurtosis. It does have a mode, at <span class="math inline">\(x_0\)</span>.</p>
@@ -1773,8 +1781,8 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.2e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+## Chain 1: Gradient evaluation took 1.3e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -1791,15 +1799,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.447616 seconds (Warm-up)
-## Chain 1:                0.52649 seconds (Sampling)
-## Chain 1:                0.974106 seconds (Total)
+## Chain 1:  Elapsed Time: 0.449759 seconds (Warm-up)
+## Chain 1:                0.512427 seconds (Sampling)
+## Chain 1:                0.962186 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 2).
 ## Chain 2: 
-## Chain 2: Gradient evaluation took 1.4e-05 seconds
-## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
+## Chain 2: Gradient evaluation took 1.2e-05 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 2: Adjust your expectations accordingly!
 ## Chain 2: 
 ## Chain 2: 
@@ -1816,15 +1824,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.463048 seconds (Warm-up)
-## Chain 2:                0.476693 seconds (Sampling)
-## Chain 2:                0.939741 seconds (Total)
+## Chain 2:  Elapsed Time: 0.45331 seconds (Warm-up)
+## Chain 2:                0.49807 seconds (Sampling)
+## Chain 2:                0.95138 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 1e-05 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 3: Gradient evaluation took 1.3e-05 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
@@ -1841,15 +1849,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.433369 seconds (Warm-up)
-## Chain 3:                0.451403 seconds (Sampling)
-## Chain 3:                0.884772 seconds (Total)
+## Chain 3:  Elapsed Time: 0.426844 seconds (Warm-up)
+## Chain 3:                0.455193 seconds (Sampling)
+## Chain 3:                0.882037 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 1.1e-05 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
+## Chain 4: Gradient evaluation took 1e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -1866,9 +1874,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.464925 seconds (Warm-up)
-## Chain 4:                0.460788 seconds (Sampling)
-## Chain 4:                0.925713 seconds (Total)
+## Chain 4:  Elapsed Time: 0.473485 seconds (Warm-up)
+## Chain 4:                0.485316 seconds (Sampling)
+## Chain 4:                0.958801 seconds (Total)
 ## Chain 4:</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="metaanalysis.html#cb40-1" aria-hidden="true" tabindex="-1"></a>model2</span></code></pre></div>
 <pre><code>##  Family: gaussian 
@@ -1959,7 +1967,7 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 </div>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="metaanalysis.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(m.brm)</span></code></pre></div>
 <pre><code>## Using 10 posterior samples for ppc type &#39;dens_overlay&#39; by default.</code></pre>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-58-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-60-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look “well mixed,” suggesting that the parameter space is being explored.*</p>
 <p><em>Is ‘assessing convergence’ a subjective judgement?</em> (Unfold a discussion.)</p>
 
@@ -1982,7 +1990,7 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <pre><code>##    * Does _not_ affect other ggplot2 plots</code></pre>
 <pre><code>##    * See ?bayesplot_theme_set for details on theme setting</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="metaanalysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_trace</span>(m.brm)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-60-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-62-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Also check for a Potential Scale Reduction Factor (PSRF), or <span class="math inline">\(\hat{R}\)</span> below 1.01.</p>
@@ -2098,7 +2106,7 @@ with the 95% credibility interval (not confidence interval!) ranging from 95% Cr
 ## 
 ##     combine</code></pre>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="metaanalysis.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(smd_density, tau_density, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-64-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-66-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>posterior distributions unimodal, roughly normal distribution</li>
 <li>… “peaking around the values for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span> we saw in the output”</li>
@@ -2124,7 +2132,7 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <p><br />
 </p>
 <p>Plotting the ECDF below:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-66-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-68-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="forest-plots" class="section level3" number="17.2.3">
@@ -2168,7 +2176,7 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <span id="cb75-11"><a href="metaanalysis.html#cb75-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standardized Mean Difference&quot;</span>,</span>
 <span id="cb75-12"><a href="metaanalysis.html#cb75-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
 <span id="cb75-13"><a href="metaanalysis.html#cb75-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-71-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-73-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div class="marginnote">
 <p>Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.</p>
 </div>

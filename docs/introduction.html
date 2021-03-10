@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -789,6 +789,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes"><i class="fa fa-check"></i><b>2.4.1</b> DAGs and Potential outcomes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.5</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.6" data-path="conceptual.html"><a href="conceptual.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.6</b> ‘Hypothesis testing’</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="conceptual.html"><a href="conceptual.html#mcelreaths-critique"><i class="fa fa-check"></i><b>2.6.1</b> McElreath’s critique</a></li>
+<li class="chapter" data-level="2.6.2" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-hypothesis-testing"><i class="fa fa-check"></i><b>2.6.2</b> Bayesian vs. frequentist hypothesis ‘testing’</a></li>
+<li class="chapter" data-level="2.6.3" data-path="conceptual.html"><a href="conceptual.html#individual-vs.-joint-hypothesis-testing-what-does-it-mean"><i class="fa fa-check"></i><b>2.6.3</b> Individual vs. joint hypothesis testing: what does it mean?</a></li>
+<li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
+</ul></li>
 </ul></li>
 <li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
 <li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
@@ -857,6 +864,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
 </ul></li>
 </ul></li>
 <li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
@@ -901,7 +909,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
 <li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practicce"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practicce</a></li>
+<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
 <li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
 </ul></li>
 <li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
@@ -1234,7 +1242,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Statistics, econometrics, experiment and survey methods, data science: Notes</h1>
 <p class="author"><em>Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others</em></p>
-<p class="date"><em>2021-03-04</em></p>
+<p class="date"><em>2021-03-10</em></p>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 This ‘book’ organizes my/our notes and helps others engage, understand, learn, and respond

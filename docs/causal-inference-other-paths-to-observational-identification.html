@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -789,6 +789,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes"><i class="fa fa-check"></i><b>2.4.1</b> DAGs and Potential outcomes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.5</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.6" data-path="conceptual.html"><a href="conceptual.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.6</b> ‘Hypothesis testing’</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="conceptual.html"><a href="conceptual.html#mcelreaths-critique"><i class="fa fa-check"></i><b>2.6.1</b> McElreath’s critique</a></li>
+<li class="chapter" data-level="2.6.2" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-hypothesis-testing"><i class="fa fa-check"></i><b>2.6.2</b> Bayesian vs. frequentist hypothesis ‘testing’</a></li>
+<li class="chapter" data-level="2.6.3" data-path="conceptual.html"><a href="conceptual.html#individual-vs.-joint-hypothesis-testing-what-does-it-mean"><i class="fa fa-check"></i><b>2.6.3</b> Individual vs. joint hypothesis testing: what does it mean?</a></li>
+<li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
+</ul></li>
 </ul></li>
 <li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
 <li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
@@ -857,6 +864,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
 </ul></li>
 </ul></li>
 <li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
@@ -901,7 +909,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
 <li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practicce"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practicce</a></li>
+<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
 <li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
 </ul></li>
 <li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
@@ -1277,6 +1285,31 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 </div>
 <div id="lagged-dependent-variable-and-fixed-effects-nickel-bias" class="section level3" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</h3>
+</div>
+<div id="apc-effects" class="section level3" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Age-period-cohort effects</h3>
+<p>From <a href="https://www.publichealth.columbia.edu/research/population-health-methods/age-period-cohort-analysis">Columbia Public health</a>, in the context of epidemiology:</p>
+<blockquote>
+<p><strong>Age effects</strong> are variations linked to biological and social processes of aging specific to individuals … unrelated to the time period or birth cohort to which an individual belongs.</p>
+</blockquote>
+<p>We might want to further disentangle this (at least conceptually) into:</p>
+
+<div class="fold">
+<ul>
+<li><p>overall-age effectsL effect of an individual, organization, or any “unit’s” age in years <em>vs</em></p></li>
+<li><p>‘tenure effects’: the effect of time spent participating (e.g., time in the labor force or as part of a political movement)</p></li>
+</ul>
+</div>
+<blockquote>
+<p><strong>Period effects</strong> result from external factors that equally affect all age groups at a particular calendar time. … [e.g.] environmental, social and economic factors, e.g. war, famine, economic crisis.</p>
+</blockquote>
+<blockquote>
+<p><strong>Cohort effects</strong> are variations resulting from the unique experience/exposure of a group of subjects (cohort) as they move across time. The most commonly defined group in epidemiology is the birth cohort based on year of birth and it is described as difference in the risk of a health outcome based on birth year.</p>
+</blockquote>
+<blockquote>
+<p>“identification problem” in APC… s due to the exact linear dependency among age, period, and cohort: Period – Age = Cohort; that is, given the calendar year and age, one can determine the cohort (birth year)</p>
+</blockquote>
+<p><a href="https://www.nuffield.ox.ac.uk/economics/Papers/2014/nielsen_apc_package.pdf">This apc package writeup looks promising both as a tool and an explanation</a></p>
 
 </div>
 </div>
