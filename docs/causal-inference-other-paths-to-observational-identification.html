@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-10" />
+<meta name="date" content="2021-03-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1296,7 +1296,7 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 
 <div class="fold">
 <ul>
-<li><p>overall-age effectsL effect of an individual, organization, or any “unit’s” age in years <em>vs</em></p></li>
+<li><p>overall-age effects: effect of an individual, organization, or any “unit’s” age in years <em>vs</em></p></li>
 <li><p>‘tenure effects’: the effect of time spent participating (e.g., time in the labor force or as part of a political movement)</p></li>
 </ul>
 </div>
@@ -1310,6 +1310,30 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 <p>“identification problem” in APC… s due to the exact linear dependency among age, period, and cohort: Period – Age = Cohort; that is, given the calendar year and age, one can determine the cohort (birth year)</p>
 </blockquote>
 <p><a href="https://www.nuffield.ox.ac.uk/economics/Papers/2014/nielsen_apc_package.pdf">This apc package writeup looks promising both as a tool and an explanation</a></p>
+<p><br />
+</p>
+<p>A standard APC model of the age-period-specific statistic (e.g., the average income) for age group <span class="math inline">\(i\)</span> in period <span class="math inline">\(j\)</span>: (O’Brien et al, 2008)</p>
+<p><span class="math display">\[Y_{ij} = \mu  + \alpha_i + \pi_j + \chi_k + \epsilon_{ij} \]</span>
+They refer to the “effect of the ith age group” <span class="math inline">\(\alpha_i\)</span> but this need not be interpreted causally.</p>
+<p><span class="math inline">\(\pi_j\)</span> captures period <span class="math inline">\(j\)</span>, <span class="math inline">\(\chi_k\)</span> the kth cohort <span class="math inline">\(\mu\)</span> the intercept, and <span class="math inline">\(\epsilon_{ij}\)</span> the
+“random disturbance.”</p>
+<blockquote>
+<p>[The] linear dependency among the variables representing age, period, and cohort, since knowing the values of any two of these variables allows one to know the value of the third … means that we cannot estimate the A – 1 age effects, the P − 1 period effects, and the A + P – 1 cohort effects in a single OLS model.</p>
+</blockquote>
+<p>(I believe) this holds whether or not we restrict the age, period, or cohort effects to being linear in a time variable.</p>
+<p><br />
+</p>
+<p>The above equation also depicts the “age–period–cohort-characteristic (APCC)” model, letting <span class="math inline">\(\chi_k\)</span> represent “the value of [here, a single] cohort characteristic for the kth cohort.”
+In other words, we replace a set of simple cohort dummies with (I presume) a variable meant to capture the meaningful characteristic of the cohort leading to the aforementioned ‘cohort effects.’</p>
+<p>" This formulation eliminates the linear dependency … since the cohorts’ values on the cohort characteristic are unlikely to be perfectly linearly related to the age and period."</p>
+<p><br />
+</p>
+<p>They next depict an ‘age-period’ model:</p>
+<p><span class="math display">\[Y_{ij} = \mu + \alpha_i + \pi_j + \epsilon_{ij}\]</span></p>
+<p>Estimating this model leads to the ‘observed residuals’ <span class="math inline">\(e_{ij}\)</span></p>
+<blockquote>
+<p>We could then examine the pattern of these residuals to see if they indicate an effect of cohort membership (after controlling for the effects of age and period).</p>
+</blockquote>
 
 </div>
 </div>

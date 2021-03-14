@@ -27,7 +27,6 @@ choices-of-lhs-and-rhs-variables
 functional-form
 testing-for-nonlinear-terms
 ols-and-heterogeneity
-ols-does-not-identify-the-ate--
 null-effects
 confidence-intervals-and-bayesian-credible-intervals
 comparing-relative-parameters

@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-10" />
+<meta name="date" content="2021-03-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1306,8 +1306,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="ols-and-heterogeneity" class="section level3" number="3.1.5">
 <h3><span class="header-section-number">3.1.5</span> OLS and heterogeneity</h3>
-<div id="ols-does-not-identify-the-ate--" class="section level4" number="3.1.5.1">
-<h4><span class="header-section-number">3.1.5.1</span> OLS does <em>not</em> identify the ATE (-)</h4>
+<div id="ols-does-not-identify-the-ate" class="section level4 unnumbered">
+<h4>OLS does <em>not</em> identify the ATE</h4>
 <p>In general, with heterogeneity, OLS does <em>not</em> identify the ATE. It weights observations from different parts of the sample differently. Parts with greater residual variation in the treatment (outcome) variable are more (less) heavily weighted.</p>
 <div class="marginnote">
 <p>E.g., if the treatment is binary, the estimator will most heavily weight those parts of the sample where the probability of treatment is closest to 1/2.</p>
@@ -1338,6 +1338,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p>Another way of expressing interactions, particularly helpful with multi-level interactions is called ‘effect coding’: each group is coded as a ‘difference from 0’ (e.g,. males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. <em>But under which conditions is this in fact the case?</em></p>
+<div class="marginnote">
+<p><a href="https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/#:~:text=Unlike%20dummy%20coding%2C%20effect%20coding,variable%20must%20sum%20to%20zero.">There are various forms of ‘effect coding’ of which ‘effect contrast coding’ is one.</a></p>
+</div>
 <p>[insert here].</p>
 <p><a href="http://blogs.worldbank.org/impactevaluations/your-go-regression-specification-biased-here-s-simple-way-fix-it?cid=SHR_BlogSiteShare_XX_EXT">WB blog - your-go-to regression-specification is -biased-here-s-simple-way-fix-it</a></p>
 <p>A key paper: <a href="http://www.jcsuarez.com/Files/Suarez_Serrato-BFE.pdf" class="uri">http://www.jcsuarez.com/Files/Suarez_Serrato-BFE.pdf</a></p>
@@ -1377,7 +1380,7 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 </div>
 <div id="null-effects" class="section level3" number="3.1.6">
 <h3><span class="header-section-number">3.1.6</span> “Null effects”</h3>
-<p>“While the classical statistical framework is not terribly clear about when one should”“accept”" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a "“zero or minimal effect”" one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
+<p>"While the classical statistical framework is not terribly clear about when one should ‘accept’ a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ‘zero or minimal effect’ one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
 <p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks.”" Harms-lakens-18</p>
 <blockquote>
 <p>Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects.

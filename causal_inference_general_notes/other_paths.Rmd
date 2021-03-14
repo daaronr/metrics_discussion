@@ -65,7 +65,7 @@ We might want to further disentangle this (at least conceptually) into:
 
 ```{block2,  type='fold'}
  
-- overall-age effectsL effect of an individual, organization, or any "unit's"  age in years *vs* 
+- overall-age effects:  effect of an individual, organization, or any "unit's"  age in years *vs* 
 
 - 'tenure effects': the effect of time spent participating (e.g., time in the labor force or as part of a political movement)
 
@@ -81,6 +81,41 @@ We might want to further disentangle this (at least conceptually) into:
 > "identification problem” in APC... s due to the exact linear dependency among age, period, and cohort: Period – Age = Cohort; that is, given the calendar year and age, one can determine the cohort (birth year)
 
 
-
 [This apc package writeup looks promising both as a tool and an explanation](https://www.nuffield.ox.ac.uk/economics/Papers/2014/nielsen_apc_package.pdf)
+
+
+\
+
+A standard APC model of the age-period-specific statistic (e.g., the average income) for age group $i$ in period $j$: (O'Brien et al, 2008)
+
+
+$$Y_{ij} = \mu  + \alpha_i + \pi_j + \chi_k + \epsilon_{ij} $$
+They refer to the "effect of the ith age group" $\alpha_i$ but this need not be interpreted causally.
+
+$\pi_j$ captures period  $j$, $\chi_k$  the kth cohort $\mu$ the intercept, and $\epsilon_{ij}$  the
+ "random disturbance". 
+ 
+
+> [The] linear dependency among the variables representing age, period, and cohort, since knowing the values of any two of these variables allows one to know the value of the third ...  means that we cannot estimate the A – 1 age effects, the P − 1 period effects, and the A + P – 1 cohort effects in a single OLS model.
+
+(I believe) this holds whether or not we restrict the age, period, or cohort effects to being linear in a time variable.
+ 
+ 
+\
+ 
+The above equation also depicts the "age–period–cohort-characteristic (APCC)" model, letting $\chi_k$ represent "the value of [here, a single] cohort characteristic for the kth cohort."
+In other words, we replace a set of simple cohort dummies with (I presume) a variable meant to capture the meaningful characteristic of the cohort leading to the aforementioned 'cohort effects'.
+
+" This formulation eliminates the linear dependency ... since the cohorts’ values on the cohort characteristic are unlikely to be perfectly linearly related to the age and period."
+
+
+\
+
+They next depict an 'age-period' model: 
+
+$$Y_{ij} = \mu + \alpha_i + \pi_j + \epsilon_{ij}$$
+
+Estimating this model leads to the 'observed residuals' $e_{ij}$
+
+> We could then examine the pattern of these residuals to see if they indicate an effect of cohort membership (after controlling for the effects of age and period).
 

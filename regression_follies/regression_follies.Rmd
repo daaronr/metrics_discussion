@@ -89,7 +89,7 @@ http://datacolada.org/62
 
 ### OLS and heterogeneity
 
-#### OLS does *not* identify the ATE (-)
+#### OLS does *not* identify the ATE {-}
 
 In general, with heterogeneity, OLS does *not* identify the ATE. It weights observations from different parts of the sample differently. Parts with greater residual variation in the treatment (outcome) variable are more (less) heavily weighted. 
 
@@ -114,7 +114,7 @@ In  order to have the estimate of the true slope that minimizes the squared erro
 
 \
 
-However, if the *actual* slope varies by region, this also means you are under-representing certain regions, and  thus getting  a biased  estimate of the average slope.
+However, if the *actual* slope varies by region, this also means you are under-representing certain regions, and  thus getting a biased  estimate of the average slope.
 
 ```
 
@@ -126,14 +126,18 @@ How can we deal with this?  If we think  that the  treatment effect varies with 
 
 \
 
-However, this does not tell us how to recover the *average* of these slopes (approximately, the ATE).  Should we weight  each of the slopes by the share of the population that this group represents?
+However, this does not tell us how to recover the *average* of these slopes (approximately, the ATE).  Should we weight each of the slopes by the share of the population that this group represents?
 
 Mechanically,  the standard way of estimating and representing these  interactions and economics has been with simple dummies (0,1) for each compared group. This yields a 'base group' (e.g., males aged 35-60) --  this obviously does not recover the average slope-- as well as the 'adjustment' coefficients.
 
 \
 
-Another way of expressing interactions, particularly helpful with multi-level interactions is called 'effect coding': each group is coded as a 'difference from 0' (e.g,. males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms  represent adjustments relative to this average. *But under which conditions is this in fact the case?*
+Another way of expressing interactions, particularly helpful with multi-level interactions is called 'effect coding': each group is coded as a 'difference from 0' (e.g,. males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. *But under which conditions is this in fact the case?*
 
+<div class="marginnote">
+[There are various forms of 'effect coding' of which 'effect contrast coding' is one.](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/#:~:text=Unlike%20dummy%20coding%2C%20effect%20coding,variable%20must%20sum%20to%20zero.)
+</div>
+ 
 
 [insert here].
 
@@ -181,7 +185,7 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 
 ### "Null effects"
 
-"While the classical statistical framework is not terribly clear about when one should ""accept"" a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ""zero or minimal effect"" one would want to find these closely bounded around zero under a variety of conditions for generalizability.
+"While the classical statistical framework is not terribly clear about when one should 'accept' a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a 'zero or minimal effect' one would want to find these closely bounded around zero under a variety of conditions for generalizability.
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks”."	Harms-lakens-18
 
