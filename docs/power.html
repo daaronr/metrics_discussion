@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-14" />
+<meta name="date" content="2021-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -691,7 +691,6 @@ document.write('<div class="btn-group pull-right" style="position: absolute; top
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -836,6 +835,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
@@ -1507,134 +1507,134 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <ol style="list-style-type: decimal">
 <li>simple_assign: assign treatment dummy to first t-share of n rows</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="power.html#cb15-1" aria-hidden="true" tabindex="-1"></a>simple_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
-<span id="cb15-2"><a href="power.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(df, <span class="at">d_t =</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> (<span class="fu">n</span>() <span class="sc">*</span> tshare)) <span class="co">#note: the data must be randomised first!</span></span>
-<span id="cb15-3"><a href="power.html#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="power.html#cb32-1" aria-hidden="true" tabindex="-1"></a>simple_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
+<span id="cb32-2"><a href="power.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(df, <span class="at">d_t =</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> (<span class="fu">n</span>() <span class="sc">*</span> tshare)) <span class="co">#note: the data must be randomised first!</span></span>
+<span id="cb32-3"><a href="power.html#cb32-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><br />
 </p>
 <p><strong>Data-based power calculation: create simulation function</strong> {#power-calc-sim-func}</p>
 <!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="power.html#cb16-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
-<span id="cb16-2"><a href="power.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="power.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
-<span id="cb16-4"><a href="power.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
-<span id="cb16-5"><a href="power.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(ds, <span class="at">size =</span> N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-6"><a href="power.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="power.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
-<span id="cb16-8"><a href="power.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
-<span id="cb16-9"><a href="power.html#cb16-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
-<span id="cb16-10"><a href="power.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="power.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
-<span id="cb16-12"><a href="power.html#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
-<span id="cb16-13"><a href="power.html#cb16-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
-<span id="cb16-14"><a href="power.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
-<span id="cb16-15"><a href="power.html#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
-<span id="cb16-16"><a href="power.html#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="power.html#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
-<span id="cb16-18"><a href="power.html#cb16-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
-<span id="cb16-19"><a href="power.html#cb16-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
-<span id="cb16-20"><a href="power.html#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
-<span id="cb16-21"><a href="power.html#cb16-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
-<span id="cb16-22"><a href="power.html#cb16-22" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb16-23"><a href="power.html#cb16-23" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb16-24"><a href="power.html#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="power.html#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
-<span id="cb16-26"><a href="power.html#cb16-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
-<span id="cb16-27"><a href="power.html#cb16-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="power.html#cb33-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
+<span id="cb33-2"><a href="power.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="power.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
+<span id="cb33-4"><a href="power.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
+<span id="cb33-5"><a href="power.html#cb33-5" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(ds, <span class="at">size =</span> N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-6"><a href="power.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="power.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
+<span id="cb33-8"><a href="power.html#cb33-8" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb33-9"><a href="power.html#cb33-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
+<span id="cb33-10"><a href="power.html#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="power.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
+<span id="cb33-12"><a href="power.html#cb33-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
+<span id="cb33-13"><a href="power.html#cb33-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
+<span id="cb33-14"><a href="power.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
+<span id="cb33-15"><a href="power.html#cb33-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
+<span id="cb33-16"><a href="power.html#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="power.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
+<span id="cb33-18"><a href="power.html#cb33-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
+<span id="cb33-19"><a href="power.html#cb33-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb33-20"><a href="power.html#cb33-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
+<span id="cb33-21"><a href="power.html#cb33-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
+<span id="cb33-22"><a href="power.html#cb33-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-23"><a href="power.html#cb33-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-24"><a href="power.html#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="power.html#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
+<span id="cb33-26"><a href="power.html#cb33-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
+<span id="cb33-27"><a href="power.html#cb33-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (<code>blockvar</code>)</li>
 </ol>
 <p><em>Note: I am using ‘randomizr’ here to assign blocks</em></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power.html#cb17-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
-<span id="cb17-2"><a href="power.html#cb17-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
-<span id="cb17-3"><a href="power.html#cb17-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
-<span id="cb17-4"><a href="power.html#cb17-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
-<span id="cb17-5"><a href="power.html#cb17-5" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb17-6"><a href="power.html#cb17-6" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb17-7"><a href="power.html#cb17-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="power.html#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
-<span id="cb17-9"><a href="power.html#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
-<span id="cb17-10"><a href="power.html#cb17-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
-<span id="cb17-11"><a href="power.html#cb17-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb17-12"><a href="power.html#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="power.html#cb34-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
+<span id="cb34-2"><a href="power.html#cb34-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
+<span id="cb34-3"><a href="power.html#cb34-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
+<span id="cb34-4"><a href="power.html#cb34-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
+<span id="cb34-5"><a href="power.html#cb34-5" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb34-6"><a href="power.html#cb34-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb34-7"><a href="power.html#cb34-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
+<span id="cb34-8"><a href="power.html#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
+<span id="cb34-9"><a href="power.html#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb34-10"><a href="power.html#cb34-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
+<span id="cb34-11"><a href="power.html#cb34-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb34-12"><a href="power.html#cb34-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered">
 <h4>Power calculation (just simple examples): adapt to built-in data</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="power.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="power.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
 </div>
 <div id="loop-and-plot-over" class="section level4" number="14.5.1.1">
 <h4><span class="header-section-number">14.5.1.1</span> Loop and plot over…</h4>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="power.html#cb19-1" aria-hidden="true" tabindex="-1"></a>linTE.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
-<span id="cb19-2"><a href="power.html#cb19-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb19-3"><a href="power.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="power.html#cb19-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
-<span id="cb19-5"><a href="power.html#cb19-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="power.html#cb36-1" aria-hidden="true" tabindex="-1"></a>linTE.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
+<span id="cb36-2"><a href="power.html#cb36-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb36-3"><a href="power.html#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="power.html#cb36-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
+<span id="cb36-5"><a href="power.html#cb36-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
 <p>Testing equicost parings, determine necessary cost</p>
 <p>With only control and treatment we have</p>
 <p><span class="math display">\[cost = multiplier \times avgcost \times N \times tshare\]</span>
 <span class="math display">\[\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)\]</span></p>
 <p>Setting a 2x multiplier (for the ‘large’) treatment, avgcost=£30 (hard coded) for now, and imagining a £6000 initial budget yields</p>
 <p><span class="math display">\[\rightarrow N = 6000/\big(60 \times tshare\big) \]</span></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="power.html#cb20-1" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> <span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
-<span id="cb20-2"><a href="power.html#cb20-2" aria-hidden="true" tabindex="-1"></a>multip <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb20-3"><a href="power.html#cb20-3" aria-hidden="true" tabindex="-1"></a>avdon <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb20-4"><a href="power.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="power.html#cb20-5" aria-hidden="true" tabindex="-1"></a>tshare.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.1</span>, <span class="at">to=</span><span class="fl">0.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
-<span id="cb20-6"><a href="power.html#cb20-6" aria-hidden="true" tabindex="-1"></a>sample.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">400</span>, <span class="at">to=</span><span class="dv">1200</span>, <span class="at">by=</span><span class="dv">200</span>)</span>
-<span id="cb20-7"><a href="power.html#cb20-7" aria-hidden="true" tabindex="-1"></a>equi_sample <span class="ot">&lt;-</span> cost<span class="sc">/</span>(avdon<span class="sc">*</span>multip<span class="sc">*</span>tshare.try)</span>
-<span id="cb20-8"><a href="power.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="power.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
-<span id="cb20-10"><a href="power.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="power.html#cb37-1" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> <span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
+<span id="cb37-2"><a href="power.html#cb37-2" aria-hidden="true" tabindex="-1"></a>multip <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb37-3"><a href="power.html#cb37-3" aria-hidden="true" tabindex="-1"></a>avdon <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb37-4"><a href="power.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="power.html#cb37-5" aria-hidden="true" tabindex="-1"></a>tshare.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.1</span>, <span class="at">to=</span><span class="fl">0.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb37-6"><a href="power.html#cb37-6" aria-hidden="true" tabindex="-1"></a>sample.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">400</span>, <span class="at">to=</span><span class="dv">1200</span>, <span class="at">by=</span><span class="dv">200</span>)</span>
+<span id="cb37-7"><a href="power.html#cb37-7" aria-hidden="true" tabindex="-1"></a>equi_sample <span class="ot">&lt;-</span> cost<span class="sc">/</span>(avdon<span class="sc">*</span>multip<span class="sc">*</span>tshare.try)</span>
+<span id="cb37-8"><a href="power.html#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="power.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
+<span id="cb37-10"><a href="power.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
 </div>
 <div id="for-total-x-outcome-variable" class="section level4 unnumbered">
 <h4>For ‘total x’ outcome variable</h4>
 <p>(Some sample code below, needs discussion)</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="power.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Unvarying parameters up here:</span></span>
-<span id="cb21-2"><a href="power.html#cb21-2" aria-hidden="true" tabindex="-1"></a>linTE <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb21-3"><a href="power.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="power.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
-<span id="cb21-5"><a href="power.html#cb21-5" aria-hidden="true" tabindex="-1"></a>power_vals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb21-6"><a href="power.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_try=</span><span class="cn">NA</span>,</span>
-<span id="cb21-7"><a href="power.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_te =</span> <span class="cn">NA</span>,</span>
-<span id="cb21-8"><a href="power.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lin_te=</span><span class="cn">NA</span>,</span>
-<span id="cb21-9"><a href="power.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">test=</span><span class="cn">NA</span>,</span>
-<span id="cb21-10"><a href="power.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">power_est=</span><span class="cn">NA</span></span>
-<span id="cb21-11"><a href="power.html#cb21-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-12"><a href="power.html#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="power.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tic() #timer</span></span>
-<span id="cb21-14"><a href="power.html#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="power.html#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
-<span id="cb21-16"><a href="power.html#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-17"><a href="power.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
-<span id="cb21-18"><a href="power.html#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="power.html#cb21-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb21-20"><a href="power.html#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
-<span id="cb21-21"><a href="power.html#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
-<span id="cb21-22"><a href="power.html#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-23"><a href="power.html#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
-<span id="cb21-24"><a href="power.html#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
-<span id="cb21-25"><a href="power.html#cb21-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
-<span id="cb21-26"><a href="power.html#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-27"><a href="power.html#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
-<span id="cb21-28"><a href="power.html#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
-<span id="cb21-29"><a href="power.html#cb21-29" aria-hidden="true" tabindex="-1"></a>      PT <span class="ot">&lt;-</span> propTE.try[[p]]</span>
-<span id="cb21-30"><a href="power.html#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-31"><a href="power.html#cb21-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
-<span id="cb21-32"><a href="power.html#cb21-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
-<span id="cb21-33"><a href="power.html#cb21-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
-<span id="cb21-34"><a href="power.html#cb21-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
-<span id="cb21-35"><a href="power.html#cb21-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
-<span id="cb21-36"><a href="power.html#cb21-36" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb21-37"><a href="power.html#cb21-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
-<span id="cb21-38"><a href="power.html#cb21-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
-<span id="cb21-39"><a href="power.html#cb21-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
-<span id="cb21-40"><a href="power.html#cb21-40" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb21-41"><a href="power.html#cb21-41" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb21-42"><a href="power.html#cb21-42" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-43"><a href="power.html#cb21-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-44"><a href="power.html#cb21-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
-<span id="cb21-45"><a href="power.html#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-46"><a href="power.html#cb21-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="power.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Unvarying parameters up here:</span></span>
+<span id="cb38-2"><a href="power.html#cb38-2" aria-hidden="true" tabindex="-1"></a>linTE <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb38-3"><a href="power.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="power.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
+<span id="cb38-5"><a href="power.html#cb38-5" aria-hidden="true" tabindex="-1"></a>power_vals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb38-6"><a href="power.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_try=</span><span class="cn">NA</span>,</span>
+<span id="cb38-7"><a href="power.html#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_te =</span> <span class="cn">NA</span>,</span>
+<span id="cb38-8"><a href="power.html#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lin_te=</span><span class="cn">NA</span>,</span>
+<span id="cb38-9"><a href="power.html#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">test=</span><span class="cn">NA</span>,</span>
+<span id="cb38-10"><a href="power.html#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">power_est=</span><span class="cn">NA</span></span>
+<span id="cb38-11"><a href="power.html#cb38-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-12"><a href="power.html#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="power.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tic() #timer</span></span>
+<span id="cb38-14"><a href="power.html#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="power.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
+<span id="cb38-16"><a href="power.html#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="power.html#cb38-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
+<span id="cb38-18"><a href="power.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="power.html#cb38-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb38-20"><a href="power.html#cb38-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
+<span id="cb38-21"><a href="power.html#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
+<span id="cb38-22"><a href="power.html#cb38-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-23"><a href="power.html#cb38-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
+<span id="cb38-24"><a href="power.html#cb38-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
+<span id="cb38-25"><a href="power.html#cb38-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
+<span id="cb38-26"><a href="power.html#cb38-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-27"><a href="power.html#cb38-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
+<span id="cb38-28"><a href="power.html#cb38-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
+<span id="cb38-29"><a href="power.html#cb38-29" aria-hidden="true" tabindex="-1"></a>      PT <span class="ot">&lt;-</span> propTE.try[[p]]</span>
+<span id="cb38-30"><a href="power.html#cb38-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-31"><a href="power.html#cb38-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
+<span id="cb38-32"><a href="power.html#cb38-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
+<span id="cb38-33"><a href="power.html#cb38-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
+<span id="cb38-34"><a href="power.html#cb38-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
+<span id="cb38-35"><a href="power.html#cb38-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
+<span id="cb38-36"><a href="power.html#cb38-36" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb38-37"><a href="power.html#cb38-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
+<span id="cb38-38"><a href="power.html#cb38-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
+<span id="cb38-39"><a href="power.html#cb38-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
+<span id="cb38-40"><a href="power.html#cb38-40" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb38-41"><a href="power.html#cb38-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb38-42"><a href="power.html#cb38-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb38-43"><a href="power.html#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-44"><a href="power.html#cb38-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb38-45"><a href="power.html#cb38-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-46"><a href="power.html#cb38-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
 <p><br />
 </p>
 </div>

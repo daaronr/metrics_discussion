@@ -1,10 +1,10 @@
-tab:unnamed-chunk-78
-fig:unnamed-chunk-82
+tab:unnamed-chunk-79
 fig:unnamed-chunk-83
-fig:unnamed-chunk-85
-fig:unnamed-chunk-95
-tab:unnamed-chunk-98
+fig:unnamed-chunk-84
+fig:unnamed-chunk-86
+fig:unnamed-chunk-96
 tab:unnamed-chunk-99
+tab:unnamed-chunk-100
 introduction
 conceptual
 learning-and-optimization-as-an-alternative-to-statistical-inference
@@ -50,6 +50,9 @@ control-ml
 see-also-notes-on-data-science-for-business
 machine-learning-statistical-learning-lasso-ridge-and-more
 limitations-to-inference-from-learning-approaches
+tree-models
+information-gain
+ensemble-learning
 notes-hastie-statistical-learning-with-sparsity
 introduction-1
 book-roadmap

@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-14" />
+<meta name="date" content="2021-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -691,7 +691,6 @@ document.write('<div class="btn-group pull-right" style="position: absolute; top
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -836,6 +835,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
@@ -1285,16 +1285,16 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <p><br />
 </p>
 <p>The download code follows (remove the ‘eval=FALSE’ to get it to actually run)…</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-sci.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>( <span class="co">#trycatch lets us &#39;try&#39; to execute and if there is an error, it does the thing *after* the braces, rather than crashing</span></span>
-<span id="cb86-2"><a href="data-sci.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb86-3"><a href="data-sci.html#cb86-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1&quot;</span>, des <span class="at">tfile =</span> <span class="st">&quot;reinstein_bibtex.bib&quot;</span>) <span class="co">#download the bibtex database</span></span>
-<span id="cb86-4"><a href="data-sci.html#cb86-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-5"><a href="data-sci.html#cb86-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css&quot;</span>, <span class="at">destfile =</span> <span class="fu">here</span>(<span class="st">&quot;support&quot;</span>, <span class="st">&quot;tufte_plus.css&quot;</span>)) <span class="co">#this downloads the style file</span></span>
-<span id="cb86-6"><a href="data-sci.html#cb86-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-7"><a href="data-sci.html#cb86-7" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
-<span id="cb86-8"><a href="data-sci.html#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;you are not online, so we can&#39;t download&quot;</span>)</span>
-<span id="cb86-9"><a href="data-sci.html#cb86-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb86-10"><a href="data-sci.html#cb86-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="data-sci.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>( <span class="co">#trycatch lets us &#39;try&#39; to execute and if there is an error, it does the thing *after* the braces, rather than crashing</span></span>
+<span id="cb103-2"><a href="data-sci.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb103-3"><a href="data-sci.html#cb103-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1&quot;</span>, des <span class="at">tfile =</span> <span class="st">&quot;reinstein_bibtex.bib&quot;</span>) <span class="co">#download the bibtex database</span></span>
+<span id="cb103-4"><a href="data-sci.html#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="data-sci.html#cb103-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css&quot;</span>, <span class="at">destfile =</span> <span class="fu">here</span>(<span class="st">&quot;support&quot;</span>, <span class="st">&quot;tufte_plus.css&quot;</span>)) <span class="co">#this downloads the style file</span></span>
+<span id="cb103-6"><a href="data-sci.html#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-7"><a href="data-sci.html#cb103-7" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb103-8"><a href="data-sci.html#cb103-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;you are not online, so we can&#39;t download&quot;</span>)</span>
+<span id="cb103-9"><a href="data-sci.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb103-10"><a href="data-sci.html#cb103-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>A fairly comprehensive discussion of tools for citation in R-markdown:</p>
 <p><a href="https://ropensci.org/technotes/2020/05/07/rmd-citations/">A Roundup of R Tools for Handling BibTeX</a></p>
 </div>
@@ -1304,10 +1304,10 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <div class="marginnote">
 <p>By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!</p>
 </div>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-sci.html#cb87-1" aria-hidden="true" tabindex="-1"></a>prof_sal_shapiro_test <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(carData<span class="sc">::</span>Salaries<span class="sc">$</span>salary)</span>
-<span id="cb87-2"><a href="data-sci.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="data-sci.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ShapiroTest &lt;- map_df(list(SXDonShapiroTest, EXDonShapiroTest), tidy)</span></span>
-<span id="cb87-4"><a href="data-sci.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (ShapiroTest &lt;- kable(ShapiroTest) %&gt;% kable_styling())</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-sci.html#cb104-1" aria-hidden="true" tabindex="-1"></a>prof_sal_shapiro_test <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(carData<span class="sc">::</span>Salaries<span class="sc">$</span>salary)</span>
+<span id="cb104-2"><a href="data-sci.html#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-3"><a href="data-sci.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ShapiroTest &lt;- map_df(list(SXDonShapiroTest, EXDonShapiroTest), tidy)</span></span>
+<span id="cb104-4"><a href="data-sci.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (ShapiroTest &lt;- kable(ShapiroTest) %&gt;% kable_styling())</span></span></code></pre></div>
 <p>The results from the Shapiro Wilk normality test …</p>
 <p>The p-values are 6.08^{-9} suggesting this data is not normal</p>
 </div>
@@ -1382,13 +1382,13 @@ ft <- map2(ft, ft_names, function(x, y) {
 <p><br />
 </p>
 <p>We can store a filter as a character vector and then apply it</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-sci.html#cb88-1" aria-hidden="true" tabindex="-1"></a>selection_statement <span class="ot">&lt;-</span> <span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span></span>
-<span id="cb88-2"><a href="data-sci.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="data-sci.html#cb88-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="data-sci.html#cb88-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb88-5"><a href="data-sci.html#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rlang<span class="sc">::</span><span class="fu">eval_tidy</span>(rlang<span class="sc">::</span><span class="fu">parse_expr</span>(selection_statement)))</span></code></pre></div>
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-98">
-<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-98">Table 20.1: </span> </caption><col><col><col><col><col><tr>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-sci.html#cb105-1" aria-hidden="true" tabindex="-1"></a>selection_statement <span class="ot">&lt;-</span> <span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span></span>
+<span id="cb105-2"><a href="data-sci.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="data-sci.html#cb105-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a href="data-sci.html#cb105-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb105-5"><a href="data-sci.html#cb105-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rlang<span class="sc">::</span><span class="fu">eval_tidy</span>(rlang<span class="sc">::</span><span class="fu">parse_expr</span>(selection_statement)))</span></code></pre></div>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-99">
+<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-99">Table 20.1: </span> </caption><col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Width</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Width</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Species</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">5.4</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">3.9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1.7</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0.4</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">setosa</td></tr>
@@ -1411,19 +1411,19 @@ ft <- map2(ft, ft_names, function(x, y) {
 </table>
 
 <p>Making this a function for later use:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-sci.html#cb89-1" aria-hidden="true" tabindex="-1"></a>selection_statement <span class="ot">&lt;-</span> <span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span></span>
-<span id="cb89-2"><a href="data-sci.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="data-sci.html#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-4"><a href="data-sci.html#cb89-4" aria-hidden="true" tabindex="-1"></a>filter_parse <span class="ot">=</span>  <span class="cf">function</span>(df, x) {</span>
-<span id="cb89-5"><a href="data-sci.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  {{df}} <span class="sc">%&gt;%</span></span>
-<span id="cb89-6"><a href="data-sci.html#cb89-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(rlang<span class="sc">::</span><span class="fu">eval_tidy</span>(rlang<span class="sc">::</span><span class="fu">parse_expr</span>({{x}})))</span>
-<span id="cb89-7"><a href="data-sci.html#cb89-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb89-8"><a href="data-sci.html#cb89-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-9"><a href="data-sci.html#cb89-9" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb89-10"><a href="data-sci.html#cb89-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb89-11"><a href="data-sci.html#cb89-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_parse</span>(selection_statement)</span></code></pre></div>
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-99">
-<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-99">Table 20.2: </span> </caption><col><col><col><col><col><tr>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="data-sci.html#cb106-1" aria-hidden="true" tabindex="-1"></a>selection_statement <span class="ot">&lt;-</span> <span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span></span>
+<span id="cb106-2"><a href="data-sci.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="data-sci.html#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="data-sci.html#cb106-4" aria-hidden="true" tabindex="-1"></a>filter_parse <span class="ot">=</span>  <span class="cf">function</span>(df, x) {</span>
+<span id="cb106-5"><a href="data-sci.html#cb106-5" aria-hidden="true" tabindex="-1"></a>  {{df}} <span class="sc">%&gt;%</span></span>
+<span id="cb106-6"><a href="data-sci.html#cb106-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(rlang<span class="sc">::</span><span class="fu">eval_tidy</span>(rlang<span class="sc">::</span><span class="fu">parse_expr</span>({{x}})))</span>
+<span id="cb106-7"><a href="data-sci.html#cb106-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb106-8"><a href="data-sci.html#cb106-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-9"><a href="data-sci.html#cb106-9" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb106-10"><a href="data-sci.html#cb106-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb106-11"><a href="data-sci.html#cb106-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_parse</span>(selection_statement)</span></code></pre></div>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-100">
+<caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-100">Table 20.2: </span> </caption><col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Sepal.Width</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Length</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Petal.Width</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">Species</th></tr>
 <tr>
 <td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">5.4</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">3.9</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">1.7</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">0.4</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">setosa</td></tr>
@@ -1446,9 +1446,9 @@ ft <- map2(ft, ft_names, function(x, y) {
 </table>
 
 <p>We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-sci.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span>, <span class="st">&quot;Species == &#39;virginica&#39; &amp; Petal.Width&gt;2.4&quot;</span>)</span>
-<span id="cb90-2"><a href="data-sci.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="data-sci.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(iris, selection_statement)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-sci.html#cb107-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span>, <span class="st">&quot;Species == &#39;virginica&#39; &amp; Petal.Width&gt;2.4&quot;</span>)</span>
+<span id="cb107-2"><a href="data-sci.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="data-sci.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(iris, selection_statement)</span></code></pre></div>
 <pre><code>## $Sepal.Length
 ## NULL
 ## 
@@ -1463,7 +1463,7 @@ ft <- map2(ft, ft_names, function(x, y) {
 ## 
 ## $Species
 ## NULL</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-sci.html#cb92-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">filter_parse</span>(iris, .x))</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-sci.html#cb109-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">filter_parse</span>(iris, .x))</span></code></pre></div>
 <pre><code>## [[1]]
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.4         3.9          1.7         0.4  setosa
