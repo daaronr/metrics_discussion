@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-21" />
+<meta name="date" content="2021-03-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -691,6 +691,7 @@ document.write('<div class="btn-group pull-right" style="position: absolute; top
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -1279,13 +1280,13 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 <li><p>Bayesian Power calculation<br />
 </p></li>
 </ul>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="bayes.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="bayes.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
 <p>Package loadings from Kurtz:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="bayes.html#cb94-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_unload</span>(pacman<span class="sc">::</span><span class="fu">p_loaded</span>(), <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb94-2"><a href="bayes.html#cb94-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_grey</span>())</span>
-<span id="cb94-3"><a href="bayes.html#cb94-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb94-4"><a href="bayes.html#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-5"><a href="bayes.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="bayes.html#cb79-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_unload</span>(pacman<span class="sc">::</span><span class="fu">p_loaded</span>(), <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-2"><a href="bayes.html#cb79-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_grey</span>())</span>
+<span id="cb79-3"><a href="bayes.html#cb79-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb79-4"><a href="bayes.html#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="bayes.html#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
 </div>
 </div>
 <div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="18.2">
@@ -1351,14 +1352,14 @@ I’m planning to through this here, adding my own notes, questions, and conside
 </p>
 <p>We imagine a bag filled with four marbles, each of which is blue or white.</p>
 <p>“So, if we’re willing to code the marbles as 0 =”white" 1 = “blue,” we can arrange the possibility data in a tibble as follows." I.e., we can consider the five possible worlds, in each of which the bag has a different number of white and blue marbles, and represent each of these worlds as a column vector:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="bayes.html#cb95-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
-<span id="cb95-2"><a href="bayes.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="dv">0</span>,</span>
-<span id="cb95-3"><a href="bayes.html#cb95-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
-<span id="cb95-4"><a href="bayes.html#cb95-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
-<span id="cb95-5"><a href="bayes.html#cb95-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
-<span id="cb95-6"><a href="bayes.html#cb95-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_5 =</span> <span class="dv">1</span>)</span>
-<span id="cb95-7"><a href="bayes.html#cb95-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-8"><a href="bayes.html#cb95-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="bayes.html#cb80-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
+<span id="cb80-2"><a href="bayes.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="dv">0</span>,</span>
+<span id="cb80-3"><a href="bayes.html#cb80-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
+<span id="cb80-4"><a href="bayes.html#cb80-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb80-5"><a href="bayes.html#cb80-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
+<span id="cb80-6"><a href="bayes.html#cb80-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_5 =</span> <span class="dv">1</span>)</span>
+<span id="cb80-7"><a href="bayes.html#cb80-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-8"><a href="bayes.html#cb80-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-79">
 <caption style="caption-side: top; text-align: center;"><span id="tab:unnamed-chunk-79">Table 18.1: </span> </caption><col><col><col><col><col><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_1</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_2</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_3</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_4</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p_5</th></tr>
@@ -1375,26 +1376,26 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <p><br />
 </p>
 <p>We visualize this in the plot below, where each column is one ‘world’:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="bayes.html#cb96-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb96-2"><a href="bayes.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
-<span id="cb96-3"><a href="bayes.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
-<span id="cb96-4"><a href="bayes.html#cb96-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">possibility =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="co">#distributing the &#39;which world&#39; index</span></span>
-<span id="cb96-5"><a href="bayes.html#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> possibility,</span>
-<span id="cb96-6"><a href="bayes.html#cb96-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> value <span class="sc">%&gt;%</span> <span class="fu">as.character</span>())) <span class="sc">+</span></span>
-<span id="cb96-7"><a href="bayes.html#cb96-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb96-8"><a href="bayes.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb96-9"><a href="bayes.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb96-10"><a href="bayes.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
-<span id="cb96-11"><a href="bayes.html#cb96-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="sc">+</span></span>
-<span id="cb96-12"><a href="bayes.html#cb96-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="bayes.html#cb81-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="bayes.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
+<span id="cb81-3"><a href="bayes.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
+<span id="cb81-4"><a href="bayes.html#cb81-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">possibility =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="co">#distributing the &#39;which world&#39; index</span></span>
+<span id="cb81-5"><a href="bayes.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> possibility,</span>
+<span id="cb81-6"><a href="bayes.html#cb81-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> value <span class="sc">%&gt;%</span> <span class="fu">as.character</span>())) <span class="sc">+</span></span>
+<span id="cb81-7"><a href="bayes.html#cb81-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb81-8"><a href="bayes.html#cb81-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb81-9"><a href="bayes.html#cb81-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb81-10"><a href="bayes.html#cb81-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
+<span id="cb81-11"><a href="bayes.html#cb81-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="sc">+</span></span>
+<span id="cb81-12"><a href="bayes.html#cb81-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-80-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="bayes.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">draw    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb97-2"><a href="bayes.html#cb97-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">marbles =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-3"><a href="bayes.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">possibilities =</span> marbles <span class="sc">^</span> draw) <span class="sc">%&gt;%</span></span>
-<span id="cb97-4"><a href="bayes.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="bayes.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">draw    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb82-2"><a href="bayes.html#cb82-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">marbles =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="bayes.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">possibilities =</span> marbles <span class="sc">^</span> draw) <span class="sc">%&gt;%</span></span>
+<span id="cb82-4"><a href="bayes.html#cb82-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1474,28 +1475,28 @@ Figure 18.2: All possible draws of three balls
 <p><br />
 </p>
 <p>We can do similar for the other possible worlds; multiplying the ‘ways to produce each draw’ in the path yields the ‘total ways to produce the path,’ under each world.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="bayes.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we make two custom functions, here, it will simplify the code within `mutate()`, below</span></span>
-<span id="cb98-2"><a href="bayes.html#cb98-2" aria-hidden="true" tabindex="-1"></a>n_blue <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb98-3"><a href="bayes.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(x <span class="sc">==</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb98-4"><a href="bayes.html#cb98-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb98-5"><a href="bayes.html#cb98-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-6"><a href="bayes.html#cb98-6" aria-hidden="true" tabindex="-1"></a>n_white <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb98-7"><a href="bayes.html#cb98-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(x <span class="sc">==</span> <span class="st">&quot;w&quot;</span>)</span>
-<span id="cb98-8"><a href="bayes.html#cb98-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb98-9"><a href="bayes.html#cb98-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-10"><a href="bayes.html#cb98-10" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
-<span id="cb98-11"><a href="bayes.html#cb98-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for the first four columns, `p_` indexes position</span></span>
-<span id="cb98-12"><a href="bayes.html#cb98-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)),</span>
-<span id="cb98-13"><a href="bayes.html#cb98-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)),</span>
-<span id="cb98-14"><a href="bayes.html#cb98-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)),</span>
-<span id="cb98-15"><a href="bayes.html#cb98-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb98-16"><a href="bayes.html#cb98-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">n_blue</span>(.),</span>
-<span id="cb98-17"><a href="bayes.html#cb98-17" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">draw 2: white</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">n_white</span>(.),</span>
-<span id="cb98-18"><a href="bayes.html#cb98-18" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">draw 3: blue</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">n_blue</span>(.)) <span class="sc">%&gt;%</span></span>
-<span id="cb98-19"><a href="bayes.html#cb98-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">draw 2: white</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">draw 3: blue</span><span class="st">`</span>)</span>
-<span id="cb98-20"><a href="bayes.html#cb98-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-21"><a href="bayes.html#cb98-21" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
-<span id="cb98-22"><a href="bayes.html#cb98-22" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="bayes.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we make two custom functions, here, it will simplify the code within `mutate()`, below</span></span>
+<span id="cb83-2"><a href="bayes.html#cb83-2" aria-hidden="true" tabindex="-1"></a>n_blue <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb83-3"><a href="bayes.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(x <span class="sc">==</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb83-4"><a href="bayes.html#cb83-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb83-5"><a href="bayes.html#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-6"><a href="bayes.html#cb83-6" aria-hidden="true" tabindex="-1"></a>n_white <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb83-7"><a href="bayes.html#cb83-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(x <span class="sc">==</span> <span class="st">&quot;w&quot;</span>)</span>
+<span id="cb83-8"><a href="bayes.html#cb83-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb83-9"><a href="bayes.html#cb83-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-10"><a href="bayes.html#cb83-10" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
+<span id="cb83-11"><a href="bayes.html#cb83-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for the first four columns, `p_` indexes position</span></span>
+<span id="cb83-12"><a href="bayes.html#cb83-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)),</span>
+<span id="cb83-13"><a href="bayes.html#cb83-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)),</span>
+<span id="cb83-14"><a href="bayes.html#cb83-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>)),</span>
+<span id="cb83-15"><a href="bayes.html#cb83-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb83-16"><a href="bayes.html#cb83-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">n_blue</span>(.),</span>
+<span id="cb83-17"><a href="bayes.html#cb83-17" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">draw 2: white</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">n_white</span>(.),</span>
+<span id="cb83-18"><a href="bayes.html#cb83-18" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">draw 3: blue</span><span class="st">`</span>  <span class="ot">=</span> <span class="fu">n_blue</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb83-19"><a href="bayes.html#cb83-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">draw 2: white</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">draw 3: blue</span><span class="st">`</span>)</span>
+<span id="cb83-20"><a href="bayes.html#cb83-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-21"><a href="bayes.html#cb83-21" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
+<span id="cb83-22"><a href="bayes.html#cb83-22" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1688,15 +1689,15 @@ Figure 18.3: All possible draws of three balls
 <p><br />
 </p>
 <p>This is given in the table below:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="bayes.html#cb99-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
-<span id="cb99-2"><a href="bayes.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">%&gt;%</span></span>
-<span id="cb99-3"><a href="bayes.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">previous counts</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span>,</span>
-<span id="cb99-4"><a href="bayes.html#cb99-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-5"><a href="bayes.html#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(p_1<span class="sc">:</span>p_4, <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span>, <span class="st">`</span><span class="at">previous counts</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-6"><a href="bayes.html#cb99-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">new count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">previous counts</span><span class="st">`</span>)</span>
-<span id="cb99-7"><a href="bayes.html#cb99-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-8"><a href="bayes.html#cb99-8" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
-<span id="cb99-9"><a href="bayes.html#cb99-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="bayes.html#cb84-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
+<span id="cb84-2"><a href="bayes.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="bayes.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">previous counts</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span>,</span>
+<span id="cb84-4"><a href="bayes.html#cb84-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">draw 1: blue</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb84-5"><a href="bayes.html#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(p_1<span class="sc">:</span>p_4, <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span>, <span class="st">`</span><span class="at">previous counts</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb84-6"><a href="bayes.html#cb84-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">new count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">ways to produce</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">previous counts</span><span class="st">`</span>)</span>
+<span id="cb84-7"><a href="bayes.html#cb84-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-8"><a href="bayes.html#cb84-8" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
+<span id="cb84-9"><a href="bayes.html#cb84-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1849,14 +1850,14 @@ How to incorporate <em>prior</em> information about the probability of each worl
 <p><br />
 Here the <em>sequence</em> in which the information is recieved shouldn’t matter. The draws are independent (we presume).</p>
 <p>We can thus multiply the number of paths for each marbles-in-bag world by the (relative) frequency with which the factory ‘draws’ that bag… as shown below:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="bayes.html#cb100-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> t <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a href="bayes.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(p_1<span class="sc">:</span>p_4, <span class="st">`</span><span class="at">new count</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb100-3"><a href="bayes.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">prior count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">new count</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb100-4"><a href="bayes.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">factory count</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb100-5"><a href="bayes.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">new count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">prior count</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">factory count</span><span class="st">`</span>)</span>
-<span id="cb100-6"><a href="bayes.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="bayes.html#cb100-7" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
-<span id="cb100-8"><a href="bayes.html#cb100-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="bayes.html#cb85-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> t <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="bayes.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(p_1<span class="sc">:</span>p_4, <span class="st">`</span><span class="at">new count</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="bayes.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">prior count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">new count</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb85-4"><a href="bayes.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">factory count</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-5"><a href="bayes.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">new count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">prior count</span><span class="st">`</span> <span class="sc">*</span> <span class="st">`</span><span class="at">factory count</span><span class="st">`</span>)</span>
+<span id="cb85-6"><a href="bayes.html#cb85-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-7"><a href="bayes.html#cb85-7" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span></span>
+<span id="cb85-8"><a href="bayes.html#cb85-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2214,7 +2215,7 @@ against <span class="math inline">\(D(y^s_{observed})\)</span></p>
 <p>Also simple code; great for standard use</p>
 <p>Speedup with parallelization; see “script for parallel probit.R” and “parallelprobit.R”</p>
 <p>More advanced: C++; can integrate it with Rcpp, or even use Exeter’s ISCA cluster</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="bayes.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="bayes.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
 <pre><code>##      speed           dist    
 ##  Min.   : 4.0   Min.   :  2  
 ##  1st Qu.:12.0   1st Qu.: 26  

@@ -17,13 +17,12 @@ remaining unobservable component very small, minimizing the potential
 for bias in the coefficient of interest". All of the controls must still
 be exogenous, otherwise this itself can lead to a bias. There is some
 discussion of how to validate this approach; see, e.g.,
-[@osterUnobservableSelectionCoefficient2019].
-
-## Machine Learning (statistical learning): Lasso, Ridge, and more
+[@osterUnobservableSelectionCoefficient2019]. \#\# Machine Learning
+(statistical learning): Lasso, Ridge, and more
 
 Machine learning seeks to fit models to data in order to *learn*
 patterns and thus make predictions about the future. This learning is
-split into three categories:
+split into categories:
 
 -   **Supervised learning**: Here our data consists of *labelled*
     examples. This means that we have data on the outcome variable of
@@ -52,16 +51,21 @@ split into three categories:
 
 ### Tree models
 
-Decision trees are a type of supervised machine learning algorithm.
-Whilst they are very simple and intuitive to understand they form the
-basis for a variety of more complex models. Here we will discuss the
-model in the context of a classification problem, however they can also
-be used for regression settings.
+::: {.marginnote}
+This section was mainly written by Oska Fentem.
+:::
 
-A decision tree works using the idea of *recursive binary splitting*.
-Essentially this means that data is split into subsets which allow the
-model to predict observations well. <!-- Guess who example --> A
-decision tree consists of:
+Decision trees are a type of supervised machine learning algorithm.
+While they are very simple and intuitive to understand, they form the
+basis for a variety of more complex models. Here we will discuss the
+model in the context of a classification problem; however they can also
+be used for continuous outcome ('regression') settings.
+
+Decision trees are a type of supervised machine learning algorithm.
+"Recursive binarry splitting" is used; the algorithm repeatedly splits
+the data into subsets and subsets of these subsets, finally making a
+prediction based on the dominant group in each subset.
+<!-- Guess who example --> A decision tree consists of:
 
 1.  **Root node**: this is the first node in the tree.
 2.  **Interior nodes**: these are the nodes on which the data is split.
@@ -71,9 +75,9 @@ decision tree consists of:
 In splitting a data set by it's features (variables) the decision tree
 algorithm seeks to split using the most informative features first. In
 order to calculate which features are the most informative we can
-calculate **information gain** or **Gini impurity**. As these two
-measures are essentially trying to calculate the same thing we will only
-discuss information gain.
+calculate **information gain** or **Gini impurity**.
+
+\
 
 #### Information Gain
 
@@ -84,7 +88,7 @@ set impurity as well as the remaining information.
 
 **Entropy**: For $X = x_1,…, x_n$ occurring with probability
 $P(x_1),…, P(x_n)$ entropy is defined as:
-$$\text{Entropy} = -\sum_{i=1}^n P(x_i)\log_2 P(x_i)$$Entropy is high
+$$\text{Entropy} = -\sum_{i=1}^n P(x_i)\log_2 P(x_i)$$ Entropy is high
 when there is more uncertainty around the result if we were to guess a
 member of the set at random. An example of a set with high entropy would
 be a pack of playing cards. Each card in the set has a low probability
@@ -99,8 +103,8 @@ entropy <- function(x_i){-log2(x_i)} # Describe or remove
 plot(x = seq(0, 1, by = 0.001), y=entropy((0:1000)/1000), type='l', xlab="p(x)", ylab="Entropy")
 ```
 
-Using entropy we are able to compute information gain. With the
-following three equations:
+Using the entropy function we are able to compute information gain with
+the following three equations:
 
 $$
 \begin{aligned}&\operatorname{rem}(d, \mathcal{D})=\sum_{I \in \text {levels}(d)} \underbrace{\frac{\left|\mathcal{D}_{d=I}\right|}{|\mathcal{D}|}}_{\text {weighting }} \times \underbrace{H\left(t, \mathcal{D}_{d=I}\right)}_{\text {entropy of partition} \space \mathcal{D}_{d=I}}\\&I G(d, \mathcal{D})=H(t, \mathcal{D})-\operatorname{rem}(d, \mathcal{D})\end{aligned}
@@ -111,31 +115,33 @@ Source: [@kelleherFundamentalsMachineLearning2015]
 #### Ensemble learning
 
 Decision trees provide an easy and intuitive way to represent a complex
-relationships between $X$ and $Y$. These models have very low bias,
-however, they do have high variance. This means that changes in the
-training data may cause large changes in the predictions made by the
-model.
+relationships between $X$ and $Y$. While these models have very low bias
+they have high variance. This means that changes in the training data
+may cause large changes in the predictions made by the model.
 
 **Random forests** are a form of ensemble learning. This method works by
 combining multiple weaker classifiers into one strong one. By doing this
 we average the predictions made across all the decision trees, which can
 often result in better performance than a single tree. In a random
 forest we fit multiple decision tree models on random bootstrap
-sub-samples of our data. The algorithm works as follows:
+sub-samples of our data, limiting ourselves, in each forest, to a
+randomly-restricted subset of variables (features). The algorithm works
+as follows:
 
 For $b=1$ to $B$:
 
 1.  Draw a bootstrap sample $Z^*$ of size $N$ from our training data
 
+    -   Select a subset of $m$ variables by random out of a total of $p$
+        variables
+
 2.  Use this sample to fit a tree, $T_b$:
 
-    i.  Select $m$ variables from random out of a total of $p$ variables
+    i.  Pick the best variable to split the data on out of $m$
 
-    ii. Pick the best variable to split the data on out of $m$
+    ii. Split the node
 
-    iii. Split the node
-
-    This is repeated until the minimum node size is reached.
+    Steps i-ii are repeated until the minimum node size is reached.
 
 3.  Output ensemble
 

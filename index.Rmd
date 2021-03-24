@@ -11,7 +11,7 @@ output:
       in_header: support/header.html
     css: support/tufte_plus.css
     config:
-      toc:
+      toc:  
         after: |
           <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
         collapse: section
