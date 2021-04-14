@@ -543,7 +543,7 @@ They recommend against:
 - DR: Skipping full note-taking on this for now but *COME BACK TO IT* as it is very relevant to NL Med; the bounds analysis could be particularly interesting
 
 
-#Heterogenous Treatment Effects and Pretreatment Variables
+# Heterogenous Treatment Effects and Pretreatment Variables
 
 - Crump et al setup (?)
 
@@ -552,14 +552,14 @@ Multiple splits and tests may lead to overstated statistical significance for di
 - Bonferroni "overly conservative in an environment where many covariates are correlated with one another"
     - List, Shaikh, and Xu (2016) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct
 
-##10.3 Estimating Treatment Effect Heterogeneity
+## Estimating Treatment Effect Heterogeneity (10.3)
 
 - Parametric estimators, 'all interactions' (presumably with a correction as noted above)
 - Nonparametric estimator of $\tau(x)$
 
 >  The approach of List, Shaikh, and Xu (2016) works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.
 
-##10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects
+##  Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects (10.3.1)
 
 - Partition sample by "region of covariate space"
 - Determine which partition produces subgroups that differ the most in terms of treatment effects.
@@ -569,11 +569,13 @@ Multiple splits and tests may lead to overstated statistical significance for di
 \
 
 If instead...
+
 > we estimate the average treatment effect on the two subsamples using the same sample, the fact that this particular split led to a high value of the criterion would often imply that the average treatment effect estimate is biased.
 
 \
 
-But here ,,,
+But here...
+
 > The treatment effect estimates are unbiased on the two subsamples, and the corresponding confidence intervals are valid, even in settings with a large number of pretreatment variables or covariates.
 
 \
@@ -634,7 +636,7 @@ What does this mean?:
 
 - Also, Bayesian perspectives on this: Green and Kern (2011), Hill (2012), others ... but unknown asymptotic properties (DR: do we care?)
 
-##10.3.3 Treatment Effect Heterogeneity Using Regularized Regression
+## Treatment Effect Heterogeneity Using Regularized Regression (10.3.3)
 
 - Lasso-like (Imai and Ratkovic (2013), etc.)
 
@@ -643,7 +645,7 @@ What does this mean?:
 - Some proposed modeling heterogeneity separately for treatment and control;...   can be inefficient if the covariates that affect the level of outcomes are distinct from those that affect treatment effect heterogeneity.
     - alternative ... incorporate interactions ... as covariates, and then allow LASSO to select which covariates are important.
 
-##10.3.4 Comparison of Methods
+## Comparison of Methods (10.3.4)
 
 - Lasso: more sparsity restrictions, better handle linear or polynomial relationships between covariates and outcomes;
     - outputs a regression; but CI's justified only under strict conditions

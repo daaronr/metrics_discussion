@@ -140,6 +140,10 @@ my_output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 ```
 
 
+<!-- BUILDING IT? SERVING IT? 
+bookdown::serve_book(dir = ".", output_dir = "_book", preview = TRUE, 
+           in_session = TRUE, quiet = FALSE)
+-->
 
 <!---
 Can define text blocks here, refer to them again and again if desired

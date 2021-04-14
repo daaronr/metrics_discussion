@@ -1,0 +1,50 @@
+DR:
+
+sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
+  caption = "") {
+  df %>%
+    ungroup() %>%
+    filter(!is.na({{depvar}})) %>%
+    group_by({{treatvar}}) %>%
+    dplyr::summarize(N = n(),
+                     share_pos = sum({{depvar}} >0)/n(),
+                     share_10 = sum({{depvar}}== 10)/n(),
+                     Mean = round(mean({{depvar}}, na.rm = T), 2),
+                     Median = round(median({{depvar}}, na.rm = T),2),
+                     P80 = round(quantile({{depvar}}, 0.8, na.rm = T), 2),
+                     Std.dev. = glue("(", {round(sd({{depvar}}, na.rm = T), 2) }, ")")) %>%
+    kable(caption = caption) %>% kable_styling()
+}
+
+[03/07/2020 17:26] Reinstein, David
+    which specification: a proportional specification might be warranted.
+
+If you have an individual fundraiser as the unit of observation  you cannot log the outcome variable because it will have zeroes, so you would need to do a nonlinear model (see the paper 'the Log of Gravity' for the Poisson function approach to this; zero-inflated negative binomial can also work.
+
+​[03/07/2020 17:26] Reinstein, David
+    But if you have a more aggregated outcome (like donations/day from all pages) then you can log this.
+
+[03/07/2020 18:53] Sheldon-Fentem, Oska
+    Okay thanks i'll have a look into this!
+​[03/07/2020 18:56] Sheldon-Fentem, Oska
+    What do you mean by proportional specification btw?
+
+[03/07/2020 18:59] Reinstein, David
+    Marginal impact of x on y is proportional to size of y.
+​[03/07/2020 19:01] Reinstein, David
+    E.g. Coronavirus reduces donations on all pages by 20% of what they otherwise would have raised
+​[03/07/2020 19:02] Reinstein, David
+    Rather than linear, e.g. corona reduces donations on each page by £200 (even for pages started by millionaires)
+
+[03/07/2020 19:14] Sheldon-Fentem, Oska
+    Ah yes my bad!
+
+[03/07/2020 19:28] Reinstein, David
+    No worries, I don't think there's a consistent name for this
+
+[21/07/2020 10:28] Sheldon-Fentem, Oska
+    https://rpubs.com/chrimaho/GitHubAutomation
+
+
+
+

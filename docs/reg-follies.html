@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-04-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- 
+<!--
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -677,7 +677,7 @@ window.initializeCodeFolding = function(show) {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
+  window.initializeCodeFolding("show" === "hide");
 });
 </script>
 
@@ -808,11 +808,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
 <li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
 <li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.7</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.8</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.9</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.10</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.11</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
@@ -832,20 +833,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a></li>
-<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
+<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.3.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.3.2</b> Ch2: Lasso for linear models</a></li>
-<li class="chapter" data-level="5.3.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.3.3</b> Chapter 3: Generalized linear models</a></li>
-<li class="chapter" data-level="5.3.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.3.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.4</b> Notes: Mullainathan</a></li>
+<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
 </ul></li>
 <li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
 <li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
@@ -1017,7 +1017,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
 <li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
 <li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
-<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
 <li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
 <li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
 <li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
@@ -1367,22 +1367,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <p>The use of interaction terms is delicate…</p>
-<!-- 
+<!--
 On the book, I saw the section on the problems of using OLS as an estimator of FE without fully interacting the variables (4.2.4, this blog post), but d
-By idn’t really understand the issue/intuition behind the problem/solution – I would be keen to chat about what it means.. and if I then get it, would more than happily contribute a lay summary for the book. Also there are three papers by Ferraro (links below) that I think you might find interesting/offer well explained insights into difficulties in how to do empirical econ/problems within it for the Book. 
+By idn’t really understand the issue/intuition behind the problem/solution – I would be keen to chat about what it means.. and if I then get it, would more than happily contribute a lay summary for the book. Also there are three papers by Ferraro (links below) that I think you might find interesting/offer well explained insights into difficulties in how to do empirical econ/problems within it for the Book.
 
 Plus there is this paper – https://www.nber.org/papers/w25636 which applies the changes-in-changes method of Athey and Imbens 2006 a method which (proponents claims) is able to get at heterogeneous treatment effects better than simple DiD by bin/something similar.
 -->
 <!-- #TODO: recover conversations with Winston Lin and write these up -->
 <ul>
-<li>Modeling heterogeneity: the limits of Quantile re regression</li>
+<li>Modeling heterogeneity: the limits of Quantile regression</li>
 </ul>
 </div>
 </div>
 <div id="null-effects" class="section level3" number="3.1.6">
 <h3><span class="header-section-number">3.1.6</span> “Null effects”</h3>
 <p>"While the classical statistical framework is not terribly clear about when one should ‘accept’ a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ‘zero or minimal effect’ one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
-<p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks.”" Harms-lakens-18</p>
+<p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks” <span class="citation"><a href="references.html#ref-harmsMakingNullEffects2018" role="doc-biblioref">Harms and Lakens</a> (<a href="references.html#ref-harmsMakingNullEffects2018" role="doc-biblioref">2018</a>)</span>.</p>
 <blockquote>
 <p>Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects.
 (Lakens et al, 2018)</p>
@@ -1393,37 +1393,103 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 <div id="comparing-relative-parameters" class="section level4" number="3.1.6.2">
 <h4><span class="header-section-number">3.1.6.2</span> Comparing relative parameters</h4>
 <p>E.g., “the treatment had a heterogeneous effect… we see a statistically significant positive effect for women but not for men.” This doesn’t cut it: we need to see a <em>statistical test</em> for the <em>difference</em> in these effects. (And also see caveat about multiple hypothesis testing and ex-post fishing).</p>
+<p>See <span class="citation">(<a href="references.html#ref-gelmanDifferenceSignificantNot2006" role="doc-biblioref">Gelman and Stern 2006</a>)</span></p>
 </div>
 </div>
-<div id="mht" class="section level3" number="3.1.7">
-<h3><span class="header-section-number">3.1.7</span> Multiple hypothesis testing (MHT)</h3>
+<div id="multi-var-tests" class="section level3" number="3.1.7">
+<h3><span class="header-section-number">3.1.7</span> Multivariate tests and ‘tests for non-independence’</h3>
+<p>‘Multiple’ tests typically consider</p>
+<p>H0: “None of the following coefficients are different from 0”</p>
+<p>H1: “At least one of these coefficients are different from 0”</p>
+<p>But of course, ‘rejecting H0’ doesn’t tell us <em>which</em> of these coefficients are distinct from 0, nor how different from zero we should expect the average coefficients to be<br />
+</p>
+<p>Other tests look for ‘associations’ between categorical variables, each potentially involving many categories.</p>
+<p>From a discussion on the appropriate adjustment of Chi-Sq tests for categorical variables, and the possible adjustments to this test for <a href="https://experts.nebraska.edu/en/publications/mrcv-a-package-for-analyzing-categorical-variables-with-multiple-">multiple response categorical variables</a></p>
+<blockquote>
+<p>If I am correct, I don’t see a huge value in doing/adjusting any ‘aggregate tests for association between (e.g.) ethnicity and involve mode.’
+I say this because I think most people would have a strong belief that there will be at least some association here overall, even if it is a small one, and even if it isn’t ‘caused by ethnicity,’ whatever that could mean.o</p>
+</blockquote>
+<p>The general idea that ‘we expect an association in most cases, so finding one is not particularly informative (without further results) … is mentioned <a href="http://sumsar.net/blog/2014/06/bayesian-first-aid-prop-test/">HERE</a> and discussed by Gelman <a href="https://statmodeling.stat.columbia.edu/2011/04/02/so-called_bayes/">here</a> (context of ’Bayesian hypothesis testing’) and <a href="https://statmodeling.stat.columbia.edu/2004/12/29/type_1_type_2_t/">here</a> (in terms of a new typeology of ‘errors’).</p>
+</div>
+<div id="mht" class="section level3" number="3.1.8">
+<h3><span class="header-section-number">3.1.8</span> Multiple hypothesis testing (MHT)</h3>
 <p>A typical conversation (unfold)</p>
 
 <div class="fold">
-This isn’t really on the above discussion of the value of pre-reg, but on a topic that i think is at least somehwat related. Namely that when we have multiple hypotheses testing in a paper how do we control for that and what do our p-values really mean. Particulary, there is <a href="https://academic.oup.com/qje/article/134/2/557/5195544">this paper</a> by Alwyn Young which (I think) is basically saying that when we have a load of hypotheses within a study and then one has a significant p value we are quite a lot of the time picking up a false result. Obviously that isn’t very much of a surprise. But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05. After all, it is those studies which have a real pay-off from getting that significant result.
+This isn’t really on the above discussion of the value of pre-reg, but on a topic that i think is at least somehwat related. Namely that when we have multiple hypotheses testing in a paper how do we control for that and what do our p-values really mean. Particulary, there is <a href="https://academic.oup.com/qje/article/134/2/557/5195544">this paper</a> by Alwyn Young which (I think) is basically saying that when we have a load of hypotheses within a study and then one has a significant p value we are quite a lot of the time picking up a false result. Obviously that isn’t very much of a surprise. But I think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05. After all, it is those studies which have a real pay-off from getting that significant result.
 </div>
+<p><br />
+</p>
+<p>From List et al (2019), discussing experiments reporting tests of multiple treatments, on multiple subgroups, and considering multiple outcomes:</p>
+<blockquote>
+<p>it is uncommon for the analyses of these data to account for the multiple hypothesis testing. As a result, the probability of a false rejection may be much higher than desired. To illustrate this point, consider testing <span class="math inline">\(N\)</span> null hypotheses simultaneously. Suppose that for each null hypothesis a p value is available whose distribution is uniform on the unit interval when the corresponding null hypothesis is true. Suppose further that all null hypotheses are true and that the p values are independent. In this case, if we were to test each null hypothesis in the usual way at level <span class="math inline">\(\alpha \in (0, 1)\)</span>, then the probability of one or more false rejections equals <span class="math inline">\(1 − (1 − \alpha)N\)</span>, which may be much greater than <span class="math inline">\(\alpha\)</span> and in fact tends rapidly to one as <span class="math inline">\(N\)</span> increases. For instance, with <span class="math inline">\(\alpha = 0.05\)</span>, it equals <span class="math inline">\(0.226\)</span> when <span class="math inline">\(N = 5\)</span> equals 0.401 when N = 10 and 0.994 when N = 100. In order to control the probability of a false rejection, it is therefore important to account appropriately for multiplicity of null hypotheses being tested.</p>
+</blockquote>
+<p><br />
+</p>
+<p>Winston Lin’s response to an email</p>
+
+<div class="fold">
+<blockquote>
+<p>On multiple comparisons corrections, there are some thorny philosophical issues and there isn’t one right answer:</p>
+</blockquote>
+<blockquote>
+<p>mixed feelings about the recent popularity of multiplicity corrections in the social sciences. I think there’s a tendency to fetishize p-values and null-hypothesis significance testing, and multiplicity-corrected p-values can be hard to interpret. (In principle, one could also report multiplicity-corrected confidence intervals, but I haven’t seen people doing that.) To me, the real value of p-values and NHST (if there is any) is as a restraining device, and if this restraining device isn’t working because of the multiple comparisons issue, there’s more than one way to address the problem. In medical research, people often pre-specify one or two primary comparisons (which implies a commitment that these are the comparisons that’ll be highlighted in the abstract, and the rest are basically treated as exploratory) without doing multiplicity corrections.</p>
+</blockquote>
+<blockquote>
+<p>On the other hand, maybe you have to do multiplicity corrections because your reviewers want them, or maybe you don’t have one or two primary comparisons between your 7 treatments. When I last followed the multiple comparisons literature (about 4 years ago), my feeling was that if I had to report multiplicity-corrected p-values, I’d use either the Westfall-Young or the Romano-Wolf procedure.</p>
+</blockquote>
+<a href="https://combinatronics.com/egap/methods-guides/master/hte/heteffects.html#multiple-comparisons">There are some explanations and references in section 7 and footnotes 5-12 of this EGAP guide that Al Fang, Don Green, and I worked on</a>
+DR: I will try to start a hypothes.is or forum conversation in that Egap guide.
 </div>
-<div id="interaction-terms-and-pitfalls" class="section level3" number="3.1.8">
-<h3><span class="header-section-number">3.1.8</span> Interaction terms and pitfalls</h3>
-<p>See also ‘effect coding’</p>
-<div id="moderators-confusion-with-nonlinearity" class="section level4" number="3.1.8.1">
-<h4><span class="header-section-number">3.1.8.1</span> ‘Moderators’ Confusion with nonlinearity</h4>
+<p><br />
+</p>
+<p><strong>Considerations:</strong></p>
+<p>Frequentist NHST: Understated type-one error rate overall if no adjustment, overly narrow confidence intervals (coverage)</p>
+<ul>
+<li><p>“Family-wise error rate” (FWER)</p></li>
+<li><p>“False discovery rate” (FDR)</p></li>
+</ul>
+<p><br />
+</p>
+<p><strong>Responses:</strong></p>
+<p>‘FWER Control methods’</p>
+<ul>
+<li><p>Bonferroni correction (extremely conservative, assumes independence of hypotheses/outcomes)</p></li>
+<li><p>Westfall-Young Step-down: Rank p-values, simulate p-values with random assignment of ‘null treatments’; adjusted p-value share of ‘k-ranked simulated p-value is below k’th rank of original p-value’</p></li>
+<li><p>List, Shaikh, Xu (2019): “bootstrap-based procedure for testing these null hypotheses simultaneously using experimental data in which simple random sampling is used to assign treatment status to units.”</p>
+<div class="marginnote">
+<p>(Does it apply to blocked sampling?)</p>
+</div></li>
+</ul>
+<blockquote>
+<p>our procedure (1) asymptotically controls the familywise error rate—the probability of one or more false rejections—and (2) is asymptotically balanced in that the the marginal probability of rejecting any true null hypothesis is approximately equal in large samples. Importantly, by incorporating information about dependence ignored in classical multiple testing procedures, such as the Bonferroni (1935) and Holm (1979) corrections, our pro- cedure has much greater ability to detect truly false null hypotheses. In the presence of multiple treatments, we additionally show how to exploit logical restrictions across null hypotheses to further improve power.</p>
+</blockquote>
+<p><br />
+</p>
+<p>FDR-Control</p>
+<ul>
+<li>Benjamini and Hochberg … but this one seems to be conservative in the sense that it implicitly assumes independent hypotheses in making the correction (?)<br />
+</li>
+</ul>
+</div>
+<div id="interaction-terms-and-pitfalls" class="section level3" number="3.1.9">
+<h3><span class="header-section-number">3.1.9</span> Interaction terms and pitfalls</h3>
+<p>See also ‘effect coding’ or ‘contrast coding.’</p>
+<div id="moderators-confusion-with-nonlinearity" class="section level4" number="3.1.9.1">
+<h4><span class="header-section-number">3.1.9.1</span> ‘Moderators’ Confusion with nonlinearity</h4>
 <p>Moderators: Heterogeneity mixed with nonlinearity/corners</p>
 <p>In the presence of nonlinearity, e.g., diminishing returns, if outcome ‘starts’ at a higher level for one group (e.g., women), it is hard to disentangle a heterogeneous response to the treatment from ‘the diminishing returns kicking in.’ Related to <a href="https://datacolada.org/57" class="uri">https://datacolada.org/57</a> [57] Interactions in Logit Regressions: Why Positive May Mean Negative</p>
 </div>
-<div id="mht-1" class="section level4" number="3.1.8.2">
-<h4><span class="header-section-number">3.1.8.2</span> MHT</h4>
 </div>
-</div>
-<div id="choice-of-test-statistics-including-nonparametric" class="section level3" number="3.1.9">
-<h3><span class="header-section-number">3.1.9</span> Choice of test statistics (including nonparametric)</h3>
+<div id="choice-of-test-statistics-including-nonparametric" class="section level3" number="3.1.10">
+<h3><span class="header-section-number">3.1.10</span> Choice of test statistics (including nonparametric)</h3>
 <p>(Or get to this in the experimetrics section)</p>
 </div>
-<div id="how-to-display-and-write-about-regression-results-and-tests" class="section level3" number="3.1.10">
-<h3><span class="header-section-number">3.1.10</span> How to display and write about regression results and tests</h3>
+<div id="how-to-display-and-write-about-regression-results-and-tests" class="section level3" number="3.1.11">
+<h3><span class="header-section-number">3.1.11</span> How to display and write about regression results and tests</h3>
 </div>
-<div id="bayesian-interpretations-of-results" class="section level3" number="3.1.11">
-<h3><span class="header-section-number">3.1.11</span> Bayesian interpretations of results</h3>
+<div id="bayesian-interpretations-of-results" class="section level3" number="3.1.12">
+<h3><span class="header-section-number">3.1.12</span> Bayesian interpretations of results</h3>
 
 </div>
 </div>

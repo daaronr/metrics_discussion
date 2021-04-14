@@ -3,15 +3,11 @@
 # Survey design and implementation; analysis of survey data {#surveys}
 
 
-**Resources consulted/to consult**
-
-Wikipedia entries on
-
-- ['survey sampling'](https://en.wikipedia.org/wiki/Survey_sampling)
+The  [Wikipedia entry on 'survey sampling'](https://en.wikipedia.org/wiki/Survey_sampling) provides a good overview.\*
 
 
 <div class="marginnote">
-See: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
+\* Also see: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.
 </div>
 
 
@@ -19,28 +15,22 @@ See: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted surv
 
 ### Probability sampling {-}
 
-<div class="marginnote">
-Here: naive notes based on wikipedia, will be improved.
-</div>
-
-In my own words:
+In the fold below, I offer a rough characterization of the rationale for probabiliity sampling, in my own words, based on my reading of the aforementioned Wikipedia entry:
 
 ```{block2,  type='fold'}
 
-Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.
+'Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.
 
 The basic idea, if I understand correctly, is to define a population of interest and a ‘sample frame’ (the place we are actually drawing from, the empirical analogue of the population of interest perhaps).
 Essentially, rather than advertising or trying to recruit everyone, or have people enter by self selection, probability sampling select from the sample frame with a particular probability, and then actively tries to get the selected individuals to complete the survey. As only a smaller number of people are selected to be interviewed/fill out the survey, you can spend more time and money/incentives, trying to make sure they respond.
 
 Probability sampling also allows ‘stratification’, and oversampling of harder to reach groups.  We  potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.
 
-*If we have an informative estimate of the  TRUE shares in each strata* we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
+*If we have an informative estimate of the TRUE shares in each strata* we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
     
 ```
 
 \
-
-
 
 > A probability-based survey sample is created by constructing a list of the target population, called the sampling frame, a randomized process for selecting units from the sample frame, called a selection procedure, and a method of contacting selected units to enable them to complete the survey, called a data collection method or mode (lookup in [Wiki](https://en.wikipedia.org/wiki/Survey_sampling#Probability_sampling))
 
@@ -49,9 +39,11 @@ Note that the 'sampling frame', 'the source material or device from which a samp
 
 On the other hand this terminology doesn't seem to be everywhere consistent, e.g., Salganik and H refer to it as 'a list of all of the members in the population'.
 
-See 'Missing elements', 'Foreign elements', 'Duplicate entries' and 'Groups or clusters' ...
+See 'Missing elements', 'Foreign elements', 'Duplicate entries' and 'Groups or clusters'
 
-Also note that 'Not all frames explicitly list population elements; some list only 'clusters'. For example, a street map can be used as a frame for a door-to-door survey.'
+Also note that
+
+> Not all frames explicitly list population elements; some list only 'clusters'. For example, a street map can be used as a frame for a door-to-door survey.
 
 </div>
 
@@ -59,13 +51,12 @@ Also note that 'Not all frames explicitly list population elements; some list on
 
 - Simple random versus stratified and cluster sampling
 
-
 \
 
-*Issues*\*
+*Issues*\*\*
 
 <div class="marginnote">
-\* Many of these also seem relevant for our ['social movement' case of interest below.](#jazz-case)
+\*\* Many of these also seem relevant for our ['social movement' case of interest below.](#jazz-case)
 </div>
 
 
@@ -75,12 +66,15 @@ Also note that 'Not all frames explicitly list population elements; some list on
 
 ### Non-probability sampling {-#np-sampling}
 
+
+> There is a wide range of non-probability designs that include case-control studies, clinical trials, evaluation research designs, intercept surveys, and opt-in panels, to name a few. 
+
 @bakerSummaryReportAAPOR2013
 
 [Non-Probability Sampling - report of the aapor task force on non-probability sampling](https://www.aapor.org/Education-Resources/Reports/Non-Probability-Sampling.aspx)
 
 
-'River sampling'
+'River sampling' is closest to the case we are dealing with [below](#jazz-case).
 
 \
 
@@ -145,7 +139,7 @@ How does it work?:
 
 \
 
-There are some intricate and interesting calculations involving network analysis 
+There are some intricate and interesting calculations involving network analysis .
 
 They show the unbiasedness of this approach under specified conditions, and its robustness to the seed choice. They also give a monte-carlo simulation illustrating the same. 
 
@@ -186,7 +180,7 @@ There are some **disagreements about how to define this group**.
 
 \
 
-3. We have collected survey responses from  **self-selected 'convenience' samples** (='internet surveys'?) across several years; this most resembles *'river sampling'*
+3. We have collected survey responses from  **self-selected 'convenience' samples** ('internet surveys') across several years; this most resembles *'river sampling'*
 
 ... based on advertising and word-of-mouth in a variety of outlets ('referrers') associated with the 'movement'.\*
 
@@ -202,7 +196,6 @@ There are some **disagreements about how to define this group**.
 
 - We can identify *which* 'referrer' lead someone to our survey.
 - All participants are given a similar 'donation' incentive, an incentive that might tend to particularly attract members of the Movement.\*\*
-
 
 <div class="marginnote">
 \*\* Given the context, we might reasonably expect that willingness to complete the survey might be associated with depth of support for the movement.
@@ -275,7 +268,7 @@ Our current approach may be described as a combination of 'convenience sampling'
 In contrast,
 
 <div class="marginnote">
- I have heard that 'internet surveys', if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.
+ I have heard that 'internet surveys', if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches?
 </div>
 
 \
@@ -359,8 +352,6 @@ However,  we can measure and test the sensitivity of our results to variation al
 
 *We may do this in an a-theoretical ad-hoc way for now, unless we can identify and use a systematic framework for this.*
 ```  
-
-
 
 
 

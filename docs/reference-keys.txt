@@ -1,10 +1,10 @@
-tab:unnamed-chunk-79
-fig:unnamed-chunk-83
+tab:unnamed-chunk-80
 fig:unnamed-chunk-84
-fig:unnamed-chunk-86
-fig:unnamed-chunk-96
-tab:unnamed-chunk-99
+fig:unnamed-chunk-85
+fig:unnamed-chunk-87
+fig:unnamed-chunk-97
 tab:unnamed-chunk-100
+tab:unnamed-chunk-101
 introduction
 conceptual
 learning-and-optimization-as-an-alternative-to-statistical-inference
@@ -30,10 +30,10 @@ ols-and-heterogeneity
 null-effects
 confidence-intervals-and-bayesian-credible-intervals
 comparing-relative-parameters
+multi-var-tests
 mht
 interaction-terms-and-pitfalls
 moderators-confusion-with-nonlinearity
-mht-1
 choice-of-test-statistics-including-nonparametric
 how-to-display-and-write-about-regression-results-and-tests
 bayesian-interpretations-of-results
@@ -48,7 +48,6 @@ publication-bias-see-also-considering-publication-bias-in-meta-analysis
 multiple-hypothesis-testing---see-above
 control-ml
 see-also-notes-on-data-science-for-business
-machine-learning-statistical-learning-lasso-ridge-and-more
 limitations-to-inference-from-learning-approaches
 tree-models
 information-gain

@@ -49,6 +49,38 @@ split into categories:
 
 ### Limitations to inference from learning approaches
 
+From a discussion on the EA forum about predicting donation choices
+
+> ... the ML approaches Greg is suggesting here are all about
+> **prediction**, not about drawing meaningful inferences.For prediction
+> it's good to start with the largest amount of features (variables) you
+> can find (as long as they are truly ex-ante) and then do a fancy dance
+> of cross-validation and regularisation, before you do your final
+> 'validation' of the model on set-aside data.But that doesn't easily
+> give you the ability to make strong inferential statements (causal or
+> not), about things like 'age is likely to be strongly associated with
+> satisfaction measures in the true population'. Why not? If I
+> understand correctly:*The model you end up with, which does a great
+> job at predicting your outcome*\
+>
+> 1.  ... may have dropped `age` entirely or "regularized it" in a way
+>     that does not yield an unbiased or consistent estimator of the
+>     actual impact of `age`  on your outcome. Remember, the goal here
+>     was prediction, not making inferences about the relationship
+>     between of any particular variable or sets of variables ...
+>
+> 2.  ... may include too many variables that are highly correlated with
+>     the `age`  variable, thus making the age coefficient very
+>     imprecise
+>
+> 3.  ...  may include variables that are actually 'part of the age
+>     effect you cared about, because they are things that go naturally
+>     with age, such as mental agility'
+>
+> 4.  Finally, the standard 'statistical inference' (how you can
+>     quantify your uncertainty) does not work for these learning models
+>     (although there are new techniques being developed)
+
 ### Tree models
 
 ::: {.marginnote}

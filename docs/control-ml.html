@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-04-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- 
+<!--
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -677,7 +677,7 @@ window.initializeCodeFolding = function(show) {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
+  window.initializeCodeFolding("show" === "hide");
 });
 </script>
 
@@ -808,11 +808,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
 <li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
 <li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.7</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.8</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.9</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.10</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.11</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
@@ -832,20 +833,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a></li>
-<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
+<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.3.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.3.2</b> Ch2: Lasso for linear models</a></li>
-<li class="chapter" data-level="5.3.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.3.3</b> Chapter 3: Generalized linear models</a></li>
-<li class="chapter" data-level="5.3.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.3.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.4</b> Notes: Mullainathan</a></li>
+<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
 </ul></li>
 <li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
 <li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
@@ -1017,7 +1017,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
 <li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
 <li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
-<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
 <li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
 <li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
 <li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
@@ -1254,13 +1254,11 @@ remaining unobservable component very small, minimizing the potential
 for bias in the coefficient of interest.” All of the controls must still
 be exogenous, otherwise this itself can lead to a bias. There is some
 discussion of how to validate this approach; see, e.g.,
-<span class="citation">(<a href="references.html#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref">Oster 2019</a>)</span>.</p>
-</div>
-<div id="machine-learning-statistical-learning-lasso-ridge-and-more" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Machine Learning (statistical learning): Lasso, Ridge, and more</h2>
+<span class="citation">(<a href="references.html#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref">Oster 2019</a>)</span>. ## Machine Learning
+(statistical learning): Lasso, Ridge, and more</p>
 <p>Machine learning seeks to fit models to data in order to <em>learn</em>
 patterns and thus make predictions about the future. This learning is
-split into three categories:</p>
+split into categories:</p>
 <ul>
 <li><p><strong>Supervised learning</strong>: Here our data consists of <em>labelled</em>
 examples. This means that we have data on the outcome variable of
@@ -1282,20 +1280,55 @@ received at the end of a <em>round</em>. This method is popular in
 artificial intelligence programs, such as the AlphaGo algorithm by
 DeepMind. <!-- Add example for economics --></p></li>
 </ul>
-<div id="limitations-to-inference-from-learning-approaches" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Limitations to inference from learning approaches</h3>
+<div id="limitations-to-inference-from-learning-approaches" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Limitations to inference from learning approaches</h3>
+<p>From a discussion on the EA forum about predicting donation choices</p>
+<blockquote>
+<p>… the ML approaches Greg is suggesting here are all about
+<strong>prediction</strong>, not about drawing meaningful inferences.For prediction
+it’s good to start with the largest amount of features (variables) you
+can find (as long as they are truly ex-ante) and then do a fancy dance
+of cross-validation and regularisation, before you do your final
+‘validation’ of the model on set-aside data.But that doesn’t easily
+give you the ability to make strong inferential statements (causal or
+not), about things like ‘age is likely to be strongly associated with
+satisfaction measures in the true population.’ Why not? If I
+understand correctly:<em>The model you end up with, which does a great
+job at predicting your outcome</em><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>… may have dropped <code>age</code> entirely or “regularized it” in a way
+that does not yield an unbiased or consistent estimator of the
+actual impact of <code>age</code>  on your outcome. Remember, the goal here
+was prediction, not making inferences about the relationship
+between of any particular variable or sets of variables …</p></li>
+<li><p>… may include too many variables that are highly correlated with
+the <code>age</code>  variable, thus making the age coefficient very
+imprecise</p></li>
+<li><p>…  may include variables that are actually ‘part of the age
+effect you cared about, because they are things that go naturally
+with age, such as mental agility’</p></li>
+<li><p>Finally, the standard ‘statistical inference’ (how you can
+quantify your uncertainty) does not work for these learning models
+(although there are new techniques being developed)</p></li>
+</ol>
+</blockquote>
 </div>
-<div id="tree-models" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Tree models</h3>
+<div id="tree-models" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Tree models</h3>
+<div class="marginnote">
+<p>This section was mainly written by Oska Fentem.</p>
+</div>
 <p>Decision trees are a type of supervised machine learning algorithm.
-Whilst they are very simple and intuitive to understand they form the
+While they are very simple and intuitive to understand, they form the
 basis for a variety of more complex models. Here we will discuss the
-model in the context of a classification problem, however they can also
-be used for regression settings.</p>
-<p>A decision tree works using the idea of <em>recursive binary splitting</em>.
-Essentially this means that data is split into subsets which allow the
-model to predict observations well. <!-- Guess who example --> A
-decision tree consists of:</p>
+model in the context of a classification problem; however they can also
+be used for continuous outcome (‘regression’) settings.</p>
+<p>Decision trees are a type of supervised machine learning algorithm.
+“Recursive binarry splitting” is used; the algorithm repeatedly splits
+the data into subsets and subsets of these subsets, finally making a
+prediction based on the dominant group in each subset.
+<!-- Guess who example --> A decision tree consists of:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Root node</strong>: this is the first node in the tree.</li>
 <li><strong>Interior nodes</strong>: these are the nodes on which the data is split.</li>
@@ -1305,18 +1338,18 @@ model.</li>
 <p>In splitting a data set by it’s features (variables) the decision tree
 algorithm seeks to split using the most informative features first. In
 order to calculate which features are the most informative we can
-calculate <strong>information gain</strong> or <strong>Gini impurity</strong>. As these two
-measures are essentially trying to calculate the same thing we will only
-discuss information gain.</p>
-<div id="information-gain" class="section level4" number="5.2.2.1">
-<h4><span class="header-section-number">5.2.2.1</span> Information Gain</h4>
+calculate <strong>information gain</strong> or <strong>Gini impurity</strong>.</p>
+<p><br />
+</p>
+<div id="information-gain" class="section level4" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Information Gain</h4>
 <p>Information gain is used to measure the feature which provides the
 largest increase in information about the classification of our outcome
 variable. This metric is based on the notion of entropy, a measure of
 set impurity as well as the remaining information.</p>
 <p><strong>Entropy</strong>: For <span class="math inline">\(X = x_1,…, x_n\)</span> occurring with probability
 <span class="math inline">\(P(x_1),…, P(x_n)\)</span> entropy is defined as:
-<span class="math display">\[\text{Entropy} = -\sum_{i=1}^n P(x_i)\log_2 P(x_i)\]</span>Entropy is high
+<span class="math display">\[\text{Entropy} = -\sum_{i=1}^n P(x_i)\log_2 P(x_i)\]</span> Entropy is high
 when there is more uncertainty around the result if we were to guess a
 member of the set at random. An example of a set with high entropy would
 be a pack of playing cards. Each card in the set has a low probability
@@ -1324,37 +1357,41 @@ of being picked. This means that we would be very uncertain about the
 outcome of picking a card at random. By graphing the function
 <span class="math inline">\(- P(x_i) \log_2 P(x_i)\)</span> we see that as the probability of an each
 outcome decreases the total entropy increases:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>Using entropy we are able to compute information gain. With the
-following three equations:</p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Using the entropy function we are able to compute information gain with
+the following three equations:</p>
 <p><span class="math display">\[
 \begin{aligned}&amp;\operatorname{rem}(d, \mathcal{D})=\sum_{I \in \text {levels}(d)} \underbrace{\frac{\left|\mathcal{D}_{d=I}\right|}{|\mathcal{D}|}}_{\text {weighting }} \times \underbrace{H\left(t, \mathcal{D}_{d=I}\right)}_{\text {entropy of partition} \space \mathcal{D}_{d=I}}\\&amp;I G(d, \mathcal{D})=H(t, \mathcal{D})-\operatorname{rem}(d, \mathcal{D})\end{aligned}
 \]</span></p>
 <p>Source: <span class="citation">(<a href="references.html#ref-kelleherFundamentalsMachineLearning2015" role="doc-biblioref">Kelleher, Mac Namee, and D’Arcy 2015</a>)</span></p>
 </div>
-<div id="ensemble-learning" class="section level4" number="5.2.2.2">
-<h4><span class="header-section-number">5.2.2.2</span> Ensemble learning</h4>
+<div id="ensemble-learning" class="section level4" number="5.1.2.2">
+<h4><span class="header-section-number">5.1.2.2</span> Ensemble learning</h4>
 <p>Decision trees provide an easy and intuitive way to represent a complex
-relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. These models have very low bias,
-however, they do have high variance. This means that changes in the
-training data may cause large changes in the predictions made by the
-model.</p>
+relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. While these models have very low bias
+they have high variance. This means that changes in the training data
+may cause large changes in the predictions made by the model.</p>
 <p><strong>Random forests</strong> are a form of ensemble learning. This method works by
 combining multiple weaker classifiers into one strong one. By doing this
 we average the predictions made across all the decision trees, which can
 often result in better performance than a single tree. In a random
 forest we fit multiple decision tree models on random bootstrap
-sub-samples of our data. The algorithm works as follows:</p>
+sub-samples of our data, limiting ourselves, in each forest, to a
+randomly-restricted subset of variables (features). The algorithm works
+as follows:</p>
 <p>For <span class="math inline">\(b=1\)</span> to <span class="math inline">\(B\)</span>:</p>
 <ol style="list-style-type: decimal">
-<li><p>Draw a bootstrap sample <span class="math inline">\(Z^*\)</span> of size <span class="math inline">\(N\)</span> from our training data</p></li>
+<li><p>Draw a bootstrap sample <span class="math inline">\(Z^*\)</span> of size <span class="math inline">\(N\)</span> from our training data</p>
+<ul>
+<li>Select a subset of <span class="math inline">\(m\)</span> variables by random out of a total of <span class="math inline">\(p\)</span>
+variables</li>
+</ul></li>
 <li><p>Use this sample to fit a tree, <span class="math inline">\(T_b\)</span>:</p>
 <ol style="list-style-type: lower-roman">
-<li><p>Select <span class="math inline">\(m\)</span> variables from random out of a total of <span class="math inline">\(p\)</span> variables</p></li>
 <li><p>Pick the best variable to split the data on out of <span class="math inline">\(m\)</span></p></li>
 <li><p>Split the node</p></li>
 </ol>
-<p>This is repeated until the minimum node size is reached.</p></li>
+<p>Steps i-ii are repeated until the minimum node size is reached.</p></li>
 <li><p>Output ensemble</p></li>
 </ol>
 <p>Note that this procedure is similar to bagging. However, by using a
@@ -1375,12 +1412,12 @@ gives a prediction <span class="math inline">\(\hat{C}_b(X)\)</span>. Our random
 </div>
 </div>
 </div>
-<div id="notes-hastie-statistical-learning-with-sparsity" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Notes Hastie: Statistical Learning with Sparsity</h2>
+<div id="notes-hastie-statistical-learning-with-sparsity" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Notes Hastie: Statistical Learning with Sparsity</h2>
 <p><a href="https://books.google.co.uk/books?hl=en&amp;lr=&amp;id=f-A_CQAAQBAJ&amp;oi=fnd&amp;pg=PP1&amp;ots=G4RMC-gZU-&amp;sig=u_EoI3-ZcX0phwsZgLt2Ux7DXyc#v=onepage&amp;q&amp;f=true">google books
 link</a></p>
-<div id="introduction-1" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Introduction</h3>
+<div id="introduction-1" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Introduction</h3>
 <blockquote>
 <p>One form of simplicity is sparsity, the central theme of this book.
 Loosely speaking, a sparse statistical model is one in which only a
@@ -1396,8 +1433,8 @@ problems, since no procedure does well in dense problems.</p>
 <ul>
 <li>Examples from gene mapping</li>
 </ul>
-<div id="book-roadmap" class="section level4" number="5.3.1.1">
-<h4><span class="header-section-number">5.3.1.1</span> Book roadmap</h4>
+<div id="book-roadmap" class="section level4" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Book roadmap</h4>
 <ul>
 <li><p>Chapter 2 … lasso for linear regression, and a simple coordinate
 descent algorithm for its computation.</p></li>
@@ -1417,8 +1454,8 @@ including the bootstrap, Bayesian methods and more recent stuff</p></li>
 </ul>
 </div>
 </div>
-<div id="ch2-lasso-for-linear-models" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Ch2: Lasso for linear models</h3>
+<div id="ch2-lasso-for-linear-models" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Ch2: Lasso for linear models</h3>
 <ul>
 <li>N samples (?N observations), want to approx the response variable
 using a linear combination of the predoctors</li>
@@ -1443,8 +1480,8 @@ to zero)</p>
 <li>DR: I do not care about this for fitting background noise in
 experiments</li>
 </ul>
-<div id="the-lasso-estimator" class="section level4" number="5.3.2.1">
-<h4><span class="header-section-number">5.3.2.1</span> 2.2 The Lasso Estimator</h4>
+<div id="the-lasso-estimator" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> 2.2 The Lasso Estimator</h4>
 <p>Lasso bounds the sum of the abs values of coefficients, an “$_1”
 constraint.</p>
 <p>Lasso is OLS subject to</p>
@@ -1573,8 +1610,8 @@ genes problem) it might boost efficiency to allow inference about
 coefficients that should be exactly zero (edited)</p>
 <hr />
 </div>
-<div id="cross-validation-and-inference" class="section level4" number="5.3.2.2">
-<h4><span class="header-section-number">5.3.2.2</span> 2.3 Cross-Validation and Inference</h4>
+<div id="cross-validation-and-inference" class="section level4" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> 2.3 Cross-Validation and Inference</h4>
 <dl>
 <dt>Generalization ability</dt>
 <dd><p>accuracy for predicting independent test data from the same
@@ -1613,20 +1650,20 @@ abs value of OLS betas).</li>
 <li>Number of nonzero coefficients plotted at top</li>
 </ul>
 </div>
-<div id="computation-of-the-lasso-solution" class="section level4" number="5.3.2.3">
-<h4><span class="header-section-number">5.3.2.3</span> 2.4 Computation of the Lasso solution</h4>
+<div id="computation-of-the-lasso-solution" class="section level4" number="5.2.2.3">
+<h4><span class="header-section-number">5.2.2.3</span> 2.4 Computation of the Lasso solution</h4>
 <p>DR: I think I will skip this for now</p>
 <p>least angle/LARS is mentioned at the bottom as a ‘homotopy method’ which
 “produce the entire path of solutions in a sequential fashion, starting
 at zero”</p>
 </div>
-<div id="degrees-of-freedom" class="section level4" number="5.3.2.4">
-<h4><span class="header-section-number">5.3.2.4</span> 2.5 Degrees of freedom</h4>
+<div id="degrees-of-freedom" class="section level4" number="5.2.2.4">
+<h4><span class="header-section-number">5.2.2.4</span> 2.5 Degrees of freedom</h4>
 <p>…</p>
 <p>Jumping to</p>
 </div>
-<div id="some-perspective" class="section level4" number="5.3.2.5">
-<h4><span class="header-section-number">5.3.2.5</span> 2.10 Some perspective</h4>
+<div id="some-perspective" class="section level4" number="5.2.2.5">
+<h4><span class="header-section-number">5.2.2.5</span> 2.10 Some perspective</h4>
 <p><strong>Good properties of the Lasso (</strong><span class="math inline">\(\ell_1\)</span> penalty)</p>
 <ul>
 <li><p>Natural interpretation (enforce sparsity and simplicity)</p></li>
@@ -1637,11 +1674,11 @@ Bayes error”)</p></li>
 </ul>
 </div>
 </div>
-<div id="chapter-3-generalized-linear-models" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Chapter 3: Generalized linear models</h3>
+<div id="chapter-3-generalized-linear-models" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Chapter 3: Generalized linear models</h3>
 </div>
-<div id="chapter-4-generalizations-of-the-lasso-penalty" class="section level3" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Chapter 4: Generalizations of the Lasso penalty</h3>
+<div id="chapter-4-generalizations-of-the-lasso-penalty" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Chapter 4: Generalizations of the Lasso penalty</h3>
 <blockquote>
 <p>lasso does not handle highly correlated variables very well; the
 coefficient paths tend to be erratic and can sometimes show wild
@@ -1659,8 +1696,8 @@ role (I think) as in lasso</p>
 </ul>
 </div>
 </div>
-<div id="notes-mullainathan" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Notes: Mullainathan</h2>
+<div id="notes-mullainathan" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Notes: Mullainathan</h2>
 <blockquote>
 <p>The fundamental insight behind these breakthroughs is as much
 statistical as computational. Machine intelligence became possible

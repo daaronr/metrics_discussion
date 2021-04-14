@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
+  <meta name="description" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="daaronr/metrics_discussion_work" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 (Ex-ante) Power calculations for (Experimental) study design | Statistics, econometrics, experiment and survey methods, data science: Notes" />
+  
+  
+  
+
+<meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
+
+
+<meta name="date" content="2021-03-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="quant-design-power.html"/>
+<link rel="next" href="experimetrics-te.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<!-- <script src="js/hideOutput.js"></script> -->
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+
+
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+<!-- Folding text box javascript thing -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".fold");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Unfold</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Fold" ? "Unfold" : "Fold");  // if the text equals "Fold", change it to "Unfold"or else to "Fold"
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+<!-- 
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Global") elem.value = "Show Global";
+    else elem.value = "Hide Global";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Global" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148137970-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148137970-3');
+</script>
+-->
+
+<!-- FOLDING TEXT BOXES -->
+
+<script>
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: collapse.js v3.3.7
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+
++function ($) {
+  'use strict';
+
+  // COLLAPSE PUBLIC CLASS DEFINITION
+  // ================================
+
+  var Collapse = function (element, options) {
+    this.$element      = $(element)
+    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.transitioning = null
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+    }
+
+    if (this.options.toggle) this.toggle()
+  }
+
+  Collapse.VERSION  = '3.3.7'
+
+  Collapse.TRANSITION_DURATION = 350
+
+  Collapse.DEFAULTS = {
+    toggle: true
+  }
+
+  Collapse.prototype.dimension = function () {
+    var hasWidth = this.$element.hasClass('width')
+    return hasWidth ? 'width' : 'height'
+  }
+
+  Collapse.prototype.show = function () {
+    if (this.transitioning || this.$element.hasClass('in')) return
+
+    var activesData
+    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+    if (actives && actives.length) {
+      activesData = actives.data('bs.collapse')
+      if (activesData && activesData.transitioning) return
+    }
+
+    var startEvent = $.Event('show.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    if (actives && actives.length) {
+      Plugin.call(actives, 'hide')
+      activesData || actives.data('bs.collapse', null)
+    }
+
+    var dimension = this.dimension()
+
+    this.$element
+      .removeClass('collapse')
+      .addClass('collapsing')[dimension](0)
+      .attr('aria-expanded', true)
+
+    this.$trigger
+      .removeClass('collapsed')
+      .attr('aria-expanded', true)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse in')[dimension]('')
+      this.transitioning = 0
+      this.$element
+        .trigger('shown.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+    this.$element
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+  }
+
+  Collapse.prototype.hide = function () {
+    if (this.transitioning || !this.$element.hasClass('in')) return
+
+    var startEvent = $.Event('hide.bs.collapse')
+    this.$element.trigger(startEvent)
+    if (startEvent.isDefaultPrevented()) return
+
+    var dimension = this.dimension()
+
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+    this.$element
+      .addClass('collapsing')
+      .removeClass('collapse in')
+      .attr('aria-expanded', false)
+
+    this.$trigger
+      .addClass('collapsed')
+      .attr('aria-expanded', false)
+
+    this.transitioning = 1
+
+    var complete = function () {
+      this.transitioning = 0
+      this.$element
+        .removeClass('collapsing')
+        .addClass('collapse')
+        .trigger('hidden.bs.collapse')
+    }
+
+    if (!$.support.transition) return complete.call(this)
+
+    this.$element
+      [dimension](0)
+      .one('bsTransitionEnd', $.proxy(complete, this))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+  }
+
+  Collapse.prototype.toggle = function () {
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  }
+
+  Collapse.prototype.getParent = function () {
+    return $(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+
+  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+    var isOpen = $element.hasClass('in')
+
+    $element.attr('aria-expanded', isOpen)
+    $trigger
+      .toggleClass('collapsed', !isOpen)
+      .attr('aria-expanded', isOpen)
+  }
+
+  function getTargetFromTrigger($trigger) {
+    var href
+    var target = $trigger.attr('data-target')
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+    return $(target)
+  }
+
+
+  // COLLAPSE PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.collapse')
+      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
+      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.collapse
+
+  $.fn.collapse             = Plugin
+  $.fn.collapse.Constructor = Collapse
+
+
+  // COLLAPSE NO CONFLICT
+  // ====================
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+  // COLLAPSE DATA-API
+  // =================
+
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+    var $this   = $(this)
+
+    if (!$this.attr('data-target')) e.preventDefault()
+
+    var $target = getTargetFromTrigger($this)
+    var data    = $target.data('bs.collapse')
+    var option  = data ? 'toggle' : $this.data()
+
+    Plugin.call($target, option)
+  })
+
+}(jQuery);
+</script>
+<script>
+window.initializeCodeFolding = function(show) {
+
+  // handlers for show-all and hide all
+  $("#rmd-show-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('show');
+    });
+  });
+  $("#rmd-hide-all-code").click(function() {
+    $('div.r-code-collapse').each(function() {
+      $(this).collapse('hide');
+    });
+  });
+
+  // index for unique code element ids
+  var currentIndex = 1;
+
+  // select all R code blocks
+  var rCodeBlocks = $('pre.sourceCode, pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.js');
+  rCodeBlocks.each(function() {
+
+    // create a collapsable div to wrap the code in
+    var div = $('<div class="collapse r-code-collapse"></div>');
+    if (show)
+      div.addClass('in');
+    var id = 'rcode-643E0F36' + currentIndex++;
+    div.attr('id', id);
+    $(this).before(div);
+    $(this).detach().appendTo(div);
+
+    // add a show code button right above
+    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
+    showCodeButton.append(showCodeText);
+    showCodeButton
+        .attr('data-toggle', 'collapse')
+        .attr('data-target', '#' + id)
+        .attr('aria-expanded', show)
+        .attr('aria-controls', id);
+
+    var buttonRow = $('<div class="row"></div>');
+    var buttonCol = $('<div class="col-md-12"></div>');
+
+    buttonCol.append(showCodeButton);
+    buttonRow.append(buttonCol);
+
+    div.before(buttonRow);
+
+    // update state of button on show/hide
+    div.on('hidden.bs.collapse', function () {
+      showCodeText.text('Code');
+    });
+    div.on('show.bs.collapse', function () {
+      showCodeText.text('Hide');
+    });
+  });
+
+}
+</script>
+<script>
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.3.7
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle="dropdown"]'
+  var Dropdown = function (element) {
+    $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.VERSION = '3.3.7'
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+  function clearMenus(e) {
+    if (e && e.which === 3) return
+    $(backdrop).remove()
+    $(toggle).each(function () {
+      var $this         = $(this)
+      var $parent       = getParent($this)
+      var relatedTarget = { relatedTarget: this }
+
+      if (!$parent.hasClass('open')) return
+
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+
+      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+    })
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we use a backdrop because click events don't delegate
+        $(document.createElement('div'))
+          .addClass('dropdown-backdrop')
+          .insertAfter($(this))
+          .on('click', clearMenus)
+      }
+
+      var relatedTarget = { relatedTarget: this }
+      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+      if (e.isDefaultPrevented()) return
+
+      $this
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
+
+      $parent
+        .toggleClass('open')
+        .trigger($.Event('shown.bs.dropdown', relatedTarget))
+    }
+
+    return false
+  }
+
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+    var $this = $(this)
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    if (!isActive && e.which != 27 || isActive && e.which == 27) {
+      if (e.which == 27) $parent.find(toggle).trigger('focus')
+      return $this.trigger('click')
+    }
+
+    var desc = ' li:not(.disabled):visible a'
+    var $items = $parent.find('.dropdown-menu' + desc)
+
+    if (!$items.length) return
+
+    var index = $items.index(e.target)
+
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
+    if (!~index)                                    index = 0
+
+    $items.eq(index).trigger('focus')
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('bs.dropdown')
+
+      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown             = Plugin
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+</script>
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+.row { display: flex; }
+.collapse { display: none; }
+.in { display:block }
+.pull-right > .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.open > .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<script>
+document.write('<div class="btn-group pull-right" style="position: absolute; top: 10%; right: 15%; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>')
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="support/tufte_plus.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li><a href="introduction.html#basic-statistical-approaches-and-frameworks"><span>Basic statistical approaches and frameworks</span></a></li>
+<li><a href="introduction.html#regression-and-control-approaches-robustness"><span>Regression and control approaches, robustness</span></a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#causal-inference-through-observation-caus_inf_obs"><i class="fa fa-check"></i>Causal inference through observation{-#caus_inf_obs}</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#causal-paths-and-levels-of-aggregation"><i class="fa fa-check"></i>Causal paths and levels of aggregation</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#experiments-and-surveys-design-and-analysis"><i class="fa fa-check"></i>Experiments and surveys: design and analysis</a></li>
+</ul></li>
+<li><a href="other-approaches-techniques-and-applications.html#other-approaches-techniques-and-applications"><span>Other approaches, techniques, and applications</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="other-approaches-techniques-and-applications.html"><a href="other-approaches-techniques-and-applications.html"><i class="fa fa-check"></i>Some key resources and references</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conceptual.html"><a href="conceptual.html"><i class="fa fa-check"></i><b>2</b> <strong>BASIC STATISTICAL APPROACHES AND FRAMEWORKS</strong></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="conceptual.html"><a href="conceptual.html#learning-and-optimization-as-an-alternative-to-statistical-inference"><i class="fa fa-check"></i><b>2.1</b> ‘Learning and optimization’ as an alternative to statistical inference</a></li>
+<li class="chapter" data-level="2.2" data-path="conceptual.html"><a href="conceptual.html#statistical-inference"><i class="fa fa-check"></i><b>2.2</b> Statistical inference</a></li>
+<li class="chapter" data-level="2.3" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-approaches"><i class="fa fa-check"></i><b>2.3</b> Bayesian vs. frequentist approaches</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="conceptual.html"><a href="conceptual.html#interpretation-of-frequentist-cis-aside"><i class="fa fa-check"></i><b>2.3.1</b> Interpretation of frequentist CI’s (aside)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="conceptual.html"><a href="conceptual.html#causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model"><i class="fa fa-check"></i><b>2.4</b> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="conceptual.html"><a href="conceptual.html#dags-and-potential-outcomes"><i class="fa fa-check"></i><b>2.4.1</b> DAGs and Potential outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="conceptual.html"><a href="conceptual.html#theory-restrictions-and-structural-vs-reduced-form"><i class="fa fa-check"></i><b>2.5</b> Theory, restrictions, and ‘structural vs reduced form’</a></li>
+<li class="chapter" data-level="2.6" data-path="conceptual.html"><a href="conceptual.html#hypothesis-testing"><i class="fa fa-check"></i><b>2.6</b> ‘Hypothesis testing’</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="conceptual.html"><a href="conceptual.html#mcelreaths-critique"><i class="fa fa-check"></i><b>2.6.1</b> McElreath’s critique</a></li>
+<li class="chapter" data-level="2.6.2" data-path="conceptual.html"><a href="conceptual.html#bayesian-vs.-frequentist-hypothesis-testing"><i class="fa fa-check"></i><b>2.6.2</b> Bayesian vs. frequentist hypothesis ‘testing’</a></li>
+<li class="chapter" data-level="2.6.3" data-path="conceptual.html"><a href="conceptual.html#individual-vs.-joint-hypothesis-testing-what-does-it-mean"><i class="fa fa-check"></i><b>2.6.3</b> Individual vs. joint hypothesis testing: what does it mean?</a></li>
+<li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
+</ul></li>
+</ul></li>
+<li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
+<li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>3.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>3.1.1</b> Bad control</a></li>
+<li class="chapter" data-level="3.1.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders"><i class="fa fa-check"></i><b>3.1.2</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>3.1.3</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
+<li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>4.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="robust-diag.html"><a href="robust-diag.html#further-discussion-the-did-approach-and-parallel-trends"><i class="fa fa-check"></i><b>4.1.1</b> Further discussion: the DiD approach and ‘parallel trends’</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors"><i class="fa fa-check"></i><b>4.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="4.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis: Interactive presentation</a></li>
+<li class="chapter" data-level="4.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>4.4</b> Supplement: open science resources, tools and considerations</a></li>
+<li class="chapter" data-level="4.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-and-publication-bias-see-also-meta-analysis"><i class="fa fa-check"></i><b>4.5</b> Diagnosing p-hacking and publication bias (see also <span>meta-analysis</span>)</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="robust-diag.html"><a href="robust-diag.html#publication-bias-see-also-considering-publication-bias-in-meta-analysis"><i class="fa fa-check"></i><b>4.5.1</b> Publication bias – see also <span>considering publication bias in meta-analysis</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="robust-diag.html"><a href="robust-diag.html#multiple-hypothesis-testing---see-above"><i class="fa fa-check"></i><b>4.6</b> <span>Multiple hypothesis testing - see above</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
+</ul></li>
+<li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
+<li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
+<ul>
+<li class="chapter" data-level="" data-path="iv-limitations.html"><a href="iv-limitations.html#some-casual-discussion"><i class="fa fa-check"></i>Some casual discussion</a></li>
+<li class="chapter" data-level="6.1" data-path="iv-limitations.html"><a href="iv-limitations.html#instrument-validity"><i class="fa fa-check"></i><b>6.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="6.2" data-path="iv-limitations.html"><a href="iv-limitations.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>6.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="6.3" data-path="iv-limitations.html"><a href="iv-limitations.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>6.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="6.4" data-path="iv-limitations.html"><a href="iv-limitations.html#instrumenting-interactions"><i class="fa fa-check"></i><b>6.4</b> Instrumenting Interactions</a></li>
+<li class="chapter" data-level="6.5" data-path="iv-limitations.html"><a href="iv-limitations.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>6.5</b> Reference to the use of IV in experiments/mediation</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html"><i class="fa fa-check"></i><b>7</b> <span id="other_paths">Causal inference: Other paths to observational identification</span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>7.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="7.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#did"><i class="fa fa-check"></i><b>7.2</b> DiD</a></li>
+<li class="chapter" data-level="7.3" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#rd"><i class="fa fa-check"></i><b>7.3</b> RD</a></li>
+<li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
+</ul></li>
+</ul></li>
+<li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
+<li class="chapter" data-level="8" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>8</b> Mediation modeling and its massive limitations</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mediators.html"><a href="mediators.html#mediators-and-selection-and-roy-models-a-review-considering-two-research-applications"><i class="fa fa-check"></i><b>8.1</b> Mediators (and selection and Roy models): a review, considering two research applications</a></li>
+<li class="chapter" data-level="8.2" data-path="mediators.html"><a href="mediators.html#dr-initial-thoughts-for-nl-education-paper"><i class="fa fa-check"></i><b>8.2</b> DR initial thoughts (for NL education paper)</a></li>
+<li class="chapter" data-level="8.3" data-path="mediators.html"><a href="mediators.html#econometric-mediation-analyses-heckman-and-pinto"><i class="fa fa-check"></i><b>8.3</b> Econometric Mediation Analyses (Heckman and Pinto)</a>
+<ul>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+<li class="chapter" data-level="8.3.1" data-path="mediators.html"><a href="mediators.html#summary-and-key-modeling"><i class="fa fa-check"></i><b>8.3.1</b> Summary and key modeling</a></li>
+<li class="chapter" data-level="8.3.2" data-path="mediators.html"><a href="mediators.html#common-assumptions-and-their-implications"><i class="fa fa-check"></i><b>8.3.2</b> Common assumptions and their implications</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="mediators.html"><a href="mediators.html#pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity"><i class="fa fa-check"></i><b>8.4</b> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</a>
+<ul>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al-1"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#introduction-2"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#identification-strategy-brief"><i class="fa fa-check"></i>Identification strategy brief</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#results-in-brief"><i class="fa fa-check"></i>Results in brief</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-first-for-binarybinary-simplification"><i class="fa fa-check"></i>Framework: first for binary/binary (simplification)</a></li>
+<li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-for-mto-multiple-treatment-groups-multiple-choices"><i class="fa fa-check"></i>Framework for MTO multiple treatment groups, multiple choices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="mediators.html"><a href="mediators.html#antonakis-approaches"><i class="fa fa-check"></i><b>8.5</b> Antonakis approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="selection-cop.html"><a href="selection-cop.html"><i class="fa fa-check"></i><b>9</b> Selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="selection-cop.html"><a href="selection-cop.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>9.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+<li class="chapter" data-level="9.2" data-path="selection-cop.html"><a href="selection-cop.html#bounding-approaches-lee-manski-etc"><i class="fa fa-check"></i><b>9.2</b> Bounding approaches (Lee, Manski, etc)</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="selection-cop.html"><a href="selection-cop.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>9.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="mlm.html"><a href="mlm.html"><i class="fa fa-check"></i><b>10</b> Multi-level models</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="mlm.html"><a href="mlm.html#introduction-qstep"><i class="fa fa-check"></i><b>10.1</b> Introduction (Qstep)</a></li>
+<li class="chapter" data-level="10.2" data-path="mlm.html"><a href="mlm.html#some-basic-theory"><i class="fa fa-check"></i><b>10.2</b> Some basic theory</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="mlm.html"><a href="mlm.html#level-1-model"><i class="fa fa-check"></i><b>10.2.1</b> Level 1 model</a></li>
+<li class="chapter" data-level="10.2.2" data-path="mlm.html"><a href="mlm.html#level-2"><i class="fa fa-check"></i><b>10.2.2</b> Level 2</a></li>
+<li class="chapter" data-level="10.2.3" data-path="mlm.html"><a href="mlm.html#alternativenaive-approaches"><i class="fa fa-check"></i><b>10.2.3</b> Alternative/Naive approaches</a></li>
+<li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
+<li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
+<li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
+</ul></li>
+<li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
+<li class="chapter" data-level="11" data-path="surveys.html"><a href="surveys.html"><i class="fa fa-check"></i><b>11</b> Survey design and implementation; analysis of survey data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="surveys.html"><a href="surveys.html#survey-samplingintake"><i class="fa fa-check"></i><b>11.1</b> Survey sampling/intake</a>
+<ul>
+<li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#probability-sampling"><i class="fa fa-check"></i>Probability sampling</a></li>
+<li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#np-sampling"><i class="fa fa-check"></i>Non-probability sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="surveys.html"><a href="surveys.html#jazz-case"><i class="fa fa-check"></i><b>11.2</b> Case: Surveying an unmeasured and rare population surrounding a ‘social movement’</a>
+<ul>
+<li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#background-and-setup"><i class="fa fa-check"></i>Background and setup</a></li>
+<li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#our-convenience-method-issues-alternatives"><i class="fa fa-check"></i>Our ‘convenience’ method; issues, alternatives</a></li>
+<li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#our-methodological-questions"><i class="fa fa-check"></i>Our methodological questions</a></li>
+<li class="chapter" data-level="11.2.1" data-path="surveys.html"><a href="surveys.html#sketched-model-and-approach-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population"><i class="fa fa-check"></i><b>11.2.1</b> Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>12.1</b> Why run an experiment or study?</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do"><i class="fa fa-check"></i><b>12.1.1</b> Sitzia and Sugden on what theoretically driven experiments can and should do</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="why-experiment-design.html"><a href="why-experiment-design.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>12.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="12.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#artifacts"><i class="fa fa-check"></i><b>12.3</b> Types of experiments, ‘demand effects’ and more artifacts of artificial setups</a></li>
+<li class="chapter" data-level="12.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#ws-bs"><i class="fa fa-check"></i><b>12.4</b> Within vs between-subject designs</a></li>
+<li class="chapter" data-level="12.5" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>12.5</b> Generalizability (and heterogeneity)</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>13</b> Robust experimental design: pre-registration and efficient assignment of treatments</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>13.1</b> Pre-registration and Pre-analysis plans</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
+<li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
+<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#power-ingredients"><i class="fa fa-check"></i><b>14.2</b> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</a></li>
+<li class="chapter" data-level="14.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>14.3</b> The ‘harm to science’ from running underpowered studies</a></li>
+<li class="chapter" data-level="14.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>14.4</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="14.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>14.5</b> Power calculations using prior data</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>14.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
+<li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.7.1</b> How to measure and consider the precision of Likert-item responses</a></li>
+<li class="chapter" data-level="14.7.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.7.2</b> Computing sample size to achieve this precision</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>15.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="15.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>15.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="15.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>15.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>15.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
+<li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>15.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="15.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>15.7.2</b> Randomised experiments and validity</a></li>
+<li class="chapter" data-level="15.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>15.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="15.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>15.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="15.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>15.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="15.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>15.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="15.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>15.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="15.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>15.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="15.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>15.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="15.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>15.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="15.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>15.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="15.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>15.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="15.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>15.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="15.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>15.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="15.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>15.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
+</ul></li>
+</ul></li>
+<li><a href="other-approaches.html#other_approaches"><strong>OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS</strong></a></li>
+<li class="chapter" data-level="16" data-path="psychometrics.html"><a href="psychometrics.html"><i class="fa fa-check"></i><b>16</b> Boiling down: Construct validation/reliability, dimension reduction, factor analysis, and Psychometrics</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="psychometrics.html"><a href="psychometrics.html#constructs-and-construct-validation-and-reliability"><i class="fa fa-check"></i><b>16.1</b> Constructs and construct validation and reliability</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
+<li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
+<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
+<li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>17</b> Meta-analysis and combining studies: Making inferences from previous work</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>17.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>17.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="17.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>17.1.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="17.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>17.1.3</b> Meta-analysis</a></li>
+<li class="chapter" data-level="17.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>17.1.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="17.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>17.1.5</b> Heterogeneous estimates…</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>17.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>17.2.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="17.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>17.2.2</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="17.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>17.2.3</b> Forest plots</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="metaanalysis.html"><a href="metaanalysis.html#pubbias"><i class="fa fa-check"></i><b>17.3</b> Dealing with publication bias</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="metaanalysis.html"><a href="metaanalysis.html#diagnosis-and-responses-p-curves-funnel-plots-adjustments"><i class="fa fa-check"></i><b>17.3.1</b> Diagnosis and responses: P-curves, funnel plots, adjustments</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>17.4</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="17.5" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>17.5</b> Other resources and tools</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="metaanalysis.html"><a href="metaanalysis.html#institutional-and-systematic-guidelines"><i class="fa fa-check"></i><b>17.5.1</b> Institutional and systematic guidelines</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="metaanalysis.html"><a href="metaanalysis.html#example-discussion-of-meta-analyses-of-the-paleolithic-diet-below"><i class="fa fa-check"></i><b>17.6</b> Example: discussion of meta-analyses of the Paleolithic diet <span>BELOW</span></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>18</b> Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="bayes.html"><a href="bayes.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>18.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="bayes.html"><a href="bayes.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>18.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="18.1.2" data-path="bayes.html"><a href="bayes.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>18.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="18.1.3" data-path="bayes.html"><a href="bayes.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>18.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="18.1.4" data-path="bayes.html"><a href="bayes.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>18.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="18.1.5" data-path="bayes.html"><a href="bayes.html#experimental-design"><i class="fa fa-check"></i><b>18.1.5</b> Experimental design</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="bayes.html"><a href="bayes.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>18.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="bayes.html"><a href="bayes.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>18.2.1</b> The Golem of Prague (Chapter 1)</a></li>
+<li class="chapter" data-level="18.2.2" data-path="bayes.html"><a href="bayes.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>18.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
+<li class="chapter" data-level="18.2.3" data-path="bayes.html"><a href="bayes.html#using-prior-information"><i class="fa fa-check"></i><b>18.2.3</b> Using prior information</a></li>
+<li class="chapter" data-level="18.2.4" data-path="bayes.html"><a href="bayes.html#from-counts-to-probability."><i class="fa fa-check"></i><b>18.2.4</b> From counts to probability.</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="bayes.html"><a href="bayes.html#third-videochapter"><i class="fa fa-check"></i><b>18.3</b> Third video/chapter</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="bayes.html"><a href="bayes.html#normal-distributions"><i class="fa fa-check"></i><b>18.3.1</b> Normal distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="bayes.html"><a href="bayes.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>18.4</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="bayes.html"><a href="bayes.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>18.4.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="18.4.2" data-path="bayes.html"><a href="bayes.html#theory"><i class="fa fa-check"></i><b>18.4.2</b> Theory</a></li>
+<li class="chapter" data-level="18.4.3" data-path="bayes.html"><a href="bayes.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>18.4.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="18.4.4" data-path="bayes.html"><a href="bayes.html#on-choosing-priors"><i class="fa fa-check"></i><b>18.4.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="18.4.5" data-path="bayes.html"><a href="bayes.html#implementation"><i class="fa fa-check"></i><b>18.4.5</b> Implementation</a></li>
+<li class="chapter" data-level="18.4.6" data-path="bayes.html"><a href="bayes.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>18.4.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="18.4.7" data-path="bayes.html"><a href="bayes.html#missing-data-case"><i class="fa fa-check"></i><b>18.4.7</b> Missing data case</a></li>
+<li class="chapter" data-level="18.4.8" data-path="bayes.html"><a href="bayes.html#stata"><i class="fa fa-check"></i><b>18.4.8</b> Stata</a></li>
+<li class="chapter" data-level="18.4.9" data-path="bayes.html"><a href="bayes.html#r-mcmc-pac"><i class="fa fa-check"></i><b>18.4.9</b> R mcmc pac</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="bayes.html"><a href="bayes.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>18.5</b> Other resources and notes to integrate</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="n-ds4bs.html"><a href="n-ds4bs.html"><i class="fa fa-check"></i><b>19</b> Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-of-this-resource"><i class="fa fa-check"></i><b>19.1</b> Evaluation of this resource</a></li>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-1-introduction-data-analytic-thinking"><i class="fa fa-check"></i>Ch 1 Introduction: Data-Analytic Thinking</a>
+<ul>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart"><i class="fa fa-check"></i>Example: During Hurricane Frances… predicting demand to gear inventory and avoid shortages … lead to huge profit for Wal-Mart</a></li>
+<li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-predicting-customer-churn"><i class="fa fa-check"></i>Example: Predicting Customer Churn</a></li>
+<li class="chapter" data-level="19.1.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-science-engineering-and-data-driven-decision-making"><i class="fa fa-check"></i><b>19.1.1</b> Data Science, Engineering, and Data-Driven Decision Making</a></li>
+<li class="chapter" data-level="19.1.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-processing-and-big-data"><i class="fa fa-check"></i><b>19.1.2</b> Data Processing and “Big Data”</a></li>
+<li class="chapter" data-level="19.1.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-asset"><i class="fa fa-check"></i><b>19.1.3</b> Data and Data Science Capability as a <strong>Strategic Asset</strong></a></li>
+<li class="chapter" data-level="19.1.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#da-thinking"><i class="fa fa-check"></i><b>19.1.4</b> Data-Analytic Thinking</a></li>
+<li class="chapter" data-level="19.1.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-and-data-science-revisited"><i class="fa fa-check"></i><b>19.1.5</b> Data Mining and Data Science, Revisited</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-ch2"><i class="fa fa-check"></i><b>19.2</b> Ch 2 Business Problems and Data Science Solutions</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#types-of-problems-and-approaches"><i class="fa fa-check"></i><b>19.2.1</b> Types of problems and approaches</a></li>
+<li class="chapter" data-level="19.2.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-process"><i class="fa fa-check"></i><b>19.2.2</b> The Data Mining Process</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-3-introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation"><i class="fa fa-check"></i><b>19.3</b> Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#models-induction-and-prediction"><i class="fa fa-check"></i><b>19.3.1</b> Models, Induction, and Prediction</a></li>
+<li class="chapter" data-level="19.3.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#supervised-segmentation"><i class="fa fa-check"></i><b>19.3.2</b> Supervised Segmentation</a></li>
+<li class="chapter" data-level="19.3.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-1"><i class="fa fa-check"></i><b>19.3.3</b> Summary</a></li>
+<li class="chapter" data-level="19.3.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#note-check-if-there-is-a-gap-here"><i class="fa fa-check"></i><b>19.3.4</b> NOTE – check if there is a gap here</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-model-to-data"><i class="fa fa-check"></i><b>19.4</b> Ch. 4: Fitting a Model to Data</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#classification-via-mathematical-functions"><i class="fa fa-check"></i><b>19.4.1</b> Classification via Mathematical Functions</a></li>
+<li class="chapter" data-level="19.4.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#regression-via-mathematical-functions"><i class="fa fa-check"></i><b>19.4.2</b> Regression via Mathematical Functions</a></li>
+<li class="chapter" data-level="19.4.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#class-probability-estimation-and-logistic-regression"><i class="fa fa-check"></i><b>19.4.3</b> Class Probability Estimation and Logistic Regression</a></li>
+<li class="chapter" data-level="19.4.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#logistic-regression-some-technical-details"><i class="fa fa-check"></i><b>19.4.4</b> Logistic Regression: Some Technical Details</a></li>
+<li class="chapter" data-level="19.4.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-logistic-regression-versus-tree-induction"><i class="fa fa-check"></i><b>19.4.5</b> Example: Logistic Regression versus Tree Induction</a></li>
+<li class="chapter" data-level="19.4.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nonlinear-functions-support-vector-machines-and-neural-networksthe-two-most-common-families-of-techniques-that-are-based-on-fitting-the-parameters-of-complex-nonlinear-functions-are-nonlinear-supportvector-machines-and-neural-networks."><i class="fa fa-check"></i><b>19.4.6</b> Nonlinear Functions, Support Vector Machines, and Neural NetworksThe two most common families of techniques that are based on fitting the parameters of complex, nonlinear functions are nonlinear supportvector machines and neural networks.</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-overfitting"><i class="fa fa-check"></i><b>19.5</b> Ch 5: Overfitting and its avoidance</a>
+<ul>
+<li class="chapter" data-level="19.5.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalization"><i class="fa fa-check"></i><b>19.5.1</b> Generalization</a></li>
+<li class="chapter" data-level="19.5.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#holdout-data-and-fitting-graphs"><i class="fa fa-check"></i><b>19.5.2</b> Holdout Data and Fitting Graphs</a></li>
+<li class="chapter" data-level="19.5.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-overfitting-linear-functions"><i class="fa fa-check"></i><b>19.5.3</b> Example: Overfitting Linear Functions</a></li>
+<li class="chapter" data-level="19.5.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-why-is-overfitting-bad"><i class="fa fa-check"></i><b>19.5.4</b> Example: Why Is Overfitting Bad?</a></li>
+<li class="chapter" data-level="19.5.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#from-holdout-evaluation-to-cross-validation"><i class="fa fa-check"></i><b>19.5.5</b> From Holdout Evaluation to Cross-Validation</a></li>
+<li class="chapter" data-level="19.5.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#learning-curves"><i class="fa fa-check"></i><b>19.5.6</b> Learning Curves</a></li>
+<li class="chapter" data-level="19.5.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-with-tree-induction"><i class="fa fa-check"></i><b>19.5.7</b> Avoiding Overfitting with Tree Induction</a></li>
+<li class="chapter" data-level="19.5.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting"><i class="fa fa-check"></i><b>19.5.8</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="19.5.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting-1"><i class="fa fa-check"></i><b>19.5.9</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="19.5.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-for-parameter-optimization"><i class="fa fa-check"></i><b>19.5.10</b> Avoiding Overfitting for Parameter Optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-similarity"><i class="fa fa-check"></i><b>19.6</b> Ch 6.: Similarity, Neighbors, and Clusters</a>
+<ul>
+<li class="chapter" data-level="19.6.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance"><i class="fa fa-check"></i><b>19.6.1</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="19.6.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance-1"><i class="fa fa-check"></i><b>19.6.2</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="19.6.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-whiskey-analytics"><i class="fa fa-check"></i><b>19.6.3</b> Example: Whiskey Analytics</a></li>
+<li class="chapter" data-level="19.6.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nearest-neighbors-for-predictive-modeling"><i class="fa fa-check"></i><b>19.6.4</b> Nearest Neighbors for Predictive Modeling</a></li>
+<li class="chapter" data-level="19.6.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#how-many-neighbors-and-how-much-influence"><i class="fa fa-check"></i><b>19.6.5</b> How Many Neighbors and How Much Influence?</a></li>
+<li class="chapter" data-level="19.6.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#geometric-interpretation-overfitting-and-complexity-control"><i class="fa fa-check"></i><b>19.6.6</b> Geometric Interpretation, Overfitting, and Complexity Control</a></li>
+<li class="chapter" data-level="19.6.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#issues-with-nearest-neighbor-methods"><i class="fa fa-check"></i><b>19.6.7</b> Issues with Nearest-Neighbor Methods</a></li>
+<li class="chapter" data-level="19.6.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#other-distance-functions"><i class="fa fa-check"></i><b>19.6.8</b> Other Distance Functions</a></li>
+<li class="chapter" data-level="19.6.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#stepping-back-solving-a-business-problem-versus-data-exploration"><i class="fa fa-check"></i><b>19.6.9</b> Stepping Back: Solving a Business Problem Versus Data Exploration</a></li>
+<li class="chapter" data-level="19.6.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-2"><i class="fa fa-check"></i><b>19.6.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-decision-thinking"><i class="fa fa-check"></i><b>19.7</b> Ch. 7. Decision Analytic Thinking I: What Is a Good Model?</a>
+<ul>
+<li class="chapter" data-level="19.7.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluating-classifier"><i class="fa fa-check"></i><b>19.7.1</b> Evaluating Classifier</a></li>
+<li class="chapter" data-level="19.7.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#the-confusion-matrix"><i class="fa fa-check"></i><b>19.7.2</b> The Confusion Matrix</a></li>
+<li class="chapter" data-level="19.7.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#problems-with-unbalanced-classes"><i class="fa fa-check"></i><b>19.7.3</b> Problems with Unbalanced Classes</a></li>
+<li class="chapter" data-level="19.7.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalizing-beyond-classification"><i class="fa fa-check"></i><b>19.7.4</b> Generalizing Beyond Classification</a></li>
+<li class="chapter" data-level="19.7.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-key-analytical-framework-expected-value"><i class="fa fa-check"></i><b>19.7.5</b> A Key Analytical Framework: Expected Value</a></li>
+<li class="chapter" data-level="19.7.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-use"><i class="fa fa-check"></i><b>19.7.6</b> Using Expected Value to Frame Classifier Use</a></li>
+<li class="chapter" data-level="19.7.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-evaluation"><i class="fa fa-check"></i><b>19.7.7</b> Using Expected Value to Frame Classifier Evaluation</a></li>
+<li class="chapter" data-level="19.7.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-baseline-performance-and-implications-for-investments-in-data"><i class="fa fa-check"></i><b>19.7.8</b> Evaluation, Baseline Performance, and Implications for Investments in Data</a></li>
+<li class="chapter" data-level="19.7.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-3"><i class="fa fa-check"></i><b>19.7.9</b> Summary</a></li>
+<li class="chapter" data-level="19.7.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ranking-instead-of-classifying"><i class="fa fa-check"></i><b>19.7.10</b> Ranking Instead of Classifying</a></li>
+<li class="chapter" data-level="19.7.11" data-path="n-ds4bs.html"><a href="n-ds4bs.html#profit-curves"><i class="fa fa-check"></i><b>19.7.11</b> Profit Curves</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-contents"><i class="fa fa-check"></i><b>19.8</b> Contents and consideration</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="paleo-example.html"><a href="paleo-example.html"><i class="fa fa-check"></i>Meta-analysis arbitrary example: the ‘Paleo diet’</a>
+<ul>
+<li class="chapter" data-level="19.9" data-path="conceptual.html"><a href="conceptual.html#conceptual"><i class="fa fa-check"></i><b>19.9</b> Conceptual: Thoughts on nutritional studies and meta-analysis issues</a>
+<ul>
+<li class="chapter" data-level="19.9.1" data-path="paleo-example.html"><a href="paleo-example.html#compliance"><i class="fa fa-check"></i><b>19.9.1</b> Limited compliance; ‘what are we aiming to measure and why?’</a></li>
+<li class="chapter" data-level="19.9.2" data-path="paleo-example.html"><a href="paleo-example.html#control-group-what-is-being-measured"><i class="fa fa-check"></i><b>19.9.2</b> Control group: what is being measured?</a></li>
+<li class="chapter" data-level="19.9.3" data-path="paleo-example.html"><a href="paleo-example.html#what-is-being-tested-and-how-broadly-should-we-interpret-the-results"><i class="fa fa-check"></i><b>19.9.3</b> What is being tested and how broadly should we interpret the results?</a></li>
+</ul></li>
+<li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
+<ul>
+<li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
+<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
+<li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
+</ul></li>
+<li class="chapter" data-level="19.11" data-path="paleo-example.html"><a href="paleo-example.html#other-meta-analyses-and-consideration-of-the-paleo-diet"><i class="fa fa-check"></i><b>19.11</b> Other meta-analyses and consideration of the Paleo diet</a>
+<ul>
+<li class="chapter" data-level="19.11.1" data-path="paleo-example.html"><a href="paleo-example.html#process-of-finding-relevant-work-informal"><i class="fa fa-check"></i><b>19.11.1</b> Process of finding relevant work (informal)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.12" data-path="paleo-example.html"><a href="paleo-example.html#boers"><i class="fa fa-check"></i><b>19.12</b> Focus: Boers et al</a></li>
+<li class="chapter" data-level="19.13" data-path="paleo-example.html"><a href="paleo-example.html#overall-analysis"><i class="fa fa-check"></i><b>19.13</b> Overall analysis</a>
+<ul>
+<li class="chapter" data-level="19.13.1" data-path="paleo-example.html"><a href="paleo-example.html#limitations-p"><i class="fa fa-check"></i><b>19.13.1</b> Limitations and uncertainties to my own analysis; proposed future steps</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>20</b> Getting, cleaning and using data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="data-sci.html"><a href="data-sci.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>20.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="20.2" data-path="data-sci.html"><a href="data-sci.html#organizing-a-project"><i class="fa fa-check"></i><b>20.2</b> Organizing a project</a></li>
+<li class="chapter" data-level="20.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown"><i class="fa fa-check"></i><b>20.3</b> Dynamic documents (esp Rmd/bookdown)</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>20.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="20.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>20.3.2</b> An example of dynamic code</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>20.4</b> Project management tools, esp. Git/Github</a></li>
+<li class="chapter" data-level="20.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices"><i class="fa fa-check"></i><b>20.5</b> Good coding practices</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse"><i class="fa fa-check"></i><b>20.5.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency"><i class="fa fa-check"></i><b>20.5.2</b> Style and consistency</a></li>
+<li class="chapter" data-level="20.5.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code"><i class="fa fa-check"></i><b>20.5.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
+<li class="chapter" data-level="20.5.4" data-path="data-sci.html"><a href="data-sci.html#mapping-over-lists-to-produce-results"><i class="fa fa-check"></i><b>20.5.4</b> Mapping over lists to produce results</a></li>
+<li class="chapter" data-level="20.5.5" data-path="data-sci.html"><a href="data-sci.html#building-results-based-on-lists-of-filters-of-the-data-set"><i class="fa fa-check"></i><b>20.5.5</b> Building results based on ‘lists of filters’ of the data set</a></li>
+<li class="chapter" data-level="20.5.6" data-path="data-sci.html"><a href="data-sci.html#coding-style-and-indenting-in-stata-one-approach"><i class="fa fa-check"></i><b>20.5.6</b> Coding style and indenting in Stata (one approach)</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>20.6</b> Additional tips (integrate)</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> List of references</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics, econometrics, experiment and survey methods, data science: Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="power" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> (Ex-ante) Power calculations for (Experimental) study design</h1>
+<blockquote>
+<p>Power is the ability to distinguish signal from noise.
+- <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Coppock</a></p>
+</blockquote>
+<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of)</p>
+<ul>
+<li>a particular <em>true effect size</em> (parameter magnitude),</li>
+<li>or an effect size stated as relative to the underlying dispersion,</li>
+<li>or as ‘the probability of achieving a certain desired precision.’*</li>
+</ul>
+<p>Thus one often sees the power of an analysis ‘plotted’ against particular effect sizes (sometimes ‘alternative hypotheses’).</p>
+<div class="marginnote">
+<p>* E.g., we may see power calculated as a function of a measure of ‘effect relative to variation’ … like Cohen’s <span class="math inline">\(d\)</span> of … effect size/SD.</p>
+</div>
+<p>Considering standard frequentist null hypothesis testing, ‘the power of a test’ (or analysis) represents one minus the probability of a type-II error (approximately ‘one minus the false-negative rate’).</p>
+<div class="marginnote">
+<p>Todo: an aside here about power calculations in a Bayesian context.</p>
+</div>
+<p><br />
+</p>
+<p><em>A basic primer:</em> <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Egap - 10 things to know about statistical power</a></p>
+<div id="what-is-the-point-of-doing-a-power-analysis-or-power-calculations" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> What is the point of doing a ‘power analysis’ or ‘power calculations?’</h2>
+<p>There are several reasons to consider power and to do ‘power calculations’ in advance of running an experiment or doing an analysis.</p>
+<p>An ‘underpowered study’ is one with a low likelihood of diagnosing a ‘substantial’ effect is present when it <em>is</em> present. Such a study is also likely to be an <em>uninformative</em> study. Furthermore, if ‘rejecting a particular null hypothesis’ is important**, an underpowered test is unlikely to reject this null hypothesis even when it is ‘substantially and meaningfully false.’</p>
+<div class="marginnote">
+<p>** But please see McElreath and other’s discussion about the follies of the ways NHST is used in science on this point.</p>
+</div>
+<p>An underpowered study is likely to yield wide ‘confidence intervals’ (or wide ‘posterior Bayesian credible intervals’). Simply put, after an underpowered study (at least in isolation), we still won’t have a good sense of what the true value (of the parameter or effect of interest) is.</p>
+<p><br />
+</p>
+<p>All else equal, you want to run a study that is <em>as high-powered as possible</em> (or a study that is part of a larger project that collectively yields substantial power) because:</p>
+<ol style="list-style-type: decimal">
+<li><p>you want your study to be informative and to contribute to science (empirical analysis) and</p></li>
+<li><p>‘low powered studies’ (at least in certain publication contexts) can potentially <a href="underpowered">harm the accuracy of our scientific consensus</a>.</p></li>
+</ol>
+<div class="marginnote">
+<p>Other than perhaps being ‘too costly,’ is it bad for a study to be ‘overpowered?’ <a href="https://twitter.com/GivingTools/status/1350259972786057216">I argue that this is <em>not</em> a problem.</a></p>
+</div>
+<div id="practical-power" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> What are the practical benefits of doing a power analysis</h3>
+<p>A power analysis may allow you to:</p>
+<ul>
+<li><p>consider the <strong>cost/benefits of ‘more data’</strong>, to help you determine ‘how much to collect,’</p></li>
+<li><p>consider and <strong>optimise over the tradeoffs in design choices</strong> (e.g., introducing more treatments usually involves a loss of power), and</p></li>
+<li><p>understand whether you ‘<strong>have enough funds</strong> to gather enough data to make it worth doing a study?’</p></li>
+<li><p>(maybe) be more credible in making ex-post statements about null effects.*</p></li>
+</ul>
+Furthermore, if you are trying to do a replication exercise to diagnose the credibility of previous work you want to be able to claim ‘I have power to do this credibly.’*
+<div class="marginnote">
+<p>* I’m not sure about these latter point, this needs to be stated more carefully</p>
+</div>
+<p><br />
+</p>
+<p>In general, power analyses and ensuring sufficient power is good for science, avoiding the harm from ‘underpowered studies.’ There are arguments that individual <a href="power.html#underpowered">‘underpowered’ studies may undermine science</a>, particular in conjunction with ‘publication bias.’</p>
+</div>
+</div>
+<div id="power-ingredients" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</h2>
+<ol style="list-style-type: decimal">
+<li>Our assumptions (or existing prior data used that we can use for simulations) over the data-generating-process. In particular, ‘what do we expect the distribution of the outcomes to look like’ (e.g., ‘normally distributed’), and ‘with what dispersion?’*</li>
+</ol>
+<div class="marginnote">
+<p>However, a measure of dispersion is not necessary for <em>all</em> power calculations. As noted throughout, we can calculate the power to detect an effect of a particular size <em>relative to the dispersion</em>, or to attain a particular confidence interval over such an effect.</p>
+<p>Also note that for binary outcomes the choice of a ‘distribution function’ is obvious and ‘dispersion’ only depends on the share of units with each outcome.</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>The nature of the sampling or assignment to experimental treatments *, **</li>
+</ol>
+<div class="marginnote">
+<p>* E.g., <a href="https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html">"complete random assignment</a> to two a single treatments and a single control, each with probability 1/2".)</p>
+<p>** Remember, here we are focusing on power calculations in <em>experimental</em> contexts. However, power calculations are also relevant in other empirical contexts, particularly where data-collection is costly.</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>The specific proposed statistical test (or procedure) to be used (e.g., a t-test or a rank-sum test)</li>
+</ol>
+<p><br />
+</p>
+<p><em>and perhaps the most important and debated ingredient:</em></p>
+<p>*4. Which ‘metrics of power and effect size’ are we considering, and what are our targets?**</p>
+<ul>
+<li><p>Are we simply seeking ‘precise estimates,’ estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
+<li><p>Do we seek power to detect some ‘minimal effect size of interest?’</p></li>
+</ul>
+<p>If so, <em>what is this ‘MESOI?’</em></p>
+<div class="marginnote">
+<p>Note that there is (often? always?) a mathematical equivalency between the confidence interval and the standard ‘power to detect X’ criteria.</p>
+<p>Another criterion might be “power to do an ‘equivalency test’”… but I need to learn more about this.</p>
+</div>
+<p><br />
+</p>
+<div id="considering-should-i-use-a-function-of-previous-estimated-effect-sizes-to-determine-the-mesoi" class="section level4 unnumbered">
+<h4>Considering: ‘should I use a function of previous estimated effect sizes to determine the MESOI?’</h4>
+<p>From David Moss (unfold)</p>
+
+<div class="fold">
+<p>Moss:</p>
+<blockquote>
+<p>… not basing power calculations on previously observed effect sizes?</p>
+</blockquote>
+<blockquote>
+<p>Lakens uses the SESOI approach, which we often do, but SESOI can be specified based on the effect sizes previous found in the literature <a href="https://journals.sagepub.com/doi/10.1177/2515245918770963">though obviously there are a bunch of ways to do it</a></p>
+</blockquote>
+</div>
+<p><br />
+</p>
+<p>Moss, citing Lakens: … use earlier work to decide which effect sizes are deemed to be ‘meaningful,’ with particular specific recommendations:</p>
+
+<div class="fold">
+<blockquote>
+<p>Subjective justification of a smallest effect size of interest … Second, the SESOI can be based on related studies in the literature. Ideally, researchers who publish novel research would always specify their SESOI, but this is not yet common practice. It is thus up to researchers who build on earlier work to decide which effect size is too small to be meaningful when they examine the same hypothesis. Simonsohn (2015) recently proposed setting the SESOI as the effect size that an earlier study would have had 33% power to detect.</p>
+</blockquote>
+<blockquote>
+<p>With this small-telescopes approach, the equivalence bounds are thus primarily based on the sample size in the original study. For example, consider a study in which 100 participants answered a question, and the results were analyzed with a one-sample t test. A two-sided test with an alpha of .05 would have had 33% power to detect an effect of d = 0.15. Another example of how previous research can be used to determine the SESOI can be found in Kordsmeyer and Penke (2017), who based the SESOI on the mean of effect sizes reported in the literature. Thus, in their replication study, they tested whether they could reject effects at least as extreme as the average reported in the literature. Given random variation and bias in the literature, a more conservative approach could be to use the lower end of a confidence interval around the meta-analytic estimate of the effect size (cf. Perugini, Gallucci, &amp; Costantini, 2014).</p>
+</blockquote>
+Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than <span class="math inline">\(\alpha\)</span> in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.
+</div>
+<p><br />
+</p>
+<p>DR response: Why do we assume previous authors considered MESOI?</p>
+
+<div class="fold">
+<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest?”</p>
+<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects,” But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
+</div>
+<p>DR: A second reason why one might see that as the “minimum effect size of interest” simply has to do with being able to publish a paper that can in some way “refute” previous claimed findings.</p>
+
+<div class="fold">
+<p>But that is flawed, in my view, as a way of doing science. We should power the study that is most informative, either by itself, or when made part of a meta analysis. I don’t see the value of this adversarial back-and-forth approach.</p>
+</div>
+<p><br />
+</p>
+<p>DR preferred approach - power a study based on policy concerns, also considering it’s use in meta-analysis.</p>
+
+<div class="fold">
+<p>One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a conference interval or a credible interval if we are thinking of a Bayesian posterior).</p>
+<p>So, in determining how much power I wish to achieve, I need to weigh the benefits of this precision against the cost of a larger sample size.</p>
+<p>This is a very different considerations from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).</p>
+</div>
+<p>Of course “We should power” is subject to constraints and cost concerns.</p>
+<div class="marginnote">
+<p>So, when I am designing the study I am almost never able to have the power I want for all possible tests/hypotheses. Where these considerations come into play, is whether to decide to run the study now or wait to get more funding, and in considering which hypotheses to test and which treatments to put in the study, et cetera</p>
+</div>
+</div>
+</div>
+<div id="underpowered" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> The ‘harm to science’ from running underpowered studies</h2>
+<blockquote>
+<p>"One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+- From an anonymous referee report</p>
+</blockquote>
+<p>Perhaps most of us consider power largely in thinking about</p>
+<ol style="list-style-type: decimal">
+<li>“Is our analysis going to be fruitful for ourselves as researchers?”</li>
+</ol>
+<p>and perhaps also, where we find a null result…</p>
+<ol start="2" style="list-style-type: decimal">
+<li>“Is the analysis powerful enough to plausibly rule out an effect of a meaningful size?”</li>
+</ol>
+<p>The conventional wisdom has been that, at least for papers reporting non-null effects, running a low-power study is mostly done at the authors’ <em>own</em> peril. We might think “if I am lucky enough to observe a strong effect in an low-powered study then I have managed to mine a vein of truth on a relatively unproductive plot, and have thus earned my reward.”</p>
+<p>However <span class="citation">(<a href="references.html#ref-buttonPowerFailureWhy2013" role="doc-biblioref">Button et al. 2013</a>)</span> point out that running lower-powered studies reduces the positive predicted value—the probability that a “positive” research finding reflects a true effect—of a typical study reported to find a statistically significant result.</p>
+<p>In combination with publication bias, this could lead a large rate of type-1 error in our body of scientific knowledge (false-positive cases, where the true effect was null and the authors had a very “lucky” draw). True non-null effects will be underrepresented, as underpowered tests will too-often fail to detect (and publish) these. Furthermore, in both cases (true null, true non-null), underpowered tests will be far more likely to find a significant result when they have a random draw that estimates an effect size substantially larger than the true effect size. Thus, the published evidence base will tend to overstate the size of effects.</p>
+<div class="marginnote">
+<p>DR: However, I speculate that this idea might be less clear-cut than it seems. E.g., if we consider a (“non-sparse”) world where every factor indeed has an effect, lower powered studies are more likely to detect effects that are truly larger, which are arguably more policy-relevant; moreover, overstated effect sizes might be adjusted with a standard correction.</p>
+</div>
+
+<div class="note">
+<p><a href="https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics">Ferraro discussion on magnitude error due to underpowered studies:</a> {-}</p>
+<p>… if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficient. By using a low powered study you sift through for these kind of effects.</p>
+</div>
+</div>
+<div id="power-calculations-without-real-data" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Power calculations without real data</h2>
+<p><a href="https://cran.r-project.org/web/packages/paramtest/vignettes/Simulating-Power.html">R ‘Paramtest’ package vignette</a> is helpful here.</p>
+</div>
+<div id="power-calculations-using-prior-data" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Power calculations using prior data</h2>
+<p>Adapt example in ‘scopingwork.Rmd’ to this</p>
+<div id="from-reinstein-upcoming-experiment-preregistration" class="section level3" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> From Reinstein upcoming experiment preregistration</h3>
+<blockquote>
+<p>We are searching for a design and sample size that has sufficient power to detect (or ‘statistically rule out’) an effect of ‘minimal interest’ size, given our somewhat-limited budget. The ‘design parameters’ we can play with are given above.</p>
+</blockquote>
+<blockquote>
+<p>While conventional practice seems to involve completely simulated data based on parametric assumptions (normality, etc) we prefer to draw from comparable ‘untreated’ real-world data (see (Barrios 2014) for a related discussion). Assuming the general distribution of outcomes (and covariates) is in some sense constant or predictable over time (perhaps stationarity?), this should give us more accurate estimates of power.</p>
+</blockquote>
+<blockquote>
+<p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect.’</p>
+</blockquote>
+<div id="assign-notes" class="section level4 unnumbered">
+<h4>Assignment procedures to consider</h4>
+<p>We consider three categories of possible assignment criteria: (We are coding these <a href="power.html#assign-functions">below</a>.)</p>
+<p><strong>1. Simple data-based</strong></p>
+<p>(Coded <a href="#power-simple">here</a>)</p>
+<p>Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.</p>
+<p>We will also consider an unbalanced design, both in this and in other categories, which may achieve greater power, especially considering the differential costs of our treatments.</p>
+<div class="marginnote">
+<p>Although as we have no evidence on the treatments and thus no reason to anticipate a differential variance between treatments and control, an unbalanced design may allow greater power for the same <em>cost</em>, as observing controls is costless, and the ‘low-donation’ treatment is lower cost.</p>
+</div>
+<p><br />
+</p>
+<p><strong>2. Ad-hoc (Reinstein adapts Barrios), using prediction.Rmd quantiles</strong></p>
+<p><em>General summary:</em> Fit a predictive model of the outcome (total donations) based on pre-treatment observables, using set-aside training data. Generate quantiles of ‘predicted donation’ (tuning parameter=number of quantiles?). Power-test block randomisation with these blocks as quantiles, using set-aside testing data.</p>
+<p><em>Caveats:</em> If we test the power with multiple models on the test data (e.g., ‘tuning’ the number of quantiles) we will be overly optimistic and maybe overfitting.</p>
+<p>Also, this assignment procedure is not necessarily robust to TE heterogeneity. By luck, it may assign substantial <em>imbalance</em> across any particular dimension.</p>
+<p><br />
+</p>
+Prediction algorithm (folded)
+
+<div class="fold">
+<ul>
+<li>Adapt from code in CharitySubstitutionExperiment repo, in assignments_power.Rmd and analysis_subst.Rmd; examples of Elastic net etc</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Define and organize the set of variables available at intervention</p></li>
+<li><p>Define and calculate the outcome variables (total amount raised)</p></li>
+<li><p>Split and set-aside validation and simulation data (?within prediction also)</p></li>
+<li><p>Model the outcome, using a Ridge regression with all features. The regularization/penalty parameter could be optimized for best fit. (Cross-fold).</p></li>
+</ol>
+</div>
+Blocking process (folded)
+
+<div class="fold">
+<ol start="5" style="list-style-type: decimal">
+<li>We can test block randomization by the predicted quantile of this model with a bootstrapped procedure using set-aside ‘testing’ data not used in the above regression. We want to run the simulations until we find the optimal “block width” or quantile to use for blocking the randomization. Ideally, this procedure should take into account the fact that if we stopped at a random time we may have uneven cell sizes.</li>
+</ol>
+<p>(Caveat – this resampling may need to be done based a randomised ‘start time’ to address random time-specific effects. ) <em>Note</em>: Because of this and for feasibility, we may abridge step 5, and just try out a few reasonable large block widths (e.g., quartiles)</p>
+<p>Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure, and estimate an “effect size” for each sample. We then consider the 99% bounds of these simulated effect sizes. The block width (and regularization parameter?) that consistently gives us the tightest bounds should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.</p>
+<p>The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws… the smaller the <em>actual</em> effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time). [Note: these latter notes may bot go with the procedure proposed below; these are older.]</p>
+</div>
+<p><strong>Kasy method?</strong></p>
+<p>We may or may not get to considering the method proposed in <span class="citation"><a href="references.html#ref-kasyWhyExperimentersMight2016" role="doc-biblioref">Kasy</a> (<a href="references.html#ref-kasyWhyExperimentersMight2016" role="doc-biblioref">2016</a>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
+<div class="fold">
+<p>
+See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
+</p>
+<ul>
+<li>
+Prepare concise data set (csv?) to throw into his app, choose baseline covariates
+</li>
+<li>
+Estimator: Difference of means or Bayes
+</li>
+<li>
+Prior: Squared exponential or Linear?
+</li>
+<li>
+Re-randomization draws (default=1000); Expected R-sq (default=0.7)
+</li>
+</ul>
+<p>
+Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means without controls or interactions - More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors - But Kasy’s technique makes frequentist inference difficult (Bayesian OK)
+</p>
+</div>
+<p><strong>See Guidance/code:</strong></p>
+<ul>
+<li>Simple; from <a href="https://egap.org/content/power-analysis-simulations-r" class="uri">https://egap.org/content/power-analysis-simulations-r</a></li>
+</ul>
+<p><a href="https://egap.org/resource/script-power-analysis-simulations-in-r/" class="uri">https://egap.org/resource/script-power-analysis-simulations-in-r/</a></p>
+<p><a href="https://egap.org/resource/10-things-to-know-about-statistical-power/" class="uri">https://egap.org/resource/10-things-to-know-about-statistical-power/</a></p>
+</div>
+<div id="assign-functions" class="section level4 unnumbered">
+<h4>Treatment assignment functions, used in power calculations</h4>
+<ol style="list-style-type: decimal">
+<li>simple_assign: assign treatment dummy to first t-share of n rows</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="power.html#cb16-1" aria-hidden="true" tabindex="-1"></a>simple_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">blockvar=</span><span class="st">&quot;NA&quot;</span>) { <span class="co">#note: no blocking here, this is just to get a homogenous code</span></span>
+<span id="cb16-2"><a href="power.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(df, <span class="at">d_t =</span> <span class="fu">row_number</span>() <span class="sc">&lt;=</span> (<span class="fu">n</span>() <span class="sc">*</span> tshare)) <span class="co">#note: the data must be randomised first!</span></span>
+<span id="cb16-3"><a href="power.html#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><br />
+</p>
+<p><strong>Data-based power calculation: create simulation function</strong> {#power-calc-sim-func}</p>
+<!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="power.html#cb17-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
+<span id="cb17-2"><a href="power.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="power.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
+<span id="cb17-4"><a href="power.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
+<span id="cb17-5"><a href="power.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(ds, <span class="at">size =</span> N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-6"><a href="power.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="power.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Selection of control and treatment group using function `f_assign&#39;</span></span>
+<span id="cb17-8"><a href="power.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    exp_sample <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="power.html#cb17-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="power.html#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="power.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
+<span id="cb17-12"><a href="power.html#cb17-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
+<span id="cb17-13"><a href="power.html#cb17-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="power.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
+<span id="cb17-15"><a href="power.html#cb17-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
+<span id="cb17-16"><a href="power.html#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="power.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
+<span id="cb17-18"><a href="power.html#cb17-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
+<span id="cb17-19"><a href="power.html#cb17-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb17-20"><a href="power.html#cb17-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
+<span id="cb17-21"><a href="power.html#cb17-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
+<span id="cb17-22"><a href="power.html#cb17-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-23"><a href="power.html#cb17-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-24"><a href="power.html#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="power.html#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
+<span id="cb17-26"><a href="power.html#cb17-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
+<span id="cb17-27"><a href="power.html#cb17-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (<code>blockvar</code>)</li>
+</ol>
+<p><em>Note: I am using ‘randomizr’ here to assign blocks</em></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="power.html#cb18-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
+<span id="cb18-2"><a href="power.html#cb18-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
+<span id="cb18-3"><a href="power.html#cb18-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
+<span id="cb18-4"><a href="power.html#cb18-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
+<span id="cb18-5"><a href="power.html#cb18-5" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb18-6"><a href="power.html#cb18-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb18-7"><a href="power.html#cb18-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="power.html#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="power.html#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb18-10"><a href="power.html#cb18-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
+<span id="cb18-11"><a href="power.html#cb18-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb18-12"><a href="power.html#cb18-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="power-calculation-just-simple-examples-adapt-to-built-in-data" class="section level4 unnumbered">
+<h4>Power calculation (just simple examples): adapt to built-in data</h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="power.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pwr_n400_L50_p15 &lt;- power_data(ds=df,reps=100,yvar=sum_don,N=400,tshare=0.5,linTE=50,propTE=0.15,alpha=0.05, f_assign=simple_assign)</span></span></code></pre></div>
+</div>
+<div id="loop-and-plot-over" class="section level4" number="14.5.1.1">
+<h4><span class="header-section-number">14.5.1.1</span> Loop and plot over…</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="power.html#cb20-1" aria-hidden="true" tabindex="-1"></a>linTE.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">100</span>)</span>
+<span id="cb20-2"><a href="power.html#cb20-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb20-3"><a href="power.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="power.html#cb20-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
+<span id="cb20-5"><a href="power.html#cb20-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
+<p>Testing equicost parings, determine necessary cost</p>
+<p>With only control and treatment we have</p>
+<p><span class="math display">\[cost = multiplier \times avgcost \times N \times tshare\]</span>
+<span class="math display">\[\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)\]</span></p>
+<p>Setting a 2x multiplier (for the ‘large’) treatment, avgcost=£30 (hard coded) for now, and imagining a £6000 initial budget yields</p>
+<p><span class="math display">\[\rightarrow N = 6000/\big(60 \times tshare\big) \]</span></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="power.html#cb21-1" aria-hidden="true" tabindex="-1"></a>cost <span class="ot">&lt;-</span> <span class="dv">6000</span> <span class="co">#make this an entry in the &#39;design_params&#39; list</span></span>
+<span id="cb21-2"><a href="power.html#cb21-2" aria-hidden="true" tabindex="-1"></a>multip <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb21-3"><a href="power.html#cb21-3" aria-hidden="true" tabindex="-1"></a>avdon <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb21-4"><a href="power.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="power.html#cb21-5" aria-hidden="true" tabindex="-1"></a>tshare.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.1</span>, <span class="at">to=</span><span class="fl">0.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb21-6"><a href="power.html#cb21-6" aria-hidden="true" tabindex="-1"></a>sample.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">400</span>, <span class="at">to=</span><span class="dv">1200</span>, <span class="at">by=</span><span class="dv">200</span>)</span>
+<span id="cb21-7"><a href="power.html#cb21-7" aria-hidden="true" tabindex="-1"></a>equi_sample <span class="ot">&lt;-</span> cost<span class="sc">/</span>(avdon<span class="sc">*</span>multip<span class="sc">*</span>tshare.try)</span>
+<span id="cb21-8"><a href="power.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="power.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now maybe make a vector of tshare.try and equi_sample, for iterating over</span></span>
+<span id="cb21-10"><a href="power.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I assume we can consider the &#39;optimal tradeoff&#39; and this will be invariant to the cost; am I right?</span></span></code></pre></div>
+</div>
+<div id="for-total-x-outcome-variable" class="section level4 unnumbered">
+<h4>For ‘total x’ outcome variable</h4>
+<p>(Some sample code below, needs discussion)</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="power.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Unvarying parameters up here:</span></span>
+<span id="cb22-2"><a href="power.html#cb22-2" aria-hidden="true" tabindex="-1"></a>linTE <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb22-3"><a href="power.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="power.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#power_vals: tibble to collect parameters and results #TODO: faster to generate a list?</span></span>
+<span id="cb22-5"><a href="power.html#cb22-5" aria-hidden="true" tabindex="-1"></a>power_vals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb22-6"><a href="power.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_try=</span><span class="cn">NA</span>,</span>
+<span id="cb22-7"><a href="power.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prop_te =</span> <span class="cn">NA</span>,</span>
+<span id="cb22-8"><a href="power.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lin_te=</span><span class="cn">NA</span>,</span>
+<span id="cb22-9"><a href="power.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">test=</span><span class="cn">NA</span>,</span>
+<span id="cb22-10"><a href="power.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">power_est=</span><span class="cn">NA</span></span>
+<span id="cb22-11"><a href="power.html#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-12"><a href="power.html#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="power.html#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#tic() #timer</span></span>
+<span id="cb22-14"><a href="power.html#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="power.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#for (o in seq_along(outcomes.try)) { #TODO: map instead of loops. See R4ds 21.7 &#39;mapping over multiple arguments&#39;</span></span>
+<span id="cb22-16"><a href="power.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="power.html#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
+<span id="cb22-18"><a href="power.html#cb22-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-19"><a href="power.html#cb22-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb22-20"><a href="power.html#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
+<span id="cb22-21"><a href="power.html#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
+<span id="cb22-22"><a href="power.html#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="power.html#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
+<span id="cb22-24"><a href="power.html#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
+<span id="cb22-25"><a href="power.html#cb22-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
+<span id="cb22-26"><a href="power.html#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="power.html#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
+<span id="cb22-28"><a href="power.html#cb22-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
+<span id="cb22-29"><a href="power.html#cb22-29" aria-hidden="true" tabindex="-1"></a>      PT <span class="ot">&lt;-</span> propTE.try[[p]]</span>
+<span id="cb22-30"><a href="power.html#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="power.html#cb22-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
+<span id="cb22-32"><a href="power.html#cb22-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
+<span id="cb22-33"><a href="power.html#cb22-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
+<span id="cb22-34"><a href="power.html#cb22-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
+<span id="cb22-35"><a href="power.html#cb22-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
+<span id="cb22-36"><a href="power.html#cb22-36" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb22-37"><a href="power.html#cb22-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
+<span id="cb22-38"><a href="power.html#cb22-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
+<span id="cb22-39"><a href="power.html#cb22-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
+<span id="cb22-40"><a href="power.html#cb22-40" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb22-41"><a href="power.html#cb22-41" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-42"><a href="power.html#cb22-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-43"><a href="power.html#cb22-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-44"><a href="power.html#cb22-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb22-45"><a href="power.html#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-46"><a href="power.html#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
+<p><br />
+</p>
+</div>
+</div>
+</div>
+<div id="lift-test" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</h2>
+<p>We want to know what the ‘best title for our new movie’ is. Twenty titles have been suggested. We have funds to do a survey of a relevant representative audience.</p>
+<p>We need to decide on a general experimental design, a statistical analysis, and on sample sizes considering power (or perhaps ‘lift’).</p>
+<p>Note that although we are mainly framing this in terms of statistical inference, it might also/instead be considered a ‘reinforcement learning’ problem.*</p>
+<div class="marginnote">
+<p>* See Max Kasy’s slides and articles on <a href="https://maxkasy.github.io/home/files/slides/adaptive_field_slides_kasy.pdf">adaptive field experiments</a>, particularly considering ‘exploration sampling.’</p>
+</div>
+<p>A long debate on this in the folds below:</p>
+<p><strong>Is classical statistical inference the right framing here?</strong></p>
+
+<div class="fold">
+<p>David: I think classical statistical inference is the wrong framing here* o think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling</p>
+<blockquote>
+<p>Matt: I’m (currently) not sure there is any meaningful alternative (or, therefore, a better alternative)</p>
+</blockquote>
+<p>David: The reinforcement-learning and value-maximization (lift) framework used in industry (I believe). The challenge here would be to map between the survey responses given and the actual outcomes of interest… e.g., if a person responds “I would definitely watch a movie with this title,” what is the probability they actually will, relative to someone who responds “I might watch…” (also, what is the ‘population size’ we are sampling from, to understand the scale)</p>
+<blockquote>
+<p>Matt (“The challenge here would be to map between the survey responses given and the actual outcomes of interest”) This is the thing I’m just assuming we cannot do. Given that, it’s just not clear how reinforcement learning framework helps us?</p>
+</blockquote>
+<p>David: why not make reasonable assumptions about the above, for example? But even if we framed it strictly in terms of ‘what we learn about how the population would respond to similar questions asked in the survey,’ I still don’t see why (e.g.) our goal should be to be “strongly powered to reject an H0 that ‘all titles rank just as highly on average”. Instead we want to ‘learn as much as possible about whatever we think, in the survey, is likely to be the most valuable response’</p>
+</div>
+<p><br />
+</p>
+<p><strong>Is there a better approach to determining sample size?</strong></p>
+
+<div class="fold">
+<blockquote>
+<p>Matt: <strong>What is the better approach to determining sample size?</strong></p>
+</blockquote>
+<p>David: It’s a cost/benefit calculation. If we are cost-constrained, this question becomes ‘how many arms (titles)’ and ‘is this worth doing.’ NHST framework logic may say ‘given your budget, only try 2 titles, and even if you have to choose them at random’ and/or “don’t bother, the chance of statistical significance is too low.”</p>
+<p>In contrast (my loosely-informed guess is that) a RL approach says that (if we cannot do adaptive learning, if the ‘client’ finds it equally likely that all 20 titles are optimal, the ‘most value-increasing learning’ (highest ‘lift’) will simply come from dividing their budget equally across all 20 titles and choosing the one that ‘performs best’ (obviously ‘performs best’ is another can of worms) … even if this yields little power for strong statistical inference.</p>
+<blockquote>
+<p>Matt: The approach I describe/propose (using classical approach to power analysis/hypothesis testing) also involves cost/benefit calculation. So I think this misdescribes the contrast.</p>
+</blockquote>
+<p>David: You write “can detect Y size effects for X dollars while testing 20 titles vs can detect Z size effects for X dollars while testing 10 titles.” But I don’t think ‘can detect Y effect sizes’ is entirely accurate/descriptive.</p>
+<p>CLASSICAL (NHST): At a certain cost you can achieve a certain probability (power) that you will conclude that a particular difference is ‘less than 5% likely to occur by chance under H0.’ However: 1. Even if you don’t ‘reject the null,’ the evidence (if interpreted using Bayesian methods) may already suggest that the null is very unlikely and the center of your belief distribution should be substantially shifted. 2. How does the Classical approach weigh the benefit of learning more about a few titles vs less about many titles?</p>
+<blockquote>
+<p>Matt: (setting aside number of titles question): NHST approach doesn’t tell us what sample size is best given the cost/benefit. NHST just tells us what sample size we need to have power to do X. Our overall judgement about what sample size to use (and what design etc.) is based on our independent judgements about what amount of cost/power is optimal..</p>
+</blockquote>
+<blockquote>
+<p>Matt: I think may explain some of the apparent disagreement where you propose some approach to cost/benefit as some alternative to NHST, whereas I think NHST and the cost/benefit calculation of what we should do are separate questions On my approach we also judge cost/benefit of having a given level of power to detect an effect of a given size (and a given number of titles). So what’s the alternative approach to establishing sample size required for [a certain level of precision/ability to detect effect.. construed in whatever terms you like], and separately judging what level is optimal given the cost?</p>
+</blockquote>
+<p>DR: I think these are linked questions, and it is not meaningful to simply state ‘power to detect an effect’ … as there are something like 20 x 20 possible ‘effects’ we could be looking for here.</p>
+</div>
+<p><br />
+<strong>Related discussion: should “Achieving a minimum statistical significance for a particular comparison” be our criterion?</strong></p>
+
+<div class="fold">
+<p>David: “Achieving a minimum statistical significance for a particular comparison” should probably not be our criterion … we can generate a lot of value even without being able to make a strong statistical inference (‘rejecting the null… meh’)</p>
+<blockquote>
+<p>Matt: This seems a separate question.
+The fundamental Q here just seems to be how much confidence we want/need to think this valuable to our decision-making. Statistical significance is an arbitrary threshold: but point remains that &lt;significant results give less value Concretely, I would update little on noisy, less significant differences results</p>
+</blockquote>
+<p>David: My impression is that ‘optimal’ Bayesian updating, even starting with diffuse priors, actually does move a lot in response to data that would not yield strongly significant results. Yes, it does update less with less data and more noisy data, but it still updates a lot in ways that substantially change decisions and add value even in cases where NHST yawns and says ‘nothing to see here, move on.’ If “p=0.25” in a NHST statistical test, that (very loosely and probably not strictly correct here) might suggest that ‘there is a 25% chance that one option is substantially better.’ (I do think there is a place for NHST in scientific inquiry and ‘establishing results without giving the benefit of the doubt. But where you ‘must make a decision’ a different approach is justified IMHO).</p>
+<blockquote>
+<p>Matt: I agree that non-sig results can be worth updating on and potentially useful for practical purposes. We could have a meaningful discussion about how confident/precise we want our estimates to be / how small an effect is worth measuring without thereby ditching NHST: and you could argue that we should shoot for a lower level of power. It’s not clear there’s a simply better alternative framework for approaching the question. (Even translating these discussions into Bayesian terms seems to just leave us in exactly same position)</p>
+</blockquote>
+<p>David: Not sure if it’s the same position; see above (previous fold, “it’s a cost/benefit calculation”)</p>
+<p>Mostly I agree with what you are saying but you may be missing some of the complications here. The problem is not uni-dimensional, as we are asked to consider a large set of (20) titles.
+I am claiming that you might gain more value, and indeed substantial value, from learning “a little about 20 titles” instead of “a lot about 2 randomly selected titles”</p>
+<blockquote>
+<p>Matt: Question of the value of 20 titles vs 2 titles seems distinct from the question of how much we can learn from noisy/sub-significant results. (Links other post…)</p>
+</blockquote>
+<blockquote>
+<p>… informed guess about what would be worth measuring.. In the simple case, this just involves comparing $X vs can detect Y size effects In the slightly more complex case this also involves comparing: ‘can detect Y size effects for X dollars while testing 20 titles’ vs ‘can detect Z size effects for X dollars while testing 10 titles.’</p>
+</blockquote>
+<blockquote>
+<p>Concretely I have been informing my judgement of how small an effect we might want to detect based on our prior XXX message testing which found (by convention) small effects, and which seems as reasonable a proxy for what we might expect to find here. As noted, the key ingredient to better knowing how big an effect we want to be able to detect would be knowing how well these ratings correspond to real world differences, but we do not know that… Of course there is also a hard ceiling on [costs] i.e. our client won’t/can’t pay more than X dollars …</p>
+</blockquote>
+<blockquote>
+<p>I agree that focusing on 2 random titles out of the 20 would probably provide little practical value as to which out of the proposed titles is best (due to providing no data about 18/20 titles).</p>
+</blockquote>
+<p>David: :)</p>
+<blockquote>
+<p>At the other extreme: if a test with 100 titles would only be able to detect effects that were enormous (given resource constraints on our sample size)- then it’s likely we should change test/test fewer titles, because a test that won’t be able to detect reasonable effect sizes with reasonable power, won’t be able to offer practically significant evidence.</p>
+</blockquote>
+<p>David: I was thinking of the same reductio that I think you are getting at here, and I think the answer may be ‘strictly speaking yes, if our prior is that all titles have identical distributions on average, better to test each title 1x than to test some titles 2x or more. For decision-making purposes, you learn the most and update the most from the first piece of evidence. So I think it actually would be practically significant to the decision problem. Highly recommended: read/listen to that Bayes Rule chapter of Algorithms to live by.</p>
+</div>
+<p><br />
+</p>
+<div id="design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Design: Which questions to ask the audience about the proposed titles, and in what order?</h3>
+<p>This is an ‘experimental design for internal identification and external generalisability’ question.
+(See <a href="why-experiment-design.html#why_experiment_design">’Identifying meaningful and useful (causal) relationships and parameters</a>)</p>
+<p><br />
+</p>
+<p>Some possibilities:</p>
+<ul>
+<li>Subjects asked to rank (or rate) all <span class="math inline">\(K=20\)</span> titles (titles <span class="math inline">\(k=1,2,...,K=20\)</span>)</li>
+<li>Subjects asked to identify ‘top <span class="math inline">\(C\)</span>’ and ‘bottom <span class="math inline">\(C\)</span>’ (e.g., top and bottom 3) titles</li>
+<li>Subjects presented a series of pairwise comparisons</li>
+<li>Subjects asked to rate (or say whether they would attend) a single title, with between-subject variation</li>
+</ul>
+</div>
+<div id="which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report" class="section level3 unnumbered">
+<h3>Which statistical test(s)/analyses to run (if any) and what measures to report?</h3>
+<p>Suppose we asked each subject to rank all <span class="math inline">\(K=20\)</span> titles.</p>
+<p>How could we <strong>test if there were any ‘substantial difference in the title rankings’</strong> and what would be a meaningful measure of the ‘extent’ of this difference? We might want to consider some ‘minimum effect size of interest’ and ensure that we have a large enough sample to diagnose such an effect with (e.g.) 80% probability (while maintaining a false-positive type-1 error rate of less than 5%).*</p>
+<div class="marginnote">
+<p>* However, it is not clear why this is the most relevant question. Simply determining ‘there is a difference of some minimum size’ doesn’t tell us how confident we are about the best title, nor how much value is gained by choosing that title. This suggests a reinforcement learning approach.</p>
+</div>
+<p><a href="https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages">Friedman’s Q</a>, is a measure of whether ‘any (at least one?) items are systematically ranked higher or lower.’ <span class="math inline">\(Q\)</span> can be normalized into, <a href="https://en.wikipedia.org/wiki/Kendall%27s_W">Kendall’s W</a>, a measure of ‘inter-rater agreement’ going from 0 to 1. There is a significant test for W “against a null hypothesis of no agreement (i.e. random rankings).”</p>
+<p><a href="https://rdrr.io/cran/rstatix/man/friedman_effsize.html">Kendalls uses the Cohen’s interpretation guidelines of 0.1 to 0.3 being a ‘small effect’</a></p>
+<p>“A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different,” with multiple testing corrections. <a href="https://www.datanovia.com/en/lessons/friedman-test-in-r/">datanovia website</a></p>
+<p><br />
+</p>
+</div>
+<div id="how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift" class="section level3 unnumbered">
+<h3>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</h3>
+<div id="simple-assignment" class="section level4 unnumbered">
+<h4>Simple assignment</h4>
+<p>Suppose we are restricted to a single allocation of treatments across the 20 titles. Suppose we asked all subjects to rank all of the <span class="math inline">\(K=20\)</span> titles, or perhaps only to focus on the ‘best’ and ‘worst’ <span class="math inline">\(C\)</span> titles.</p>
+<p>The true population has a large number of subjects (individuals). In our survey we are sampling some number <span class="math inline">\(N\)</span> of individuals. Let each subject be indexed by <span class="math inline">\(i\)</span>, so a particular sample will contain subjects <span class="math inline">\(i=1,...,N\)</span>.</p>
+<p><br />
+</p>
+</div>
+<div id="calc.-1-detect-minimally-important-effect-with-simple-assignment" class="section level4 unnumbered">
+<h4>Calc. 1: Detect ‘minimally important effect?’ (with simple assignment)</h4>
+<p><em>We might frame our test and power calculation as the following:</em></p>
+<p>Suppose the ‘Minimal effect of interest’ that we want to be able to detect is (sort of the ‘alternative hypothesis HA’)…</p>
+<blockquote>
+<p>HA: “One title is ranked by a share of the population that is one and a half times as high as any other title.”</p>
+</blockquote>
+<p>If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if we assume all other titles share the same average ranking, the computations (below) should <em>underestimate</em> the necessary sample size.</p>
+<p>I.e., defining <span class="math inline">\(r_{k,i}\)</span> as the rank given to title <span class="math inline">\(k\)</span> by subject <span class="math inline">\(i\)</span>, and letting <span class="math inline">\(\bar{R^1_i}=\frac{1}{N}\sum I(r_{k,i}=1)\)</span> be the share of the sampled population (subjects) ranking title <span class="math inline">\(k\)</span> as first…</p>
+<p>we may consider a case where <span class="math inline">\(\bar{R^1_j} &gt; \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}\)</span> for some title <span class="math inline">\(j\)</span> relative to all other titles <span class="math inline">\(k\)</span>.*</p>
+<div class="marginnote">
+<p>I think the latter term may simply be <span class="math inline">\(\frac{3}{2}\frac{19}{2}\)</span>, or something similar, the ‘average rank.’</p>
+</div>
+<p><br />
+</p>
+<p><strong>Perhaps, we want to power our test so, for the “HA” described above, we have an 80% chance that we ‘find an effect.’</strong> I.e., an 80% chance that our test statistic (whatever it is) tells us that “it is less than 5% likely that this title would have performed as well in our sample by chance if (H0) all titles been perceived as equally good and thus randomly ranked in the population.”**</p>
+<div class="marginnote">
+<p>** However, I don’t really think that that is <em>really</em> what we are looking for, as we are facing a <em>decision</em> problem.</p>
+</div>
+<p><strong>To test for this</strong> we would follow a certain procedure, e.g.,**</p>
+<div class="marginnote">
+<p>*** I am not sure this is an appropriate procedure.</p>
+</div>
+<ol style="list-style-type: decimal">
+<li><p>Find the title ‘j’ that has the most people in our <em>sample</em> who rank it first; call this share <span class="math inline">\(\bar{R^1_j}\)</span></p></li>
+<li><p>Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size <span class="math inline">\(N\)</span> (our actual sample size), the average rank of the highest-ranked title would be as high as <span class="math inline">\(\bar{R^1_j}\)</span>.****</p>
+<div class="marginnote">
+<p>**** Ideally there is an analytical formula for this; worth looking up.</p>
+</div></li>
+<li><p>If this computed ‘probability of such an extreme result,’ given our sample size <span class="math inline">\(N\)</span>—<span class="math inline">\(P(N, \bar{R^1_j})\)</span>— is below our threshold <span class="math inline">\(\alpha=0.05\)</span> we ‘reject the null.’</p></li>
+</ol>
+<p><br />
+</p>
+<p>We have defined a (design and) testing procedure. We can now <strong>simulate</strong> (or perhaps analytically calculate) <strong>the power (of our design and test) to detect the above HA</strong>, as follows.</p>
+<p>Run <span class="math inline">\(T\)</span> simulations <span class="math inline">\((t=1,...,T)\)</span>. For each simulated sample <span class="math inline">\(t\)</span>:</p>
+<ul>
+<li>Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population,’ i.e.,
+<ul>
+<li>for each of the <span class="math inline">\(N\)</span> subjects drawn, say, ‘subject <span class="math inline">\(i\)</span>,’ for each of their ‘ranks <span class="math inline">\(r=1,2,..,20\)</span>,’ draw a title (by random) to be assigned this rank (<span class="math inline">\(r_{k,i}=r\)</span>),</li>
+<li>with one title (the same one always) having a <span class="math inline">\(\frac{2}{21}\)</span> probability of being drawn for the first rank, and the other 19 titles each having a <span class="math inline">\(\frac{1}{21}\)</span> probability of being drawn for the first rank</li>
+</ul></li>
+<li>Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span>: the average rank for each title in simulation <span class="math inline">\(t\)</span>,
+<ul>
+<li>and then compute (or simulate) <span class="math inline">\(P(N, [\bar{R^1_j}]^t) \equiv [P]^t\)</span>, the test statistic as defined above, the ‘likelihood of such an extreme result under the null hypothesis of random ranks’</li>
+</ul></li>
+</ul>
+<p>Over a sufficient number of simulations, determine the average probability of ‘rejecting the null’ in favor of the above HA (specifically for the ‘correct’ title <span class="math inline">\(j\)</span>).* This is the estimated power of the test.</p>
+<div class="marginnote">
+<p>* This last point is a wrinkle I’ve not seen in previous work involving power calculations, so I hope I am not missing something here. Perhaps we should say something like “power of the test in the right direction.”</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="calc.-2-find-a-title-in-the-top-eta-e.g.-third-of-the-value-of-title-distribution-with-simple-assignment" class="section level4 unnumbered">
+<h4>Calc. 2: Find a title in the top <span class="math inline">\(\eta\)</span> (e.g., third) of the ‘value of title’ distribution (with simple assignment)</h4>
+<p>For any target outcome (movie box office, general acclaim, etc.), each of the (<span class="math inline">\(K=20\)</span>) titles will have some <em>true population parameter</em>.</p>
+Let us call the parameter of interest <span class="math inline">\(\theta_k\)</span> for title <span class="math inline">\(k\)</span>, which we will call the ‘value of title <span class="math inline">\(k\)</span>.’ For now, let us assume that this ‘population parameter’ represents the mean (or some other function?) of something that we can observe in our survey from each sampled subject.*
+<div class="marginnote">
+<p>* Of course, for this example, and in general, there are many reasons why we may not be able to observe exactly the thing that informs our parameter from a particular survey. Our survey/experiment design may not be able to get subjects to tell us exactly what we want to know about their impressions of the title. (E.g., they may not themselves know which title would be most likely to get them to attend the film. Even if we ask them something related to this like, “would you like us to email you a discount coupon for a movie with his title?” this may not perfectly track with movie-attendance choices in other contexts.</p>
+</div>
+Consider a ‘(prior) distribution over parameter <span class="math inline">\(\theta_k\)</span> for each title <span class="math inline">\(k\)</span>.’**
+<div class="marginnote">
+<p>** I won’t get into the details here about what this distribution means in a philosophical sense. There are various types of Bayesian conceptions of this. Perhaps another way of thinking about it is that each title was as if randomly drawn from some distribution of titles.</p>
+</div>
+<p>Without further information, we might let (our belief about) the distribution of this parameter for each title be the same. We might consider that, e.g., the “expected revenue from each title” is Normally distributed <span class="math inline">\(\theta_k \sim N(\mu,\sigma^2) \forall k\)</span>.</p>
+<p>Perhaps each subject’s ranking of titles is monotonic (i.e., rank-preserving) in the true probability that they would attend a movie with each of these titles.</p>
+<p><br />
+</p>
+<p>Perhaps, we want to choose a sample size such that the title we claim has the “best overall ranking in our sample” has a <span class="math inline">\(B=0.8\)</span> or greater chance of being in the top-third of the true most-profitable titles.</p>
+Note that choosing a title that is “most likely to be in the top third” is not necessarily the same as “choosing the title with the greatest expected profit.” Our ranks are a multi-dimensional measure; thus one title need not ‘dominate’ the other title. E.g., in a sample of <span class="math inline">\(N=100\)</span> title <span class="math inline">\(A\)</span> may be ranked first by 10 people and last by 90 people, while title <span class="math inline">\(B\)</span> may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.*
+<div class="marginnote">
+<p>* E.g., perhaps this implies a 90% probability that <span class="math inline">\(B\)</span> will be more profitable than <span class="math inline">\(A\)</span>, but for the 10% of the states-of-the world when is more profitable than <span class="math inline">\(B\)</span>, <span class="math inline">\(A\)</span> is 100 times more profitable. This would imply that title <span class="math inline">\(A\)</span> has a greater expected value profit, but also involves more risk.</p>
+</div>
+<p><br />
+</p>
+<p><strong>Nonetheless</strong>,</p>
+<p>Consider whether title <span class="math inline">\(k\)</span> is among the titles that is ‘ranked in the top-third’ by the largest share of the population. More specifically, consider <span class="math inline">\(\bar{R}^{7+}_k \equiv E[r_{k}\leq7]\)</span> as the ‘share of the population ranking title <span class="math inline">\(k\)</span> top 7 out of 20 or better. Let <span class="math inline">\(D_k=1\)</span> if <span class="math inline">\(\sum_{k,j}1\big(\bar{R}^{7+}_k&gt;\bar{R}^{7+}_j\big)\geq7\)</span>; i.e., if <span class="math inline">\(k\)</span> is one of the top-7 titles in terms of the measure ’ranked in the top third.’</p>
+<p>We might want to…</p>
+<ol style="list-style-type: decimal">
+<li><p>based on our sample (and some assumptions?) choose the title with the highest chance of being ranked in the top-third by the population as a whole (<span class="math inline">\(k^\ast \equiv argmax_k\big(P(D_k=1)\big)\)</span>), and</p></li>
+<li><p>sample <span class="math inline">\(N\)</span> large enough so that this ‘chosen title’ has a <span class="math inline">\(\beta=0.8\)</span> chance of indeed being ranked in the top-third by the population as a whole, i.e., <span class="math inline">\(P(D_{k^\ast}=1)&gt;\beta=0.8\)</span>.</p></li>
+</ol>
+<p><br />
+</p>
+<p>I imagine that under certain (overly restrictive?) assumptions about the distribution of rankings, we would be able to calculate:</p>
+<ol style="list-style-type: decimal">
+<li><p>The appropriate procedure for selecting the title that is best by the above metric (<span class="math inline">\(k^\ast\)</span>)</p></li>
+<li><p>Determine the minimum neccesary <span class="math inline">\(N\)</span> to achieve this <span class="math inline">\(\beta=0.8\)</span> chance of …</p></li>
+</ol>
+<p><em>But do we want to do this?!</em></p>
+</div>
+<div id="sequentialadaptive-designs-multi-armed-bandits" class="section level4 unnumbered">
+<h4>Sequential/adaptive designs, multi-armed bandits</h4>
+<div class="marginnote">
+<p>More generally, see <a href="quant-design-power.html#sequential"><strong>??</strong></a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="survey-power-likert" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</h2>
+<div id="how-to-measure-and-consider-the-precision-of-likert-item-responses" class="section level3" number="14.7.1">
+<h3><span class="header-section-number">14.7.1</span> How to measure and consider the precision of Likert-item responses</h3>
+<p>Considering ‘precision of Likert-item responses’ and sample-size calculations:</p>
+<p>What are commonly used/justifiable measures of central tendency and dispersion for Likert-items?</p>
+<p>How can we think about ‘precision of estimated Likert-item responses?’ and attaining sufficient precision, and a metric for this?</p>
+<p>“How precise is precise, and by what metric?”</p>
+<p><br />
+</p>
+<div id="a-simple-naive-approach" class="section level4 unnumbered">
+<h4>A simple naive approach?</h4>
+<p>Interval coding: <span class="math inline">\(y=[1,2,3,4,5]\)</span> for a 5-item</p>
+<p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
+<p>Measure of dispersion: <span class="math inline">\(\hat{s}\)</span> := Sample standard deviation of y *</p>
+<div class="marginnote">
+<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares/</p>
+</div>
+<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span></p>
+<p>If we assume <span class="math inline">\(y\)</span> is normally distributed (which obviously can’t be precisely the case)…**</p>
+<div class="marginnote">
+<p>* * but Wiki (Derrick and White 2017?) claim “responses often show a quasi-normal distribution.”</p>
+</div>
+<p>… then a 95% confidence interval for <span class="math inline">\(\bar{y}\)</span> would be</p>
+<p><span class="math display">\[\bar{y} \pm  1.96 \: \hat{SE_m}\]</span></p>
+<p><br />
+</p>
+<p><strong>A. ‘Absolute’ metric?:</strong> Target a 95% CI range less than (e.g.) 1 ‘Likert scale unit,’
+i.e.,</p>
+<p><span class="math display">\[2 * 1.96 \: \hat{SE_m} &lt; 1\]</span> *</p>
+<div class="marginnote">
+<p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>.”</p>
+</div>
+<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
+<p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
+<div class="marginnote">
+<p>To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).</p>
+</div>
+<p><br />
+</p>
+<p><strong>B. ‘Relative’ metric?</strong>: Target a 95% CI range below <span class="math inline">\(B\)</span> sd of the Likert-item-integer-response <span class="math inline">\(y\)</span>:
+i.e.,</p>
+<p><span class="math display">\[2*1.96 SE_m &lt; B*sd(y)\]</span></p>
+<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt(n) &lt; B*s\)</span>,
+i.e., <span class="math inline">\(2*1.96/\sqrt(n) &lt; B\)</span>
+i.e., <span class="math inline">\(\sqrt(n) &gt; 2*1.96/B\)</span>
+i.e.,</p>
+<p><span class="math display">\[n &gt;  15.3664/(B^2)\]</span></p>
+<p>… where <span class="math inline">\(sd(y)\)</span> is the true standard deviation of the outcome.</p>
+<div class="marginnote">
+<p>Note: This <span class="math inline">\(n\)</span> gives should give us an estimated CI with a range of B standard deviations of the outcome. I’m not sure if it implies that, after collecting the sample, our estimates of the CI will always have a range equal to the estimated sd. Need to think about this more.</p>
+</div>
+<p>As you can see (caveat: calculations need doublechecking), if we assume the Likert-integer-thing is normally distributed, the calculation of ‘how big a sample size (n) we need in order to get, on average, a CI of 1 sd or smaller’ is straightforward.</p>
+</div>
+</div>
+<div id="computing-sample-size-to-achieve-this-precision" class="section level3" number="14.7.2">
+<h3><span class="header-section-number">14.7.2</span> Computing sample size to achieve this precision</h3>
+<p>Initial thoughts (unfold):</p>
+
+<div class="fold">
+<p>If we assume normality, there should be a simple analytical formula for</p>
+<p>’Minimum sample size….
+… for (e.g.) 80% likelihood …
+… of achieving an (e.g.) 95% “confidence interval (CI) over the mean” of a variable…
+… that is within (e.g.) 1 standard deviation of the variable on either side</p>
+<p><em>Notes:</em></p>
+<ul>
+<li><p>This is to get CI bounds on the means stated relative to the SD of the variable. If we wanted to bounds in ‘units of the variable’ we would need to know, guess, or estimate the SD of the variable.</p></li>
+<li><p>For a Likert variable normality is not a great assumption. We should probably make another assumption over the distribution (or even draw from past data), and then we can either do a similar analytical computation or a simulation based computation (which should be fairly easy)</p></li>
+<li><p>I put ‘CI over the mean’ in scare quotes because these are frequentist confidence intervals which are hard to interpret. A Bayesian approach might be more appropriate… worth thinking about</p></li>
+<li><p>Not sure whether ‘mean of a Likert-item response’ is important anyway. I’ll read more on Likert scales.</p></li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="quant-design-power.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="experimetrics-te.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

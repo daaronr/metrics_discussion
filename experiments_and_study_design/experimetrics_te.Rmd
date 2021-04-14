@@ -606,7 +606,7 @@ Multiple splits and tests may lead to overstated statistical significance for di
 
 >  The approach of List, Shaikh, and Xu (2016) works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.
 
-### 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects
+### Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects
 
 - Partition sample by "region of covariate space"
 - Determine which partition produces subgroups that differ the most in terms of treatment effects.

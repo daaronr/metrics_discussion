@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-04-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- 
+<!--
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -677,7 +677,7 @@ window.initializeCodeFolding = function(show) {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
+  window.initializeCodeFolding("show" === "hide");
 });
 </script>
 
@@ -808,11 +808,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
 <li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
 <li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.7</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.8</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.9</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.10</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.11</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
@@ -832,20 +833,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a></li>
-<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
+<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.3.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.3.2</b> Ch2: Lasso for linear models</a></li>
-<li class="chapter" data-level="5.3.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.3.3</b> Chapter 3: Generalized linear models</a></li>
-<li class="chapter" data-level="5.3.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.3.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.4</b> Notes: Mullainathan</a></li>
+<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
 </ul></li>
 <li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
 <li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
@@ -1017,7 +1017,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
 <li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
 <li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
-<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
 <li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
 <li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
 <li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
@@ -1242,25 +1242,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="surveys" class="section level1" number="11">
 <h1><span class="header-section-number">11</span> Survey design and implementation; analysis of survey data</h1>
-<p><strong>Resources consulted/to consult</strong></p>
-<p>Wikipedia entries on</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Survey_sampling">‘survey sampling’</a></li>
-</ul>
+<p>The <a href="https://en.wikipedia.org/wiki/Survey_sampling">Wikipedia entry on ‘survey sampling’</a> provides a good overview.*</p>
 <div class="marginnote">
-<p>See: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.</p>
+<p>* Also see: Carl-Erik Särndal; Bengt Swensson; Jan Wretman (2003). Model assisted survey sampling. Springer. pp. 9–12. ISBN 978-0-387-40620-6. Retrieved 2 January 2011.</p>
 </div>
 <div id="survey-samplingintake" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Survey sampling/intake</h2>
 <div id="probability-sampling" class="section level3 unnumbered">
 <h3>Probability sampling</h3>
-<div class="marginnote">
-<p>Here: naive notes based on wikipedia, will be improved.</p>
-</div>
-<p>In my own words:</p>
+<p>In the fold below, I offer a rough characterization of the rationale for probabiliity sampling, in my own words, based on my reading of the aforementioned Wikipedia entry:</p>
 
 <div class="fold">
-<p>Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.</p>
+<p>‘Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.</p>
 <p>The basic idea, if I understand correctly, is to define a population of interest and a ‘sample frame’ (the place we are actually drawing from, the empirical analogue of the population of interest perhaps).
 Essentially, rather than advertising or trying to recruit everyone, or have people enter by self selection, probability sampling select from the sample frame with a particular probability, and then actively tries to get the selected individuals to complete the survey. As only a smaller number of people are selected to be interviewed/fill out the survey, you can spend more time and money/incentives, trying to make sure they respond.</p>
 <p>Probability sampling also allows ‘stratification,’ and oversampling of harder to reach groups. We potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.</p>
@@ -1274,8 +1267,11 @@ Essentially, rather than advertising or trying to recruit everyone, or have peop
 <div class="marginnote">
 <p>Note that the ‘sampling frame,’ ‘the source material or device from which a sample is drawn,’ e.g, a telephone directory, may not exactly contain all elements of the ‘population of interest’ (e.g., the population with and without listed numbers).</p>
 <p>On the other hand this terminology doesn’t seem to be everywhere consistent, e.g., Salganik and H refer to it as ‘a list of all of the members in the population.’</p>
-<p>See ‘Missing elements,’ ‘Foreign elements,’ ‘Duplicate entries’ and ‘Groups or clusters’ …</p>
-<p>Also note that ‘Not all frames explicitly list population elements; some list only ’clusters.’ For example, a street map can be used as a frame for a door-to-door survey.’</p>
+<p>See ‘Missing elements,’ ‘Foreign elements,’ ‘Duplicate entries’ and ‘Groups or clusters’</p>
+<p>Also note that</p>
+<blockquote>
+<p>Not all frames explicitly list population elements; some list only ‘clusters.’ For example, a street map can be used as a frame for a door-to-door survey.</p>
+</blockquote>
 </div>
 <p><br />
 </p>
@@ -1284,9 +1280,9 @@ Essentially, rather than advertising or trying to recruit everyone, or have peop
 </ul>
 <p><br />
 </p>
-<p><em>Issues</em>*</p>
+<p><em>Issues</em>**</p>
 <div class="marginnote">
-<p>* Many of these also seem relevant for our <a href="surveys.html#jazz-case">‘social movement’ case of interest below.</a></p>
+<p>** Many of these also seem relevant for our <a href="surveys.html#jazz-case">‘social movement’ case of interest below.</a></p>
 </div>
 <ul>
 <li>Non-response bias (biggest issue?)</li>
@@ -1294,9 +1290,12 @@ Essentially, rather than advertising or trying to recruit everyone, or have peop
 </div>
 <div id="np-sampling" class="section level3 unnumbered">
 <h3>Non-probability sampling</h3>
+<blockquote>
+<p>There is a wide range of non-probability designs that include case-control studies, clinical trials, evaluation research designs, intercept surveys, and opt-in panels, to name a few.</p>
+</blockquote>
 <p><span class="citation"><a href="references.html#ref-bakerSummaryReportAAPOR2013" role="doc-biblioref">Baker et al.</a> (<a href="references.html#ref-bakerSummaryReportAAPOR2013" role="doc-biblioref">2013</a>)</span></p>
 <p><a href="https://www.aapor.org/Education-Resources/Reports/Non-Probability-Sampling.aspx">Non-Probability Sampling - report of the aapor task force on non-probability sampling</a></p>
-<p>‘River sampling’</p>
+<p>‘River sampling’ is closest to the case we are dealing with <a href="surveys.html#jazz-case">below</a>.</p>
 <p><br />
 </p>
 <div id="respondent-driven-sampling-from-rare-or-hidden-populations" class="section level4 unnumbered">
@@ -1353,7 +1352,7 @@ these types of samples. Further, we will show that these estimates are asymptoti
 </blockquote>
 <p><br />
 </p>
-<p>There are some intricate and interesting calculations involving network analysis</p>
+<p>There are some intricate and interesting calculations involving network analysis .</p>
 <p>They show the unbiasedness of this approach under specified conditions, and its robustness to the seed choice. They also give a monte-carlo simulation illustrating the same.</p>
 <p>Finally, they do some sort of comparison of their approach and previous approaches in real settings.**</p>
 <div class="marginnote">
@@ -1387,7 +1386,7 @@ these types of samples. Further, we will show that these estimates are asymptoti
 <p><br />
 </p>
 <ol start="3" style="list-style-type: decimal">
-<li>We have collected survey responses from <strong>self-selected ‘convenience’ samples</strong> (=‘internet surveys?’) across several years; this most resembles <em>‘river sampling’</em></li>
+<li>We have collected survey responses from <strong>self-selected ‘convenience’ samples</strong> (‘internet surveys’) across several years; this most resembles <em>‘river sampling’</em></li>
 </ol>
 <p>… based on advertising and word-of-mouth in a variety of outlets (‘referrers’) associated with the ‘movement.’*</p>
 <div class="marginnote">
@@ -1456,7 +1455,7 @@ these types of samples. Further, we will show that these estimates are asymptoti
 <p><em>Probability sampling</em> identifies a <em>population of interest</em> and a <em>sample frame</em> meant to capture this population. Rather than appealing to this entire population/frame, probability sampling randomly (or using stratification/clustering) samples a ‘probability share’ (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze —and perhaps adjust for—the rate of non-response.</p>
 <p>In contrast,</p>
 <div class="marginnote">
-<p>I have heard that ‘internet surveys,’ if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches.</p>
+<p>I have heard that ‘internet surveys,’ if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches?</p>
 </div>
 <p><br />
 </p>

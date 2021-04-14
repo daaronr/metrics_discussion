@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-04-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,7 +99,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- 
+<!--
 <script type="text/javascript">
 
 // toggle visibility of R source blocks in R Markdown output
@@ -677,7 +677,7 @@ window.initializeCodeFolding = function(show) {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
+  window.initializeCodeFolding("show" === "hide");
 });
 </script>
 
@@ -808,11 +808,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
 <li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
 <li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.7</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.8</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.9</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.10</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.11</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
@@ -832,20 +833,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a></li>
-<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#machine-learning-statistical-learning-lasso-ridge-and-more"><i class="fa fa-check"></i><b>5.2</b> Machine Learning (statistical learning): Lasso, Ridge, and more</a>
+<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.2.1</b> Limitations to inference from learning approaches</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.2.2</b> Tree models</a></li>
+<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.3</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.3.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.3.2</b> Ch2: Lasso for linear models</a></li>
-<li class="chapter" data-level="5.3.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.3.3</b> Chapter 3: Generalized linear models</a></li>
-<li class="chapter" data-level="5.3.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.3.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.4</b> Notes: Mullainathan</a></li>
+<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
 </ul></li>
 <li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
 <li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
@@ -1017,7 +1017,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
 <li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
 <li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
-<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> 10.3.1 Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
 <li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
 <li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
 <li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
@@ -1706,7 +1706,7 @@ I think a big part of the discussion here comes from the subjective-objective de
 <p><br />
 </p>
 <p>Half-Cauchy distribution for varying <span class="math inline">\(s\)</span>, with <span class="math inline">\(x_0=0\)</span>:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-53-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-54-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>HC is ’heavy-tailed;… gives some probability to very high values but low values are still more likely.</p>
 <p>One might consider <span class="math inline">\(s=0.3\)</span></p>
 <p>Note that the Half-Cauchy distribution has an undefined mean, variance, skewness, and kurtosis. It does have a mode, at <span class="math inline">\(x_0\)</span>.</p>
@@ -1772,19 +1772,18 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <span id="cb34-5"><a href="metaanalysis.html#cb34-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">iter =</span> <span class="dv">2000</span>)</span>
 <span id="cb34-6"><a href="metaanalysis.html#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Compiling Stan program...</code></pre>
-<pre><code>## Trying to compile a simple C file</code></pre>
 <pre><code>## Start sampling</code></pre>
 <p><br />
 </p>
 <p><strong>Coding tip: use ‘update’</strong></p>
 <p>The brms package has a way of running the model again once it has compiled, without compiling it again. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="metaanalysis.html#cb38-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m.brm, <span class="at">iter=</span><span class="dv">10000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="metaanalysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m.brm, <span class="at">iter=</span><span class="dv">10000</span>)</span></code></pre></div>
 <pre><code>## Start sampling</code></pre>
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.2e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
+## Chain 1: Gradient evaluation took 1.3e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -1801,15 +1800,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 1: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.46054 seconds (Warm-up)
-## Chain 1:                0.528929 seconds (Sampling)
-## Chain 1:                0.989469 seconds (Total)
+## Chain 1:  Elapsed Time: 0.415739 seconds (Warm-up)
+## Chain 1:                0.48472 seconds (Sampling)
+## Chain 1:                0.900459 seconds (Total)
 ## Chain 1: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 2).
 ## Chain 2: 
-## Chain 2: Gradient evaluation took 1e-05 seconds
-## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 2: Gradient evaluation took 1.2e-05 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 2: Adjust your expectations accordingly!
 ## Chain 2: 
 ## Chain 2: 
@@ -1826,15 +1825,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 2: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 2: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 2: 
-## Chain 2:  Elapsed Time: 0.434618 seconds (Warm-up)
-## Chain 2:                0.493967 seconds (Sampling)
-## Chain 2:                0.928585 seconds (Total)
+## Chain 2:  Elapsed Time: 0.414521 seconds (Warm-up)
+## Chain 2:                0.462124 seconds (Sampling)
+## Chain 2:                0.876645 seconds (Total)
 ## Chain 2: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 3).
 ## Chain 3: 
-## Chain 3: Gradient evaluation took 1e-05 seconds
-## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.1 seconds.
+## Chain 3: Gradient evaluation took 1.2e-05 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.12 seconds.
 ## Chain 3: Adjust your expectations accordingly!
 ## Chain 3: 
 ## Chain 3: 
@@ -1851,15 +1850,15 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 3: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 3: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 3: 
-## Chain 3:  Elapsed Time: 0.435512 seconds (Warm-up)
-## Chain 3:                0.462962 seconds (Sampling)
-## Chain 3:                0.898474 seconds (Total)
+## Chain 3:  Elapsed Time: 0.397469 seconds (Warm-up)
+## Chain 3:                0.437557 seconds (Sampling)
+## Chain 3:                0.835026 seconds (Total)
 ## Chain 3: 
 ## 
 ## SAMPLING FOR MODEL &#39;73d4772adf5ae3b535a32f082606f81a&#39; NOW (CHAIN 4).
 ## Chain 4: 
-## Chain 4: Gradient evaluation took 2.6e-05 seconds
-## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
+## Chain 4: Gradient evaluation took 1.1e-05 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.11 seconds.
 ## Chain 4: Adjust your expectations accordingly!
 ## Chain 4: 
 ## Chain 4: 
@@ -1876,11 +1875,11 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Chain 4: Iteration: 9000 / 10000 [ 90%]  (Sampling)
 ## Chain 4: Iteration: 10000 / 10000 [100%]  (Sampling)
 ## Chain 4: 
-## Chain 4:  Elapsed Time: 0.456505 seconds (Warm-up)
-## Chain 4:                0.483608 seconds (Sampling)
-## Chain 4:                0.940113 seconds (Total)
+## Chain 4:  Elapsed Time: 0.427627 seconds (Warm-up)
+## Chain 4:                0.439216 seconds (Sampling)
+## Chain 4:                0.866843 seconds (Total)
 ## Chain 4:</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="metaanalysis.html#cb41-1" aria-hidden="true" tabindex="-1"></a>model2</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="metaanalysis.html#cb40-1" aria-hidden="true" tabindex="-1"></a>model2</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
@@ -1905,14 +1904,13 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential
 ## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 <p>If you would want to change something with the model, such as the priors, then it would have to compile again in C++.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="metaanalysis.html#cb43-1" aria-hidden="true" tabindex="-1"></a>priors2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">class =</span> Intercept), <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">class =</span> sd))</span>
-<span id="cb43-2"><a href="metaanalysis.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="metaanalysis.html#cb43-3" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">update</span>(m.brm, <span class="at">prior =</span> priors2)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="metaanalysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a>priors2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">class =</span> Intercept), <span class="fu">prior</span>(<span class="fu">normal</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">class =</span> sd))</span>
+<span id="cb42-2"><a href="metaanalysis.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="metaanalysis.html#cb42-3" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">update</span>(m.brm, <span class="at">prior =</span> priors2)</span></code></pre></div>
 <pre><code>## The desired updates require recompiling the model</code></pre>
 <pre><code>## Compiling Stan program...</code></pre>
-<pre><code>## Trying to compile a simple C file</code></pre>
 <pre><code>## Start sampling</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="metaanalysis.html#cb48-1" aria-hidden="true" tabindex="-1"></a>model3</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="metaanalysis.html#cb46-1" aria-hidden="true" tabindex="-1"></a>model3</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
@@ -1923,11 +1921,11 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Group-Level Effects: 
 ## ~Author (Number of levels: 18) 
 ##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## sd(Intercept)     0.31      0.11     0.13     0.56 1.00     1061     1993
+## sd(Intercept)     0.31      0.11     0.12     0.54 1.00      965     1332
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept     0.57      0.09     0.40     0.77 1.00     1656     1854
+## Intercept     0.57      0.10     0.40     0.77 1.00     1426     1599
 ## 
 ## Family Specific Parameters: 
 ##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
@@ -1968,9 +1966,9 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <div class="marginnote">
 <p>DRL Not sure I understand this; may need to revise and give a clear explanation. I guess it’s something like ‘the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set’…</p>
 </div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="metaanalysis.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="metaanalysis.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(m.brm)</span></code></pre></div>
 <pre><code>## Using 10 posterior samples for ppc type &#39;dens_overlay&#39; by default.</code></pre>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-61-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-62-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look “well mixed,” suggesting that the parameter space is being explored.*</p>
 <p><em>Is ‘assessing convergence’ a subjective judgement?</em> (Unfold a discussion.)</p>
 
@@ -1986,21 +1984,21 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <p>It seems that most people use a combination of both numerical methods and visual checking. When I studied it, we checked the Rhat, the effective sample size, and checked for patterns in the trace plots (eg obvious autocorrelation, large spikes, etc)</p>
 <p>There are some good slides on visually assessing convergence here: <a href="https://astrostatistics.psu.edu/RLectures/diagnosticsMCMC.pdf" class="uri">https://astrostatistics.psu.edu/RLectures/diagnosticsMCMC.pdf</a></p>
 </div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="metaanalysis.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="metaanalysis.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span></code></pre></div>
 <pre><code>## This is bayesplot version 1.7.2</code></pre>
 <pre><code>## - Online documentation and vignettes at mc-stan.org/bayesplot</code></pre>
 <pre><code>## - bayesplot theme set to bayesplot::theme_default()</code></pre>
 <pre><code>##    * Does _not_ affect other ggplot2 plots</code></pre>
 <pre><code>##    * See ?bayesplot_theme_set for details on theme setting</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="metaanalysis.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_trace</span>(m.brm)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-63-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="metaanalysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_trace</span>(m.brm)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-64-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Also check for a Potential Scale Reduction Factor (PSRF), or <span class="math inline">\(\hat{R}\)</span> below 1.01.</p>
 <div class="marginnote">
 <p>SD: Rhat is a Bayesian measure used to determine convergence - I don’t think that Harrer will go into detail. It has a complicated formula, but all we should focus on is that Rhat converges to 1 as n tends to infinity. Read more here: <a href="https://mc-stan.org/rstan/reference/Rhat.html" class="uri">https://mc-stan.org/rstan/reference/Rhat.html</a></p>
 </div>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="metaanalysis.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="metaanalysis.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.brm)</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: TE | se(seTE) ~ 1 + (1 | Author) 
@@ -2011,11 +2009,11 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 ## Group-Level Effects: 
 ## ~Author (Number of levels: 18) 
 ##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## sd(Intercept)     0.30      0.10     0.12     0.52 1.01      905     1498
+## sd(Intercept)     0.29      0.10     0.12     0.52 1.00     1449     2119
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept     0.57      0.10     0.39     0.78 1.00     1564     1875
+## Intercept     0.57      0.09     0.39     0.76 1.00     1741     1856
 ## 
 ## Family Specific Parameters: 
 ##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
@@ -2035,29 +2033,29 @@ SD: Since the Cauchy distribution has infinite mean (hence undefined first momen
 <p><br />
 </p>
 <p>We can also extract the estimated deviation of each study’s “true” effect size from the pooled effect:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="metaanalysis.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ranef</span>(m.brm)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="metaanalysis.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ranef</span>(m.brm)</span></code></pre></div>
 <pre><code>## $Author
 ## , , Intercept
 ## 
 ##                        Estimate Est.Error   Q2.5  Q97.5
-## Call et al.               0.068      0.20 -0.320  0.474
-## Cavanagh et al.          -0.148      0.18 -0.510  0.177
-## DanitzOrsillo             0.493      0.29 -0.010  1.115
-## de Vibe et al.           -0.326      0.15 -0.623 -0.047
-## Frazier et al.           -0.118      0.15 -0.437  0.161
-## Frogeli et al.            0.031      0.17 -0.315  0.359
-## Gallego et al.            0.088      0.18 -0.275  0.456
-## Hazlett-Stevens &amp; Oren   -0.032      0.17 -0.387  0.304
-## Hintz et al.             -0.213      0.17 -0.575  0.099
-## Kang et al.               0.289      0.24 -0.144  0.830
-## Kuhlmann et al.          -0.315      0.19 -0.714  0.037
-## Lever Taylor et al.      -0.111      0.19 -0.502  0.253
-## Phang et al.             -0.023      0.19 -0.393  0.340
-## Rasanen et al.           -0.085      0.21 -0.516  0.310
-## Ratanasiripong           -0.029      0.23 -0.497  0.442
-## Shapiro et al.            0.403      0.25 -0.033  0.940
-## SongLindquist             0.020      0.19 -0.368  0.387
-## Warnecke et al.           0.011      0.19 -0.366  0.380</code></pre>
+## Call et al.               0.073      0.20 -0.306  0.473
+## Cavanagh et al.          -0.139      0.17 -0.491  0.186
+## DanitzOrsillo             0.494      0.29  0.011  1.129
+## de Vibe et al.           -0.316      0.15 -0.620 -0.048
+## Frazier et al.           -0.113      0.15 -0.425  0.164
+## Frogeli et al.            0.041      0.17 -0.290  0.371
+## Gallego et al.            0.091      0.18 -0.262  0.455
+## Hazlett-Stevens &amp; Oren   -0.024      0.18 -0.395  0.332
+## Hintz et al.             -0.202      0.17 -0.544  0.102
+## Kang et al.               0.289      0.25 -0.151  0.817
+## Kuhlmann et al.          -0.306      0.19 -0.718  0.039
+## Lever Taylor et al.      -0.106      0.19 -0.503  0.241
+## Phang et al.             -0.019      0.19 -0.420  0.338
+## Rasanen et al.           -0.075      0.20 -0.480  0.306
+## Ratanasiripong           -0.021      0.23 -0.478  0.440
+## Shapiro et al.            0.403      0.25 -0.026  0.949
+## SongLindquist             0.026      0.19 -0.345  0.401
+## Warnecke et al.           0.016      0.19 -0.367  0.382</code></pre>
 <div class="marginnote">
 <p>These are measures of <em>deviations</em>. But they don’t exactly equal the difference between the input effect size and the estimated pooled effect size. In fact this is coming from an estimate of the true effect for each study which ‘averages towards the mean’ following some criteria (this is mentioned later).</p>
 </div>
@@ -2074,42 +2072,42 @@ with the 95% credibility interval (not confidence interval!) ranging from 95% Cr
 </blockquote>
 <p>But now we can model the parameters we want to estimate probabilistically…</p>
 <p>Taking samples from the (?) simulated posterior density of the population intercept (mean effect size) and sd of the effect…</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="metaanalysis.html#cb63-1" aria-hidden="true" tabindex="-1"></a>post.samples <span class="ot">&lt;-</span> <span class="fu">posterior_samples</span>(m.brm, <span class="fu">c</span>(<span class="st">&quot;^b&quot;</span>, <span class="st">&quot;^sd&quot;</span>))</span>
-<span id="cb63-2"><a href="metaanalysis.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(post.samples)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="metaanalysis.html#cb61-1" aria-hidden="true" tabindex="-1"></a>post.samples <span class="ot">&lt;-</span> <span class="fu">posterior_samples</span>(m.brm, <span class="fu">c</span>(<span class="st">&quot;^b&quot;</span>, <span class="st">&quot;^sd&quot;</span>))</span>
+<span id="cb61-2"><a href="metaanalysis.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(post.samples)</span></code></pre></div>
 <pre><code>## [1] &quot;b_Intercept&quot;          &quot;sd_Author__Intercept&quot;</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="metaanalysis.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(post.samples) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;smd&quot;</span>, <span class="st">&quot;tau&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="metaanalysis.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(post.samples) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;smd&quot;</span>, <span class="st">&quot;tau&quot;</span>)</span></code></pre></div>
 <p>“… make a <strong>density plot</strong> of the posterior distributions”</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="metaanalysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for SMD</span></span>
-<span id="cb66-2"><a href="metaanalysis.html#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-3"><a href="metaanalysis.html#cb66-3" aria-hidden="true" tabindex="-1"></a>smd_density  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> smd), <span class="at">data =</span> post.samples) <span class="sc">+</span></span>
-<span id="cb66-4"><a href="metaanalysis.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb66-5"><a href="metaanalysis.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="fu">mean</span>(post.samples<span class="sc">$</span>smd)) <span class="sc">+</span></span>
-<span id="cb66-6"><a href="metaanalysis.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(SMD)),</span>
-<span id="cb66-7"><a href="metaanalysis.html#cb66-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb66-8"><a href="metaanalysis.html#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb66-9"><a href="metaanalysis.html#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Standardized mean difference&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
-<span id="cb66-10"><a href="metaanalysis.html#cb66-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-11"><a href="metaanalysis.html#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-12"><a href="metaanalysis.html#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for tau</span></span>
-<span id="cb66-13"><a href="metaanalysis.html#cb66-13" aria-hidden="true" tabindex="-1"></a>tau_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> tau), <span class="at">data =</span> post.samples) <span class="sc">+</span></span>
-<span id="cb66-14"><a href="metaanalysis.html#cb66-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">color =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb66-15"><a href="metaanalysis.html#cb66-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="fu">mean</span>(post.samples<span class="sc">$</span>tau)) <span class="sc">+</span></span>
-<span id="cb66-16"><a href="metaanalysis.html#cb66-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(tau),</span>
-<span id="cb66-17"><a href="metaanalysis.html#cb66-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb66-18"><a href="metaanalysis.html#cb66-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb66-19"><a href="metaanalysis.html#cb66-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Between-study variation (SD = tau)&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
-<span id="cb66-20"><a href="metaanalysis.html#cb66-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-21"><a href="metaanalysis.html#cb66-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Display plots together</span></span>
-<span id="cb66-22"><a href="metaanalysis.html#cb66-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-23"><a href="metaanalysis.html#cb66-23" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gridExtra)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="metaanalysis.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for SMD</span></span>
+<span id="cb64-2"><a href="metaanalysis.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="metaanalysis.html#cb64-3" aria-hidden="true" tabindex="-1"></a>smd_density  <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> smd), <span class="at">data =</span> post.samples) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="metaanalysis.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="metaanalysis.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="fu">mean</span>(post.samples<span class="sc">$</span>smd)) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="metaanalysis.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(SMD)),</span>
+<span id="cb64-7"><a href="metaanalysis.html#cb64-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb64-8"><a href="metaanalysis.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb64-9"><a href="metaanalysis.html#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Standardized mean difference&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
+<span id="cb64-10"><a href="metaanalysis.html#cb64-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="metaanalysis.html#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-12"><a href="metaanalysis.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for tau</span></span>
+<span id="cb64-13"><a href="metaanalysis.html#cb64-13" aria-hidden="true" tabindex="-1"></a>tau_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> tau), <span class="at">data =</span> post.samples) <span class="sc">+</span></span>
+<span id="cb64-14"><a href="metaanalysis.html#cb64-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">color =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb64-15"><a href="metaanalysis.html#cb64-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="fu">mean</span>(post.samples<span class="sc">$</span>tau)) <span class="sc">+</span></span>
+<span id="cb64-16"><a href="metaanalysis.html#cb64-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(tau),</span>
+<span id="cb64-17"><a href="metaanalysis.html#cb64-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb64-18"><a href="metaanalysis.html#cb64-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb64-19"><a href="metaanalysis.html#cb64-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Between-study variation (SD = tau)&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Posterior density plot&quot;</span>)</span>
+<span id="cb64-20"><a href="metaanalysis.html#cb64-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-21"><a href="metaanalysis.html#cb64-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Display plots together</span></span>
+<span id="cb64-22"><a href="metaanalysis.html#cb64-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-23"><a href="metaanalysis.html#cb64-23" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gridExtra)</span></code></pre></div>
 <pre><code>## Loading required package: gridExtra</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;gridExtra&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     combine</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="metaanalysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(smd_density, tau_density, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-67-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="metaanalysis.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(smd_density, tau_density, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-68-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>posterior distributions unimodal, roughly normal distribution</li>
 <li>… “peaking around the values for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span> we saw in the output”</li>
@@ -2126,16 +2124,16 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <blockquote>
 <p>Use the <code>ecdf</code> function to implement the ECDF… then check…</p>
 </blockquote>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="metaanalysis.html#cb71-1" aria-hidden="true" tabindex="-1"></a>smd.ecdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(post.samples<span class="sc">$</span>smd)</span>
-<span id="cb71-2"><a href="metaanalysis.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smd.ecdf</span>(<span class="fl">0.3</span>)</span></code></pre></div>
-<pre><code>## [1] 0.0022</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="metaanalysis.html#cb69-1" aria-hidden="true" tabindex="-1"></a>smd.ecdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(post.samples<span class="sc">$</span>smd)</span>
+<span id="cb69-2"><a href="metaanalysis.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smd.ecdf</span>(<span class="fl">0.3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0037</code></pre>
 <blockquote>
 <p>We see that the probability of our pooled effect being smaller than <span class="math inline">\(SMD = 0.30\)</span> is <strong>very, very low</strong>, so the effects of the interventions we find in this meta-analysis are very likely to be meaningful.</p>
 </blockquote>
 <p><br />
 </p>
 <p>Plotting the ECDF below:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-69-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-70-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="forest-plots" class="section level3" number="17.2.3">
@@ -2148,38 +2146,38 @@ Because maybe an effect of 0.30 or smaller means it’s not worth using this dru
 <p>Use the <code>spread_draws</code> function … takes, as input 1. the fitted <code>brms</code> model, 2. the random-effects index factor and the parameter to extract (here <code>b_Intercept</code>).
 …calculate actual effect sizes for each by adding the pooled effect size <code>b_Intercept</code> to the estimated deviation for each study.</p>
 </div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="metaanalysis.html#cb73-1" aria-hidden="true" tabindex="-1"></a>study.draws <span class="ot">&lt;-</span> <span class="fu">spread_draws</span>(m.brm, r_Author[Author,], b_Intercept) <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="metaanalysis.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">b_Intercept =</span> r_Author <span class="sc">+</span> b_Intercept)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="metaanalysis.html#cb71-1" aria-hidden="true" tabindex="-1"></a>study.draws <span class="ot">&lt;-</span> <span class="fu">spread_draws</span>(m.brm, r_Author[Author,], b_Intercept) <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="metaanalysis.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">b_Intercept =</span> r_Author <span class="sc">+</span> b_Intercept)</span></code></pre></div>
 <p><br />
 </p>
 <p>Next, generate the distribution of the pooled effect (usually out in the last row of forest plots).</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="metaanalysis.html#cb74-1" aria-hidden="true" tabindex="-1"></a>pooled.effect.draws <span class="ot">&lt;-</span> <span class="fu">spread_draws</span>(m.brm, b_Intercept) <span class="sc">%&gt;%</span></span>
-<span id="cb74-2"><a href="metaanalysis.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="st">&quot;Pooled Effect&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="metaanalysis.html#cb72-1" aria-hidden="true" tabindex="-1"></a>pooled.effect.draws <span class="ot">&lt;-</span> <span class="fu">spread_draws</span>(m.brm, b_Intercept) <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="metaanalysis.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="st">&quot;Pooled Effect&quot;</span>)</span></code></pre></div>
 <p>Bind this together, clean labels and reorder:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="metaanalysis.html#cb75-1" aria-hidden="true" tabindex="-1"></a>forest.data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(study.draws, pooled.effect.draws) <span class="sc">%&gt;%</span></span>
-<span id="cb75-2"><a href="metaanalysis.html#cb75-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb75-3"><a href="metaanalysis.html#cb75-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="fu">str_replace_all</span>(Author, <span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb75-4"><a href="metaanalysis.html#cb75-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="fu">reorder</span>(Author, b_Intercept))</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="metaanalysis.html#cb73-1" aria-hidden="true" tabindex="-1"></a>forest.data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(study.draws, pooled.effect.draws) <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="metaanalysis.html#cb73-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="metaanalysis.html#cb73-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="fu">str_replace_all</span>(Author, <span class="st">&quot;[.]&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-4"><a href="metaanalysis.html#cb73-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Author =</span> <span class="fu">reorder</span>(Author, b_Intercept))</span></code></pre></div>
 <p>Generate summarized data (the mean and credibility interval) of each study. Group the above by author, use the <code>mean_qi</code> function (generates 95pct intervals) to calculate these.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="metaanalysis.html#cb76-1" aria-hidden="true" tabindex="-1"></a>forest.data.summary <span class="ot">&lt;-</span> <span class="fu">group_by</span>(forest.data, Author) <span class="sc">%&gt;%</span></span>
-<span id="cb76-2"><a href="metaanalysis.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_qi</span>(b_Intercept)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="metaanalysis.html#cb74-1" aria-hidden="true" tabindex="-1"></a>forest.data.summary <span class="ot">&lt;-</span> <span class="fu">group_by</span>(forest.data, Author) <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="metaanalysis.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_qi</span>(b_Intercept)</span></code></pre></div>
 <p><br />
 </p>
 <p>Now generate the forest plot:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="metaanalysis.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(b_Intercept, <span class="fu">relevel</span>(Author, <span class="st">&quot;Pooled Effect&quot;</span>, <span class="at">after =</span> <span class="cn">Inf</span>)),</span>
-<span id="cb77-2"><a href="metaanalysis.html#cb77-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> forest.data) <span class="sc">+</span></span>
-<span id="cb77-3"><a href="metaanalysis.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">1</span>], <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb77-4"><a href="metaanalysis.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb77-5"><a href="metaanalysis.html#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb77-6"><a href="metaanalysis.html#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">rel_min_height =</span> <span class="fl">0.01</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">scale =</span> <span class="dv">1</span>,</span>
-<span id="cb77-7"><a href="metaanalysis.html#cb77-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb77-8"><a href="metaanalysis.html#cb77-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointintervalh</span>(<span class="at">data =</span> forest.data.summary, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb77-9"><a href="metaanalysis.html#cb77-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">mutate_if</span>(forest.data.summary, is.numeric, round, <span class="dv">2</span>),</span>
-<span id="cb77-10"><a href="metaanalysis.html#cb77-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">glue</span>(<span class="st">&quot;{b_Intercept} [{.lower}, {.upper}]&quot;</span>), <span class="at">x =</span> <span class="cn">Inf</span>), <span class="at">hjust =</span> <span class="st">&quot;inward&quot;</span>) <span class="sc">+</span></span>
-<span id="cb77-11"><a href="metaanalysis.html#cb77-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standardized Mean Difference&quot;</span>,</span>
-<span id="cb77-12"><a href="metaanalysis.html#cb77-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb77-13"><a href="metaanalysis.html#cb77-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-74-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="metaanalysis.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(b_Intercept, <span class="fu">relevel</span>(Author, <span class="st">&quot;Pooled Effect&quot;</span>, <span class="at">after =</span> <span class="cn">Inf</span>)),</span>
+<span id="cb75-2"><a href="metaanalysis.html#cb75-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> forest.data) <span class="sc">+</span></span>
+<span id="cb75-3"><a href="metaanalysis.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">1</span>], <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb75-4"><a href="metaanalysis.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">fixef</span>(m.brm)[<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb75-5"><a href="metaanalysis.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb75-6"><a href="metaanalysis.html#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">rel_min_height =</span> <span class="fl">0.01</span>, <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">scale =</span> <span class="dv">1</span>,</span>
+<span id="cb75-7"><a href="metaanalysis.html#cb75-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb75-8"><a href="metaanalysis.html#cb75-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointintervalh</span>(<span class="at">data =</span> forest.data.summary, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb75-9"><a href="metaanalysis.html#cb75-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">mutate_if</span>(forest.data.summary, is.numeric, round, <span class="dv">2</span>),</span>
+<span id="cb75-10"><a href="metaanalysis.html#cb75-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">glue</span>(<span class="st">&quot;{b_Intercept} [{.lower}, {.upper}]&quot;</span>), <span class="at">x =</span> <span class="cn">Inf</span>), <span class="at">hjust =</span> <span class="st">&quot;inward&quot;</span>) <span class="sc">+</span></span>
+<span id="cb75-11"><a href="metaanalysis.html#cb75-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Standardized Mean Difference&quot;</span>,</span>
+<span id="cb75-12"><a href="metaanalysis.html#cb75-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb75-13"><a href="metaanalysis.html#cb75-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-75-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div class="marginnote">
 <p>Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.</p>
 </div>

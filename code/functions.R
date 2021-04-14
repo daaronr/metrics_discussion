@@ -166,6 +166,66 @@ compareColumns <- function(df1, df2) {
     class), df2 = sapply(df2[, commonNames], class))
 }
 
+
+# Bayesian test coding ####
+
+#(Coded By Scott Dickerson)
+
+
+
+bayesian_test_me <- function(g1, g1pos, g2, g2pos,i,j,a,b){
+  #Function which takes the same inputs as the fishertestme function, turns them into a matrix
+  #for a simple bayesian test, comparing the difference in proportions. Follows on from the work
+  #by Andrew Gelman and Bob Carpenter (references below). This function returns the output to a list.
+  #This list contains three elements: the first element is a vector containing the 1,000,000 elements
+  #of the difference in the two posterior samples - we can call this delta (i.e. the theta2 vector-theta1 vector);
+  #element two is a scalar containing the probability that theta2 > theta1; and element three are the credible
+  #intervals for the value of delta.
+  mat <- matrix(c(g1-g1pos, g1pos, g2-g2pos, g2pos),
+                nrow = 2,
+                dimnames = list(control = c("no", "yes"), treat = c("no", "yes")))
+
+  X              <- t(apply(mat, 2, rev)) #Gets the matrix into the right format as required
+
+  y1             <- X[1,1] #Selects the elements
+  y2             <- X[2,1]
+  n1             <- X[1,1]+X[1,2]
+  n2             <- X[2,1]+X[2,2]
+  nsim           <- 1000000 #Number of samples
+
+  set.seed(1) #CHANGE BEFORE PUBLICATION
+  theta1         <- rbeta(nsim,y1+a,(n1-y1)+b) #Exact posterior densities for our random quantities
+  set.seed(1) #CHANGE BEFORE PUBLICATION
+  theta2         <- rbeta(nsim,y2+a,(n2-y2)+b)
+
+  #Note this is flipped - looking at y2 (lower left cell, i.e. treatment)
+  difference     <- theta2-theta1
+
+  #Monte Carlo approximation for the probability that theta2 is greater than theta1
+  prob           <- mean(theta2>theta1)
+  prob2          <- prob*100
+
+  #Credible intervals for the difference
+  quantiles      <- quantile(difference,c(0.005,0.025,0.05,0.1,0.9,0.95,0.975,0.995))
+  quantiles_99LB <- quantiles[1]
+  quantiles_99UB <- quantiles[8]
+  quantiles_95LB <- quantiles[2]
+  quantiles_95UB <- quantiles[7]
+  quantiles_90LB <- quantiles[3]
+  quantiles_90UB <- quantiles[6]
+  quantiles_80LB <- quantiles[4]
+  quantiles_80UB <- quantiles[5]
+
+  output         <- list(prob2, quantiles_99LB, quantiles_99UB, quantiles_95LB, quantiles_95UB,
+                         quantiles_90LB, quantiles_90UB, quantiles_80LB,quantiles_80UB, difference)
+  listnames      <- c("Probability","99LB","99UB","95LB","95UB","90LB","90UB","80LB","80UB","Differences")
+  names(output)  <- listnames
+  output
+}
+
+
+
+
 #### # Join and update, take nonmissing values from - ####
 # https://alistaire.rbind.io/blog/coalescing-joins/
 
@@ -634,6 +694,9 @@ format_with_col = function(x, color){
   else
     x
 }
+
+
+
 
 ################# Coding shortcuts ####
 
