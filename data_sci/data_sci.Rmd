@@ -12,17 +12,13 @@ See especially:
 
 [bookdown: Authoring Books and Technical Documents with R Markdown:](https://bookdown.org/yihui/bookdown/)
 
-[OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research'	https://osf.io/g8yjz/](OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research'	https://osf.io/g8yjz/)
-
+[OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research' <https://osf.io/g8yjz/>](OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research' <https://osf.io/g8yjz/>)
 
 [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
-
 "Data science for business" see [WIP notes here](#n_ds4bs)
 
-
 \
-
 
 "Code and Data for the Social Sciences" (Gentzkow/Shapiro)
 
@@ -30,7 +26,7 @@ See especially:
 
 See also ["notes on Data Science for Business"](#n_ds4bs)
 
-```  
+```
 
 ## Data: What/why/where/how
 
@@ -40,10 +36,9 @@ See also ["notes on Data Science for Business"](#n_ds4bs)
 
 Some guidelines from a particular project:
 
-[Appendix: Tech for creating, editing and collaborating on this ‘Bookdown’ web book/project (and starting your own)](https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html)
+[Appendix: Tech for creating, editing and collaborating on this 'Bookdown' web book/project (and starting your own)](https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html)
 
 ### Managing references/citations
-
 
 ```{block2,  type='note'}
 A letter to my co-authors...
@@ -80,20 +75,17 @@ tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does t
 )
 ```
 
-
 A fairly comprehensive discussion of tools for citation in R-markdown:
 
 [A Roundup of R Tools for Handling BibTeX](https://ropensci.org/technotes/2020/05/07/rmd-citations/)
 
-
 ### An example of dynamic code
-
 
 Shapiro Wilk test for normality; professor salaries at some US university from the built in Cars data...
 
-<div class="marginnote">
+::: {.marginnote}
 By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!
-</div>
+:::
 
 ```{r Diagnostic-tests, include=TRUE}
 
@@ -106,7 +98,7 @@ prof_sal_shapiro_test <- shapiro.test(carData::Salaries$salary)
 
 The results from the Shapiro Wilk normality test ...
 
-The p-values are  `r prof_sal_shapiro_test[2]` suggesting this data `r ifelse(prof_sal_shapiro_test[2]<0.10, "is not", "is")` normal
+The p-values are `r prof_sal_shapiro_test[2]` suggesting this data `r ifelse(prof_sal_shapiro_test[2]<0.10, "is not", "is")` normal
 
 ## Project management tools, esp. Git/Github
 
@@ -116,8 +108,21 @@ See ['Git and GitHub' here... watch this space](https://daaronr.github.io/ea_giv
 
 \
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">For students and research assistants, I&#39;ve been sending first time git users/developers to this:<a href="https://t.co/P6KQpXHCWI">https://t.co/P6KQpXHCWI</a><br>+ <a href="https://t.co/q4R4Ei5Biw">https://t.co/q4R4Ei5Biw</a></p>&mdash; Nathan Lane (\@straightedge) <a href="https://twitter.com/straightedge/status/1172694350205087744?ref_src=twsrc%5Etfw">September 14, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
 
+<p lang="en" dir="ltr">
+
+For students and research assistants, I've been sending first time git users/developers to this:<a href="https://t.co/P6KQpXHCWI">https://t.co/P6KQpXHCWI</a><br>+ <a href="https://t.co/q4R4Ei5Biw">https://t.co/q4R4Ei5Biw</a>
+
+</p>
+
+--- Nathan Lane (\@straightedge) <a href="https://twitter.com/straightedge/status/1172694350205087744?ref_src=twsrc%5Etfw">September 14, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
 ## Good coding practices
 
 ### New tools and approaches to data (esp 'tidyverse')
@@ -128,21 +133,15 @@ From [Kurtz](https://bookdown.org/content/3890/small-worlds-and-large-worlds.htm
 
 ### Style and consistency
 
-#### lower_snake_case {-}
+#### lower_snake_case {.unnumbered}
 
-Use `lower_snake_case` to name *all* objects (that's my preference anyways)
-unless there's a strong reason to do otherwise.
+Use `lower_snake_case` to name *all* objects (that's my preference anyways) unless there's a strong reason to do otherwise.
 
 \
 
 This includes:
 
-`file_names.txt`
-`folder_names`
-`function_names` (with few exceptions)
-`names_of_data_objects_like_vectors`
-`names_of_data_output_objects_like_correlation_coefficients`
-`ex_df1` In R you probably should keep data frame names short to avoid excessive typing
+`file_names.txt` `folder_names` `function_names` (with few exceptions) `names_of_data_objects_like_vectors` `names_of_data_output_objects_like_correlation_coefficients` `ex_df1` In R you probably should keep data frame names short to avoid excessive typing
 
 \
 
@@ -150,13 +149,11 @@ This includes:
 
 #### Indenting and spacing
 
-
 ### Using functions, variable lists, etc., for clean, concise, readable code
 
 ### Mapping over lists to produce results
 
-
-
+```{=html}
 <!-- ft <- list(ft_treat_no_ask, ft_treat_no_ask_19, ft_treat_no_ask_19_short, ft_treat_no_ask_19_long)
 
 ft_names <- c("All", "2019", "2019-short", "2019-long")
@@ -168,7 +165,7 @@ ft <- map2(ft, ft_names, function(x, y) {
   kable(, caption = "S2 Donation incidence by S1 Ask/no-ask; Fisher tests", digits = 2) %>%
   kable_styling()
 -->
-
+```
 ### Building results based on 'lists of filters' of the data set
 
 In writing a paper you very often want to produce 'statistics A-F for subsets S1-S5'.
@@ -177,8 +174,8 @@ Can't we just automate this?
 
 \
 
-
 We can store a filter as a character vector and then apply it
+
 ```{r}
 
 selection_statement <- "Species == 'setosa' & Petal.Width>0.3"
@@ -206,8 +203,6 @@ iris %>%
 
 ```
 
-
-
 We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:
 
 ```{r}
@@ -222,65 +217,510 @@ sel_st %>% map(~ filter_parse(iris, .x))
 
 It works nicely if you have a list of filters aligned with a list of names or other objects 'specific to each filter'
 
-
 (Code below: adapt to public data and explain)
 
-```
- bal_sx <-
-    map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
-      filter_parse(sa, x) %>%
-    dplyr::filter(stage == "2") %>%
-     tabyl(treat_1, treat_2, show_missing_levels = FALSE)  %>%
-    adornme_not(cap = paste(y, "; 1st and 2nd stage treatments"))
-    }
-  )
-```
-
+     bal_sx <-
+        map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
+          filter_parse(sa, x) %>%
+        dplyr::filter(stage == "2") %>%
+         tabyl(treat_1, treat_2, show_missing_levels = FALSE)  %>%
+        adornme_not(cap = paste(y, "; 1st and 2nd stage treatments"))
+        }
+      )
 
 ### Coding style and indenting in Stata (one approach)
 
 I indent every line except
 
-- clear, import, save, merge ('file operations')
-  - except where these occur as part of a loop, in which case I put in an 'important comment' noting these operations
+-   clear, import, save, merge ('file operations')
 
-- lines that call other do files
+    -   except where these occur as part of a loop, in which case I put in an 'important comment' noting these operations
 
-- important comments/flags/to-do's
+-   lines that call other do files
 
+-   important comments/flags/to-do's
 
 I only put 'small todo' elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include `#todo` to search for these later (and R has a utility to collect these in a nice way... maybe Stata does too.
 
-
 \
 
-
-Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate 'do' file and call that do file (with no indent).  That's what I do here, giving a brief description and a 'back link'.  Sometimes I put all those do files into an separate folder.
-
+Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate 'do' file and call that do file (with no indent). That's what I do here, giving a brief description and a 'back link'. Sometimes I put all those do files into an separate folder.
 
 ## Additional tips (integrate)
 
 [When you have to upgrade R on Mac, how to preserve package installations - twitter thread](https://twitter.com/gdequeiroz/status/1228722821817225216)
 
+-   [This worked well for me](https://github.com/ivelasq/r-data-recipes/blob/master/README.md#reinstall-packages-after-a-major-r-update). Thanks \@ivelasq3 !\
 
-- [This worked well for me](https://github.com/ivelasq/r-data-recipes/blob/master/README.md#reinstall-packages-after-a-major-r-update). Thanks
-\@ivelasq3 !
-\
+<blockquote class="twitter-tweet">
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Are you teaching/learning <a href="https://twitter.com/hashtag/r?src=hash&amp;ref_src=twsrc%5Etfw">#r</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> &amp; want to teach/learn the latest <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a> <a href="https://twitter.com/hashtag/tidyr?src=hash&amp;ref_src=twsrc%5Etfw">#tidyr</a> tools? e.g. bind_rows, pivot_wider/pivot_longer, the join family (full_join, inner_join...) Check out my slides on &quot;Advanced data manipulation&quot; here 😺<a href="https://t.co/dr9VNx7MFf">https://t.co/dr9VNx7MFf</a></p>&mdash; Amy Willis (\@AmyDWillis) <a href="https://twitter.com/AmyDWillis/status/1195498569072959490?ref_src=twsrc%5Etfw">November 16, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p lang="en" dir="ltr">
 
+Are you teaching/learning <a href="https://twitter.com/hashtag/r?src=hash&amp;ref_src=twsrc%5Etfw">\#r</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">\#rstats</a> & want to teach/learn the latest <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">\#tidyverse</a> <a href="https://twitter.com/hashtag/tidyr?src=hash&amp;ref_src=twsrc%5Etfw">\#tidyr</a> tools? e.g. bind_rows, pivot_wider/pivot_longer, the join family (full_join, inner_join...) Check out my slides on "Advanced data manipulation" here 😺<a href="https://t.co/dr9VNx7MFf">https://t.co/dr9VNx7MFf</a>
+
+</p>
+
+--- Amy Willis (\@AmyDWillis) <a href="https://twitter.com/AmyDWillis/status/1195498569072959490?ref_src=twsrc%5Etfw">November 16, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
 \
 
 **Tools for structuring your workflow for reproducable code with Rmd and Git: The workflowr package**
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;This paper does a thorough job setting out the rationale, design, and implementation of the workflowr package&quot; says <a href="https://twitter.com/PeteHaitch?ref_src=twsrc%5Etfw">\@PeteHaitch</a> <a href="https://twitter.com/WEHI_research?ref_src=twsrc%5Etfw">\\@WEHI_research</a> in his review of this <a href="https://twitter.com/hashtag/softwaretool?src=hash&amp;ref_src=twsrc%5Etfw">#softwaretool</a> article introducing workflowr by <a href="https://twitter.com/jdblischak?ref_src=twsrc%5Etfw">\@jdblischak</a> and co-authors <a href="https://t.co/ZXmQkDhFuD">https://t.co/ZXmQkDhFuD</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> <a href="https://t.co/e77SVo8PhO">pic.twitter.com/e77SVo8PhO</a></p>&mdash; F1000Research (\@F1000Research) <a href="https://twitter.com/F1000Research/status/1196056651691962368?ref_src=twsrc%5Etfw">November 17, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
 
+<p lang="en" dir="ltr">
+
+"This paper does a thorough job setting out the rationale, design, and implementation of the workflowr package" says <a href="https://twitter.com/PeteHaitch?ref_src=twsrc%5Etfw">\@PeteHaitch</a> <a href="https://twitter.com/WEHI_research?ref_src=twsrc%5Etfw">\\@WEHI_research</a> in his review of this <a href="https://twitter.com/hashtag/softwaretool?src=hash&amp;ref_src=twsrc%5Etfw">\#softwaretool</a> article introducing workflowr by <a href="https://twitter.com/jdblischak?ref_src=twsrc%5Etfw">\@jdblischak</a> and co-authors <a href="https://t.co/ZXmQkDhFuD">https://t.co/ZXmQkDhFuD</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">\#OpenScience</a> <a href="https://t.co/e77SVo8PhO">pic.twitter.com/e77SVo8PhO</a>
+
+</p>
+
+--- F1000Research (\@F1000Research) <a href="https://twitter.com/F1000Research/status/1196056651691962368?ref_src=twsrc%5Etfw">November 17, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
 \
 
 Switching from Latex to markdown/R-markdown? [These tips from Colin Bousige look pretty good](https://colinbousige.github.io/post/rmarkdown/), although I prefer the bookdown/gitbook format
 
-
 Massive data cleaning using the Recipe package
 
-
 Codebook package
+
+### Some key points from [R for data science](r4ds.had.co.nz) (see my hypothesis notes) {.unnumbered}
+
+#### Automating ['many models'](https://r4ds.had.co.nz/many-models.html) {.unnumbered}
+
+```{block2,  type='note'}
+
+Actually, I think [this](https://stackoverflow.com/questions/46332863/how-to-fit-multiple-models-on-multiple-dataset-in-purrr) is the automation we are usually more interested in, i.e., ''run this on these subsets of the data, for these variable sets.'' 
+)
+```
+
+```{r}
+
+library(gapminder)
+library(modelr)
+library(tidyverse)
+
+```
+
+> Extract out the common code with a function and repeat using a map function from `purrr`. This problem is structured a little differently to what you've seen before. Instead of repeating an action for each variable, we want to repeat an action for each country, a subset of rows. To do that, we need a new data structure: the nested data frame. To create a nested data frame we start with a grouped data frame, and "nest" it:
+
+```{r}
+
+by_country <- gapminder %>% 
+  group_by(country, continent) %>% 
+  nest() #automatically labels a list column (column of tibbles, which are lists) as 'data'
+
+```
+
+> This creates a data frame that has one row per group (per country), and a rather unusual column: `data`. `data` is a list of data frames (or tibbles, to be precise).
+
+> in a nested data frame, each row is a group.
+
+> We have a model-fitting function:
+
+```{r}
+
+country_model <- function(df) {
+  lm(lifeExp ~ year, data = df)
+}
+
+```
+
+> The data frames are in a list, so we can use `purrr::map()` to apply `country_model` to each element...
+
+> However, rather than leaving the list of models as a free-floating object, I think it's better to store it as a column in the `by_country` data frame.
+
+```{r}
+
+(
+  by_country <- by_country %>% 
+  mutate(model = map(data, country_model))
+)
+
+```
+
+Here, the `model` list-column is created, resulting from mapping the `data` list-column (list of tibbles) into the `country_model` function.
+
+> because all the related objects are stored together, you don't need to manually keep them in sync when you filter or arrange.
+
+To compute the residuals, we need to call `add_residuals()` with each model-data pair:
+
+```{r}
+
+by_country <- by_country %>% 
+  mutate(
+    resids = map2(data, model, add_residuals)
+  )
+by_country
+
+```
+
+::: {.marginnote}
+Coding note: How does this syntax work? How do `data` and `model` end up referring to columns in the `by_country` tibble?
+
+Because it's inside the 'mutate', I guess, so the data frame is implied.
+:::
+
+> [So that we can plot it] ... let's turn the list of data frames back into a regular data frame. Previously we used `nest()` to turn a regular data frame into an nested data frame, and now we do the opposite with `unnest()`:
+
+(Note it's saved as a different object for now)
+
+```{r}
+resids <- unnest(by_country, resids)
+resids
+
+```
+
+```{r}
+
+#and then we plot it 
+
+resids %>% 
+  ggplot(aes(year, resid)) +
+    geom_line(aes(group = country), alpha = 1 / 3) + 
+    geom_smooth(se = FALSE) +
+  facet_wrap(~continent)
+```
+
+```{r}
+
+glance <- by_country %>% 
+  mutate(glance = map(model, broom::glance)) %>% 
+  unnest(glance)
+```
+
+Above, we add a column `glance`, resulting from mapping the `mode`l column to the `broom::glance` function. `glance` gets some key elements of the models' outputs.\
+\
+Then we unnest this column. Note that `unnest` spreads out the elements of the `glance` output into columns, but as these are specific to each country (but *not* each year), it doesn't add more rows (while, e,g., unnesting `resids` *would* add more rows).
+
+One way of judging the 'fit' of these models... The worst-fitting ones, in terms of R-squared, seem to be in Africa (we save the worst ones as `bad_fit`:
+
+```{r}
+
+glance %T>% 
+  arrange(r.squared) %T>% print() %>%  #look I get both in one pipe flow with T-pipe and the 'print' side effect
+  ggplot(aes(continent, r.squared)) + 
+    geom_jitter(width = 0.3) 
+
+bad_fit <- filter(glance, r.squared < 0.25)
+
+```
+
+\
+
+What may have caused the "bad fit", i.e., a departure from the country-specific trends?
+
+We `semi_join` the original data set to these 'worst fitting countries' ... this keeps only those that match, i.e., only the worst-fitting countries. (Probably we could otherwise have instead expanded the `data` list?)
+
+```{r}
+gapminder %>% 
+  semi_join(bad_fit, by = "country") %>% #I think this just 'keeps all elements of the first df that are also present in the second frame
+  ggplot(aes(year, lifeExp, colour = country)) +
+    geom_line()
+```
+
+> We see two main effects here: the tragedies of the HIV/AIDS epidemic and the Rwandan genocide.
+
+#### List-columns {#list-columns}
+
+> Now that you've seen a basic workflow for managing many models... let's dive... into some of the details
+
+We saw a workflow for managing
+
+-   split the data apart
+
+-   run the same model model for each of the groups
+
+-   save this all in a single organized tibble
+
+-   report and graph the results in different ways
+
+> a data frame is a named list of equal length vectors.
+
+```{r}
+data.frame(x = list(1:3, 3:5))
+```
+
+But incorporating list columns is much easier with `tibble` and `tribble` , because `tibble()` doesn't modify its inputs, and prints better:
+
+```{r}
+tibble(
+  x = list(1:3, 3:5), 
+  y = c("1, 2", "3, 4, 5")
+)
+```
+
+    <div class="marginnote">
+    But note each column still has to have the same number of rows.
+    </div>
+     
+
+And `tribble()` ([row-wise tibble creation](http://127.0.0.1:28503/help/library/tibble/html/tribble.html)) "can automatically work out that you need a list:"
+
+```{r}
+tribble(
+   ~x, ~y,
+  1:3, "1, 2",
+  3:5, "3, 4, 5"
+)
+```
+
+> List-columns are often most useful as intermediate data structure. [to keep things organised before later unnesting or whatever]
+>
+> Generally there are three parts of an effective list-column pipeline:
+>
+> 1.  You create the list-column using one of `nest()`, `summarise()` + `list()`, or `mutate()` + a map function, as described in [Creating list-columns].
+> 2.  You create other intermediate list-columns by transforming existing list columns with `map()`, `map2()` or `pmap()`. For example, in the case study above, we created a list-column of models by transforming a list-column of data frames.
+> 3.  You simplify the list-column back down to a data frame or atomic vector, as described in [Simplifying list-columns].
+
+##### Creating list-columns
+
+> Typically, you'll ... [create] list columns them from regular columns, [either]:
+>
+> 1.  With `tidyr::nest()` to convert a grouped data frame into a nested data frame where you have list-columns of data frames.
+>
+> 2.  With `mutate()` and vectorised functions that return a list.
+>
+> 3.  With `summarise()` and summary functions that return multiple results.
+>
+> Alternatively, you might create them from a named list, using `tibble::enframe()`.
+>
+> ... make sure they're homogeneous: each element should contain the same type of thing.
+
+##### With nesting
+
+> `nest()` creates ... a data frame with a list-column of data frames. ... each row is a meta-observation:
+>
+> When applied to a grouped data frame, `nest()` keeps the grouping columns as is, and bundles everything else into the list-column:
+
+```{r}
+gapminder %>% 
+  group_by(country, continent) %>% 
+  nest()
+```
+
+> You can also use it on an ungrouped data frame, specifying which columns you want to nest [i.e., all but country and continent below]
+
+```{r}
+gapminder %>% 
+  nest(data = c(year:gdpPercap))
+```
+
+##### From vectorised functions
+
+> .. functions take an atomic vector and return a list, e.g., `stringr::str_split()` ...
+
+```{r}
+df <- tribble(
+  ~x1,
+  "a,b,c", 
+  "d,e,f,g"
+) 
+
+df %>% 
+  mutate(x2 = stringr::str_split(x1, ",")) 
+```
+
+Above, `str_split` generates a list from each element of a character vector ... this `x2` is generated as a list-vector.\
+You can then `unnest` ... which will spread it out:
+
+```{r}
+df %>% 
+  mutate(x2 = stringr::str_split(x1, ",")) %>% 
+  unnest(x2)
+```
+
+*(Not sure when I would use the above?)*
+
+> Another example ... using the `map()`, `map2()`, `pmap()` from purrr.
+
+```{r}
+sim <- tribble(
+  ~f,      ~params,
+  "runif", list(min = -1, max = 1),
+  "rnorm", list(sd = 5),
+  "rpois", list(lambda = 10)
+)
+
+(xxx<- sim %>%
+  mutate(sims = invoke_map(f, params, n = 10))
+) # the invoke_map syntax is deprecated, but I can't figure out the new syntax
+```
+
+##### From multivalued summaries
+
+> f `summarise()` ... only works with summary functions that return a single value. ... not functions like `quantile()` that return a vector of arbitrary length:
+
+```{r, error = TRUE}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(q = quantile(mpg)) #this now seems to run?
+```
+
+> You can however, wrap the result in a list! This obeys the contract of `summarise()`, because each summary is now a list (a vector) of length 1.
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(q = list(quantile(mpg)))
+```
+
+OK this is neater\
+\
+To make useful results with unnest, you'll also need to capture the probabilities:
+
+```{r}
+probs <- c(0.01, 0.25, 0.5, 0.75, 0.99)
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(p = list(probs), q = list(quantile(mpg, probs))) %>% 
+  unnest(c(p, q))
+```
+
+### From a named list
+
+Data frames with list-columns provide a solution to a common problem: what do you do if you want to iterate over both the contents of a list and its elements? Instead of trying to jam everything into one object, it's often easier to make a data frame: one column can contain the elements, and one column can contain the list. An easy way to create such a data frame from a list is `tibble::enframe()`.
+
+```{r}
+x <- list(
+  a = 1:5,
+  b = 3:4, 
+  c = 5:6
+) 
+
+df <- enframe(x)
+df
+```
+
+The advantage of this structure is that it generalises in a straightforward way - names are useful if you have character vector of metadata, but don't help if you have other types of data, or multiple vectors.
+
+Now if you want to iterate over names and values in parallel, you can use `map2()`:
+
+```{r}
+df %>% 
+  mutate(
+    smry = map2_chr(name, value, ~ stringr::str_c(.x, ": ", .y[1]))
+  )
+```
+
+##### Simplifying list-columns
+
+To apply the techniques of data manipulation and visualisation you've learned in this book, you'll need to simplify the list-column back to a regular column (an atomic vector), or set of columns. The technique you'll use to collapse back down to a simpler structure depends on whether you want a single value per element, or multiple values:
+
+1.  If you want a single value, use `mutate()` with `map_lgl()`, `map_int()`, `map_dbl()`, and `map_chr()` to create an atomic vector.
+
+2.  If you want many values, use `unnest()` to convert list-columns back to regular columns, repeating the rows as many times as necessary.
+
+These are described in more detail below.
+
+### List to vector
+
+If you can reduce your list column to an atomic vector then it will be a regular column. For example, you can always summarise an object with its type and length, so this code will work regardless of what sort of list-column you have:
+
+```{r}
+df <- tribble(
+  ~x,
+  letters[1:5],
+  1:3,
+  runif(5)
+)
+  
+df %>% mutate(
+  type = map_chr(x, typeof),
+  length = map_int(x, length)
+)
+```
+
+This is the same basic information that you get from the default tbl print method, but now you can use it for filtering. This is a useful technique if you have a heterogeneous list, and want to filter out the parts aren't working for you.
+
+Don't forget about the `map_*()` shortcuts - you can use `map_chr(x, "apple")` to extract the string stored in `apple` for each element of `x`. This is useful for pulling apart nested lists into regular columns. Use the `.null` argument to provide a value to use if the element is missing (instead of returning `NULL`):
+
+```{r}
+df <- tribble(
+  ~x,
+  list(a = 1, b = 2),
+  list(a = 2, c = 4)
+)
+df %>% mutate(
+  a = map_dbl(x, "a"),
+  b = map_dbl(x, "b", .null = NA_real_)
+)
+```
+
+### Unnesting
+
+`unnest()` works by repeating the regular columns once for each element of the list-column. For example, in the following very simple example we repeat the first row 4 times (because there the first element of `y` has length four), and the second row once:
+
+```{r}
+tibble(x = 1:2, y = list(1:4, 1)) %>% unnest(y)
+```
+
+This means that you can't simultaneously unnest two columns that contain different number of elements:
+
+```{r, error = TRUE}
+# Ok, because y and z have the same number of elements in
+# every row
+df1 <- tribble(
+  ~x, ~y,           ~z,
+   1, c("a", "b"), 1:2,
+   2, "c",           3
+)
+df1
+df1 %>% unnest(c(y, z))
+
+# Doesn't work because y and z have different number of elements
+df2 <- tribble(
+  ~x, ~y,           ~z,
+   1, "a",         1:2,  
+   2, c("b", "c"),   3
+)
+df2
+df2 %>% unnest(c(y, z))
+```
+
+The same principle applies when unnesting list-columns of data frames. You can unnest multiple list-cols as long as all the data frames in each row have the same number of rows.
+
+### 
+
+## Making tidy data with broom
+
+The broom package provides three general tools for turning models into tidy data frames:
+
+1.  `broom::glance(model)` returns a row for each model. Each column gives a model summary: either a measure of model quality, or complexity, or a combination of the two.
+
+2.  `broom::tidy(model)` returns a row for each coefficient in the model. Each column gives information about the estimate or its variability.
+
+3.  `broom::augment(model, data)` returns a row for each row in `data`, adding extra values like residuals, and influence statistics.
+
+\
+
+```{r}
+test_models <- tribble(
+   ~df, ~filter, ~y, ~x, ~model, ~family,
+  "mtcars", "disp>100", "mpg", "wt, gear","lm", "",
+  "mtcars", "disp<100", "mpg", "wt, gear, hp", "lm", "",
+  "mtcars", "", "vs", "wt, gear, hp", "glm", "binomial",
+  "cars", "", "speed", "dist", "lm", ""
+)
+```
+
+I want it to run
+
+```{r}
+mtcars %>% filter(disp>100) %>% lm(mpg ~ wt + gear, data =.) 
+mtcars %>% filter(disp<100) %>% lm(mpg ~ wt + gear +  hp, data =.) 
+mtcars %>% filter() %>% glm(vs ~ wt + gear +  hp, data =., family="binomial") 
+cars %>% filter() %>% lm(speed ~ dist,data =.) 
+
+
+```

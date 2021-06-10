@@ -1,7 +1,15 @@
-
 # Meta-analysis and combining studies: Making inferences from previous work {#metaanalysis}
 
-My opinion on why this is so important (unfold):
+##  Introduction
+
+My notes go over on
+
+1.  Christensen et al's open-social-science guide for an overview of meta-analysis and what it foes
+2.  Harrer's ['Doing Meta-Analysis in R](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)' to go through the process and highlight key implementation issues and statistical choices
+
+[**My opinions on why meta-analysis and data pooling is so important (unfold):**]{.ul}
+
+1.  Stronger inference and better organized science, clearer direction of progress
 
 ```{block2,  type='fold'}
 
@@ -9,31 +17,30 @@ It is lame how often I see 'new experiments' and 'new studies' that tread most o
 
 ```
 
+2.  'Stimulus sampling' and robust evidence
 
-
-## Notes: Christensen et al 2019, ch 5, 'Using all evidence, registration and meta-analysis
+## An overview of meta-analysis, from Christensen et al 2019, ch 5, 'Using all evidence, registration and meta-analysis {#christensen-meta}
 
 > how the research community can systematically collect, organize, and analyze a body of research work
 
-- Limitations to the 'narrative literature review': subjectivity, too much info to narrate
+-   Limitations to the 'narrative literature review': subjectivity, too much info to narrate
 
 ### The origins [and importance] of study [pre-]registration
 
 ... Make details of planned and ongoing studies available to the community .... including those not (yet) published
 
-- Required by FDA in 1997, many players in medical community followed soon after
+-   Required by FDA in 1997, many players in medical community followed soon after
 
-- Turner ea (08) and others documented massive publication bias and misrepresentation
+-   Turner ea (08) and others documented massive publication bias and misrepresentation
 
-... but registration far from fully enforced (Mathieu ea '09) found 46% clealy registered, and discrepancies between registered and published outcomes
-!
+... but registration far from fully enforced (Mathieu ea '09) found 46% clealy registered, and discrepancies between registered and published outcomes !
 
 ### Social science study registries
 
-- Jameel 2009
-- AEA 2013, 2100 registrations to date
-- RIDIE, EGAP, AsPredicted
-- OSF allowing a DOI (25,000+)
+-   Jameel 2009
+-   AEA 2013, 2100 registrations to date
+-   RIDIE, EGAP, AsPredicted
+-   OSF allowing a DOI (25,000+)
 
 ### Meta-analysis
 
@@ -45,48 +52,39 @@ Key references: Borenstein ea '09, Cooper, Hedges, and V '09
 
 'asses the robustness... to different inclusion conditions'... see Doucouliagos ea '17 on inclusion options
 
-
-<div class="marginnote">
-
-
+::: {.marginnote}
 My opinion: this is the key barrier to meta-analysis in social science! How do we weight studies using different methodologies and in different contexts? The Bayesian Random Effects approach seems to offer some help here (this not to be confused with the random effects panel-data models discussed in standard Econometrics texts).
-
-</div>
+:::
 
 #### Assembling estimates
 
-- Which statistic to collect?
+-   Which statistic to collect?
 
 \
 
-
 Studies $j \in J, j= 1..N_j$
 
-Relevant estimate of stat from each study is $\hat{
-\beta_j}$ with SE $\hat{\sigma_j}$
+Relevant estimate of stat from each study is $\hat{ \beta_j}$ with SE $\hat{\sigma_j}$
 
-- Papers report several estimates (e.g., in robustness checks): which to choose, esp if author's preferred approach differs from other scholars.
+-   Papers report several estimates (e.g., in robustness checks): which to choose, esp if author's preferred approach differs from other scholars.
 
 \
 
 *Ex from Hsiang, B, Miguel, '13*: links between extreme climate and violence
 
-- how to classify outcomes... interpersonal and intergroup... normalised as pct changes wrt the meanoutcome in that dataset
+-   how to classify outcomes... interpersonal and intergroup... normalised as pct changes wrt the meanoutcome in that dataset
 
-- how to standardice climate varn measures... chose SD from local area mean
-(DR: this choice implicitly reflects a behavioural assumption)
+-   how to standardice climate varn measures... chose SD from local area mean (DR: this choice implicitly reflects a behavioural assumption)
 
-$\rightarrow$ 'pct  change in a conflict outcome as a fncn of a 1 SD schock to local climate'
+$\rightarrow$ 'pct change in a conflict outcome as a fncn of a 1 SD schock to local climate'
 
 ### Combining estimates
 
 'Fixed-effect meta-analysis approach': assumes a single true effect'
 
-<div class="marginnote">
-
-DR: I'm  not sure I agree on this assesment of *why* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
-
-</div>
+::: {.marginnote}
+DR: I'm not sure I agree on this assesment of *why* this is unlikely to be true in practice... 'differences in measures' (etc) seem to be a different issue
+:::
 
 *Equal weight approach*: (Simply the average across studies... ugh)
 
@@ -102,17 +100,13 @@ where $p_j$ is the estimated precision for study $j$: $\frac{1}{\hat{\sigma_i}^2
 
 Thus the weight $\omega_j$ placed on study $j$ is proportional to it's precision.
 
-
-<div class="marginnote">
-
+::: {.marginnote}
 'implies weight in proportion to sample size'? I think that's loosely worded, it must be nonlinear.
-
-</div>
+:::
 
 $\rightarrow$ This minimises the variance in the resulting meta-analytical estimate:
 
 $$var(\hat{\beta}_{PW}) =\sum_j \omega_j\hat{\sigma_j}^2 = \frac{1}{\sum_j(p_j)}$$
-
 
 'inclusion of additional estimates always reduces the SE of $\hat{\beta_{PW}}$ [in expectation].' ... so more estimtes can't hurt as long as you know their precision.
 
@@ -132,26 +126,23 @@ This may feel like a more familiar to Economists but it is also seems to be far 
 
 \
 
-
 #### Random-effects (more common)
 
 *Focus here on hierarchical Bayesian approach* (Gelman and Hill '06; Gelman ea '13)
 
-'The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature'
+> The magnitude and precision of the common component represents the generalizable conclusions we might draw from a literature'
 
 ... continuing from above notation
 
-'cross-study differences we observe might not be driven solely by sampling variability... [even with] infinite data, they would not converge to the exact same [estimate] '
+> cross-study differences we observe might not be driven solely by sampling variability... [even with] infinite data, they would not converge to the exact same [estimate]
 
 True Treatment Effect (TE) $\beta_j$ for study j drawn from a normal distribution...
 
 $$\beta_j \sim N(\mu, \tau^2)$$
 
-'Hyperparameters' $\mu$ determines central tendency of findings...
-$\tau$ the extent of hety across contexts.
+'Hyper-parameters' $\mu$ determines central tendency of findings... $\tau$ the extent of heterogeneity across contexts.
 
-Considering $\tau$ vs $\mu$ is informative  in itself.
-And a large $\mu$ may suggest looking into sample splits for hety on obsl lines.
+Considering $\tau$ vs $\mu$ is informative in itself. And a large $\mu$ may suggest looking into sample splits for hety on obsl lines.
 
 \
 
@@ -165,28 +156,21 @@ $$\hat{\mu}=
 
 (Similar to precision-weighted approach but now the between-study dispersion is incorporated into the weights)
 
-and where the estimated variance  of the generalizable component $V_\mu$ is:
+and where the estimated variance of the generalizable component $V_\mu$ is:
 
 $$Var(\hat{\mu})= \frac{1}{\sum_j\big(1/(\hat{\sigma_i}^2 + \hat{tau}^2)}$$
 
-
-<div class="marginnote">
-
+::: {.marginnote}
 Confusion/correction? Is this the estimated variance or the variance of the estimate?
+:::
 
-</div>
-
-
-- and how do we estimate some of the components of these, like $\hat{\tau}$?
+-   and how do we estimate some of the components of these, like $\hat{\tau}$?
 
 > Intuitively, if estimated [TE] in all studies are near one another and have relatively wide and overlapping [CI's], then most of the difference in estimates is likely the result of sampling variation [and $\tau$] is likely to be close to zero.
 
-
-<div class="marginnote">
-
+::: {.marginnote}
 DR: But if the TE have wide CI's, do we have power to idfy btwn-study hety? ... I guess that's what the 'estimated TE are all near each other' gives us?
-
-</div>
+:::
 
 ... Alternatively, if there is extensive variation in the estimated ATEs but each is precise... $\tau$ is likely to be relatively large.
 
@@ -199,31 +183,22 @@ Coding meta-analyses in R
 
 ```
 
-
 <!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? -->
 
+ The $I^2$ stat is a measure of the proportion of total variation attributed to cross-study variation; if $\hat{\sigma}_j$ is the same across all studies we have: $I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
 
-\ The $I^2$ stat is a measure of the proportion of total variation attributed to cross-study variation; if $\hat{\sigma}_j$ is the same across all studies we have:
-$I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
-
+```{=html}
 <!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
 
 https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
 
 -->
+```
+## Excerpts and notes from ['Doing Meta-Analysis in R: A Hands-on Guide'](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/) (Harrer et al) {#doing-meta}
 
-## Excerpts and notes from 'Doing Meta-Analysis in R: A Hands-on Guide' (Harrer et al) {#doing-meta}
-
-Some notes follow excerpting and commenting on
-
-[Doing Meta-Analysis in R: A Hands-on Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)
-
-<div class="marginnote">
-
-Note that installation of the required packages can be tricky here.
-For Mac Catalina with R 4.0 I followed the instructions [HERE](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30)
-
-</div>
+::: {.marginnote}
+Note that installation of the required packages can be tricky here. For Mac Catalina with R 4.0 I followed the instructions [HERE](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30)
+:::
 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -243,27 +218,28 @@ load(here("meta_anal_and_open_science", "Doing-Meta-Analysis-in-R-master", "_dat
 
 ### Pooling effect sizes
 
-#### Fixed effects model {-}
+#### Fixed effects model {.unnumbered}
 
+```{=html}
 <!-- SD:
 Fixed the equations according to https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/fixed.html
 -->
+```
+$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$ $$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
 
-$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$
-$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
-
+```{=html}
 <!--
 And (it looks like) the simple average of the variabces for the pooled effect variance:
 
 $$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
 
 -->
-
-- note that this process does not 'dig in' to the raw data, it just needs the summary statistics, neither does the "RE model" they refer to:
+```
+-   note that this process does not 'dig in' to the raw data, it just needs the summary statistics, neither does the "RE model" they refer to:
 
 > Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.
 
-Nor the Bayesian models, apparently (they use the same datasets in his examples I think)
+Nor do the Bayesian models, apparently (they use the same datasets in his examples I think)
 
 The sample data:
 
@@ -271,22 +247,21 @@ The sample data:
 str(madata)
 ```
 
-
 > As our effect sizes are already calculated, we can use the `meta::metagen` function.
 
 \
 
 A particularly relevant parameter to specify:
 
-`sm=`: The summary measure we want to calculate. We can either calculate the mean difference (MD) or Hedges' g/Cohen's d (SMD)".^*^
+`sm=`: The summary measure we want to calculate. We can either calculate the mean difference (MD) or Hedges' g/Cohen's d (SMD)".\^\*\^
 
-<div class="marginnote">
-Recall, Hedges' and Cohen's measures are the mean difference between the groups divided by the pooled standard deviation.  Below these seem to yield the same result, perhaps because these results are already normalised.
-</div>
+::: {.marginnote}
+Recall, Hedges' and Cohen's measures are the mean difference between the groups divided by the pooled standard deviation. Below these seem to yield the same result, perhaps because these results are already normalised.
+:::
 
 \
 
-Our first  fixed-effects model meta-analysis:
+Our first fixed-effects model meta-analysis:
 
 ```{r}
 (
@@ -306,16 +281,15 @@ m <- madata %>%
 
 Results include:
 
-* The **individual effect sizes** for each study (SMD), and their weight (%W(fixed))
-* The **overall effect** (in our case, $g$ = 0.48) and its confidence interval and $p$-value
-* Measures of **between-study heterogeneity**, such as $tau^2$ or $I^2$ and a $Q$-test of heterogeneity
+-   The **individual effect sizes** for each study (SMD), and their weight (%W(fixed))
+-   The **overall effect** (in our case, $g$ = 0.48) and its confidence interval and $p$-value
+-   Measures of **between-study heterogeneity**, such as $tau^2$ or $I^2$ and a $Q$-test of heterogeneity
 
-<div class="marginnote">
+::: {.marginnote}
 $tau^2$ - "The square root of this number (i.e. $\tau$) is the estimated standard deviation of underlying effects across studies" - Cochrane handbook
 
 $I^2$ is a transformation of the ch-sq statistic... 'This describes the percentage of the variability in effect estimates that is due to heterogeneity rather than sampling error (chance).'
-
-</div>
+:::
 
 You can output these results as a text file using the 'sink' command, but I don't see the point.
 
@@ -331,18 +305,20 @@ Harrer's notes on whether we should use RE or FE (unfold)
 
 "The random-effects-model pays more attention to small studies when pooling the overall effect in a meta-analysis (Schwarzer, Carpenter, and Rücker 2015). Yet, small studies in particular are often fraught with bias (see Chapter 8.1). This is why some have argued that the fixed-effects-model should be nearly always preferred (Poole and Greenland 1999; Furukawa, McGuire, and Barbui 2003)."
 
-DR: somewhow I'm not sure the "pays more attention to small studies" point is correct, although it is certainly empirically the case below
+DR:  I'm not sure the "pays more attention to small studies" point is correct, although it is certainly empirically the case below.
 ```
 
-#### Random effects model {-}
+#### Random effects model {.unnumbered}
 
 There are a variety of estimators for the variance of the true effect size $\tau^2$. You must choose one. He recommends [Veroniki et al's](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4950030/) discussion of this.
 
-- DerSimonian-Laird (1986) estimator is the most common
-- "Maximum-Likelihood, Sidik-Jonkman, and Empirical Bayes estimators have better properties in estimating the between-study variance (Sidik and Jonkman 2007; Viechtbauer 2005).
-- DerSimonian-Laird is also seen to be prone to producing false positives (for the mean effect I think?)
-  - HKSJ is more conservative, but has 'residual concerns'
+-   DerSimonian-Laird (1986) estimator is the most common
 
+-   "Maximum-Likelihood, Sidik-Jonkman, and Empirical Bayes estimators have better properties in estimating the between-study variance (Sidik and Jonkman 2007; Viechtbauer 2005).
+
+-   DerSimonian-Laird is also seen to be prone to producing false positives (for the mean effect I think?)
+
+    -   HKSJ is more conservative, but has 'residual concerns'
 
 **Running an RE meta-analysis:**
 
@@ -361,19 +337,22 @@ m.hksj <- metagen(TE,
 )
 ```
 
-#### Binary outcomes {-}
+#### Binary outcomes {.unnumbered}
 
 Outcomes like
-- pooled Odds Ratio: relative incidence in treatment vs control
-- the Relative Risk: share of total incidence in treatment, scaled by sample size
-- Incidence Rate Ratio: similar to OR but scaled by duration, I think
 
+-   pooled Odds Ratio: relative incidence in treatment vs control
+
+-    the Relative Risk: share of total incidence in treatment, scaled by sample size
+
+-   Incidence Rate Ratio: similar to OR but scaled by duration, I think
 
 Packages:
 
-- Again we use `metagen` for pooled data.
-- with raw outome data we've  `meta::metabin()` or `meta::metainc()`
+-   Again we use `metagen` for pooled data.
+-   with raw outcome data we've `meta::metabin()` or `meta::metainc()`
 
+> [standard inverse variance weighting] is suboptimal for binary outcome data ... [especially when] dealing with **sparse** data, meaning that the number of events or the total sample size of a study is small,
 
 ### Bayesian Meta-analysis {#doing-bayes-meta}
 
@@ -383,41 +362,39 @@ every meta-analytical model inherently possesses a multilevel, and thus 'hierarc
 
 ```
 
-A Bayesian heriarchical model has three layers:
-- A data layer (the likelihood)
-- A process layer (the parameters describing the underlying process)
-- A prior layer (priors on hyper parameters)
+A Bayesian hierarchical model has three layers:
 
+\- A data layer (the likelihood)
 
-#### The setup {-}
+\- A process layer (the parameters describing the underlying process)
+
+\- A prior layer (priors on hyperparameters)
+
+#### The setup {.unnumbered}
+
 Underlying RE model (as before)
 
-Study-specific estimate:
+Study-specific estimates $\hat{\theta}_k$ are distributed :
 
 $$ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) $$
 
-True study-specific effects distributed:
+True study-specific effects $\theta_k$ are distributed:
 
 $$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
 
-... simplified to the 'marginal' form:
+... simplified to the 'marginal' form, this is
 
-$$ \hat\theta_k | \mu, \tau, \sigma_k \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)$$
+$$ (\hat\theta_k | \mu, \tau, \sigma_k) \sim \mathcal{N}(\mu,\sigma_k^2 + \tau^2)$$
 
 \
-
 
 And now we specify priors for these parameters, 'making it Bayesian'
 
-
-$$(\mu, \tau^2) \sim p(.)$$
-$$ \tau^2 > 0 $$
-\
+$$(\mu, \tau^2) \sim p(.)$$ $$ \tau^2 > 0 $$\
 
 Estimation will...
 
-> involve[] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.
-\
+> [involve] Markov Chain Monte Carlo based sampling procedures, such as the Gibbs Sampler. In the brms package we will be using in this chapter, the No-U-Turn Sampler, or NUTS (Hoffman and Gelman 2014), is used.\
 
 MCMC is used to sample from the posterior distribution. Without MCMC, to sample from the posterior the normalising constant would have to be found. But with most prior/likelihood combinations, the integral to find it is intractable.
 
@@ -434,17 +411,16 @@ MCMC is used to sample from the posterior distribution. Without MCMC, to sample 
 - "allow us to integrate prior knowledge and assumptions when calculating meta-analyses" (including methodological uncertainty perhaps)
 
 ```
+
 \
 
-#### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {-}
+#### Setting weakly informative' priors for the mean and cross-study variance of the TE sizes {.unnumbered}
 
-> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!].
-\
+> It has been argued that a good approach is to use weakly informative priors (Williams, Rast, and Bürkner 2018) [rather than 'non-informative priors'!].\
 
 With a non-informative prior, we are essentially saying that we do not have any prior information on the effect size, whereas often we do have some information, and would like to include it in our analyis. Make sure to research priors before using them, as some be be very informative, with an example being the uniform distibution saying that extreme values are as likely as moderate values.
 
-
-**For $\mu$**:
+**For** $\mu$:
 
 > include distributions which represent that we do indeed have **some confidence that some values are more credible than others**, while still not making any overly specific statements about the exact true value of the parameter. ... In most applied cases, it seems reasonable to assume that the true effect size we want to estimate must lie somewhere between, for example, Cohen's $d=-2.0$ and $d=2.0$, but will unlikely be hovering around $d=50$. A good starting point for our $\mu$ prior may therefore be a normal distribution with mean $0$ and variance $1$. This means that we grant a 95% prior probability that the true pooled effect size $\mu$ lies between $d=-2.0$ and $d=2.0$.
 
@@ -464,7 +440,6 @@ SD: There has to be very good reason for setting the prior mean to be different 
 
 A further discussion on 'coherence' in the Bayesian framework versus 'bias' in the frequentist world (unfold).
 
-
 ```{block2,  type='fold'}
 
 SD:
@@ -480,16 +455,16 @@ More here: https://en.wikipedia.org/wiki/Bias_of_an_estimator#Bayesian_view
 
 ```
 
-**For  $\tau^2$**
+**For** $\tau^2$
 
-- must be non-negative, but might be very close to zero.
+-   must be non-negative, but might be very close to zero.
 
-- Recommended distribution for this case (for variances in general):  *Half-Cauchy prior* (a censored Cauchy)
+-   Recommended distribution for this case (for variances in general): *Half-Cauchy prior* (a censored Cauchy)
 
 $\mathcal{HC}(x_0,s)$
 
-- with  *location parameter* $x_0$ (peak on x-axis)
-- and  $s$, scaling parameter 'how heavy-tailed'
+-   with *location parameter* $x_0$ (peak on x-axis)
+-   and $s$, scaling parameter 'how heavy-tailed'
 
 \
 
@@ -504,7 +479,6 @@ grid.raster(img)
 
 ```
 
-
 HC is 'heavy-tailed;... gives some probability to very high values but low values are still more likely.
 
 One might consider $s=0.3$
@@ -513,13 +487,12 @@ Note that the Half-Cauchy distribution has an undefined mean, variance, skewness
 
 One might consider $s=0.3$
 
-<div class="marginnote">
-DR: $s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size?
-SD: Since the Cauchy distribution has infinite mean (hence undefined first moment) and variance, it doesn't make sense to discuss $s$ in this way. $s$ is a way of capturing the dispersion of the distribution.
-</div>
-
+::: {.marginnote}
+DR: $s$ corresponds to the std deviation here? ... so an SD of the effect size about 1/3 of it's mean size? SD: Since the Cauchy distribution has infinite mean (hence undefined first moment) and variance, it doesn't make sense to discuss $s$ in this way. $s$ is a way of capturing the dispersion of the distribution.
+:::
 
 Checking the share of this distribution below 0.3...
+
 ```{r, message=F, warning=F}
 phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/2 ... with sigma=0.3
 ```
@@ -528,35 +501,27 @@ phcauchy(0.3, sigma = 0.3) #cumulative share of distribution below 0.3 ... is 1/
 
 ... But they go for the 'more conservative' $s=0.5$.
 
-> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially.
-\
+> In general, it is advised to always conduct sensitivity analyses with different prior specifications to check if they affect the results substantially.\
 
 With enough data, the effect of the prior should shrink. Some priors never allow the data to overload them, so we should be careful using them.
 
-
-<div class="marginnote">
-DR:  Todo - insert a formal definition
+::: {.marginnote}
+DR: Todo - insert a formal definition
 
 "Smaller and smaller" could be measured in terms of some metrics over the shift in the distribution, I presume. Perhaps there are several ways of measuring this (average shifts, weighted average, maximum shift for any segment, etc).
-
-</div>
-
+:::
 
 Complete model:
 
-$$ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) $$
-$$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$
-$$ \mu \sim \mathcal{N}(0,1)$$
-$$ \tau \sim \mathcal{HC}(0,0.5)$$
+$$ \hat\theta_k \sim \mathcal{N}(\theta_k,\sigma_k^2) $$ $$ \theta_k \sim \mathcal{N}(\mu,\tau^2) $$ $$ \mu \sim \mathcal{N}(0,1)$$ $$ \tau \sim \mathcal{HC}(0,0.5)$$
 
-#### Bayesian Meta-Analysis in R using the `brms` package {-}
+#### Bayesian Meta-Analysis in R using the `brms` package {.unnumbered}
 
 You specify the priors as a vector of elements, each of which invokes the 'prior' function, which makes some sort of data frame. The priors function takes a distribution function with parameters, and a 'class'.
 
 ```{r priors}
 priors <- c(prior(normal(0,1), class = Intercept), prior(cauchy(0,0.5), class = sd))
 ```
-
 
 A quick look at the data we're using here:
 
@@ -565,7 +530,7 @@ A quick look at the data we're using here:
 str(madata[,1:3])
 ```
 
-`TE`:  calculated effect size of each study, expressed as the Standardized Mean Difference (SMD)
+`TE`: calculated effect size of each study, expressed as the Standardized Mean Difference (SMD)
 
 `seTE`: the standard error corresponding to each effect size
 
@@ -575,23 +540,23 @@ str(madata[,1:3])
 
 To actually run the model, he uses the following code:
 
-<div class="marginnote">
+::: {.marginnote}
 This requires careful installation of packages. See [here](https://discourse.mc-stan.org/t/dealing-with-catalina-iii/12731/30) for Mac OS Catalina, R 4.9 instructions.
-</div>
+:::
 
-<div class="marginnote">
-DR:  I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile; we sort this out below.
-</div>
+::: {.marginnote}
+DR: I find it surprising how long this procedure takes to run this simulation, given that the actual data used (estimates and SE's) is rather small. It seems to be that the C++ model takes long to compile; we sort this out below.
+:::
 
-<div class="marginnote">
+::: {.marginnote}
 2000 iterations seems to be a 'norm'. [source?]
-</div>
+:::
 
-<div class="marginnote">
+::: {.marginnote}
 The issue here seems to be that it takes a long time to compile the C++ model each time; it might be something we can write to avoid this step.
 
 SD: It will take some time to compile the model, and this is inevitable (it takes a long time with every model, this one works pretty quickly at a few minutes), but once it has compiled, it should not take a long time to sample. Below is some code to change the number of samples and show the speed once the model has compiled.
-</div>
+:::
 
 ```{r echo=TRUE, eval=TRUE,  results = "hide"}
 
@@ -610,7 +575,6 @@ m.brm <- brm(TE|se(seTE) ~ 1 + (1|Author),
 
 The brms package has a way of running the model again once it has compiled, without compiling it again. The following code increases the number of iterations from 2000 to 10000. Notice the difference in time it takes to run the code blocks.
 
-
 ```{r}
 model2 <- update(m.brm, iter=10000)
 
@@ -618,7 +582,6 @@ model2
 ```
 
 If you would want to change something with the model, such as the priors, then it would have to compile again in C++.
-
 
 ```{r, results = "hide"}
 priors2 <- c(prior(normal(0,1), class = Intercept), prior(normal(0,1), class = sd))
@@ -630,16 +593,13 @@ model3 <- update(m.brm, prior = priors2)
 model3
 ```
 
-
-<div class="marginnote">
+::: {.marginnote}
 The number of iterations can be any ''high number''. A commonly used amount is 2000 iterations and four chains. The reason the number should be high is that the MCMC sampler needs to converge in distribution to the target distribution.
-
 
 SD: "High" may depend on several factors (such as what distribution we're trying to sample from, the amount of time it takes to sample, how accurate we want it to be, etc.). But broadly we want to make sure we have more samples than fewer as we want to be confident that we have converged to the target distribution. I'd usually stick to something in the thousands to be sure.
 
-There is a good discussion about it on the answers here: https://stats.stackexchange.com/questions/203281/number-of-markov-chain-monte-carlo-samples
-
-</div>
+There is a good discussion about it on the answers here: <https://stats.stackexchange.com/questions/203281/number-of-markov-chain-monte-carlo-samples>
+:::
 
 The *formula for the model* is specified using 'regression formula notation' (unfold)...
 
@@ -659,18 +619,17 @@ The *formula for the model* is specified using 'regression formula notation' (un
 
 ```
 
+#### Assesing convergence (has MCMC algo found an optimum?) {.unnumbered}
 
-#### Assesing convergence (has MCMC algo found an optimum?) {-}
+-   If it hasn't converged, don't trust it!
 
-- If it hasn't converged, don't trust it!
-  - You may need to boost the number of iterations
+    -   You may need to boost the number of iterations
 
 "Posterior predictive checks": If it's converged, then the density of the replications should resemble the original data.
 
-<div class="marginnote">
+::: {.marginnote}
 DRL Not sure I understand this; may need to revise and give a clear explanation. I guess it's something like 'the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set'...
-</div>
-
+:::
 
 ```{r}
 pp_check(m.brm)
@@ -679,7 +638,7 @@ pp_check(m.brm)
 
 A commonly used method of assessing convergence is to look at the traceplots. There should be no distinctive patterns, and they should not have large spikes. Good traceplots look "well mixed", suggesting that the parameter space is being explored.\*
 
-*Is  'assessing convergence' a subjective judgement?* (Unfold a discussion.)
+*Is 'assessing convergence' a subjective judgement?* (Unfold a discussion.)
 
 ```{block2,  type='fold'}
 
@@ -703,64 +662,56 @@ There are some good slides on visually assessing convergence here: https://astro
 
 ```
 
-
-
 ```{r}
 library(bayesplot)
 mcmc_trace(m.brm)
 ```
 
-
 \
 
 Also check for a Potential Scale Reduction Factor (PSRF), or $\hat{R}$ below 1.01.
 
-<div class="marginnote">
-SD: Rhat is a Bayesian measure used to determine convergence - I don't think that Harrer will go into detail. It has a complicated formula, but all we should focus on is that Rhat converges to 1 as n tends to infinity. Read more here: https://mc-stan.org/rstan/reference/Rhat.html
-</div>
+::: {.marginnote}
+SD: Rhat is a Bayesian measure used to determine convergence - I don't think that Harrer will go into detail. It has a complicated formula, but all we should focus on is that Rhat converges to 1 as n tends to infinity. Read more here: <https://mc-stan.org/rstan/reference/Rhat.html>
+:::
 
 ```{r}
 summary(m.brm)
 
 ```
 
-
-#### Interpreting the Results {-}
+#### Interpreting the Results {.unnumbered}
 
 Above we see the estimated 'sd of the mean effect' and the 'mean effect', and 'est. error' and CI's for each.
 
-<div class="marginnote">
+::: {.marginnote}
 Is 'est error' this like a measure of the standard deviation of the estimated coefficient?
 
 Here CI's are 'credible intervals'.
-</div>
+:::
 
 \
 
-We can also extract the estimated deviation of each study’s “true” effect size from the pooled effect:
+We can also extract the estimated deviation of each study's "true" effect size from the pooled effect:
 
 ```{r}
 ranef(m.brm)
 
 ```
 
-<div class="marginnote">
+::: {.marginnote}
+These are measures of *deviations*. But they don't exactly equal the difference between the input effect size and the estimated pooled effect size. In fact this is coming from an estimate of the true effect for each study which 'averages towards the mean' following some criteria (this is mentioned later).
+:::
 
-These are measures of *deviations*. But they don't exactly equal the difference between the input effect size and the estimated pooled effect size. In fact this is coming from an estimate of the true effect for each study which  'averages towards the mean' following some criteria (this is mentioned later).
+-   No p-values listed because this is Bayesian.
 
-</div>
-
-
-- No p-values listed because this is Bayesian.
-
-<div class="marginnote">
+::: {.marginnote}
 SD: With a classical analysis, we would ask if there is enough evidence of an effect to reject the null hypothesis of no impact at a (subjective) significance level. With a Bayesian approach, the entire distribution of the parameter is calcuated, is it is better to observe the distribution of the parameter. Frequentist analyses give binary answers to continuous questions, whereas with Bayesian analyses, continuous questions have continuous answers. (Paraphrasing Daniel XXX).
-</div>
+:::
 
 Instead he states:
 
->  the Estimate of the pooled effect size is SMD = 0.57,
-> with the 95% credibility interval (not confidence interval!) ranging from   95% CrI: 0.40 − 0.77. This indicates that there is in fact a moderate-sized overall effect of the interventions studied in this meta-analysis.
+> the Estimate of the pooled effect size is SMD = 0.57, with the 95% credibility interval (not confidence interval!) ranging from 95% CrI: 0.40 − 0.77. This indicates that there is in fact a moderate-sized overall effect of the interventions studied in this meta-analysis.
 
 But now we can model the parameters we want to estimate probabilistically...
 
@@ -776,7 +727,6 @@ names(post.samples) <- c("smd", "tau")
 ```
 
 "... make a **density plot** of the posterior distributions"
-
 
 ```{r, eval=T}
 
@@ -807,34 +757,34 @@ grid.arrange(smd_density, tau_density, ncol=2)
 
 ```
 
-- posterior distributions unimodal, roughly normal distribution
-- ... "peaking around the values for $\mu$ and $\tau$ we saw in the output"
+-   posterior distributions unimodal, roughly normal distribution
+-   ... "peaking around the values for $\mu$ and $\tau$ we saw in the output"
 
-<div class="marginnote">
+::: {.marginnote}
 Consider: why are the peaks not exactly these values? Mean versus mode, I guess.
-</div>
+:::
 
 \
 Maybe we want to know (e.g.) "the probability that the pooled effect is $SMD=0.30$ or smaller, based on our model."
-<div class="marginnote">
-Because maybe an effect of 0.30 or smaller means it's not worth using this drug or something </div>
 
+::: {.marginnote}
+Because maybe an effect of 0.30 or smaller means it's not worth using this drug or something
+:::
 
 Consider the *Empirical Cumulative Distribution Function* (ECDF) "of the posterior distribution for the pooled effect size"...
 
-> Use the `ecdf` function to implement the ECDF...  then check...
+> Use the `ecdf` function to implement the ECDF... then check...
 
 ```{r}
 smd.ecdf <- ecdf(post.samples$smd)
 smd.ecdf(0.3)
 ```
 
-> We see that the probability of our pooled effect being smaller than $SMD = 0.30$ is **very, very low**, so  the effects of the interventions we find in this meta-analysis are very likely to be meaningful.
-
+> We see that the probability of our pooled effect being smaller than $SMD = 0.30$ is **very, very low**, so the effects of the interventions we find in this meta-analysis are very likely to be meaningful.
 
 \
 
-Plotting the ECDF  below:
+Plotting the ECDF below:
 
 ```{r, warning=F, message=F, fig.width=7, fig.height=5, fig.align='center', echo=F}
 
@@ -854,14 +804,11 @@ ggplot(aes(x = smd, y = p), data = ecdf.dat) +
 
 Forest plots are great, esp. with Bayesian, where we've 'sampled posterior distributions'... but there's no prepackaged tool yet. So we've to build it with help from the `tidybayes` package.
 
-\
-
 First we prepare the data, extracting the posterior distribution for each study individually.
 
-<div class="marginnote">
-Use the `spread_draws` function ... takes, as input 1. the fitted `brms` model, 2. the random-effects index factor and the parameter to extract (here `b_Intercept`).
-...calculate actual effect sizes for each by adding the pooled effect size `b_Intercept` to the estimated deviation for each study.
-</div>
+::: {.marginnote}
+Use the `spread_draws` function ... takes, as input 1. the fitted `brms` model, 2. the random-effects index factor and the parameter to extract (here `b_Intercept`). ...calculate actual effect sizes for each by adding the pooled effect size `b_Intercept` to the estimated deviation for each study.
+:::
 
 ```{r}
 study.draws <- spread_draws(m.brm, r_Author[Author,], b_Intercept) %>%
@@ -913,25 +860,35 @@ ggplot(aes(b_Intercept, relevel(Author, "Pooled Effect", after = Inf)),
   theme_minimal()
 ```
 
-<div class="marginnote">
+::: {.marginnote}
 Remember, these are not the effect sizes from the original studies. There has been some bayesian updating of each of these, considering all the others.
-</div>
+:::
 
 ## Dealing with publication bias {#pubbias}
 
-- Exacerbated by multiple-hypothesis-testing?
+-   Exacerbated by multiple-hypothesis-testing?
 
 > But i think it also talks somewhat to the Steffano DellaVigna paper that was presented at the VAFE - that the publication bias really creeps in when we are publishing studies that have just one or two p values around 0.05.
 
 ### Diagnosis and responses: P-curves, funnel plots, adjustments
 
-
-
 ## Other notes, links, and commentary
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A high quality meta-analysis should:<br><br>- Have a pre-registered protocol<br>- Appropriately deal with dependent effect sizes<br>- Explore effect size heterogeneity <br>- Have a clear methods description<br>- Report COIs<br>- Publish data and code <a href="https://t.co/cHj11wv5vm">https://t.co/cHj11wv5vm</a></p>&mdash; Dan Quintana (dsquintana) <a href="https://twitter.com/dsquintana/status/1196551674132914176?ref_src=twsrc%5Etfw">November 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
 
+<p lang="en" dir="ltr">
 
+A high quality meta-analysis should:<br><br>- Have a pre-registered protocol<br>- Appropriately deal with dependent effect sizes<br>- Explore effect size heterogeneity <br>- Have a clear methods description<br>- Report COIs<br>- Publish data and code <a href="https://t.co/cHj11wv5vm">https://t.co/cHj11wv5vm</a>
+
+</p>
+
+--- Dan Quintana (dsquintana) <a href="https://twitter.com/dsquintana/status/1196551674132914176?ref_src=twsrc%5Etfw">November 18, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
 ## Other resources and tools
 
 Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main manuscript](https://docs.google.com/document/d/1z3QBDYr86S9FxGjptZP94jJnZeeN4aQaBQP3VVT89Ec/edit#heading=h.gjdgxs)
@@ -940,8 +897,6 @@ Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main ma
 
 ### Institutional and systematic guidelines
 
-[Cochrane Handbook for Systematic Reviews of Interventions
- online](https://training.cochrane.org/handbook/current)
+[Cochrane Handbook for Systematic Reviews of Interventions online](https://training.cochrane.org/handbook/current)
 
 ## Example: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
-
