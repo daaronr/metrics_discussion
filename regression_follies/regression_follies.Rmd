@@ -254,19 +254,19 @@ Winston Lin’s response to an email:
 ```{block2,  type='fold'}
 
 >  On multiple comparisons corrections, there are some thorny philosophical issues and there isn’t one right answer:
-  
+
 >  mixed feelings about the recent popularity of multiplicity corrections in the social sciences. I think there’s a tendency to fetishize p-values and null-hypothesis significance testing, and multiplicity-corrected p-values can be hard to interpret. (In principle, one could also report multiplicity-corrected confidence intervals, but I haven’t seen people doing that.) To me, the real value of p-values and NHST (if there is any) is as a restraining device, and if this restraining device isn’t working because of the multiple comparisons issue, there’s more than one way to address the problem. In medical research, people often pre-specify one or two primary comparisons (which implies a commitment that these are the comparisons that’ll be highlighted in the abstract, and the rest are basically treated as exploratory) without doing multiplicity corrections.
 
->  On the other hand, maybe you have to do multiplicity corrections because your reviewers want them, or maybe you don’t have one or two primary comparisons between your 7 treatments. When I last followed the multiple comparisons literature (about 4 years ago), my feeling was that if I had to report multiplicity-corrected p-values, I’d use either the Westfall-Young or the Romano-Wolf procedure. 
+>  On the other hand, maybe you have to do multiplicity corrections because your reviewers want them, or maybe you don’t have one or two primary comparisons between your 7 treatments. When I last followed the multiple comparisons literature (about 4 years ago), my feeling was that if I had to report multiplicity-corrected p-values, I’d use either the Westfall-Young or the Romano-Wolf procedure.
 
 [There are some explanations and references in section 7 and footnotes 5-12 of this EGAP guide that Al Fang, Don Green, and I worked on](https://combinatronics.com/egap/methods-guides/master/hte/heteffects.html#multiple-comparisons)
-                                                                                                                      DR: I will try to start a hypothes.is or forum conversation in that Egap guide. 
-                 
+                                                                                                                      DR: I will try to start a hypothes.is or forum conversation in that Egap guide.
+
 ```
 
 \
 
-**Considerations:** 
+**Considerations:**
 
 Frequentist NHST: Understated type-one error rate overall if no adjustment, overly narrow confidence intervals (coverage)
 
@@ -278,24 +278,24 @@ Frequentist NHST: Understated type-one error rate overall if no adjustment, over
 
 **Responses:**
 
-'FWER Control methods' 
+'FWER Control methods'
 
 - Bonferroni correction: divides the threshold p-value by the number of tests ($k$)
   -  Extremely conservative, assumes independence of hypotheses/outcomes
 
-- [Holm-Bonferroni](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method#:~:text=The%20Holm%E2%80%93Bonferroni%20method%20is%20%22uniformly%22%20more%20powerful%20than,always%20at%20least%20as%20powerful.&text=Thus%2C%20The%20Hochberg%20procedure%20is,powerful%20than%20the%20Holm%20procedure) 
-  - slightly less conservative than Bonferroni -- orders p-values, applies Bonferroni to  the "most significant" result (smallest p-value),  and the correction reduces the denominator by 1 for each 'remaining result' 
+- [Holm-Bonferroni](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method#:~:text=The%20Holm%E2%80%93Bonferroni%20method%20is%20%22uniformly%22%20more%20powerful%20than,always%20at%20least%20as%20powerful.&text=Thus%2C%20The%20Hochberg%20procedure%20is,powerful%20than%20the%20Holm%20procedure)
+  - slightly less conservative than Bonferroni -- orders p-values, applies Bonferroni to  the "most significant" result (smallest p-value),  and the correction reduces the denominator by 1 for each 'remaining result'
 
-- Westfall-Young Step-down: 
+- Westfall-Young Step-down:
   - Rank-orders p-values, simulate p-values with random assignment of 'null treatments'; adjusted p-value share of 'k-ranked simulated p-value is below k'th rank of original p-value'
   - ["Romano and Wolf note that the Westfall-Young procedure requires an additional assumption of subset pivotality"](https://blogs.worldbank.org/impactevaluations/overview-multiple-hypothesis-testing-commands-stata)
 
-- List, Shaikh, Xu (2019): "bootstrap-based procedure for testing these null hypotheses simultaneously using experimental data in which simple random sampling is used to assign treatment status to units." 
+- List, Shaikh, Xu (2019): "bootstrap-based procedure for testing these null hypotheses simultaneously using experimental data in which simple random sampling is used to assign treatment status to units."
 <div class="marginnote">
  (Does it apply to blocked sampling?)
 </div>
 
-> our procedure (1) asymptotically controls the familywise error rate—the probability of one or more false rejections—and (2) is asymptotically balanced in that the the marginal probability of rejecting any true null hypothesis is approximately equal in large samples. Importantly, by incorporating information about dependence ignored in classical multiple testing procedures, such as the Bonferroni (1935) and Holm (1979) corrections, our pro- cedure has much greater ability to detect truly false null hypotheses. In the presence of multiple treatments, we additionally show how to exploit logical restrictions across null hypotheses to further improve power. 
+> our procedure (1) asymptotically controls the familywise error rate—the probability of one or more false rejections—and (2) is asymptotically balanced in that the the marginal probability of rejecting any true null hypothesis is approximately equal in large samples. Importantly, by incorporating information about dependence ignored in classical multiple testing procedures, such as the Bonferroni (1935) and Holm (1979) corrections, our pro- cedure has much greater ability to detect truly false null hypotheses. In the presence of multiple treatments, we additionally show how to exploit logical restrictions across null hypotheses to further improve power.
 
 \
 
@@ -306,15 +306,9 @@ FDR-Control
 
 
 
-
-
-
-
-
-
 ### Interaction terms and pitfalls
 
-See also 'effect coding' or 'contrast coding'. 
+See also 'effect coding' or 'contrast coding'.
 
 #### 'Moderators' and their confusion with nonlinearity
 
@@ -347,7 +341,7 @@ $\beta_{South} = -30$
 
 And skip the intercept, obviously.
 
-This seems most intuitive to me. But I can’t for the life of me figure out how to get this with R’s ‘contrast coding’. (And also, that seems to mess up the variable names). 
+This seems most intuitive to me. But I can’t for the life of me figure out how to get this with R’s ‘contrast coding’. (And also, that seems to mess up the variable names).
 
 Set parameters
 
@@ -360,10 +354,10 @@ b_s <- -30
 
 sd_prop <- 0.5 #sd as share of mean
 
-pop_per <- 1000 
+pop_per <- 1000
 ```
 
-Simulated data 
+Simulated data
 ```{r}
 
 set.seed(100)
@@ -379,7 +373,7 @@ i_df <- tibble(
   region = rep( c("n", "c", "s"), c(pop_per, pop_per, pop_per) ),
   income = c(n_income, c_income, s_income),
   noise_var
-) %>% 
+) %>%
   mutate(region = as.factor(region))
 
 i_df %>% group_by(region) %>%
@@ -395,7 +389,7 @@ i_df %>%                               # Summary by group using purrr
 
 
 ```
-Looks close enough. 
+Looks close enough.
 
 Now I want to 'model income' to examine the differences by region 'controlling for other factors' (which here are noise, but let's do it anyways; will make this exercise richer later).
 
@@ -438,7 +432,7 @@ Running the regression again
 Now this seems to get us the adjustment coefficients we are looking for, but
 
 1. The names of the regions are lost; how do I know which is which?
-2. It is apparently reporting the adjustment coefficients for s (south) and c (central). Not very intuitive. 
+2. It is apparently reporting the adjustment coefficients for s (south) and c (central). Not very intuitive.
 
 This seems to be the case no matter how we relevel the region to set a particular base group (I tried it) ... the coefficients don't change.
 
@@ -446,12 +440,12 @@ What if we de-mean the outcome (income) variable, and force a 0 intercept?
 
 ```{r}
 
-i_df %>% 
-  mutate(m_inc = mean(income)) %>% 
+i_df %>%
+  mutate(m_inc = mean(income)) %>%
  lm(income - m_inc ~ 0  + region + noise_var, .)
 
 ```
-Yay! This is what I wanted, and miraculously the variable names are preserved. But it seems a weird way to do it. Also note that, with the above code, this set of coefficients appears no matter which contrast matrix I force, whether sum or treatment. 
+Yay! This is what I wanted, and miraculously the variable names are preserved. But it seems a weird way to do it. Also note that, with the above code, this set of coefficients appears no matter which contrast matrix I force, whether sum or treatment.
 
 However, this does not carry over easily to multiple dimensions of contrast coding (illustrate).
 

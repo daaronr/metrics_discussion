@@ -1,6 +1,7 @@
 # Functions used in general Reinstein code
 
 
+
 #### 'Hijacking' standard functions ####
 
 ### See - https://www.r-bloggers.com/hijacking-r-functions-changing-default-arguments/
@@ -305,10 +306,30 @@ just_x  <- function(df) {
                select_all(~gsub("\\.x$", "", .))
 }
 
+#### Basic setup and codebooks
+
+
+
+rdr_cbk <- function(cbfile) {
+  #Convenience function to make codebooks with options
+  rmarkdown::render(
+    here("codebooks", cbfile),
+    output_dir = here("docs","codebooks"),
+    intermediates_dir = here("docs","codebooks"),
+    knit_root_dir = here("docs", "codebooks")
+  )
+}
 
 
 ####  summary tables function(s) ####
 
+#intended for donation data:
+.summ <- hijack(vtable::sumtable,
+                summ=c('notNA(x)','mean(x)','sd(x)', 'pctile(x)[50]', 'pctile(x)[90]'),
+                summ.names = c('N Responses', 'N positive', 'Mean', 'Sd', "Median", "90th pct"),
+                digits=0,
+                labels = TRUE, #uses assigned in Hmisc or sjlabelled
+                simple.kable = TRUE)
 
 
 #### ... Sumtabs by 'treatment' ... from substitution project
@@ -379,7 +400,7 @@ sumtab2_func_plus <- function(df = ADSX, depvar = donation, treatvar = TreatFirs
 }
 
 # filter(!is.na(donation)) %>% group_by(Treatment, Stage) %>%
-# dplyr::summarize(N = n(), Mean = round(mean(donation, na.rm
+# dplyr::ummarize(N = n(), Mean = round(mean(donation, na.rm
 # = T), 2), 'Std.dev.' = glue('(', { round(sd(donation, na.rm
 # = T), 2) }, ')')
 
@@ -438,6 +459,13 @@ adornme_not <- function(atabyl, adorn = "row", digits = 2, cap = "",
 }
 
 
+
+
+# tabylgd: tabyl plus sort by descening frequency -- the version we normally want
+tabg <- function(df, col) {
+    janitor::tabyl({{df}},{{col}}) %>%
+        arrange(-`n`)
+}
 
 # ... formatting default options for tabyl ####
 tabylstuff <- function(df, cap = "") {
@@ -536,7 +564,11 @@ boxplot_func <- function(df = ADSX, yvar = donation, treatvar = Treatment, facet
 
 
 
+# Model building
 
+m_f <- function(lhs, rhs) {
+  as.formula(paste(lhs," ~ ", paste(rhs, collapse= "+")))
+}
 # Options and formatting code elements ####
 
 sidebyside <- function(..., width = 60) {
@@ -555,6 +587,14 @@ huxoptions <- function(df) {
   set_all_borders(1) %>% huxtable::add_colnames() %>% set_number_format(3)
 }
 
+huxreg_opts  <- function(df) {
+ df %>%
+    set_bold(1, everywhere)             %>%
+    set_bottom_border(1, everywhere) %>%
+    map_background_color(by_rows("grey87", "white"))  %>%
+    set_caption_pos("bottom") %>%
+    set_col_width(c(1.8, rep(.6, times=length(.)-1)))
+}
 
 # Todo: make function to create our preferred types of
 # summary statistics table Editing data functions FixNA and
@@ -695,7 +735,10 @@ format_with_col = function(x, color){
     x
 }
 
+## More formatting stuff ###..#
 
+.kable_styling <- hijack(kableExtra::kable_styling, full_width=FALSE)
+.kable <- hijack(knitr::kable, format.args = list(big.mark = ",", scientific = FALSE))
 
 
 ################# Coding shortcuts ####

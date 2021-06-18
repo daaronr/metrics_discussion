@@ -65,7 +65,7 @@ The download code follows (remove the 'eval=FALSE' to get it to actually run)...
 
 tryCatch( #trycatch lets us 'try' to execute and if there is an error, it does the thing *after* the braces, rather than crashing
   {
-   download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", des tfile = "reinstein_bibtex.bib") #download the bibtex database
+   download.file(url = "https://www.dropbox.com/s/3i8bjrgo8u08v5w/reinstein_bibtex.bib?raw=1", destfile = "reinstein_bibtex.bib") #download the bibtex database
 
         download.file(url = "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/bookdown_template/support/tufte_plus.css", destfile = here("support", "tufte_plus.css")) #this downloads the style file
 
