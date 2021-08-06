@@ -64,6 +64,22 @@ Example of looking at a regression of wages in schooling, controlling for colleg
 > It is also incorrect to say that the conditional comparison captures the part of the effect of college that is 'not explained by occupation' ... so we would do better to control only for variables that are not themselves caused by education."
 
 
+### Does 'controlling for more' increase the probability that a (controlled) difference between too groups represents a causal effect? Not really (Informal discussion in fold)
+
+```{block2,  type='fold'}
+
+Claim: ‘controlling for more factors does not make it more likely that the (remaining) observed association between factors A and D represents a causal relationship’
+
+Suppose we want to know ‘does being raised in Australian culture make you donate more’?  The ‘do this, change that’ hypothesis is ‘if we moved an individual, from birth, into an Australian culture, holding all else constant’, he/she would donate more.
+Suppose that 90% share of Australians have a university degree, because Australian culture also encouraged education, while only 50% of non-Australians did.
+That raises the first issue: do we want to try to get at only ‘direct effects’ of Australian culture (e.g., on generous spirit) without considering the ‘indirect effects’ on education, which itself might increase concern for others and thus charitable giving? This is not clear. But suppose we only wanted to consider the former. And suppose that Australian culture in fact does increase generosity through this direct channel. But how can we measure it?
+We could compare the average donation of Australians and non-Australians overall.  But here we would not be able to disentangle this from  ’“the effect of education --> concern --> giving”
+alternatively
+2. We could compare the  average donation of Australians and non-Australians “with the same levels of education” i.e., down-weight the Australians with a university degree, counting them only 1/5 as much as Australians without a university degree.
+However, we would then be overweighting (fivefold!) Australians who, in spite of the big Australian cultural pressure towards university, nonetheless decided not to get a degree. These people may have other (potentially unmeasured) characteristics tied to their hatred for education, that caused them not to go to Uni. these characteristics may also make them less generous.
+The average donations from these ‘extreme anti-education’ Australians may in fact be lower than the the donations of the average non-Australian.  This would then be masking the impact of Australian culture on donations, which (we assumed above) was positive,
+```
+
 
 ### "Bad control" ("colliders")
 
@@ -260,7 +276,7 @@ Winston Lin’s response to an email:
 >  On the other hand, maybe you have to do multiplicity corrections because your reviewers want them, or maybe you don’t have one or two primary comparisons between your 7 treatments. When I last followed the multiple comparisons literature (about 4 years ago), my feeling was that if I had to report multiplicity-corrected p-values, I’d use either the Westfall-Young or the Romano-Wolf procedure.
 
 [There are some explanations and references in section 7 and footnotes 5-12 of this EGAP guide that Al Fang, Don Green, and I worked on](https://combinatronics.com/egap/methods-guides/master/hte/heteffects.html#multiple-comparisons)
-                                                                                                                      DR: I will try to start a hypothes.is or forum conversation in that Egap guide.
+                            DR: I will try to start a hypothes.is or forum conversation in that Egap guide.
 
 ```
 
@@ -284,7 +300,7 @@ Frequentist NHST: Understated type-one error rate overall if no adjustment, over
   -  Extremely conservative, assumes independence of hypotheses/outcomes
 
 - [Holm-Bonferroni](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method#:~:text=The%20Holm%E2%80%93Bonferroni%20method%20is%20%22uniformly%22%20more%20powerful%20than,always%20at%20least%20as%20powerful.&text=Thus%2C%20The%20Hochberg%20procedure%20is,powerful%20than%20the%20Holm%20procedure)
-  - slightly less conservative than Bonferroni -- orders p-values, applies Bonferroni to  the "most significant" result (smallest p-value),  and the correction reduces the denominator by 1 for each 'remaining result'
+  - slightly less conservative than Bonferroni -- orders p-values, applies Bonferroni to  the "most significant" result (smallest p-value), and the correction reduces the denominator by 1 for each 'remaining result'
 
 - Westfall-Young Step-down:
   - Rank-orders p-values, simulate p-values with random assignment of 'null treatments'; adjusted p-value share of 'k-ranked simulated p-value is below k'th rank of original p-value'
@@ -299,10 +315,123 @@ Frequentist NHST: Understated type-one error rate overall if no adjustment, over
 
 \
 
-FDR-Control
+False discovery rate (FDR) Control
 
 - Benjamini and Hochberg ... but this one seems to be conservative in the sense that it implicitly assumes independent hypotheses in making the correction (?)
 \
+
+Considering some of Nik Vetr's work below (genetics-related)
+
+```{r, eval=FALSE}
+
+library(mvtnorm)
+
+rlkj <- function (K, eta = 1) {
+  alpha <- eta + (K - 2)/2
+  r12 <- 2 * rbeta(1, alpha, alpha) - 1 #generates n=1 random 'deviates' from the beta function with parameters alpha ... what does this mean in context?
+  R <- matrix(0, K, K) #a K by K matrix of 0's
+  R[1, 1] <- 1
+  R[1, 2] <- r12
+  R[2, 2] <- sqrt(1 - r12^2)
+  if (K > 2)
+    for (m in 2:(K - 1)) {
+      alpha <- alpha - 0.5
+      y <- rbeta(1, m/2, alpha)
+      z <- rnorm(m, 0, 1)
+      z <- z/sqrt(crossprod(z)[1])
+      R[1:m, m + 1] <- sqrt(y) * z
+      R[m + 1, m + 1] <- sqrt(1 - y)
+    }
+  return(crossprod(R))
+}
+
+d <- 500
+n <- 100
+FT_SE <- 1 / sqrt(n-3)
+zscore_thresh_2t <- abs(qnorm(0.025, 0, 1)) #for 2-tailed test
+
+corrmat <- rlkj(K = d, eta = 1)
+x <- rmvnorm(n, sigma = corrmat)
+obs_corrmat <- cor(x)
+
+#let's just keep it in symmetric matrix form for clarity's sake
+atanh_corrmat <- atanh_obs_corrmat <- diag(d)
+
+atanh_corrmat[upper.tri(atanh_corrmat)] <- atanh(corrmat[upper.tri(corrmat)])
+atanh_corrmat <- atanh_corrmat + t(atanh_corrmat)
+
+atanh_obs_corrmat[upper.tri(atanh_obs_corrmat)] <- atanh(obs_corrmat[upper.tri(obs_corrmat)])
+atanh_obs_corrmat <- atanh_obs_corrmat + t(atanh_obs_corrmat)
+
+diag(atanh_corrmat) <- diag(atanh_obs_corrmat) <- NA
+
+#compute sample z-scores
+abs_zscores <- abs(atanh_corrmat - atanh_obs_corrmat) / FT_SE
+
+#look at false positive rate
+sum(abs_zscores > zscore_thresh_2t, na.rm = T) / 2 / choose(d, 2)
+#huh look at that
+
+#let's just more explicitly confirm in a linear modeling context
+y <- x*0 + matrix(rnorm(d*n), nrow = nrow(x), ncol = ncol(x))
+Bs <- sapply(1:d, function(i) (solve(t(cbind(1, x[,i])) %*% cbind(1, x[,i])) %*% t(cbind(1, x[,i])) %*% t(t(y[,i])))[2])
+Bs_SEs <- sqrt(sapply(1:d, function(i) var(y[,i]) / var(x[,i]) * (1-cor(x[,i], y[,i])^2) / (n-3)))
+Bs_Zs <- abs(Bs / Bs_SEs)
+sum(Bs_Zs > zscore_thresh_2t) / d
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#let's just do one more quick confirmation replicated at low d
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#doing this cos lkj(eta=1) concentrates probability density around identity which might throw things off
+
+low_d_replicate <- function(d, n, bonf = F){
+
+  FT_SE <- 1 / sqrt(n-3)
+  zscore_thresh_2t <- abs(qnorm(0.025, 0, 1)) #for 2-tailed test
+  zscore_thresh_2t_pairwise_bonf <- abs(qnorm(0.025 / choose(d,2), 0, 1)) #for 2-tailed test
+  zscore_thresh_2t_totalD_bonf <- abs(qnorm(0.025 / d, 0, 1)) #for 2-tailed test
+
+
+  corrmat <- rlkj(K = d, eta = 1)
+  x <- rmvnorm(n, sigma = corrmat)
+  obs_corrmat <- cor(x)
+
+  #let's just keep it in symmetric matrix form for clarity's sake
+  atanh_corrmat <- atanh_obs_corrmat <- diag(d)
+
+  atanh_corrmat[upper.tri(atanh_corrmat)] <- atanh(corrmat[upper.tri(corrmat)])
+  atanh_corrmat <- atanh_corrmat + t(atanh_corrmat)
+
+  atanh_obs_corrmat[upper.tri(atanh_obs_corrmat)] <- atanh(obs_corrmat[upper.tri(obs_corrmat)])
+  atanh_obs_corrmat <- atanh_obs_corrmat + t(atanh_obs_corrmat)
+
+  diag(atanh_corrmat) <- diag(atanh_obs_corrmat) <- NA
+
+  #compute sample z-scores
+  abs_zscores <- abs(atanh_corrmat - atanh_obs_corrmat) / FT_SE
+
+  #let's just more explicitly confirm in a linear modeling context
+  y <- x*0 + matrix(rnorm(d*n), nrow = nrow(x), ncol = ncol(x))
+  Bs <- sapply(1:d, function(i) (solve(t(cbind(1, x[,i])) %*% cbind(1, x[,i])) %*% t(cbind(1, x[,i])) %*% t(t(y[,i])))[2])
+  Bs_SEs <- sqrt(sapply(1:d, function(i) var(y[,i]) / var(x[,i]) * (1-cor(x[,i], y[,i])^2) / (n-3)))
+  Bs_Zs <- abs(Bs / Bs_SEs)
+
+  if(bonf){
+    return(c(sum(abs_zscores > zscore_thresh_2t_pairwise_bonf, na.rm = T) / 2, sum(Bs_Zs > zscore_thresh_2t_totalD_bonf)))
+  } else {
+    return(c(sum(abs_zscores > zscore_thresh_2t, na.rm = T) / 2, sum(Bs_Zs > zscore_thresh_2t)))
+  }
+
+}
+
+nrep <- 1E4
+d = 5
+n = 100
+apply(replicate(nrep, low_d_replicate(d, n)), 1, sum) / c(choose(d, 2) * nrep, nrep * d)
+apply(replicate(nrep, low_d_replicate(d, n, T) > 0), 1, sum) / nrep
+#yep yep seems to hold still! okie-dokie
+
+```
 
 
 
@@ -321,6 +450,9 @@ In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts'
 ### Choice of test statistics (including nonparametric)
 
 (Or get to this in the experimetrics section)
+
+
+See also ['Common statistical tests are linear models'](https://lindeloev.github.io/tests-as-linear/)
 
 ### How to display and write about regression results and tests
 
@@ -369,7 +501,7 @@ s_income <- rnorm(pop_per, m_inc + b_s, (m_inc + b_s)*sd_prop)
 
 noise_var <- rnorm(pop_per*3, 0, (m_inc + b_s)*sd_prop)
 
-i_df <- tibble(
+i_df <- tibble::tibble(
   region = rep( c("n", "c", "s"), c(pop_per, pop_per, pop_per) ),
   income = c(n_income, c_income, s_income),
   noise_var
@@ -377,7 +509,7 @@ i_df <- tibble(
   mutate(region = as.factor(region))
 
 i_df %>% group_by(region) %>%
-    summarise(n = n() ,
+    dplyr::summarise(n = n() ,
               mean = mean(income),
               sd = sd(income))
 

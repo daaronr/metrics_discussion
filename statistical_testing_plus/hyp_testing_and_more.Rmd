@@ -1,0 +1,229 @@
+# Hypothesis testing, statistical comparisons and inferences
+
+## Frequentist
+
+### Parametric
+
+### Nonparametric
+
+## Randomization and permutation-based
+
+## Bayesian and hybrid
+
+Hybrid: See 'Bayes Factors'
+
+### Bayes factor -- what is it, what can it do? {#b-factor}
+
+Anyone use Bayes factors? What I don't understand is which alternative hypothesis is chosen to compare to the null, or how I would be supposed to choose such an alternative hypothesis. Should I choose some minimal effect size of interest (MESOI)?
+
+The Bayes factor is a likelihood ratio of the marginal likelihood of two competing hypotheses, usually a null and an alternative. (Wikipedia)
+
+Don't I need to know which alternative we are considering to compute this?
+
+> Response: Not sure what the MESOI is, but the choice of "null" or "alternative" hypothesis is arbitrary w/ Bayes factors, since you can interpret them in both directions.
+
+DR: I agree about the arbitrariness (and I think that's a good thing) but I am mainly confused because our standard null hypothesis is a point null ('exactly zero effect') while our standard prior puts no mass on any points as far as I know.
+
+Over [here](https://www.statisticshowto.com/bayes-factor-definition/) they say
+
+> the Bayes factor gives us a way to evaluate the data in favor of a null hypothesis, and to use external information to do so. It tells us what the weight of the evidence is in favor of a given hypothesis.
+
+But clearly there can be no way to express the 'evidence in favor of a null hypothesis relative to an alternative' if the alternative is allowed to include 'an extremely small effect'? (Or am I wrong... see further)
+
+[Here](https://easystats.github.io/bayestestR/articles/bayes_factors.html) (more credible) they talk about a 'null region':
+
+> One way of operationalizing the null-hypothesis is by setting a null region, such that an effect that falls within this interval would be practically equivalent to the null (Kruschke, 2010). In our case, that means defining a range of effects we would consider equal to the drug having no effect at all.
+
+Or maybe I am wrong in my statement above. Reading further:
+
+> comparing the estimated model against the a model in which the parameter of interest has been restricted to a point-null: Testing against the point-null (0) What if we don't know what region would be practically equivalent to 0? Or if we just want the null to be exactly zero? Not a problem - as the width of null region shrinks to a point, the change from the prior probability to the posterior probability of the null can be estimated by comparing the density of the null value between the two distributions.1 This ratio is called the Savage-Dickey ratio, and has the added benefit of also being an approximation of a Bayes factor
+
+Tbh I'm confused here. I see how we can compare the density of the prior and posterior at this 'point null' point (e.g., 'B=0'), and see that (e.g.) the evidence suggests we update at least somewhat in favor of (or against) the null.
+
+But I'm not sure how we could meaningfully express the 'posterior odds' if the prior distribution didn't put any point mass on a particular value, including the null.
+
+So perhaps this works if we use a prior that puts some strictly positive probability on the exact effect $B=0$ (say, $pr(B=0)=1/2$) as well as a non-degenerate distribution of probabilities over the other effect sizes (say, normal/2) ?
+
+\
+
+Nik:
+
+> Hmm, so BF are also known as ratios of marginal likelihoods, i.e., where the likelihood is marginalized (integrated over) the prior.
+
+
+Define terms (notation from Wikipedia "Marginal likelihood')
+
+IID points $\mathbf{X}=(x_1,\ldots,x_n),$ where $x_i \sim p(x_i|\theta)$ and $\theta$ is a random variable described by 
+ $\theta \sim p(\theta|\alpha)$
+
+"the marginal likelihood in general asks what the probability $p(\mathbf{X}|\alpha)$ is, where $\theta$ has been ... integrated out"
+
+
+DR first stab at it, doesn't make sense (unfold)
+
+```{block2,  type='fold'}
+"Marginal likelihoods": the sum of the likelihood of the data given each possible value of the parameter, weighted by the prior probability of that parameter. This should yield "the probability of the data given the prior". 
+
+> > If there is a "single prior used for considering the null and alternative hypothesis" this would then be identical for each. So we must be doing something else here. Are we considering H0 and HA as distinct *priors*? I don't think so.
+
+```
+
+This makes more sense I guess:
+
+
+"Marginal likelihood under H0" = $L_0= p\big(p(\mathbf{X}|\theta \in H_0\big)| \alpha)$ (not sure this notation is correct):
+
+The sum of the likelihood of the data given each possible value of the parameter that is consistent with $H_0$, weighted by the prior probability of that parameter. This should yield "the probability of the data (given the prior) if H0 holds".
+
+
+"Marginal likelihood under HA" = $L_A$: ... 
+
+(replace HA in above). This should yield "the probability of the data (given the prior) if HA holds" 
+
+
+Nik:
+
+> The marginal likelihood is also the denominator term in Bayes theorem, and is basically a normalizing constant, there to re-scale the numerator to make sure everything integrates / sums to 1 according to the law of total probability. 
+
+DR: So with my second interpretation above we have "Marginal likelihood under H0" + "Marginal likelihood under HA" $L_0 + L_A= 1$ 
+
+> In the discrete case, it's just taking the likelihood at every point in the prior, and then averaging them all together, weighted in proportion to the prior mass (in the continuous case, this is an integration step). It's basically giving a value proportional to your probability of observing the data, under the model in question (the model being composed of all the relations between parameters, the priors on those parameters, the distribution from which the data are drawn, etc.).
+
+DR: OK, but how would these be different under H0 and HA... these both 'use the same prior' I presume. Is my take above approximately correct? (Can you correct it if not?)
+
+> Nik: To get posterior odds, you're right that you'd need to have prior odds / probabilities on the models under consideration. Then it's just multiplying things out (and rescaling, if need be). The two (or more) models could indeed be a model that allows a parameter some distribution vs. a model that fixes that parameter to some number (like your B = 0), equivalent to giving the latter a point-mass prior at that value. 
+
+DR: Can we replace 'models' in the statement above with 'range of parameters given weight in the null and alternative hypotheses?'
+
+> In that case, you wouldn't need to do do any integration / summation over that point mass prior, since it's not free to vary (and in practice, we're approximating all these integrals / averages numerically through a hodgepodge of algorithms)
+
+DR: But if we were to use a 'point mass prior only' (e.g., we put $P=1$ on $B=0$) for both H0 and HA and H0 were that $B=0$ and HA that $B \neq 0$ this would not make sense. The prior must be something such as 
+
+$$Pr(B=0)=1/2$$
+$$Pr(B=x \neq 0) \sim N(0,1)/2$$
+Is that a reasonable way to frame it?
+
+
+\
+
+Nik:
+
+> The question being asked by the marginal likelihood is "what is the probability of the data, averaged over the joint prior distribution from which model parameters are drawn", and then these marginal likelihoods can be used in the same way usual likelihoods can be used (it's just when we take their ratio, we call them 'Bayes Factors')
+
+> Calculating a marginal likelihood is not unlike calculating a conventional likelihood in many cases, too, e.g., in models that allow overdispersion, you're averaging a Poisson mass over a Gamma, or a Binomial mass over a Beta, or whatever
+
+DR: By 'conventional likelihood' are you referring to 'the likelihood of the data given a specific parameter' ... the thing that maximum likelihood procedures will express as a function, and then (take the log and) try to find the highest value of?
+
+\
+
+Nik:
+
+> Another way to think about it is just to forget the terms likelihood, prior, posterior, Bayes, etc. Instead, just consider the probability model $M$, and its implied joint distribution of variables.
+
+> Some of these variables are observed, and we call them observations, $X$. Some are unobserved, and we call them parameters, $\theta$. 
+
+> We can compute the density or mass of $X$ in this joint distribution, marginalizing / integrating over the unobserved variables $\theta$. Back in jargonland, this is the marginal likelihood of the model $P(X|M)$, though usually the $M$ is implied and we just write $P(X)$ to stick in the denominator of Bayes theorem.
+
+> We can also ask the joint distribution the conditional distribution of $\theta$ given $X, $P(\theta|X,M)$, or $P(\theta|X)$ for short, in an exactly analogous way to how we might compute, say, the conditional distribution of other joint distributions, like multivariate normals or more exotic stuff. This is also known as the "posterior distribution" of $\theta$, since it's the conditional distribution of $\theta$, i.e. conditional on the observed data. In this particular context though, we're interested in $P(X|M)$, and maybe also the corresponding value for some other model $P(X|M_{other})$. We can take the ratio of these -- a ratio of marginal likelihoods -- to get a Bayes Factor, and interpret it according to some IMO silly table. Or we could multiply them by model priors and rescale so things sum to 1 to get model posterior probabilities.
+
+DR: This makes sense but it seems equivalent to the previous discussion; I don't see the distinction. 
+
+But the major question I have is sort of 'what approach will work to  meaningfully asses the evidence for and against the null hypothesis'. "Against" -- this is what the standard p-value NHST presents. "For the null"... seems like it might work in a setup involving a prior putting positive probability mass on a point, but I'm not quite there yet.
+
+## Packages: The "Infer" package in R
+
+### Overview {.unnumbered}
+
+Notes from [vignette](https://infer.tidymodels.org/articles/infer.html)
+
+> we start by assuming that the observed data came from some world where "nothing is going on" (i.e. the observed effect was simply due to random chance), and call this assumption our null hypothesis.
+
+> ... If this probability is below some pre-defined significance level $\alpha$, then we can reject our null hypothesis.
+
+-   very much classical frequentist NHST
+-   can this tool accommodate more informative measures like Bayes Factors (as I understand them) that do more than just 'accept vs reject' and get at the *strength of evidence*?
+
+> `specify()` allows you to specify the variable, or relationship between variables, that you're interested in.
+
+> `hypothesize()` allows you to declare the null hypothesis. generate() allows you to generate data reflecting the null hypothesis.
+
+> `calculate()` allows you to calculate a distribution of statistics from the generated data to form the null distribution. ...
+
+Vignette uses 'GSS' (a small extract from the US GSS)
+
+```{r}
+
+pacman::p_load(infer)
+
+# load in the dataset
+data(gss)
+
+# take a look at its structure
+dplyr::glimpse(gss)
+
+```
+
+### `SPECIFY()`: Specifying response (and explanatory) variables
+
+**If we care about a single variable...**
+
+```{r}
+gss %>%
+  specify(response = age)
+```
+
+```{r}
+gss %>%
+  specify(response = age) %>%
+  class()
+
+gss %>%
+  specify(response = age) %>%
+  str()
+```
+
+`specify` isn't just selecting a row; it's a special "S3 class object"
+
+> the `infer` class has been appended on top of the dataframe classes
+
+and it stores some extra meta-data. We see above something suggesting a particular null hypothesis test statistic distribution maybe?
+
+\
+
+"If you're interested in [the relationship between] two variables" we can specify this in one of two equivalent ways:
+
+As a formula:
+
+```{r, results='hide', message=FALSE}
+
+gss %>%
+specify(age ~ partyid)
+
+```
+
+Or with named arguments
+
+```{r, results='hide', message=FALSE}
+
+gss %>%
+  specify(response = age, explanatory = partyid)
+
+```
+
+If we're doing inference on proportions we need to "use the success argument to specify which level of your response variable is a success."
+
+```{r, results='hide', message=FALSE}
+gss %>%
+  specify(response = college, success = "degree") 
+
+```
+
+Or, with two variables ...
+
+```{r, message=FALSE}
+
+gss %>%
+  specify(response = college, explanatory = partyid, success = "degree") %>% str()
+```
+
+Here it seems to be choosing a 'Chi-sq test of independence' perhaps?

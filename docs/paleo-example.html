@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes</title>
   <meta name="description" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Meta-analysis arbitrary example: the ‘Paleo diet’ | Statistics, econometrics, experiment and survey methods, data science: Notes" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-04-14" />
+<meta name="date" content="2021-08-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -43,7 +43,7 @@ div.abstract{
   width: 90%;
 }
 </style>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -61,6 +61,8 @@ div.abstract{
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -751,6 +753,29 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="support/tufte_plus.css" type="text/css" />
 </head>
 
@@ -797,89 +822,109 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6.4" data-path="conceptual.html"><a href="conceptual.html#other-issues"><i class="fa fa-check"></i><b>2.6.4</b> Other issues</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html"><i class="fa fa-check"></i><b>3</b> Hypothesis testing, statistical comparisons and inferences</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#frequentist"><i class="fa fa-check"></i><b>3.1</b> Frequentist</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#parametric"><i class="fa fa-check"></i><b>3.1.1</b> Parametric</a></li>
+<li class="chapter" data-level="3.1.2" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#nonparametric"><i class="fa fa-check"></i><b>3.1.2</b> Nonparametric</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#randomization-and-permutation-based"><i class="fa fa-check"></i><b>3.2</b> Randomization and permutation-based</a></li>
+<li class="chapter" data-level="3.3" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#bayesian-and-hybrid"><i class="fa fa-check"></i><b>3.3</b> Bayesian and hybrid</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#b-factor"><i class="fa fa-check"></i><b>3.3.1</b> Bayes factor – what is it, what can it do?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#packages-the-infer-package-in-r"><i class="fa fa-check"></i><b>3.4</b> Packages: The “Infer” package in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="3.4.1" data-path="hypothesis-testing-statistical-comparisons-and-inferences.html"><a href="hypothesis-testing-statistical-comparisons-and-inferences.html#specify-specifying-response-and-explanatory-variables"><i class="fa fa-check"></i><b>3.4.1</b> <code>SPECIFY()</code>: Specifying response (and explanatory) variables</a></li>
+</ul></li>
+</ul></li>
 <li><a href="reg-control.html#reg_control"><strong>REGRESSION AND CONTROL APPROACHES, ROBUSTNESS</strong></a></li>
-<li class="chapter" data-level="3" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>3</b> Basic statistical inference and regressions: Common mistakes and issues</a>
+<li class="chapter" data-level="4" data-path="reg-follies.html"><a href="reg-follies.html"><i class="fa fa-check"></i><b>4</b> Basic statistical inference and regressions: Common mistakes and issues</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>3.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
+<li class="chapter" data-level="4.1" data-path="reg-follies.html"><a href="reg-follies.html#basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed"><i class="fa fa-check"></i><b>4.1</b> Basic regression and statistical inference: Common mistakes and issues briefly listed</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>3.1.1</b> Bad control</a></li>
-<li class="chapter" data-level="3.1.2" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders"><i class="fa fa-check"></i><b>3.1.2</b> “Bad control” (“colliders”)</a></li>
-<li class="chapter" data-level="3.1.3" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>3.1.3</b> Choices of lhs and rhs variables</a></li>
-<li class="chapter" data-level="3.1.4" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>3.1.4</b> Functional form</a></li>
-<li class="chapter" data-level="3.1.5" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>3.1.5</b> OLS and heterogeneity</a></li>
-<li class="chapter" data-level="3.1.6" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>3.1.6</b> “Null effects”</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>3.1.7</b> Multivariate tests and ‘tests for non-independence’</a></li>
-<li class="chapter" data-level="3.1.8" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>3.1.8</b> Multiple hypothesis testing (MHT)</a></li>
-<li class="chapter" data-level="3.1.9" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>3.1.9</b> Interaction terms and pitfalls</a></li>
-<li class="chapter" data-level="3.1.10" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>3.1.10</b> Choice of test statistics (including nonparametric)</a></li>
-<li class="chapter" data-level="3.1.11" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>3.1.11</b> How to display and write about regression results and tests</a></li>
-<li class="chapter" data-level="3.1.12" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>3.1.12</b> Bayesian interpretations of results</a></li>
+<li class="chapter" data-level="4.1.1" data-path="reg-follies.html"><a href="reg-follies.html#bad-control"><i class="fa fa-check"></i><b>4.1.1</b> Bad control</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reg-follies.html"><a href="reg-follies.html#does-controlling-for-more-increase-the-probability-that-a-controlled-difference-between-too-groups-represents-a-causal-effect-not-really-informal-discussion-in-fold"><i class="fa fa-check"></i><b>4.1.2</b> Does ‘controlling for more’ increase the probability that a (controlled) difference between too groups represents a causal effect? Not really (Informal discussion in fold)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="reg-follies.html"><a href="reg-follies.html#bad-control-colliders"><i class="fa fa-check"></i><b>4.1.3</b> “Bad control” (“colliders”)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="reg-follies.html"><a href="reg-follies.html#choices-of-lhs-and-rhs-variables"><i class="fa fa-check"></i><b>4.1.4</b> Choices of lhs and rhs variables</a></li>
+<li class="chapter" data-level="4.1.5" data-path="reg-follies.html"><a href="reg-follies.html#functional-form"><i class="fa fa-check"></i><b>4.1.5</b> Functional form</a></li>
+<li class="chapter" data-level="4.1.6" data-path="reg-follies.html"><a href="reg-follies.html#ols-and-heterogeneity"><i class="fa fa-check"></i><b>4.1.6</b> OLS and heterogeneity</a></li>
+<li class="chapter" data-level="4.1.7" data-path="reg-follies.html"><a href="reg-follies.html#null-effects"><i class="fa fa-check"></i><b>4.1.7</b> “Null effects”</a></li>
+<li class="chapter" data-level="4.1.8" data-path="reg-follies.html"><a href="reg-follies.html#multi-var-tests"><i class="fa fa-check"></i><b>4.1.8</b> Multivariate tests and ‘tests for non-independence’</a></li>
+<li class="chapter" data-level="4.1.9" data-path="reg-follies.html"><a href="reg-follies.html#mht"><i class="fa fa-check"></i><b>4.1.9</b> Multiple hypothesis testing (MHT)</a></li>
+<li class="chapter" data-level="4.1.10" data-path="reg-follies.html"><a href="reg-follies.html#interaction-terms-and-pitfalls"><i class="fa fa-check"></i><b>4.1.10</b> Interaction terms and pitfalls</a></li>
+<li class="chapter" data-level="4.1.11" data-path="reg-follies.html"><a href="reg-follies.html#choice-of-test-statistics-including-nonparametric"><i class="fa fa-check"></i><b>4.1.11</b> Choice of test statistics (including nonparametric)</a></li>
+<li class="chapter" data-level="4.1.12" data-path="reg-follies.html"><a href="reg-follies.html#how-to-display-and-write-about-regression-results-and-tests"><i class="fa fa-check"></i><b>4.1.12</b> How to display and write about regression results and tests</a></li>
+<li class="chapter" data-level="4.1.13" data-path="reg-follies.html"><a href="reg-follies.html#bayesian-interpretations-of-results"><i class="fa fa-check"></i><b>4.1.13</b> Bayesian interpretations of results</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="reg-follies.html"><a href="reg-follies.html#aside-effect-and-contrast-coding-of-categorical-variables"><i class="fa fa-check"></i><b>4.2</b> Aside: effect and contrast coding of categorical variables</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>4</b> Robustness and diagnostics, with integrity; Open Science resources</a>
+<li class="chapter" data-level="5" data-path="robust-diag.html"><a href="robust-diag.html"><i class="fa fa-check"></i><b>5</b> Robustness and diagnostics, with integrity; Open Science resources</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>4.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a>
+<li class="chapter" data-level="5.1" data-path="robust-diag.html"><a href="robust-diag.html#how-can-diagnostic-tests-make-sense-where-is-the-burden-of-proof"><i class="fa fa-check"></i><b>5.1</b> (How) can diagnostic tests make sense? Where is the burden of proof?</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="robust-diag.html"><a href="robust-diag.html#further-discussion-the-did-approach-and-parallel-trends"><i class="fa fa-check"></i><b>4.1.1</b> Further discussion: the DiD approach and ‘parallel trends’</a></li>
+<li class="chapter" data-level="5.1.1" data-path="robust-diag.html"><a href="robust-diag.html#further-discussion-the-did-approach-and-parallel-trends"><i class="fa fa-check"></i><b>5.1.1</b> Further discussion: the DiD approach and ‘parallel trends’</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors"><i class="fa fa-check"></i><b>4.2</b> Estimating standard errors</a></li>
-<li class="chapter" data-level="4.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis: Interactive presentation</a></li>
-<li class="chapter" data-level="4.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>4.4</b> Supplement: open science resources, tools and considerations</a></li>
-<li class="chapter" data-level="4.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-and-publication-bias-see-also-meta-analysis"><i class="fa fa-check"></i><b>4.5</b> Diagnosing p-hacking and publication bias (see also <span>meta-analysis</span>)</a>
+<li class="chapter" data-level="5.2" data-path="robust-diag.html"><a href="robust-diag.html#estimating-standard-errors"><i class="fa fa-check"></i><b>5.2</b> Estimating standard errors</a></li>
+<li class="chapter" data-level="5.3" data-path="robust-diag.html"><a href="robust-diag.html#sensitivity-analysis-interactive-presentation"><i class="fa fa-check"></i><b>5.3</b> Sensitivity analysis: Interactive presentation</a></li>
+<li class="chapter" data-level="5.4" data-path="robust-diag.html"><a href="robust-diag.html#supplement-open-science-resources-tools-and-considerations"><i class="fa fa-check"></i><b>5.4</b> Supplement: open science resources, tools and considerations</a></li>
+<li class="chapter" data-level="5.5" data-path="robust-diag.html"><a href="robust-diag.html#diagnosing-p-hacking-and-publication-bias-see-also-meta-analysis"><i class="fa fa-check"></i><b>5.5</b> Diagnosing p-hacking and publication bias (see also <span>meta-analysis</span>)</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="robust-diag.html"><a href="robust-diag.html#publication-bias-see-also-considering-publication-bias-in-meta-analysis"><i class="fa fa-check"></i><b>4.5.1</b> Publication bias – see also <span>considering publication bias in meta-analysis</span></a></li>
+<li class="chapter" data-level="5.5.1" data-path="robust-diag.html"><a href="robust-diag.html#publication-bias-see-also-considering-publication-bias-in-meta-analysis"><i class="fa fa-check"></i><b>5.5.1</b> Publication bias – see also <span>considering publication bias in meta-analysis</span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="robust-diag.html"><a href="robust-diag.html#multiple-hypothesis-testing---see-above"><i class="fa fa-check"></i><b>4.6</b> <span>Multiple hypothesis testing - see above</span></a></li>
+<li class="chapter" data-level="5.6" data-path="robust-diag.html"><a href="robust-diag.html#multiple-hypothesis-testing---see-above"><i class="fa fa-check"></i><b>5.6</b> <span>Multiple hypothesis testing - see above</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>5</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
+<li class="chapter" data-level="6" data-path="control-ml.html"><a href="control-ml.html"><i class="fa fa-check"></i><b>6</b> Control strategies and prediction, Machine Learning (Statistical Learning) approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>5.1</b> See also <span>“notes on Data Science for Business”</span></a>
+<li class="chapter" data-level="6.1" data-path="control-ml.html"><a href="control-ml.html#see-also-notes-on-data-science-for-business"><i class="fa fa-check"></i><b>6.1</b> See also <span>“notes on Data Science for Business”</span></a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>5.1.1</b> Limitations to inference from learning approaches</a></li>
-<li class="chapter" data-level="5.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>5.1.2</b> Tree models</a></li>
+<li class="chapter" data-level="6.1.1" data-path="control-ml.html"><a href="control-ml.html#limitations-to-inference-from-learning-approaches"><i class="fa fa-check"></i><b>6.1.1</b> Limitations to inference from learning approaches</a></li>
+<li class="chapter" data-level="6.1.2" data-path="control-ml.html"><a href="control-ml.html#tree-models"><i class="fa fa-check"></i><b>6.1.2</b> Tree models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>5.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
+<li class="chapter" data-level="6.2" data-path="control-ml.html"><a href="control-ml.html#notes-hastie-statistical-learning-with-sparsity"><i class="fa fa-check"></i><b>6.2</b> Notes Hastie: Statistical Learning with Sparsity</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>5.2.2</b> Ch2: Lasso for linear models</a></li>
-<li class="chapter" data-level="5.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>5.2.3</b> Chapter 3: Generalized linear models</a></li>
-<li class="chapter" data-level="5.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>5.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
+<li class="chapter" data-level="6.2.1" data-path="control-ml.html"><a href="control-ml.html#introduction-1"><i class="fa fa-check"></i><b>6.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2.2" data-path="control-ml.html"><a href="control-ml.html#ch2-lasso-for-linear-models"><i class="fa fa-check"></i><b>6.2.2</b> Ch2: Lasso for linear models</a></li>
+<li class="chapter" data-level="6.2.3" data-path="control-ml.html"><a href="control-ml.html#chapter-3-generalized-linear-models"><i class="fa fa-check"></i><b>6.2.3</b> Chapter 3: Generalized linear models</a></li>
+<li class="chapter" data-level="6.2.4" data-path="control-ml.html"><a href="control-ml.html#chapter-4-generalizations-of-the-lasso-penalty"><i class="fa fa-check"></i><b>6.2.4</b> Chapter 4: Generalizations of the Lasso penalty</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>5.3</b> Notes: Mullainathan</a></li>
+<li class="chapter" data-level="6.3" data-path="control-ml.html"><a href="control-ml.html#notes-mullainathan"><i class="fa fa-check"></i><b>6.3</b> Notes: Mullainathan</a></li>
 </ul></li>
 <li><a href="caus-inf-obs.html#caus_inf_obs"><strong>CAUSAL INFERENCE THROUGH OBSERVATION</strong></a></li>
-<li class="chapter" data-level="6" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>6</b> Causal inference: IV (instrumental variables) and its limitations</a>
+<li class="chapter" data-level="7" data-path="iv-limitations.html"><a href="iv-limitations.html"><i class="fa fa-check"></i><b>7</b> Causal inference: IV (instrumental variables) and its limitations</a>
 <ul>
 <li class="chapter" data-level="" data-path="iv-limitations.html"><a href="iv-limitations.html#some-casual-discussion"><i class="fa fa-check"></i>Some casual discussion</a></li>
-<li class="chapter" data-level="6.1" data-path="iv-limitations.html"><a href="iv-limitations.html#instrument-validity"><i class="fa fa-check"></i><b>6.1</b> Instrument validity</a></li>
-<li class="chapter" data-level="6.2" data-path="iv-limitations.html"><a href="iv-limitations.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>6.2</b> Heterogeneity and LATE</a></li>
-<li class="chapter" data-level="6.3" data-path="iv-limitations.html"><a href="iv-limitations.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>6.3</b> Weak instruments, other issues</a></li>
-<li class="chapter" data-level="6.4" data-path="iv-limitations.html"><a href="iv-limitations.html#instrumenting-interactions"><i class="fa fa-check"></i><b>6.4</b> Instrumenting Interactions</a></li>
-<li class="chapter" data-level="6.5" data-path="iv-limitations.html"><a href="iv-limitations.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>6.5</b> Reference to the use of IV in experiments/mediation</a></li>
+<li class="chapter" data-level="7.1" data-path="iv-limitations.html"><a href="iv-limitations.html#instrument-validity"><i class="fa fa-check"></i><b>7.1</b> Instrument validity</a></li>
+<li class="chapter" data-level="7.2" data-path="iv-limitations.html"><a href="iv-limitations.html#heterogeneity-and-late"><i class="fa fa-check"></i><b>7.2</b> Heterogeneity and LATE</a></li>
+<li class="chapter" data-level="7.3" data-path="iv-limitations.html"><a href="iv-limitations.html#weak-instruments-other-issues"><i class="fa fa-check"></i><b>7.3</b> Weak instruments, other issues</a></li>
+<li class="chapter" data-level="7.4" data-path="iv-limitations.html"><a href="iv-limitations.html#instrumenting-interactions"><i class="fa fa-check"></i><b>7.4</b> Instrumenting Interactions</a></li>
+<li class="chapter" data-level="7.5" data-path="iv-limitations.html"><a href="iv-limitations.html#reference-to-the-use-of-iv-in-experimentsmediation"><i class="fa fa-check"></i><b>7.5</b> Reference to the use of IV in experiments/mediation</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html"><i class="fa fa-check"></i><b>7</b> <span id="other_paths">Causal inference: Other paths to observational identification</span></a>
+<li class="chapter" data-level="8" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html"><i class="fa fa-check"></i><b>8</b> <span id="other_paths">Causal inference: Other paths to observational identification</span></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>7.1</b> Fixed effects and differencing</a></li>
-<li class="chapter" data-level="7.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#did"><i class="fa fa-check"></i><b>7.2</b> DiD</a></li>
-<li class="chapter" data-level="7.3" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#rd"><i class="fa fa-check"></i><b>7.3</b> RD</a></li>
-<li class="chapter" data-level="7.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>7.4</b> Time-series-ish panel approaches to micro</a>
+<li class="chapter" data-level="8.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#fixed-effects-and-differencing"><i class="fa fa-check"></i><b>8.1</b> Fixed effects and differencing</a></li>
+<li class="chapter" data-level="8.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#did"><i class="fa fa-check"></i><b>8.2</b> DiD</a></li>
+<li class="chapter" data-level="8.3" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#rd"><i class="fa fa-check"></i><b>8.3</b> RD</a></li>
+<li class="chapter" data-level="8.4" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#time-series-ish-panel-approaches-to-micro"><i class="fa fa-check"></i><b>8.4</b> Time-series-ish panel approaches to micro</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>7.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
-<li class="chapter" data-level="7.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>7.4.2</b> Age-period-cohort effects</a></li>
+<li class="chapter" data-level="8.4.1" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#lagged-dependent-variable-and-fixed-effects-nickel-bias"><i class="fa fa-check"></i><b>8.4.1</b> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</a></li>
+<li class="chapter" data-level="8.4.2" data-path="causal-inference-other-paths-to-observational-identification.html"><a href="causal-inference-other-paths-to-observational-identification.html#apc-effects"><i class="fa fa-check"></i><b>8.4.2</b> Age-period-cohort effects</a></li>
 </ul></li>
 </ul></li>
 <li><a href="causal-paths-and-levels-of-aggregation-1.html#causal-paths-and-levels-of-aggregation-1"><strong>CAUSAL PATHS AND LEVELS OF AGGREGATION</strong></a></li>
-<li class="chapter" data-level="8" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>8</b> Mediation modeling and its massive limitations</a>
+<li class="chapter" data-level="9" data-path="mediators.html"><a href="mediators.html"><i class="fa fa-check"></i><b>9</b> Mediation modeling and its massive limitations</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="mediators.html"><a href="mediators.html#mediators-and-selection-and-roy-models-a-review-considering-two-research-applications"><i class="fa fa-check"></i><b>8.1</b> Mediators (and selection and Roy models): a review, considering two research applications</a></li>
-<li class="chapter" data-level="8.2" data-path="mediators.html"><a href="mediators.html#dr-initial-thoughts-for-nl-education-paper"><i class="fa fa-check"></i><b>8.2</b> DR initial thoughts (for NL education paper)</a></li>
-<li class="chapter" data-level="8.3" data-path="mediators.html"><a href="mediators.html#econometric-mediation-analyses-heckman-and-pinto"><i class="fa fa-check"></i><b>8.3</b> Econometric Mediation Analyses (Heckman and Pinto)</a>
+<li class="chapter" data-level="9.1" data-path="mediators.html"><a href="mediators.html#mediators-and-selection-and-roy-models-a-review-considering-two-research-applications"><i class="fa fa-check"></i><b>9.1</b> Mediators (and selection and Roy models): a review, considering two research applications</a></li>
+<li class="chapter" data-level="9.2" data-path="mediators.html"><a href="mediators.html#dr-initial-thoughts-for-nl-education-paper"><i class="fa fa-check"></i><b>9.2</b> DR initial thoughts (for NL education paper)</a></li>
+<li class="chapter" data-level="9.3" data-path="mediators.html"><a href="mediators.html#econometric-mediation-analyses-heckman-and-pinto"><i class="fa fa-check"></i><b>9.3</b> Econometric Mediation Analyses (Heckman and Pinto)</a>
 <ul>
 <li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
-<li class="chapter" data-level="8.3.1" data-path="mediators.html"><a href="mediators.html#summary-and-key-modeling"><i class="fa fa-check"></i><b>8.3.1</b> Summary and key modeling</a></li>
-<li class="chapter" data-level="8.3.2" data-path="mediators.html"><a href="mediators.html#common-assumptions-and-their-implications"><i class="fa fa-check"></i><b>8.3.2</b> Common assumptions and their implications</a></li>
+<li class="chapter" data-level="9.3.1" data-path="mediators.html"><a href="mediators.html#summary-and-key-modeling"><i class="fa fa-check"></i><b>9.3.1</b> Summary and key modeling</a></li>
+<li class="chapter" data-level="9.3.2" data-path="mediators.html"><a href="mediators.html#common-assumptions-and-their-implications"><i class="fa fa-check"></i><b>9.3.2</b> Common assumptions and their implications</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="mediators.html"><a href="mediators.html#pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity"><i class="fa fa-check"></i><b>8.4</b> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</a>
+<li class="chapter" data-level="9.4" data-path="mediators.html"><a href="mediators.html#pinto-2015-selection-bias-in-a-controlled-experiment-the-case-of-moving-to-opportunity"><i class="fa fa-check"></i><b>9.4</b> Pinto (2015), Selection Bias in a Controlled Experiment: The Case of Moving to Opportunity</a>
 <ul>
 <li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#summary"><i class="fa fa-check"></i>Summary</a></li>
 <li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#relevance-to-parey-et-al-1"><i class="fa fa-check"></i>Relevance to Parey et al</a></li>
@@ -889,337 +934,340 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-first-for-binarybinary-simplification"><i class="fa fa-check"></i>Framework: first for binary/binary (simplification)</a></li>
 <li class="chapter" data-level="" data-path="mediators.html"><a href="mediators.html#framework-for-mto-multiple-treatment-groups-multiple-choices"><i class="fa fa-check"></i>Framework for MTO multiple treatment groups, multiple choices</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="mediators.html"><a href="mediators.html#antonakis-approaches"><i class="fa fa-check"></i><b>8.5</b> Antonakis approaches</a></li>
+<li class="chapter" data-level="9.5" data-path="mediators.html"><a href="mediators.html#antonakis-approaches"><i class="fa fa-check"></i><b>9.5</b> Antonakis approaches</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="selection-cop.html"><a href="selection-cop.html"><i class="fa fa-check"></i><b>9</b> Selection, corners, hurdles, and ‘conditional on’ estimates</a>
+<li class="chapter" data-level="10" data-path="selection-cop.html"><a href="selection-cop.html"><i class="fa fa-check"></i><b>10</b> Selection, corners, hurdles, and ‘conditional on’ estimates</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="selection-cop.html"><a href="selection-cop.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>9.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
-<li class="chapter" data-level="9.2" data-path="selection-cop.html"><a href="selection-cop.html#bounding-approaches-lee-manski-etc"><i class="fa fa-check"></i><b>9.2</b> Bounding approaches (Lee, Manski, etc)</a>
+<li class="chapter" data-level="10.1" data-path="selection-cop.html"><a href="selection-cop.html#corner-solution-or-hurdle-variables-and-conditional-on-positive"><i class="fa fa-check"></i><b>10.1</b> ‘Corner solution’ or hurdle variables and ‘Conditional on Positive’</a></li>
+<li class="chapter" data-level="10.2" data-path="selection-cop.html"><a href="selection-cop.html#bounding-approaches-lee-manski-etc"><i class="fa fa-check"></i><b>10.2</b> Bounding approaches (Lee, Manski, etc)</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="selection-cop.html"><a href="selection-cop.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>9.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
+<li class="chapter" data-level="10.2.1" data-path="selection-cop.html"><a href="selection-cop.html#notes-training-wages-and-sample-selection-estimating-sharp-bounds-on-treatment-effects-david-lee-2009-restud"><i class="fa fa-check"></i><b>10.2.1</b> Notes: Training, Wages, and Sample Selection: Estimating Sharp Bounds on Treatment Effects, David Lee, 2009, RESTUD</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="mlm.html"><a href="mlm.html"><i class="fa fa-check"></i><b>10</b> Multi-level models</a>
+<li class="chapter" data-level="11" data-path="mlm.html"><a href="mlm.html"><i class="fa fa-check"></i><b>11</b> Multi-level models</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="mlm.html"><a href="mlm.html#introduction-qstep"><i class="fa fa-check"></i><b>10.1</b> Introduction (Qstep)</a></li>
-<li class="chapter" data-level="10.2" data-path="mlm.html"><a href="mlm.html#some-basic-theory"><i class="fa fa-check"></i><b>10.2</b> Some basic theory</a>
+<li class="chapter" data-level="11.1" data-path="mlm.html"><a href="mlm.html#introduction-qstep"><i class="fa fa-check"></i><b>11.1</b> Introduction (Qstep)</a></li>
+<li class="chapter" data-level="11.2" data-path="mlm.html"><a href="mlm.html#some-basic-theory"><i class="fa fa-check"></i><b>11.2</b> Some basic theory</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="mlm.html"><a href="mlm.html#level-1-model"><i class="fa fa-check"></i><b>10.2.1</b> Level 1 model</a></li>
-<li class="chapter" data-level="10.2.2" data-path="mlm.html"><a href="mlm.html#level-2"><i class="fa fa-check"></i><b>10.2.2</b> Level 2</a></li>
-<li class="chapter" data-level="10.2.3" data-path="mlm.html"><a href="mlm.html#alternativenaive-approaches"><i class="fa fa-check"></i><b>10.2.3</b> Alternative/Naive approaches</a></li>
-<li class="chapter" data-level="10.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>10.2.4</b> ‘old way’: two-stage regression</a></li>
-<li class="chapter" data-level="10.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>10.2.5</b> How many higher-level units do you need?</a></li>
+<li class="chapter" data-level="11.2.1" data-path="mlm.html"><a href="mlm.html#level-1-model"><i class="fa fa-check"></i><b>11.2.1</b> Level 1 model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="mlm.html"><a href="mlm.html#level-2"><i class="fa fa-check"></i><b>11.2.2</b> Level 2</a></li>
+<li class="chapter" data-level="11.2.3" data-path="mlm.html"><a href="mlm.html#alternativenaive-approaches"><i class="fa fa-check"></i><b>11.2.3</b> Alternative/Naive approaches</a></li>
+<li class="chapter" data-level="11.2.4" data-path="mlm.html"><a href="mlm.html#old-way-two-stage-regression"><i class="fa fa-check"></i><b>11.2.4</b> ‘old way’: two-stage regression</a></li>
+<li class="chapter" data-level="11.2.5" data-path="mlm.html"><a href="mlm.html#how-many-higher-level-units-do-you-need"><i class="fa fa-check"></i><b>11.2.5</b> How many higher-level units do you need?</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>10.3</b> Fitting mlm in practice</a></li>
-<li class="chapter" data-level="10.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>10.4</b> “Stimuli” (treatments) as a random factor</a></li>
+<li class="chapter" data-level="11.3" data-path="mlm.html"><a href="mlm.html#fitting-mlm-in-practice"><i class="fa fa-check"></i><b>11.3</b> Fitting mlm in practice</a></li>
+<li class="chapter" data-level="11.4" data-path="mlm.html"><a href="mlm.html#stimuli-treatments-as-a-random-factor"><i class="fa fa-check"></i><b>11.4</b> “Stimuli” (treatments) as a random factor</a></li>
 </ul></li>
 <li><a href="experiments-and-surveys-design-and-analysis-1.html#experiments-and-surveys-design-and-analysis-1"><strong>EXPERIMENTS AND SURVEYS: DESIGN AND ANALYSIS</strong></a></li>
-<li class="chapter" data-level="11" data-path="surveys.html"><a href="surveys.html"><i class="fa fa-check"></i><b>11</b> Survey design and implementation; analysis of survey data</a>
+<li class="chapter" data-level="12" data-path="surveys.html"><a href="surveys.html"><i class="fa fa-check"></i><b>12</b> Survey design and implementation; analysis of survey data</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="surveys.html"><a href="surveys.html#survey-samplingintake"><i class="fa fa-check"></i><b>11.1</b> Survey sampling/intake</a>
+<li class="chapter" data-level="12.1" data-path="surveys.html"><a href="surveys.html#survey-samplingintake"><i class="fa fa-check"></i><b>12.1</b> Survey sampling/intake</a>
 <ul>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#probability-sampling"><i class="fa fa-check"></i>Probability sampling</a></li>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#np-sampling"><i class="fa fa-check"></i>Non-probability sampling</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="surveys.html"><a href="surveys.html#jazz-case"><i class="fa fa-check"></i><b>11.2</b> Case: Surveying an unmeasured and rare population surrounding a ‘social movement’</a>
+<li class="chapter" data-level="12.2" data-path="surveys.html"><a href="surveys.html#jazz-case"><i class="fa fa-check"></i><b>12.2</b> Case: Surveying an unmeasured and rare population surrounding a ‘social movement’</a>
 <ul>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#background-and-setup"><i class="fa fa-check"></i>Background and setup</a></li>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#our-convenience-method-issues-alternatives"><i class="fa fa-check"></i>Our ‘convenience’ method; issues, alternatives</a></li>
 <li class="chapter" data-level="" data-path="surveys.html"><a href="surveys.html#our-methodological-questions"><i class="fa fa-check"></i>Our methodological questions</a></li>
-<li class="chapter" data-level="11.2.1" data-path="surveys.html"><a href="surveys.html#sketched-model-and-approach-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population"><i class="fa fa-check"></i><b>11.2.1</b> Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</a></li>
+<li class="chapter" data-level="12.2.1" data-path="surveys.html"><a href="surveys.html#sketched-model-and-approach-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population"><i class="fa fa-check"></i><b>12.2.1</b> Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>12</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
+<li class="chapter" data-level="13" data-path="why-experiment-design.html"><a href="why-experiment-design.html"><i class="fa fa-check"></i><b>13</b> Experimental design: Identifying meaningful and useful (causal) relationships and parameters</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>12.1</b> Why run an experiment or study?</a>
+<li class="chapter" data-level="13.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#why-run-an-experiment-or-study"><i class="fa fa-check"></i><b>13.1</b> Why run an experiment or study?</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do"><i class="fa fa-check"></i><b>12.1.1</b> Sitzia and Sugden on what theoretically driven experiments can and should do</a></li>
+<li class="chapter" data-level="13.1.1" data-path="why-experiment-design.html"><a href="why-experiment-design.html#sitzia-and-sugden-on-what-theoretically-driven-experiments-can-and-should-do"><i class="fa fa-check"></i><b>13.1.1</b> Sitzia and Sugden on what theoretically driven experiments can and should do</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="why-experiment-design.html"><a href="why-experiment-design.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>12.2</b> Causal channels and identification</a></li>
-<li class="chapter" data-level="12.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#artifacts"><i class="fa fa-check"></i><b>12.3</b> Types of experiments, ‘demand effects’ and more artifacts of artificial setups</a></li>
-<li class="chapter" data-level="12.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#ws-bs"><i class="fa fa-check"></i><b>12.4</b> Within vs between-subject designs</a></li>
-<li class="chapter" data-level="12.5" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>12.5</b> Generalizability (and heterogeneity)</a></li>
+<li class="chapter" data-level="13.2" data-path="why-experiment-design.html"><a href="why-experiment-design.html#causal-channels-and-identification"><i class="fa fa-check"></i><b>13.2</b> Causal channels and identification</a></li>
+<li class="chapter" data-level="13.3" data-path="why-experiment-design.html"><a href="why-experiment-design.html#artifacts"><i class="fa fa-check"></i><b>13.3</b> Types of experiments, ‘demand effects’ and more artifacts of artificial setups</a></li>
+<li class="chapter" data-level="13.4" data-path="why-experiment-design.html"><a href="why-experiment-design.html#ws-bs"><i class="fa fa-check"></i><b>13.4</b> Within vs between-subject designs</a></li>
+<li class="chapter" data-level="13.5" data-path="why-experiment-design.html"><a href="why-experiment-design.html#generalizability-and-heterogeneity"><i class="fa fa-check"></i><b>13.5</b> Generalizability (and heterogeneity)</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>13</b> Robust experimental design: pre-registration and efficient assignment of treatments</a>
+<li class="chapter" data-level="14" data-path="quant-design-power.html"><a href="quant-design-power.html"><i class="fa fa-check"></i><b>14</b> Robust experimental design: pre-registration and efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>13.1</b> Pre-registration and Pre-analysis plans</a>
+<li class="chapter" data-level="14.1" data-path="quant-design-power.html"><a href="quant-design-power.html#pre-reg-pap"><i class="fa fa-check"></i><b>14.1</b> Pre-registration and Pre-analysis plans</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>13.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
-<li class="chapter" data-level="13.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>13.1.2</b> The hazards of specification-searching</a></li>
+<li class="chapter" data-level="14.1.1" data-path="quant-design-power.html"><a href="quant-design-power.html#the-benefits-and-costs-of-pre-registration-a-typical-discussion"><i class="fa fa-check"></i><b>14.1.1</b> The benefits and costs of pre-registration: a typical discussion</a></li>
+<li class="chapter" data-level="14.1.2" data-path="quant-design-power.html"><a href="quant-design-power.html#the-hazards-of-specification-searching"><i class="fa fa-check"></i><b>14.1.2</b> The hazards of specification-searching</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>13.2</b> Designs for <em>decision-making</em></a>
+<li class="chapter" data-level="14.2" data-path="quant-design-power.html"><a href="quant-design-power.html#designs-for-decision-making"><i class="fa fa-check"></i><b>14.2</b> Designs for <em>decision-making</em></a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>13.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
+<li class="chapter" data-level="14.2.1" data-path="quant-design-power.html"><a href="quant-design-power.html#notes-on-bandit-vs-exploration-problemsthompson-vs-exploration-sampling"><i class="fa fa-check"></i><b>14.2.1</b> Notes on Bandit vs Exploration problems/Thompson vs Exploration sampling</a></li>
 <li class="chapter" data-level="" data-path="quant-design-power.html"><a href="quant-design-power.html#sequential"><i class="fa fa-check"></i>Sequential</a></li>
-<li class="chapter" data-level="13.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>13.2.2</b> Adaptive</a></li>
+<li class="chapter" data-level="14.2.2" data-path="quant-design-power.html"><a href="quant-design-power.html#adaptive"><i class="fa fa-check"></i><b>14.2.2</b> Adaptive</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>13.3</b> Efficient assignment of treatments</a>
+<li class="chapter" data-level="14.3" data-path="quant-design-power.html"><a href="quant-design-power.html#efficient-assignment-of-treatments"><i class="fa fa-check"></i><b>14.3</b> Efficient assignment of treatments</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>13.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
-<li class="chapter" data-level="13.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>13.3.2</b> How many treatment arms can you ‘afford?’</a></li>
-<li class="chapter" data-level="13.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>13.3.3</b> Other notes and resources</a></li>
+<li class="chapter" data-level="14.3.1" data-path="quant-design-power.html"><a href="quant-design-power.html#see-also-multiple-hypothesis-testing"><i class="fa fa-check"></i><b>14.3.1</b> See also <span>multiple hypothesis testing</span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="quant-design-power.html"><a href="quant-design-power.html#how-many-treatment-arms-can-you-afford"><i class="fa fa-check"></i><b>14.3.2</b> How many treatment arms can you ‘afford?’</a></li>
+<li class="chapter" data-level="14.3.3" data-path="quant-design-power.html"><a href="quant-design-power.html#other-notes-and-resources"><i class="fa fa-check"></i><b>14.3.3</b> Other notes and resources</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>14</b> (Ex-ante) Power calculations for (Experimental) study design</a>
+<li class="chapter" data-level="15" data-path="power.html"><a href="power.html"><i class="fa fa-check"></i><b>15</b> (Ex-ante) Power calculations for (Experimental) study design</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>14.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
+<li class="chapter" data-level="15.1" data-path="power.html"><a href="power.html#what-is-the-point-of-doing-a-power-analysis-or-power-calculations"><i class="fa fa-check"></i><b>15.1</b> What is the point of doing a ‘power analysis’ or ‘power calculations?’</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>14.1.1</b> What are the practical benefits of doing a power analysis</a></li>
+<li class="chapter" data-level="15.1.1" data-path="power.html"><a href="power.html#practical-power"><i class="fa fa-check"></i><b>15.1.1</b> What are the practical benefits of doing a power analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="power.html"><a href="power.html#power-ingredients"><i class="fa fa-check"></i><b>14.2</b> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</a></li>
-<li class="chapter" data-level="14.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>14.3</b> The ‘harm to science’ from running underpowered studies</a></li>
-<li class="chapter" data-level="14.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>14.4</b> Power calculations without real data</a></li>
-<li class="chapter" data-level="14.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>14.5</b> Power calculations using prior data</a>
+<li class="chapter" data-level="15.2" data-path="power.html"><a href="power.html#power-ingredients"><i class="fa fa-check"></i><b>15.2</b> Key ingredients for doing a power analysis (and designing an experimental study in light of this)</a></li>
+<li class="chapter" data-level="15.3" data-path="power.html"><a href="power.html#underpowered"><i class="fa fa-check"></i><b>15.3</b> The ‘harm to science’ from running underpowered studies</a></li>
+<li class="chapter" data-level="15.4" data-path="power.html"><a href="power.html#power-calculations-without-real-data"><i class="fa fa-check"></i><b>15.4</b> Power calculations without real data</a></li>
+<li class="chapter" data-level="15.5" data-path="power.html"><a href="power.html#power-calculations-using-prior-data"><i class="fa fa-check"></i><b>15.5</b> Power calculations using prior data</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>14.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
+<li class="chapter" data-level="15.5.1" data-path="power.html"><a href="power.html#from-reinstein-upcoming-experiment-preregistration"><i class="fa fa-check"></i><b>15.5.1</b> From Reinstein upcoming experiment preregistration</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>14.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
+<li class="chapter" data-level="15.6" data-path="power.html"><a href="power.html#lift-test"><i class="fa fa-check"></i><b>15.6</b> Digression: Power calculations/optimal sample size for ‘lift’ in a ranking case</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>14.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
+<li class="chapter" data-level="15.6.1" data-path="power.html"><a href="power.html#design-which-questions-to-ask-the-audience-about-the-proposed-titles-and-in-what-order"><i class="fa fa-check"></i><b>15.6.1</b> Design: Which questions to ask the audience about the proposed titles, and in what order?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#which-statistical-testsanalyses-to-run-if-any-and-what-measures-to-report"><i class="fa fa-check"></i>Which statistical test(s)/analyses to run (if any) and what measures to report?</a></li>
 <li class="chapter" data-level="" data-path="power.html"><a href="power.html#how-to-assign-the-treatments-and-how-large-a-sample-is-optimal-considering-power-or-lift"><i class="fa fa-check"></i>How to assign the ‘treatments,’ and how large a sample is optimal, considering ‘power’ (or ‘lift’)?</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>14.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
+<li class="chapter" data-level="15.7" data-path="power.html"><a href="power.html#survey-power-likert"><i class="fa fa-check"></i><b>15.7</b> Survey design digression: sample size for a “precise estimate of a ‘population parameter’” (focus: mean of a Likert scale response)</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>14.7.1</b> How to measure and consider the precision of Likert-item responses</a></li>
-<li class="chapter" data-level="14.7.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>14.7.2</b> Computing sample size to achieve this precision</a></li>
+<li class="chapter" data-level="15.7.1" data-path="power.html"><a href="power.html#how-to-measure-and-consider-the-precision-of-likert-item-responses"><i class="fa fa-check"></i><b>15.7.1</b> How to measure and consider the precision of Likert-item responses</a></li>
+<li class="chapter" data-level="15.7.2" data-path="power.html"><a href="power.html#computing-sample-size-to-achieve-this-precision"><i class="fa fa-check"></i><b>15.7.2</b> Computing sample size to achieve this precision</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>15</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
+<li class="chapter" data-level="16" data-path="experimetrics-te.html"><a href="experimetrics-te.html"><i class="fa fa-check"></i><b>16</b> ‘Experimetrics’ and measurement of treatment effects from RCTs</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>15.1</b> Which error structure? Random effects?</a></li>
-<li class="chapter" data-level="15.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>15.2</b> Randomization inference?</a></li>
-<li class="chapter" data-level="15.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>15.3</b> Parametric and nonparametric tests of simple hypotheses</a>
+<li class="chapter" data-level="16.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#which-error-structure-random-effects"><i class="fa fa-check"></i><b>16.1</b> Which error structure? Random effects?</a></li>
+<li class="chapter" data-level="16.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference"><i class="fa fa-check"></i><b>16.2</b> Randomization inference?</a></li>
+<li class="chapter" data-level="16.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-and-nonparametric-tests-of-simple-hypotheses"><i class="fa fa-check"></i><b>16.3</b> Parametric and nonparametric tests of simple hypotheses</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>15.3.1</b> Parametric tests</a></li>
-<li class="chapter" data-level="15.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>15.3.2</b> Non-parametric tests</a></li>
+<li class="chapter" data-level="16.3.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#parametric-tests"><i class="fa fa-check"></i><b>16.3.1</b> Parametric tests</a></li>
+<li class="chapter" data-level="16.3.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-tests"><i class="fa fa-check"></i><b>16.3.2</b> Non-parametric tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>15.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
-<li class="chapter" data-level="15.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>15.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
-<li class="chapter" data-level="15.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>15.6</b> Heterogeneity in an experimental context</a></li>
-<li class="chapter" data-level="15.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>15.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
+<li class="chapter" data-level="16.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#adjustments-for-exogenous-but-non-random-treatment-assignment"><i class="fa fa-check"></i><b>16.4</b> Adjustments for exogenous (but non-random) treatment assignment</a></li>
+<li class="chapter" data-level="16.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#iv-in-an-experimental-context-to-get-at-mediators"><i class="fa fa-check"></i><b>16.5</b> IV in an experimental context to get at ‘mediators?’</a></li>
+<li class="chapter" data-level="16.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogeneity-in-an-experimental-context"><i class="fa fa-check"></i><b>16.6</b> Heterogeneity in an experimental context</a></li>
+<li class="chapter" data-level="16.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#incorporate-above-notes-on-the-econometrics-of-randomised-experiments-athey-and-imbens"><i class="fa fa-check"></i><b>16.7</b> Incorporate above: Notes on “The econometrics of randomised experiments” (Athey and Imbens)</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>15.7.1</b> Abstract and intro</a></li>
-<li class="chapter" data-level="15.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>15.7.2</b> Randomised experiments and validity</a></li>
-<li class="chapter" data-level="15.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>15.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
-<li class="chapter" data-level="15.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>15.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
-<li class="chapter" data-level="15.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>15.7.5</b> The analysis of Completely randomized experiments</a></li>
-<li class="chapter" data-level="15.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>15.7.6</b> Randomization inference for Average treatment effects</a></li>
-<li class="chapter" data-level="15.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>15.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
-<li class="chapter" data-level="15.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>15.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
-<li class="chapter" data-level="15.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>15.7.9</b> Randomization inference and regression estimators</a></li>
-<li class="chapter" data-level="15.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>15.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
-<li class="chapter" data-level="15.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>15.7.11</b> Stratified randomized experiments: analysis</a></li>
-<li class="chapter" data-level="15.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>15.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
-<li class="chapter" data-level="15.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>15.7.13</b> 7.1 Power calculations</a></li>
-<li class="chapter" data-level="15.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>15.7.14</b> Stratified randomized experiments: Benefits</a></li>
-<li class="chapter" data-level="15.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>15.7.15</b> Re-randomization</a></li>
-<li class="chapter" data-level="15.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>15.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
-<li class="chapter" data-level="15.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>15.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
-<li class="chapter" data-level="15.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>15.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
-<li class="chapter" data-level="15.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>15.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
-<li class="chapter" data-level="15.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>15.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
-<li class="chapter" data-level="15.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>15.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
-<li class="chapter" data-level="15.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>15.7.22</b> 10.3.4 Comparison of Methods</a></li>
+<li class="chapter" data-level="16.7.1" data-path="experimetrics-te.html"><a href="experimetrics-te.html#abstract-and-intro"><i class="fa fa-check"></i><b>16.7.1</b> Abstract and intro</a></li>
+<li class="chapter" data-level="16.7.2" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomised-experiments-and-validity"><i class="fa fa-check"></i><b>16.7.2</b> Randomised experiments and validity</a></li>
+<li class="chapter" data-level="16.7.3" data-path="experimetrics-te.html"><a href="experimetrics-te.html#potential-outcomes-rubin-causal-model-framework-covered-earlier"><i class="fa fa-check"></i><b>16.7.3</b> Potential outcomes/ Rubin causal model framework (covered earlier)</a></li>
+<li class="chapter" data-level="16.7.4" data-path="experimetrics-te.html"><a href="experimetrics-te.html#classification-of-assignment-mechanisms"><i class="fa fa-check"></i><b>16.7.4</b> 3.2 Classification of assignment mechanisms</a></li>
+<li class="chapter" data-level="16.7.5" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-analysis-of-completely-randomized-experiments"><i class="fa fa-check"></i><b>16.7.5</b> The analysis of Completely randomized experiments</a></li>
+<li class="chapter" data-level="16.7.6" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-for-average-treatment-effects"><i class="fa fa-check"></i><b>16.7.6</b> Randomization inference for Average treatment effects</a></li>
+<li class="chapter" data-level="16.7.7" data-path="experimetrics-te.html"><a href="experimetrics-te.html#quantile-treatment-effect-infinite-population-context"><i class="fa fa-check"></i><b>16.7.7</b> Quantile treatment effect (Infinite population context)</a></li>
+<li class="chapter" data-level="16.7.8" data-path="experimetrics-te.html"><a href="experimetrics-te.html#covariates-if-not-stratified-in-completely-randomized-experiments"><i class="fa fa-check"></i><b>16.7.8</b> Covariates (if not stratified) in completely randomized experiments</a></li>
+<li class="chapter" data-level="16.7.9" data-path="experimetrics-te.html"><a href="experimetrics-te.html#randomization-inference-and-regression-estimators"><i class="fa fa-check"></i><b>16.7.9</b> Randomization inference and regression estimators</a></li>
+<li class="chapter" data-level="16.7.10" data-path="experimetrics-te.html"><a href="experimetrics-te.html#regression-estimators-with-additional-covariates-dr-seems-important"><i class="fa fa-check"></i><b>16.7.10</b> Regression Estimators with Additional Covariates [DR: seems important]</a></li>
+<li class="chapter" data-level="16.7.11" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-analysis"><i class="fa fa-check"></i><b>16.7.11</b> Stratified randomized experiments: analysis</a></li>
+<li class="chapter" data-level="16.7.12" data-path="experimetrics-te.html"><a href="experimetrics-te.html#the-design-of-randomised-experiments-and-the-benefits-of-stratification"><i class="fa fa-check"></i><b>16.7.12</b> 7 The Design of randomised experiments and the benefits of stratification</a></li>
+<li class="chapter" data-level="16.7.13" data-path="experimetrics-te.html"><a href="experimetrics-te.html#power-calculations"><i class="fa fa-check"></i><b>16.7.13</b> 7.1 Power calculations</a></li>
+<li class="chapter" data-level="16.7.14" data-path="experimetrics-te.html"><a href="experimetrics-te.html#stratified-randomized-experiments-benefits"><i class="fa fa-check"></i><b>16.7.14</b> Stratified randomized experiments: Benefits</a></li>
+<li class="chapter" data-level="16.7.15" data-path="experimetrics-te.html"><a href="experimetrics-te.html#re-randomization"><i class="fa fa-check"></i><b>16.7.15</b> Re-randomization</a></li>
+<li class="chapter" data-level="16.7.16" data-path="experimetrics-te.html"><a href="experimetrics-te.html#analysis-of-clustered-randomised-experiments"><i class="fa fa-check"></i><b>16.7.16</b> Analysis of Clustered Randomised Experiments</a></li>
+<li class="chapter" data-level="16.7.17" data-path="experimetrics-te.html"><a href="experimetrics-te.html#noncompliance-in-randomized-experiments-dr-relevant-to-nl-lottery-not-to-charity-experiments"><i class="fa fa-check"></i><b>16.7.17</b> Noncompliance in randomized experiments (DR: Relevant to NL lottery, not to charity experiments)</a></li>
+<li class="chapter" data-level="16.7.18" data-path="experimetrics-te.html"><a href="experimetrics-te.html#heterogenous-treatment-effects-and-pretreatment-variables"><i class="fa fa-check"></i><b>16.7.18</b> Heterogenous Treatment Effects and Pretreatment Variables</a></li>
+<li class="chapter" data-level="16.7.19" data-path="experimetrics-te.html"><a href="experimetrics-te.html#data-driven-subgroup-analysis-recursive-partitioning-for-treatment-effects"><i class="fa fa-check"></i><b>16.7.19</b> Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects</a></li>
+<li class="chapter" data-level="16.7.20" data-path="experimetrics-te.html"><a href="experimetrics-te.html#non-parametric-estimation-of-treatment-effect-heterogeneity"><i class="fa fa-check"></i><b>16.7.20</b> 10.3.2 Non-Parametric Estimation of Treatment Effect Heterogeneity</a></li>
+<li class="chapter" data-level="16.7.21" data-path="experimetrics-te.html"><a href="experimetrics-te.html#treatment-effect-heterogeneity-using-regularized-regression"><i class="fa fa-check"></i><b>16.7.21</b> 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression</a></li>
+<li class="chapter" data-level="16.7.22" data-path="experimetrics-te.html"><a href="experimetrics-te.html#comparison-of-methods"><i class="fa fa-check"></i><b>16.7.22</b> 10.3.4 Comparison of Methods</a></li>
 </ul></li>
 </ul></li>
 <li><a href="other-approaches.html#other_approaches"><strong>OTHER APPROACHES, TECHNIQUES, AND APPLICATIONS</strong></a></li>
-<li class="chapter" data-level="16" data-path="psychometrics.html"><a href="psychometrics.html"><i class="fa fa-check"></i><b>16</b> Boiling down: Construct validation/reliability, dimension reduction, factor analysis, and Psychometrics</a>
+<li class="chapter" data-level="17" data-path="psychometrics.html"><a href="psychometrics.html"><i class="fa fa-check"></i><b>17</b> Boiling down: Construct validation/reliability, dimension reduction, factor analysis, and Psychometrics</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="psychometrics.html"><a href="psychometrics.html#constructs-and-construct-validation-and-reliability"><i class="fa fa-check"></i><b>16.1</b> Constructs and construct validation and reliability</a>
+<li class="chapter" data-level="17.1" data-path="psychometrics.html"><a href="psychometrics.html#constructs-and-construct-validation-and-reliability"><i class="fa fa-check"></i><b>17.1</b> Constructs and construct validation and reliability</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>16.1.1</b> Validity: general discussion</a></li>
-<li class="chapter" data-level="16.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>16.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="16.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>16.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="17.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>17.1.1</b> Validity: general discussion</a></li>
+<li class="chapter" data-level="17.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>17.1.2</b> Reliability: general discussion</a></li>
+<li class="chapter" data-level="17.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>17.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>16.2</b> Factor analysis and principal-component analysis</a></li>
-<li class="chapter" data-level="16.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>16.3</b> Other</a></li>
+<li class="chapter" data-level="17.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>17.2</b> Factor analysis and principal-component analysis</a></li>
+<li class="chapter" data-level="17.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>17.3</b> Other</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>17</b> Meta-analysis and combining studies: Making inferences from previous work</a>
+<li class="chapter" data-level="18" data-path="metaanalysis.html"><a href="metaanalysis.html"><i class="fa fa-check"></i><b>18</b> Meta-analysis and combining studies: Making inferences from previous work</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="metaanalysis.html"><a href="metaanalysis.html#notes-christensen-et-al-2019-ch-5-using-all-evidence-registration-and-meta-analysis"><i class="fa fa-check"></i><b>17.1</b> Notes: Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
+<li class="chapter" data-level="18.1" data-path="metaanalysis.html"><a href="metaanalysis.html#introduction-4"><i class="fa fa-check"></i><b>18.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.2" data-path="metaanalysis.html"><a href="metaanalysis.html#christensen-meta"><i class="fa fa-check"></i><b>18.2</b> An overview of meta-analysis, from Christensen et al 2019, ch 5, ’Using all evidence, registration and meta-analysis</a>
 <ul>
-<li class="chapter" data-level="17.1.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>17.1.1</b> The origins [and importance] of study [pre-]registration</a></li>
-<li class="chapter" data-level="17.1.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>17.1.2</b> Social science study registries</a></li>
-<li class="chapter" data-level="17.1.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>17.1.3</b> Meta-analysis</a></li>
-<li class="chapter" data-level="17.1.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>17.1.4</b> Combining estimates</a></li>
-<li class="chapter" data-level="17.1.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>17.1.5</b> Heterogeneous estimates…</a></li>
+<li class="chapter" data-level="18.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#the-origins-and-importance-of-study-pre-registration"><i class="fa fa-check"></i><b>18.2.1</b> The origins [and importance] of study [pre-]registration</a></li>
+<li class="chapter" data-level="18.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#social-science-study-registries"><i class="fa fa-check"></i><b>18.2.2</b> Social science study registries</a></li>
+<li class="chapter" data-level="18.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#meta-analysis"><i class="fa fa-check"></i><b>18.2.3</b> Meta-analysis</a></li>
+<li class="chapter" data-level="18.2.4" data-path="metaanalysis.html"><a href="metaanalysis.html#combining-estimates"><i class="fa fa-check"></i><b>18.2.4</b> Combining estimates</a></li>
+<li class="chapter" data-level="18.2.5" data-path="metaanalysis.html"><a href="metaanalysis.html#heterogeneous-estimates"><i class="fa fa-check"></i><b>18.2.5</b> Heterogeneous estimates…</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>17.2</b> Excerpts and notes from ‘Doing Meta-Analysis in R: A Hands-on Guide’ (Harrer et al)</a>
+<li class="chapter" data-level="18.3" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-meta"><i class="fa fa-check"></i><b>18.3</b> Excerpts and notes from <span>‘Doing Meta-Analysis in R: A Hands-on Guide’</span> (Harrer et al)</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>17.2.1</b> Pooling effect sizes</a></li>
-<li class="chapter" data-level="17.2.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>17.2.2</b> Bayesian Meta-analysis</a></li>
-<li class="chapter" data-level="17.2.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>17.2.3</b> Forest plots</a></li>
+<li class="chapter" data-level="18.3.1" data-path="metaanalysis.html"><a href="metaanalysis.html#pooling-effect-sizes"><i class="fa fa-check"></i><b>18.3.1</b> Pooling effect sizes</a></li>
+<li class="chapter" data-level="18.3.2" data-path="metaanalysis.html"><a href="metaanalysis.html#doing-bayes-meta"><i class="fa fa-check"></i><b>18.3.2</b> Bayesian Meta-analysis</a></li>
+<li class="chapter" data-level="18.3.3" data-path="metaanalysis.html"><a href="metaanalysis.html#forest-plots"><i class="fa fa-check"></i><b>18.3.3</b> Forest plots</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="metaanalysis.html"><a href="metaanalysis.html#pubbias"><i class="fa fa-check"></i><b>17.3</b> Dealing with publication bias</a>
+<li class="chapter" data-level="18.4" data-path="metaanalysis.html"><a href="metaanalysis.html#pubbias"><i class="fa fa-check"></i><b>18.4</b> Dealing with publication bias</a>
 <ul>
-<li class="chapter" data-level="17.3.1" data-path="metaanalysis.html"><a href="metaanalysis.html#diagnosis-and-responses-p-curves-funnel-plots-adjustments"><i class="fa fa-check"></i><b>17.3.1</b> Diagnosis and responses: P-curves, funnel plots, adjustments</a></li>
+<li class="chapter" data-level="18.4.1" data-path="metaanalysis.html"><a href="metaanalysis.html#diagnosis-and-responses-p-curves-funnel-plots-adjustments"><i class="fa fa-check"></i><b>18.4.1</b> Diagnosis and responses: P-curves, funnel plots, adjustments</a></li>
 </ul></li>
-<li class="chapter" data-level="17.4" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>17.4</b> Other notes, links, and commentary</a></li>
-<li class="chapter" data-level="17.5" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>17.5</b> Other resources and tools</a>
+<li class="chapter" data-level="18.5" data-path="metaanalysis.html"><a href="metaanalysis.html#other-notes-links-and-commentary"><i class="fa fa-check"></i><b>18.5</b> Other notes, links, and commentary</a></li>
+<li class="chapter" data-level="18.6" data-path="metaanalysis.html"><a href="metaanalysis.html#other-resources-and-tools"><i class="fa fa-check"></i><b>18.6</b> Other resources and tools</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="metaanalysis.html"><a href="metaanalysis.html#institutional-and-systematic-guidelines"><i class="fa fa-check"></i><b>17.5.1</b> Institutional and systematic guidelines</a></li>
+<li class="chapter" data-level="18.6.1" data-path="metaanalysis.html"><a href="metaanalysis.html#institutional-and-systematic-guidelines"><i class="fa fa-check"></i><b>18.6.1</b> Institutional and systematic guidelines</a></li>
 </ul></li>
-<li class="chapter" data-level="17.6" data-path="metaanalysis.html"><a href="metaanalysis.html#example-discussion-of-meta-analyses-of-the-paleolithic-diet-below"><i class="fa fa-check"></i><b>17.6</b> Example: discussion of meta-analyses of the Paleolithic diet <span>BELOW</span></a></li>
+<li class="chapter" data-level="18.7" data-path="metaanalysis.html"><a href="metaanalysis.html#example-discussion-of-meta-analyses-of-the-paleolithic-diet-below"><i class="fa fa-check"></i><b>18.7</b> Example: discussion of meta-analyses of the Paleolithic diet <span>BELOW</span></a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>18</b> Bayesian approaches</a>
+<li class="chapter" data-level="19" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>19</b> Bayesian approaches</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="bayes.html"><a href="bayes.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>18.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
+<li class="chapter" data-level="19.1" data-path="bayes.html"><a href="bayes.html#my-david-reinsteins-uses-for-bayesian-approaches-brainstorm"><i class="fa fa-check"></i><b>19.1</b> My (David Reinstein’s) uses for Bayesian approaches (brainstorm)</a>
 <ul>
-<li class="chapter" data-level="18.1.1" data-path="bayes.html"><a href="bayes.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>18.1.1</b> Meta-analysis of previous evidence</a></li>
-<li class="chapter" data-level="18.1.2" data-path="bayes.html"><a href="bayes.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>18.1.2</b> Inference, particularly about ‘null effects’</a></li>
-<li class="chapter" data-level="18.1.3" data-path="bayes.html"><a href="bayes.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>18.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
-<li class="chapter" data-level="18.1.4" data-path="bayes.html"><a href="bayes.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>18.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
-<li class="chapter" data-level="18.1.5" data-path="bayes.html"><a href="bayes.html#experimental-design"><i class="fa fa-check"></i><b>18.1.5</b> Experimental design</a></li>
+<li class="chapter" data-level="19.1.1" data-path="bayes.html"><a href="bayes.html#meta-analysis-of-previous-evidence"><i class="fa fa-check"></i><b>19.1.1</b> Meta-analysis of previous evidence</a></li>
+<li class="chapter" data-level="19.1.2" data-path="bayes.html"><a href="bayes.html#inference-particularly-about-null-effects"><i class="fa fa-check"></i><b>19.1.2</b> Inference, particularly about ‘null effects’</a></li>
+<li class="chapter" data-level="19.1.3" data-path="bayes.html"><a href="bayes.html#policy-and-business-implications-and-recommendations"><i class="fa fa-check"></i><b>19.1.3</b> ‘Policy’ and business implications and recommendations</a></li>
+<li class="chapter" data-level="19.1.4" data-path="bayes.html"><a href="bayes.html#theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings"><i class="fa fa-check"></i><b>19.1.4</b> Theory-driven inference about optimizing agents, esp. in strategic settings</a></li>
+<li class="chapter" data-level="19.1.5" data-path="bayes.html"><a href="bayes.html#experimental-design"><i class="fa fa-check"></i><b>19.1.5</b> Experimental design</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="bayes.html"><a href="bayes.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>18.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
+<li class="chapter" data-level="19.2" data-path="bayes.html"><a href="bayes.html#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes"><i class="fa fa-check"></i><b>19.2</b> ‘Statistical thinking’ (McElreath) and <span>AJ Kurtz ‘recoded’ (bookdown)</span>: highlights and notes</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="bayes.html"><a href="bayes.html#the-golem-of-prague-chapter-1"><i class="fa fa-check"></i><b>18.2.1</b> The Golem of Prague (Chapter 1)</a></li>
-<li class="chapter" data-level="18.2.2" data-path="bayes.html"><a href="bayes.html#small-worlds-and-large-worlds-ch-2"><i class="fa fa-check"></i><b>18.2.2</b> Small Worlds and Large Worlds (Ch 2)</a></li>
-<li class="chapter" data-level="18.2.3" data-path="bayes.html"><a href="bayes.html#using-prior-information"><i class="fa fa-check"></i><b>18.2.3</b> Using prior information</a></li>
-<li class="chapter" data-level="18.2.4" data-path="bayes.html"><a href="bayes.html#from-counts-to-probability."><i class="fa fa-check"></i><b>18.2.4</b> From counts to probability.</a></li>
+<li class="chapter" data-level="19.2.1" data-path="bayes.html"><a href="bayes.html#the-golem-of-prague-map-ant-the-territory"><i class="fa fa-check"></i><b>19.2.1</b> 1. The Golem of Prague (map ant the territory)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="bayes.html"><a href="bayes.html#small-worlds-and-large-worlds"><i class="fa fa-check"></i><b>19.2.2</b> 2. Small Worlds and Large Worlds</a></li>
 </ul></li>
-<li class="chapter" data-level="18.3" data-path="bayes.html"><a href="bayes.html#third-videochapter"><i class="fa fa-check"></i><b>18.3</b> Third video/chapter</a>
+<li class="chapter" data-level="19.3" data-path="bayes.html"><a href="bayes.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>19.3</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
 <ul>
-<li class="chapter" data-level="18.3.1" data-path="bayes.html"><a href="bayes.html#normal-distributions"><i class="fa fa-check"></i><b>18.3.1</b> Normal distributions</a></li>
+<li class="chapter" data-level="19.3.1" data-path="bayes.html"><a href="bayes.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>19.3.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
+<li class="chapter" data-level="19.3.2" data-path="bayes.html"><a href="bayes.html#theory"><i class="fa fa-check"></i><b>19.3.2</b> Theory</a></li>
+<li class="chapter" data-level="19.3.3" data-path="bayes.html"><a href="bayes.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>19.3.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
+<li class="chapter" data-level="19.3.4" data-path="bayes.html"><a href="bayes.html#on-choosing-priors"><i class="fa fa-check"></i><b>19.3.4</b> On choosing priors</a></li>
+<li class="chapter" data-level="19.3.5" data-path="bayes.html"><a href="bayes.html#implementation"><i class="fa fa-check"></i><b>19.3.5</b> Implementation</a></li>
+<li class="chapter" data-level="19.3.6" data-path="bayes.html"><a href="bayes.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>19.3.6</b> Generate predictions from a WinBUGS model</a></li>
+<li class="chapter" data-level="19.3.7" data-path="bayes.html"><a href="bayes.html#missing-data-case"><i class="fa fa-check"></i><b>19.3.7</b> Missing data case</a></li>
+<li class="chapter" data-level="19.3.8" data-path="bayes.html"><a href="bayes.html#stata"><i class="fa fa-check"></i><b>19.3.8</b> Stata</a></li>
+<li class="chapter" data-level="19.3.9" data-path="bayes.html"><a href="bayes.html#r-mcmc-pac"><i class="fa fa-check"></i><b>19.3.9</b> R mcmc pac</a></li>
 </ul></li>
-<li class="chapter" data-level="18.4" data-path="bayes.html"><a href="bayes.html#title-introduction-to-bayesian-analysis-in-r-and-stata---katz-qstep"><i class="fa fa-check"></i><b>18.4</b> Title: “Introduction to Bayesian analysis in R and Stata - Katz, Qstep”</a>
+<li class="chapter" data-level="19.4" data-path="bayes.html"><a href="bayes.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>19.4</b> Other resources and notes to integrate</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="n-ds4bs.html"><a href="n-ds4bs.html"><i class="fa fa-check"></i><b>20</b> Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)</a>
 <ul>
-<li class="chapter" data-level="18.4.1" data-path="bayes.html"><a href="bayes.html#why-and-when-use-bayesian-mcmc-methods"><i class="fa fa-check"></i><b>18.4.1</b> Why and when use Bayesian (MCMC) methods?</a></li>
-<li class="chapter" data-level="18.4.2" data-path="bayes.html"><a href="bayes.html#theory"><i class="fa fa-check"></i><b>18.4.2</b> Theory</a></li>
-<li class="chapter" data-level="18.4.3" data-path="bayes.html"><a href="bayes.html#comparing-models-equivalent-of-likelihood"><i class="fa fa-check"></i><b>18.4.3</b> Comparing models … Equivalent of ‘likelihood’</a></li>
-<li class="chapter" data-level="18.4.4" data-path="bayes.html"><a href="bayes.html#on-choosing-priors"><i class="fa fa-check"></i><b>18.4.4</b> On choosing priors</a></li>
-<li class="chapter" data-level="18.4.5" data-path="bayes.html"><a href="bayes.html#implementation"><i class="fa fa-check"></i><b>18.4.5</b> Implementation</a></li>
-<li class="chapter" data-level="18.4.6" data-path="bayes.html"><a href="bayes.html#generate-predictions-from-a-winbugs-model"><i class="fa fa-check"></i><b>18.4.6</b> Generate predictions from a WinBUGS model</a></li>
-<li class="chapter" data-level="18.4.7" data-path="bayes.html"><a href="bayes.html#missing-data-case"><i class="fa fa-check"></i><b>18.4.7</b> Missing data case</a></li>
-<li class="chapter" data-level="18.4.8" data-path="bayes.html"><a href="bayes.html#stata"><i class="fa fa-check"></i><b>18.4.8</b> Stata</a></li>
-<li class="chapter" data-level="18.4.9" data-path="bayes.html"><a href="bayes.html#r-mcmc-pac"><i class="fa fa-check"></i><b>18.4.9</b> R mcmc pac</a></li>
-</ul></li>
-<li class="chapter" data-level="18.5" data-path="bayes.html"><a href="bayes.html#other-resources-and-notes-to-integrate"><i class="fa fa-check"></i><b>18.5</b> Other resources and notes to integrate</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="n-ds4bs.html"><a href="n-ds4bs.html"><i class="fa fa-check"></i><b>19</b> Notes on Data Science for Business by Foster Provost and Tom Fawcett (2013)</a>
-<ul>
-<li class="chapter" data-level="19.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-of-this-resource"><i class="fa fa-check"></i><b>19.1</b> Evaluation of this resource</a></li>
+<li class="chapter" data-level="20.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-of-this-resource"><i class="fa fa-check"></i><b>20.1</b> Evaluation of this resource</a></li>
 <li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-1-introduction-data-analytic-thinking"><i class="fa fa-check"></i>Ch 1 Introduction: Data-Analytic Thinking</a>
 <ul>
 <li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-during-hurricane-frances-predicting-demand-to-gear-inventory-and-avoid-shortages-lead-to-huge-profit-for-wal-mart"><i class="fa fa-check"></i>Example: During Hurricane Frances… predicting demand to gear inventory and avoid shortages … lead to huge profit for Wal-Mart</a></li>
 <li class="chapter" data-level="" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-predicting-customer-churn"><i class="fa fa-check"></i>Example: Predicting Customer Churn</a></li>
-<li class="chapter" data-level="19.1.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-science-engineering-and-data-driven-decision-making"><i class="fa fa-check"></i><b>19.1.1</b> Data Science, Engineering, and Data-Driven Decision Making</a></li>
-<li class="chapter" data-level="19.1.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-processing-and-big-data"><i class="fa fa-check"></i><b>19.1.2</b> Data Processing and “Big Data”</a></li>
-<li class="chapter" data-level="19.1.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-asset"><i class="fa fa-check"></i><b>19.1.3</b> Data and Data Science Capability as a <strong>Strategic Asset</strong></a></li>
-<li class="chapter" data-level="19.1.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#da-thinking"><i class="fa fa-check"></i><b>19.1.4</b> Data-Analytic Thinking</a></li>
-<li class="chapter" data-level="19.1.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-and-data-science-revisited"><i class="fa fa-check"></i><b>19.1.5</b> Data Mining and Data Science, Revisited</a></li>
+<li class="chapter" data-level="20.1.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-science-engineering-and-data-driven-decision-making"><i class="fa fa-check"></i><b>20.1.1</b> Data Science, Engineering, and Data-Driven Decision Making</a></li>
+<li class="chapter" data-level="20.1.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-processing-and-big-data"><i class="fa fa-check"></i><b>20.1.2</b> Data Processing and “Big Data”</a></li>
+<li class="chapter" data-level="20.1.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-asset"><i class="fa fa-check"></i><b>20.1.3</b> Data and Data Science Capability as a <strong>Strategic Asset</strong></a></li>
+<li class="chapter" data-level="20.1.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#da-thinking"><i class="fa fa-check"></i><b>20.1.4</b> Data-Analytic Thinking</a></li>
+<li class="chapter" data-level="20.1.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-and-data-science-revisited"><i class="fa fa-check"></i><b>20.1.5</b> Data Mining and Data Science, Revisited</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-ch2"><i class="fa fa-check"></i><b>19.2</b> Ch 2 Business Problems and Data Science Solutions</a>
+<li class="chapter" data-level="20.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-ch2"><i class="fa fa-check"></i><b>20.2</b> Ch 2 Business Problems and Data Science Solutions</a>
 <ul>
-<li class="chapter" data-level="19.2.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#types-of-problems-and-approaches"><i class="fa fa-check"></i><b>19.2.1</b> Types of problems and approaches</a></li>
-<li class="chapter" data-level="19.2.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-process"><i class="fa fa-check"></i><b>19.2.2</b> The Data Mining Process</a></li>
+<li class="chapter" data-level="20.2.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#types-of-problems-and-approaches"><i class="fa fa-check"></i><b>20.2.1</b> Types of problems and approaches</a></li>
+<li class="chapter" data-level="20.2.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#data-mining-process"><i class="fa fa-check"></i><b>20.2.2</b> The Data Mining Process</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-3-introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation"><i class="fa fa-check"></i><b>19.3</b> Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</a>
+<li class="chapter" data-level="20.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ch-3-introduction-to-predictive-modeling-from-correlation-to-supervised-segmentation"><i class="fa fa-check"></i><b>20.3</b> Ch 3: Introduction to Predictive Modeling: From Correlation to Supervised Segmentation</a>
 <ul>
-<li class="chapter" data-level="19.3.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#models-induction-and-prediction"><i class="fa fa-check"></i><b>19.3.1</b> Models, Induction, and Prediction</a></li>
-<li class="chapter" data-level="19.3.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#supervised-segmentation"><i class="fa fa-check"></i><b>19.3.2</b> Supervised Segmentation</a></li>
-<li class="chapter" data-level="19.3.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-1"><i class="fa fa-check"></i><b>19.3.3</b> Summary</a></li>
-<li class="chapter" data-level="19.3.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#note-check-if-there-is-a-gap-here"><i class="fa fa-check"></i><b>19.3.4</b> NOTE – check if there is a gap here</a></li>
+<li class="chapter" data-level="20.3.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#models-induction-and-prediction"><i class="fa fa-check"></i><b>20.3.1</b> Models, Induction, and Prediction</a></li>
+<li class="chapter" data-level="20.3.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#supervised-segmentation"><i class="fa fa-check"></i><b>20.3.2</b> Supervised Segmentation</a></li>
+<li class="chapter" data-level="20.3.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-1"><i class="fa fa-check"></i><b>20.3.3</b> Summary</a></li>
+<li class="chapter" data-level="20.3.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#note-check-if-there-is-a-gap-here"><i class="fa fa-check"></i><b>20.3.4</b> NOTE – check if there is a gap here</a></li>
 </ul></li>
-<li class="chapter" data-level="19.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-model-to-data"><i class="fa fa-check"></i><b>19.4</b> Ch. 4: Fitting a Model to Data</a>
+<li class="chapter" data-level="20.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-model-to-data"><i class="fa fa-check"></i><b>20.4</b> Ch. 4: Fitting a Model to Data</a>
 <ul>
-<li class="chapter" data-level="19.4.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#classification-via-mathematical-functions"><i class="fa fa-check"></i><b>19.4.1</b> Classification via Mathematical Functions</a></li>
-<li class="chapter" data-level="19.4.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#regression-via-mathematical-functions"><i class="fa fa-check"></i><b>19.4.2</b> Regression via Mathematical Functions</a></li>
-<li class="chapter" data-level="19.4.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#class-probability-estimation-and-logistic-regression"><i class="fa fa-check"></i><b>19.4.3</b> Class Probability Estimation and Logistic Regression</a></li>
-<li class="chapter" data-level="19.4.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#logistic-regression-some-technical-details"><i class="fa fa-check"></i><b>19.4.4</b> Logistic Regression: Some Technical Details</a></li>
-<li class="chapter" data-level="19.4.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-logistic-regression-versus-tree-induction"><i class="fa fa-check"></i><b>19.4.5</b> Example: Logistic Regression versus Tree Induction</a></li>
-<li class="chapter" data-level="19.4.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nonlinear-functions-support-vector-machines-and-neural-networksthe-two-most-common-families-of-techniques-that-are-based-on-fitting-the-parameters-of-complex-nonlinear-functions-are-nonlinear-supportvector-machines-and-neural-networks."><i class="fa fa-check"></i><b>19.4.6</b> Nonlinear Functions, Support Vector Machines, and Neural NetworksThe two most common families of techniques that are based on fitting the parameters of complex, nonlinear functions are nonlinear supportvector machines and neural networks.</a></li>
+<li class="chapter" data-level="20.4.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#classification-via-mathematical-functions"><i class="fa fa-check"></i><b>20.4.1</b> Classification via Mathematical Functions</a></li>
+<li class="chapter" data-level="20.4.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#regression-via-mathematical-functions"><i class="fa fa-check"></i><b>20.4.2</b> Regression via Mathematical Functions</a></li>
+<li class="chapter" data-level="20.4.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#class-probability-estimation-and-logistic-regression"><i class="fa fa-check"></i><b>20.4.3</b> Class Probability Estimation and Logistic Regression</a></li>
+<li class="chapter" data-level="20.4.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#logistic-regression-some-technical-details"><i class="fa fa-check"></i><b>20.4.4</b> Logistic Regression: Some Technical Details</a></li>
+<li class="chapter" data-level="20.4.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-logistic-regression-versus-tree-induction"><i class="fa fa-check"></i><b>20.4.5</b> Example: Logistic Regression versus Tree Induction</a></li>
+<li class="chapter" data-level="20.4.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nonlinear-functions-support-vector-machines-and-neural-networksthe-two-most-common-families-of-techniques-that-are-based-on-fitting-the-parameters-of-complex-nonlinear-functions-are-nonlinear-supportvector-machines-and-neural-networks."><i class="fa fa-check"></i><b>20.4.6</b> Nonlinear Functions, Support Vector Machines, and Neural NetworksThe two most common families of techniques that are based on fitting the parameters of complex, nonlinear functions are nonlinear supportvector machines and neural networks.</a></li>
 </ul></li>
-<li class="chapter" data-level="19.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-overfitting"><i class="fa fa-check"></i><b>19.5</b> Ch 5: Overfitting and its avoidance</a>
+<li class="chapter" data-level="20.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-overfitting"><i class="fa fa-check"></i><b>20.5</b> Ch 5: Overfitting and its avoidance</a>
 <ul>
-<li class="chapter" data-level="19.5.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalization"><i class="fa fa-check"></i><b>19.5.1</b> Generalization</a></li>
-<li class="chapter" data-level="19.5.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#holdout-data-and-fitting-graphs"><i class="fa fa-check"></i><b>19.5.2</b> Holdout Data and Fitting Graphs</a></li>
-<li class="chapter" data-level="19.5.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-overfitting-linear-functions"><i class="fa fa-check"></i><b>19.5.3</b> Example: Overfitting Linear Functions</a></li>
-<li class="chapter" data-level="19.5.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-why-is-overfitting-bad"><i class="fa fa-check"></i><b>19.5.4</b> Example: Why Is Overfitting Bad?</a></li>
-<li class="chapter" data-level="19.5.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#from-holdout-evaluation-to-cross-validation"><i class="fa fa-check"></i><b>19.5.5</b> From Holdout Evaluation to Cross-Validation</a></li>
-<li class="chapter" data-level="19.5.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#learning-curves"><i class="fa fa-check"></i><b>19.5.6</b> Learning Curves</a></li>
-<li class="chapter" data-level="19.5.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-with-tree-induction"><i class="fa fa-check"></i><b>19.5.7</b> Avoiding Overfitting with Tree Induction</a></li>
-<li class="chapter" data-level="19.5.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting"><i class="fa fa-check"></i><b>19.5.8</b> A General Method for Avoiding Overfitting</a></li>
-<li class="chapter" data-level="19.5.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting-1"><i class="fa fa-check"></i><b>19.5.9</b> A General Method for Avoiding Overfitting</a></li>
-<li class="chapter" data-level="19.5.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-for-parameter-optimization"><i class="fa fa-check"></i><b>19.5.10</b> Avoiding Overfitting for Parameter Optimization</a></li>
+<li class="chapter" data-level="20.5.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalization"><i class="fa fa-check"></i><b>20.5.1</b> Generalization</a></li>
+<li class="chapter" data-level="20.5.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#holdout-data-and-fitting-graphs"><i class="fa fa-check"></i><b>20.5.2</b> Holdout Data and Fitting Graphs</a></li>
+<li class="chapter" data-level="20.5.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-overfitting-linear-functions"><i class="fa fa-check"></i><b>20.5.3</b> Example: Overfitting Linear Functions</a></li>
+<li class="chapter" data-level="20.5.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-why-is-overfitting-bad"><i class="fa fa-check"></i><b>20.5.4</b> Example: Why Is Overfitting Bad?</a></li>
+<li class="chapter" data-level="20.5.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#from-holdout-evaluation-to-cross-validation"><i class="fa fa-check"></i><b>20.5.5</b> From Holdout Evaluation to Cross-Validation</a></li>
+<li class="chapter" data-level="20.5.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#learning-curves"><i class="fa fa-check"></i><b>20.5.6</b> Learning Curves</a></li>
+<li class="chapter" data-level="20.5.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-with-tree-induction"><i class="fa fa-check"></i><b>20.5.7</b> Avoiding Overfitting with Tree Induction</a></li>
+<li class="chapter" data-level="20.5.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting"><i class="fa fa-check"></i><b>20.5.8</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="20.5.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-general-method-for-avoiding-overfitting-1"><i class="fa fa-check"></i><b>20.5.9</b> A General Method for Avoiding Overfitting</a></li>
+<li class="chapter" data-level="20.5.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#avoiding-overfitting-for-parameter-optimization"><i class="fa fa-check"></i><b>20.5.10</b> Avoiding Overfitting for Parameter Optimization</a></li>
 </ul></li>
-<li class="chapter" data-level="19.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-similarity"><i class="fa fa-check"></i><b>19.6</b> Ch 6.: Similarity, Neighbors, and Clusters</a>
+<li class="chapter" data-level="20.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-similarity"><i class="fa fa-check"></i><b>20.6</b> Ch 6.: Similarity, Neighbors, and Clusters</a>
 <ul>
-<li class="chapter" data-level="19.6.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance"><i class="fa fa-check"></i><b>19.6.1</b> Similarity and Distance</a></li>
-<li class="chapter" data-level="19.6.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance-1"><i class="fa fa-check"></i><b>19.6.2</b> Similarity and Distance</a></li>
-<li class="chapter" data-level="19.6.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-whiskey-analytics"><i class="fa fa-check"></i><b>19.6.3</b> Example: Whiskey Analytics</a></li>
-<li class="chapter" data-level="19.6.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nearest-neighbors-for-predictive-modeling"><i class="fa fa-check"></i><b>19.6.4</b> Nearest Neighbors for Predictive Modeling</a></li>
-<li class="chapter" data-level="19.6.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#how-many-neighbors-and-how-much-influence"><i class="fa fa-check"></i><b>19.6.5</b> How Many Neighbors and How Much Influence?</a></li>
-<li class="chapter" data-level="19.6.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#geometric-interpretation-overfitting-and-complexity-control"><i class="fa fa-check"></i><b>19.6.6</b> Geometric Interpretation, Overfitting, and Complexity Control</a></li>
-<li class="chapter" data-level="19.6.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#issues-with-nearest-neighbor-methods"><i class="fa fa-check"></i><b>19.6.7</b> Issues with Nearest-Neighbor Methods</a></li>
-<li class="chapter" data-level="19.6.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#other-distance-functions"><i class="fa fa-check"></i><b>19.6.8</b> Other Distance Functions</a></li>
-<li class="chapter" data-level="19.6.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#stepping-back-solving-a-business-problem-versus-data-exploration"><i class="fa fa-check"></i><b>19.6.9</b> Stepping Back: Solving a Business Problem Versus Data Exploration</a></li>
-<li class="chapter" data-level="19.6.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-2"><i class="fa fa-check"></i><b>19.6.10</b> Summary</a></li>
+<li class="chapter" data-level="20.6.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance"><i class="fa fa-check"></i><b>20.6.1</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="20.6.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#similarity-and-distance-1"><i class="fa fa-check"></i><b>20.6.2</b> Similarity and Distance</a></li>
+<li class="chapter" data-level="20.6.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#example-whiskey-analytics"><i class="fa fa-check"></i><b>20.6.3</b> Example: Whiskey Analytics</a></li>
+<li class="chapter" data-level="20.6.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#nearest-neighbors-for-predictive-modeling"><i class="fa fa-check"></i><b>20.6.4</b> Nearest Neighbors for Predictive Modeling</a></li>
+<li class="chapter" data-level="20.6.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#how-many-neighbors-and-how-much-influence"><i class="fa fa-check"></i><b>20.6.5</b> How Many Neighbors and How Much Influence?</a></li>
+<li class="chapter" data-level="20.6.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#geometric-interpretation-overfitting-and-complexity-control"><i class="fa fa-check"></i><b>20.6.6</b> Geometric Interpretation, Overfitting, and Complexity Control</a></li>
+<li class="chapter" data-level="20.6.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#issues-with-nearest-neighbor-methods"><i class="fa fa-check"></i><b>20.6.7</b> Issues with Nearest-Neighbor Methods</a></li>
+<li class="chapter" data-level="20.6.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#other-distance-functions"><i class="fa fa-check"></i><b>20.6.8</b> Other Distance Functions</a></li>
+<li class="chapter" data-level="20.6.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#stepping-back-solving-a-business-problem-versus-data-exploration"><i class="fa fa-check"></i><b>20.6.9</b> Stepping Back: Solving a Business Problem Versus Data Exploration</a></li>
+<li class="chapter" data-level="20.6.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-2"><i class="fa fa-check"></i><b>20.6.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="19.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-decision-thinking"><i class="fa fa-check"></i><b>19.7</b> Ch. 7. Decision Analytic Thinking I: What Is a Good Model?</a>
+<li class="chapter" data-level="20.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-decision-thinking"><i class="fa fa-check"></i><b>20.7</b> Ch. 7. Decision Analytic Thinking I: What Is a Good Model?</a>
 <ul>
-<li class="chapter" data-level="19.7.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluating-classifier"><i class="fa fa-check"></i><b>19.7.1</b> Evaluating Classifier</a></li>
-<li class="chapter" data-level="19.7.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#the-confusion-matrix"><i class="fa fa-check"></i><b>19.7.2</b> The Confusion Matrix</a></li>
-<li class="chapter" data-level="19.7.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#problems-with-unbalanced-classes"><i class="fa fa-check"></i><b>19.7.3</b> Problems with Unbalanced Classes</a></li>
-<li class="chapter" data-level="19.7.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalizing-beyond-classification"><i class="fa fa-check"></i><b>19.7.4</b> Generalizing Beyond Classification</a></li>
-<li class="chapter" data-level="19.7.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-key-analytical-framework-expected-value"><i class="fa fa-check"></i><b>19.7.5</b> A Key Analytical Framework: Expected Value</a></li>
-<li class="chapter" data-level="19.7.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-use"><i class="fa fa-check"></i><b>19.7.6</b> Using Expected Value to Frame Classifier Use</a></li>
-<li class="chapter" data-level="19.7.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-evaluation"><i class="fa fa-check"></i><b>19.7.7</b> Using Expected Value to Frame Classifier Evaluation</a></li>
-<li class="chapter" data-level="19.7.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-baseline-performance-and-implications-for-investments-in-data"><i class="fa fa-check"></i><b>19.7.8</b> Evaluation, Baseline Performance, and Implications for Investments in Data</a></li>
-<li class="chapter" data-level="19.7.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-3"><i class="fa fa-check"></i><b>19.7.9</b> Summary</a></li>
-<li class="chapter" data-level="19.7.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ranking-instead-of-classifying"><i class="fa fa-check"></i><b>19.7.10</b> Ranking Instead of Classifying</a></li>
-<li class="chapter" data-level="19.7.11" data-path="n-ds4bs.html"><a href="n-ds4bs.html#profit-curves"><i class="fa fa-check"></i><b>19.7.11</b> Profit Curves</a></li>
+<li class="chapter" data-level="20.7.1" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluating-classifier"><i class="fa fa-check"></i><b>20.7.1</b> Evaluating Classifier</a></li>
+<li class="chapter" data-level="20.7.2" data-path="n-ds4bs.html"><a href="n-ds4bs.html#the-confusion-matrix"><i class="fa fa-check"></i><b>20.7.2</b> The Confusion Matrix</a></li>
+<li class="chapter" data-level="20.7.3" data-path="n-ds4bs.html"><a href="n-ds4bs.html#problems-with-unbalanced-classes"><i class="fa fa-check"></i><b>20.7.3</b> Problems with Unbalanced Classes</a></li>
+<li class="chapter" data-level="20.7.4" data-path="n-ds4bs.html"><a href="n-ds4bs.html#generalizing-beyond-classification"><i class="fa fa-check"></i><b>20.7.4</b> Generalizing Beyond Classification</a></li>
+<li class="chapter" data-level="20.7.5" data-path="n-ds4bs.html"><a href="n-ds4bs.html#a-key-analytical-framework-expected-value"><i class="fa fa-check"></i><b>20.7.5</b> A Key Analytical Framework: Expected Value</a></li>
+<li class="chapter" data-level="20.7.6" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-use"><i class="fa fa-check"></i><b>20.7.6</b> Using Expected Value to Frame Classifier Use</a></li>
+<li class="chapter" data-level="20.7.7" data-path="n-ds4bs.html"><a href="n-ds4bs.html#using-expected-value-to-frame-classifier-evaluation"><i class="fa fa-check"></i><b>20.7.7</b> Using Expected Value to Frame Classifier Evaluation</a></li>
+<li class="chapter" data-level="20.7.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#evaluation-baseline-performance-and-implications-for-investments-in-data"><i class="fa fa-check"></i><b>20.7.8</b> Evaluation, Baseline Performance, and Implications for Investments in Data</a></li>
+<li class="chapter" data-level="20.7.9" data-path="n-ds4bs.html"><a href="n-ds4bs.html#summary-3"><i class="fa fa-check"></i><b>20.7.9</b> Summary</a></li>
+<li class="chapter" data-level="20.7.10" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ranking-instead-of-classifying"><i class="fa fa-check"></i><b>20.7.10</b> Ranking Instead of Classifying</a></li>
+<li class="chapter" data-level="20.7.11" data-path="n-ds4bs.html"><a href="n-ds4bs.html#profit-curves"><i class="fa fa-check"></i><b>20.7.11</b> Profit Curves</a></li>
 </ul></li>
-<li class="chapter" data-level="19.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-contents"><i class="fa fa-check"></i><b>19.8</b> Contents and consideration</a></li>
+<li class="chapter" data-level="20.8" data-path="n-ds4bs.html"><a href="n-ds4bs.html#ds4bs-contents"><i class="fa fa-check"></i><b>20.8</b> Contents and consideration</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="paleo-example.html"><a href="paleo-example.html"><i class="fa fa-check"></i>Meta-analysis arbitrary example: the ‘Paleo diet’</a>
 <ul>
-<li class="chapter" data-level="19.9" data-path="conceptual.html"><a href="conceptual.html#conceptual"><i class="fa fa-check"></i><b>19.9</b> Conceptual: Thoughts on nutritional studies and meta-analysis issues</a>
+<li class="chapter" data-level="20.9" data-path="conceptual.html"><a href="conceptual.html#conceptual"><i class="fa fa-check"></i><b>20.9</b> Conceptual: Thoughts on nutritional studies and meta-analysis issues</a>
 <ul>
-<li class="chapter" data-level="19.9.1" data-path="paleo-example.html"><a href="paleo-example.html#compliance"><i class="fa fa-check"></i><b>19.9.1</b> Limited compliance; ‘what are we aiming to measure and why?’</a></li>
-<li class="chapter" data-level="19.9.2" data-path="paleo-example.html"><a href="paleo-example.html#control-group-what-is-being-measured"><i class="fa fa-check"></i><b>19.9.2</b> Control group: what is being measured?</a></li>
-<li class="chapter" data-level="19.9.3" data-path="paleo-example.html"><a href="paleo-example.html#what-is-being-tested-and-how-broadly-should-we-interpret-the-results"><i class="fa fa-check"></i><b>19.9.3</b> What is being tested and how broadly should we interpret the results?</a></li>
+<li class="chapter" data-level="20.9.1" data-path="paleo-example.html"><a href="paleo-example.html#compliance"><i class="fa fa-check"></i><b>20.9.1</b> Limited compliance; ‘what are we aiming to measure and why?’</a></li>
+<li class="chapter" data-level="20.9.2" data-path="paleo-example.html"><a href="paleo-example.html#control-group-what-is-being-measured"><i class="fa fa-check"></i><b>20.9.2</b> Control group: what is being measured?</a></li>
+<li class="chapter" data-level="20.9.3" data-path="paleo-example.html"><a href="paleo-example.html#what-is-being-tested-and-how-broadly-should-we-interpret-the-results"><i class="fa fa-check"></i><b>20.9.3</b> What is being tested and how broadly should we interpret the results?</a></li>
 </ul></li>
-<li class="chapter" data-level="19.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>19.10</b> Manheimer et al</a>
+<li class="chapter" data-level="20.10" data-path="paleo-example.html"><a href="paleo-example.html#manheimer"><i class="fa fa-check"></i><b>20.10</b> Manheimer et al</a>
 <ul>
-<li class="chapter" data-level="19.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>19.10.1</b> Strengths and limitations</a></li>
-<li class="chapter" data-level="19.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>19.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
-<li class="chapter" data-level="19.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>19.10.3</b> My rough conclusions from Manheimer et al</a></li>
-<li class="chapter" data-level="19.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>19.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
+<li class="chapter" data-level="20.10.1" data-path="paleo-example.html"><a href="paleo-example.html#strengths-and-limitations"><i class="fa fa-check"></i><b>20.10.1</b> Strengths and limitations</a></li>
+<li class="chapter" data-level="20.10.2" data-path="paleo-example.html"><a href="paleo-example.html#overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015"><i class="fa fa-check"></i><b>20.10.2</b> Overall results, interpretation, consideration of evidence presented in <span class="citation"><span>Manheimer et al.</span> (<span>2015</span>)</span></a></li>
+<li class="chapter" data-level="20.10.3" data-path="paleo-example.html"><a href="paleo-example.html#my-rough-conclusions-from-manheimer-et-al"><i class="fa fa-check"></i><b>20.10.3</b> My rough conclusions from Manheimer et al</a></li>
+<li class="chapter" data-level="20.10.4" data-path="paleo-example.html"><a href="paleo-example.html#critiques"><i class="fa fa-check"></i><b>20.10.4</b> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</a></li>
 </ul></li>
-<li class="chapter" data-level="19.11" data-path="paleo-example.html"><a href="paleo-example.html#other-meta-analyses-and-consideration-of-the-paleo-diet"><i class="fa fa-check"></i><b>19.11</b> Other meta-analyses and consideration of the Paleo diet</a>
+<li class="chapter" data-level="20.11" data-path="paleo-example.html"><a href="paleo-example.html#other-meta-analyses-and-consideration-of-the-paleo-diet"><i class="fa fa-check"></i><b>20.11</b> Other meta-analyses and consideration of the Paleo diet</a>
 <ul>
-<li class="chapter" data-level="19.11.1" data-path="paleo-example.html"><a href="paleo-example.html#process-of-finding-relevant-work-informal"><i class="fa fa-check"></i><b>19.11.1</b> Process of finding relevant work (informal)</a></li>
+<li class="chapter" data-level="20.11.1" data-path="paleo-example.html"><a href="paleo-example.html#process-of-finding-relevant-work-informal"><i class="fa fa-check"></i><b>20.11.1</b> Process of finding relevant work (informal)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.12" data-path="paleo-example.html"><a href="paleo-example.html#boers"><i class="fa fa-check"></i><b>19.12</b> Focus: Boers et al</a></li>
-<li class="chapter" data-level="19.13" data-path="paleo-example.html"><a href="paleo-example.html#overall-analysis"><i class="fa fa-check"></i><b>19.13</b> Overall analysis</a>
+<li class="chapter" data-level="20.12" data-path="paleo-example.html"><a href="paleo-example.html#boers"><i class="fa fa-check"></i><b>20.12</b> Focus: Boers et al</a></li>
+<li class="chapter" data-level="20.13" data-path="paleo-example.html"><a href="paleo-example.html#overall-analysis"><i class="fa fa-check"></i><b>20.13</b> Overall analysis</a>
 <ul>
-<li class="chapter" data-level="19.13.1" data-path="paleo-example.html"><a href="paleo-example.html#limitations-p"><i class="fa fa-check"></i><b>19.13.1</b> Limitations and uncertainties to my own analysis; proposed future steps</a></li>
+<li class="chapter" data-level="20.13.1" data-path="paleo-example.html"><a href="paleo-example.html#limitations-p"><i class="fa fa-check"></i><b>20.13.1</b> Limitations and uncertainties to my own analysis; proposed future steps</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>20</b> Getting, cleaning and using data</a>
+<li class="chapter" data-level="21" data-path="data-sci.html"><a href="data-sci.html"><i class="fa fa-check"></i><b>21</b> Getting, cleaning and using data</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="data-sci.html"><a href="data-sci.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>20.1</b> Data: What/why/where/how</a></li>
-<li class="chapter" data-level="20.2" data-path="data-sci.html"><a href="data-sci.html#organizing-a-project"><i class="fa fa-check"></i><b>20.2</b> Organizing a project</a></li>
-<li class="chapter" data-level="20.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown"><i class="fa fa-check"></i><b>20.3</b> Dynamic documents (esp Rmd/bookdown)</a>
+<li class="chapter" data-level="21.1" data-path="data-sci.html"><a href="data-sci.html#data-whatwhywherehow"><i class="fa fa-check"></i><b>21.1</b> Data: What/why/where/how</a></li>
+<li class="chapter" data-level="21.2" data-path="data-sci.html"><a href="data-sci.html#organizing-a-project"><i class="fa fa-check"></i><b>21.2</b> Organizing a project</a></li>
+<li class="chapter" data-level="21.3" data-path="data-sci.html"><a href="data-sci.html#dynamic-documents-esp-rmdbookdown"><i class="fa fa-check"></i><b>21.3</b> Dynamic documents (esp Rmd/bookdown)</a>
 <ul>
-<li class="chapter" data-level="20.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>20.3.1</b> Managing references/citations</a></li>
-<li class="chapter" data-level="20.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>20.3.2</b> An example of dynamic code</a></li>
+<li class="chapter" data-level="21.3.1" data-path="data-sci.html"><a href="data-sci.html#managing-referencescitations"><i class="fa fa-check"></i><b>21.3.1</b> Managing references/citations</a></li>
+<li class="chapter" data-level="21.3.2" data-path="data-sci.html"><a href="data-sci.html#an-example-of-dynamic-code"><i class="fa fa-check"></i><b>21.3.2</b> An example of dynamic code</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>20.4</b> Project management tools, esp. Git/Github</a></li>
-<li class="chapter" data-level="20.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices"><i class="fa fa-check"></i><b>20.5</b> Good coding practices</a>
+<li class="chapter" data-level="21.4" data-path="data-sci.html"><a href="data-sci.html#project-management-tools-esp.-gitgithub"><i class="fa fa-check"></i><b>21.4</b> Project management tools, esp. Git/Github</a></li>
+<li class="chapter" data-level="21.5" data-path="data-sci.html"><a href="data-sci.html#good-coding-practices"><i class="fa fa-check"></i><b>21.5</b> Good coding practices</a>
 <ul>
-<li class="chapter" data-level="20.5.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse"><i class="fa fa-check"></i><b>20.5.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
-<li class="chapter" data-level="20.5.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency"><i class="fa fa-check"></i><b>20.5.2</b> Style and consistency</a></li>
-<li class="chapter" data-level="20.5.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code"><i class="fa fa-check"></i><b>20.5.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
-<li class="chapter" data-level="20.5.4" data-path="data-sci.html"><a href="data-sci.html#mapping-over-lists-to-produce-results"><i class="fa fa-check"></i><b>20.5.4</b> Mapping over lists to produce results</a></li>
-<li class="chapter" data-level="20.5.5" data-path="data-sci.html"><a href="data-sci.html#building-results-based-on-lists-of-filters-of-the-data-set"><i class="fa fa-check"></i><b>20.5.5</b> Building results based on ‘lists of filters’ of the data set</a></li>
-<li class="chapter" data-level="20.5.6" data-path="data-sci.html"><a href="data-sci.html#coding-style-and-indenting-in-stata-one-approach"><i class="fa fa-check"></i><b>20.5.6</b> Coding style and indenting in Stata (one approach)</a></li>
+<li class="chapter" data-level="21.5.1" data-path="data-sci.html"><a href="data-sci.html#new-tools-and-approaches-to-data-esp-tidyverse"><i class="fa fa-check"></i><b>21.5.1</b> New tools and approaches to data (esp ‘tidyverse’)</a></li>
+<li class="chapter" data-level="21.5.2" data-path="data-sci.html"><a href="data-sci.html#style-and-consistency"><i class="fa fa-check"></i><b>21.5.2</b> Style and consistency</a></li>
+<li class="chapter" data-level="21.5.3" data-path="data-sci.html"><a href="data-sci.html#using-functions-variable-lists-etc.-for-clean-concise-readable-code"><i class="fa fa-check"></i><b>21.5.3</b> Using functions, variable lists, etc., for clean, concise, readable code</a></li>
+<li class="chapter" data-level="21.5.4" data-path="data-sci.html"><a href="data-sci.html#mapping-over-lists-to-produce-results"><i class="fa fa-check"></i><b>21.5.4</b> Mapping over lists to produce results</a></li>
+<li class="chapter" data-level="21.5.5" data-path="data-sci.html"><a href="data-sci.html#building-results-based-on-lists-of-filters-of-the-data-set"><i class="fa fa-check"></i><b>21.5.5</b> Building results based on ‘lists of filters’ of the data set</a></li>
+<li class="chapter" data-level="21.5.6" data-path="data-sci.html"><a href="data-sci.html#coding-style-and-indenting-in-stata-one-approach"><i class="fa fa-check"></i><b>21.5.6</b> Coding style and indenting in Stata (one approach)</a></li>
 </ul></li>
-<li class="chapter" data-level="20.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>20.6</b> Additional tips (integrate)</a></li>
+<li class="chapter" data-level="21.6" data-path="data-sci.html"><a href="data-sci.html#additional-tips-integrate"><i class="fa fa-check"></i><b>21.6</b> Additional tips (integrate)</a>
+<ul>
+<li><a href="data-sci.html#some-key-points-from-r-for-data-science-see-my-hypothesis-notes">Some key points from <span>R for data science</span> (see my hypothesis notes)</a></li>
+<li class="chapter" data-level="21.6.1" data-path="data-sci.html"><a href="data-sci.html#from-a-named-list"><i class="fa fa-check"></i><b>21.6.1</b> From a named list</a></li>
+<li class="chapter" data-level="21.6.2" data-path="data-sci.html"><a href="data-sci.html#list-to-vector"><i class="fa fa-check"></i><b>21.6.2</b> List to vector</a></li>
+<li class="chapter" data-level="21.6.3" data-path="data-sci.html"><a href="data-sci.html#unnesting"><i class="fa fa-check"></i><b>21.6.3</b> Unnesting</a></li>
+<li class="chapter" data-level="21.6.4" data-path="data-sci.html"><a href="data-sci.html#section"><i class="fa fa-check"></i><b>21.6.4</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> List of references</a></li>
+<li class="chapter" data-level="21.7" data-path="data-sci.html"><a href="data-sci.html#making-tidy-data-with-broom"><i class="fa fa-check"></i><b>21.7</b> Making tidy data with broom</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>22</b> List of references</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -1253,50 +1301,50 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.</p>
 </blockquote>
 <p>There is some evidence supporting the claim that the ‘Paleo diet’ reduces obesity as measured by waist circumference, at least for certain targeted groups relative to certain ’standard recommended diets. At least a small set of randomized trials have concluded that participants in the “Paleo diet treatment” groups reduced their waist circumference more than those in control groups.</p>
-<p>This evidence is summarized in the meta-analysis of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> who report:</p>
+<p>This evidence is summarized in the meta-analysis of <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> who report:</p>
 <blockquote>
 <p>The Paleolithic diet resulted in greater short-term improvements in metabolic syndrome components than did guideline-based control diets. The available data warrant additional evaluations of the health benefits of Paleolithic nutrition.</p>
 </blockquote>
-<p>More recent meta-analyses in reputable journals have also found favorable results (<span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, <span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>).</p>
+<p>More recent meta-analyses in reputable journals have also found favorable results (<span class="citation"><a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, <span class="citation"><a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>).</p>
 <div class="marginnote">
-<p>According to <a href="https://www.scimagojr.com/journalrank.php?category=2916">Scimago</a>, American Journal of Clinical Nutrition (<span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (<span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>) is ranked fourth, and Nutrition Journal (<span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>) is ranked 35th.</p>
+<p>According to <a href="https://www.scimagojr.com/journalrank.php?category=2916">Scimago</a>, American Journal of Clinical Nutrition (<span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>) ranked second among Nutrition and Dietetics journals, Advances in Nutrition (<span class="citation"><a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>) is ranked fourth, and Nutrition Journal (<span class="citation"><a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>) is ranked 35th.</p>
 </div>
 <p>However, the Paleo diet remains controversial; it is still referred to as a ‘fad diet’ on <a href="https://en.wikipedia.org/wiki/Paleolithic_diet">Wikipedia</a> (accessed 20 Dec 2020), which claims ‘there is no good evidence that following a paleolithic diet lessens the risk of cardiovascular disease or metabolic syndrome.’*</p>
 <div class="marginnote">
-<p>* However, this Wikipedia article references <span class="citation">(<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al. 2019</a>; <a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a>)</span>; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.</p>
+<p>* However, this Wikipedia article references <span class="citation">(<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al. 2019</a>; <a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a>)</span>; both of these meta-analyses would more accurately be characterized as stating that there is some evidence but the results are not yet definitive.</p>
 </div>
-<p><span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> criticized the <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. ***</p>
+<p><span class="citation">(<a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> criticized the <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> meta-analysis, arguing it overstated the findings and citing limitations of the included original studies. ***</p>
 <div class="marginnote">
-<p>*** While I agree with some of the conceptual issues <span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification. I return to these issues below.</p>
+<p>*** While I agree with some of the conceptual issues <span class="citation">(<a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span> raise, I find their criticism of the statistics a bit imprecise as well as arbitrary in citing statistical norms without justification. I return to these issues below.</p>
 </div>
 <p><br />
 </p>
 <p>In this brief review I:</p>
 <ul>
 <li><p><a href="conceptual.html#conceptual">Consider conceptual issues in defining and measuring the ‘impact of a diet’ through standard study methodologies</a></p></li>
-<li><p><span class="citation">(Focus (as suggested) on the meta-analysis of <a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a> considering its methods, findings, and limitations)</span>(#limitations-p),</p>
+<li><p><span class="citation">(Focus (as suggested) on the meta-analysis of <a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al. 2015</a> considering its methods, findings, and limitations)</span>(#limitations-p),</p>
 <ul>
 <li>[considering key conceptual and statistical issuess]((#man-results),</li>
-<li>considering the <span class="citation">(critiques of <a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a> and Manheimer’s responses)</span>(#critiques), as well as other evaluations of this meta-analysis,</li>
+<li>considering the <span class="citation">(critiques of <a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a> and Manheimer’s responses)</span>(#critiques), as well as other evaluations of this meta-analysis,</li>
 <li>weighing this evidence in light of a (shallow survey of) the consensus and other meta-analyses.</li>
 </ul></li>
-<li><p><a href="paleo-example.html#boers">Assess a particularly promising study</a> <span class="citation">(<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al. 2014</a>)</span> (incorporated into <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>)</p></li>
+<li><p><a href="paleo-example.html#boers">Assess a particularly promising study</a> <span class="citation">(<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al. 2014</a>)</span> (incorporated into <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>)</p></li>
 </ul>
 <p><em>Disclaimers:</em> (See <a href="paleo-example.html#limitations-p">‘limitations’</a> below).</p>
-<div id="conceptual" class="section level2" number="19.9">
-<h2><span class="header-section-number">19.9</span> Conceptual: Thoughts on nutritional studies and meta-analysis issues</h2>
-<div id="compliance" class="section level3" number="19.9.1">
-<h3><span class="header-section-number">19.9.1</span> Limited compliance; ‘what are we aiming to measure and why?’</h3>
+<div id="conceptual" class="section level2" number="20.9">
+<h2><span class="header-section-number">20.9</span> Conceptual: Thoughts on nutritional studies and meta-analysis issues</h2>
+<div id="compliance" class="section level3" number="20.9.1">
+<h3><span class="header-section-number">20.9.1</span> Limited compliance; ‘what are we aiming to measure and why?’</h3>
 Randomized controlled trials on nutrition and diet have important limitations not faced by many other medical RCTs, such as drug trials.
 <div class="marginnote">
 <p>Another important limitation: “RCTs of dietary interventions
-cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns” <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>. They also cite
+cannot be controlled with true placebos, but rather with certain constraints on nutrient compositions, food groups, or dietary patterns” <span class="citation"><a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>. They also cite
 “lack of double blinding… crossover bias, and high dropout rates”; although dropout (attrition) is not an exclusive problem for dietary studies.</p>
 </div>
-<p><em>Limited compliance</em> is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of <em>tracking</em> compliance (e.g. “Diet-associated biomarkers” such as 24-hour urine checks, which are highly-rated by <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>’s Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span>).</p>
+<p><em>Limited compliance</em> is a particularly important issue: not all participants who are assigned to a particular diet will carefully follow this diet. There are ways of <em>tracking</em> compliance (e.g. “Diet-associated biomarkers” such as 24-hour urine checks, which are highly-rated by <span class="citation"><a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>’s Nutrigrade). There are also ways of encouraging and incentivizing compliance, such as providing free food (as in <span class="citation"><a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span>).</p>
 <p>However, our consideration of this issue depends on what exactly itis we want to measure, and for what purpose. For example may want to consider either, what I will call… *</p>
 <div class="marginnote">
-<p>* Note that my terminology below comes from the “treatment effect” literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., <span class="citation"><a href="references.html#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">Joshua D. Angrist and Imbens</a> (<a href="references.html#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">1995</a>)</span>.</p>
+<p>* Note that my terminology below comes from the “treatment effect” literature in statistics and econometrics, with some slight abuses of terminology. See, e.g., <span class="citation"><a href="#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">Joshua D. Angrist and Imbens</a> (<a href="#ref-angristIdentificationEstimationLocal1995" role="doc-biblioref">1995</a>)</span>.</p>
 </div>
 <ol style="list-style-type: decimal">
 <li>“Average Treatment Effect (ATE)”: The difference in some medical outcome, averaged over the population of interest… for the ‘Treatment diet’ if consumed exactly as proposed relative to a ‘Control diet.’**</li>
@@ -1322,16 +1370,16 @@ cannot be controlled with true placebos, but rather with certain constraints on 
 <li><p>I would expect that the ITT measure to have more heterogeneity and variation, as compliance with a particular diet might be expected to vary greatly for a variety of psychological and cultural/lifestyle reasons.</p></li>
 </ul>
 <p>Thus the ITT may be more sensitive to the representativeness of our sample of dieters. Given self selection and other issues, it may be extremely difficult to recruit a “nationally representative” sample of the targeted group.</p>
-<p>In the discussion of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, it is not clear to me which measure of the studies are targeting. The discussion (“whether Paleolithic <em>nutrition</em> has any effect in improving metabolic risk factors,” emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different <em>recommendations</em> for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.</p>
+<p>In the discussion of <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, it is not clear to me which measure of the studies are targeting. The discussion (“whether Paleolithic <em>nutrition</em> has any effect in improving metabolic risk factors,” emphasis added) seems to suggest that they are considering the ATE. However most of the designs seem to involve simply different <em>recommendations</em> for treatment and control groups; these would seem much more likely to pick up the ITT for their study sample.</p>
 </div>
-<div id="control-group-what-is-being-measured" class="section level3" number="19.9.2">
-<h3><span class="header-section-number">19.9.2</span> Control group: what is being measured?</h3>
+<div id="control-group-what-is-being-measured" class="section level3" number="20.9.2">
+<h3><span class="header-section-number">20.9.2</span> Control group: what is being measured?</h3>
 <p>(Time-permitting, I would more carefully consider which ‘control group’ diets are being administered or recommended.)</p>
 <p><br />
 </p>
 </div>
-<div id="what-is-being-tested-and-how-broadly-should-we-interpret-the-results" class="section level3" number="19.9.3">
-<h3><span class="header-section-number">19.9.3</span> What is being tested and how broadly should we interpret the results?</h3>
+<div id="what-is-being-tested-and-how-broadly-should-we-interpret-the-results" class="section level3" number="20.9.3">
+<h3><span class="header-section-number">20.9.3</span> What is being tested and how broadly should we interpret the results?</h3>
 <p>Broadly, the Paleo diet involves:</p>
 <ol style="list-style-type: decimal">
 <li><p>Multiple differences relative to more traditional diets</p></li>
@@ -1341,26 +1389,26 @@ cannot be controlled with true placebos, but rather with certain constraints on 
 </p>
 <p>It is important to note that even if there is clear evidence that (recommending or implementing) the ‘Paleo diet’ causes positive health benefits relative to an older diet:</p>
 <ol style="list-style-type: decimal">
-<li><p>There is some inconsistency and much heterogeneity in the definition of the Paleo diet, as noted by <span class="citation"><a href="references.html#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">Zazpe et al.</a> (<a href="references.html#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">2020</a>)</span>, who propose a particular ‘PaleoDiet’ score</p></li>
+<li><p>There is some inconsistency and much heterogeneity in the definition of the Paleo diet, as noted by <span class="citation"><a href="#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">Zazpe et al.</a> (<a href="#ref-zazpeScopingReviewPaleolithic2020" role="doc-biblioref">2020</a>)</span>, who propose a particular ‘PaleoDiet’ score</p></li>
 <li><p>We don’t know <em>which</em> of the components of the Paleo diet were beneficial (some may even have been harmful, but outweighed by others which were even more strongly beneficial.</p></li>
 <li><p>We don’t have evidence that narrowly supports the claims made by Paleo advocates. Even if elements of the Paleo diet are beneficial, it may be through other mechanisms and channels than those proposed.</p></li>
 </ol>
 </div>
 </div>
-<div id="manheimer" class="section level2" number="19.10">
-<h2><span class="header-section-number">19.10</span> Manheimer et al</h2>
-<div id="strengths-and-limitations" class="section level3" number="19.10.1">
-<h3><span class="header-section-number">19.10.1</span> Strengths and limitations</h3>
+<div id="manheimer" class="section level2" number="20.10">
+<h2><span class="header-section-number">20.10</span> Manheimer et al</h2>
+<div id="strengths-and-limitations" class="section level3" number="20.10.1">
+<h3><span class="header-section-number">20.10.1</span> Strengths and limitations</h3>
 The authors follow standard protocols and recommendations. However, these systems themselves may merit some further examination.*
 <div class="marginnote">
-<p>* E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has <em>determined</em> the weights for different categories of ‘quality’ chosen. <span class="citation"><a href="references.html#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="references.html#ref-Quintana2015" role="doc-biblioref">2015</a>)</span> note “there are more than 80 tools available to assess the quality and risk of bias in observational studies”… Perhaps there are a similar number of tools for RCT studies.</p>
+<p>* E.g., I would like to better understand how the GRADE system used to asses the quality of evidence has <em>determined</em> the weights for different categories of ‘quality’ chosen. <span class="citation"><a href="#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="#ref-Quintana2015" role="doc-biblioref">2015</a>)</span> note “there are more than 80 tools available to assess the quality and risk of bias in observational studies”… Perhaps there are a similar number of tools for RCT studies.</p>
 </div>
 <p>They have:</p>
 <ol style="list-style-type: decimal">
 <li>Prospectively (in advance) [registered their protocol with PROSPERO](<a href="http://www.crd.york.ac.uk/PROSPERO\*\" class="uri">http://www.crd.york.ac.uk/PROSPERO\*\</a>*
 <div class="marginnote">
 <p>**
-This reduces the risk of “hypothesizing after the results are known” … ‘HARKing’ kerrHARKingHypothesizingResults1998a", as noted by <span class="citation"><a href="references.html#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="references.html#ref-Quintana2015" role="doc-biblioref">2015</a>)</span>.
+This reduces the risk of “hypothesizing after the results are known” … ‘HARKing’ kerrHARKingHypothesizingResults1998a", as noted by <span class="citation"><a href="#ref-Quintana2015" role="doc-biblioref">Quintana</a> (<a href="#ref-Quintana2015" role="doc-biblioref">2015</a>)</span>.
 However it is difficult to verify when a meta-analysis was actually started, even privately. Here pre-registration partially depends on an honor and trust system.</p>
 </div></li>
 <li>Searched a broad collection of appropriate databases:</li>
@@ -1369,7 +1417,7 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <li>both literature databases such as PubMed</li>
 <li>and databases of clinical trials</li>
 </ul>
-<p>They also claim to have contacted “experts in the field” (these should have been named) to consider whether any trials had been overlooked. This seems to have been a well-planned and adequate search, not neglecting the “gray literature” (<span class="citation"><a href="references.html#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">Paez</a> (<a href="references.html#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">2017</a>)</span>) and limiting “file drawer” bias (<span class="citation"><a href="references.html#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">D. Kennedy</a> (<a href="references.html#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">2004</a>)</span>). They carefully explained their selection method, and illustrated it in a flow diagram.</p>
+<p>They also claim to have contacted “experts in the field” (these should have been named) to consider whether any trials had been overlooked. This seems to have been a well-planned and adequate search, not neglecting the “gray literature” (<span class="citation"><a href="#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">Paez</a> (<a href="#ref-paezGrayLiteratureImportant2017" role="doc-biblioref">2017</a>)</span>) and limiting “file drawer” bias (<span class="citation"><a href="#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">D. Kennedy</a> (<a href="#ref-kennedyOldFiledrawerProblem2004" role="doc-biblioref">2004</a>)</span>). They carefully explained their selection method, and illustrated it in a flow diagram.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Broadly assessed the quality of the evidence following the GRADE protocol, finding the overall evidence to be of ‘moderate’ quality (for waist circumference).</p></li>
 <li><p>Analyzed the overall evidence using a frequentist Random-Effects model, estimating both a mean effect and a heterogeneity term. I find this approach to be reasonably appropriate, but I would prefer a <em>Bayesian</em> meta-analysis.</p></li>
@@ -1382,8 +1430,8 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <div class="marginnote">
 * However, I would have liked to see their code and data made available, or at least more prominently noted (I may have overlooked it).
 </div>
-<div id="limitations" class="section level4" number="19.10.1.1">
-<h4><span class="header-section-number">19.10.1.1</span> Limitations</h4>
+<div id="limitations" class="section level4" number="20.10.1.1">
+<h4><span class="header-section-number">20.10.1.1</span> Limitations</h4>
 <ol style="list-style-type: decimal">
 <li>Small number of studies, small sample, wide confidence intervals</li>
 </ol>
@@ -1401,7 +1449,7 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 <blockquote>
 <p>Crossover RCTs were eligible for inclusion, but we used data from only the first phase before the crossover occurred because we considered the risk of carryover effects to be high</p>
 </blockquote>
-<p>However, particularly in line with the points made in <span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.</p>
+<p>However, particularly in line with the points made in <span class="citation"><a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span>, I would like to see a meta-analysis considering not only RCTs but also other reasonable approaches, such as cohort studies.</p>
 </div>
 <p><br />
 </p>
@@ -1413,13 +1461,13 @@ However it is difficult to verify when a meta-analysis was actually started, eve
 </ul>
 </div>
 </div>
-<div id="overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015" class="section level3" number="19.10.2">
-<h3><span class="header-section-number">19.10.2</span> Overall results, interpretation, consideration of evidence presented in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span></h3>
-<p>I reproduce the most relevant part of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s results below:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-97"></span>
+<div id="overall-results-interpretation-consideration-of-evidence-presented-in-manheimerpaleolithicnutritionmetabolic2015" class="section level3" number="20.10.2">
+<h3><span class="header-section-number">20.10.2</span> Overall results, interpretation, consideration of evidence presented in <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span></h3>
+<p>I reproduce the most relevant part of <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s results below:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-109"></span>
 <img src="images/waist_manheim.png" alt="Forest plot from Manheimer et al: Waist circumference" width="90%" />
 <p class="caption">
-Figure 19.1: Forest plot from Manheimer et al: Waist circumference
+Figure 20.1: Forest plot from Manheimer et al: Waist circumference
 </p>
 </div>
 <p>In the individual studies, the Paleo diet participants reduced their waist circumference (‘WC’) by an average of 3-11cm, with some differences across studies. For control diet participants the reduction was between 3 and 6 cm on average. The ‘difference in loss’ ranged from</p>
@@ -1432,18 +1480,18 @@ Figure 19.1: Forest plot from Manheimer et al: Waist circumference
 </p>
 <p><em>Does this imply a large relative effect of Paleo?</em> <em>Does it bound the effect as ‘small at best’</em>?</p>
 To consider the magnitude of an effect such as this, it is helpful to consider overall averages and spreads.
-The average US male WC is roughly 102 cm (<span class="citation"><a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span>) and 98 cm for women…*
+The average US male WC is roughly 102 cm (<span class="citation"><a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span>) and 98 cm for women…*
 <div class="marginnote">
 <p>* I could not quickly find a reputable source for averages in Sweden and Netherlands, where most of the studies were conducted, but <a href="https://www.dailymail.co.uk/health/article-2441250/Average-BMI-Artist-compares-sizes-men-various-countries.html">secondhand reports</a> suggest it is somewhat smaller, perhaps 90 cm.</p>
 </div>
 … which (for men) is also approximately the <a href="https://www.heart.org/en/health-topics/metabolic-syndrome/about-metabolic-syndrome">threshold circumference considered a risk factor for metabolic syndrome</a> (accessed 29 Dec 2020). I quickly, (and perhaps incorrectly) imputed a standard-deviation of roughly 52 cm.**
 <div class="marginnote">
-<p>** Drawing from <span class="citation"><a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="references.html#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span> statistics, I multiplied the square root of the reported sample size (<span class="math inline">\(\sqrt(43169 )\)</span>) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn’t make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.</p>
+<p>** Drawing from <span class="citation"><a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">Fryar et al.</a> (<a href="#ref-fryarMeanBodyWeight2018" role="doc-biblioref">2018</a>)</span> statistics, I multiplied the square root of the reported sample size (<span class="math inline">\(\sqrt(43169 )\)</span>) by the reported standard error of 0.1 (for the table in inches, the figure in the centimeter table didn’t make sense), and converted back to cm. This calculation may be incorrect; I would like to check it, or better still, find some scientific estimates of dispersion measures for this (SD, quantile, IQR, etc.) I would also like to read more about what WC losses are considered normal, reasonable, and substantial in this context.</p>
 </div>
 <p><br />
 </p>
 <p><strong>Heterogeneity</strong></p>
-The evidence also suggest between-study heterogeneity; at least we do not have strong evidence that would allow us to rule this out. Prima facie, we see strong differences between the studies. In particular, the one study with a strongly different methodology (Boers et al), finds a much smaller (near-zero effect). In their formal measures, we see an <span class="math inline">\(I^2\)</span> of 52%, conventionally classified as “moderate heterogeneity.” I believe <span class="math inline">\(\tau^2 of 2.81\)</span> can be interpreted as a ‘standard deviation in true effect size between studies’ of <span class="math inline">\(\tau =\)</span> 1.68, which seems, again, ‘moderate.’***
+The evidence also suggest between-study heterogeneity; at least we do not have strong evidence that would allow us to rule this out. Prima facie, we see strong differences between the studies. In particular, the one study with a strongly different methodology (Boers et al), finds a much smaller (near-zero effect). In their formal measures, we see an <span class="math inline">\(I^2\)</span> of 52%, conventionally classified as “moderate heterogeneity.” I believe <span class="math inline">\(\tau^2 of 2.81\)</span> can be interpreted as a ‘standard deviation in true effect size between studies’ of <span class="math inline">\(\tau =\)</span> 1.67630546142402, which seems, again, ‘moderate.’***
 <div class="marginnote">
 <p>*** I suspect that if we allowed a variety of other methods of estimating and reporting this (including Bayesian) and we reported the confidence/credible intervals on this between-study variance, the results might suggest the possibility of more substantial heterogeneity.</p>
 </div>
@@ -1452,53 +1500,53 @@ Although the NHST for heterogeneity is not significant by standard measures (<sp
 <p>A ‘failure to reject the null’ is not in itself, strong evidence for the null hypothesis. Among other things, I suspect a lack of power to detect heterogeneity with only four studies.</p>
 </div>
 </div>
-<div id="my-rough-conclusions-from-manheimer-et-al" class="section level3" number="19.10.3">
-<h3><span class="header-section-number">19.10.3</span> My rough conclusions from Manheimer et al</h3>
+<div id="my-rough-conclusions-from-manheimer-et-al" class="section level3" number="20.10.3">
+<h3><span class="header-section-number">20.10.3</span> My rough conclusions from Manheimer et al</h3>
 <ol style="list-style-type: decimal">
 <li><p>The above evidence suggests some relative benefit of the Paleo diet, but not an extremely large benefit. To the extent</p></li>
 <li><p>These (3) studies that find greater benefits are ones where compliance is particularly important, while the one study where food is provided (isocaloric for both diets) Does not seem to find a benefit. This casually suggests that ‘easier compliane’ may be one of the major benefits of the Paleo diet relative to a traditional diet, but obviously, more evidence would be needed to support this conclusion.</p></li>
 </ol>
 </div>
-<div id="critiques" class="section level3" number="19.10.4">
-<h3><span class="header-section-number">19.10.4</span> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</h3>
+<div id="critiques" class="section level3" number="20.10.4">
+<h3><span class="header-section-number">20.10.4</span> External critiques and evaluations of Manheimer et al, (esp Fenton) authors’ response</h3>
 <!--
 ### Ghaedi et al meta-analysis
 -->
-<span class="citation">(<a href="references.html#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span>’s critique of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s focal statistical comparisons appears to result from a mis-reading.*
+<span class="citation">(<a href="#ref-fentonPaleoDietStill2016" role="doc-biblioref">Fenton and Fenton 2016</a>)</span>’s critique of <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s focal statistical comparisons appears to result from a mis-reading.*
 <div class="marginnote">
-<p>* “We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups.” <span class="citation">(<a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer 2016</a>)</span></p>
+<p>* “We did not report separate tests against baseline within groups as Fenton and Fenton suggest but rather a comparison of the differences in change from baseline between groups.” <span class="citation">(<a href="#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer 2016</a>)</span></p>
 </div>
-<span class="citation"><a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="references.html#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span> develops the ‘Nutrigrade’ scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.*
+<span class="citation"><a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">Schwingshackl et al.</a> (<a href="#ref-schwingshacklPerspectiveNutriGradeScoring2016" role="doc-biblioref">2016</a>)</span> develops the ‘Nutrigrade’ scoring system for the strength of the evidence presented in a meta-analysis, specifically for nutrition research.*
 <div class="marginnote">
 <p>* Note that these scores are not a verdict on the quality of the meta-analysis itself but of the evidence strength presnted within.</p>
 </div>
-<p>Their system and relative points system was independently developed; a major point of contrast with GRADE (<span class="citation"><a href="references.html#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">Guyatt et al.</a> (<a href="references.html#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">2008</a>)</span>) seems to be Nutrigrade’s greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as <a href="paleo-example.html#compliance">limited compliance</a>. They ‘Nutrigrade’ the evidence in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> as 5.75, or ‘Low,’ explained as “there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate.” Of 10 randomly meta-analysis studies they rated, this was the fifth-highest ‘Nutrigrade.’</p>
-<p>Overall, the ‘reviews’ of the strength of evidence meta-analysis are fair to middling. All, including the original authors, seem to agree that the “the current evidence on the paleo diet might be considered early or preliminary and that further research is critically needed” (<span class="citation"><a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer</a> (<a href="references.html#ref-manheimerReplyTRFenton2016" role="doc-biblioref">2016</a>)</span>), although there seems to be some disagreement about how promising an avenue this is for further inquiry.</p>
+<p>Their system and relative points system was independently developed; a major point of contrast with GRADE (<span class="citation"><a href="#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">Guyatt et al.</a> (<a href="#ref-guyattGRADEEmergingConsensus2008" role="doc-biblioref">2008</a>)</span>) seems to be Nutrigrade’s greater valuation of cohort studies relative to RCTs, reflecting some of the rationales mentioned above, such as <a href="paleo-example.html#compliance">limited compliance</a>. They ‘Nutrigrade’ the evidence in <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> as 5.75, or ‘Low,’ explained as “there is low confidence in the effect estimate; further research will provide important evidence on the confidence and likely change the effect estimate.” Of 10 randomly meta-analysis studies they rated, this was the fifth-highest ‘Nutrigrade.’</p>
+<p>Overall, the ‘reviews’ of the strength of evidence meta-analysis are fair to middling. All, including the original authors, seem to agree that the “the current evidence on the paleo diet might be considered early or preliminary and that further research is critically needed” (<span class="citation"><a href="#ref-manheimerReplyTRFenton2016" role="doc-biblioref">Manheimer</a> (<a href="#ref-manheimerReplyTRFenton2016" role="doc-biblioref">2016</a>)</span>), although there seems to be some disagreement about how promising an avenue this is for further inquiry.</p>
 </div>
 </div>
-<div id="other-meta-analyses-and-consideration-of-the-paleo-diet" class="section level2" number="19.11">
-<h2><span class="header-section-number">19.11</span> Other meta-analyses and consideration of the Paleo diet</h2>
-<p>As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> note</p>
+<div id="other-meta-analyses-and-consideration-of-the-paleo-diet" class="section level2" number="20.11">
+<h2><span class="header-section-number">20.11</span> Other meta-analyses and consideration of the Paleo diet</h2>
+<p>As noted, the Paleo diet is controversial and not widely accepted in the medical profession. As <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span> note</p>
 <blockquote>
 <p>a 2015 US News and World Report ranking of 35 diets with input from a panel of health experts placed the Paleolithic diet dead last, citing a lack of research evidence that showed clinical benefits.</p>
 </blockquote>
 <p>However, more work also seems to support a claim such as ‘recommending the Paleo diet is succesful in reducing waist circumference in the short-term, relative to recommending more traditional diets.’</p>
-<p>In particular, <span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span> perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find “a [Paleo diet] significantly reduced … waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm).” These results are rather similar to those of <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>. Time-permitting, I would like to examine this meta-analyis in more detail.</p>
-<div id="process-of-finding-relevant-work-informal" class="section level3" number="19.11.1">
-<h3><span class="header-section-number">19.11.1</span> Process of finding relevant work (informal)</h3>
-<p><em>Notes</em>: In the limited time I had available, I did some keyword searches on Google scholar, such as <code>'paleo diet' AND 'meta-analysis</code>‘<code>and</code>paleo diet<code>AND</code>randomized controlled trial`. I also followed a ’snowball’ approach to consider which studies were cited, and which studies cited <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, and the papers most prominently cited within. I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).</p>
+<p>In particular, <span class="citation"><a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span> perform a meta-analysis of eight RCT studies (the four considered by Mannheimier et al, plus four more that were conducted since 2015) and find “a [Paleo diet] significantly reduced … waist circumference (WMD = -2.90 cm; 95% CI: -4.51, -1.28 cm).” These results are rather similar to those of <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>. Time-permitting, I would like to examine this meta-analyis in more detail.</p>
+<div id="process-of-finding-relevant-work-informal" class="section level3" number="20.11.1">
+<h3><span class="header-section-number">20.11.1</span> Process of finding relevant work (informal)</h3>
+<p><em>Notes</em>: In the limited time I had available, I did some keyword searches on Google scholar, such as <code>'paleo diet' AND 'meta-analysis</code>‘<code>and</code>paleo diet<code>AND</code>randomized controlled trial`. I also followed a ’snowball’ approach to consider which studies were cited, and which studies cited <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, and the papers most prominently cited within. I did not do the systematically nor did I keep track of my process (as I would do if I were doing this more seriously, e.g., for my own meta-analysis).</p>
 </div>
 </div>
-<div id="boers" class="section level2" number="19.12">
-<h2><span class="header-section-number">19.12</span> Focus: Boers et al</h2>
-<p>Unlike the other trials considered in <span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> “provided home-delivered Paleolithic and control diet meals to participants.” This permits a more direct examination of what I called the <a href="paleo-example.html#compliance">ATE</a>. I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.</p>
+<div id="boers" class="section level2" number="20.12">
+<h2><span class="header-section-number">20.12</span> Focus: Boers et al</h2>
+<p>Unlike the other trials considered in <span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> “provided home-delivered Paleolithic and control diet meals to participants.” This permits a more direct examination of what I called the <a href="paleo-example.html#compliance">ATE</a>. I expect this effect to be less variable and more generalizable across populations, because issues of differential compliance will be reduced.</p>
 This study is also particular strong because it has (apparently) a zero attrition rate (‘34/34 analyzed’), while attrition in the other cited studies is substantial. Particular forms of non-random attrition can strongly bias estimated treatment effects, biasing both the ATE and ITT mentioned above.*
 <div class="marginnote">
 <p>* See 1 for a clear discussion of this, as well as an approach to ‘bounding this bias’ under a particular monotonicity assumption.</p>
 </div>
 </div>
-<div id="overall-analysis" class="section level2" number="19.13">
-<h2><span class="header-section-number">19.13</span> Overall analysis</h2>
+<div id="overall-analysis" class="section level2" number="20.13">
+<h2><span class="header-section-number">20.13</span> Overall analysis</h2>
 <p>My overall impression from the above is that the meta-analytic results do suggest some benefit of the Paleo diet in reducing waist circumference for groups that are vulnerable to the metabolic syndrome.</p>
 <p>However:</p>
 <ul>
@@ -1507,8 +1555,8 @@ This study is also particular strong because it has (apparently) a zero attritio
 </p></li>
 </ul>
 <p>Furthermore, there also appears to be <strong>limited evidence</strong>; I am not highly confident in even the above claim. I did not see aa wide array of high-quality studies evaluating the Paleo diet for the relevant large and diverse populations in natural settings.</p>
-<div id="limitations-p" class="section level3" number="19.13.1">
-<h3><span class="header-section-number">19.13.1</span> Limitations and uncertainties to my own analysis; proposed future steps</h3>
+<div id="limitations-p" class="section level3" number="20.13.1">
+<h3><span class="header-section-number">20.13.1</span> Limitations and uncertainties to my own analysis; proposed future steps</h3>
 <blockquote>
 <p>Briefly, what are the major uncertainties in your analysis? How could your conclusion be wrong? This will likely involve saying what you explicitly chose not to do and what you do not know.</p>
 </blockquote>
@@ -1544,15 +1592,63 @@ This study is also particular strong because it has (apparently) a zero attritio
 <li>More closely inspect and evaluate</li>
 </ol>
 <ul>
-<li><p><span class="citation"><a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="references.html#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.*</p>
+<li><p><span class="citation"><a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">Manheimer et al.</a> (<a href="#ref-manheimerPaleolithicNutritionMetabolic2015" role="doc-biblioref">2015</a>)</span>’s code used for doing the (frequentist) Random-effects meta-analysis, to understand the specific inclusion, variable-coding, and estimator choices, and the sensitivity of the results to this.*</p>
 <div class="marginnote">
-<p>* For example, as explained in the excellent tutorial <span class="citation"><a href="references.html#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">Harrer et al.</a> (<a href="references.html#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">2019</a>)</span>, <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2">there are a range of popular estimators for <span class="math inline">\(\tau^2\)</span></a>, the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.</p>
+<p>* For example, as explained in the excellent tutorial <span class="citation"><a href="#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">Harrer et al.</a> (<a href="#ref-harrerDoingMetaanalysisHandson2019" role="doc-biblioref">2019</a>)</span>, <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/random.html#tau2">there are a range of popular estimators for <span class="math inline">\(\tau^2\)</span></a>, the variance of the distribution of true effect sizes. There is also some debate over whether random effects is appropriate, particularly because of its sensitivity to small studies.</p>
 </div></li>
-<li><p>The particularly promising <span class="citation"><a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="references.html#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> study as <a href="paleo-example.html#boers">noted above</a></p></li>
-<li><p><span class="citation"><a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="references.html#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation"><a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="references.html#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>, and any other promising analyses that come from the aforementioned systematic literature survey.</p></li>
+<li><p>The particularly promising <span class="citation"><a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">Boers et al.</a> (<a href="#ref-boersFavourableEffectsConsuming2014" role="doc-biblioref">2014</a>)</span> study as <a href="paleo-example.html#boers">noted above</a></p></li>
+<li><p><span class="citation"><a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">Ghaedi et al.</a> (<a href="#ref-ghaediEffectsPaleolithicDiet2019" role="doc-biblioref">2019</a>)</span>, and <span class="citation"><a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">de Menezes et al.</a> (<a href="#ref-demenezesInfluencePaleolithicDiet2019a" role="doc-biblioref">2019</a>)</span>, and any other promising analyses that come from the aforementioned systematic literature survey.</p></li>
 </ul>
 
 </div>
+</div>
+</div>
+<h3> List of references</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-angristIdentificationEstimationLocal1995" class="csl-entry">
+Angrist, Joshua D., and Guido W. Imbens. 1995. <span>“Identification and Estimation of Local Average Treatment Effects.”</span> <span>National Bureau of Economic Research</span>.
+</div>
+<div id="ref-boersFavourableEffectsConsuming2014" class="csl-entry">
+Boers, Inge, Frits AJ Muskiet, Evert Berkelaar, Erik Schut, Ria Penders, Karine Hoenderdos, Harry J. Wichers, and Miek C. Jong. 2014. <span>“Favourable Effects of Consuming a <span>Palaeolithic</span>-Type Diet on Characteristics of the Metabolic Syndrome: A Randomized Controlled Pilot-Study.”</span> <em>Lipids in Health and Disease</em> 13 (1): 160. <a href="https://doi.org/f22cxq">https://doi.org/f22cxq</a>.
+</div>
+<div id="ref-fentonPaleoDietStill2016" class="csl-entry">
+Fenton, Tanis R., and Carol J. Fenton. 2016. <span>“Paleo Diet Still Lacks Evidence.”</span> <em>The American Journal of Clinical Nutrition</em> 104 (3): 844–44. <a href="https://doi.org/ghqb6v">https://doi.org/ghqb6v</a>.
+</div>
+<div id="ref-fryarMeanBodyWeight2018" class="csl-entry">
+Fryar, Cheryl D., Deanna Kruszan-Moran, Qiuping Gu, and Cynthia L. Ogden. 2018. <span>“Mean Body Weight, Weight, Waist Circumference, and Body Mass Index Among Adults: <span>United States</span>, 1999–2000 Through 2015–2016.”</span>
+</div>
+<div id="ref-ghaediEffectsPaleolithicDiet2019" class="csl-entry">
+Ghaedi, Ehsan, Mohammad Mohammadi, Hamed Mohammadi, Nahid Ramezani-Jolfaie, Janmohamad Malekzadeh, Mahdieh Hosseinzadeh, and Amin Salehi-Abargouei. 2019. <span>“Effects of a <span>Paleolithic</span> Diet on Cardiovascular Disease Risk Factors: <span>A</span> Systematic Review and Meta-Analysis of Randomized Controlled Trials.”</span> <em>Advances in Nutrition</em> 10 (4): 634–46. <a href="https://doi.org/ghp383">https://doi.org/ghp383</a>.
+</div>
+<div id="ref-guyattGRADEEmergingConsensus2008" class="csl-entry">
+Guyatt, Gordon H., Andrew D. Oxman, Gunn E. Vist, Regina Kunz, Yngve Falck-Ytter, Pablo Alonso-Coello, and Holger J. Schünemann. 2008. <span>“<span>GRADE</span>: An Emerging Consensus on Rating Quality of Evidence and Strength of Recommendations.”</span> <em>Bmj</em> 336 (7650): 924–26. <a href="https://doi.org/dqmphq">https://doi.org/dqmphq</a>.
+</div>
+<div id="ref-harrerDoingMetaanalysisHandson2019" class="csl-entry">
+Harrer, M., P. Cuijpers, T. A. Furukawa, and D. D. Ebert. 2019. <span>“Doing Meta-Analysis in <span>R</span>: A Hands-on Guide.”</span> <em>PROTECT Lab Erlangen</em>.
+</div>
+<div id="ref-kennedyOldFiledrawerProblem2004" class="csl-entry">
+Kennedy, Donald. 2004. <span>“The Old File-Drawer Problem.”</span> <em>Science</em> 305 (5683): 451–52. <a href="https://doi.org/dz778j">https://doi.org/dz778j</a>.
+</div>
+<div id="ref-manheimerReplyTRFenton2016" class="csl-entry">
+Manheimer, Eric W. 2016. <span>“Reply to <span>TR Fenton</span> and <span>CJ Fenton</span>.”</span> <em>The American Journal of Clinical Nutrition</em> 104 (3): 845. <a href="https://doi.org/ghqb6t">https://doi.org/ghqb6t</a>.
+</div>
+<div id="ref-manheimerPaleolithicNutritionMetabolic2015" class="csl-entry">
+Manheimer, Eric W., Esther J. van Zuuren, Zbys Fedorowicz, and Hanno Pijl. 2015. <span>“Paleolithic Nutrition for Metabolic Syndrome: Systematic Review and Meta-Analysis.”</span> <em>The American Journal of Clinical Nutrition</em> 102 (4): 922–32. <a href="https://doi.org/gf9r2v">https://doi.org/gf9r2v</a>.
+</div>
+<div id="ref-demenezesInfluencePaleolithicDiet2019a" class="csl-entry">
+Menezes, Ehrika Vanessa Almeida de, Helena Alves de Carvalho Sampaio, Antônio Augusto Ferreira Carioca, Nara Andrade Parente, Filipe Oliveira Brito, Thereza Maria Magalhães Moreira, Ana Célia Caetano de Souza, and Soraia Pinheiro Machado Arruda. 2019. <span>“Influence of Paleolithic Diet on Anthropometric Markers in Chronic Diseases: Systematic Review and Meta-Analysis.”</span> <em>Nutrition Journal</em> 18 (1): 41. <a href="https://doi.org/ghqb6s">https://doi.org/ghqb6s</a>.
+</div>
+<div id="ref-paezGrayLiteratureImportant2017" class="csl-entry">
+Paez, Arsenio. 2017. <span>“Gray Literature: <span>An</span> Important Resource in Systematic Reviews.”</span> <em>Journal of Evidence-Based Medicine</em> 10 (3): 233–40. <a href="https://doi.org/gbtnr9">https://doi.org/gbtnr9</a>.
+</div>
+<div id="ref-Quintana2015" class="csl-entry">
+Quintana, Daniel S. 2015. <span>“From Pre-Registration to Publication: <span>A</span> Non-Technical Primer for Conducting a Meta-Analysis to Synthesize Correlational Data.”</span> <em>Frontiers in Psychology</em> 6: 1–9. <a href="https://doi.org/10.3389/fpsyg.2015.01549">https://doi.org/10.3389/fpsyg.2015.01549</a>.
+</div>
+<div id="ref-schwingshacklPerspectiveNutriGradeScoring2016" class="csl-entry">
+Schwingshackl, Lukas, Sven Knüppel, Carolina Schwedhelm, Georg Hoffmann, Benjamin Missbach, Marta Stelmach-Mardas, Stefan Dietrich, Fabian Eichelmann, Evangelos Kontopanteils, and Khalid Iqbal. 2016. <span>“Perspective: <span>NutriGrade</span>: A Scoring System to Assess and Judge the Meta-Evidence of Randomized Controlled Trials and Cohort Studies in Nutrition Research.”</span> <em>Advances in Nutrition</em> 7 (6): 994–1004. <a href="https://doi.org/ghqzgr">https://doi.org/ghqzgr</a>.
+</div>
+<div id="ref-zazpeScopingReviewPaleolithic2020" class="csl-entry">
+Zazpe, Itziar, J. Alfredo Martínez, Susana Santiago, Silvia Carlos, M. Ángeles Zulet, and Miguel Ruiz-Canela. 2020. <span>“Scoping Review of <span>Paleolithic</span> Dietary Patterns: A Definition Proposal.”</span> <em>Nutrition Research Reviews</em>, 1–29.
 </div>
 </div>
             </section>
@@ -1584,6 +1680,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

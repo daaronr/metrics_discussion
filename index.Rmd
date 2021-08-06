@@ -11,7 +11,7 @@ output:
       in_header: support/header.html
     css: support/tufte_plus.css
     config:
-      toc:  
+      toc:
         after: |
           <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
         collapse: section
@@ -100,7 +100,6 @@ install.packages("tufte")
 
 try_download("https://raw.githubusercontent.com/daaronr/data_acad_materials/main/other_content_notes/ds_for_bsns_notes.Rmd?token=AB6ZCMECAFDEIYJ72VEGU4K74YGOE", here::here("data_sci","ds_for_bsns_notes_remote.Rmd"))
 
-
 ```
 
 
@@ -111,6 +110,16 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+
+```{r html, echo=FALSE}
+# globally set chunk options
+
+knitr::opts_chunk$set(fig.align='center', out.width='80%', warning=FALSE, message = FALSE, error=TRUE)
+
+my_output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+
 
 ```{r somefunctions}
 
@@ -137,11 +146,21 @@ knitr::opts_chunk$set(fig.align='center', out.width='80%')
 
 my_output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
+knitr::knit_hooks$set(
+  evaluate.inline = function (code, envir = knit_global()) {
+    v = try(eval(xfun::parse_only(code), envir = envir))
+    knitr::knit_print(v, inline = TRUE, options = knitr::opts_chunk$get())
+  },
+  inline = function(x) {
+  if (any(class(x) == "try-error")) {
+    as.vector(x)
+  } else x
+})
 ```
 
 
-<!-- BUILDING IT? SERVING IT? 
-bookdown::serve_book(dir = ".", output_dir = "_book", preview = TRUE, 
+<!-- BUILDING IT? SERVING IT?
+bookdown::serve_book(dir = ".", output_dir = "_book", preview = TRUE,
            in_session = TRUE, quiet = FALSE)
 -->
 

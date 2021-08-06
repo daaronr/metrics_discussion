@@ -1,11 +1,9 @@
 # Functions used in general Reinstein code
 
 
-
 #### 'Hijacking' standard functions ####
 
 ### See - https://www.r-bloggers.com/hijacking-r-functions-changing-default-arguments/
-
 
 hijack <- function (FUN, ...) {
     .FUN <- FUN
@@ -22,16 +20,31 @@ hijack <- function (FUN, ...) {
 
 
 
-############## Automation helpers ####
 
-#### Function to filter by given string: ####
+############## STATISTICAL TESTS and  test functions ####
 
-filter_parse <- function(df, x) {
- {{df}} %>%
-   filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
+#### .... some missing functions? ###
+
+#std error of binary (or logical) variable
+se_bin <- function(x) {
+  x = as.numeric(x)
+  n = length(x)
+  m = mean(x, na.rm=TRUE)
+  se = sqrt((m*(1-m))/n)
+  return(se)
 }
 
-#### Test functions ####
+
+# Calculate mean, n and sd per group
+summ_add <- function(df, var) {
+    df %>% 
+    mutate(
+    mean = mean(as.numeric( {{ var }} )),
+    n = n(),
+    sd = sd(as.numeric(d_career_etg)),
+    se = sqrt((m*(1-m))/n)
+    )
+}
 
 # Generic test function: a helper function
 doTest <- function(pair, df = ADSX, stage = 2, depvar = donation, treatvar = Treatment, testname = "t.test2") {
@@ -156,23 +169,9 @@ liftedTT <- purrr::lift(t.test2, .unnamed = TRUE)
 wilcox.test2 <- function(x, y) wilcox.test(x, y, exact = FALSE)
 liftedWilcox <- purrr::lift(wilcox.test2, .unnamed = TRUE)
 
-
-#### Data work ####
-# compare column types across two df (e.g., in advance of a
-# merge); from
-# https://stackoverflow.com/questions/45743991/r-compare-column-types-between-two-dataframes
-compareColumns <- function(df1, df2) {
-  commonNames <- names(df1)[names(df1) %in% names(df2)]
-  data.frame(Column = commonNames, df1 = sapply(df1[, commonNames],
-    class), df2 = sapply(df2[, commonNames], class))
-}
-
-
 # Bayesian test coding ####
 
 #(Coded By Scott Dickerson)
-
-
 
 bayesian_test_me <- function(g1, g1pos, g2, g2pos,i,j,a,b){
   #Function which takes the same inputs as the fishertestme function, turns them into a matrix
@@ -225,6 +224,25 @@ bayesian_test_me <- function(g1, g1pos, g2, g2pos,i,j,a,b){
 }
 
 
+
+#### Data work ########
+
+###... Function to filter by given string: ####
+
+filter_parse <- function(df, x) {
+ {{df}} %>%
+   filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
+}
+
+# compare column types across two df (e.g., in advance of a
+# merge); from
+
+# https://stackoverflow.com/questions/45743991/r-compare-column-types-between-two-dataframes
+compareColumns <- function(df1, df2) {
+  commonNames <- names(df1)[names(df1) %in% names(df2)]
+  data.frame(Column = commonNames, df1 = sapply(df1[, commonNames],
+    class), df2 = sapply(df2[, commonNames], class))
+}
 
 
 #### # Join and update, take nonmissing values from - ####
@@ -306,9 +324,39 @@ just_x  <- function(df) {
                select_all(~gsub("\\.x$", "", .))
 }
 
-#### Basic setup and codebooks
+
+#### Simple recoding assistants ####
+
+zero_to_missing <- function(x){
+  x[x == 0] <- NA
+  return(x)
+}
+
+missing_to_zero <- function (v)
+{
+  v[is.na(v) == TRUE] <- 0
+  return(v)
+}
 
 
+
+
+#### Labelling values and variables ####
+
+# Rename a variable with it's label
+
+rename_to_var_label <- function(df){
+  # Extract variable label
+  labels <- lapply(df, function(x) attributes(x)$label)
+  assertthat::assert_that(!list(NULL) %in% labels,
+                          msg = "Each column must have a corresponding label")
+  # Set names of variables as their label
+  names(df) <- unlist(labels)
+  return(df)
+}
+
+
+#### Basic setup and codebooks ####
 
 rdr_cbk <- function(cbfile) {
   #Convenience function to make codebooks with options
@@ -321,13 +369,13 @@ rdr_cbk <- function(cbfile) {
 }
 
 
-####  summary tables function(s) ####
+####  SUMMARY tables function(s) ####
 
 #intended for donation data:
 .summ <- hijack(vtable::sumtable,
-                summ=c('notNA(x)','mean(x)','sd(x)', 'pctile(x)[50]', 'pctile(x)[90]'),
+                summ=c('notNA(x)', 'sum(x != 0)', 'mean(x)', 'sd(x)', 'pctile(x)[50]', 'pctile(x)[90]'),
                 summ.names = c('N Responses', 'N positive', 'Mean', 'Sd', "Median", "90th pct"),
-                digits=0,
+                digits=1,
                 labels = TRUE, #uses assigned in Hmisc or sjlabelled
                 simple.kable = TRUE)
 
@@ -346,7 +394,24 @@ sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirst
                      Mean = round(mean({{depvar}}, na.rm = T), 2),
                      Median = round(median({{depvar}}, na.rm = T),2),
                      P80 = round(quantile({{depvar}}, 0.8, na.rm = T), 2),
-                     Std.dev. = glue("(", {round(sd({{depvar}}, na.rm = T), 2) }, ")")) %>%
+                     Std.dev. = glue::glue("(", {round(sd({{depvar}}, na.rm = T), 2) }, ")")) %>%
+    kable(caption = caption) %>% kable_styling()
+}
+
+sumtab <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
+                             caption = "") {
+  df %>%
+    ungroup() %>%
+    filter(!is.na({{depvar}})) %>%
+    group_by({{treatvar}}) %>%
+    dplyr::summarize(N = n(),
+                     share_pos = sum({{depvar}} >0)/n(),
+                     #share_10 = sum({{depvar}}== 10)/n(),
+                     Mean = round(mean({{depvar}}, na.rm = T), 2),
+                     Median = round(median({{depvar}}, na.rm = T),2),
+                     P80 = round(quantile({{depvar}}, 0.8, na.rm = T), 2),
+                    # P99 = round(quantile({{depvar}}, 0.99, na.rm = T), 2),
+                     Std.dev. = glue::glue("(", {round(sd({{depvar}}, na.rm = T), 2) }, ")")) %>%
     kable(caption = caption) %>% kable_styling()
 }
 
@@ -399,6 +464,8 @@ sumtab2_func_plus <- function(df = ADSX, depvar = donation, treatvar = TreatFirs
     escape = F) %>% kable_styling("striped", full_width = F)
 }
 
+
+
 # filter(!is.na(donation)) %>% group_by(Treatment, Stage) %>%
 # dplyr::ummarize(N = n(), Mean = round(mean(donation, na.rm
 # = T), 2), 'Std.dev.' = glue('(', { round(sd(donation, na.rm
@@ -410,30 +477,67 @@ sumtab2_func_plus <- function(df = ADSX, depvar = donation, treatvar = TreatFirs
 # 'N'), sep = ' ') %>%
 
 
-#### tabsum and simple tables ####
+#### simple tables and tabsum ####
 
-tabsum <- function(df = ADSX, yvar = donation, xvar = Stage, treatvar = Treatment) {
-  yvar <- enquo(yvar)
-  xvar <- enquo(xvar)
-  treatvar <- enquo(treatvar)
-  df %>% ungroup() %>% # mutate(xvar = as.factor(!!xvar)) %>%
-  dplyr::group_by(!!xvar, !!treatvar) %>% # drop_na(!!yvar, !!treatvar) %>%
-  dplyr::select(!!yvar, !!treatvar, !!xvar) %>% dplyr::summarise(meanyvar = mean(!!yvar,
-    na.rm = TRUE))
+# tabg: tabyl one way plus sort by descening frequency -- the version we normally want
+tabg <- function(df, col) {
+    janitor::tabyl({{df}},{{col}}) %>%
+        arrange(-`n`)
 }
 
+# ... formatting default options for tabyl ####
+tabylstuff <- function(df, cap = "") {
+  adorn_totals(df, c("row", "col")) %>% adorn_percentages("row") %>%
+    adorn_pct_formatting(digits = 1) %>% adorn_ns() %>% kable(caption = cap) %>%
+    kable_styling(latex_options = "scale_down")
+}
 
+tabylstuff_nocol <- function(df,cap=""){
+  adorn_totals(df,c("row")) %>%
+    adorn_percentages("row") %>%
+    adorn_pct_formatting(digits = 1) %>%
+    adorn_ns() %>%
+    kable(caption=cap) %>%
+    kable_styling(latex_options = "scale_down")
+}
 
-tabyl_ow_plus <- function(df, var) {
-    {{df}} %>%
-  tabyl({{var}}) %>%
-   dplyr::arrange(desc(n)) %>%
-    adorn_totals() %>%
-    kable() %>%
+tabyl_ow_plus <- function(df, var, caption=NULL, title_case = FALSE) {
+  df <- {{df}} %>%
+    tabyl({{var}}) %>%
+    dplyr::arrange(desc(n)) %>%
+    adorn_totals()
+
+  if (title_case == TRUE){
+    df <- df %>% rename_with(snakecase::to_title_case)
+  }
+  df %>%
+    kable(caption = caption, padding=0) %>%
     kable_styling()
 }
 
-# WIP function -- doesn't work yet:
+tabylme <- function(df = ADSX, rowvar = TreatFirstAsk, colvar = treat_second_ask,
+  adorn = "row") {
+    {{df}} %>%
+  tabyl({{rowvar}}, {{colvar}}) %>% adorn_percentages({{adorn}}) %>%
+    adorn_pct_formatting(digits = 2) %>% adorn_ns() %>% kable() %>%
+    kable_styling()
+}
+
+adornme <- function(atabyl, adorn = "row", digits = 2, cap = "",
+                    title = "") {
+  atabyl %>% adorn_totals("row") %>% # adorn_totals(c('row', 'col')) %>%
+    adorn_percentages(adorn) %>% adorn_pct_formatting(digits = digits) %>%
+    adorn_ns() %>% adorn_title(title, placement = "top") %>%
+    kable(caption = cap) %>% kable_styling()
+}
+
+adornme_not <- function(atabyl, adorn = "row", digits = 2, cap = "",
+                    title = "") {
+  atabyl %>% adorn_totals("row") %>% # adorn_totals(c('row', 'col')) %>%
+    adorn_percentages(adorn) %>% adorn_pct_formatting(digits = digits) %>%
+    adorn_ns() %>%
+    kable(caption = cap) %>% kable_styling()
+}
 tabylme <- function(df = ADSX, rowvar = TreatFirstAsk, colvar = treat_second_ask,
   adorn = "row") {
     {{df}} %>%
@@ -458,32 +562,29 @@ adornme_not <- function(atabyl, adorn = "row", digits = 2, cap = "",
     kable(caption = cap) %>% kable_styling()
 }
 
-
-
-
-# tabylgd: tabyl plus sort by descening frequency -- the version we normally want
-tabg <- function(df, col) {
-    janitor::tabyl({{df}},{{col}}) %>%
-        arrange(-`n`)
+tabsum <- function(df = ADSX, yvar = donation, xvar = Stage, treatvar = Treatment) {
+  yvar <- enquo(yvar)
+  xvar <- enquo(xvar)
+  treatvar <- enquo(treatvar)
+  df %>% ungroup() %>% # mutate(xvar = as.factor(!!xvar)) %>%
+  dplyr::group_by(!!xvar, !!treatvar) %>% # drop_na(!!yvar, !!treatvar) %>%
+  dplyr::select(!!yvar, !!treatvar, !!xvar) %>% dplyr::summarise(meanyvar = mean(!!yvar,
+    na.rm = TRUE))
 }
 
-# ... formatting default options for tabyl ####
-tabylstuff <- function(df, cap = "") {
-  adorn_totals(df, c("row", "col")) %>% adorn_percentages("row") %>%
-    adorn_pct_formatting(digits = 1) %>% adorn_ns() %>% kable(caption = cap) %>%
-    kable_styling(latex_options = "scale_down")
+
+#shortcut -- summarize data by group
+summarise_by <- function(data, ..., by) {
+  data %>%
+    group_by({{ by }}) %>%
+    summarise(...)
 }
 
-tabylstuff_nocol <- function(df,cap=""){
-  adorn_totals(df,c("row")) %>%
-    adorn_percentages("row") %>%
-    adorn_pct_formatting(digits = 1) %>%
-    adorn_ns() %>%
-    kable(caption=cap) %>%
-    kable_styling(latex_options = "scale_down")
-}
 
-# Plotting functions: ####
+
+# VISUALISATION functions: ####
+
+#TODO -- add ggrepel to these? geom_label_repel() and geom_text_repel
 
 plot_histogram <- function(df, feature) {
   chart_title <- substitute(paste("Histogram of ", feature,
@@ -563,12 +664,31 @@ boxplot_func <- function(df = ADSX, yvar = donation, treatvar = Treatment, facet
 }
 
 
+# Model building #####
 
-# Model building
+# @David: Repeating + renaming for clarity
+make_formula <- function(lhs, rhs) {
+    stats::reformulate(response = lhs, termlabels = rhs,
+              env = globalenv()) # Formula is defined in the global environment
+}
 
+
+# Shorter but less clear version -- remove?
 m_f <- function(lhs, rhs) {
   as.formula(paste(lhs," ~ ", paste(rhs, collapse= "+")))
 }
+
+
+make_formula_df <- function(outcome_vars, indep_vars, dfs){
+  # Make all associated formulas
+  formulas <- mapply(function(x, y) make_formula(x, y), x = outcome_vars, y = indep_vars)
+
+  tibble(outcome = as.character(outcome_vars),
+         formulas = formulas,
+         dfs = dfs)
+}
+
+
 # Options and formatting code elements ####
 
 sidebyside <- function(..., width = 60) {
@@ -700,6 +820,7 @@ clean_sink <- function(df) {
     step_other(all_nominal())
 }
 
+
 ############### Formatting stuff ####
 
 # Color options for either version of markdown slides
@@ -743,7 +864,7 @@ format_with_col = function(x, color){
 
 ################# Coding shortcuts ####
 
-Sm <- function(df, X) dplyr::select(df, matches({X},  ignore.case = FALSE))  # Sm<t_úX>("x") selects variables matching string 'x', case-sensitive
+Sm <- function(df, X) dplyr::select(df, matches({X},  ignore.case = FALSE))  # Sm<t_?X>("x") selects variables matching string 'x', case-sensitive
 sm <- function(df, X) dplyr::select(df, matches({X})) # ... not case-sensitive
 
 Snotm <- function(df, X) dplyr::select(df, -matches({X},  ignore.case = FALSE)) # ...  case-sensitive
@@ -754,4 +875,43 @@ Smn <- function(df, X) dplyr::select(df, matches({X}, ignore.case = FALSE)) %>% 
 smn <- function(df, X) dplyr::select(df, matches({X})) %>% names() # not case-sensitive
 
 
+# Added by Oska
 
+## Group by and summarise
+# Quick group by function to look at NA or 0 values for each year
+group_by_sum <- function(df, col, group=year, value=NA, name="n_NA"){
+  # col = column to summarise
+  # value = values to aggregate, i.e value = NA means summarise the NA values in a column by year
+  # name = output column name
+
+  # Column name for proportion of col == value
+  prop_name = paste("prop", name, sep="_")
+
+  assertthat::assert_that(class(name) == "character", msg="Name must be a string")
+
+  df %>% dplyr::group_by({{group}}) %>%
+    dplyr::summarise(!!name := dplyr::if_else(is.na(value), # If value if NA then use is.na
+                                            sum(is.na({{col}})),
+                                            sum({{col}} == value, na.rm=TRUE)), # Else sum col == value
+                     n = n()) %>%
+    mutate(!!prop_name := !!parse_expr(name)/n)
+}
+
+group_mean_conf_int <- function(df, var, groups = NULL, se_func = se, ...){
+      # Function to calculate confidence intervals for a variable given grouping variables
+      ci <- function(x, se, lower = TRUE){
+        x + 1.96*se
+      }
+
+      var_s <- rlang::as_string(rlang::ensym(var))
+      df %>% 
+      group_by(across({{groups}})) %>%
+      
+      summarise(across({{ var }}, 
+                       .fns = list(mean = ~mean(.x, na.rm=TRUE),
+                                   se = se_func),
+                       .names = "{.col}_{.fn}")) %>%
+      mutate("upper_ci_{{var}}" := .data[[stringr::str_c(var_s, "_mean")]] + 1.96*.data[[stringr::str_c(var_s, "_se")]],
+             "lower_ci_{{var}}" := .data[[stringr::str_c(var_s, "_mean")]] - 1.96*.data[[stringr::str_c(var_s, "_se")]])
+
+}
