@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. David Reinstein; contributions from Gerhard Riener, Scott Dickinson, Oska Fentem, and others" />
 
 
-<meta name="date" content="2021-08-05" />
+<meta name="date" content="2021-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -43,15 +43,15 @@ div.abstract{
   width: 90%;
 }
 </style>
-<script src="libs/header-attrs-2.8.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="book_assets/header-attrs-2.8.6/header-attrs.js"></script>
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -61,8 +61,8 @@ div.abstract{
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="book_assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="book_assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- font families -->
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
@@ -1075,7 +1075,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="17.1.1" data-path="psychometrics.html"><a href="psychometrics.html#validity-general-discussion"><i class="fa fa-check"></i><b>17.1.1</b> Validity: general discussion</a></li>
 <li class="chapter" data-level="17.1.2" data-path="psychometrics.html"><a href="psychometrics.html#reliability-general-discussion"><i class="fa fa-check"></i><b>17.1.2</b> Reliability: general discussion</a></li>
-<li class="chapter" data-level="17.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>17.1.3</b> <span class="citation"><span>Raykov and Marcoulides</span> (<span>2013</span>)</span></a></li>
+<li class="chapter" data-level="17.1.3" data-path="psychometrics.html"><a href="psychometrics.html#raykovmetaanalysisscalereliability2013"><i class="fa fa-check"></i><b>17.1.3</b> <span class="citation">(<span><strong>raykovMetaanalysisScaleReliability2013?</strong></span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="psychometrics.html"><a href="psychometrics.html#factor-analysis-and-principal-component-analysis"><i class="fa fa-check"></i><b>17.2</b> Factor analysis and principal-component analysis</a></li>
 <li class="chapter" data-level="17.3" data-path="psychometrics.html"><a href="psychometrics.html#other"><i class="fa fa-check"></i><b>17.3</b> Other</a></li>
@@ -1328,13 +1328,13 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 <li><p>Bayesian Power calculation<br />
 </p></li>
 </ul>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="bayes.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="bayes.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
 <p>Package loadings from Kurtz:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="bayes.html#cb91-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_unload</span>(pacman<span class="sc">::</span><span class="fu">p_loaded</span>(), <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb91-2"><a href="bayes.html#cb91-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_grey</span>())</span>
-<span id="cb91-3"><a href="bayes.html#cb91-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb91-4"><a href="bayes.html#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-5"><a href="bayes.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="bayes.html#cb87-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_unload</span>(pacman<span class="sc">::</span><span class="fu">p_loaded</span>(), <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb87-2"><a href="bayes.html#cb87-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_grey</span>())</span>
+<span id="cb87-3"><a href="bayes.html#cb87-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb87-4"><a href="bayes.html#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="bayes.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#adds in next chapter</span></span></code></pre></div>
 </div>
 </div>
 <div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="19.2">
@@ -1400,14 +1400,14 @@ I’m planning to through this here, adding my own notes, questions, and conside
 </p>
 <p>We imagine a bag filled with four marbles, each of which is blue or white.</p>
 <p>“So, if we’re willing to code the marbles as 0 =”white" 1 = “blue,” we can arrange the possibility data in a tibble as follows." I.e., we can consider the five possible worlds, in each of which the bag has a different number of white and blue marbles, and represent each of these worlds as a column vector:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="bayes.html#cb92-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
-<span id="cb92-2"><a href="bayes.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="dv">0</span>,</span>
-<span id="cb92-3"><a href="bayes.html#cb92-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
-<span id="cb92-4"><a href="bayes.html#cb92-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
-<span id="cb92-5"><a href="bayes.html#cb92-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
-<span id="cb92-6"><a href="bayes.html#cb92-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_5 =</span> <span class="dv">1</span>)</span>
-<span id="cb92-7"><a href="bayes.html#cb92-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-8"><a href="bayes.html#cb92-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="bayes.html#cb88-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span></span>
+<span id="cb88-2"><a href="bayes.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">p_1 =</span> <span class="dv">0</span>,</span>
+<span id="cb88-3"><a href="bayes.html#cb88-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_2 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)),</span>
+<span id="cb88-4"><a href="bayes.html#cb88-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_3 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb88-5"><a href="bayes.html#cb88-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_4 =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)),</span>
+<span id="cb88-6"><a href="bayes.html#cb88-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_5 =</span> <span class="dv">1</span>)</span>
+<span id="cb88-7"><a href="bayes.html#cb88-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-8"><a href="bayes.html#cb88-8" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 5
 ##     p_1   p_2   p_3   p_4   p_5
 ##   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
@@ -1418,26 +1418,26 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <p><br />
 </p>
 <p>We visualize this in the plot below, where each column is one ‘world’:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="bayes.html#cb94-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="bayes.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
-<span id="cb94-3"><a href="bayes.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
-<span id="cb94-4"><a href="bayes.html#cb94-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">possibility =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="co">#distributing the &#39;which world&#39; index</span></span>
-<span id="cb94-5"><a href="bayes.html#cb94-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> possibility,</span>
-<span id="cb94-6"><a href="bayes.html#cb94-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> value <span class="sc">%&gt;%</span> <span class="fu">as.character</span>())) <span class="sc">+</span></span>
-<span id="cb94-7"><a href="bayes.html#cb94-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb94-8"><a href="bayes.html#cb94-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb94-9"><a href="bayes.html#cb94-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb94-10"><a href="bayes.html#cb94-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
-<span id="cb94-11"><a href="bayes.html#cb94-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="sc">+</span></span>
-<span id="cb94-12"><a href="bayes.html#cb94-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-99-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="bayes.html#cb90-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="bayes.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
+<span id="cb90-3"><a href="bayes.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
+<span id="cb90-4"><a href="bayes.html#cb90-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">possibility =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="co">#distributing the &#39;which world&#39; index</span></span>
+<span id="cb90-5"><a href="bayes.html#cb90-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> possibility,</span>
+<span id="cb90-6"><a href="bayes.html#cb90-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> value <span class="sc">%&gt;%</span> <span class="fu">as.character</span>())) <span class="sc">+</span></span>
+<span id="cb90-7"><a href="bayes.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb90-8"><a href="bayes.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb90-9"><a href="bayes.html#cb90-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb90-10"><a href="bayes.html#cb90-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">4.25</span>),</span>
+<span id="cb90-11"><a href="bayes.html#cb90-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylim =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="fl">5.25</span>)) <span class="sc">+</span></span>
+<span id="cb90-12"><a href="bayes.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-106-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="bayes.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">draw    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb95-2"><a href="bayes.html#cb95-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">marbles =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb95-3"><a href="bayes.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">possibilities =</span> marbles <span class="sc">^</span> draw) <span class="sc">%&gt;%</span></span>
-<span id="cb95-4"><a href="bayes.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="bayes.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">draw    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb91-2"><a href="bayes.html#cb91-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">marbles =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="bayes.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">possibilities =</span> marbles <span class="sc">^</span> draw) <span class="sc">%&gt;%</span></span>
+<span id="cb91-4"><a href="bayes.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1690,7 +1690,7 @@ possibilities
 <p>Also simple code; great for standard use</p>
 <p>Speedup with parallelization; see “script for parallel probit.R” and “parallelprobit.R”</p>
 <p>More advanced: C++; can integrate it with Rcpp, or even use Exeter’s ISCA cluster</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="bayes.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="bayes.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
 <pre><code>##      speed           dist    
 ##  Min.   : 4.0   Min.   :  2  
 ##  1st Qu.:12.0   1st Qu.: 26  
@@ -1721,15 +1721,15 @@ possibilities
 <a href="n-ds4bs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1737,12 +1737,13 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"linkedin": false,
-"weibo": false,
+"linkedin": true,
+"weibo": true,
 "instapaper": false,
 "vk": false,
 "whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",

@@ -7,6 +7,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
+    lib_dir: "book_assets"
     includes:
       in_header: support/header.html
     css: support/tufte_plus.css
@@ -19,6 +20,15 @@ output:
       fontsettings:
         theme: white
         size: 2
+      sharing:
+        facebook: yes
+        twitter: yes
+        google: no
+        linkedin: yes
+        weibo: yes
+        instapaper: no
+        vk: no
+        all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
     highlight: tango
     download: [pdf, epub, mobi]
 bookdown::pdf_book:
@@ -27,7 +37,7 @@ bookdown::pdf_book:
       github: yes
       facebook: no
 always_allow_html: yes
-bibliography: "`r rbbt::bbt_write_bib('support/references.bib', overwrite = TRUE, library_id = rbbt::bbt_libraries()[rbbt::bbt_libraries()$name == 'reinstein_research_and_impact_collabs', 1])`"
+bibliography: "references.bib, packages.bib"
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
@@ -35,24 +45,6 @@ description: ""
 #url: 'https\://daaronr.github.io//'
 tags: [Econometrics, Statistics, Data Science, Experiments, Survey methods, Notes, Methodology]
 ---
-
-
-<!--
-base file created from
-
-`pandoc -f docx -t gfm -o writing_econ_gfm.md "bookoutline3-cutting examples down-cutnamesd.docx" `
-
-and similar from
-
-
-`pandoc -f docx -t gfm -o writing_econ_gfm1.md "Adapting back for BOOK --Ec831 outline-fillingindetails_forslides_edMiriam-conflict.docx"`
-
-replacements needed:
-
-- "\[ \]" surrounds math -- square brackets do not need 'escape' in main text
-- colors need adjusting to 'format_with_col'
-
--->
 
 Try downloading and accessing some functions here:
 
@@ -119,26 +111,6 @@ knitr::opts_chunk$set(fig.align='center', out.width='80%', warning=FALSE, messag
 
 my_output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
-
-
-```{r somefunctions}
-
-#possibly move these to a separate file
-
-#multi-output text color
-#https://dr-harper.github.io/rmarkdown-cookbook/changing-font-colour.html#multi-output-text-colour
-#We can then use the code as an inline R expression format_with_col("my text", "red")
-
-format_with_col = function(x, color){
-  if(knitr::is_latex_output())
-    paste("\\textcolor{",color,"}{",x,"}",sep="")
-  else if(knitr::is_html_output())
-    paste("<font color='",color,"'>",x,"</font>",sep="")
-  else
-    x
-}
-
-```
 
 ```{r html, echo=FALSE}
 # globally set chunk options

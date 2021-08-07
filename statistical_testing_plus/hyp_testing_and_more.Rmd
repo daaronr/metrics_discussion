@@ -1,5 +1,8 @@
 # Hypothesis testing, statistical comparisons and inferences
 
+Note that ['Common statistical tests are linear models'](https://lindeloev.github.io/tests-as-linear/)
+
+
 ## Frequentist
 
 ### Parametric
@@ -224,6 +227,79 @@ Or, with two variables ...
 
 gss %>%
   specify(response = college, explanatory = partyid, success = "degree") %>% str()
+
 ```
 
 Here it seems to be choosing a 'Chi-sq test of independence' perhaps?
+
+### HYPOTHESIZE(): Declaring the null hypothesis {-}
+
+> supply one of “independence” or “point” to the null argument.
+
+```{r, results='hide', message=FALSE}
+
+gss %>%
+  specify(college ~ partyid, success = "degree") %>%
+  hypothesize(null = "independence")
+
+```
+
+(This just adds another 'attribute' to the infer object)
+
+> If you’re doing inference on a point estimate, you will also need to provide one of $p$ (the true proportion of successes, between 0 and 1), \$mu$ (the true mean), `med (the true median), or $\sigma$ (the true standard deviation). For instance, if the null hypothesis is that the mean number of hours worked per week in our population is 40, we would write:
+
+```{r, results='hide', message=FALSE}
+
+gss %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 40)
+```
+
+<div class="marginnote">
+This adds three attributes: `null`="point", `params`=40, and `names`="mu".
+</div>
+
+### GENERATE(): Generating the null distribution {-}
+
+> construct a null distribution based on this hypothesisc ... using one of several methods, supplied in the type argument:
+
+>  `bootstrap`: for each replicate ... a sample of size equal to the input sample size is drawn (with replacement) from the input sample data.
+
+> `permute`: For each replicate, each input value will be randomly reassigned (without replacement) to a new output value in the sample.
+
+>  `simulate`: A value will be sampled from a theoretical distribution with parameters specified in `hypothesize()` for each replicate. (... currently only applicable for testing point estimates.)
+
+ 
+```{r}
+
+try_point_null_bootstrap <- gss %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 40) %>%
+  generate(reps = 1000, type = "bootstrap")
+
+try_point_null_bootstrap %>% filter(replicate<=5) %>% sumtab(hours, replicate)
+```
+
+> To generate a null distribution for the independence of two variables, we could also randomly reshuffle the pairings of explanatory and response variables to break any existing association. For instance, to generate 1000 replicates that can be used to create a null distribution under the assumption that political party affiliation is not affected by age:
+
+
+I did it with only 3 reps and 4 obs just to be able to see it better:
+
+```{r}
+
+gss[1:4,]
+
+try_indep_null_permute <- gss[1:4,] %>%
+  specify(partyid ~ age) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 3, type = "permute")
+
+try_indep_null_permute
+
+try_indep_null_permute %>% str()
+
+```
+
+### CALCULATE(): ... Summary statistics {-}
+
+
