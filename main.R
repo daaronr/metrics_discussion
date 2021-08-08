@@ -13,7 +13,6 @@ rename_all <- dplyr::rename_all
 rename <- dplyr::rename
 
 
-
 pacman::p_load(base, binom, data.table, digest, dplyr, forcats, gganimate, ggthemes, ggpubr, ggrepel,  ggridges, gtsummary,
                ggstatsplot, here, huxtable, infer, purrr, janitor, lmtest, magrittr, labelled, lubridate, plotly,
                readr, readstata13, rlang, santoku, scales, sjlabelled,  snakecase, surveytools2, tidyverse, treemapify, vtable,
@@ -51,6 +50,9 @@ p_load(likert)
 
 d_anim <-
   readline("Do you want animations? They take a long time... (Y/N)")
+
+d_stan <-
+  readline("Do you want Stan calculations? It takes a long time... (Y/N)")
 
 #Do add an on/off switch for Stan stuff which takes a long time
 

@@ -84,8 +84,14 @@ Thompson's sampling converges to a single treatment to optimise exploitative ben
 
 ```
 
-Q
 ## Sequential and adaptive designs {#sequential}
+
+
+```{block2,  type='note'}
+
+A useful practical resource (aimed at Psychologists): [Sequential Testing Hub
+Resources to facilitate efficient, economical, and insulated sequential testing](https://www.sequentialtesting.com/)
+```  
 
 ### Sequential {-}
 

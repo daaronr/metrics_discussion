@@ -166,7 +166,7 @@ dplyr::glimpse(gss)
 
 ```
 
-### `SPECIFY()`: Specifying response (and explanatory) variables
+### `specify()`: Specifying response (and explanatory) variables
 
 **If we care about a single variable...**
 
@@ -232,7 +232,7 @@ gss %>%
 
 Here it seems to be choosing a 'Chi-sq test of independence' perhaps?
 
-### HYPOTHESIZE(): Declaring the null hypothesis {-}
+### `hypothesize()`: Declaring the null hypothesis {-}
 
 > supply one of “independence” or “point” to the null argument.
 
@@ -259,9 +259,15 @@ gss %>%
 This adds three attributes: `null`="point", `params`=40, and `names`="mu".
 </div>
 
-### GENERATE(): Generating the null distribution {-}
+### `generate()`: Generating the null distribution {-}
 
-> construct a null distribution based on this hypothesisc ... using one of several methods, supplied in the type argument:
+```{block2,  type='note'}
+
+I believe this step is skipped for 'theory-based inference' (where we  the null distribution has been proven with maths, and so we don't need to do any simulation work).
+
+```  
+
+> construct a null distribution based on this hypothesis ... using one of several methods, supplied in the type argument:
 
 >  `bootstrap`: for each replicate ... a sample of size equal to the input sample size is drawn (with replacement) from the input sample data.
 
@@ -300,6 +306,113 @@ try_indep_null_permute %>% str()
 
 ```
 
-### CALCULATE(): ... Summary statistics {-}
+### `calculate()`: ... Summary statistics {-}
 
+> Depending on whether you’re carrying out computation-based inference or theory-based inference, you will either supply calculate() with the output of generate() or hypothesize, respectively.
+
+As noted above, it seems the `generate` step is skipped when the null distribution is known from theory.
+
+`calculate` takes a `stat` argument 
+
+> which is currently one of “mean”, “median”, “sum”, “sd”, “prop”, “count”, “diff in means”, “diff in medians”, “diff in props”, “Chisq”, “F”, “t”, “z”, “slope”, or “correlation”. 
+
+> For example, continuing our example above to calculate the null distribution of mean hours worked per week:
+
+```{r}
+gss %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 40) %>%
+  generate(reps = 1000, type = "bootstrap") %>%
+  calculate(stat = "mean")
+```
+
+
+> The output of calculate() here shows us the sample statistic (in this case, the mean) for each of our 1000 replicates.
+
+Note that if we change the point null being tested the replication values and the statistics both change:
+ 
+```{r}
+gss[1:3,] %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 200) %>%
+  generate(reps = 10, type = "bootstrap") %>%
+  calculate(stat = "mean")
+```
+I raised this [issue](https://github.com/tidymodels/infer/issues/407)
+
+... continuing and trying to ignore this....
+
+\
+
+>  If you’re carrying out inference on differences in means, medians, or proportions, or t and z statistics, you will need to supply an order argument, giving the order in which the explanatory variables should be subtracted. For instance, to find the difference in mean age of those that have a college degree and those that don’t, we might write:
+
+```{r}
+gss %>%
+  specify(weight ~ sex) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate("diff in medians", order = c( "male", "female"))
+
+```
+
+I'm guessing it is doing something like sampling from the empirical deviations from the mean ('residuals) and adding these to the point null? Or maybe estimating a standard error and doing similar?  
+
+### Other utilities: `visualize`, `get_p_value`, `get_confidence_interval()` 
+
+```{r}
+
+# find the point estimate
+point_estimate <- gss %>%
+  specify(response = hours) %>%
+  calculate(stat = "mean")
+
+point_estimate %>% str()
+```
+
+This calculates a single statistic using a similar syntax, creating a similar object...  even if we skip the hypothesize (and generate) steps.
+
+```{r}
+
+# generate a null distribution
+null_dist <- gss %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 40) %>%
+  generate(reps = 1000, type = "bootstrap") %>%
+  calculate(stat = "mean")
+
+```
+
+> Our point estimate 41.382 seems pretty close to 40, but a little bit different. We might wonder if this difference is just due to random chance, or if the mean number of hours worked per week in the population really isn’t 40.
+
+
+> Where does our sample’s observed statistic lie on this distribution?
+> We can ... visualize the null distribution ... [and]  use the obs_stat argument to specify this.
+
+```{r}
+
+null_dist %>%
+  visualize() +
+  shade_p_value(obs_stat = point_estimate, direction = "two-sided")
+```
+
+(Note that visualize() yields a ggplot object; I wonder if we can use ggplot2 more directly?)
+
+Trying another example:
+
+```{r}
+
+null_hours <- gss %>% 
+  specify(hours ~ sex) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate("diff in means", order = c( "male", "female"))
+
+point_estimate_hours <- (mean(gss$hours[gss$sex=="male"]) - mean(gss$hours[gss$sex=="female"]))
+
+null_wt %>%
+  visualize() +
+  shade_p_value(obs_stat = point_estimate_hours, direction = "two-sided")
+```
+
+```
 

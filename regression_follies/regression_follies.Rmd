@@ -451,7 +451,6 @@ In the presence of nonlinearity, e.g., diminishing returns, if outcome  'starts'
 
 (Or get to this in the experimetrics section)
 
-
 See also ['Common statistical tests are linear models'](https://lindeloev.github.io/tests-as-linear/)
 
 ### How to display and write about regression results and tests
