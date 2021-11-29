@@ -2,9 +2,6 @@
 
 Note that ['Common statistical tests are linear models'](https://lindeloev.github.io/tests-as-linear/)
 
-Many of the 'univariate' tests presented below can be extended to multiple-variable models (e.g., regression coefficients).
-
-Further discussion, examples, and tables comparing the statistics by [Oska Fentem in his Notion here](https://www.notion.so/Hypothesis-testing-049768b23f3e44de96950121effbfcbe).
 
 ## Frequentist
 
@@ -14,17 +11,9 @@ Further discussion, examples, and tables comparing the statistics by [Oska Fente
 
 ## Randomization and permutation-based
 
-Some relevant discussion of the difference between randomization inference and bootstrapping [here](https://jasonkerwin.com/nonparibus/2017/09/25/randomization-inference-vs-bootstrapping-p-values/)
-
-![](images/paste-506BF93F.png)
-
-My concern:
-
-> ... we nearly always want to make inferences about the population that the treatment and control groups are taken from (even thinking about a hypothetical super-population), not about the impact on the sampled groups themselves. So, with this in mind, when would I still want to use randomization inference.
-
 ## Bayesian and hybrid
 
-Hybrid: See 'Bayes Factor'
+Hybrid: See 'Bayes Factors'
 
 ### Bayes factor -- what is it, what can it do? {#b-factor}
 
@@ -64,11 +53,14 @@ Nik:
 
 > Hmm, so BF are also known as ratios of marginal likelihoods, i.e., where the likelihood is marginalized (integrated over) the prior.
 
+
 Define terms (notation from Wikipedia "Marginal likelihood')
 
-IID points $\mathbf{X}=(x_1,\ldots,x_n),$ where $x_i \sim p(x_i|\theta)$ and $\theta$ is a random variable described by $\theta \sim p(\theta|\alpha)$
+IID points $\mathbf{X}=(x_1,\ldots,x_n),$ where $x_i \sim p(x_i|\theta)$ and $\theta$ is a random variable described by 
+ $\theta \sim p(\theta|\alpha)$
 
 "the marginal likelihood in general asks what the probability $p(\mathbf{X}|\alpha)$ is, where $\theta$ has been ... integrated out"
+
 
 DR first stab at it, doesn't make sense (unfold)
 
@@ -81,33 +73,39 @@ DR first stab at it, doesn't make sense (unfold)
 
 This makes more sense I guess:
 
+
 "Marginal likelihood under H0" = $L_0= p\big(p(\mathbf{X}|\theta \in H_0\big)| \alpha)$ (not sure this notation is correct):
 
 The sum of the likelihood of the data given each possible value of the parameter that is consistent with $H_0$, weighted by the prior probability of that parameter. This should yield "the probability of the data (given the prior) if H0 holds".
 
-"Marginal likelihood under HA" = $L_A$: ...
 
-(replace HA in above). This should yield "the probability of the data (given the prior) if HA holds"
+"Marginal likelihood under HA" = $L_A$: ... 
+
+(replace HA in above). This should yield "the probability of the data (given the prior) if HA holds" 
+
 
 Nik:
 
-> The marginal likelihood is also the denominator term in Bayes theorem, and is basically a normalizing constant, there to re-scale the numerator to make sure everything integrates / sums to 1 according to the law of total probability.
+> The marginal likelihood is also the denominator term in Bayes theorem, and is basically a normalizing constant, there to re-scale the numerator to make sure everything integrates / sums to 1 according to the law of total probability. 
 
-DR: So with my second interpretation above we have "Marginal likelihood under H0" + "Marginal likelihood under HA" $L_0 + L_A= 1$
+DR: So with my second interpretation above we have "Marginal likelihood under H0" + "Marginal likelihood under HA" $L_0 + L_A= 1$ 
 
 > In the discrete case, it's just taking the likelihood at every point in the prior, and then averaging them all together, weighted in proportion to the prior mass (in the continuous case, this is an integration step). It's basically giving a value proportional to your probability of observing the data, under the model in question (the model being composed of all the relations between parameters, the priors on those parameters, the distribution from which the data are drawn, etc.).
 
 DR: OK, but how would these be different under H0 and HA... these both 'use the same prior' I presume. Is my take above approximately correct? (Can you correct it if not?)
 
-> Nik: To get posterior odds, you're right that you'd need to have prior odds / probabilities on the models under consideration. Then it's just multiplying things out (and rescaling, if need be). The two (or more) models could indeed be a model that allows a parameter some distribution vs. a model that fixes that parameter to some number (like your B = 0), equivalent to giving the latter a point-mass prior at that value.
+> Nik: To get posterior odds, you're right that you'd need to have prior odds / probabilities on the models under consideration. Then it's just multiplying things out (and rescaling, if need be). The two (or more) models could indeed be a model that allows a parameter some distribution vs. a model that fixes that parameter to some number (like your B = 0), equivalent to giving the latter a point-mass prior at that value. 
 
 DR: Can we replace 'models' in the statement above with 'range of parameters given weight in the null and alternative hypotheses?'
 
 > In that case, you wouldn't need to do do any integration / summation over that point mass prior, since it's not free to vary (and in practice, we're approximating all these integrals / averages numerically through a hodgepodge of algorithms)
 
-DR: But if we were to use a 'point mass prior only' (e.g., we put $P=1$ on $B=0$) for both H0 and HA and H0 were that $B=0$ and HA that $B \neq 0$ this would not make sense. The prior must be something such as
+DR: But if we were to use a 'point mass prior only' (e.g., we put $P=1$ on $B=0$) for both H0 and HA and H0 were that $B=0$ and HA that $B \neq 0$ this would not make sense. The prior must be something such as 
 
-$$Pr(B=0)=1/2$$ $$Pr(B=x \neq 0) \sim N(0,1)/2$$ Is that a reasonable way to frame it?
+$$Pr(B=0)=1/2$$
+$$Pr(B=x \neq 0) \sim N(0,1)/2$$
+Is that a reasonable way to frame it?
+
 
 \
 
@@ -125,15 +123,15 @@ Nik:
 
 > Another way to think about it is just to forget the terms likelihood, prior, posterior, Bayes, etc. Instead, just consider the probability model $M$, and its implied joint distribution of variables.
 
-> Some of these variables are observed, and we call them observations, $X$. Some are unobserved, and we call them parameters, $\theta$.
+> Some of these variables are observed, and we call them observations, $X$. Some are unobserved, and we call them parameters, $\theta$. 
 
 > We can compute the density or mass of $X$ in this joint distribution, marginalizing / integrating over the unobserved variables $\theta$. Back in jargonland, this is the marginal likelihood of the model $P(X|M)$, though usually the $M$ is implied and we just write $P(X)$ to stick in the denominator of Bayes theorem.
 
-> We can also ask the joint distribution the conditional distribution of $\theta$ given \$X, $P(\theta|X,M)$, or $P(\theta|X)$ for short, in an exactly analogous way to how we might compute, say, the conditional distribution of other joint distributions, like multivariate normals or more exotic stuff. This is also known as the "posterior distribution" of $\theta$, since it's the conditional distribution of $\theta$, i.e. conditional on the observed data. In this particular context though, we're interested in $P(X|M)$, and maybe also the corresponding value for some other model $P(X|M_{other})$. We can take the ratio of these -- a ratio of marginal likelihoods -- to get a Bayes Factor, and interpret it according to some IMO silly table. Or we could multiply them by model priors and rescale so things sum to 1 to get model posterior probabilities.
+> We can also ask the joint distribution the conditional distribution of $\theta$ given $X, $P(\theta|X,M)$, or $P(\theta|X)$ for short, in an exactly analogous way to how we might compute, say, the conditional distribution of other joint distributions, like multivariate normals or more exotic stuff. This is also known as the "posterior distribution" of $\theta$, since it's the conditional distribution of $\theta$, i.e. conditional on the observed data. In this particular context though, we're interested in $P(X|M)$, and maybe also the corresponding value for some other model $P(X|M_{other})$. We can take the ratio of these -- a ratio of marginal likelihoods -- to get a Bayes Factor, and interpret it according to some IMO silly table. Or we could multiply them by model priors and rescale so things sum to 1 to get model posterior probabilities.
 
-DR: This makes sense but it seems equivalent to the previous discussion; I don't see the distinction.
+DR: This makes sense but it seems equivalent to the previous discussion; I don't see the distinction. 
 
-But the major question I have is sort of 'what approach will work to meaningfully asses the evidence for and against the null hypothesis'. "Against" -- this is what the standard p-value NHST presents. "For the null"... seems like it might work in a setup involving a prior putting positive probability mass on a point, but I'm not quite there yet.
+But the major question I have is sort of 'what approach will work to  meaningfully asses the evidence for and against the null hypothesis'. "Against" -- this is what the standard p-value NHST presents. "For the null"... seems like it might work in a setup involving a prior putting positive probability mass on a point, but I'm not quite there yet.
 
 ## Packages: The "Infer" package in R
 
@@ -234,9 +232,9 @@ gss %>%
 
 Here it seems to be choosing a 'Chi-sq test of independence' perhaps?
 
-### `hypothesize()`: Declaring the null hypothesis {.unnumbered}
+### `hypothesize()`: Declaring the null hypothesis {-}
 
-> supply one of "independence" or "point" to the null argument.
+> supply one of “independence” or “point” to the null argument.
 
 ```{r, results='hide', message=FALSE}
 
@@ -248,7 +246,7 @@ gss %>%
 
 (This just adds another 'attribute' to the infer object)
 
-> If you're doing inference on a point estimate, you will also need to provide one of $p$ (the true proportion of successes, between 0 and 1), \$mu\$ (the true mean), \`med (the true median), or $\sigma$ (the true standard deviation). For instance, if the null hypothesis is that the mean number of hours worked per week in our population is 40, we would write:
+> If you’re doing inference on a point estimate, you will also need to provide one of $p$ (the true proportion of successes, between 0 and 1), \$mu$ (the true mean), `med (the true median), or $\sigma$ (the true standard deviation). For instance, if the null hypothesis is that the mean number of hours worked per week in our population is 40, we would write:
 
 ```{r, results='hide', message=FALSE}
 
@@ -257,26 +255,27 @@ gss %>%
   hypothesize(null = "point", mu = 40)
 ```
 
-::: {.marginnote}
+<div class="marginnote">
 This adds three attributes: `null`="point", `params`=40, and `names`="mu".
-:::
+</div>
 
-### `generate()`: Generating the null distribution {.unnumbered}
+### `generate()`: Generating the null distribution {-}
 
 ```{block2,  type='note'}
 
 I believe this step is skipped for 'theory-based inference' (where we  the null distribution has been proven with maths, and so we don't need to do any simulation work).
 
-```
+```  
 
 > construct a null distribution based on this hypothesis ... using one of several methods, supplied in the type argument:
 
-> `bootstrap`: for each replicate ... a sample of size equal to the input sample size is drawn (with replacement) from the input sample data.
+>  `bootstrap`: for each replicate ... a sample of size equal to the input sample size is drawn (with replacement) from the input sample data.
 
 > `permute`: For each replicate, each input value will be randomly reassigned (without replacement) to a new output value in the sample.
 
-> `simulate`: A value will be sampled from a theoretical distribution with parameters specified in `hypothesize()` for each replicate. (... currently only applicable for testing point estimates.)
+>  `simulate`: A value will be sampled from a theoretical distribution with parameters specified in `hypothesize()` for each replicate. (... currently only applicable for testing point estimates.)
 
+ 
 ```{r}
 
 try_point_null_bootstrap <- gss %>%
@@ -288,6 +287,7 @@ try_point_null_bootstrap %>% filter(replicate<=5) %>% sumtab(hours, replicate)
 ```
 
 > To generate a null distribution for the independence of two variables, we could also randomly reshuffle the pairings of explanatory and response variables to break any existing association. For instance, to generate 1000 replicates that can be used to create a null distribution under the assumption that political party affiliation is not affected by age:
+
 
 I did it with only 3 reps and 4 obs just to be able to see it better:
 
@@ -306,15 +306,15 @@ try_indep_null_permute %>% str()
 
 ```
 
-### `calculate()`: ... Summary statistics {.unnumbered}
+### `calculate()`: ... Summary statistics {-}
 
-> Depending on whether you're carrying out computation-based inference or theory-based inference, you will either supply calculate() with the output of generate() or hypothesize, respectively.
+> Depending on whether you’re carrying out computation-based inference or theory-based inference, you will either supply calculate() with the output of generate() or hypothesize, respectively.
 
 As noted above, it seems the `generate` step is skipped when the null distribution is known from theory.
 
-`calculate` takes a `stat` argument
+`calculate` takes a `stat` argument 
 
-> which is currently one of "mean", "median", "sum", "sd", "prop", "count", "diff in means", "diff in medians", "diff in props", "Chisq", "F", "t", "z", "slope", or "correlation".
+> which is currently one of “mean”, “median”, “sum”, “sd”, “prop”, “count”, “diff in means”, “diff in medians”, “diff in props”, “Chisq”, “F”, “t”, “z”, “slope”, or “correlation”. 
 
 > For example, continuing our example above to calculate the null distribution of mean hours worked per week:
 
@@ -326,10 +326,11 @@ gss %>%
   calculate(stat = "mean")
 ```
 
+
 > The output of calculate() here shows us the sample statistic (in this case, the mean) for each of our 1000 replicates.
 
 Note that if we change the point null being tested the replication values and the statistics both change:
-
+ 
 ```{r}
 gss[1:3,] %>%
   specify(response = hours) %>%
@@ -337,27 +338,26 @@ gss[1:3,] %>%
   generate(reps = 10, type = "bootstrap") %>%
   calculate(stat = "mean")
 ```
-
 I raised this [issue](https://github.com/tidymodels/infer/issues/407)
 
 ... continuing and trying to ignore this....
 
 \
 
-> If you're carrying out inference on differences in means, medians, or proportions, or t and z statistics, you will need to supply an order argument, giving the order in which the explanatory variables should be subtracted. For instance, to find the difference in mean age of those that have a college degree and those that don't, we might write:
+>  If you’re carrying out inference on differences in means, medians, or proportions, or t and z statistics, you will need to supply an order argument, giving the order in which the explanatory variables should be subtracted. For instance, to find the difference in mean age of those that have a college degree and those that don’t, we might write:
 
 ```{r}
 gss %>%
-  specify(hours ~ sex) %>%
+  specify(weight ~ sex) %>%
   hypothesize(null = "independence") %>%
   generate(reps = 100, type = "permute") %>%
   calculate("diff in medians", order = c( "male", "female"))
 
 ```
 
-I'm guessing it is doing something like sampling from the empirical deviations from the mean ('residuals) and adding these to the point null? Or maybe estimating a standard error and doing similar?
+I'm guessing it is doing something like sampling from the empirical deviations from the mean ('residuals) and adding these to the point null? Or maybe estimating a standard error and doing similar?  
 
-### Other utilities: `visualize`, `get_p_value`, `get_confidence_interval()`
+### Other utilities: `visualize`, `get_p_value`, `get_confidence_interval()` 
 
 ```{r}
 
@@ -369,7 +369,7 @@ point_estimate <- gss %>%
 point_estimate %>% str()
 ```
 
-This calculates a single statistic using a similar syntax, creating a similar object... even if we skip the hypothesize (and generate) steps.
+This calculates a single statistic using a similar syntax, creating a similar object...  even if we skip the hypothesize (and generate) steps.
 
 ```{r}
 
@@ -382,9 +382,11 @@ null_dist <- gss %>%
 
 ```
 
-> Our point estimate 41.382 seems pretty close to 40, but a little bit different. We might wonder if this difference is just due to random chance, or if the mean number of hours worked per week in the population really isn't 40.
+> Our point estimate 41.382 seems pretty close to 40, but a little bit different. We might wonder if this difference is just due to random chance, or if the mean number of hours worked per week in the population really isn’t 40.
 
-> Where does our sample's observed statistic lie on this distribution? We can ... visualize the null distribution ... [and] use the obs_stat argument to specify this.
+
+> Where does our sample’s observed statistic lie on this distribution?
+> We can ... visualize the null distribution ... [and]  use the obs_stat argument to specify this.
 
 ```{r}
 
@@ -400,10 +402,10 @@ Trying another example:
 ```{r}
 
 null_hours <- gss %>% 
-  specify(hours ~ partyid) %>%
+  specify(hours ~ sex) %>%
   hypothesize(null = "independence") %>%
   generate(reps = 1000, type = "permute") %>%
-  calculate("diff in means", order = c( "dem", "rep", "ind"))
+  calculate("diff in means", order = c( "male", "female"))
 
 point_estimate_hours <- (mean(gss$hours[gss$sex=="male"]) - mean(gss$hours[gss$sex=="female"]))
 
@@ -412,4 +414,5 @@ null_wt %>%
   shade_p_value(obs_stat = point_estimate_hours, direction = "two-sided")
 ```
 
-\`\`\`
+```
+
