@@ -202,7 +202,7 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 
 ### "Null effects"
 
-"While the classical statistical framework is not terribly clear about when one should 'accept' a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a 'zero or minimal effect' one would want to find these closely bounded around zero under a variety of conditions for generalizability.
+While the classical statistical framework is not terribly clear about when one should 'accept' a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a 'zero or minimal effect' one would want to find these closely bounded around zero under a variety of conditions for generalizability.
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks” @harmsMakingNullEffects2018.
 

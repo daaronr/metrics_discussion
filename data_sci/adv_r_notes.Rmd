@@ -1,0 +1,551 @@
+# Notes on 'Advanced R'
+
+See [web-book](https://adv-r.hadley.nz/vectors-chap.html)
+
+[Pete Wildeford's walkthrough](https://gist.github.com/peterhurford/72dbd44e0a34e29297485a8cf679cf73)
+
+## Integrating stuff from notes
+
+
+## Vectors
+
+>  for atomic vectors, all elements must have the same type; for lists, elements can have different types. 
+
+
+> Every vector can also have attributes, which you can think of as a named list of arbitrary metadata. Two attributes are particularly important. The dimension attribute turns vectors into matrices and arrays and the class attribute powers the S3 object system. 
+
+
+
+(p23)
+some of the best features are:
+
+(p24)
+Powerful metaprogramming facilities. R is not just a programming
+language, it is also an environment for interactive data analysis. Its
+metaprogramming capabilities allow you to write magically succinct
+and concise functions and provides an excellent environment for designing domain-specific languages
+
+(p24)
+Much of the R code you-ll see in the wild is written in haste to solve
+a pressing problem.
+
+(p27)
+has aspects of both functional and object-oriented
+(OO) programming languages
+
+(p30)
+ Output is commented
+so that if you have an electronic version of the book, e.g., http://advr.had.co.nz, you can easily copy and paste examples into R
+
+(p33)
+R-s base data structures can be organised by their dimensionality (1d,
+2d, or nd) and whether they-re homogeneous (all contents must be of
+the same type) or heterogeneous (the contents can be of different types).
+This gives rise to the five data types most often used in data analysis
+
+(p33)
+Homogeneous Heterogeneous
+1d Atomic vector List
+2d Matrix Data frame
+nd Array
+Almost
+
+(p33)
+Note that R has no 0-dimensional, or scalar types. Individual numbers
+or strings, which you might think would be scalars, are actually vectors
+of length one.
+
+(p34)
+factors, an important data
+structure created by setting attributes of an atomic vector.
+
+(p35)
+Atomic vectors are usually created with c(), short for combine:
+dbl_var <- c(1, 2.5, 4.5)
+# With the L suffix, you get an integer rather than a double
+int_var <- c(1L, 6L, 10L)
+# Use TRUE and FALSE (or T and F) to create logical vectors
+log_var <- c(TRUE, FALSE, T, F)
+chr_var <- c("these are", "some strings")
+
+(p35)
+Atomic vectors are always flat, even if you nest c()-s:
+c(1, c(2, c(3, 4)))
+#> [1] 1 2 3 4
+# the same as
+c(1, 2, 3, 4)
+
+(p36)
+ when you
+attempt to combine different types they will be coerced to the most
+flexible type. Types from least to most flexible are: logical, integer,
+double, and character
+
+(p37)
+When a logical vector is coerced to an integer or double, TRUE becomes 1
+and FALSE becomes 0. This is very useful in conjunction with sum() and
+mean()
+x <- c(FALSE
+
+(p37)
+You construct lists by using list() instead of
+c():
+x <- list(1:3, "a", c(TRUE, FALSE, TRUE), c(2.3, 5.9))
+str(x)
+#> List of 4
+#> $ : int [1:3] 1 2 3
+#> $ : chr "a"
+#> $ : logi [1:3] TRUE FALSE TRUE
+#> $ : num [1:2] 2.3 5.9
+Lists are sometimes called recursive vectors
+
+(p38)
+You can turn a list into an atomic vector
+with unlist(). If
+
+(p38)
+Lists are used to build up many of the more complicated data structures
+in R. For example, both data frames (described in Section 2.4) and linear
+models objects (as produced by lm()) are lists
+
+(p39)
+-??
+Why is the default missing value, NA, a logical vector? What-s
+special about logical vectors? (Hint: think about c(FALSE,
+NA_character_).)
+
+(p39)
+All objects can have arbitrary additional attributes, used to store metadata about the object. Attributes can be thought of as a named list (with
+unique names). Attributes can be accessed individually with attr() or
+all at once (as a list) with attributes().
+
+(p40)
+By default, most attributes are lost when modifying a vector:
+attributes(y[1])
+#> NULL
+attributes(sum(y))
+#> NULL
+The only attributes not lost are the three most important:
+- Names, a character vector giving each element a name, described in
+Section 2.2.0.1.
+- Dimensions, used to turn vectors into matrices and arrays, described
+in Section 2.3.
+- Class, used to implement the S3 object system, described
+
+(p40)
+Each of these attributes has a specific accessor function to get and set
+values. When working with these attributes, use names(x), class(x), and
+dim(x), not attr(x, "names"), attr(x, "class"), and attr(x, "dim
+
+(p40)
+You can name a vector in three ways
+
+(p40)
+name. If some names are
+missing, names() will return an empty string for those elements
+
+(p41)
+A factor is a vector
+that can contain only predefined values, and is used to store categorical
+data. Factors are built on top of integer vectors using two attributes:
+the class(), -factor”, which makes them behave differently from regular
+integer vectors, and the levels(), which defines the set of allowed values
+
+(p39)
+Attributes can be accessed individually with attr() or
+all at once (as a list) with attributes()
+
+(p41)
+-levels set based on initial assignment
+x <- factor(c("a", "b", "b", "a"))
+
+(p41)
+# You can't use values that are not in the levels
+x[2] <- "c"
+#> Warning: invalid factor level, NA generated
+
+(p42)
+-making a character vector into a factor
+sex_char <- c("m", "m", "m")
+sex_factor <- factor(sex_char, levels = c("m", "f"))
+
+(p42)
+# Or change how we read it in:
+z <- read.csv(text = "value\n12\n1\n.\n9", na.strings=".")
+typeof(z\$value)
+
+
+(p43)
+Unfortunately, most data loading functions in R automatically convert
+character vectors to factors. This is suboptimal, because there-s no
+way for those functions to know the set of all possible levels or their
+optimal order. Instead, use the argument stringsAsFactors = FALSE
+to suppress this behaviour, and then manually convert character vectors to factors using your knowledge of the data
+
+(p43)
+-s usually best
+to explicitly convert factors to character vectors if you need string-like
+behaviour.
+
+(p42)
+makes it obvious when some groups contain
+no observations:
+sex_char <- c("m", "m", "m"
+
+(p39)
+The structure() function returns a new object with modified attributes
+
+(p40)
+structure(1:10, my_attribute = "This is a vector")
+
+(p43)
+Some
+string methods (like gsub() and grepl()) will coerce factors to strings,
+while others (like nchar()) will throw an error, and still others (like c())
+will use the underlying integer values.
+
+(p44)
+Matrices and arrays are created with matrix() and array(), or by using
+the assignment form of dim():
+# Two scalar arguments to specify rows and columns
+a <- matrix(1:6, ncol = 3, nrow = 2)
+# One vector argument to describe all dimensions
+b <- array(1:12, c(2, 3, 2))
+# You can also modify an object in place by setting dim()
+c <- 1:6
+dim(c) <- c(3, 2)
+
+(p45)
+length(a)
+#> [1] 6
+nrow(a)
+#> [1] 2
+ncol(a)
+#> [1] 3
+rownames(a) <- c("A", "B")
+colnames(a) <- c("a", "b", "c")
+
+(p45)
+c() generalises to cbind() and rbind() for matrices
+
+(p45)
+You can transpose a matrix with
+t()
+
+(p46)
+str(matrix(1:3, ncol = 1)) # column vector
+#> int [1:3, 1] 1 2 3
+
+(p46)
+the dimension attribute can also be set on lists to make list-matrices or listarrays:
+
+(p47)
+2.4 Data frames
+
+(p47)
+Under the hood, a data frame is a list of
+equal-length vectors
+
+(p48)
+-??
+Because a data.frame is an S3 class, its type reflects the underlying
+vector used to build it: the list. To check
+
+(p47)
+Beware data.frame()-s default behaviour which turns strings into factors.
+Use stringAsFactors = FALSE to suppress this behaviour:
+df <
+
+(p48)
+-class vs type
+class
+
+(p48)
+You can coerce an object to a data frame with as.data.frame():
+
+(p48)
+You can combine data frames using cbind() and rbind(
+
+(p49)
+Use plyr::rbind.fill() to combine
+data frames that don-t have the same columns
+
+(p49)
+Since a data frame is a list of vectors, it is possible for a data frame to
+have a column that is a list
+
+(p50)
+-what's I()?
+A workaround is to use I(), which causes data.frame() to treat the list
+as one unit:
+dfl <- data.frame(x = 1:3, y = I(list(1:2, 1:3, 1:4)))
+
+(p50)
+Similarly, it-s also possible to have a column of a data frame that’s a
+matrix or array, as long as the number of rows matches the data frame
+
+(p50)
+-but why?
+Similarly, it-s also possible to have a column of a data frame that’s a
+matrix or array
+
+(p54)
+There are five things that you can use to subset a vector:
+- Positive integers return elements at the specified positions:
+x[c(3, 1)]
+#> [1] 3.3 2.1
+
+(p54)
+Negative integers omit elements at the specified positions:
+x[-c(3, 1)]
+#> [1] 4.2 5.4
+
+(p54)
+Logical vectors select elements where the corresponding logical value
+is TRUE. This is probably the most useful type of subsetting because
+you write the expression that creates the logical vector:
+x[c(TRUE, TRUE, FALSE, FALSE)]
+
+(p54)
+Logical vectors select elements where the corresponding logical value
+is TRUE. This is probably the most useful type of subsetting because
+you write the expression that creates the logical vector:
+x[c(TRUE, TRUE, FALSE, FALSE)]
+#> [1] 2.1 4.2
+x[x > 3]
+#> [1] 4.2 3.3 5.4
+If the logical vector is shorter than the vector being subsetted, it will
+be recycled to be the same length.
+x[c(TRUE, FALSE)]
+#> [1] 2.1 3.3
+# Equivalent to
+x[c(TRUE, FALSE, TRUE, FALSE)]
+#> [1] 2.1 3.3
+
+(p55)
+If the vector is named, you can also use:
+- Character vectors to return elements with matching names.
+(y <- setNames(x, letters[1:4]))
+#> a b c d
+#> 2.1 4.2 3.3 5.4
+y[c("d", "c", "a")]
+#> d c a
+#> 5.4 3.3 2.1
+#
+
+(p55)
+-letters [] is cool
+letters
+
+(p56)
+Lists
+
+(p56)
+Using [ will always return a list
+
+(p56)
+a[1:2, ]
+#> A B C
+#> [1,] 1 4 7
+#> [2,] 2 5 8
+
+(p56)
+-??
+Arrays in R are stored in column-major order:
+(vals <- outer(1:5, 1:5, FUN = "paste", sep = ","))
+#> [,1] [,2] [,3] [,4] [,5]
+
+(p57)
+ if you
+subset with a single vector, they behave like lists; if you subset with two
+vectors, they behave like matrices
+
+(p58)
+# Like a list:
+df[c("x", "z")]
+#> x z
+#> 1 1 a
+#> 2 2 b
+#> 3 3 c
+# Like a matrix
+df[, c("x", "z")]
+
+(p57)
+df[df$x == 2, ]
+#> x y z
+#> 2 2 2 b
+
+(p58)
+-simplifies means reducing it to a vector
+ There's an important difference if you select a single
+# column: matrix subsetting simplifies by default, list
+# subsetting does not.
+str(df["x"])
+#> 'data.frame': 3 obs. of 1 variable:
+#> $ x: int 1 2 3
+str(df[, "x"])
+#> int [1:3] 1 2 3
+
+(p58)
+-what's s3 vs s4 objects?
+5 S3 objects
+
+(p59)
+[ is similar to [,
+except it can only return a single value and it allows you to pull pieces
+out of a list. $ is a useful shorthand for [[ combined with character
+subsetting.
+You need [
+
+(p59)
+[[ is similar to [,
+except it can only return a single value and it allows you to pull pieces
+out of a list.
+
+(p59)
+-If list x is a train carrying objects, then x[[5]] is the object in car
+5; x[4:6] is a train of cars 4-6.-
+
+(p60)
+a <- list(a = 1, b = 2)
+a[[1]]
+#> [1] 1
+a[["a"]]
+#> [1] 1
+
+(p60)
+Because data frames are lists of columns, you can use [[ to extract a
+column from data frames: mtcars[[1]], mtcars[["cyl"]]
+
+(p60)
+Simplifying subsets returns the simplest possible
+data structure that can represent the output, and is useful interactively
+because it usually gives you what you want. Preserving subsetting keeps
+the structure of the output the same as the input, and is generally better
+for programming because the result will always be the same type
+
+(p60)
+Unfortunately, how you switch between simplifying and preserving differs for different data types, as summarised in the table below
+
+(p61)
+Preserving is the same for all data types: you get the same type of
+output as input. Simplifying behaviour varies slightly between different
+data types, as described below
+
+(p61)
+Data frame x[, 1] or x[[1]] x[, 1, drop = F] or x[1]
+
+(p61)
+Factor: drops any unused levels.
+
+(p61)
+Matrix or array: if any of the dimensions has length 1, drops that
+dimension.
+
+(p62)
+Data frame: if output is a single column, returns a vector instead of
+a data frame
+
+(p62)
+$ is a shorthand operator, where x$y is equivalent to x[["y", exact
+= FALSE]]. It-s often used to access variables in a data frame, as in
+mtcars$cyl or diamonds$carat.
+
+(p62)
+-seems useful
+One common mistake with $ is to try and use it when you have the name
+of a column stored in a variable:
+var <- "cyl"
+# Doesn't work - mtcars$var translated to mtcars[["var"]]
+mtcars$var
+#> NULL
+# Instead use [[
+mtcars[[var]]
+#> [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8
+#> [30] 6 8 4
+
+(p62)
+$ does partial matching
+
+(p64)
+x[c(1, 2)] <- 2:3
+
+(p64)
+[-1] <- 4:1
+
+(p65)
+Subsetting with nothing can be useful in conjunction with assignment
+because it will preserve the original object class and structure. Compare
+the following two expressions. In the first, mtcars will remain as a data
+frame. In the second, mtcars will become a list.
+mtcars[] <- lapply(mtcars, as.integer)
+mtcars <- lapply(mtcars, as.integer)
+
+(p33)
+str() is short for structure and it gives a
+compact, human readable description of any R data structure
+
+(p34)
+The basic data structure in R is the vector
+
+(p34)
+Type, typeof(), what it is
+
+(p35)
+Length, length(), how many elements it contains.
+- Attributes, attributes(), additional arbitrary metadata
+
+(p35)
+all elements of an atomic
+vector must be the same type, whereas the elements of a list can have
+different types.
+
+(p36)
+Given a vector, you can determine its type with typeof(), or check if
+it-s a specific type with an “is” function: is.character(), is.double(),
+is.integer(), is.logical(), or, more generally, is.atomic()
+
+(p37)
+-!! list vs atomic vector
+including lists. You construct lists by using list() instead of
+c():
+
+(p37)
+Lists are sometimes called recursive vectors, because a list can contain other lists
+
+(p38)
+-linear model objects are lists
+and linear
+models objects (as produced by lm()) are lists
+
+(p42)
+na.strings argument to read.csv(
+
+(p42)
+-to test things
+Reading in "text" instead of from a file here:
+z <- read.csv(text = "value\n12\n1\n.\n9")
+
+(p42)
+-?
+so why is it calling it a integer here if it's turning it into a factor?
+typeof(z$value)
+#> [1] "integer"
+
+(p42)
+-?l typeof vs class functions?
+class(z$value)
+#> [1] "factor"
+
+(p47)
+You create a data frame using data.frame(), which takes named vectors
+as input:
+df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+str(df)
+#> 'data.frame': 3 obs. of 2 variables:
+#> $ x: int 1 2 3
+#> $ y: Factor w/ 3 levels "a","b","c": 1 2 3
+
+(p59)
+$ is a useful shorthand for [[ combined with character
+subsetting.
