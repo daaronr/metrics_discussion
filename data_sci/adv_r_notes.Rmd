@@ -1,5 +1,11 @@
 # Notes on 'Advanced R'
 
+```{r}
+library(pacman)
+p_load(magrittr, dplyr)
+```
+
+
 See [web-book](https://adv-r.hadley.nz/vectors-chap.html)
 
 [Pete Wildeford's walkthrough](https://gist.github.com/peterhurford/72dbd44e0a34e29297485a8cf679cf73)
@@ -16,76 +22,90 @@ See [web-book](https://adv-r.hadley.nz/vectors-chap.html)
 
 
 
-(p23)
-some of the best features are:
+## Aspects of R, pros and cons
 
-(p24)
-Powerful metaprogramming facilities. R is not just a programming
-language, it is also an environment for interactive data analysis. Its
-metaprogramming capabilities allow you to write magically succinct
-and concise functions and provides an excellent environment for designing domain-specific languages
+Some of the best features are:
 
-(p24)
-Much of the R code you-ll see in the wild is written in haste to solve
-a pressing problem.
+> Powerful metaprogramming facilities. R is not just a programming language, it is also an environment for interactive data analysis. Its metaprogramming capabilities allow you to write magically succinct and concise functions and provides an excellent environment for designing domain-specific languages
 
-(p27)
-has aspects of both functional and object-oriented
-(OO) programming languages
 
-(p30)
- Output is commented
-so that if you have an electronic version of the book, e.g., http://advr.had.co.nz, you can easily copy and paste examples into R
+> Much of the R code you-ll see in the wild is written in haste to solve a pressing problem.
 
-(p33)
-R-s base data structures can be organised by their dimensionality (1d,
-2d, or nd) and whether they-re homogeneous (all contents must be of
-the same type) or heterogeneous (the contents can be of different types).
-This gives rise to the five data types most often used in data analysis
+> has aspects of both functional and object-oriented (OO) programming languages
 
-(p33)
-Homogeneous Heterogeneous
-1d Atomic vector List
-2d Matrix Data frame
+## Data structures
+
+> R-s base data structures can be organised by their dimensionality (1d, 2d, or nd) and whether they-re homogeneous (all contents must be of the same type) or heterogeneous (the contents can be of different types). This gives rise to the five data types most often used in data analysis  (p33)
+
+Homogeneous, Heterogeneous
+1d Atomic vector, List
+2d Matrix, Data frame
 nd Array
-Almost
 
-(p33)
-Note that R has no 0-dimensional, or scalar types. Individual numbers
-or strings, which you might think would be scalars, are actually vectors
-of length one.
 
-(p34)
-factors, an important data
-structure created by setting attributes of an atomic vector.
+> Note that R has no 0-dimensional, or scalar types. Individual numbers or strings, which you might think would be scalars, are actually vectors of length one.
 
-(p35)
-Atomic vectors are usually created with c(), short for combine:
-dbl_var <- c(1, 2.5, 4.5)
-# With the L suffix, you get an integer rather than a double
-int_var <- c(1L, 6L, 10L)
-# Use TRUE and FALSE (or T and F) to create logical vectors
-log_var <- c(TRUE, FALSE, T, F)
-chr_var <- c("these are", "some strings")
+> factors, an important data structure created by setting attributes of an atomic vector.
 
-(p35)
-Atomic vectors are always flat, even if you nest c()-s:
-c(1, c(2, c(3, 4)))
-#> [1] 1 2 3 4
-# the same as
-c(1, 2, 3, 4)
 
-(p36)
- when you
-attempt to combine different types they will be coerced to the most
-flexible type. Types from least to most flexible are: logical, integer,
-double, and character
+> Atomic vectors are usually created with c(), short for combine:
 
-(p37)
-When a logical vector is coerced to an integer or double, TRUE becomes 1
-and FALSE becomes 0. This is very useful in conjunction with sum() and
-mean()
-x <- c(FALSE
+```{r}
+
+(
+  dbl_var <- c(1, 2.5, 4.5) 
+) %T>% 
+  str() 
+
+```
+
+>  With the L suffix, you get an integer rather than a double
+
+```{r}
+
+int_var <- c(1L, 6L, 10L) %T>% str()
+
+```
+
+> Use TRUE and FALSE (or T and F) to create logical vectors
+
+Quotes for characters
+
+```{r}
+
+log_var <- c(TRUE, FALSE, T, F) %T>% 
+  str()
+
+chr_var <- c("these are", "some strings") %T>% 
+  str()
+
+
+```
+
+
+> Atomic vectors are always flat, even if you nest c()-s:
+
+
+`c(1, c(2, c(3, 4)))`
+
+`r c(1, c(2, c(3, 4)))`
+
+ [1] 1 2 3 4
+ 
+> is  the same as `c(1, 2, 3, 4)`
+
+`r c(1, 2, 3, 4)`
+
+>  when you attempt to combine different types they will be coerced to the most flexible type. Types from least to most flexible are: logical, integer, double, and character
+
+> When a logical vector is coerced to an integer or double, TRUE becomes 1 and FALSE becomes 0. This is very useful in conjunction with sum() and mean()
+
+```{r}
+
+x <- c(FALSE) %T>%
+  str()
+
+```
 
 (p37)
 You construct lists by using list() instead of

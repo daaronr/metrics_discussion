@@ -18,6 +18,29 @@ hijack <- function (FUN, ...) {
 
 #e.g, .read_csv <- hijack(read_csv, trim_ws = TRUE)
 
+### ... some quick hijacks, esp for na/rm
+
+#why didn't this work? .mean <- hijack(base::mean, na.rm = TRUE)
+
+mn <- function(x) {
+    base::mean(x, na.rm=TRUE)
+}
+
+med <- function(x) {
+    stats::median(x, na.rm=TRUE)
+}
+
+impute.med <- function(x) base::replace(x, is.na(x), median(x, na.rm = TRUE))
+
+sdev <- function(x) {
+    stats::sd(x, na.rm=TRUE)
+}
+
+
+
+.median <- hijack(stats::median, na.rm = TRUE)
+.sd <- hijack(stats::sd, na.rm = TRUE)
+
 
 
 
@@ -37,7 +60,7 @@ se_bin <- function(x) {
 
 # Calculate mean, n and sd per group
 summ_add <- function(df, var) {
-    df %>% 
+    df %>%
     mutate(
     mean = mean(as.numeric( {{ var }} )),
     n = n(),
@@ -380,6 +403,15 @@ rdr_cbk <- function(cbfile) {
                 simple.kable = TRUE)
 
 
+.summk <- hijack(vtable::sumtable,
+                summ=c('notNA(x)', 'sum(x != 0)', 'mean(x)', 'sd(x)', 'pctile(x)[50]', 'pctile(x)[90]'),
+                summ.names = c('N Responses', 'N positive', 'Mean', 'Sd', "Median", "90th pct"),
+                digits=1,
+                labels = TRUE, #uses assigned in Hmisc or sjlabelled
+                simple.kable = TRUE,
+                out="kable")
+
+
 #### ... Sumtabs by 'treatment' ... from substitution project
 
 sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
@@ -389,7 +421,7 @@ sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirst
     filter(!is.na({{depvar}})) %>%
     group_by({{treatvar}}) %>%
     dplyr::summarize(N = n(),
-                     share_pos = sum({{depvar}} >0)/n(),
+                     `share > 0` = sum({{depvar}} >0)/n(),
                      share_10 = sum({{depvar}}== 10)/n(),
                      Mean = round(mean({{depvar}}, na.rm = T), 2),
                      Median = round(median({{depvar}}, na.rm = T),2),
@@ -399,20 +431,21 @@ sumtab_func_full <- function(df = ADSX, depvar = donation, treatvar = TreatFirst
 }
 
 sumtab <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
-                             caption = "") {
+                             caption = "", digits=3, label = TRUE) {
   df %>%
     ungroup() %>%
     filter(!is.na({{depvar}})) %>%
     group_by({{treatvar}}) %>%
     dplyr::summarize(N = n(),
-                     share_pos = sum({{depvar}} >0)/n(),
+                     `share > 0` = sum({{depvar}} >0)/n(),
                      #share_10 = sum({{depvar}}== 10)/n(),
                      Mean = round(mean({{depvar}}, na.rm = T), 2),
                      Median = round(median({{depvar}}, na.rm = T),2),
                      P80 = round(quantile({{depvar}}, 0.8, na.rm = T), 2),
                     # P99 = round(quantile({{depvar}}, 0.99, na.rm = T), 2),
                      Std.dev. = glue::glue("(", {round(sd({{depvar}}, na.rm = T), 2) }, ")")) %>%
-    kable(caption = caption) %>% kable_styling()
+    kable(caption = caption, digits=digits, label = label) %>%
+    kable_styling()
 }
 
 sumtab_func <- function(df = ADSX, depvar = donation, treatvar = TreatFirstAsk,
@@ -581,6 +614,25 @@ summarise_by <- function(data, ..., by) {
 }
 
 
+summ_by <- function(data, groupvar, ...) {
+    data %>%
+group_by({{ groupvar }}) %>%
+    summarise(across(everything(), list({{ ... }})))
+}
+
+# MACHINE learning related functions ###
+
+get_var_importance <- function(fit){
+  extracted <- workflowsets::extract_fit_parsnip(fit)
+
+  vip::vi(extracted)
+}
+
+# For scaling variable importance
+scale_var <- function(x){
+  scale(x)[,1]
+}
+
 
 # VISUALISATION functions: ####
 
@@ -663,6 +715,22 @@ boxplot_func <- function(df = ADSX, yvar = donation, treatvar = Treatment, facet
       size = 3, color = "red")
 }
 
+# https://stackoverflow.com/questions/13407236/remove-a-layer-from-a-ggplot2-chart
+# Delete layers from ggplot
+remove_geom <- function(ggplot2_object, geom_type) {
+  # Delete layers that match the requested type.
+  layers <- lapply(ggplot2_object$layers, function(x) {
+    if (class(x$geom)[1] == geom_type) {
+      NULL
+    } else {
+      x
+    }
+  })
+  # Delete the unwanted layers.
+  layers <- layers[!sapply(layers, is.null)]
+  ggplot2_object$layers <- layers
+  ggplot2_object
+}
 
 # Model building #####
 
@@ -823,6 +891,17 @@ clean_sink <- function(df) {
 
 ############### Formatting stuff ####
 
+# Number formatting
+
+op <- function(x, d=3){
+    format(x, format="f", big.mark=",", digits=d,
+           scientific=FALSE)}
+
+ops <- function(x, d=3, ns=2){
+    format(x, format="f", big.mark=",", digits=d, nsmall=ns, scientific = FALSE)
+options(scipen=999)
+}
+
 # Color options for either version of markdown slides
 
 colFmt = function(x, color) {
@@ -864,6 +943,40 @@ format_with_col = function(x, color){
 
 ################# Coding shortcuts ####
 
+#help find where a column with a certain string name takes values across years (or other grouping)
+yfind <- function(df = eas_all, text, n=3, y=year) {
+  df %>%
+    dplyr::select(year, matches({text})) %>%
+    group_by({{y}}) %>%
+    sample_n(size = n)
+}
+
+
+#Case insensitive string_detect
+str_det <- function(string, pattern, negate = FALSE) {
+  str_detect(string, regex(pattern, ignore_case = T))
+}
+
+grp_n <- function (df, groupvar) {
+df %>%
+  group_by({{groupvar}}) %>%
+  summarise(across(.cols = everything(),
+                   .fns = list(n = ~ sum(!is.na(.x)))
+  )
+  )
+}
+#Note: the above doesn't capture cases where 'all values are the same within a group'
+
+
+grp_uniq <- function (df, groupvar) {
+df %>%
+  group_by({{groupvar}}) %>%
+  summarise(across(.cols = everything(),
+                   .fns = list(uniq = ~ n_distinct(.x))
+    )
+  )
+}
+
 Sm <- function(df, X) dplyr::select(df, matches({X},  ignore.case = FALSE))  # Sm<t_?X>("x") selects variables matching string 'x', case-sensitive
 sm <- function(df, X) dplyr::select(df, matches({X})) # ... not case-sensitive
 
@@ -876,6 +989,17 @@ smn <- function(df, X) dplyr::select(df, matches({X})) %>% names() # not case-se
 
 
 # Added by Oska
+
+remove_str_list <- function(list, string){
+  list <- Filter(function(x) !any(grepl(string, x)), list)
+  return(list)
+}
+
+lab_list_to_text <- function(df) {
+  df %>%
+    var_label %>% unname %>% unlist() %>%
+    paste(collapse = ', ')
+}
 
 ## Group by and summarise
 # Quick group by function to look at NA or 0 values for each year
@@ -904,10 +1028,10 @@ group_mean_conf_int <- function(df, var, groups = NULL, se_func = se, ...){
       }
 
       var_s <- rlang::as_string(rlang::ensym(var))
-      df %>% 
+      df %>%
       group_by(across({{groups}})) %>%
-      
-      summarise(across({{ var }}, 
+
+      summarise(across({{ var }},
                        .fns = list(mean = ~mean(.x, na.rm=TRUE),
                                    se = se_func),
                        .names = "{.col}_{.fn}")) %>%
