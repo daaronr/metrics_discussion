@@ -899,4 +899,4 @@ Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main ma
 
 [Cochrane Handbook for Systematic Reviews of Interventions online](https://training.cochrane.org/handbook/current)
 
-## Example: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
+## Removed: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
