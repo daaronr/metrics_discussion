@@ -43,7 +43,8 @@ bibliography: "references.bib, packages.bib"
 biblio-style: apalike
 link-citations: yes
 github-repo: daaronr/metrics_discussion_work
-description: ""
+description: "David Reinstein's working notes on econometrics, statistics, experiment and survey design, and data science, with a focus on micro, behavioral and experimental economics."
+url: 'https://daaronr.github.io/metrics_discussion/'
 #url: 'https\://daaronr.github.io//'
 tags: [Econometrics, Statistics, Data Science, Experiments, Survey methods, Notes, Methodology]
 ---
