@@ -1303,6 +1303,46 @@ div.csl-indent {
 </blockquote>
 <p>Tbh I’m confused here. I see how we can compare the density of the prior and posterior at this ‘point null’ point (e.g., ‘B=0’), and see that (e.g.) the evidence suggests we update at least somewhat in favor of (or against) the null.</p>
 <p>But I’m not sure how we could meaningfully express the ‘posterior odds’ if the prior distribution didn’t put any point mass on a particular value, including the null.</p>
+<div class="claude-explains">
+<p><strong>Claude explains: Bayes factors with a point null</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>A Bayes factor compares two models, and each model carries its own
+prior. <span class="math inline">\(H_0\)</span> fixes <span
+class="math inline">\(\theta = 0\)</span>. <span
+class="math inline">\(H_1\)</span> says <span
+class="math inline">\(\theta \sim p(\theta \mid H_1)\)</span>, for
+example <span class="math inline">\(N(0, \tau^2)\)</span>. The marginal
+likelihoods are <span class="math inline">\(m_0 = p(X \mid \theta =
+0)\)</span> and <span class="math inline">\(m_1 = \int p(X \mid
+\theta)\, p(\theta \mid H_1)\, d\theta\)</span>, and <span
+class="math inline">\(BF_{01} = m_0 / m_1\)</span>. The ‘alternative’ is
+therefore a whole distribution of effect sizes, and the Bayes factor
+asks which model predicted the data better. No point mass is needed
+inside <span class="math inline">\(H_1\)</span>; the point mass is <span
+class="math inline">\(H_0\)</span> itself. The mixture prior DR proposes
+below (<span class="math inline">\(\tfrac12\)</span> on <span
+class="math inline">\(\theta = 0\)</span>, <span
+class="math inline">\(\tfrac12\)</span> spread as <span
+class="math inline">\(N(0,1)\)</span>) is this setup with prior model
+odds of 1; posterior odds are prior odds times the Bayes factor. The
+Savage–Dickey ratio gives the same number: <span
+class="math inline">\(BF_{01} = p(\theta = 0 \mid X, H_1) / p(\theta = 0
+\mid H_1)\)</span>.</p>
+<p>The answer depends on <span class="math inline">\(\tau\)</span>. Take
+an estimate of 0.10 with standard error 0.05 (<span
+class="math inline">\(z = 2\)</span>, <span class="math inline">\(p =
+0.046\)</span>). With <span class="math inline">\(\tau = 0.1\)</span>,
+<span class="math inline">\(BF_{10} = 2.2\)</span>: weak support for an
+effect. With <span class="math inline">\(\tau = 1\)</span>, <span
+class="math inline">\(BF_{10} = 0.37\)</span>: the data favour the null
+2.7 to 1, because <span class="math inline">\(H_1\)</span> spread its
+predictions over effects far larger than anything observed. Choosing
+<span class="math inline">\(\tau\)</span> is choosing the alternative:
+set it to the range of effects you would have predicted beforehand
+(Dienes 2014) or use a default such as the Cauchy prior of Rouder et
+al. (2009), and report how the Bayes factor moves with it.</p>
+</div>
+</div>
 <p>So perhaps this works if we use a prior that puts some strictly positive probability on the exact effect <span class="math inline">\(B=0\)</span> (say, <span class="math inline">\(pr(B=0)=1/2\)</span>) as well as a non-degenerate distribution of probabilities over the other effect sizes (say, normal/2) ?</p>
 <p><br />
 </p>

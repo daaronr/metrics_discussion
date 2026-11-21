@@ -384,6 +384,20 @@ the other coefficients on the SSR may (will?) increase.
 
     - At the same time, we need that the effect of increasing it from zero need not be infinite, so it might not outweigh the linear penalty, thus some coefficients might be set to zero
 
+:::: {.claude-explains}
+**Claude explains: why the lasso shrinks some coefficients part of the way** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+RSS is quadratic in each coefficient. Its own-derivative, $\partial RSS/\partial\beta_j=-2x_j'(y-X\beta)$, is zero at the OLS solution and grows linearly as $\beta_j$ moves away from it. So the own-derivative is not constant: the first small step away from OLS costs almost nothing in fit, and each further step costs more. The penalty saved per unit of shrinkage is constant at $\lambda$, so each coefficient is shrunk until the marginal loss of fit equals $\lambda$. Cross-effects between coefficients are not needed for this; partial shrinkage happens even with a single regressor.
+
+With one standardised regressor (or orthonormal regressors) the objective is $\frac12(\hat\beta^{OLS}-\beta)^2+\lambda|\beta|$ and the solution is soft-thresholding:
+$$\hat\beta^{lasso}=\text{sign}(\hat\beta^{OLS})\,\big(|\hat\beta^{OLS}|-\lambda\big)_+ .$$
+With $\lambda=0.5$, an OLS coefficient of 2 becomes 1.5, 0.8 becomes 0.3, and 0.4 becomes exactly 0. Every coefficient moves toward zero by $\lambda$, and those within $\lambda$ of zero stop at zero. The corner exists because the marginal penalty stays at $\lambda$ all the way down to zero.
+
+Ridge differs because its marginal penalty, $\lambda\beta_j$ for a penalty of $\frac{\lambda}{2}\beta_j^2$, vanishes as $\beta_j\to0$. In the orthonormal case ridge scales every coefficient to $\hat\beta^{OLS}/(1+\lambda)$ and never sets one exactly to zero. With correlated regressors the amounts differ but the logic is the same.
+:::
+::::
+
 **Relaxed lasso**
 
 > the least-squares fit on the subset of the three predictors tends to
@@ -1067,3 +1081,19 @@ For question 2, the 'area under the curve' (AUC) seems like a decent
 measure that somehow 'averages' the gain in insight over the random
 classifier for all possible types of judge, if I understand correctly.
 (To be continued.)
+
+:::: {.claude-explains}
+**Claude explains: precision, recall, ROC and AUC in the spy example** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Fix a threshold and convict everyone ranked above it. Let TP = spies convicted, FP = innocents convicted, FN = spies freed, TN = innocents freed.
+
+- Recall (true positive rate) = TP/(TP+FN): the share of spies caught.
+- False positive rate = FP/(FP+TN): the share of innocents convicted.
+- Precision = TP/(TP+FP): the share of the convicted who are spies.
+
+The ROC curve plots recall against the false positive rate as the threshold moves from strict (Van Driessen, bottom left) to lax (the Coach, top right). AUC is the area under it. It equals the probability that a randomly chosen spy is ranked above a randomly chosen innocent: 0.5 for a random ranking, 1 for a perfect one.
+
+Three cautions. AUC weights all thresholds equally, including ones no judge would use; when curves cross, compare models at the thresholds (or error costs) that apply. AUC measures ranking only, so a model with a high AUC can still state badly calibrated probabilities. And ROC ignores the base rate, while precision depends on it: a classifier with recall 0.8 and false positive rate 0.1 has precision 0.89 when half the suspects are spies and 0.075 when 1% are. With rare positives, look at the precision-recall curve as well.
+:::
+::::

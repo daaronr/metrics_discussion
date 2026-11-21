@@ -46,6 +46,22 @@ DR: Can you define this with a few equations to fix ideas? It's hard to follow.
 
 DR: Yes, essentially, we need to consider the sensitivity of the estimates to the assumption! 
 
+:::: {.claude-explains}
+**Claude explains: what the literature did with this idea (2018–2023)** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+The approach sketched in this exchange now exists, in frequentist form.
+
+*Pre-trend tests are weak and distort.* Roth (2022) shows that conventional pre-trend tests often have low power against violations large enough to matter, and that reporting only analyses that pass the test can make the surviving estimates more biased, because passing selects on noise.
+
+*Sensitivity analysis replaces accept/reject.* Rambachan and Roth (2023) drop the assumption that trends are exactly parallel and instead bound how different the post-treatment violation can be from what was seen before treatment, for example 'the differential trend after treatment is at most $M$ times the largest pre-period deviation'. The output is a confidence set for the effect at each $M$, and a breakdown value: the smallest $M$ at which the sign of the effect is no longer determined. This is BB's 'over what range of non-parallel trends does the conclusion survive', and it handles violations in either direction. Software: `HonestDiD` (R and Stata).
+
+*Equivalence tests for pre-trends.* Bilinski and Hatfield (2018) reverse the null and ask the data to reject a differential trend larger than a stated tolerance.
+
+A Bayesian version, with a prior on the differential trend informed by the pre-period, is the natural counterpart. The practical gain is the same either way: the reader sees how the conclusion moves with the assumption.
+:::
+::::
+
 > But I think before we get into this we should definitely look at the tweet on DiD that you included as well as the drive folder of Patrick Button
 
 Just to add that there seem to be some further papers we should take a look at.

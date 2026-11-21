@@ -1300,6 +1300,47 @@ which i think suggests that IV is not (generally) dealing with the problem of OV
 <li>Very hard to ‘powerfully test’</li>
 </ul>
 <p>Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a <em>direct</em> effect on the outcome (only an indirect effect through the endogenous variable).</p>
+<div class="claude-explains">
+<p><strong>Claude explains: the conditions for IV, and which can be checked</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>For a binary treatment <span class="math inline">\(D\)</span>,
+instrument <span class="math inline">\(Z\)</span> and outcome <span
+class="math inline">\(Y\)</span> (Angrist, Imbens and Rubin 1996):</p>
+<ol type="1">
+<li><em>Relevance</em>: <span class="math inline">\(Z\)</span> changes
+<span class="math inline">\(D\)</span>. Testable; this is the first
+stage.</li>
+<li><em>Independence (exogeneity)</em>: <span
+class="math inline">\(Z\)</span> is as good as randomly assigned, so it
+is unrelated to potential outcomes and potential take-up. Guaranteed if
+<span class="math inline">\(Z\)</span> was randomized; otherwise
+argued.</li>
+<li><em>Exclusion</em>: <span class="math inline">\(Z\)</span> affects
+<span class="math inline">\(Y\)</span> only through <span
+class="math inline">\(D\)</span>. Never guaranteed, even when <span
+class="math inline">\(Z\)</span> is randomized: a randomized
+encouragement letter can change behaviour directly.</li>
+<li><em>Monotonicity</em>: <span class="math inline">\(Z\)</span> pushes
+nobody <em>away</em> from treatment (no defiers). Needed once effects
+are heterogeneous.</li>
+</ol>
+<p>Conditions 2 and 3 are distinct. A lottery number is exogenous by
+construction, yet fails exclusion if winning changes outcomes through a
+channel other than <span class="math inline">\(D\)</span>.</p>
+<p>What can be tested: with one instrument, little. Balance of <span
+class="math inline">\(Z\)</span> on pre-treatment covariates speaks to
+condition 2. A subsample for whom <span class="math inline">\(Z\)</span>
+cannot move <span class="math inline">\(D\)</span> should show no effect
+of <span class="math inline">\(Z\)</span> on <span
+class="math inline">\(Y\)</span>. Kitagawa (2015) and Huber and Mellace
+(2015) test implications of conditions 2–4 jointly for binary
+treatments. Over-identification tests need several instruments and
+assume homogeneous effects, so a rejection may only reflect different
+complier groups. All of these can reject validity and none can confirm
+it, so sensitivity analysis (Conley, Hansen and Rossi 2012) is the
+natural companion.</p>
+</div>
+</div>
 </div>
 <div id="heterogeneity-and-late" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Heterogeneity and LATE</h2>
@@ -1310,12 +1351,82 @@ which i think suggests that IV is not (generally) dealing with the problem of OV
 <li>With imperfect compliance</li>
 <li>With one-way compliance</li>
 </ul>
+<div class="claude-explains">
+<p><strong>Claude explains: what IV identifies (LATE)</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>With a binary instrument and a binary treatment, IV is the Wald
+ratio</p>
+<p><span class="math display">\[\beta_{IV} = \frac{E[Y \mid Z = 1] - E[Y
+\mid Z = 0]}{E[D \mid Z = 1] - E[D \mid Z = 0]},\]</span></p>
+<p>the effect of <span class="math inline">\(Z\)</span> on the outcome
+(intention to treat) scaled by its effect on take-up.</p>
+<p><em>With heterogeneous effects and imperfect compliance</em>, under
+the four conditions in the instrument-validity box above this equals the
+average effect among <strong>compliers</strong>: people who take the
+treatment if and only if encouraged. It is silent about always-takers
+and never-takers. Example: 60% take up when encouraged, 20% when not,
+and the outcome is 2 units higher in the encouraged group. Compliers are
+40% of the population and the LATE is <span class="math inline">\(2 /
+0.4 = 5\)</span>. The ATE is not pinned down.</p>
+<p><em>With one-sided non-compliance</em> (controls cannot obtain the
+treatment) there are no always-takers, every treated person is a
+complier, and the LATE equals the effect on the treated (Bloom
+1984).</p>
+<p><em>Different instruments, different compliers.</em> Two valid
+instruments for the same treatment can give different answers because
+they move different people, which is the sense in which IV results are
+‘driven by a particular subsample’. The share and characteristics of
+compliers can be estimated and should be reported. With covariates, 2SLS
+keeps a LATE interpretation only when the covariates are controlled for
+flexibly enough (Blandhol, Bonney, Mogstad and Torgovitsky 2022); with
+multi-valued treatments it is a weighted average of several such effects
+(Angrist and Imbens 1995).</p>
+</div>
+</div>
 </div>
 <div id="weak-instruments-other-issues" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Weak instruments, other issues</h2>
 <ul>
 <li>With a ‘weak instrument’ … why does that matter?</li>
 </ul>
+<div class="claude-explains">
+<p><strong>Claude explains: why a weak instrument is a problem</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Three things go wrong when <span class="math inline">\(Z\)</span>
+moves <span class="math inline">\(D\)</span> only a little.</p>
+<p><em>Bias toward OLS.</em> 2SLS is consistent but biased in finite
+samples, in the direction of the OLS bias. With several instruments the
+bias relative to OLS is roughly <span class="math inline">\(1/(F +
+1)\)</span>, where <span class="math inline">\(F\)</span> is the
+first-stage F-statistic on the excluded instruments: <span
+class="math inline">\(F = 4\)</span> leaves about 20% of the OLS bias,
+<span class="math inline">\(F = 20\)</span> about 5%.</p>
+<p><em>Unreliable inference.</em> The sampling distribution of the 2SLS
+estimate is far from normal, so the usual <span
+class="math inline">\(t\)</span>-test and confidence interval are wrong.
+The rule of thumb <span class="math inline">\(F &gt; 10\)</span>
+(Staiger and Stock 1997) targets bias. For the standard 1.96 critical
+value to give a true 5% test with one instrument, Lee, McCrary, Moreira
+and Porter (2022) show the first-stage <span
+class="math inline">\(F\)</span> must exceed 104.7, and they supply
+adjusted critical values (‘<span class="math inline">\(tF\)</span>’) for
+lower <span class="math inline">\(F\)</span>. The Anderson–Rubin test is
+valid at any instrument strength and is the recommended default with a
+single instrument (Andrews, Stock and Sun 2019). With clustered or
+heteroskedastic errors, use the effective <span
+class="math inline">\(F\)</span> of Montiel Olea and Pflueger
+(2013).</p>
+<p><em>Amplified exclusion violations.</em> If <span
+class="math inline">\(Z\)</span> has a small direct effect <span
+class="math inline">\(\gamma\)</span> on <span
+class="math inline">\(Y\)</span>, the IV estimate is off by <span
+class="math inline">\(\gamma\)</span> divided by the first-stage
+coefficient. A first stage of 0.05 turns a direct effect of 0.01 into a
+bias of 0.2.</p>
+<p>Reporting IV only when the first stage is significant also biases the
+estimates that survive.</p>
+</div>
+</div>
 </div>
 <div id="instrumenting-interactions" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Instrumenting Interactions</h2>

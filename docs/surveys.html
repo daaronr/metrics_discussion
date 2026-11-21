@@ -1609,6 +1609,33 @@ If an individual indeed observes the survey, they then decide whether to partici
 <p>For now, we will simplify things; We will not model the two hurdles separately, but simply refer to a “latent propensity to (observe and) participate” for each subgroup:</p>
 <p><span class="math inline">\(\alpha_{r,k,t}\)</span>: The true probability that an individual belonging to referrer <span class="math inline">\(r\)</span>, who is in demographic <span class="math inline">\(k\)</span> (in year <span class="math inline">\(t\)</span>) participates (returns the survey) in year <span class="math inline">\(t\)</span>.</p>
 <p>If we had an (unbiased?) estimate of <span class="math inline">\(\alpha_{r,k,t} \forall r,k,t\)</span> (and if we observe responses from each combination of these, and if some share of each group belongs to each referrer) we should be able to use inverse probability weighting to gain an unbiased estimate of the true demographic population shares as well as the overall true population size (?).</p>
+<div class="claude-explains">
+<p><strong>Claude explains: yes, and this shows what the counts alone cannot identify.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>If the participation probabilities were known, the Horvitz–Thompson
+estimate of each cell’s size is <span
+class="math inline">\(\hat{\Pi}_{rk} = n_{rkt}/\alpha_{rkt}\)</span>: 7
+respondents from a cell with <span class="math inline">\(\alpha =
+0.5\)</span> imply 14 members. Summing over cells gives <span
+class="math inline">\(\hat{\Pi}\)</span>, and shares follow.</p>
+<p>The difficulty is that the counts depend on the unknowns only through
+a product, <span class="math inline">\(E[n_{rkt}] =
+\Pi_{rk}\,\alpha_{rkt}\)</span>. Seven respondents fit 14 members
+responding at 50% and 70 members responding at 10% equally well.
+Composition has the same problem: <span
+class="math inline">\(n_{r0t}/n_{r1t} = (\Pi_{r0}/\Pi_{r1}) \times
+(\alpha_{r0t}/\alpha_{r1t})\)</span>, so the male share is identified
+only up to the relative response rate of men.</p>
+<p>A Bayesian model will still return a posterior, but along these
+directions it reproduces the prior on <span
+class="math inline">\(\alpha\)</span>; the survey counts cannot update
+it. Identification has to come from outside the counts: known membership
+totals for a referrer (subscriber numbers, forum analytics), an
+experiment that varies the incentive or reminders, a benchmark question
+with a known population value, or the respondents linked across years
+(capture–recapture).</p>
+</div>
+</div>
 <p><br />
 </p>
 <p><em>The parameters and the priors:</em></p>

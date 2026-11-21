@@ -7,6 +7,18 @@
 
 Key issue: FE/DiD does not rule out a correlated dynamic unobservable, causing a bias
 
+:::: {.claude-explains}
+**Claude explains: the staggered-treatment problem (work since 2018)** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Much of the literature the Twitter thread below was asking about concerns one finding. When units are treated at different dates and effects differ across units or grow over time, the two-way fixed effects regression $y_{it} = \alpha_i + \lambda_t + \beta D_{it} + \epsilon_{it}$ does not estimate a sensibly weighted average of treatment effects, even if parallel trends holds.
+
+Goodman-Bacon (2021) shows $\hat\beta$ is a weighted average of every two-group, two-period DiD in the data, including comparisons that use *already-treated* units as controls. If the early group's effect is still growing, that growth is subtracted from the late group's estimate. Example: early adopters' effect rises from 1 to 3 over the window in which late adopters switch on with an effect of 2; that comparison yields $2 - (3 - 1) = 0$. Some treated observations enter with negative weight, and $\hat\beta$ can have the opposite sign to every unit's effect (de Chaisemartin and D'Haultfœuille 2020). Event-study leads and lags are contaminated in the same way (Sun and Abraham 2021).
+
+The fixes restrict comparisons to not-yet-treated or never-treated units: Callaway and Sant'Anna (2021) group-time effects, Sun and Abraham (2021) interaction-weighted event studies, and imputation estimators (Borusyak, Jaravel and Spiess 2024). Roth, Sant'Anna, Bilinski and Poe (2023) survey the field. With a single treatment date, standard DiD is unaffected.
+:::
+::::
+
 \
 
 Helpful links from a Twitter thread:

@@ -56,6 +56,16 @@ Tbh I'm confused here. I see how we can compare the density of the prior and pos
 
 But I'm not sure how we could meaningfully express the 'posterior odds' if the prior distribution didn't put any point mass on a particular value, including the null.
 
+:::: {.claude-explains}
+**Claude explains: Bayes factors with a point null** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+A Bayes factor compares two models, and each model carries its own prior. $H_0$ fixes $\theta = 0$. $H_1$ says $\theta \sim p(\theta \mid H_1)$, for example $N(0, \tau^2)$. The marginal likelihoods are $m_0 = p(X \mid \theta = 0)$ and $m_1 = \int p(X \mid \theta)\, p(\theta \mid H_1)\, d\theta$, and $BF_{01} = m_0 / m_1$. The 'alternative' is therefore a whole distribution of effect sizes, and the Bayes factor asks which model predicted the data better. No point mass is needed inside $H_1$; the point mass is $H_0$ itself. The mixture prior DR proposes below ($\tfrac12$ on $\theta = 0$, $\tfrac12$ spread as $N(0,1)$) is this setup with prior model odds of 1; posterior odds are prior odds times the Bayes factor. The Savage–Dickey ratio gives the same number: $BF_{01} = p(\theta = 0 \mid X, H_1) / p(\theta = 0 \mid H_1)$.
+
+The answer depends on $\tau$. Take an estimate of 0.10 with standard error 0.05 ($z = 2$, $p = 0.046$). With $\tau = 0.1$, $BF_{10} = 2.2$: weak support for an effect. With $\tau = 1$, $BF_{10} = 0.37$: the data favour the null 2.7 to 1, because $H_1$ spread its predictions over effects far larger than anything observed. Choosing $\tau$ is choosing the alternative: set it to the range of effects you would have predicted beforehand (Dienes 2014) or use a default such as the Cauchy prior of Rouder et al. (2009), and report how the Bayes factor moves with it.
+:::
+::::
+
 So perhaps this works if we use a prior that puts some strictly positive probability on the exact effect $B=0$ (say, $pr(B=0)=1/2$) as well as a non-degenerate distribution of probabilities over the other effect sizes (say, normal/2) ?
 
 \

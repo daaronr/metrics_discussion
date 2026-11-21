@@ -42,6 +42,23 @@ BB: Whereas in DiD (which doesn't perform great either)/RD it's really easy to j
 
 Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a *direct* effect on the outcome (only an indirect effect through the endogenous variable).
 
+:::: {.claude-explains}
+**Claude explains: the conditions for IV, and which can be checked** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+For a binary treatment $D$, instrument $Z$ and outcome $Y$ (Angrist, Imbens and Rubin 1996):
+
+1. *Relevance*: $Z$ changes $D$. Testable; this is the first stage.
+2. *Independence (exogeneity)*: $Z$ is as good as randomly assigned, so it is unrelated to potential outcomes and potential take-up. Guaranteed if $Z$ was randomized; otherwise argued.
+3. *Exclusion*: $Z$ affects $Y$ only through $D$. Never guaranteed, even when $Z$ is randomized: a randomized encouragement letter can change behaviour directly.
+4. *Monotonicity*: $Z$ pushes nobody *away* from treatment (no defiers). Needed once effects are heterogeneous.
+
+Conditions 2 and 3 are distinct. A lottery number is exogenous by construction, yet fails exclusion if winning changes outcomes through a channel other than $D$.
+
+What can be tested: with one instrument, little. Balance of $Z$ on pre-treatment covariates speaks to condition 2. A subsample for whom $Z$ cannot move $D$ should show no effect of $Z$ on $Y$. Kitagawa (2015) and Huber and Mellace (2015) test implications of conditions 2–4 jointly for binary treatments. Over-identification tests need several instruments and assume homogeneous effects, so a rejection may only reflect different complier groups. All of these can reject validity and none can confirm it, so sensitivity analysis (Conley, Hansen and Rossi 2012) is the natural companion.
+:::
+::::
+
 ## Heterogeneity and LATE
 
 *Basic consideration: what does IV identify and when:*?
@@ -52,9 +69,43 @@ Focusing on a binary endogenous 'treatment' variable
 - With imperfect compliance
 - With one-way compliance
 
+:::: {.claude-explains}
+**Claude explains: what IV identifies (LATE)** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+With a binary instrument and a binary treatment, IV is the Wald ratio
+
+$$\beta_{IV} = \frac{E[Y \mid Z = 1] - E[Y \mid Z = 0]}{E[D \mid Z = 1] - E[D \mid Z = 0]},$$
+
+the effect of $Z$ on the outcome (intention to treat) scaled by its effect on take-up.
+
+*With heterogeneous effects and imperfect compliance*, under the four conditions in the instrument-validity box above this equals the average effect among **compliers**: people who take the treatment if and only if encouraged. It is silent about always-takers and never-takers. Example: 60% take up when encouraged, 20% when not, and the outcome is 2 units higher in the encouraged group. Compliers are 40% of the population and the LATE is $2 / 0.4 = 5$. The ATE is not pinned down.
+
+*With one-sided non-compliance* (controls cannot obtain the treatment) there are no always-takers, every treated person is a complier, and the LATE equals the effect on the treated (Bloom 1984).
+
+*Different instruments, different compliers.* Two valid instruments for the same treatment can give different answers because they move different people, which is the sense in which IV results are 'driven by a particular subsample'. The share and characteristics of compliers can be estimated and should be reported. With covariates, 2SLS keeps a LATE interpretation only when the covariates are controlled for flexibly enough (Blandhol, Bonney, Mogstad and Torgovitsky 2022); with multi-valued treatments it is a weighted average of several such effects (Angrist and Imbens 1995).
+:::
+::::
+
 ## Weak instruments, other issues
 
 - With a 'weak instrument' ... why does that matter?
+
+:::: {.claude-explains}
+**Claude explains: why a weak instrument is a problem** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Three things go wrong when $Z$ moves $D$ only a little.
+
+*Bias toward OLS.* 2SLS is consistent but biased in finite samples, in the direction of the OLS bias. With several instruments the bias relative to OLS is roughly $1/(F + 1)$, where $F$ is the first-stage F-statistic on the excluded instruments: $F = 4$ leaves about 20% of the OLS bias, $F = 20$ about 5%.
+
+*Unreliable inference.* The sampling distribution of the 2SLS estimate is far from normal, so the usual $t$-test and confidence interval are wrong. The rule of thumb $F > 10$ (Staiger and Stock 1997) targets bias. For the standard 1.96 critical value to give a true 5% test with one instrument, Lee, McCrary, Moreira and Porter (2022) show the first-stage $F$ must exceed 104.7, and they supply adjusted critical values ('$tF$') for lower $F$. The Anderson–Rubin test is valid at any instrument strength and is the recommended default with a single instrument (Andrews, Stock and Sun 2019). With clustered or heteroskedastic errors, use the effective $F$ of Montiel Olea and Pflueger (2013).
+
+*Amplified exclusion violations.* If $Z$ has a small direct effect $\gamma$ on $Y$, the IV estimate is off by $\gamma$ divided by the first-stage coefficient. A first stage of 0.05 turns a direct effect of 0.01 into a bias of 0.2.
+
+Reporting IV only when the first stage is significant also biases the estimates that survive.
+:::
+::::
 
 ## Instrumenting Interactions 
 

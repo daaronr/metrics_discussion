@@ -626,6 +626,20 @@ David: I was thinking of the same reductio that I think you are getting at here,
 
 ```
 
+:::: {.claude-explains}
+**Claude explains: what p = 0.25 says about which option is better** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+A p-value is computed assuming no difference, so it cannot be read as the probability that one option is better. A useful translation exists under a flat prior and a normal sampling distribution: the posterior probability that the true difference has the *opposite* sign to the estimate equals the one-sided p-value.
+
+A two-sided $p=0.25$ means the estimate is 1.15 standard errors from zero and the one-sided p-value is 0.125. The option ahead in the sample therefore has about an 87.5% chance of being the better one. Likewise two-sided $p=0.05$ maps to 97.5%, and $p=0.50$ to 75%.
+
+Two cautions. The translation says nothing about 'substantially' better; for that, compute the posterior probability that the difference exceeds a threshold. And a flat prior is generous: a prior centred on zero, which is realistic when most candidate options perform similarly, pulls these probabilities towards 50%.
+
+The decision point stands. If you must choose and switching is costless, pick the option that is ahead even at $p=0.25$: it is the better bet by about 7 to 1.
+:::
+::::
+
 \
 
 ### Design: Which questions to ask the audience about the proposed titles, and in what order?

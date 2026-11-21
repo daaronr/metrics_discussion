@@ -1306,6 +1306,41 @@ div.csl-indent {
 <div class="marginnote">
 <p>Why is a larger reliability coefficient a good thing? I guess because it indicates that made the measurement error part as small as possible given the true score variance. But wouldn’t it be better to choose a measure with a lower ‘true score variance?’</p>
 </div>
+<div class="claude-explains">
+<p><strong>Claude explains: why higher reliability is better, and what it does to regressions</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>True-score variance is the signal: real differences between people in
+the thing being measured. Error variance is noise. Reliability, <span
+class="math inline">\(\sigma_T^2 / (\sigma_T^2 + \sigma_E^2)\)</span>,
+is the share of observed variation that is signal. A measure with little
+true-score variance cannot tell people apart, so lowering it would make
+the measure worse. The aim is low error variance relative to the real
+differences in the population studied. (The same instrument therefore
+has lower reliability in a more homogeneous sample.)</p>
+<p>In econometric terms, reliability is the attenuation factor from
+classical measurement error:</p>
+<ul>
+<li>Noisy <em>regressor</em>: the OLS slope converges to <span
+class="math inline">\(\beta \times\)</span> reliability. With
+reliability 0.7, a true slope of 1 is estimated as 0.7. With other
+covariates correlated with the true regressor the attenuation is larger,
+because they absorb signal and leave the noise.</li>
+<li>Noisy <em>outcome</em>: the unstandardised coefficient is unbiased
+but less precise. Standardised effects (Cohen’s <span
+class="math inline">\(d\)</span>, correlations) shrink by <span
+class="math inline">\(\sqrt{\text{reliability}}\)</span>, so <span
+class="math inline">\(d = 0.5\)</span> on the true score becomes <span
+class="math inline">\(0.42\)</span> on a measure with reliability
+0.7.</li>
+<li>A correlation between two noisy measures is the true correlation
+times <span class="math inline">\(\sqrt{r_X\, r_Y}\)</span> (Spearman’s
+attenuation formula).</li>
+</ul>
+<p>All of this assumes the errors are unrelated to the true score and to
+each other. Two self-reports from the same survey often share error
+(‘common methods bias’, below), which can inflate a correlation.</p>
+</div>
+</div>
 </div>
 <div id="raykovmetaanalysisscalereliability2013" class="section level3" number="17.1.3">
 <h3><span class="header-section-number">17.1.3</span> <span class="citation">(<a href="#ref-raykovMetaanalysisScaleReliability2013" role="doc-biblioref"><strong>raykovMetaanalysisScaleReliability2013?</strong></a>)</span></h3>

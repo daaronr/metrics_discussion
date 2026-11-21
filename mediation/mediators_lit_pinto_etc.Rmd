@@ -66,6 +66,20 @@ With homogeneous (and in a simplest case linear and separate) effects we can the
 We could also compute the share of this effect that occurs *via* the intermediate effect, i.e., $T \rightarrow M\rightarrow Y$.
 This should be merely the composition of these two functions, or, in the linear case, the product of the slope coefficients.
 
+:::: {.claude-explains}
+**Claude explains: the textbook linear case, and where it breaks** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+$M=aT+e_M$ and $Y=c'T+bM+e_Y$. The total effect of $T$ is $c=c'+ab$: direct $c'$, indirect $ab$. With randomised $T$, simple regressions identify $c$ and $a$. The coefficients $b$ and $c'$ come from regressing $Y$ on $T$ and $M$, and that regression is causal only if $\text{Cov}(e_M,e_Y)=0$: nothing unobserved moves both mediator and outcome.
+
+Hypothetical example. Asking for a donation in round 1 raises round-1 giving by $a=5$. Generous people give more in both rounds, so the regression of round-2 giving on $M$ returns $\hat b=+0.3$ although the true effect is $b=-0.4$ (substitution). The estimated indirect effect is $+1.5$; the true one is $-2$. Randomising $T$ did not help, because $M$ was chosen.
+
+Further problems. With heterogeneous effects the average indirect effect is $E[a_ib_i]=\bar a\bar b+\text{Cov}(a_i,b_i)$, which the product of average slopes misses. If the effect of $M$ differs by treatment arm, direct and indirect effects depend on the arm at which they are evaluated. And the share mediated, $ab/c$, is unstable when $c$ is near zero or the two paths have opposite signs.
+
+Diagram to add: $T\to M\to Y$ and $T\to Y$, plus an unobserved $U$ with arrows to both $M$ and $Y$.
+:::
+::::
+
 \
 
 However, there are two major challenges to this estimation.
@@ -230,6 +244,23 @@ Cf 'winning institution' impacts human capital, social networks,
 
 [Sequential ignorability (Imai et al, 10, '11)]{.underline}:
 Essentially, independent randomization of both treatment status and measured inputs.
+
+:::: {.claude-explains}
+**Claude explains: sequential ignorability, stated** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Imai, Keele and Yamamoto (2010): for all $d,d',m$,
+
+1. $\{Y(d',m),\,M(d)\}\perp D\mid X$. Treatment is as good as random given pre-treatment covariates. An RCT delivers this by design.
+2. $Y(d',m)\perp M(d)\mid D=d,\,X$. Among people with the same treatment status and covariates, the mediator value they end up with is unrelated to their potential outcomes. This is the sentence quoted below as "hard to follow".
+
+Condition 2 is the demanding one. It says the mediator behaves as if randomised *within* each treatment arm, conditional on pre-treatment $X$ only. It does not require treatment to leave the mediator unaffected: treatment is allowed to change the mediator, and has to for an indirect effect to exist.
+
+In the NL example: among lottery winners (and separately among losers) with the same $X$, those who enter a given specialisation would have earned the same as those who did not, had they made the same choice. No unobserved ability or preference drives both specialisation and income, and no other consequence of the institution (peers, human capital gained) affects both. Randomising $D$ does nothing to secure this.
+
+Suggested margin note: "Cf. among winners, and among losers, with the same $X$, specialisation and location are as good as randomly assigned."
+:::
+::::
 
 <div class="marginnote">
 Cf 'winning institution' does not affect the specialization

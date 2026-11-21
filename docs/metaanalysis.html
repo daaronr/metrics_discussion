@@ -1636,6 +1636,36 @@ DR: I’m not sure the “pays more attention to small studies” point is corre
 <li><p>the Relative Risk: share of total incidence in treatment, scaled by sample size</p></li>
 <li><p>Incidence Rate Ratio: similar to OR but scaled by duration, I think</p></li>
 </ul>
+<div class="claude-explains">
+<p><strong>Claude explains: three ratio measures.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Suppose 20 of 100 treated and 10 of 100 controls have the event.</p>
+<ul>
+<li><em>Risk ratio (relative risk)</em>: risk in treatment over risk in
+control, <span class="math inline">\(0.20/0.10 = 2.0\)</span>. This is
+the ‘relative incidence’.</li>
+<li><em>Odds ratio</em>: odds in treatment over odds in control, <span
+class="math inline">\((20/80)/(10/90) = 2.25\)</span>. It approximates
+the risk ratio when the event is rare and is further from 1
+otherwise.</li>
+<li><em>Incidence rate ratio</em>: events per unit of person-time in
+treatment over the same in control. It is the analogue of the risk ratio
+when follow-up time differs across people or arms.</li>
+</ul>
+<p>Pooling is done on the log scale, where estimates are closer to
+normal: here <span class="math inline">\(SE(\log OR) = \sqrt{1/a + 1/b +
+1/c + 1/d} = 0.42\)</span> and <span class="math inline">\(SE(\log RR) =
+\sqrt{1/a - 1/n_T + 1/c - 1/n_C} = 0.36\)</span>, with <span
+class="math inline">\(a, b\)</span> the events and non-events in
+treatment and <span class="math inline">\(c, d\)</span> in control.
+Results are exponentiated for reporting.</p>
+<p>Inverse-variance weights break down when a cell is zero or tiny,
+because the log ratio and its SE are undefined or unstable. That is the
+‘sparse data’ problem in the quotation below. <code>metabin()</code>
+uses the Mantel–Haenszel method by default for this reason, and the Peto
+method is an option for rare events.</p>
+</div>
+</div>
 <p>Packages:</p>
 <ul>
 <li>Again we use <code>metagen</code> for pooled data.</li>
@@ -1986,6 +2016,31 @@ I think a big part of the discussion here comes from the subjective-objective de
 <p>“Posterior predictive checks”: If it’s converged, then the density of the replications should resemble the original data.</p>
 <div class="marginnote">
 <p>DRL Not sure I understand this; may need to revise and give a clear explanation. I guess it’s something like ‘the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set’…</p>
+</div>
+<div class="claude-explains">
+<p><strong>Claude explains: convergence and fit are separate questions.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p><em>Convergence</em> asks whether the sampler is drawing from the
+posterior of the model as specified. It is a computational matter,
+checked with <span class="math inline">\(\hat R\)</span>, effective
+sample size and trace plots. MCMC is a sampler, so nothing is being
+optimised; the heading’s ‘found an optimum’ should read ‘is sampling
+from the posterior’.</p>
+<p><em>Posterior predictive checking</em> asks whether the fitted model
+can reproduce the data. For each posterior draw <span
+class="math inline">\(\theta^{(s)}\)</span>, simulate a replicated
+dataset <span class="math inline">\(y^{rep(s)} \sim p(y \mid
+\theta^{(s)})\)</span>. <code>pp_check()</code> overlays the densities
+of several replicates (light lines) on the observed data (dark line).
+Systematic gaps, such as observed effect sizes that are more skewed or
+more dispersed than any replicate, point to a misspecified model, for
+instance a normal distribution of true effects when there are outlying
+studies.</p>
+<p>The two can come apart in both directions. A perfectly converged
+sampler can be fitting a poor model and fail the check. A model can pass
+the check while the chains have not mixed. With only 18 studies, as
+here, the check is also coarse, so passing it is weak reassurance.</p>
+</div>
 </div>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="metaanalysis.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(m.brm)</span></code></pre></div>
 <p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-87-1.png" width="80%" style="display: block; margin: auto;" /></p>

@@ -1308,6 +1308,51 @@ Here were my initial thoughts as pertaining to our paper on the returns to unive
 <p>With homogeneous (and in a simplest case linear and separate) effects we can then use these functions to compute the total (direct plus indirect) effect of <span class="math inline">\(T\)</span> on <span class="math inline">\(Y\)</span>.</p>
 <p>We could also compute the share of this effect that occurs <em>via</em> the intermediate effect, i.e., <span class="math inline">\(T \rightarrow M\rightarrow Y\)</span>.
 This should be merely the composition of these two functions, or, in the linear case, the product of the slope coefficients.</p>
+<div class="claude-explains">
+<p><strong>Claude explains: the textbook linear case, and where it breaks</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p><span class="math inline">\(M=aT+e_M\)</span> and <span
+class="math inline">\(Y=c&#39;T+bM+e_Y\)</span>. The total effect of
+<span class="math inline">\(T\)</span> is <span
+class="math inline">\(c=c&#39;+ab\)</span>: direct <span
+class="math inline">\(c&#39;\)</span>, indirect <span
+class="math inline">\(ab\)</span>. With randomised <span
+class="math inline">\(T\)</span>, simple regressions identify <span
+class="math inline">\(c\)</span> and <span
+class="math inline">\(a\)</span>. The coefficients <span
+class="math inline">\(b\)</span> and <span
+class="math inline">\(c&#39;\)</span> come from regressing <span
+class="math inline">\(Y\)</span> on <span
+class="math inline">\(T\)</span> and <span
+class="math inline">\(M\)</span>, and that regression is causal only if
+<span class="math inline">\(\text{Cov}(e_M,e_Y)=0\)</span>: nothing
+unobserved moves both mediator and outcome.</p>
+<p>Hypothetical example. Asking for a donation in round 1 raises round-1
+giving by <span class="math inline">\(a=5\)</span>. Generous people give
+more in both rounds, so the regression of round-2 giving on <span
+class="math inline">\(M\)</span> returns <span
+class="math inline">\(\hat b=+0.3\)</span> although the true effect is
+<span class="math inline">\(b=-0.4\)</span> (substitution). The
+estimated indirect effect is <span class="math inline">\(+1.5\)</span>;
+the true one is <span class="math inline">\(-2\)</span>. Randomising
+<span class="math inline">\(T\)</span> did not help, because <span
+class="math inline">\(M\)</span> was chosen.</p>
+<p>Further problems. With heterogeneous effects the average indirect
+effect is <span class="math inline">\(E[a_ib_i]=\bar a\bar
+b+\text{Cov}(a_i,b_i)\)</span>, which the product of average slopes
+misses. If the effect of <span class="math inline">\(M\)</span> differs
+by treatment arm, direct and indirect effects depend on the arm at which
+they are evaluated. And the share mediated, <span
+class="math inline">\(ab/c\)</span>, is unstable when <span
+class="math inline">\(c\)</span> is near zero or the two paths have
+opposite signs.</p>
+<p>Diagram to add: <span class="math inline">\(T\to M\to Y\)</span> and
+<span class="math inline">\(T\to Y\)</span>, plus an unobserved <span
+class="math inline">\(U\)</span> with arrows to both <span
+class="math inline">\(M\)</span> and <span
+class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
 <p><br />
 </p>
 <p>However, there are two major challenges to this estimation.</p>
@@ -1446,6 +1491,38 @@ specializations.</p>
 </p>
 <p><u>Sequential ignorability (Imai et al, 10, ’11)</u>:
 Essentially, independent randomization of both treatment status and measured inputs.</p>
+<div class="claude-explains">
+<p><strong>Claude explains: sequential ignorability, stated</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Imai, Keele and Yamamoto (2010): for all <span
+class="math inline">\(d,d&#39;,m\)</span>,</p>
+<ol type="1">
+<li><span class="math inline">\(\{Y(d&#39;,m),\,M(d)\}\perp D\mid
+X\)</span>. Treatment is as good as random given pre-treatment
+covariates. An RCT delivers this by design.</li>
+<li><span class="math inline">\(Y(d&#39;,m)\perp M(d)\mid
+D=d,\,X\)</span>. Among people with the same treatment status and
+covariates, the mediator value they end up with is unrelated to their
+potential outcomes. This is the sentence quoted below as “hard to
+follow”.</li>
+</ol>
+<p>Condition 2 is the demanding one. It says the mediator behaves as if
+randomised <em>within</em> each treatment arm, conditional on
+pre-treatment <span class="math inline">\(X\)</span> only. It does not
+require treatment to leave the mediator unaffected: treatment is allowed
+to change the mediator, and has to for an indirect effect to exist.</p>
+<p>In the NL example: among lottery winners (and separately among
+losers) with the same <span class="math inline">\(X\)</span>, those who
+enter a given specialisation would have earned the same as those who did
+not, had they made the same choice. No unobserved ability or preference
+drives both specialisation and income, and no other consequence of the
+institution (peers, human capital gained) affects both. Randomising
+<span class="math inline">\(D\)</span> does nothing to secure this.</p>
+<p>Suggested margin note: “Cf. among winners, and among losers, with the
+same <span class="math inline">\(X\)</span>, specialisation and location
+are as good as randomly assigned.”</p>
+</div>
+</div>
 <div class="marginnote">
 <p>Cf ‘winning institution’ does not affect the specialization
 entered nor the location of residence, nor are both determined by a

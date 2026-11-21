@@ -1537,6 +1537,36 @@ possibilities
 <p>In practice, step 2 is usually done via MCMC simulation rather than analytically.</p>
 <p>… via simulations, I approach the ‘true’ value on <span class="math inline">\(\theta\)</span></p>
 <p>(Given ‘regularity conditions’)</p>
+<div class="claude-explains">
+<p><strong>Claude explains: what the simulation converges to.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>MCMC converges to the <em>posterior distribution</em> <span
+class="math inline">\(p(\theta \mid y)\)</span> for the data in hand.
+The target is a whole distribution, so no single number is being
+approached, and the true value of <span
+class="math inline">\(\theta\)</span> plays no part in the algorithm.
+This also answers the later question ‘converging on what?’.</p>
+<p>The sampler builds a Markov chain whose long-run distribution is the
+posterior. After warm-up the draws behave like correlated samples from
+it, and averages over draws converge to posterior quantities. Two limits
+are in play. More <em>iterations</em> reduce Monte Carlo error in
+describing the same posterior: the histogram gets smoother and no
+narrower. More <em>data</em> change the posterior itself, which under
+regularity conditions concentrates near the truth.</p>
+<p>‘Converged’ means chains started in different places are sampling the
+same distribution. <span class="math inline">\(\hat R\)</span> checks
+this. With <span class="math inline">\(W\)</span> the average
+within-chain variance and <span class="math inline">\(B/n\)</span> the
+variance of the chain means, <span class="math display">\[\hat R =
+\sqrt{\frac{\tfrac{n-1}{n}W + B/n}{W}}.\]</span> Two chains with
+within-chain variance 1 and means 0 and 2 give <span
+class="math inline">\(\hat R \approx \sqrt{3} = 1.7\)</span>. Current
+practice is four chains, a rank-normalised split-<span
+class="math inline">\(\hat R\)</span> below 1.01 and effective sample
+sizes above 400 (Vehtari et al. 2021); single-chain tests (Geweke,
+Heidelberger–Welch) are rarely used alone.</p>
+</div>
+</div>
 </div>
 <div id="linear-regression-model-example" class="section level4" number="19.3.2.2">
 <h4><span class="header-section-number">19.3.2.2</span> Linear regression model example</h4>
@@ -1573,6 +1603,39 @@ possibilities
 <li>if coin tosses heads, accept as new theta, otherwise stay at previous theta</li>
 <li>allows algorithm to avoid getting stuck at local maxima</li>
 </ul>
+<div class="claude-explains">
+<p><strong>Claude explains: answers to the question marks.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>The proposal in step 3 comes from a distribution the analyst chooses,
+better written <span class="math inline">\(q(\theta^* \mid
+\theta_{t-1})\)</span>. A common choice is a random walk, <span
+class="math inline">\(\theta^* = \theta_{t-1} + z\)</span> with <span
+class="math inline">\(z \sim N(0, s^2)\)</span>. It is a device for
+suggesting moves and is unrelated to the posterior.</p>
+<p>Step 4 needs only the <em>ratio</em> of posterior densities at two
+points, <span class="math display">\[r = \frac{p(\theta^* \mid
+y)}{p(\theta_{t-1} \mid y)} = \frac{p(y \mid \theta^*)\,p(\theta^*)}{p(y
+\mid \theta_{t-1})\,p(\theta_{t-1})},\]</span> because the intractable
+constant <span class="math inline">\(p(y)\)</span> cancels. Likelihood
+times prior can be evaluated at any given <span
+class="math inline">\(\theta\)</span>, so no closed-form posterior is
+required.</p>
+<p>Accept <span class="math inline">\(\theta^*\)</span> with probability
+<span class="math inline">\(\min(1, r)\)</span>. Example: likelihood ×
+prior is 0.8 at the current value and 0.4 at the proposal, so <span
+class="math inline">\(r = 0.5\)</span> and the move is accepted half the
+time. Uphill moves are always accepted. (With an asymmetric proposal,
+multiply <span class="math inline">\(r\)</span> by <span
+class="math inline">\(q(\theta_{t-1}\mid\theta^*)/q(\theta^*\mid\theta_{t-1})\)</span>.)</p>
+<p>Accepting some downhill moves is what makes this a <em>sampler</em>:
+the chain visits each region in proportion to its posterior probability.
+A rule that only moved uphill would be an optimiser and would return the
+mode.</p>
+<p>Stan and <code>brms</code> use Hamiltonian Monte Carlo (NUTS; Hoffman
+and Gelman 2014), which uses the gradient of the log posterior to
+propose distant moves that are still accepted with high probability.</p>
+</div>
+</div>
 <p>Commonly used proposal: random walk sample: <span class="math inline">\(\theta_t=\theta_{t-1}+z_t\)</span>, <span class="math inline">\(z_t \sim f\)</span></p>
 <p>?? I do this because there is no analytical way to derive this, unlike in the conjugate case, where we might use the Gibbs</p>
 <ul>
@@ -1617,6 +1680,36 @@ possibilities
 <h3><span class="header-section-number">19.3.3</span> Comparing models … Equivalent of ‘likelihood’</h3>
 <p>‘Deviance Information Criterion’ (most used); specific for MCMC simulations: compares expected LL of the model (of the data given the estimated parameters; average here across much of the later points in the chain) against the llhd at the posterior parameter mean. Always select model with lowest DIC.</p>
 <p>Bayes Factor (less used): Ratio of llhd of the models; higher BF means model is more supported; BF&gt;10 seen to provide strong evidence for model w higher value</p>
+<div class="claude-explains">
+<p><strong>Claude explains: a Bayes factor is a ratio of <em>marginal</em> likelihoods.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>For each model the likelihood is averaged over that model’s prior,
+<span class="math inline">\(p(y \mid M) = \int p(y \mid \theta,
+M)\,p(\theta \mid M)\,d\theta\)</span>, and <span
+class="math inline">\(BF_{12} = p(y \mid M_1)/p(y \mid M_2)\)</span>. A
+ratio of maximised likelihoods is the classical likelihood ratio, a
+different object. Posterior odds equal the Bayes factor times the prior
+odds.</p>
+<p>Because of the averaging, the Bayes factor depends on the priors for
+the parameters even in large samples, where posterior estimates would
+barely notice them. Example: <span class="math inline">\(M_0\)</span>:
+<span class="math inline">\(\theta = 0\)</span> against <span
+class="math inline">\(M_1\)</span>: <span class="math inline">\(\theta
+\sim N(0, s^2)\)</span>, with <span class="math inline">\(n =
+100\)</span> unit-variance observations and <span
+class="math inline">\(z = 1.96\)</span> (<span class="math inline">\(p =
+0.05\)</span>). With <span class="math inline">\(s = 1\)</span> the
+Bayes factor is 1.5 in favour of the <em>null</em>; with <span
+class="math inline">\(s = 10\)</span> it is 14.7 in favour of the null.
+A more diffuse prior under the alternative spreads its predictions over
+values the data rule out, so the null looks better (the Jeffreys–Lindley
+paradox). With improper flat priors the Bayes factor is undefined.</p>
+<p>Scales: Jeffreys labels values above 10 ‘strong’; Kass and Raftery
+(1995) call 3 to 20 ‘positive’ and 20 to 150 ‘strong’. Bayes factors are
+worth using only with priors one is prepared to defend, alongside a
+report of how sensitive they are to those priors.</p>
+</div>
+</div>
 </div>
 <div id="on-choosing-priors" class="section level3" number="19.3.4">
 <h3><span class="header-section-number">19.3.4</span> On choosing priors</h3>
@@ -1642,6 +1735,32 @@ possibilities
 <h3><span class="header-section-number">19.3.6</span> Generate predictions from a WinBUGS model</h3>
 <p>You can just generate these outcomes …</p>
 <p>Prediction: generate a new observation #note, he is doing one per iteration, but since these are convergent it would be basically the same if you just chose a random iteration and did all the draws from that one</p>
+<div class="claude-explains">
+<p><strong>Claude explains: one draw per iteration is doing real work.</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Pairing each prediction with a different posterior draw averages over
+parameter uncertainty and yields the posterior predictive distribution,
+<span class="math inline">\(p(\tilde y \mid y) = \int p(\tilde y \mid
+\theta)\,p(\theta \mid y)\,d\theta\)</span>. Taking every prediction
+from one iteration conditions on a single parameter value <span
+class="math inline">\(\theta^{(s)}\)</span> and gives <span
+class="math inline">\(p(\tilde y \mid \theta^{(s)})\)</span>, which is
+narrower and centred on wherever that one draw happened to fall.</p>
+<p>Example: the posterior for a mean is <span
+class="math inline">\(N(10, 2^2)\)</span> and the outcome noise has SD
+1. Predictions made across iterations have mean 10 and SD <span
+class="math inline">\(\sqrt{2^2 + 1^2} = 2.24\)</span>. Predictions from
+one random iteration have SD 1 and a centre drawn from <span
+class="math inline">\(N(10, 2^2)\)</span>, so one run could be centred
+at 7 and another at 13.</p>
+<p>‘Converged’ means the chain’s draws are distributed according to the
+posterior. Successive draws still range over the whole posterior, and
+that variation is the parameter uncertainty that predictions should
+carry.</p>
+<p>The two approaches agree only when the posterior is so concentrated
+that parameter uncertainty is negligible next to outcome noise.</p>
+</div>
+</div>
 </div>
 <div id="missing-data-case" class="section level3" number="19.3.7">
 <h3><span class="header-section-number">19.3.7</span> Missing data case</h3>

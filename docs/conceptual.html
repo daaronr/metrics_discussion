@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="other-approaches-techniques-and-applications.html"/>
+<link rel="prev" href="introduction.html"/>
 <link rel="next" href="hypothesis-testing-statistical-comparisons-and-inferences.html"/>
 <style type="text/css">
 p.abstract{
@@ -1275,9 +1275,63 @@ div.csl-indent {
 </div>
 <div id="statistical-inference" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Statistical inference</h2>
+<div class="claude-explains">
+<p><strong>Claude explains: what ’inference’ adds to estimation</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Inference means using a sample to say something about a quantity we
+cannot observe directly, together with a statement of how uncertain we
+are. Three objects are worth keeping apart: the <em>estimand</em> (the
+target, e.g. the mean effect of a matching offer on donations among all
+donors), the <em>estimator</em> (the rule applied to the data, e.g. a
+difference in sample means), and the <em>estimate</em> (the number
+obtained, e.g. £2.10).</p>
+<p>Uncertainty has different sources, and the standard error should
+match the source:</p>
+<ul>
+<li><em>Sampling-based</em>: we observed a sample from a larger
+population.</li>
+<li><em>Design-based</em>: we observe everyone of interest, but
+treatment was assigned at random and another assignment would have given
+another estimate. Abadie, Athey, Imbens and Wooldridge (2020,
+<em>Econometrica</em>) show that the usual robust standard errors are
+then conservative.</li>
+<li><em>Model-based</em>: the data are treated as draws from an assumed
+probability model.</li>
+</ul>
+<p>Description, prediction and causal inference use the same tools with
+different estimands. Many disagreements about method turn out to be
+disagreements about which estimand is intended.</p>
+</div>
+</div>
 </div>
 <div id="bayesian-vs.-frequentist-approaches" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Bayesian vs. frequentist approaches</h2>
+<div class="claude-explains">
+<p><strong>Claude explains: the two approaches in brief</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p><em>Frequentist.</em> The parameter is a fixed unknown. Probability
+describes how the data, and anything computed from them, would vary over
+repeated samples. A 95% confidence interval comes from a procedure that
+covers the true value in 95% of repeated samples. A p-value is the
+probability of data at least as extreme as those observed if the null
+hypothesis were true.</p>
+<p><em>Bayesian.</em> Probability describes uncertainty about the
+parameter itself. A prior <span class="math inline">\(p(\theta)\)</span>
+is combined with the likelihood <span class="math inline">\(p(y \mid
+\theta)\)</span> to give the posterior, <span
+class="math inline">\(p(\theta \mid y) \propto p(y \mid
+\theta)\,p(\theta)\)</span>. A 95% credible interval contains the
+parameter with 95% posterior probability, given the model and the
+prior.</p>
+<p>With a lot of data and a diffuse prior the two intervals are usually
+numerically close (the Bernstein–von Mises result). They diverge with
+small samples, with informative priors, with many parameters
+(hierarchical models pull noisy group estimates toward the overall
+mean), and under optional stopping, which changes frequentist error
+rates while the stopping rule does not enter the posterior. See Chapter
+<a href="bayes.html#bayes">19</a>.</p>
+</div>
+</div>
 <!-- 
 Folder: bayesian
 Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
@@ -1295,8 +1349,71 @@ The fact that 95% of all (correct) CIs contain the true value does not mean that
 </div>
 <div id="causal-vs.-descriptive-treatment-effects-and-the-potential-outcomes-causal-model" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Causal vs. descriptive; ‘treatment effects’ and the potential outcomes causal model</h2>
+<div class="claude-explains">
+<p><strong>Claude explains: potential outcomes in one page</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>Each unit <span class="math inline">\(i\)</span> has two potential
+outcomes: <span class="math inline">\(Y_i(1)\)</span> if treated and
+<span class="math inline">\(Y_i(0)\)</span> if not. The individual
+effect is <span class="math inline">\(Y_i(1)-Y_i(0)\)</span>, and only
+one of the two outcomes is ever observed (the ‘fundamental problem of
+causal inference’, Holland 1986). So we target averages: the ATE, <span
+class="math inline">\(E[Y(1)-Y(0)]\)</span>, or the effect on the
+treated, <span class="math inline">\(ATT=E[Y(1)-Y(0) \mid
+D=1]\)</span>.</p>
+<p>The raw comparison of treated and untreated groups decomposes as</p>
+<p><span class="math display">\[E[Y \mid D=1]-E[Y \mid D=0] =
+\underbrace{E[Y(1)-Y(0) \mid D=1]}_{ATT} + \underbrace{E[Y(0) \mid
+D=1]-E[Y(0) \mid D=0]}_{\text{selection bias}}.\]</span></p>
+<p>Random assignment makes <span class="math inline">\(D\)</span>
+independent of the potential outcomes, so the selection term is zero and
+the ATT equals the ATE. Each observational method is an argument for why
+the selection term is zero or can be removed: conditioning on
+covariates, instruments, discontinuities, parallel trends.</p>
+<p>A descriptive claim (‘graduates earn 30% more’) needs none of this.
+The causal claim (‘a degree raises earnings by 30%’) needs the selection
+term to vanish. The framework also assumes no interference between units
+and a single version of the treatment (SUTVA).</p>
+</div>
+</div>
 <div id="dags-and-potential-outcomes" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> DAGs and Potential outcomes</h3>
+<div class="claude-explains">
+<p><strong>Claude explains: what DAGs add</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>A directed acyclic graph (DAG) draws variables as nodes and direct
+causal effects as arrows. It makes the assumptions behind a ‘control for
+X’ strategy explicit. Three patterns cover most cases:</p>
+<ul>
+<li><em>Confounder</em> (<span class="math inline">\(D \leftarrow X
+\rightarrow Y\)</span>): control for <span
+class="math inline">\(X\)</span>.</li>
+<li><em>Mediator</em> (<span class="math inline">\(D \rightarrow M
+\rightarrow Y\)</span>): controlling for <span
+class="math inline">\(M\)</span> removes part of the effect you
+want.</li>
+<li><em>Collider</em> (<span class="math inline">\(D \rightarrow C
+\leftarrow Y\)</span>): controlling for <span
+class="math inline">\(C\)</span>, or selecting the sample on it,
+distorts the association between <span class="math inline">\(D\)</span>
+and <span class="math inline">\(Y\)</span>, and can create one where
+there is no effect.</li>
+</ul>
+<p>The back-door criterion says which sets of controls identify the
+effect: a set that blocks every back-door path (every path from <span
+class="math inline">\(D\)</span> to <span
+class="math inline">\(Y\)</span> that starts with an arrow into <span
+class="math inline">\(D\)</span>) and contains no descendant of <span
+class="math inline">\(D\)</span>. This is the graphical counterpart of
+‘unconfoundedness given <span class="math inline">\(X\)</span>’ in
+potential-outcomes notation, and the two frameworks are formally
+compatible. Imbens (2020, <em>Journal of Economic Literature</em>)
+compares them and argues that potential outcomes handle the designs
+economists rely on (IV with monotonicity, regression discontinuity,
+difference-in-differences) more naturally. See also the ‘bad control’
+discussion in Chapter <a href="reg-follies.html#reg-follies">4</a>.</p>
+</div>
+</div>
 </div>
 </div>
 <div id="theory-restrictions-and-structural-vs-reduced-form" class="section level2" number="2.5">
@@ -1309,13 +1426,97 @@ The fact that 95% of all (correct) CIs contain the true value does not mean that
 </div>
 <div id="bayesian-vs.-frequentist-hypothesis-testing" class="section level3" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Bayesian vs. frequentist hypothesis ‘testing’</h3>
+<div class="claude-explains">
+<p><strong>Claude explains: p-values and Bayes factors</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>A p-value is <span class="math inline">\(P(\text{data at least this
+extreme} \mid H_0)\)</span>. It does not give <span
+class="math inline">\(P(H_0 \mid \text{data})\)</span>, which also
+depends on how plausible the alternatives were beforehand and how well
+they predict the data.</p>
+<p>The Bayesian counterpart is the Bayes factor, <span
+class="math inline">\(BF_{10}=P(\text{data} \mid H_1)/P(\text{data} \mid
+H_0)\)</span>, with posterior odds <span class="math inline">\(= BF_{10}
+\times\)</span> prior odds. Each term averages the likelihood over that
+hypothesis’s prior on its parameters, so the Bayes factor depends on the
+prior for the effect size under <span
+class="math inline">\(H_1\)</span>. A very diffuse prior makes <span
+class="math inline">\(H_1\)</span> predict the data poorly and favors
+<span class="math inline">\(H_0\)</span> (the Jeffreys–Lindley
+paradox).</p>
+<p>A calibration: for <span class="math inline">\(p&lt;1/e\)</span>, the
+Bayes factor against the null is at most <span
+class="math inline">\(1/(-e\,p\ln p)\)</span> under a wide class of
+alternatives (Sellke, Bayarri and Berger 2001). For <span
+class="math inline">\(p=0.05\)</span> the bound is about 2.5; for <span
+class="math inline">\(p=0.005\)</span>, about 14. With even prior odds,
+<span class="math inline">\(p=0.05\)</span> leaves at least a 29%
+posterior probability that the null is true.</p>
+<p>Many Bayesian analysts skip point-null tests and report the posterior
+for the effect: the probability that it is positive, or that it lies in
+a ‘region of practical equivalence’ around zero.</p>
+</div>
+</div>
 </div>
 <div id="individual-vs.-joint-hypothesis-testing-what-does-it-mean" class="section level3" number="2.6.3">
 <h3><span class="header-section-number">2.6.3</span> Individual vs. joint hypothesis testing: what does it mean?</h3>
+<div class="claude-explains">
+<p><strong>Claude explains: individual and joint tests</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>An individual test concerns one restriction (e.g. <span
+class="math inline">\(\beta_1=0\)</span>, a t-test). A joint test asks
+whether several restrictions hold together (e.g. <span
+class="math inline">\(\beta_1=\beta_2=0\)</span>, an F or Wald test).
+They answer different questions and can disagree in both directions.</p>
+<ul>
+<li><em>Joint rejects, individual tests do not.</em> Two highly
+correlated regressors (say income and wealth) each have large standard
+errors because the data cannot separate them, while their combined
+contribution is estimated precisely.</li>
+<li><em>An individual test rejects, the joint test does not.</em> One of
+twenty coefficients has <span class="math inline">\(p=0.03\)</span>; the
+joint test of all twenty allows for the number of chances and may not
+reject.</li>
+</ul>
+<p>Rejecting a joint null says at least one restriction fails, without
+saying which. A claim that ‘all of these effects are nonzero’ requires
+every individual test to reject, and needs no multiplicity correction. A
+claim that ‘at least one is nonzero’, made from the individual tests,
+does need one. It helps to state in advance which of the two the
+research hypothesis is.</p>
+</div>
+</div>
 </div>
 <div id="other-issues" class="section level3" number="2.6.4">
 <h3><span class="header-section-number">2.6.4</span> Other issues</h3>
 <p>(Mention, link to later discussion: issues of the overall false error rate/coverage with MHT)</p>
+<div class="claude-explains">
+<p><strong>Claude explains: multiple hypothesis testing in brief</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>With <span class="math inline">\(m\)</span> independent tests of true
+nulls at the 5% level, the chance of at least one false rejection is
+<span class="math inline">\(1-0.95^m\)</span>: 23% for <span
+class="math inline">\(m=5\)</span>, 64% for <span
+class="math inline">\(m=20\)</span>. Two error rates are commonly
+controlled:</p>
+<ul>
+<li><em>Family-wise error rate (FWER)</em>: the probability of any false
+rejection. Bonferroni (use <span
+class="math inline">\(\alpha/m\)</span>) and Holm’s step-down version
+control it; Holm is never less powerful than Bonferroni. Resampling
+methods (Westfall–Young, Romano–Wolf) gain power by using the
+correlation between test statistics.</li>
+<li><em>False discovery rate (FDR)</em>: the expected share of
+rejections that are false. The Benjamini–Hochberg procedure controls it
+and is less conservative when many hypotheses are tested; ‘sharpened
+q-values’ (Anderson 2008) are common in economics.</li>
+</ul>
+<p>What counts as the family (outcomes within a domain, treatment arms,
+subgroups) is a judgment call. Pre-specifying a primary outcome, or
+combining related outcomes into an index, reduces the number of tests so
+that less correction is needed. See Section <a href="reg-follies.html#mht">4.1.9</a>.</p>
+</div>
+</div>
 
 </div>
 </div>

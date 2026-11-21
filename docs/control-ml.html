@@ -1609,6 +1609,44 @@ there is <em>also</em> an impact of changing one coefficient on the <em>other</e
 derivatives. As one coefficient shrinks to zero the marginal impact of
 the other coefficients on the SSR may (will?) increase.</p>
 <pre><code>- At the same time, we need that the effect of increasing it from zero need not be infinite, so it might not outweigh the linear penalty, thus some coefficients might be set to zero</code></pre>
+<div class="claude-explains">
+<p><strong>Claude explains: why the lasso shrinks some coefficients part of the way</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p>RSS is quadratic in each coefficient. Its own-derivative, <span
+class="math inline">\(\partial
+RSS/\partial\beta_j=-2x_j&#39;(y-X\beta)\)</span>, is zero at the OLS
+solution and grows linearly as <span
+class="math inline">\(\beta_j\)</span> moves away from it. So the
+own-derivative is not constant: the first small step away from OLS costs
+almost nothing in fit, and each further step costs more. The penalty
+saved per unit of shrinkage is constant at <span
+class="math inline">\(\lambda\)</span>, so each coefficient is shrunk
+until the marginal loss of fit equals <span
+class="math inline">\(\lambda\)</span>. Cross-effects between
+coefficients are not needed for this; partial shrinkage happens even
+with a single regressor.</p>
+<p>With one standardised regressor (or orthonormal regressors) the
+objective is <span
+class="math inline">\(\frac12(\hat\beta^{OLS}-\beta)^2+\lambda|\beta|\)</span>
+and the solution is soft-thresholding: <span
+class="math display">\[\hat\beta^{lasso}=\text{sign}(\hat\beta^{OLS})\,\big(|\hat\beta^{OLS}|-\lambda\big)_+
+.\]</span> With <span class="math inline">\(\lambda=0.5\)</span>, an OLS
+coefficient of 2 becomes 1.5, 0.8 becomes 0.3, and 0.4 becomes exactly
+0. Every coefficient moves toward zero by <span
+class="math inline">\(\lambda\)</span>, and those within <span
+class="math inline">\(\lambda\)</span> of zero stop at zero. The corner
+exists because the marginal penalty stays at <span
+class="math inline">\(\lambda\)</span> all the way down to zero.</p>
+<p>Ridge differs because its marginal penalty, <span
+class="math inline">\(\lambda\beta_j\)</span> for a penalty of <span
+class="math inline">\(\frac{\lambda}{2}\beta_j^2\)</span>, vanishes as
+<span class="math inline">\(\beta_j\to0\)</span>. In the orthonormal
+case ridge scales every coefficient to <span
+class="math inline">\(\hat\beta^{OLS}/(1+\lambda)\)</span> and never
+sets one exactly to zero. With correlated regressors the amounts differ
+but the logic is the same.</p>
+</div>
+</div>
 <p><strong>Relaxed lasso</strong></p>
 <blockquote>
 <p>the least-squares fit on the subset of the three predictors tends to

@@ -1280,6 +1280,37 @@ div.csl-indent {
 <div class="marginnote">
 <p>DR: When I first heard about this MLM stuff, coming from an econometric background, it seemed like trying to ‘have your cake and eat it too.’ If you ‘control’ at the level of clusters, how can you also make inferences about things that vary within clusters. I think I was wrong about this.</p>
 </div>
+<div class="claude-explains">
+<p><strong>Claude explains: clustered SEs, random intercepts and fixed effects</strong> <em>(AI-written; not yet checked by David)</em></p>
+<div class="fold">
+<p><em>Clustered standard errors</em> leave the OLS coefficients
+unchanged and adjust their standard errors for any pattern of
+correlation within clusters.</p>
+<p><em>A random-intercept model</em> changes the coefficients too. It
+assumes each cluster’s intercept <span
+class="math inline">\(\alpha_j\)</span> is drawn from <span
+class="math inline">\(N(\lambda, \sigma_v^2)\)</span> and estimates by
+GLS or maximum likelihood. This (a) assumes the same correlation between
+every pair in a cluster, (b) combines within-cluster and between-cluster
+variation, weighting each by its precision, and (c) requires the cluster
+effect to be uncorrelated with the regressors. If (c) fails the
+coefficients are biased, and clustering the standard errors does not
+repair that.</p>
+<p><em>Fixed effects</em> (cluster dummies) drop assumption (c) by using
+only within-cluster variation, and so cannot estimate the effect of
+anything that is constant within a cluster.</p>
+<p>The ‘have your cake and eat it’ worry is therefore well placed: the
+multilevel model buys cluster-level coefficients with assumption (c).
+The correlated-random-effects device (Mundlak 1978) relaxes it. Adding
+the cluster mean <span class="math inline">\(\bar{x}_j\)</span> as a
+regressor reproduces the fixed-effects coefficient on <span
+class="math inline">\(x\)</span> while still estimating the effects of
+cluster-level variables <span class="math inline">\(z_j\)</span> (Bell
+and Jones 2015). That is probably the ‘new approach’ that makes the
+random effect a function of covariates, mentioned under the level-1
+model below.</p>
+</div>
+</div>
 <p>See also: gelmanChapterMRPNoncensus</p>
 <div id="introduction-qstep" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Introduction (Qstep)</h2>

@@ -17,7 +17,35 @@ These 'decision optimization' cases are referred to as 'reinforcement learning' 
 
 ## Statistical inference 
 
+:::: {.claude-explains}
+**Claude explains: what 'inference' adds to estimation** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Inference means using a sample to say something about a quantity we cannot observe directly, together with a statement of how uncertain we are. Three objects are worth keeping apart: the *estimand* (the target, e.g. the mean effect of a matching offer on donations among all donors), the *estimator* (the rule applied to the data, e.g. a difference in sample means), and the *estimate* (the number obtained, e.g. £2.10).
+
+Uncertainty has different sources, and the standard error should match the source:
+
+- *Sampling-based*: we observed a sample from a larger population.
+- *Design-based*: we observe everyone of interest, but treatment was assigned at random and another assignment would have given another estimate. Abadie, Athey, Imbens and Wooldridge (2020, *Econometrica*) show that the usual robust standard errors are then conservative.
+- *Model-based*: the data are treated as draws from an assumed probability model.
+
+Description, prediction and causal inference use the same tools with different estimands. Many disagreements about method turn out to be disagreements about which estimand is intended.
+:::
+::::
+
 ## Bayesian vs. frequentist approaches
+
+:::: {.claude-explains}
+**Claude explains: the two approaches in brief** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+*Frequentist.* The parameter is a fixed unknown. Probability describes how the data, and anything computed from them, would vary over repeated samples. A 95% confidence interval comes from a procedure that covers the true value in 95% of repeated samples. A p-value is the probability of data at least as extreme as those observed if the null hypothesis were true.
+
+*Bayesian.* Probability describes uncertainty about the parameter itself. A prior $p(\theta)$ is combined with the likelihood $p(y \mid \theta)$ to give the posterior, $p(\theta \mid y) \propto p(y \mid \theta)\,p(\theta)$. A 95% credible interval contains the parameter with 95% posterior probability, given the model and the prior.
+
+With a lot of data and a diffuse prior the two intervals are usually numerically close (the Bernstein–von Mises result). They diverge with small samples, with informative priors, with many parameters (hierarchical models pull noisy group estimates toward the overall mean), and under optional stopping, which changes frequentist error rates while the stopping rule does not enter the posterior. See Chapter \@ref(bayes).
+:::
+::::
 
 
 <!-- 
@@ -33,7 +61,37 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ## Causal vs. descriptive; 'treatment effects' and the potential outcomes causal model
 
+:::: {.claude-explains}
+**Claude explains: potential outcomes in one page** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Each unit $i$ has two potential outcomes: $Y_i(1)$ if treated and $Y_i(0)$ if not. The individual effect is $Y_i(1)-Y_i(0)$, and only one of the two outcomes is ever observed (the 'fundamental problem of causal inference', Holland 1986). So we target averages: the ATE, $E[Y(1)-Y(0)]$, or the effect on the treated, $ATT=E[Y(1)-Y(0) \mid D=1]$.
+
+The raw comparison of treated and untreated groups decomposes as
+
+$$E[Y \mid D=1]-E[Y \mid D=0] = \underbrace{E[Y(1)-Y(0) \mid D=1]}_{ATT} + \underbrace{E[Y(0) \mid D=1]-E[Y(0) \mid D=0]}_{\text{selection bias}}.$$
+
+Random assignment makes $D$ independent of the potential outcomes, so the selection term is zero and the ATT equals the ATE. Each observational method is an argument for why the selection term is zero or can be removed: conditioning on covariates, instruments, discontinuities, parallel trends.
+
+A descriptive claim ('graduates earn 30% more') needs none of this. The causal claim ('a degree raises earnings by 30%') needs the selection term to vanish. The framework also assumes no interference between units and a single version of the treatment (SUTVA).
+:::
+::::
+
 ### DAGs and Potential outcomes
+
+:::: {.claude-explains}
+**Claude explains: what DAGs add** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+A directed acyclic graph (DAG) draws variables as nodes and direct causal effects as arrows. It makes the assumptions behind a 'control for X' strategy explicit. Three patterns cover most cases:
+
+- *Confounder* ($D \leftarrow X \rightarrow Y$): control for $X$.
+- *Mediator* ($D \rightarrow M \rightarrow Y$): controlling for $M$ removes part of the effect you want.
+- *Collider* ($D \rightarrow C \leftarrow Y$): controlling for $C$, or selecting the sample on it, distorts the association between $D$ and $Y$, and can create one where there is no effect.
+
+The back-door criterion says which sets of controls identify the effect: a set that blocks every back-door path (every path from $D$ to $Y$ that starts with an arrow into $D$) and contains no descendant of $D$. This is the graphical counterpart of 'unconfoundedness given $X$' in potential-outcomes notation, and the two frameworks are formally compatible. Imbens (2020, *Journal of Economic Literature*) compares them and argues that potential outcomes handle the designs economists rely on (IV with monotonicity, regression discontinuity, difference-in-differences) more naturally. See also the 'bad control' discussion in Chapter \@ref(reg-follies).
+:::
+::::
 
 ## Theory, restrictions, and 'structural vs reduced form'
 
@@ -43,11 +101,51 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 ### Bayesian vs. frequentist hypothesis 'testing'
 
+:::: {.claude-explains}
+**Claude explains: p-values and Bayes factors** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+A p-value is $P(\text{data at least this extreme} \mid H_0)$. It does not give $P(H_0 \mid \text{data})$, which also depends on how plausible the alternatives were beforehand and how well they predict the data.
+
+The Bayesian counterpart is the Bayes factor, $BF_{10}=P(\text{data} \mid H_1)/P(\text{data} \mid H_0)$, with posterior odds $= BF_{10} \times$ prior odds. Each term averages the likelihood over that hypothesis's prior on its parameters, so the Bayes factor depends on the prior for the effect size under $H_1$. A very diffuse prior makes $H_1$ predict the data poorly and favors $H_0$ (the Jeffreys–Lindley paradox).
+
+A calibration: for $p<1/e$, the Bayes factor against the null is at most $1/(-e\,p\ln p)$ under a wide class of alternatives (Sellke, Bayarri and Berger 2001). For $p=0.05$ the bound is about 2.5; for $p=0.005$, about 14. With even prior odds, $p=0.05$ leaves at least a 29% posterior probability that the null is true.
+
+Many Bayesian analysts skip point-null tests and report the posterior for the effect: the probability that it is positive, or that it lies in a 'region of practical equivalence' around zero.
+:::
+::::
+
 ### Individual vs. joint hypothesis testing: what does it mean?
+
+:::: {.claude-explains}
+**Claude explains: individual and joint tests** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+An individual test concerns one restriction (e.g. $\beta_1=0$, a t-test). A joint test asks whether several restrictions hold together (e.g. $\beta_1=\beta_2=0$, an F or Wald test). They answer different questions and can disagree in both directions.
+
+- *Joint rejects, individual tests do not.* Two highly correlated regressors (say income and wealth) each have large standard errors because the data cannot separate them, while their combined contribution is estimated precisely.
+- *An individual test rejects, the joint test does not.* One of twenty coefficients has $p=0.03$; the joint test of all twenty allows for the number of chances and may not reject.
+
+Rejecting a joint null says at least one restriction fails, without saying which. A claim that 'all of these effects are nonzero' requires every individual test to reject, and needs no multiplicity correction. A claim that 'at least one is nonzero', made from the individual tests, does need one. It helps to state in advance which of the two the research hypothesis is.
+:::
+::::
 
 ### Other issues
 
 (Mention, link to later discussion: issues of the overall false error rate/coverage with MHT)
+
+:::: {.claude-explains}
+**Claude explains: multiple hypothesis testing in brief** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+With $m$ independent tests of true nulls at the 5% level, the chance of at least one false rejection is $1-0.95^m$: 23% for $m=5$, 64% for $m=20$. Two error rates are commonly controlled:
+
+- *Family-wise error rate (FWER)*: the probability of any false rejection. Bonferroni (use $\alpha/m$) and Holm's step-down version control it; Holm is never less powerful than Bonferroni. Resampling methods (Westfall–Young, Romano–Wolf) gain power by using the correlation between test statistics.
+- *False discovery rate (FDR)*: the expected share of rejections that are false. The Benjamini–Hochberg procedure controls it and is less conservative when many hypotheses are tested; 'sharpened q-values' (Anderson 2008) are common in economics.
+
+What counts as the family (outcomes within a domain, treatment arms, subgroups) is a judgment call. Pre-specifying a primary outcome, or combining related outcomes into an index, reduces the number of tests so that less correction is needed. See Section \@ref(mht).
+:::
+::::
 
 
 

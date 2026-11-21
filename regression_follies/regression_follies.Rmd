@@ -36,6 +36,20 @@
 
 - Failure to adjust for multiple-hypothesis testing
 
+:::: {.claude-explains}
+**Claude explains: logs, zeros and $\log(1+y)$** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Two separate problems sit behind these bullets.
+
+Dropping the zeros and running OLS on $\log y$ estimates an effect among givers only. If treatment changes who gives, treated and control givers are different people and the comparison is selected (see the ['conditional on positive' chapter](#selection_cop)).
+
+$\log(1+y)$ and the inverse hyperbolic sine keep the zeros, but the coefficient is not a percentage effect and it depends on the units of $y$. Moving someone from 0 to 20 dollars changes $\log(1+y)$ by 3.0; measured in cents (0 to 2000) the same move is 7.6. Chen and Roth (2024, 'Logs with Zeros? Some Problems and Solutions') show that whenever treatment moves some units off zero, the estimated effect on $\log(1+y)$ can be made any size by rescaling $y$, and that when outcomes can be zero no parameter is at once an average of individual-level effects, unit-invariant and point-identified.
+
+Options with a clear meaning: (1) Poisson pseudo-maximum-likelihood with robust standard errors, which estimates the proportional effect on the mean, $E[y \mid T = 1] / E[y \mid T = 0] - 1$, and handles zeros (Santos Silva and Tenreyro 2006); (2) the effect in levels, perhaps scaled by the control mean; (3) separate extensive and intensive margins, with Lee (2009) bounds for the intensive part; (4) an explicit valuation of the extensive margin, e.g. $\log y$ for $y > 0$ and a stated value at $y = 0$.
+:::
+::::
+
 ### Bad control
 
 From MHE:
@@ -104,6 +118,22 @@ E.g., if the treatment is binary, the estimator will most heavily weight those p
 
 The formula is ...
 
+:::: {.claude-explains}
+**Claude explains: the OLS weights** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Suppose the controls are a full set of group dummies and the effect of a binary treatment $D$ in group $g$ is $\beta_g$. Then (Angrist 1998; *Mostly Harmless Econometrics* 3.3.1)
+
+$$\hat\beta_{OLS} \;\to\; \sum_g w_g\, \beta_g, \qquad w_g = \frac{\pi_g\, p_g (1 - p_g)}{\sum_h \pi_h\, p_h (1 - p_h)},$$
+
+where $\pi_g$ is the group's population share and $p_g$ the share of the group that is treated. The ATE uses $w_g = \pi_g$. For a continuous treatment, replace $p_g(1-p_g)$ with the within-group variance of $D$.
+
+Example: two equal-sized groups. In group 1 half are treated and the effect is 1. In group 2 a tenth are treated and the effect is 3. The ATE is 2. The OLS weights are proportional to $0.25$ and $0.09$, so $w_1 = 0.74$, $w_2 = 0.26$, and OLS converges to $0.74 \times 1 + 0.26 \times 3 = 1.53$.
+
+The weights reflect where the treatment varies given the controls; outcome noise does not enter. Two later results extend this. Słoczyński (2022) shows OLS is a weighted average of the effect on the treated and the effect on the untreated, with more weight on whichever group is *smaller*. Goldsmith-Pinkham, Hull and Kolesár (2024) show that with several treatment arms each coefficient is also contaminated by the effects of the other arms.
+:::
+::::
+
 \
 
 ```{block2,  type='note'}
@@ -142,6 +172,22 @@ Another way of expressing interactions, particularly helpful with multi-level in
 <div class="marginnote">
 [There are various forms of 'effect coding' of which 'effect contrast coding' is one.](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/#:~:text=Unlike%20dummy%20coding%2C%20effect%20coding,variable%20must%20sum%20to%20zero.)
 </div>
+
+:::: {.claude-explains}
+**Claude explains: when the uninteracted coefficient is the ATE** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+In $y = a + bT + cG + d\,(T \times G)$ the coefficient $b$ is the treatment effect for a unit with $G = 0$. The coding of $G$ therefore decides what $b$ means.
+
+- Dummy coding (0/1): $b$ is the effect in the base group.
+- Effect coding ($\pm\tfrac12$): $b$ is the simple average of the two group effects, which equals the ATE only when the groups are the same size.
+- Mean-centring ($G - \bar{G}$): $b$ is the average of the group effects weighted by group shares. That is the ATE.
+
+Example: women are 70% of the sample with effect 2; men are 30% with effect 4. Dummy coding with men as the base gives $b = 4$. Effect coding gives $b = 3$. Centring the female dummy at 0.7 gives $b = 0.7 \times 2 + 0.3 \times 4 = 2.6$, the ATE.
+
+So the answer to the question above is yes, weight each group's slope by its population share, and the simple way to get that from one regression is to interact treatment with *demeaned* covariates (Lin 2013). The same device works with several covariates at once, exactly when the model is saturated and approximately when the interactions are close to linear.
+:::
+::::
 
 
 

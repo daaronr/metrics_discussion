@@ -338,6 +338,22 @@ Outcomes like
 
 -   Incidence Rate Ratio: similar to OR but scaled by duration, I think
 
+:::: {.claude-explains}
+**Claude explains: three ratio measures.** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Suppose 20 of 100 treated and 10 of 100 controls have the event.
+
+- *Risk ratio (relative risk)*: risk in treatment over risk in control, $0.20/0.10 = 2.0$. This is the 'relative incidence'.
+- *Odds ratio*: odds in treatment over odds in control, $(20/80)/(10/90) = 2.25$. It approximates the risk ratio when the event is rare and is further from 1 otherwise.
+- *Incidence rate ratio*: events per unit of person-time in treatment over the same in control. It is the analogue of the risk ratio when follow-up time differs across people or arms.
+
+Pooling is done on the log scale, where estimates are closer to normal: here $SE(\log OR) = \sqrt{1/a + 1/b + 1/c + 1/d} = 0.42$ and $SE(\log RR) = \sqrt{1/a - 1/n_T + 1/c - 1/n_C} = 0.36$, with $a, b$ the events and non-events in treatment and $c, d$ in control. Results are exponentiated for reporting.
+
+Inverse-variance weights break down when a cell is zero or tiny, because the log ratio and its SE are undefined or unstable. That is the 'sparse data' problem in the quotation below. `metabin()` uses the Mantel–Haenszel method by default for this reason, and the Peto method is an option for rare events.
+:::
+::::
+
 Packages:
 
 -   Again we use `metagen` for pooled data.
@@ -621,6 +637,18 @@ The *formula for the model* is specified using 'regression formula notation' (un
 ::: {.marginnote}
 DRL Not sure I understand this; may need to revise and give a clear explanation. I guess it's something like 'the estimated parameter densities can then be drawn and run to simulate a dgp, which should yield data looking like the original data set'...
 :::
+
+:::: {.claude-explains}
+**Claude explains: convergence and fit are separate questions.** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+*Convergence* asks whether the sampler is drawing from the posterior of the model as specified. It is a computational matter, checked with $\hat R$, effective sample size and trace plots. MCMC is a sampler, so nothing is being optimised; the heading's 'found an optimum' should read 'is sampling from the posterior'.
+
+*Posterior predictive checking* asks whether the fitted model can reproduce the data. For each posterior draw $\theta^{(s)}$, simulate a replicated dataset $y^{rep(s)} \sim p(y \mid \theta^{(s)})$. `pp_check()` overlays the densities of several replicates (light lines) on the observed data (dark line). Systematic gaps, such as observed effect sizes that are more skewed or more dispersed than any replicate, point to a misspecified model, for instance a normal distribution of true effects when there are outlying studies.
+
+The two can come apart in both directions. A perfectly converged sampler can be fitting a poor model and fail the check. A model can pass the check while the chains have not mixed. With only 18 studies, as here, the check is also coarse, so passing it is weak reassurance.
+:::
+::::
 
 ```{r}
 pp_check(m.brm)

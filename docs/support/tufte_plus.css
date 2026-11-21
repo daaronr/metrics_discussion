@@ -473,3 +473,23 @@ h3.subtitle em {
   }
 
 /*Note here to check it's updating */
+
+
+/* 'Claude explains' boxes: AI-written explanations added from the Nov 2026 review.
+   Title line stays visible; the body is folded with the existing .fold mechanism. */
+.claude-explains {
+  background: #eaf4fb;
+  border: 1px solid #7fa7c4;
+  padding: .8em;
+  max-width: 75%;
+  margin: 1em 0;
+}
+.claude-explains p { width: 100%!important; }
+.claude-explains > p:first-child { margin-top: 0; }
+.claude-explains .fold {
+  border: none;
+  padding: 0;
+  max-width: 100%;
+  min-height: 0;
+}
+@media (max-width: 800px) { .claude-explains { max-width: 100%; } }

@@ -2,6 +2,22 @@
 
 ## 'Corner solution' or hurdle variables and 'Conditional on Positive'
 
+:::: {.claude-explains}
+**Claude explains: why "conditional on positive" comparisons are not causal, even in an RCT** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Comparing mean donations among donors across arms compares different sets of people. If treatment turns some non-donors into donors, the treated donors include these marginal people and the control donors do not.
+
+Hypothetical example. Control: 20% donate, averaging £10. Treatment: the same 20% still give £10, and a further 20% are induced to give £4 each. Nobody gives less. The mean among donors is £10 in control and $(0.2\times10+0.2\times4)/0.4=7$, i.e. £7, in treatment: a CoP "effect" of −£3. Means including zeros are £2.00 and £2.80, and that +£0.80 is the effect randomisation identifies.
+
+In general, $E[Y|Y>0,T=1]-E[Y|Y>0,T=0]$ equals the effect on those who would give in either arm plus a composition term from who is induced in or out.
+
+What to do: report effects on $Y$ including zeros and on $1[Y>0]$; read a two-part (hurdle) model as a description of $E[Y|X]=P(Y>0|X)\,E[Y|Y>0,X]$, with no causal reading of its second part; or bound the intensive-margin effect for "always-positives" with Lee bounds (below).
+
+One distinction: for a corner-solution outcome such as donations, zero is a real value and the unconditional effect is well defined. For wages of the non-employed the outcome does not exist, which is Lee's sample-selection case. The same bounding tools serve both.
+:::
+::::
+
 "Conditional on positive"/"intensive margin" analysis ignores selection *identification issue* 	See  [@angrist2008mostly] on "Good CoP, bad CoP".  See also bounding approaches such as [@leeTrainingWagesSample2009].
 
 \
@@ -99,6 +115,24 @@ Lee notes that he focuses exclusively on the "sample selection on wages caused b
 > "the problem of nonrandom sample selection is well-understood in the training literature; ... may be one of the reasons why most evaluations of job-training programs focus on total earnings, including zeros for those without a job, rather than on wages conditional on employment" "of the 24 studies referenced in a survey ... (Heckman et al.)... Most examine annual, quarterly, or monthly earnings without discussing the sample selection problem of examining wage rates."
 
 – *DR:* (\@NL)Note that this is relevant to our question of whether to exclude zeros in log models, etc. While there will be less unemployment in our data, it still may be a relevant influence and may have a strong effect on the estimates.
+
+:::: {.claude-explains}
+**Claude explains: logs with zeros (Chen and Roth 2024)** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+Chen and Roth (2024, *Quarterly Journal of Economics*, "Logs with zeros? Some problems and solutions") show that when treatment changes the probability of a zero, the average effect on $\log(1+Y)$ or $\text{arcsinh}(Y)$ depends on the units of $Y$. Rescaling from euros to thousands of euros changes the estimate, and it can be made almost arbitrarily large, so it cannot be read as a percentage effect.
+
+Dropping the zeros gives the conditional-on-positive comparison, which is not causal when treatment affects who has a positive outcome (first section of this chapter).
+
+Their alternatives:
+
+1. Estimate the effect in levels and express it as a percentage of the control mean. Poisson quasi-maximum likelihood does this directly and handles zeros (Santos Silva and Tenreyro 2006).
+2. State explicitly how much a move from zero to positive is worth relative to a percentage change among positives, and estimate the effect on that scale.
+3. Report the margins separately: the extensive margin on $1[Y>0]$, and the intensive margin for those positive under either treatment, using Lee bounds.
+
+For the NL income outcomes, with little unemployment, option 1 or 3 would both be reasonable; the choice should be made before seeing results.
+:::
+::::
 
 ***
 
@@ -211,6 +245,20 @@ Their estimate converges to the estimate he calls an estimate for the "always ta
 *So, a very vanilla estimator is acceptable if we find the same conditional probability of selection for each group, under monotonicity, which, for this case, we can test (see Remark 4 below).*
 
 – (DR: To me this suggests that there might be something wrong going on here. Intuitively, If I simply observe the same rate of attrition in the treatment and control groups this *shouldn't* be enough to tell me that attrition did not matter, as it could occur differentially for both groups, but it seems to be a result here; this is probably due to the assumption of monotonicity of the selection/observation term, as well as  the random/exogenous assignment to each group.)
+
+:::: {.claude-explains}
+**Claude explains: equal attrition rates and what they do and do not show** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+The intuition is right, and the result rests on monotonicity. Under monotonicity treatment can move people only into the observed sample (or only out). Equal observation rates then mean it moved nobody, so the same types are observed in both arms and the simple comparison is unbiased for them.
+
+Without monotonicity, equal rates can hide offsetting flows. Hypothetical: being asked to donate leads 10% of subjects (less generous) to drop out before round 2, and leads another 10% (more generous) to return who otherwise would not have. Attrition is identical across arms, yet treated stayers are more generous on average and the comparison is biased.
+
+So balanced attrition rates are weak evidence taken alone. Two checks add information. Compare baseline covariates of stayers across arms (Lee's Remark 4): a difference rejects "equal rates plus monotonicity". And where two-way flows are plausible, as in the substitution experiments, report bounds that relax monotonicity.
+
+Ghanem, Hirshleifer and Ortiz-Becerra, "Testing Attrition Bias in Field Experiments" (*Journal of Human Resources* 61(2), 2026, 690--731; online 2023), set out which attrition tests correspond to which identifying assumptions.
+:::
+::::
 
 ***
 

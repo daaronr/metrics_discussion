@@ -48,6 +48,22 @@ $$\rho_{XX'} = \sigma_T^2 / \sigma_X^2 = \sigma_T^2 / (\sigma_T^2 + \sigma_E^2)$
 Why is a larger reliability coefficient a good thing? I guess because it indicates that made the measurement error part as small as possible given the true score variance. But wouldn't it be better to choose a measure with a lower 'true score variance'?
 </div>
 
+:::: {.claude-explains}
+**Claude explains: why higher reliability is better, and what it does to regressions** *(AI-written; not yet checked by David)*
+
+::: {.fold}
+True-score variance is the signal: real differences between people in the thing being measured. Error variance is noise. Reliability, $\sigma_T^2 / (\sigma_T^2 + \sigma_E^2)$, is the share of observed variation that is signal. A measure with little true-score variance cannot tell people apart, so lowering it would make the measure worse. The aim is low error variance relative to the real differences in the population studied. (The same instrument therefore has lower reliability in a more homogeneous sample.)
+
+In econometric terms, reliability is the attenuation factor from classical measurement error:
+
+- Noisy *regressor*: the OLS slope converges to $\beta \times$ reliability. With reliability 0.7, a true slope of 1 is estimated as 0.7. With other covariates correlated with the true regressor the attenuation is larger, because they absorb signal and leave the noise.
+- Noisy *outcome*: the unstandardised coefficient is unbiased but less precise. Standardised effects (Cohen's $d$, correlations) shrink by $\sqrt{\text{reliability}}$, so $d = 0.5$ on the true score becomes $0.42$ on a measure with reliability 0.7.
+- A correlation between two noisy measures is the true correlation times $\sqrt{r_X\, r_Y}$ (Spearman's attenuation formula).
+
+All of this assumes the errors are unrelated to the true score and to each other. Two self-reports from the same survey often share error ('common methods bias', below), which can inflate a correlation.
+:::
+::::
+
 
 
 ### @raykovMetaanalysisScaleReliability2013
