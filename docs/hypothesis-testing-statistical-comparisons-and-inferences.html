@@ -1342,7 +1342,7 @@ div.csl-indent {
 <blockquote>
 <p>Hmm, so BF are also known as ratios of marginal likelihoods, i.e., where the likelihood is marginalized (integrated over) the prior.</p>
 </blockquote>
-<p>Define terms (notation from Wikipedia "Marginal likelihood’)</p>
+<p>Define terms (notation from Wikipedia, ‘Marginal likelihood’)</p>
 <p>IID points <span class="math inline">\(\mathbf{X}=(x_1,\ldots,x_n),\)</span> where <span class="math inline">\(x_i \sim p(x_i|\theta)\)</span> and <span class="math inline">\(\theta\)</span> is a random variable described by
 <span class="math inline">\(\theta \sim p(\theta|\alpha)\)</span></p>
 <p>“the marginal likelihood in general asks what the probability <span class="math inline">\(p(\mathbf{X}|\alpha)\)</span> is, where <span class="math inline">\(\theta\)</span> has been … integrated out”</p>
@@ -1357,7 +1357,7 @@ div.csl-indent {
 </blockquote>
 </div>
 <p>This makes more sense I guess:</p>
-<p>“Marginal likelihood under H0” = <span class="math inline">\(L_0= p\big(p(\mathbf{X}|\theta \in H_0\big)| \alpha)\)</span> (not sure this notation is correct):</p>
+<p>“Marginal likelihood under H0” = <span class="math inline">\(L_0 = p(\mathbf{X} \mid H_0) = \int p(\mathbf{X} \mid \theta)\, p(\theta \mid H_0)\, d\theta\)</span>:</p>
 <p>The sum of the likelihood of the data given each possible value of the parameter that is consistent with <span class="math inline">\(H_0\)</span>, weighted by the prior probability of that parameter. This should yield “the probability of the data (given the prior) if H0 holds.”</p>
 <p>“Marginal likelihood under HA” = <span class="math inline">\(L_A\)</span>: …</p>
 <p>(replace HA in above). This should yield “the probability of the data (given the prior) if HA holds”</p>
@@ -1366,6 +1366,9 @@ div.csl-indent {
 <p>The marginal likelihood is also the denominator term in Bayes theorem, and is basically a normalizing constant, there to re-scale the numerator to make sure everything integrates / sums to 1 according to the law of total probability.</p>
 </blockquote>
 <p>DR: So with my second interpretation above we have “Marginal likelihood under H0” + “Marginal likelihood under HA” <span class="math inline">\(L_0 + L_A= 1\)</span></p>
+<p><em>Correction:</em> the two marginal likelihoods do not sum to one. Each is the probability (density) of the observed data under one model, <span class="math inline">\(L_0 = p(\mathbf{X} \mid H_0) = \int p(\mathbf{X} \mid \theta)\, p(\theta \mid H_0)\, d\theta\)</span> and likewise <span class="math inline">\(L_A\)</span>; both can be tiny or both large. For a point null, <span class="math inline">\(L_0\)</span> is simply <span class="math inline">\(p(\mathbf{X} \mid \theta = 0)\)</span>. What sums to one is the pair of posterior model probabilities, <span class="math inline">\(P(H_0 \mid \mathbf{X}) + P(H_A \mid \mathbf{X}) = 1\)</span>, with</p>
+<p><span class="math display">\[P(H_0 \mid \mathbf{X}) = \frac{P(H_0)\, L_0}{P(H_0)\, L_0 + P(H_A)\, L_A}.\]</span></p>
+<p>The denominator is the ‘normalizing constant’ Nik refers to: <span class="math inline">\(p(\mathbf{X}) = P(H_0)\, L_0 + P(H_A)\, L_A\)</span>. The Bayes factor is <span class="math inline">\(L_0 / L_A\)</span> (or its inverse).</p>
 <blockquote>
 <p>In the discrete case, it’s just taking the likelihood at every point in the prior, and then averaging them all together, weighted in proportion to the prior mass (in the continuous case, this is an integration step). It’s basically giving a value proportional to your probability of observing the data, under the model in question (the model being composed of all the relations between parameters, the priors on those parameters, the distribution from which the data are drawn, etc.).</p>
 </blockquote>
@@ -1378,9 +1381,8 @@ div.csl-indent {
 <p>In that case, you wouldn’t need to do do any integration / summation over that point mass prior, since it’s not free to vary (and in practice, we’re approximating all these integrals / averages numerically through a hodgepodge of algorithms)</p>
 </blockquote>
 <p>DR: But if we were to use a ‘point mass prior only’ (e.g., we put <span class="math inline">\(P=1\)</span> on <span class="math inline">\(B=0\)</span>) for both H0 and HA and H0 were that <span class="math inline">\(B=0\)</span> and HA that <span class="math inline">\(B \neq 0\)</span> this would not make sense. The prior must be something such as</p>
-<p><span class="math display">\[Pr(B=0)=1/2\]</span>
-<span class="math display">\[Pr(B=x \neq 0) \sim N(0,1)/2\]</span>
-Is that a reasonable way to frame it?</p>
+<p><span class="math display">\[p(B) = \tfrac12\, \delta_0(B) + \tfrac12\, \phi(B)\]</span>
+(a point mass at zero plus half a standard normal density) Is that a reasonable way to frame it?</p>
 <p><br />
 </p>
 <p>Nik:</p>
@@ -1404,10 +1406,10 @@ Is that a reasonable way to frame it?</p>
 <p>We can compute the density or mass of <span class="math inline">\(X\)</span> in this joint distribution, marginalizing / integrating over the unobserved variables <span class="math inline">\(\theta\)</span>. Back in jargonland, this is the marginal likelihood of the model <span class="math inline">\(P(X|M)\)</span>, though usually the <span class="math inline">\(M\)</span> is implied and we just write <span class="math inline">\(P(X)\)</span> to stick in the denominator of Bayes theorem.</p>
 </blockquote>
 <blockquote>
-<p>We can also ask the joint distribution the conditional distribution of <span class="math inline">\(\theta\)</span> given $X, <span class="math inline">\(P(\theta|X,M)\)</span>, or <span class="math inline">\(P(\theta|X)\)</span> for short, in an exactly analogous way to how we might compute, say, the conditional distribution of other joint distributions, like multivariate normals or more exotic stuff. This is also known as the “posterior distribution” of <span class="math inline">\(\theta\)</span>, since it’s the conditional distribution of <span class="math inline">\(\theta\)</span>, i.e. conditional on the observed data. In this particular context though, we’re interested in <span class="math inline">\(P(X|M)\)</span>, and maybe also the corresponding value for some other model <span class="math inline">\(P(X|M_{other})\)</span>. We can take the ratio of these – a ratio of marginal likelihoods – to get a Bayes Factor, and interpret it according to some IMO silly table. Or we could multiply them by model priors and rescale so things sum to 1 to get model posterior probabilities.</p>
+<p>We can also ask the joint distribution the conditional distribution of <span class="math inline">\(\theta\)</span> given <span class="math inline">\(X\)</span>, <span class="math inline">\(P(\theta|X,M)\)</span>, or <span class="math inline">\(P(\theta|X)\)</span> for short, in an exactly analogous way to how we might compute, say, the conditional distribution of other joint distributions, like multivariate normals or more exotic stuff. This is also known as the “posterior distribution” of <span class="math inline">\(\theta\)</span>, since it’s the conditional distribution of <span class="math inline">\(\theta\)</span>, i.e. conditional on the observed data. In this particular context though, we’re interested in <span class="math inline">\(P(X|M)\)</span>, and maybe also the corresponding value for some other model <span class="math inline">\(P(X|M_{other})\)</span>. We can take the ratio of these – a ratio of marginal likelihoods – to get a Bayes Factor, and interpret it according to some IMO silly table. Or we could multiply them by model priors and rescale so things sum to 1 to get model posterior probabilities.</p>
 </blockquote>
 <p>DR: This makes sense but it seems equivalent to the previous discussion; I don’t see the distinction.</p>
-<p>But the major question I have is sort of ‘what approach will work to meaningfully asses the evidence for and against the null hypothesis.’ “Against” – this is what the standard p-value NHST presents. “For the null”… seems like it might work in a setup involving a prior putting positive probability mass on a point, but I’m not quite there yet.</p>
+<p>But the major question I have is sort of ‘what approach will work to meaningfully assess the evidence for and against the null hypothesis.’ “Against” – this is what the standard p-value NHST presents. “For the null”… seems like it might work in a setup involving a prior putting positive probability mass on a point, but I’m not quite there yet.</p>
 </div>
 </div>
 <div id="packages-the-infer-package-in-r" class="section level2" number="3.4">
@@ -1491,7 +1493,7 @@ Is that a reasonable way to frame it?</p>
 ##  - attr(*, &quot;distr_param&quot;)= Named num 499
 ##   ..- attr(*, &quot;names&quot;)= chr &quot;df&quot;
 ##  - attr(*, &quot;type&quot;)= chr &quot;bootstrap&quot;</code></pre>
-<p><code>specify</code> isn’t just selecting a row; it’s a special “S3 class object”</p>
+<p><code>specify</code> isn’t just selecting a column; it’s a special “S3 class object”</p>
 <blockquote>
 <p>the <code>infer</code> class has been appended on top of the dataframe classes</p>
 </blockquote>

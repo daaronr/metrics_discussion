@@ -24,9 +24,9 @@ From that Twitter thread i also found this really useful [google drive folder](h
 
 This Freyaldenhoven [paper](https://www.aeaweb.org/articles?id=10.1257/aer.20180609) might also be handy. And it looks like there is quite a lot by Susan Athey that we should look at too.
 
-Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of hetergoenous treatment effects in a "better" way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.
+Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of heterogeneous treatment effects in a "better" way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.
 
-That method (CiC) is applied by [this Assuncao paper](https://www.nber.org/papers/w25636) to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targetted municipalities) simply owing to the fact there is very little other forest left to harvest.
+That method (CiC) is applied by [this Assuncao paper](https://www.nber.org/papers/w25636) to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targeted municipalities) simply owing to the fact there is very little other forest left to harvest.
 
 On DiD more generally, I think it suffers from the flaw that we have to somehow establish pre-treatment parallel trends which is basically an issue of 'accepting a null hypothesis' which is clearly not possible with traditional statistical inference.
 
@@ -48,12 +48,12 @@ See esp:
 
 
 <div class="marginnote">
-Ben: Ferraro has a couple of paper which together i think basically just caution against just accepting panel regression approaches on the basis that the covariates are matched well. They are [here](https://www.journals.uchicago.edu/doi/10.1086/689868) and [here](https://www.sciencedirect.com/science/article/pii/S016517651630489X)
+Ben: Ferraro has a couple of papers which together i think basically just caution against just accepting panel regression approaches on the basis that the covariates are matched well. They are [here](https://www.journals.uchicago.edu/doi/10.1086/689868) and [here](https://www.sciencedirect.com/science/article/pii/S016517651630489X)
 </div>
 
 
 
-### Lagged dependent variable and fixed effects --> 'Nickel bias'
+### Lagged dependent variable and fixed effects --> 'Nickell bias'
 
 ### Age-period-cohort effects {#apc-effects}
 
@@ -93,7 +93,7 @@ $$Y_{ij} = \mu  + \alpha_i + \pi_j + \chi_k + \epsilon_{ij} $$
 They refer to the "effect of the ith age group" $\alpha_i$ but this need not be interpreted causally.
 
 $\pi_j$ captures period  $j$, $\chi_k$  the kth cohort $\mu$ the intercept, and $\epsilon_{ij}$  the
- "random disturbance". 
+ "random disturbance". Here cohort $k = j - i + A$ (period minus age, shifted to start at 1, with $A$ age groups).
  
 
 > [The] linear dependency among the variables representing age, period, and cohort, since knowing the values of any two of these variables allows one to know the value of the third ...  means that we cannot estimate the A – 1 age effects, the P − 1 period effects, and the A + P – 1 cohort effects in a single OLS model.

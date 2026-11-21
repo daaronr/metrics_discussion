@@ -1305,7 +1305,7 @@ This ‘book’ organizes my/our notes and helps others engage, understand, lear
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
-<p>My goal in putting this resource is to focus on the practical tools I use and the challenges I (<a href="https://daaronr.github.io/markdown-cv/">David Reinstein</a>) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson.)</p>
+<p>My goal in putting together this resource is to focus on the practical tools I use and the challenges I (<a href="https://daaronr.github.io/markdown-cv/">David Reinstein</a>) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson.)</p>
 <p><br />
 </p>
 <p><em>My focus:</em> Microeconomics, behavioral economics, focus on charitable giving and ‘returns to education’ type of straightforward problems. (Minimal focus on structural approaches.)</p>
@@ -1322,7 +1322,7 @@ This ‘book’ organizes my/our notes and helps others engage, understand, lear
 <p>I will assume familiarity with most basic statistical concepts like ‘bias,’ ‘consistency,’ and ‘null hypothesis testing.’ However, I will focus on some concepts that seem to often be misunderstood and mis-applied, and I will give and link definitions as time permits.</p>
 
 <div class="note">
-<p>If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content (HERE)[<a href="https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html" class="uri">https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html</a>]. This is from a different project but the setup is basically the same.</p>
+<p>If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content <a href="https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html">here</a>. This is from a different project but the setup is basically the same.</p>
 </div>
 <div id="basic-statistical-approaches-and-frameworks" class="section level2 unnumbered">
 <h2><a href="conceptual.html#conceptual">Basic statistical approaches and frameworks</a></h2>
@@ -1341,8 +1341,17 @@ Notes: <a href="bayesian/bayes_notes.Rmd">bayes_notes</a></p>
 <li>Theory, restrictions, and ‘structural vs reduced form’</li>
 </ul>
 </div>
-<div id="regression-and-control-approaches-robustness" class="section level2 unnumbered">
-<h2><a href="reg-control.html#reg_control">Regression and control approaches, robustness</a></h2>
+<div id="how-the-notes-are-organized" class="section level2 unnumbered">
+<h2>How the notes are organized</h2>
+<ul>
+<li><em>Frameworks</em>: <a href="conceptual.html#conceptual">what statistics is for</a>; <a href="hypothesis-testing-statistical-comparisons-and-inferences.html#hypothesis-testing-statistical-comparisons-and-inferences">hypothesis testing and inference</a>; <a href="bayes.html#bayes">Bayesian approaches</a></li>
+<li><em>Regression in practice</em>: <a href="reg-follies.html#reg-follies">common mistakes</a>; <a href="robust-diag.html#robust-diag">robustness and diagnostics</a>; <a href="control-ml.html#control-ml">control strategies, prediction and machine learning</a></li>
+<li><em>Causal inference from observational data</em>: <a href="iv-limitations.html#iv_limitations">IV and its limitations</a>; <a href="causal-inference-other-paths-to-observational-identification.html#other_paths">fixed effects, DiD, RD</a></li>
+<li><em>Causal paths</em>: <a href="mediators.html#mediators">mediation</a>; <a href="selection-cop.html#selection_cop">selection, corner solutions and bounds</a>; <a href="mlm.html#mlm">multi-level models</a></li>
+<li><em>Experiments and surveys</em>: <a href="surveys.html#surveys">survey design and weighting</a>; <a href="why-experiment-design.html#why_experiment_design">why run an experiment</a>; <a href="quant-design-power.html#quant_design_power">pre-registration and treatment assignment</a>; <a href="power.html#power">power calculations</a>; <a href="experimetrics-te.html#experimetrics_te">estimating treatment effects from RCTs</a>; <a href="psychometrics.html#psychometrics">construct validation and factor analysis</a></li>
+<li><em>Combining evidence</em>: <a href="metaanalysis.html#metaanalysis">meta-analysis</a></li>
+<li><em>Data science</em>: <a href="n-ds4bs.html#n_ds4bs">notes on Data Science for Business</a>; <a href="data-sci.html#data-sci">getting, cleaning and using data</a></li>
+</ul>
 <!--
 
 [Getting, cleaning and using data; project management and coding](#data-sci) {-}
@@ -1411,9 +1420,6 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 -  Limitations to inference from learning approaches
 
 -->
-</div>
-<div id="causal-inference-through-observation-caus_inf_obs" class="section level2 unnumbered">
-<h2>Causal inference through observation{-#caus_inf_obs}</h2>
 <!-- 
 ##  [Causal inference: IV (instrumental variables) and its limitations]  {-#iv_limitations}
 
@@ -1436,9 +1442,6 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 
 
 -->
-</div>
-<div id="causal-paths-and-levels-of-aggregation" class="section level2 unnumbered">
-<h2>Causal paths and levels of aggregation</h2>
 <!-- 
 ## Causal paths: [Mediation modeling and its massive limitations](#mediators) {-}
 
@@ -1454,9 +1457,6 @@ An applied review
 
 Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
 -->
-</div>
-<div id="experiments-and-surveys-design-and-analysis" class="section level2 unnumbered">
-<h2>Experiments and surveys: design and analysis</h2>
 <!-- 
 ## [Survey design and implementation; analysis of survey data](-#surveys)
 
@@ -1512,6 +1512,29 @@ Generalizability (and heterogeneity)
 
 -->
 </div>
+<div id="some-key-resources-and-references" class="section level2 unnumbered">
+<h2>Some key resources and references</h2>
+<p><span class="citation">(<a href="#ref-angrist2008mostly" role="doc-biblioref"><strong>angrist2008mostly?</strong></a>)</span></p>
+<p>‘The Mixtape’ (Cunningham)</p>
+<p><span class="citation">(<a href="#ref-kennedyGuideEconometrics2003" role="doc-biblioref"><strong>kennedyGuideEconometrics2003?</strong></a>)</span></p>
+<p>Tibshirani, Robert. n.d. “Statistical Learning with Sparsity the Lasso and Generalizations.”</p>
+<!--[Tibshirani] -->
+<p>OSF guides</p>
+<p>Christensen ea “Transparent and Reproducible Social Science Research”</p>
+<p><span class="citation">(<a href="#ref-wooldridgeEconometricAnalysisCross2002" role="doc-biblioref"><strong>wooldridgeEconometricAnalysisCross2002?</strong></a>; <a href="#ref-wooldridgeIntroductoryEconometricsModern2008" role="doc-biblioref"><strong>wooldridgeIntroductoryEconometricsModern2008?</strong></a>)</span></p>
+<p>Gentzkow and Shapiro (2013) <!-- Add reference --></p>
+<p>An Introduction to Statistical Learning with Applications in R</p>
+<p>R for Data Science Garrett Grolemund, Hadley Wickham, r4ds.hadley.nz</p>
+<p>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</p>
+<div class="marginnote">
+<p>Consider:</p>
+<p>Paul R. Rosenbaum. Observation and Experiment: An Introduction to Causal Inference . Harvard University Press, 2017</p>
+<p>Guido Imbens and Donald Rubin. Causal Inference for Statistics, Social and Biomedical Sciences: An Introduction . Cambridge University Press, 2015</p>
+<p>Judea Pearl</p>
+<p>Imbens: Potential Outcomes versus DAGs</p>
+</div>
+
+</div>
 </div>
             </section>
 
@@ -1519,7 +1542,7 @@ Generalizability (and heterogeneity)
         </div>
       </div>
 
-<a href="other-approaches-techniques-and-applications.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conceptual.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

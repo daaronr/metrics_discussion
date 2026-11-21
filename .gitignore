@@ -6,3 +6,4 @@ _DelSyncFiles/*
 .DS_Store
 meta_anal_and_open_science/paleo_example/*
 *paleo*
+.env

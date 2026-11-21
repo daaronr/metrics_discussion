@@ -26,9 +26,9 @@ See also: gelmanChapterMRPNoncensus
 
 (Gabriel or MLM?) came from test scores modeling, education literature.  Determinants at multiple levels ... e.g,. students' own characteristics and school characteristics
 
-Standard response: clustered standard errors; this is essentially the same as the 'random intercept model'.
+Standard response in economics: OLS with clustered standard errors. This keeps the OLS coefficients and allows any pattern of correlation within clusters when computing their standard errors. A random-intercept model also allows within-cluster correlation, but of one specific form (the same for every pair in a cluster), and it re-weights the data, so the coefficients change as well. The two agree only in special cases, such as a balanced design with a regressor that varies only by cluster.
 
-NoteThere is not necessarily a hierarchy; school versus neighborhood... may overlap $\rightarrow$ 'cross-nested'/'cross-classified'; can have a hierarchy within some levels, not others
+Note: there is not necessarily a hierarchy; school versus neighborhood... may overlap $\rightarrow$ 'cross-nested'/'cross-classified'; can have a hierarchy within some levels, not others
 
 Panel/longitudinal (time/individual)
 
@@ -38,13 +38,13 @@ Accounts for heterogeneity and dependence
 
 ## Some basic theory
 
-Example: student i, score $y_i$, i=1,...l
+Example: student i, score $y_i$, $i = 1, \dots, N$
 
 Characteristics of i $X_i$ and of school j
 
 ### Level 1 model
 
-$y_i = \alpha_j + \beta x_i + \epsilon_i$
+$y_{ij} = \alpha_j + \beta x_{ij} + \epsilon_{ij}$ (student $i$ in school $j$)
 
 
 Intercept varies across schools
@@ -60,17 +60,17 @@ Together with the level-1 term, a mlm
 
 'Bias-adjusted FE' is that other fancier approach that Sebastian does; requires stronger assumptions
 
-The $v_j$ term allows an explicit heterogeneity of the effect
+The $v_j$ term is the part of the school intercept not explained by $z_j$: unobserved school-level differences in the level of scores. It does not let the effect $\beta$ differ across schools; that needs a random slope, $\beta_j = \beta + u_j$
 
 Total variation in y_i unexplained by observed factors is $\sigma^2_\epsilon + \sigma^2_v$
 
-Proportion of variation in outcome accounted for by 'unobserved contextual factors' (the level-2 stuff): 'Intra-class correlation coefficient'
+Proportion of variation in outcome accounted for by 'unobserved contextual factors' (the level-2 stuff): 'Intra-class correlation coefficient', $\text{ICC} = \sigma_v^2 / (\sigma_v^2 + \sigma_\epsilon^2)$
 
-Any mlm can be written as a sungle level model with a bunch of random effects ... it's a 'variance component model'
+Any mlm can be written as a single level model with a bunch of random effects ... it's a 'variance component model'
 
-Estimating a MLE with only an intercept is like a standard model with clustered se
+Estimating an MLM with only an intercept (a random intercept) is sometimes compared to a standard model with clustered se, but they differ: see the note on clustered standard errors above
 
-... the basic mlm allows **correlation ****** between students in the same classroom
+... the basic mlm allows **correlation** between students in the same classroom
 
 Even without a 'measured' second level we still have an mlm
 
@@ -88,10 +88,14 @@ From David McKenzie's WorldBank blog. [Tools of the Trade: Intra-cluster Correla
 You can calculate the ICC using ANOVA estimation.
 
 ```
-icc_anova <- aov(outcome ~ group,data = df) %>% summary
-icc <- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
-
+a   <- summary(aov(outcome ~ group, data = df))[[1]]
+msb <- a[1, "Mean Sq"]            # between-cluster mean square
+msw <- a[2, "Mean Sq"]            # within-cluster mean square
+m   <- nrow(df) / (a[1, "Df"] + 1)  # average cluster size
+icc <- (msb - msw) / (msb + (m - 1) * msw)
 ```
+
+(An earlier version divided the between-group sum of squares by the total sum of squares. That is eta-squared, the $R^2$ from regressing the outcome on group dummies, not the ICC, and it overstates the ICC badly when clusters are small: with 50 clusters of 4 and a true ICC of zero it returns about 0.25.) With unequal cluster sizes replace `m` by $m_0 = \big(N - \sum_j n_j^2 / N\big) / (J - 1)$. Equivalent routes: fit `lme4::lmer(outcome ~ 1 + (1 | group), data = df)` and take $\hat\sigma_v^2 / (\hat\sigma_v^2 + \hat\sigma_\epsilon^2)$ from `VarCorr()`, or call `performance::icc()` on that model. In Stata, `loneway outcome group`.
 
 
 ### Alternative/Naive approaches
@@ -103,7 +107,7 @@ icc <- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 
 2. School-level predictors in the single-level regression
 
-... this assumes the schools influence is merfectly measured by z_j terms
+... this assumes the schools influence is perfectly measured by z_j terms
 
 3. Add both? no, these are perfectly collinear (although there are some attempts to relax this)
 
@@ -126,7 +130,6 @@ Problems:
 ?can't you also use simulation in frequentist models (bootstrap the MSE)...?
 
 
-@juddTreatingStimuliRandom2012
 ### Other names: Random effects hierarchical, etc.
 
 ## Fitting mlm in practice
@@ -138,11 +141,13 @@ Winbugs enables complicated models (there is a package that derives the posterio
 Stata:  'xtreg, re' is random intercept
 ... there is also 'mreg'
 
+(Update: WinBUGS is no longer developed; in R use `lme4` (frequentist) or `brms`/`rstanarm` (Bayesian, via Stan), e.g. `y ~ x + z + (1 + x | school)`. In Stata `xtreg, re` fits a random intercept only; the general command is `mixed` (`xtmixed` before Stata 13), with `melogit`/`meglm` for non-linear outcomes.)
+
 
 ## "Stimuli" (treatments) as a random factor
 
 
-"Treating Stimuli as a Random Factor in Social Psychology: A New and Comprehensive Solution to a Pervasive but Largely Ignored Problem" - Judd et al, 2012
+"Treating Stimuli as a Random Factor in Social Psychology: A New and Comprehensive Solution to a Pervasive but Largely Ignored Problem" - Judd et al, 2012 [@juddTreatingStimuliRandom2012]
 
 
 > In this article, we present a comprehensive solution using mixed models for the

@@ -1316,8 +1316,8 @@ div.csl-indent {
 <div id="introduction-qstep" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Introduction (Qstep)</h2>
 <p>(Gabriel or MLM?) came from test scores modeling, education literature. Determinants at multiple levels … e.g,. students’ own characteristics and school characteristics</p>
-<p>Standard response: clustered standard errors; this is essentially the same as the ‘random intercept model.’</p>
-<p>NoteThere is not necessarily a hierarchy; school versus neighborhood… may overlap <span class="math inline">\(\rightarrow\)</span> ‘cross-nested’/‘cross-classified’; can have a hierarchy within some levels, not others</p>
+<p>Standard response in economics: OLS with clustered standard errors. This keeps the OLS coefficients and allows any pattern of correlation within clusters when computing their standard errors. A random-intercept model also allows within-cluster correlation, but of one specific form (the same for every pair in a cluster), and it re-weights the data, so the coefficients change as well. The two agree only in special cases, such as a balanced design with a regressor that varies only by cluster.</p>
+<p>Note: there is not necessarily a hierarchy; school versus neighborhood… may overlap <span class="math inline">\(\rightarrow\)</span> ‘cross-nested’/‘cross-classified’; can have a hierarchy within some levels, not others</p>
 <p>Panel/longitudinal (time/individual)</p>
 <p>Accounts for heterogeneity and dependence</p>
 <ul>
@@ -1326,11 +1326,11 @@ div.csl-indent {
 </div>
 <div id="some-basic-theory" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Some basic theory</h2>
-<p>Example: student i, score <span class="math inline">\(y_i\)</span>, i=1,…l</p>
+<p>Example: student i, score <span class="math inline">\(y_i\)</span>, <span class="math inline">\(i = 1, \dots, N\)</span></p>
 <p>Characteristics of i <span class="math inline">\(X_i\)</span> and of school j</p>
 <div id="level-1-model" class="section level3" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> Level 1 model</h3>
-<p><span class="math inline">\(y_i = \alpha_j + \beta x_i + \epsilon_i\)</span></p>
+<p><span class="math inline">\(y_{ij} = \alpha_j + \beta x_{ij} + \epsilon_{ij}\)</span> (student <span class="math inline">\(i\)</span> in school <span class="math inline">\(j\)</span>)</p>
 <p>Intercept varies across schools</p>
 <p>New approach allows you to make the random effect term as much of a function of ?? to give it more flexibility</p>
 </div>
@@ -1339,12 +1339,12 @@ div.csl-indent {
 <p><span class="math inline">\(\alpha_j=\lambda + \delta z_j + v_j\)</span></p>
 <p>Together with the level-1 term, a mlm</p>
 <p>‘Bias-adjusted FE’ is that other fancier approach that Sebastian does; requires stronger assumptions</p>
-<p>The <span class="math inline">\(v_j\)</span> term allows an explicit heterogeneity of the effect</p>
+<p>The <span class="math inline">\(v_j\)</span> term is the part of the school intercept not explained by <span class="math inline">\(z_j\)</span>: unobserved school-level differences in the level of scores. It does not let the effect <span class="math inline">\(\beta\)</span> differ across schools; that needs a random slope, <span class="math inline">\(\beta_j = \beta + u_j\)</span></p>
 <p>Total variation in y_i unexplained by observed factors is <span class="math inline">\(\sigma^2_\epsilon + \sigma^2_v\)</span></p>
-<p>Proportion of variation in outcome accounted for by ‘unobserved contextual factors’ (the level-2 stuff): ‘Intra-class correlation coefficient’</p>
-<p>Any mlm can be written as a sungle level model with a bunch of random effects … it’s a ‘variance component model’</p>
-<p>Estimating a MLE with only an intercept is like a standard model with clustered se</p>
-<p>… the basic mlm allows <strong>correlation </strong>**** between students in the same classroom</p>
+<p>Proportion of variation in outcome accounted for by ‘unobserved contextual factors’ (the level-2 stuff): ‘Intra-class correlation coefficient’, <span class="math inline">\(\text{ICC} = \sigma_v^2 / (\sigma_v^2 + \sigma_\epsilon^2)\)</span></p>
+<p>Any mlm can be written as a single level model with a bunch of random effects … it’s a ‘variance component model’</p>
+<p>Estimating an MLM with only an intercept (a random intercept) is sometimes compared to a standard model with clustered se, but they differ: see the note on clustered standard errors above</p>
+<p>… the basic mlm allows <strong>correlation</strong> between students in the same classroom</p>
 <p>Even without a ‘measured’ second level we still have an mlm</p>
 <p>Suppose schools only have an impact on the <em>average</em> student score…
 Could also have a ‘random slope’ model; the model with heterogeneity</p>
@@ -1353,9 +1353,12 @@ Could also have a ‘random slope’ model; the model with heterogeneity</p>
 <h4>Intra-cluster correlations</h4>
 <p>From David McKenzie’s WorldBank blog. <a href="https://blogs.worldbank.org/impactevaluations/tools-of-the-trade-intra-cluster-correlations">Tools of the Trade: Intra-cluster Correlations</a></p>
 <p>You can calculate the ICC using ANOVA estimation.</p>
-<pre><code>icc_anova &lt;- aov(outcome ~ group,data = df) %&gt;% summary
-icc &lt;- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
-</code></pre>
+<pre><code>a   &lt;- summary(aov(outcome ~ group, data = df))[[1]]
+msb &lt;- a[1, &quot;Mean Sq&quot;]            # between-cluster mean square
+msw &lt;- a[2, &quot;Mean Sq&quot;]            # within-cluster mean square
+m   &lt;- nrow(df) / (a[1, &quot;Df&quot;] + 1)  # average cluster size
+icc &lt;- (msb - msw) / (msb + (m - 1) * msw)</code></pre>
+<p>(An earlier version divided the between-group sum of squares by the total sum of squares. That is eta-squared, the <span class="math inline">\(R^2\)</span> from regressing the outcome on group dummies, not the ICC, and it overstates the ICC badly when clusters are small: with 50 clusters of 4 and a true ICC of zero it returns about 0.25.) With unequal cluster sizes replace <code>m</code> by <span class="math inline">\(m_0 = \big(N - \sum_j n_j^2 / N\big) / (J - 1)\)</span>. Equivalent routes: fit <code>lme4::lmer(outcome ~ 1 + (1 | group), data = df)</code> and take <span class="math inline">\(\hat\sigma_v^2 / (\hat\sigma_v^2 + \hat\sigma_\epsilon^2)\)</span> from <code>VarCorr()</code>, or call <code>performance::icc()</code> on that model. In Stata, <code>loneway outcome group</code>.</p>
 </div>
 </div>
 <div id="alternativenaive-approaches" class="section level3" number="11.2.3">
@@ -1370,7 +1373,7 @@ icc &lt;- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 <ol start="2" style="list-style-type: decimal">
 <li>School-level predictors in the single-level regression</li>
 </ol>
-<p>… this assumes the schools influence is merfectly measured by z_j terms</p>
+<p>… this assumes the schools influence is perfectly measured by z_j terms</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Add both? no, these are perfectly collinear (although there are some attempts to relax this)</li>
 </ol>
@@ -1398,8 +1401,7 @@ icc &lt;- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 … because it is not based on asymptotics</li>
 </ul>
 <p>?can’t you also use simulation in frequentist models (bootstrap the MSE)…?</p>
-<p><span class="citation">(<a href="#ref-juddTreatingStimuliRandom2012" role="doc-biblioref"><strong>juddTreatingStimuliRandom2012?</strong></a>)</span>
-### Other names: Random effects hierarchical, etc.</p>
+<h3>Other names: Random effects hierarchical, etc.</h3>
 </div>
 </div>
 <div id="fitting-mlm-in-practice" class="section level2" number="11.3">
@@ -1408,6 +1410,7 @@ icc &lt;- icc_anova[[1]][1,2]/sum(icc_anova[[1]][,2])
 <p>Winbugs enables complicated models (there is a package that derives the posteriors for you)</p>
 <p>Stata: ‘xtreg, re’ is random intercept
 … there is also ‘mreg’</p>
+<p>(Update: WinBUGS is no longer developed; in R use <code>lme4</code> (frequentist) or <code>brms</code>/<code>rstanarm</code> (Bayesian, via Stan), e.g. <code>y ~ x + z + (1 + x | school)</code>. In Stata <code>xtreg, re</code> fits a random intercept only; the general command is <code>mixed</code> (<code>xtmixed</code> before Stata 13), with <code>melogit</code>/<code>meglm</code> for non-linear outcomes.)</p>
 </div>
 <div id="stimuli-treatments-as-a-random-factor" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> “Stimuli” (treatments) as a random factor</h2>

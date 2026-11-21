@@ -1298,45 +1298,44 @@ div.csl-indent {
 <h1><span class="header-section-number">4</span> Basic statistical inference and regressions: Common mistakes and issues</h1>
 <div id="basic-regression-and-statistical-inference-common-mistakes-and-issues-briefly-listed" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Basic regression and statistical inference: Common mistakes and issues briefly listed</h2>
-<p>Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper) Identification</p>
-<p>Random effects estimators show a lack of robustness Specification Clustering SE is more standard practice</p>
-<p>OLS/IV estimators not ‘mean effect’ in presence of heterogeneity</p>
-<p>Power calculations/underpowered</p>
-<p>Selection bias due to attrition</p>
-<p>Selection bias due to missing variables – impute these as a solution</p>
-<p>Signs of p-hacking and specification-hunting</p>
-<p>Weak diagnostic/identification tests</p>
-<p>Dropping zeroes in a “loglinear” model is problematic</p>
-<p>Random effects estimators show a lack of robustness</p>
-<p>Dropping zeroes in a “loglinear” model is problematic</p>
-<p>Random effects estimators show a lack of robustness</p>
-<p>-(Some notes on multi-level modeling) and RE linked <a href="https://twitter.com/DavidPoe223/status/1239447381172727809">in this Twitter thread</a></p>
-<p>With heterogeneity the simple OLS estimator is not the ‘mean effect’</p>
-<p>P_augmented may <em>overstate</em> type-1 error rate</p>
-<p>Impact size from regression of “log 1+gift amount”</p>
-<p>Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</p>
-<p>Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)</p>
-<p>Weak IV bias</p>
-<p>Bias from selecting instruments and estimating using the same data</p>
-<p>Failure to adjust for multiple-hypothesis testing</p>
+<ul>
+<li><p>Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)</p></li>
+<li><p>Random effects estimators show a lack of robustness; clustering SE is more standard practice</p>
+<ul>
+<li>(Some notes on multi-level modeling) and RE linked <a href="https://twitter.com/DavidPoe223/status/1239447381172727809">in this Twitter thread</a></li>
+</ul></li>
+<li><p>OLS/IV estimators not ‘mean effect’ in presence of heterogeneity</p></li>
+<li><p>Power calculations/underpowered</p></li>
+<li><p>Selection bias due to attrition</p></li>
+<li><p>Selection bias due to missing variables – impute these as a solution</p></li>
+<li><p>Signs of p-hacking and specification-hunting</p></li>
+<li><p>Weak diagnostic/identification tests</p></li>
+<li><p>Dropping zeroes in a “loglinear” model is problematic</p></li>
+<li><p>P_augmented may <em>overstate</em> type-1 error rate</p></li>
+<li><p>Impact size from regression of “log 1+gift amount”</p></li>
+<li><p>Lagged dependent variable and fixed effects –&gt; ‘Nickell bias’</p></li>
+<li><p>Weak IV bias</p></li>
+<li><p>Bias from selecting instruments and estimating using the same data</p></li>
+<li><p>Failure to adjust for multiple-hypothesis testing</p></li>
+</ul>
 <div id="bad-control" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Bad control</h3>
 <p>From MHE:</p>
 <blockquote>
-<p>some variables are bad controls and should not be included in a regression model even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notational experiment at hand. That is, bad controls might just as well be dependent variables too."</p>
+<p>some variables are bad controls and should not be included in a regression model even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notional experiment at hand. That is, bad controls might just as well be dependent variables too.</p>
 </blockquote>
 <p>– They could also be interpreted as endogenous variables.</p>
-<p>Example of looking at a regression of wages in schooling, controlling for college degree completion:</p>
+<p>Example of looking at a regression of wages on college degree completion, controlling for occupation:</p>
 <blockquote>
-<p>Once we acknowledge the fact that college affects occupation, comparison of wages by college degree status within occupation are no longer apples to apples, even if college degree completion is randomly assigned."</p>
+<p>Once we acknowledge the fact that college affects occupation, comparison of wages by college degree status within occupation are no longer apples to apples, even if college degree completion is randomly assigned.</p>
 </blockquote>
 <p>– The question here was whether to control for the category of occupation, not the college degree.</p>
 <blockquote>
-<p>It is also incorrect to say that the conditional comparison captures the part of the effect of college that is ‘not explained by occupation’ … so we would do better to control only for variables that are not themselves caused by education."</p>
+<p>It is also incorrect to say that the conditional comparison captures the part of the effect of college that is ‘not explained by occupation’ … so we would do better to control only for variables that are not themselves caused by education.</p>
 </blockquote>
 </div>
 <div id="does-controlling-for-more-increase-the-probability-that-a-controlled-difference-between-too-groups-represents-a-causal-effect-not-really-informal-discussion-in-fold" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Does ‘controlling for more’ increase the probability that a (controlled) difference between too groups represents a causal effect? Not really (Informal discussion in fold)</h3>
+<h3><span class="header-section-number">4.1.2</span> Does ‘controlling for more’ increase the probability that a (controlled) difference between two groups represents a causal effect? Not really (Informal discussion in fold)</h3>
 
 <div class="fold">
 <p>Claim: ‘controlling for more factors does not make it more likely that the (remaining) observed association between factors A and D represents a causal relationship’</p>
@@ -1345,7 +1344,7 @@ Suppose that 90% share of Australians have a university degree, because Australi
 That raises the first issue: do we want to try to get at only ‘direct effects’ of Australian culture (e.g., on generous spirit) without considering the ‘indirect effects’ on education, which itself might increase concern for others and thus charitable giving? This is not clear. But suppose we only wanted to consider the former. And suppose that Australian culture in fact does increase generosity through this direct channel. But how can we measure it?
 We could compare the average donation of Australians and non-Australians overall. But here we would not be able to disentangle this from ’“the effect of education –&gt; concern –&gt; giving”
 alternatively
-2. We could compare the average donation of Australians and non-Australians “with the same levels of education” i.e., down-weight the Australians with a university degree, counting them only 1/5 as much as Australians without a university degree.
+2. We could compare the average donation of Australians and non-Australians “with the same levels of education” i.e., down-weight the Australians with a university degree, counting them only 1/9 as much as Australians without a university degree.
 However, we would then be overweighting (fivefold!) Australians who, in spite of the big Australian cultural pressure towards university, nonetheless decided not to get a degree. These people may have other (potentially unmeasured) characteristics tied to their hatred for education, that caused them not to go to Uni. these characteristics may also make them less generous.
 The average donations from these ‘extreme anti-education’ Australians may in fact be lower than the the donations of the average non-Australian. This would then be masking the impact of Australian culture on donations, which (we assumed above) was positive,
 </div>
@@ -1378,7 +1377,7 @@ The average donations from these ‘extreme anti-education’ Australians may in
 <h3><span class="header-section-number">4.1.6</span> OLS and heterogeneity</h3>
 <div id="ols-does-not-identify-the-ate" class="section level4 unnumbered">
 <h4>OLS does <em>not</em> identify the ATE</h4>
-<p>In general, with heterogeneity, OLS does <em>not</em> identify the ATE. It weights observations from different parts of the sample differently. Parts with greater residual variation in the treatment (outcome) variable are more (less) heavily weighted.</p>
+<p>In general, with heterogeneity, OLS does <em>not</em> identify the ATE. It weights observations from different parts of the sample differently. Groups with more residual variation in the treatment, after partialling out the controls, get more weight. The variance of the outcome plays no part in the OLS weights (an estimator that down-weights groups with noisy outcomes is GLS).</p>
 <div class="marginnote">
 <p>E.g., if the treatment is binary, the estimator will most heavily weight those parts of the sample where the probability of treatment is closest to 1/2.</p>
 </div>
@@ -1392,7 +1391,7 @@ The average donations from these ‘extreme anti-education’ Australians may in
 <p><br />
 </p>
 <p>It is ‘best’ in a minimizing MSE sense under certain assumptions; in particular, we must also know the true functional form and the set of variables to be included. See ‘overfitting’ issues.</p>
-<p>In order to have the estimate of the true slope that minimizes the squared errors, OLS (and related estimators like FGLS; as well as 2SLS in a more complicated sense) weights some observations more than others. The ‘influence’ of an observation on the estimated slope depends on the nature of the variation in the dependent and independent variables in the region that observation is drawn from. Think of drawing a line through a set of points that were drawn with some noise from the true distribution. If you drew it based on a bunch of points (from a region where) the treatment varies very little and the outcomes have a lot of noise, the line you draw will be very sensitive to the latter noise and thus unreliable. So, would optimally ‘down-weight’ these observations in drawing the line.</p>
+<p>In order to have the estimate of the true slope that minimizes the squared errors, OLS (and related estimators like FGLS; as well as 2SLS in a more complicated sense) weights some observations more than others. The ‘influence’ of an observation on the estimated slope depends on the nature of the variation in the dependent and independent variables in the region that observation is drawn from. Think of drawing a line through a set of points that were drawn with some noise from the true distribution. If you drew it based on a bunch of points (from a region where) the treatment varies very little, the line you draw will be very sensitive to the noise in the outcomes and thus unreliable. So, OLS ‘down-weights’ these observations in drawing the line. (FGLS is the estimator that additionally down-weights observations with noisy outcomes.)</p>
 <p><br />
 </p>
 <p>However, if the <em>actual</em> slope varies by region, this also means you are under-representing certain regions, and thus getting a biased estimate of the average slope.</p>
@@ -1404,10 +1403,10 @@ The average donations from these ‘extreme anti-education’ Australians may in
 <p><br />
 </p>
 <p>However, this does not tell us how to recover the <em>average</em> of these slopes (approximately, the ATE). Should we weight each of the slopes by the share of the population that this group represents?</p>
-<p>Mechanically, the standard way of estimating and representing these interactions and economics has been with simple dummies (0,1) for each compared group. This yields a ‘base group’ (e.g., males aged 35-60) – this obviously does not recover the average slope– as well as the ‘adjustment’ coefficients.</p>
+<p>Mechanically, the standard way of estimating and representing these interactions in economics has been with simple dummies (0,1) for each compared group. This yields a ‘base group’ (e.g., males aged 35-60) – this obviously does not recover the average slope– as well as the ‘adjustment’ coefficients.</p>
 <p><br />
 </p>
-<p>Another way of expressing interactions, particularly helpful with multi-level interactions is called ‘effect coding’: each group is coded as a ‘difference from 0’ (e.g,. with bunarybinary gender data males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. <em>But under which conditions is this in fact the case?</em></p>
+<p>Another way of expressing interactions, particularly helpful with multi-level interactions is called ‘effect coding’: each group is coded as a ‘difference from 0’ (e.g,. with binary gender data males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. <em>But under which conditions is this in fact the case?</em></p>
 <div class="marginnote">
 <p><a href="https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/#:~:text=Unlike%20dummy%20coding%2C%20effect%20coding,variable%20must%20sum%20to%20zero.">There are various forms of ‘effect coding’ of which ‘effect contrast coding’ is one.</a></p>
 </div>
@@ -1419,16 +1418,16 @@ The average donations from these ‘extreme anti-education’ Australians may in
 </blockquote>
 <p>By “FE” here I think they mean group dummies; they are focused on cross-sectional and not panel data!</p>
 <blockquote>
-<p>While fixed effects permit different mean outcomesamong groups, the estimates of treatment effects are typically required to be the same; in more colloquial terms, the intercepts of the conditional expectation functions may differ, but not the slopes</p>
+<p>While fixed effects permit different mean outcomes among groups, the estimates of treatment effects are typically required to be the same; in more colloquial terms, the intercepts of the conditional expectation functions may differ, but not the slopes</p>
 </blockquote>
 <p>DGP</p>
 <p><span class="math display">\[y_i = x_i \beta_{g(i)} + \mathbf{z_i}&#39; \gamma + \epsilon_i\]</span></p>
 <blockquote>
-<p>where $y_i is the outcome for observation i among N [N what?],
+<p>where <span class="math inline">\(y_i\)</span> is the outcome for observation <span class="math inline">\(i\)</span> among <span class="math inline">\(N\)</span> observations,
 <span class="math inline">\(x_i\)</span> is treatment or another variable of interest, and <span class="math inline">\(z_i\)</span> contains control variables, including group-specific fixed effects.</p>
 </blockquote>
 <blockquote>
-<p>The treatment effects aregroup-specific for each of the <span class="math inline">\(g=1,...,G\)</span> groups, where group membership is known for each observation.</p>
+<p>The treatment effects are group-specific for each of the <span class="math inline">\(g=1,...,G\)</span> groups, where group membership is known for each observation.</p>
 </blockquote>
 <p>Defining ATE</p>
 <p><span class="math display">\[\beta^{ATE}=\sum_g \pi_g \beta_g \]</span></p>
@@ -1450,11 +1449,11 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 </div>
 <div id="null-effects" class="section level3" number="4.1.7">
 <h3><span class="header-section-number">4.1.7</span> “Null effects”</h3>
-<p>"While the classical statistical framework is not terribly clear about when one should ‘accept’ a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ‘zero or minimal effect’ one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
+<p>"While the classical statistical framework is not terribly clear about when one should ‘accept’ a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from weak evidence and consequently imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely bounded around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a ‘zero or minimal effect’ one would want to find these closely bounded around zero under a variety of conditions for generalizability.</p>
 <p>In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making ‘null effects’ informative: statistical techniques and inferential frameworks” <span class="citation">(<a href="#ref-harmsMakingNullEffects2018" role="doc-biblioref"><strong>harmsMakingNullEffects2018?</strong></a>)</span>.</p>
 <blockquote>
 <p>Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects.
-(Lakens et al, 2018)</p>
+(Abstract of Lakens, Scheel and Isager (2018), ‘Equivalence Testing for Psychological Research: A Tutorial’)</p>
 </blockquote>
 <div id="confidence-intervals-and-bayesian-credible-intervals" class="section level4" number="4.1.7.1">
 <h4><span class="header-section-number">4.1.7.1</span> Confidence intervals and Bayesian credible intervals</h4>
@@ -1476,9 +1475,9 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 <p>From a discussion on the appropriate adjustment of Chi-Sq tests for categorical variables, and the possible adjustments to this test for <a href="https://experts.nebraska.edu/en/publications/mrcv-a-package-for-analyzing-categorical-variables-with-multiple-">multiple response categorical variables</a></p>
 <blockquote>
 <p>If I am correct, I don’t see a huge value in doing/adjusting any ‘aggregate tests for association between (e.g.) ethnicity and involve mode.’
-I say this because I think most people would have a strong belief that there will be at least some association here overall, even if it is a small one, and even if it isn’t ‘caused by ethnicity,’ whatever that could mean.o</p>
+I say this because I think most people would have a strong belief that there will be at least some association here overall, even if it is a small one, and even if it isn’t ‘caused by ethnicity,’ whatever that could mean.</p>
 </blockquote>
-<p>The general idea that ‘we expect an association in most cases, so finding one is not particularly informative (without further results) … is mentioned <a href="http://sumsar.net/blog/2014/06/bayesian-first-aid-prop-test/">HERE</a> and discussed by Gelman <a href="https://statmodeling.stat.columbia.edu/2011/04/02/so-called_bayes/">here</a> (context of ’Bayesian hypothesis testing’) and <a href="https://statmodeling.stat.columbia.edu/2004/12/29/type_1_type_2_t/">here</a> (in terms of a new typeology of ‘errors’).</p>
+<p>The general idea that ‘we expect an association in most cases, so finding one is not particularly informative (without further results) … is mentioned <a href="http://sumsar.net/blog/2014/06/bayesian-first-aid-prop-test/">HERE</a> and discussed by Gelman <a href="https://statmodeling.stat.columbia.edu/2011/04/02/so-called_bayes/">here</a> (context of ’Bayesian hypothesis testing’) and <a href="https://statmodeling.stat.columbia.edu/2004/12/29/type_1_type_2_t/">here</a> (in terms of a new typology of ‘errors’).</p>
 </div>
 <div id="mht" class="section level3" number="4.1.9">
 <h3><span class="header-section-number">4.1.9</span> Multiple hypothesis testing (MHT)</h3>
@@ -1491,7 +1490,7 @@ I say this because I think most people would have a strong belief that there wil
 </p>
 <p>From List et al (2019), discussing experiments reporting tests of multiple treatments, on multiple subgroups, and considering multiple outcomes:</p>
 <blockquote>
-<p>it is uncommon for the analyses of these data to account for the multiple hypothesis testing. As a result, the probability of a false rejection may be much higher than desired. To illustrate this point, consider testing <span class="math inline">\(N\)</span> null hypotheses simultaneously. Suppose that for each null hypothesis a p value is available whose distribution is uniform on the unit interval when the corresponding null hypothesis is true. Suppose further that all null hypotheses are true and that the p values are independent. In this case, if we were to test each null hypothesis in the usual way at level <span class="math inline">\(\alpha \in (0, 1)\)</span>, then the probability of one or more false rejections equals <span class="math inline">\(1 − (1 − \alpha)N\)</span>, which may be much greater than <span class="math inline">\(\alpha\)</span> and in fact tends rapidly to one as <span class="math inline">\(N\)</span> increases. For instance, with <span class="math inline">\(\alpha = 0.05\)</span>, it equals <span class="math inline">\(0.226\)</span> when <span class="math inline">\(N = 5\)</span> equals 0.401 when N = 10 and 0.994 when N = 100. In order to control the probability of a false rejection, it is therefore important to account appropriately for multiplicity of null hypotheses being tested.</p>
+<p>it is uncommon for the analyses of these data to account for the multiple hypothesis testing. As a result, the probability of a false rejection may be much higher than desired. To illustrate this point, consider testing <span class="math inline">\(N\)</span> null hypotheses simultaneously. Suppose that for each null hypothesis a p value is available whose distribution is uniform on the unit interval when the corresponding null hypothesis is true. Suppose further that all null hypotheses are true and that the p values are independent. In this case, if we were to test each null hypothesis in the usual way at level <span class="math inline">\(\alpha \in (0, 1)\)</span>, then the probability of one or more false rejections equals <span class="math inline">\(1 - (1 - \alpha)^N\)</span>, which may be much greater than <span class="math inline">\(\alpha\)</span> and in fact tends rapidly to one as <span class="math inline">\(N\)</span> increases. For instance, with <span class="math inline">\(\alpha = 0.05\)</span>, it equals <span class="math inline">\(0.226\)</span> when <span class="math inline">\(N = 5\)</span> equals 0.401 when N = 10 and 0.994 when N = 100. In order to control the probability of a false rejection, it is therefore important to account appropriately for multiplicity of null hypotheses being tested.</p>
 </blockquote>
 <p><br />
 </p>
@@ -1525,7 +1524,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 <ul>
 <li>Bonferroni correction: divides the threshold p-value by the number of tests (<span class="math inline">\(k\)</span>)
 <ul>
-<li>Extremely conservative, assumes independence of hypotheses/outcomes</li>
+<li>Valid under any dependence between the tests: <span class="math inline">\(P(\text{at least one false rejection}) \le \sum_i \alpha / k = \alpha\)</span> (the union bound). Conservative, most of all when the tests are strongly positively correlated; with independent tests it is close to exact, since <span class="math inline">\(1 - (1 - \alpha/k)^k \approx \alpha\)</span>. Holm’s step-down version is also valid under any dependence and never rejects less.</li>
 </ul></li>
 <li><a href="https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method#:~:text=The%20Holm%E2%80%93Bonferroni%20method%20is%20%22uniformly%22%20more%20powerful%20than,always%20at%20least%20as%20powerful.&amp;text=Thus%2C%20The%20Hochberg%20procedure%20is,powerful%20than%20the%20Holm%20procedure">Holm-Bonferroni</a>
 <ul>
@@ -1552,6 +1551,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 </li>
 </ul>
 <p>Considering some of Nik Vetr’s work below (genetics-related)</p>
+<p>What this simulation shows: it draws variables with a random correlation structure (<code>rlkj</code> samples a correlation matrix from the LKJ distribution) and tests many true nulls. (1) The share of individual tests rejected at 5% stays near 5% however correlated the tests are; dependence does not change each test’s own error rate. (2) With a Bonferroni threshold, the probability of any false rejection among the (dependent) correlation tests stays at or below 5%.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="reg-follies.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
 <span id="cb21-2"><a href="reg-follies.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="reg-follies.html#cb21-3" aria-hidden="true" tabindex="-1"></a>rlkj <span class="ot">&lt;-</span> <span class="cf">function</span> (K, <span class="at">eta =</span> <span class="dv">1</span>) {</span>
@@ -1683,7 +1683,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 <div id="aside-effect-and-contrast-coding-of-categorical-variables" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Aside: effect and contrast coding of categorical variables</h2>
 <p>Suppose we want to do a simple ‘descriptive model of income.’ Suppose we have three groups, North, Central, and South (think US regions).</p>
-<p>Comparing otherwise similar groups, auppose average income in the North is 130, Central is 80, and South is 60. Suppose equal group sizes, so mean is 90</p>
+<p>Comparing otherwise similar groups, suppose average income in the North is 130, Central is 80, and South is 60. Suppose equal group sizes, so mean is 90</p>
 <p>There should be a way, in a (linear regression) model, to report coefficients as differences from overall means (in a multivariate context, ‘all else equal’) and get one for each
 .
 <span class="math inline">\(\beta_{North} = 40\)</span></p>
@@ -1705,7 +1705,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 <span id="cb23-2"><a href="reg-follies.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="reg-follies.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#later, do this with a list for good code practice</span></span>
 <span id="cb23-4"><a href="reg-follies.html#cb23-4" aria-hidden="true" tabindex="-1"></a>n_income <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(pop_per, m_inc <span class="sc">+</span> b_n, (m_inc <span class="sc">+</span> b_n)<span class="sc">*</span>sd_prop)</span>
-<span id="cb23-5"><a href="reg-follies.html#cb23-5" aria-hidden="true" tabindex="-1"></a>c_income <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(pop_per, m_inc <span class="sc">+</span> b_c, (m_inc <span class="sc">+</span> b_s)<span class="sc">*</span>sd_prop)</span>
+<span id="cb23-5"><a href="reg-follies.html#cb23-5" aria-hidden="true" tabindex="-1"></a>c_income <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(pop_per, m_inc <span class="sc">+</span> b_c, (m_inc <span class="sc">+</span> b_c)<span class="sc">*</span>sd_prop)</span>
 <span id="cb23-6"><a href="reg-follies.html#cb23-6" aria-hidden="true" tabindex="-1"></a>s_income <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(pop_per, m_inc <span class="sc">+</span> b_s, (m_inc <span class="sc">+</span> b_s)<span class="sc">*</span>sd_prop)</span>
 <span id="cb23-7"><a href="reg-follies.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-8"><a href="reg-follies.html#cb23-8" aria-hidden="true" tabindex="-1"></a>noise_var <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(pop_per<span class="sc">*</span><span class="dv">3</span>, <span class="dv">0</span>, (m_inc <span class="sc">+</span> b_s)<span class="sc">*</span>sd_prop)</span>
@@ -1724,7 +1724,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 <pre><code>## # A tibble: 3 x 4
 ##   region     n  mean    sd
 ##   &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 c       1000  80.1  29.4
+## 1 c       1000  80.2  39.2
 ## 2 n       1000 131.   67.0
 ## 3 s       1000  59.6  31.5</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="reg-follies.html#cb25-1" aria-hidden="true" tabindex="-1"></a>i_df <span class="sc">%&gt;%</span>                               <span class="co"># Summary by group using purrr</span></span>
@@ -1732,12 +1732,12 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 <span id="cb25-3"><a href="reg-follies.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(summary)</span></code></pre></div>
 <pre><code>## $c
 ##  region       income      noise_var   
-##  c:1000   Min.   :-10   Min.   :-104  
-##  n:   0   1st Qu.: 59   1st Qu.: -20  
+##  c:1000   Min.   :-40   Min.   :-104  
+##  n:   0   1st Qu.: 52   1st Qu.: -20  
 ##  s:   0   Median : 80   Median :   0  
 ##           Mean   : 80   Mean   :   0  
-##           3rd Qu.: 99   3rd Qu.:  20  
-##           Max.   :175   Max.   :  81  
+##           3rd Qu.:105   3rd Qu.:  20  
+##           Max.   :207   Max.   :  81  
 ## 
 ## $n
 ##  region       income      noise_var  
@@ -1772,7 +1772,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 ## 
 ## Coefficients:
 ## (Intercept)      regionc      regionn    noise_var  
-##    59.56067     20.56332     71.53226     -0.00566</code></pre>
+##    59.55746     20.60816     71.53523     -0.00338</code></pre>
 <p>The standard thing: intercept is (approximately) the mean for the ‘base group,’ the south, and the coefficients ‘regionc’ and ‘regionn’ represent the relative adjustments for these, roughly +20 and +70.</p>
 <p>This is standard ‘dummy coding,’ i.e., ‘treatment coding.’ This is the default in R:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="reg-follies.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;contrasts&quot;</span>)</span></code></pre></div>
@@ -1790,7 +1790,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 ## 
 ## Coefficients:
 ## (Intercept)      region1      region2    noise_var  
-##    90.25920    -30.69853    -10.13521     -0.00566</code></pre>
+##    90.27193    -30.71446    -10.10630     -0.00338</code></pre>
 <p>Now this seems to get us the adjustment coefficients we are looking for, but</p>
 <ol style="list-style-type: decimal">
 <li>The names of the regions are lost; how do I know which is which?</li>
@@ -1807,7 +1807,7 @@ DR: I will try to start a hypothes.is or forum conversation in that Egap guide.<
 ## 
 ## Coefficients:
 ##   regions    regionc    regionn  noise_var  
-## -30.69581  -10.13249   40.83645   -0.00566</code></pre>
+## -30.71284  -10.10468   40.82238   -0.00338</code></pre>
 <p>Yay! This is what I wanted, and miraculously the variable names are preserved. But it seems a weird way to do it. Also note that, with the above code, this set of coefficients appears no matter which contrast matrix I force, whether sum or treatment.</p>
 <p>However, this does not carry over easily to multiple dimensions of contrast coding (illustrate).</p>
 

@@ -1299,10 +1299,10 @@ div.csl-indent {
 <p>This will build on my content <a href="https://daaronr.github.io/writing_econ_research/economic-theory-modeling-and-empirical-work.html#getting-and-using-data">here</a>, and integrate with it.</p>
 <p>Some key resources are in a continually updated airtable <a href="https://airtable.com/shrqNt0YAa3eLiK5S">HERE</a></p>
 <p>See especially:</p>
-<p><a href="r4ds.had.co.nz">R for data science</a></p>
+<p><a href="https://r4ds.had.co.nz">R for data science</a></p>
 <p><a href="https://adv-r.hadley.nz/">Advanced R</a></p>
 <p><a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown:</a></p>
-<p>[OSF: ‘PhD Toolkit on Transparent, Open, Reproducible Research’ <a href="https://osf.io/g8yjz/" class="uri">https://osf.io/g8yjz/</a>](OSF: ‘PhD Toolkit on Transparent, Open, Reproducible Research’ <a href="https://osf.io/g8yjz/" class="uri">https://osf.io/g8yjz/</a>)</p>
+<p><a href="https://osf.io/g8yjz/">OSF: ‘PhD Toolkit on Transparent, Open, Reproducible Research’</a></p>
 <p><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
 <p>“Data science for business” see <a href="n-ds4bs.html#n_ds4bs">WIP notes here</a></p>
 <p><br />
@@ -1331,10 +1331,11 @@ div.csl-indent {
 <p>Hope you are doing well. I’ve just invited you to a shared Zotero group managing my bibliography/references. I think this should be useful. (I prefer Zotero to Mendeley because it’s open source and… I forgot the other reason.)
 On my computer it synchronizes with a .bib (bibtex) file in a dropbox folder …</p>
 <p>For latex files we just refer to this as normal.
-In the Rmd files/bookdown (producing output like <a href="#https://daaronr.github.io/ea_giving_barriers/outline.html">EA barriers</a> or Metrics notes (present book) this is referenced in the YAML header to the index.Rmd file as</p>
+In the Rmd files/bookdown (producing output like <a href="https://daaronr.github.io/ea_giving_barriers/outline.html">EA barriers</a> or Metrics notes (present book)) this is referenced in the YAML header to the index.Rmd file as</p>
 <blockquote>
 <p>bibliography: [reinstein_bibtex.bib]</p>
 </blockquote>
+<p>(That line is from another project; this book’s index.Rmd has <code>bibliography: "references.bib, packages.bib"</code>.)</p>
 <p>Then, to keep this file, I have a “download block” included in that same file (the first line with ‘dropbox’ is the key one).</p>
 </div>
 <p><br />
@@ -1355,7 +1356,7 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 </div>
 <div id="an-example-of-dynamic-code" class="section level3" number="21.3.2">
 <h3><span class="header-section-number">21.3.2</span> An example of dynamic code</h3>
-<p>Shapiro Wilk test for normality; professor salaries at some US university from the built in Cars data…</p>
+<p>Shapiro Wilk test for normality; professor salaries at some US university from the <code>carData</code> package…</p>
 <div class="marginnote">
 <p>By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!</p>
 </div>
@@ -1364,7 +1365,8 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <span id="cb95-3"><a href="data-sci.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ShapiroTest &lt;- map_df(list(SXDonShapiroTest, EXDonShapiroTest), tidy)</span></span>
 <span id="cb95-4"><a href="data-sci.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (ShapiroTest &lt;- kable(ShapiroTest) %&gt;% kable_styling())</span></span></code></pre></div>
 <p>The results from the Shapiro Wilk normality test …</p>
-<p>The p-values are 6.07605182361928e-09 suggesting this data is not normal</p>
+<p>The Shapiro–Wilk p-value is 6.1e-09, so the test rejects normality of salaries at the 10% level.</p>
+<p>Two caveats. First, the verdict depends on sample size: in small samples the test has little power against clearly non-normal data, and in large samples (there are 397 salaries here) it rejects for departures too small to affect inference. Second, normality of the raw outcome is rarely the assumption of interest. For regression it concerns the errors, and with samples of this size the usual tests rest on the central limit theorem in any case. A Q–Q plot (<code>qqnorm(carData::Salaries$salary); qqline(carData::Salaries$salary)</code>) shows the size and form of the departure, which the p-value does not.</p>
 </div>
 </div>
 <div id="project-management-tools-esp.-gitgithub" class="section level2" number="21.4">
@@ -1385,7 +1387,7 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <h2><span class="header-section-number">21.5</span> Good coding practices</h2>
 <div id="new-tools-and-approaches-to-data-esp-tidyverse" class="section level3" number="21.5.1">
 <h3><span class="header-section-number">21.5.1</span> New tools and approaches to data (esp ‘tidyverse’)</h3>
-<p>From <a href="https://bookdown.org/content/3890/small-worlds-and-large-worlds.html">Kurtz</a>:</p>
+<p>From <a href="https://bookdown.org/content/3890/small-worlds-and-large-worlds.html">Kurz</a>:</p>
 <blockquote>
 <p>If you are new to tidyverse-style syntax, possibly the oddest component is the pipe (i.e., <code>%&gt;%</code>). I’m not going to explain the <code>%&gt;%</code> in this project, but you might learn more about in <a href="https://www.youtube.com/watch?v=9yjhxvu-pDg">this brief clip</a>, starting around <a href="https://www.youtube.com/watch?v=K-ss_ag2k9E&amp;t=1285s">minute 21:25 in this talk by Wickham</a>, or in <a href="https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe">section 5.6.1 from Grolemund and Wickham’s <em>R for Data Science</em></a>. Really, all of Chapter 5 of <em>R4DS</em> is just great for new R and new tidyverse users. And <em>R4DS</em> Chapter 3 is a nice introduction to plotting with ggplot2.</p>
 </blockquote>
@@ -1398,7 +1400,15 @@ In the Rmd files/bookdown (producing output like <a href="#https://daaronr.githu
 <p><br />
 </p>
 <p>This includes:</p>
-<p><code>file_names.txt</code> <code>folder_names</code> <code>function_names</code> (with few exceptions) <code>names_of_data_objects_like_vectors</code> <code>names_of_data_output_objects_like_correlation_coefficients</code> <code>ex_df1</code> In R you probably should keep data frame names short to avoid excessive typing</p>
+<ul>
+<li><code>file_names.txt</code></li>
+<li><code>folder_names</code></li>
+<li><code>function_names</code> (with few exceptions)</li>
+<li><code>names_of_data_objects_like_vectors</code></li>
+<li><code>names_of_data_output_objects_like_correlation_coefficients</code></li>
+<li><code>ex_df1</code></li>
+</ul>
+<p>In R you probably should keep data frame names short to avoid excessive typing</p>
 <p><br />
 </p>
 <p><em>And by all that is holy, never put spaces or slashes in file or object names!</em> This can make it very hard to process across systems… there are various ways of referring to spaces and other white space.</p>
@@ -1452,14 +1462,13 @@ ft <- map2(ft, ft_names, function(x, y) {
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-sci.html#cb98-1" aria-hidden="true" tabindex="-1"></a>selection_statement <span class="ot">&lt;-</span> <span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span></span>
 <span id="cb98-2"><a href="data-sci.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-3"><a href="data-sci.html#cb98-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-4"><a href="data-sci.html#cb98-4" aria-hidden="true" tabindex="-1"></a>filter_parse <span class="ot">=</span>  <span class="cf">function</span>(df, x) {</span>
-<span id="cb98-5"><a href="data-sci.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  {{df}} <span class="sc">%&gt;%</span></span>
-<span id="cb98-6"><a href="data-sci.html#cb98-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(rlang<span class="sc">::</span><span class="fu">eval_tidy</span>(rlang<span class="sc">::</span><span class="fu">parse_expr</span>({{x}})))</span>
-<span id="cb98-7"><a href="data-sci.html#cb98-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb98-8"><a href="data-sci.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-9"><a href="data-sci.html#cb98-9" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb98-10"><a href="data-sci.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb98-11"><a href="data-sci.html#cb98-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_parse</span>(selection_statement)</span></code></pre></div>
+<span id="cb98-4"><a href="data-sci.html#cb98-4" aria-hidden="true" tabindex="-1"></a>filter_parse <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x) {</span>
+<span id="cb98-5"><a href="data-sci.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!!</span>rlang<span class="sc">::</span><span class="fu">parse_expr</span>(x))</span>
+<span id="cb98-6"><a href="data-sci.html#cb98-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-7"><a href="data-sci.html#cb98-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-8"><a href="data-sci.html#cb98-8" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb98-9"><a href="data-sci.html#cb98-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-10"><a href="data-sci.html#cb98-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_parse</span>(selection_statement)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -1472,25 +1481,11 @@ ft <- map2(ft, ft_names, function(x, y) {
 ## 7          5.4         3.4          1.5         0.4 setosa 
 ## 8          5           3.5          1.6         0.6 setosa 
 ## 9          5.1         3.8          1.9         0.4 setosa</code></pre>
+<p><code>parse_expr()</code> turns the string into an R expression and <code>!!</code> inserts it into <code>filter()</code>. (The <code>{{ }}</code> ‘embracing’ operator is not needed here: it is for passing column names through to tidy-eval functions, and both arguments are ordinary values.)</p>
 <p>We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-sci.html#cb100-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Species == &#39;setosa&#39; &amp; Petal.Width&gt;0.3&quot;</span>, <span class="st">&quot;Species == &#39;virginica&#39; &amp; Petal.Width&gt;2.4&quot;</span>)</span>
 <span id="cb100-2"><a href="data-sci.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="data-sci.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(iris, selection_statement)</span></code></pre></div>
-<pre><code>## $Sepal.Length
-## NULL
-## 
-## $Sepal.Width
-## NULL
-## 
-## $Petal.Length
-## NULL
-## 
-## $Petal.Width
-## NULL
-## 
-## $Species
-## NULL</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-sci.html#cb102-1" aria-hidden="true" tabindex="-1"></a>sel_st <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">filter_parse</span>(iris, .x))</span></code></pre></div>
+<span id="cb100-3"><a href="data-sci.html#cb100-3" aria-hidden="true" tabindex="-1"></a>sel_st <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">filter_parse</span>(iris, .x))</span></code></pre></div>
 <pre><code>## [[1]]
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.4         3.9          1.7         0.4  setosa
@@ -1530,7 +1525,7 @@ ft <- map2(ft, ft_names, function(x, y) {
 <li><p>lines that call other do files</p></li>
 <li><p>important comments/flags/to-do’s</p></li>
 </ul>
-<p>I only put ‘small todo’ elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include <code>#todo</code> to search for these later (and R has a utility to collect these in a nice way… maybe Stata does too.</p>
+<p>I only put ‘small todo’ elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include <code>#todo</code> to search for these later (and R has a utility to collect these in a nice way… maybe Stata does too.)</p>
 <p><br />
 </p>
 <p>Whenever there are more than 20 lines of something prosaic that cannot/has not been put into a loop or function, I suggest we put it in a separate ‘do’ file and call that do file (with no indent). That’s what I do here, giving a brief description and a ‘back link.’ Sometimes I put all those do files into an separate folder.</p>
@@ -1552,7 +1547,7 @@ ft <- map2(ft, ft_names, function(x, y) {
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p><br />
 </p>
-<p><strong>Tools for structuring your workflow for reproducable code with Rmd and Git: The workflowr package</strong></p>
+<p><strong>Tools for structuring your workflow for reproducible code with Rmd and Git: The workflowr package</strong></p>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 <p>“This paper does a thorough job setting out the rationale, design, and implementation of the workflowr package” says <a href="https://twitter.com/PeteHaitch?ref_src=twsrc%5Etfw">@PeteHaitch</a> <a href="https://twitter.com/WEHI_research?ref_src=twsrc%5Etfw">\<span class="citation">(<a href="#ref-WEHI_research" role="doc-biblioref"><strong>WEHI_research?</strong></a>)</span></a> in his review of this <a href="https://twitter.com/hashtag/softwaretool?src=hash&amp;ref_src=twsrc%5Etfw">#softwaretool</a> article introducing workflowr by <a href="https://twitter.com/jdblischak?ref_src=twsrc%5Etfw">@jdblischak</a> and co-authors <a href="https://t.co/ZXmQkDhFuD">https://t.co/ZXmQkDhFuD</a> <a href="https://twitter.com/hashtag/OpenScience?src=hash&amp;ref_src=twsrc%5Etfw">#OpenScience</a> <a href="https://t.co/e77SVo8PhO">pic.twitter.com/e77SVo8PhO</a></p>
@@ -1566,13 +1561,12 @@ ft <- map2(ft, ft_names, function(x, y) {
 <p>Massive data cleaning using the Recipe package</p>
 <p>Codebook package</p>
 <div id="some-key-points-from-r-for-data-science-see-my-hypothesis-notes" class="section level3 unnumbered">
-<h3>Some key points from <a href="r4ds.had.co.nz">R for data science</a> (see my hypothesis notes)</h3>
+<h3>Some key points from <a href="https://r4ds.had.co.nz">R for data science</a> (see my hypothesis notes)</h3>
 <div id="automating-many-models" class="section level4 unnumbered">
 <h4>Automating <a href="https://r4ds.had.co.nz/many-models.html">‘many models’</a></h4>
 
 <div class="note">
 Actually, I think <a href="https://stackoverflow.com/questions/46332863/how-to-fit-multiple-models-on-multiple-dataset-in-purrr">this</a> is the automation we are usually more interested in, i.e., ‘’run this on these subsets of the data, for these variable sets.’’
-)
 </div>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-sci.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
 <span id="cb105-2"><a href="data-sci.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
@@ -1681,10 +1675,10 @@ Actually, I think <a href="https://stackoverflow.com/questions/46332863/how-to-f
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-sci.html#cb115-1" aria-hidden="true" tabindex="-1"></a>glance <span class="ot">&lt;-</span> by_country <span class="sc">%&gt;%</span> </span>
 <span id="cb115-2"><a href="data-sci.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">glance =</span> <span class="fu">map</span>(model, broom<span class="sc">::</span>glance)) <span class="sc">%&gt;%</span> </span>
 <span id="cb115-3"><a href="data-sci.html#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(glance)</span></code></pre></div>
-<p>Above, we add a column <code>glance</code>, resulting from mapping the <code>mode</code>l column to the <code>broom::glance</code> function. <code>glance</code> gets some key elements of the models’ outputs.<br />
+<p>Above, we add a column <code>glance</code>, resulting from mapping the <code>model</code> column to the <code>broom::glance</code> function. <code>glance</code> gets some key elements of the models’ outputs.<br />
 <br />
-Then we unnest this column. Note that <code>unnest</code> spreads out the elements of the <code>glance</code> output into columns, but as these are specific to each country (but <em>not</em> each year), it doesn’t add more rows (while, e,g., unnesting <code>resids</code> <em>would</em> add more rows).</p>
-<p>One way of judging the ‘fit’ of these models… The worst-fitting ones, in terms of R-squared, seem to be in Africa (we save the worst ones as <code>bad_fit</code>:</p>
+Then we unnest this column. Note that <code>unnest</code> spreads out the elements of the <code>glance</code> output into columns, but as these are specific to each country (but <em>not</em> each year), it doesn’t add more rows (while, e.g., unnesting <code>resids</code> <em>would</em> add more rows).</p>
+<p>One way of judging the ‘fit’ of these models… The worst-fitting ones, in terms of R-squared, seem to be in Africa (we save the worst ones as <code>bad_fit</code>):</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-sci.html#cb116-1" aria-hidden="true" tabindex="-1"></a>glance <span class="sc">%T&gt;%</span> </span>
 <span id="cb116-2"><a href="data-sci.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(r.squared) <span class="sc">%T&gt;%</span> <span class="fu">print</span>() <span class="sc">%&gt;%</span>  <span class="co">#look I get both in one pipe flow with T-pipe and the &#39;print&#39; side effect</span></span>
 <span id="cb116-3"><a href="data-sci.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(continent, r.squared)) <span class="sc">+</span> </span>
@@ -1707,6 +1701,7 @@ Then we unnest this column. Note that <code>unnest</code> spreads out the elemen
 ## #   BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 <p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-131-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-sci.html#cb118-1" aria-hidden="true" tabindex="-1"></a>bad_fit <span class="ot">&lt;-</span> <span class="fu">filter</span>(glance, r.squared <span class="sc">&lt;</span> <span class="fl">0.25</span>)</span></code></pre></div>
+<p>Note: the tee pipe <code>%T&gt;%</code> passes on its <em>left-hand</em> side, not the result of the step it feeds, so it belongs only in front of <code>print()</code>. Written as <code>glance %T&gt;% arrange(r.squared)</code>, the sorted table is thrown away and the table prints unsorted. <code>%T&gt;%</code> comes from magrittr, which <code>library(tidyverse)</code> does not attach; this book’s setup loads it, but if you copy the chunk you need <code>library(magrittr)</code>.</p>
 <p><br />
 </p>
 <p>What may have caused the “bad fit,” i.e., a departure from the country-specific trends?</p>
@@ -1750,11 +1745,10 @@ Then we unnest this column. Note that <code>unnest</code> spreads out the elemen
 ##   &lt;list&gt;    &lt;chr&gt;  
 ## 1 &lt;int [3]&gt; 1, 2   
 ## 2 &lt;int [3]&gt; 3, 4, 5</code></pre>
-<pre><code>&lt;div class=&quot;marginnote&quot;&gt;
-But note each column still has to have the same number of rows.
-&lt;/div&gt;
- </code></pre>
-<p>And <code>tribble()</code> (<a href="http://127.0.0.1:28503/help/library/tibble/html/tribble.html">row-wise tibble creation</a>) “can automatically work out that you need a list:”</p>
+<div class="marginnote">
+<p>But note each column still has to have the same number of rows.</p>
+</div>
+<p>And <code>tribble()</code> (<a href="https://tibble.tidyverse.org/reference/tribble.html">row-wise tibble creation</a>) “can automatically work out that you need a list:”</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-sci.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
 <span id="cb125-2"><a href="data-sci.html#cb125-2" aria-hidden="true" tabindex="-1"></a>   <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb125-3"><a href="data-sci.html#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">&quot;1, 2&quot;</span>,</span>
@@ -1888,11 +1882,11 @@ You can then <code>unnest</code> … which will spread it out:</p>
 <div id="from-multivalued-summaries" class="section level5" number="21.6.0.1.4">
 <h5><span class="header-section-number">21.6.0.1.4</span> From multivalued summaries</h5>
 <blockquote>
-<p>f <code>summarise()</code> … only works with summary functions that return a single value. … not functions like <code>quantile()</code> that return a vector of arbitrary length:</p>
+<p><code>summarise()</code> … only works with summary functions that return a single value. … not functions like <code>quantile()</code> that return a vector of arbitrary length:</p>
 </blockquote>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="data-sci.html#cb137-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
 <span id="cb137-2"><a href="data-sci.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb137-3"><a href="data-sci.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">q =</span> <span class="fu">quantile</span>(mpg)) <span class="co">#this now seems to run?</span></span></code></pre></div>
+<span id="cb137-3"><a href="data-sci.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">q =</span> <span class="fu">quantile</span>(mpg)) <span class="co"># runs with dplyr 1.0.x; deprecated since dplyr 1.1.0 (use reframe())</span></span></code></pre></div>
 <pre><code>## # A tibble: 15 x 2
 ## # Groups:   cyl [3]
 ##      cyl     q
@@ -1912,6 +1906,7 @@ You can then <code>unnest</code> … which will spread it out:</p>
 ## 13     8  15.2
 ## 14     8  16.2
 ## 15     8  19.2</code></pre>
+<p>The R4DS (first edition) statement above was true before dplyr 1.0.0. From 1.0.0 <code>summarise()</code> accepted results with several rows per group, which is why this chunk ran; dplyr 1.1.0 deprecated that again and added <code>reframe()</code> for it. <code>summarise()</code> returns one row per group; <code>reframe()</code> returns any number of rows per group, e.g. <code>mtcars %&gt;% group_by(cyl) %&gt;% reframe(q = quantile(mpg))</code>. The list-column versions below remain valid, and are the better choice when the quantiles should stay attached to one row per group.</p>
 <blockquote>
 <p>You can however, wrap the result in a list! This obeys the contract of <code>summarise()</code>, because each summary is now a list (a vector) of length 1.</p>
 </blockquote>
@@ -1955,7 +1950,9 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 </div>
 <div id="from-a-named-list" class="section level3" number="21.6.1">
 <h3><span class="header-section-number">21.6.1</span> From a named list</h3>
+<blockquote>
 <p>Data frames with list-columns provide a solution to a common problem: what do you do if you want to iterate over both the contents of a list and its elements? Instead of trying to jam everything into one object, it’s often easier to make a data frame: one column can contain the elements, and one column can contain the list. An easy way to create such a data frame from a list is <code>tibble::enframe()</code>.</p>
+</blockquote>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-sci.html#cb143-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb143-2"><a href="data-sci.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
 <span id="cb143-3"><a href="data-sci.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, </span>
@@ -1970,8 +1967,12 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 1 a     &lt;int [5]&gt;
 ## 2 b     &lt;int [2]&gt;
 ## 3 c     &lt;int [2]&gt;</code></pre>
+<blockquote>
 <p>The advantage of this structure is that it generalises in a straightforward way - names are useful if you have character vector of metadata, but don’t help if you have other types of data, or multiple vectors.</p>
+</blockquote>
+<blockquote>
 <p>Now if you want to iterate over names and values in parallel, you can use <code>map2()</code>:</p>
+</blockquote>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-sci.html#cb145-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb145-2"><a href="data-sci.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb145-3"><a href="data-sci.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">smry =</span> <span class="fu">map2_chr</span>(name, value, <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_c</span>(.x, <span class="st">&quot;: &quot;</span>, .y[<span class="dv">1</span>]))</span>
@@ -1984,17 +1985,25 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 3 c     &lt;int [2]&gt; c: 5</code></pre>
 <div id="simplifying-list-columns" class="section level5" number="21.6.1.0.1">
 <h5><span class="header-section-number">21.6.1.0.1</span> Simplifying list-columns</h5>
+<blockquote>
 <p>To apply the techniques of data manipulation and visualisation you’ve learned in this book, you’ll need to simplify the list-column back to a regular column (an atomic vector), or set of columns. The technique you’ll use to collapse back down to a simpler structure depends on whether you want a single value per element, or multiple values:</p>
+</blockquote>
+<blockquote>
 <ol style="list-style-type: decimal">
 <li><p>If you want a single value, use <code>mutate()</code> with <code>map_lgl()</code>, <code>map_int()</code>, <code>map_dbl()</code>, and <code>map_chr()</code> to create an atomic vector.</p></li>
 <li><p>If you want many values, use <code>unnest()</code> to convert list-columns back to regular columns, repeating the rows as many times as necessary.</p></li>
 </ol>
+</blockquote>
+<blockquote>
 <p>These are described in more detail below.</p>
+</blockquote>
 </div>
 </div>
 <div id="list-to-vector" class="section level3" number="21.6.2">
 <h3><span class="header-section-number">21.6.2</span> List to vector</h3>
+<blockquote>
 <p>If you can reduce your list column to an atomic vector then it will be a regular column. For example, you can always summarise an object with its type and length, so this code will work regardless of what sort of list-column you have:</p>
+</blockquote>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-sci.html#cb147-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb147-2"><a href="data-sci.html#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x,</span>
 <span id="cb147-3"><a href="data-sci.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
@@ -2012,8 +2021,12 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 1 &lt;chr [5]&gt; character      5
 ## 2 &lt;int [3]&gt; integer        3
 ## 3 &lt;dbl [5]&gt; double         5</code></pre>
+<blockquote>
 <p>This is the same basic information that you get from the default tbl print method, but now you can use it for filtering. This is a useful technique if you have a heterogeneous list, and want to filter out the parts aren’t working for you.</p>
+</blockquote>
+<blockquote>
 <p>Don’t forget about the <code>map_*()</code> shortcuts - you can use <code>map_chr(x, "apple")</code> to extract the string stored in <code>apple</code> for each element of <code>x</code>. This is useful for pulling apart nested lists into regular columns. Use the <code>.null</code> argument to provide a value to use if the element is missing (instead of returning <code>NULL</code>):</p>
+</blockquote>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-sci.html#cb149-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb149-2"><a href="data-sci.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x,</span>
 <span id="cb149-3"><a href="data-sci.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>),</span>
@@ -2031,7 +2044,9 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 </div>
 <div id="unnesting" class="section level3" number="21.6.3">
 <h3><span class="header-section-number">21.6.3</span> Unnesting</h3>
+<blockquote>
 <p><code>unnest()</code> works by repeating the regular columns once for each element of the list-column. For example, in the following very simple example we repeat the first row 4 times (because there the first element of <code>y</code> has length four), and the second row once:</p>
+</blockquote>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-sci.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">y =</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(y)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##       x     y
@@ -2041,7 +2056,7 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 3     1     3
 ## 4     1     4
 ## 5     2     1</code></pre>
-<p>This means that you can’t simultaneously unnest two columns that contain different number of elements:</p>
+<p>Within each row, the list-columns being unnested together must have the same number of elements, or length 1, which is recycled. (R4DS, first edition, said they must simply have the same number; tidyr 1.0 added the recycling.)</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-sci.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ok, because y and z have the same number of elements in</span></span>
 <span id="cb153-2"><a href="data-sci.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="co"># every row</span></span>
 <span id="cb153-3"><a href="data-sci.html#cb153-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -2062,7 +2077,7 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 1     1 a         1
 ## 2     1 b         2
 ## 3     2 c         3</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-sci.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doesn&#39;t work because y and z have different number of elements</span></span>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-sci.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Works since tidyr 1.0: the length-1 elements are recycled</span></span>
 <span id="cb157-2"><a href="data-sci.html#cb157-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb157-3"><a href="data-sci.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,           <span class="sc">~</span>z,</span>
 <span id="cb157-4"><a href="data-sci.html#cb157-4" aria-hidden="true" tabindex="-1"></a>   <span class="dv">1</span>, <span class="st">&quot;a&quot;</span>,         <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,  </span>
@@ -2082,7 +2097,9 @@ To make useful results with unnest, you’ll also need to capture the probabilit
 ## 2     1 a         2
 ## 3     2 b         3
 ## 4     2 c         3</code></pre>
+<blockquote>
 <p>The same principle applies when unnesting list-columns of data frames. You can unnest multiple list-cols as long as all the data frames in each row have the same number of rows.</p>
+</blockquote>
 </div>
 <div id="section" class="section level3" number="21.6.4">
 <h3><span class="header-section-number">21.6.4</span> </h3>

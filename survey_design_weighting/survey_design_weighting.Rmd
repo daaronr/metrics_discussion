@@ -15,18 +15,18 @@ The  [Wikipedia entry on 'survey sampling'](https://en.wikipedia.org/wiki/Survey
 
 ### Probability sampling {-}
 
-In the fold below, I offer a rough characterization of the rationale for probabiliity sampling, in my own words, based on my reading of the aforementioned Wikipedia entry:
+In the fold below, I offer a rough characterization of the rationale for probability sampling, in my own words, based on my reading of the aforementioned Wikipedia entry:
 
 ```{block2,  type='fold'}
 
-'Probability sampling’ has been the standard approach in survey sampling since random-digit dialing was possible.
+'Probability sampling’ has been the standard approach in survey sampling since the mid-20th century; random-digit dialing later made it cheap to do by telephone.
 
 The basic idea, if I understand correctly, is to define a population of interest and a ‘sample frame’ (the place we are actually drawing from, the empirical analogue of the population of interest perhaps).
 Essentially, rather than advertising or trying to recruit everyone, or have people enter by self selection, probability sampling select from the sample frame with a particular probability, and then actively tries to get the selected individuals to complete the survey. As only a smaller number of people are selected to be interviewed/fill out the survey, you can spend more time and money/incentives, trying to make sure they respond.
 
-Probability sampling also allows ‘stratification’, and oversampling of harder to reach groups.  We  potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each strata with a certain probability.
+Probability sampling also allows ‘stratification’, and oversampling of harder to reach groups.  We  potentially divide up (‘stratify’) that frame by observable groups. We randomly draw (sample) within each stratum with a certain probability.
 
-*If we have an informative estimate of the TRUE shares in each strata* we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
+*If we have an informative estimate of the TRUE shares in each stratum* we can sample/re-weight so that the heterogeneous parameter of interest can be said to represent the average value for the true population of interest.
     
 ```
 
@@ -37,7 +37,7 @@ Probability sampling also allows ‘stratification’, and oversampling of harde
 <div class="marginnote">
 Note that the 'sampling frame', 'the source material or device from which a sample is drawn', e.g, a telephone directory, may not exactly contain all elements of the 'population of interest' (e.g., the population with and without listed numbers).
 
-On the other hand this terminology doesn't seem to be everywhere consistent, e.g., Salganik and H refer to it as 'a list of all of the members in the population'.
+On the other hand this terminology doesn't seem to be everywhere consistent, e.g., Salganik and Heckathorn refer to it as 'a list of all of the members in the population'.
 
 See 'Missing elements', 'Foreign elements', 'Duplicate entries' and 'Groups or clusters'
 
@@ -131,11 +131,11 @@ This would seem to suggest a solution, perhaps driving the approach the authors 
 But the authors believe they have a solution
 
 > We believe that previous researchers have been overly pessimistic about chain-referral samples. In this paper we will show that it is possible to make unbiased estimates about hidden populations from
-these types of samples. Further, we will show that these estimates are asymptotically unbiased no matter how the seeds are select
+these types of samples. Further, we will show that these estimates are asymptotically unbiased no matter how the seeds are selected
 
 How does it work?: 
 
-> First, the sample is used to make estimates about the social network connectingthe population. Then, this information about the social network is used to derive the proportion of the population in different groups (forexample, HIV- or HIV+)
+> First, the sample is used to make estimates about the social network connecting the population. Then, this information about the social network is used to derive the proportion of the population in different groups (for example, HIV- or HIV+)
 
 \
 
@@ -194,7 +194,7 @@ There are some **disagreements about how to define this group**.
 </div>
 
 
-- We can identify *which* 'referrer' lead someone to our survey.
+- We can identify *which* 'referrer' led someone to our survey.
 - All participants are given a similar 'donation' incentive, an incentive that might tend to particularly attract members of the Movement.\*\*
 
 <div class="marginnote">
@@ -265,7 +265,7 @@ Our current approach may be described as a combination of 'convenience sampling'
 
 *Probability sampling* identifies a *population of interest* and a *sample frame* meant to capture this population. Rather than appealing to this entire population/frame, probability sampling randomly (or using stratification/clustering) samples a 'probability share' (e.g., 1/1000) from this frame. Selected participants are (hopefully) given strong incentives to complete the survey. One can carefully analyze ---and perhaps adjust for---the rate of non-response.
 
-In contrast,
+In contrast, our opt-in ('river') sample has no frame and no selection step under our control: everyone who sees the invitation decides whether to take part. So each person's inclusion probability is unknown (and plausibly related to the outcomes we measure), and we cannot compute a response rate.
 
 <div class="marginnote">
  I have heard that 'internet surveys', if done right, with proper adjustments, are seen as increasingly reliable, especially in the context of electoral polling. Is our approach similar enough to this to be able to adopt these approaches?
@@ -278,7 +278,7 @@ Wikipedia entry on 'convenience sampling'
 
 > Another example would be a gaming company that wants to know how one of their games is doing in the market one day after its release. Its analyst may choose to create an online survey on Facebook to rate that game.
 
-> **Bias** The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on 'Convenience sampling',  cites Borenstein et al, 2017)
+> **Bias** The results of the convenience sampling cannot be generalized to the target population because of the potential bias of the sampling technique due to under-representation of subgroups in the sample in comparison to the population of interest. The bias of the sample cannot be measured. Therefore, inferences based on the convenience sampling should be made only about the sample itself.[9] (Wikipedia, on 'Convenience sampling',  cites Bornstein et al, 2017)
 
 
 *This statement is deeply pessimistic...* 'the bias cannot be measured'. We might dig more deeply to see if there are potential approaches to dealing with this
@@ -333,11 +333,11 @@ As we can separately measure demographics (as well as stated beliefs/attitudes) 
 - Use demographics derived from some weighted estimate of surveys in all previous years to re-weight the survey data in the present year to be “more representative”? (But how to weight and judge previous surveys and referrers?)
 
 - A Bayesian meta-analytic approach where the ‘true population parameters’ are unknown and each survey provides an imperfect window. 
-  - As noted we subjectively think that some referrers are more representative than others, so maybe we can do something with this using Bayesian tools.)
-  We may have some measures of the demographics of participants on some of the referrers, which might be used to consider weighting to deal with differential non-response
+  - As noted we subjectively think that some referrers are more representative than others, so maybe we can do something with this using Bayesian tools.
+  - We may have some measures of the demographics of participants on some of the referrers, which might be used to consider weighting to deal with differential non-response.
 
 ```{block2,  type='note'}
-Weighting may not be appropriate as a means of gaining ‘complete representativeness’, as we have no gold standard. Even if we had a nationally-representative sample/survey this could yield differential response rates among different types of EA-ers. An approach to ‘convergent validation’ may be possible in the future, but it will take time to learn/develop a methodology.
+Weighting may not be appropriate as a means of gaining ‘complete representativeness’, as we have no gold standard. Even if we had a nationally-representative sample/survey this could yield differential response rates among different types of Jazzers. An approach to ‘convergent validation’ may be possible in the future, but it will take time to learn/develop a methodology.
  
 However,  we can measure and test the sensitivity of our results to variation along several ‘dimensions’
 
@@ -355,10 +355,10 @@ However,  we can measure and test the sensitivity of our results to variation al
 
 
 
-### Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of an rare/hidden population
+### Sketched model and approach: Bayesian inference/updating for estimating demographics and attitudes of a rare/hidden population {#sketched-model-and-approach-bayesian-inferenceupdating-for-estimating-demographics-and-attitudes-of-an-rarehidden-population}
 
 
-<!-- Private case-specific work: see https://docs.google.com/document/d/1_z7OcUvhqY3NvdKBfmQhcq_u6cr_zgEt5eqpiaJr3fk/edit#   --> 
+ 
 
 
 <div class="marginnote">
@@ -369,7 +369,7 @@ I suspect there must be substantial work on this, but I'm just going to flesh ou
  
 \
 
-**Parameters/values:***
+**Parameters/values:**
 
 We consider both latent/unobservable 'true' population parameters and our observed values.
 
@@ -384,10 +384,10 @@ We consider both latent/unobservable 'true' population parameters and our observ
 </div>
 
 
-E.g., if the male share is 70%, we have  be $\Pi_0= \delta_0 \Pi = 0.7\times 100 = 70$ males in our population.\*\*
+E.g., suppose the population is $\Pi = 100$ and the male share is 70%. Then there are $\Pi_0= \delta_0 \Pi = 0.7\times 100 = 70$ males in our population.\*\*
 
 <div class="marginnote">
-Naturally,  $\Pi_1 = \delta_1 \Pi = (1-\delta_0)\Pi = \Pi - \Pi_0 =  100-30 = 30$ non-males in our population. 
+\*\* Naturally,  $\Pi_1 = \delta_1 \Pi = (1-\delta_0)\Pi = \Pi - \Pi_0 =  100-70 = 30$ non-males in our population. 
 </div>
  
 \
@@ -397,7 +397,7 @@ As noted below, we will be targeting the population via several "referrers" $r=0
 For simplicity, consider only two referrers ($r=0,1$), the 'wide and narrow referrers', respectively, and let $\rho_0$ denote the share of our population that belongs to the wider referrer (and $\rho_1 = 1-\rho_0$ the share belonging to the narrower referrer).\*\*\*
 
 <div class="marginnote">
-\*\*\* For the case in mind when I built this example, this embodies in a place of assumption that is too strong. In fact each of our members may belong to one or more referrers, or in fact to none at all.
+\*\*\* For the case in mind when I built this example, this embodies an assumption that is too strong. In fact each of our members may belong to one or more referrers, or in fact to none at all.
 </div>
  
 
@@ -407,7 +407,7 @@ Thus, supposing 80% of our population belongs to the wider referrer, we  have $R
 Again, we do not know how this breaks down by demographics, and it may not be even. Thus, we need to define *the shares of each demographic belonging to each referrer*:
 
 
-$\rho_{r_k}=pr(k=k|r=r)$: The share of the 'population of referrer r' that also both belongs to  demographic $k$. 
+$\rho_{r_k}=\Pr(K=k \mid R=r)$: The share of the 'population of referrer r' that also belongs to demographic $k$. 
 
 
 <div class="marginnote">
@@ -420,9 +420,11 @@ In general (and defining the corresponding 'number of observations' notation):
 $\Pi_{rk}=\Pi\times\rho_r\times\rho_{r_k}$
 
 
-Thus, e.g., given the shares mentioned above, and assuming that 70% of the narrower referrer's population is male ($\rho_{1_0}=pr(k=0|r=1)) = 0.7$,  our true population of 'males in the narrower referrer' is 
+Thus, e.g., given the shares mentioned above, and assuming that 70% of the narrower referrer's population is male ($\rho_{1_0}=\Pr(K=0 \mid R=1) = 0.7$),  our true population of 'males in the narrower referrer' is 
 
 $\Pi_{10}=\Pi\times\rho_1\times\rho_{1_0}=100\times0.2\times0.7 = 14$
+
+Note that $\rho_{r_k}$ is already a conditional probability (the joint 'cross proportion' would be $\rho_r\rho_{r_k}$), and that these shares pin down the demographic shares: $\delta_k=\sum_r \rho_r\rho_{r_k}$. So the parameters are not all free: with $\delta_0=0.7$, $\rho_1=0.2$ and $\rho_{1_0}=0.7$, the wider referrer must also be 70% male ($\rho_{0_0}=0.7$).
 
  
 \
@@ -433,9 +435,9 @@ $\Pi_{10}=\Pi\times\rho_1\times\rho_{1_0}=100\times0.2\times0.7 = 14$
 
 We have an opt-in web survey that has been administered yearly in years $t=0,...,T$. 
 
-In each year, the survey has been advertised in one of the two referrers noted above.\*.
+In each year, the survey has been advertised in each of the two referrers noted above.\*
 <div class="marginnote">
-More generally, in $R$ referrers ... $r=0,1,...,R$.
+\* More generally, in $R+1$ referrers ... $r=0,1,...,R$.
 </div>
 
 We observe the number of participants coming from each referrer $r$ with each demographic $k$ in each year $t$
@@ -444,13 +446,13 @@ $n_{r,k,t} \forall \: r,k,t$
 
 Suppose that the survey has only been run for 2 years. 
 
-Thus, e.g., we may observe $n_{1,0,1}=20$ from the narrower referrer, who are male, in the first year (year '0').
+Thus, e.g., we may observe $n_{1,0,0}=7$ male respondents from the narrower referrer in the first year (year 0), half of the 14 males who belong to it.
 
 \
 
 *Participation 'model':*
 
-I suggested above, we assume that each member of our population only observes (or only "meaningfully observes") the survey from at most one referrer, the one they 'belong to'. 
+As suggested above, we assume that each member of our population only observes (or only "meaningfully observes") the survey from at most one referrer, the one they 'belong to'. 
 
 If an individual indeed observes the survey, they then decide whether to participate.\* 
 <div class="marginnote">
@@ -465,7 +467,7 @@ For now, we will simplify things; We will not model the two hurdles separately, 
 
 $\alpha_{r,k,t}$: The true probability that an individual belonging to referrer $r$, who is in demographic $k$ (in year $t$) participates (returns the survey) in year $t$. 
 
-If we had an (unbiased?) estimate of $\alpha_{r,k,t} \forall r,k,t$ (and if we observe responses from each combination of these, and if the some share of each group belongs to each referrer) we should be able to use inverse probability weighting to gain an unbiased estimate of the true demographic population shares as well as the overall true population size (?).
+If we had an (unbiased?) estimate of $\alpha_{r,k,t} \forall r,k,t$ (and if we observe responses from each combination of these, and if some share of each group belongs to each referrer) we should be able to use inverse probability weighting to gain an unbiased estimate of the true demographic population shares as well as the overall true population size (?).
 
 
 \

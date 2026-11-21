@@ -1323,7 +1323,7 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 <div id="theory-driven-inference-about-optimizing-agents-esp.-in-strategic-settings" class="section level3" number="19.1.4">
 <h3><span class="header-section-number">19.1.4</span> Theory-driven inference about optimizing agents, esp. in strategic settings</h3>
 <ul>
-<li>Especially in the context od ‘predicted contributions to public goods… and 2nd order beliefs’</li>
+<li>Especially in the context of ‘predicted contributions to public goods… and 2nd order beliefs’</li>
 </ul>
 </div>
 <div id="experimental-design" class="section level3" number="19.1.5">
@@ -1335,7 +1335,7 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 </p></li>
 </ul>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="bayes.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sessionInfo()</span></span></code></pre></div>
-<p>Package loadings from Kurtz:</p>
+<p>Package loadings from Kurz:</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="bayes.html#cb87-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_unload</span>(pacman<span class="sc">::</span><span class="fu">p_loaded</span>(), <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb87-2"><a href="bayes.html#cb87-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_grey</span>())</span>
 <span id="cb87-3"><a href="bayes.html#cb87-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)</span>
@@ -1344,22 +1344,22 @@ I take notes on several different resources/texts below. Ultimately I’ll try t
 </div>
 </div>
 <div id="statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes" class="section level2" number="19.2">
-<h2><span class="header-section-number">19.2</span> ‘Statistical thinking’ (McElreath) and <a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurtz ‘recoded’ (bookdown)</a>: highlights and notes</h2>
+<h2><span class="header-section-number">19.2</span> <em>Statistical Rethinking</em> (McElreath) and <a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurz ‘recoded’ (bookdown)</a>: highlights and notes</h2>
 
 <div class="note">
 <p>McElreath’s course and text looks great. I’m taking selective notes here; I’ll try to incorporate content from both text and <a href="https://www.youtube.com/watch?v=4WVelCswXo4&amp;list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI">youtube video lectures</a>.</p>
-<p><a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurtz has re-written the code</a> using the <code>brms</code> package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?</p>
-I’m planning to through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
+<p><a href="https://bookdown.org/ajkurz/Statistical_Rethinking_recoded">AJ Kurz has re-written the code</a> using the <code>brms</code> package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?</p>
+I’m planning to go through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
 </div>
 <div class="marginnote">
-<p>I’ve also forked Kurtz’s repo <a href="https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse">here</a>, which I may play with.</p>
+<p>I’ve also forked Kurz’s repo <a href="https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse">here</a>, which I may play with.</p>
 </div>
 <div id="the-golem-of-prague-map-ant-the-territory" class="section level3" number="19.2.1">
-<h3><span class="header-section-number">19.2.1</span> 1. The Golem of Prague (map ant the territory)</h3>
+<h3><span class="header-section-number">19.2.1</span> 1. The Golem of Prague (map and the territory)</h3>
 <p>Don’t let your model or approach turn into a Golem you can’t control. Don’t ‘believe the model’; continuously validate it. The map is not the territory.</p>
 <p>‘Statistical decision trees’ lend a false sense of security… and almost never fit the actual case we are dealing with. (fig 1.1)<br />
 </p>
-<p>Statistical models are non-unique maps to ‘process models’ which are non-unique maps to <em>hypotheses</em>. (He offers the example of neutral evolutionary selection’ example.)</p>
+<p>Statistical models are non-unique maps to ‘process models’ which are non-unique maps to <em>hypotheses</em>. (He offers the example of neutral evolution.)</p>
 <p>This makes strict falsification impossible: How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses?<br />
 </p>
 <p>But this warning is at least as relevant for Bayesian analyses, which must be based on specifically defined (term) models of the DGP etc. Thus he recommends caution and continuous (?) interplay between the model and the data. (See next chapter … ‘small worlds and large worlds.’)<br />
@@ -1425,7 +1425,7 @@ I’m planning to through this here, adding my own notes, questions, and conside
 </p>
 <p>We visualize this in the plot below, where each column is one ‘world’:</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="bayes.html#cb90-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb90-2"><a href="bayes.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with an ket variable for the possibility &#39;world&#39;</span></span>
+<span id="cb90-2"><a href="bayes.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> <span class="co">#make it long, with a key variable for the possibility &#39;world&#39;</span></span>
 <span id="cb90-3"><a href="bayes.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">5</span>), <span class="co">#an index for &#39;which ball&#39;</span></span>
 <span id="cb90-4"><a href="bayes.html#cb90-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">possibility =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> <span class="co">#distributing the &#39;which world&#39; index</span></span>
 <span id="cb90-5"><a href="bayes.html#cb90-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> possibility,</span>
@@ -1439,7 +1439,7 @@ I’m planning to through this here, adding my own notes, questions, and conside
 <p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-106-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
-<p>Simple combinatorics (permutations rule) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
+<p>Simple combinatorics (multiplication rule: ordered draws with replacement, <span class="math inline">\(4^3 = 64\)</span>) tells us how many ‘ways’ we can draw 1, 2, and 3 marbles… Here we think about ‘which’ marble is drawn, and not just ‘which color’ it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time… so <code>possibilities=marbles ^ draw</code>.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="bayes.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">draw    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
 <span id="cb91-2"><a href="bayes.html#cb91-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">marbles =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb91-3"><a href="bayes.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">possibilities =</span> marbles <span class="sc">^</span> draw) <span class="sc">%&gt;%</span></span>
@@ -1523,7 +1523,7 @@ possibilities
 <li><p>Incorporate evidence, results, expert judgement</p></li>
 </ol>
 <p>(‘restrictions’ with some lee-way?)</p>
-<p>(ISn’t this the same as number 2?)</p>
+<p>(Isn’t this the same as number 2?)</p>
 <ol start="6" style="list-style-type: decimal">
 <li>Cleaner treatment/imputation of missing values … these are just parameters</li>
 </ol>
@@ -1535,8 +1535,6 @@ possibilities
 <li><p>Different way of thinking about stats and inference; probability distributions and simulations, not much about p-values, point estimates and standard errors … path dependence</p></li>
 <li><p>Computational cost</p></li>
 </ol>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
 </div>
 <div id="why-more-popular-today" class="section level4" number="19.3.1.3">
 <h4><span class="header-section-number">19.3.1.3</span> Why more popular today?</h4>
@@ -1544,7 +1542,7 @@ possibilities
 <li>Starting from around 2005 in Political Science and Sociology</li>
 </ul>
 <p>Computational revolution comes from Markov chain Monte Carlo (MCMC) methods … don’t need analytical solutions</p>
-<p>Software implementations – many in R, specialised software like EWinBugs, JAGS, STAN; also increasingly in Stata</p>
+<p>Software implementations – many in R, specialised software like WinBUGS, JAGS, Stan; also increasingly in Stata</p>
 </div>
 </div>
 <div id="theory" class="section level3" number="19.3.2">
@@ -1554,14 +1552,14 @@ possibilities
 <li>In Bayesian stats the <em>parameters</em> (and sometimes missing values) are random variables, we make probability statements about them</li>
 </ul>
 <p><span class="math display">\[P(A|B)=P(B|A)P(A)/P(B)\]</span></p>
-<p>Frequentist: Point estimates, unknown fixed parameters, data from a hyol repeataable random sample</p>
-<p>Bayesian: Fixed data (from the experiment), parameters are random variables … results based on probability distributions about rthese</p>
+<p>Frequentist: Point estimates, unknown fixed parameters, data from a hypothetical repeatable random sample</p>
+<p>Bayesian: Fixed data (from the experiment), parameters are random variables … results based on probability distributions about these</p>
 <p>Classical statistics: likelihood of data given parameter: <span class="math inline">\(p(y|\theta)\)</span></p>
 <p>Bayes we want, <span class="math inline">\(p(\theta|y) = p(y|\theta)p(\theta)/p(y)\)</span></p>
 <p><span class="math inline">\(p(y)\)</span> is a ‘constant’ in our estimation … the data is fixed.</p>
-<p>So it’s proportional to <span class="math inline">\(p(\theta|y) = p(y|\theta)\times p(\theta)\)</span></p>
+<p>So <span class="math inline">\(p(\theta|y) \propto p(y|\theta)\times p(\theta)\)</span></p>
 <p><span class="math inline">\(p(y|\theta)\)</span> is what we max when we do ML</p>
-<p>$ p()$: prior distribution capturing beliefs about <span class="math inline">\(\theta\)</span></p>
+<p><span class="math inline">\(p(\theta)\)</span>: prior distribution capturing beliefs about <span class="math inline">\(\theta\)</span></p>
 <div id="so-how-do-we-estimate-it" class="section level4" number="19.3.2.1">
 <h4><span class="header-section-number">19.3.2.1</span> So how do we estimate it?</h4>
 <ol style="list-style-type: decimal">
@@ -1576,7 +1574,7 @@ possibilities
 <h4><span class="header-section-number">19.3.2.2</span> Linear regression model example</h4>
 <p><span class="math display">\[Y = x&#39;\beta+\epsilon\]</span> with n obs</p>
 <p>only random term is epsilon … natural candidate is a normal distribution, so <span class="math inline">\(Y \sim N(x&#39;\beta,\sigma^2_e)\)</span></p>
-<p>So we want to find <span class="math inline">\(p(\beta, \sigma^2_\epsilon|Y,X)\)</span>. This depends on the choices of <span class="math inline">\(p(\beta)\)</span> and <span class="math inline">\(p(\epsilon)\)</span>. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.</p>
+<p>So we want to find <span class="math inline">\(p(\beta, \sigma^2_\epsilon|Y,X)\)</span>. This depends on the choices of <span class="math inline">\(p(\beta)\)</span> and <span class="math inline">\(p(\sigma^2_\epsilon)\)</span>. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.</p>
 <p>Can yield a joint posterior.</p>
 <p>Instead, let’s assume that the latter (variance) parameter is known, you can show that the posterior for <span class="math inline">\(\beta\)</span> is also normally distributed. (Conjugate)</p>
 <p>Similarly, if we assume <span class="math inline">\(\beta\)</span> is known, if the variance term had an inverse gamma distribution (prior), so will the posterior.</p>
@@ -1619,8 +1617,8 @@ possibilities
 <li><p>previous … ‘eyeballing’</p></li>
 <li><p>formal:</p>
 <ul>
-<li>single-chain tests (Geweke/Heidel) … is the last part of the chain stable (stationary)… compare simulation at middle and end, is there much variation?</li>
-<li>multiple-chain test… (starting from different values), do they end similar … Gelman-Rubin diagnosting <span class="math inline">\(\hat{R}\)</span></li>
+<li>single-chain tests (Geweke; Heidelberger-Welch) … is the last part of the chain stable (stationary)… compare simulation at middle and end, is there much variation?</li>
+<li>multiple-chain test… (starting from different values), do they end similar … Gelman-Rubin diagnostic <span class="math inline">\(\hat{R}\)</span></li>
 <li>typically either a very long chain and use GH convergence, or multiple shorter chains and use <span class="math inline">\(\hat{R}\)</span></li>
 </ul></li>
 </ul>
@@ -1628,12 +1626,12 @@ possibilities
 <p>?? What am I iterating towards? Converging on what?</p>
 </div>
 <div id="assesing-fit-in-bayesian" class="section level4" number="19.3.2.6">
-<h4><span class="header-section-number">19.3.2.6</span> Assesing ‘fit’ in Bayesian</h4>
+<h4><span class="header-section-number">19.3.2.6</span> Assessing ‘fit’ in Bayesian</h4>
 <ul>
 <li>No r-squared</li>
 <li>Typical measure is ‘posterior predictive comparisons’</li>
 </ul>
-<p><span class="math inline">\(p(y_{replicated}|y_{observed}= ...\)</span></p>
+<p><span class="math inline">\(p(y_{replicated}|y_{observed}) = \dots\)</span></p>
 <ol style="list-style-type: decimal">
 <li>Simulate data from estimated parameters</li>
 <li>Compare to observed data</li>
@@ -1642,7 +1640,7 @@ possibilities
 <p>E.g., percent correct predictions (binary), whether the true data is within the 95% CI of the replicates, deviance</p>
 <p>For each replicate Choose statistic D, compare the replicated</p>
 <p><span class="math inline">\(D(y^s_{replicated})\)</span> against <span class="math inline">\(D(y^s_{observed})\)</span></p>
-<p>Quantify the discrepancy … percent of correct predictions, proportion of times replicated y is below true y … compute ‘bayesian p-value’s’</p>
+<p>Quantify the discrepancy … percent of correct predictions, proportion of times replicated y is below true y … compute ‘Bayesian p-values’</p>
 <p>Systematic differences between replicate and actual data indicate model limitations</p>
 <p>(?? what are reasonable values here??)</p>
 </div>
@@ -1660,14 +1658,14 @@ possibilities
 <p>Same result whether you obtained these together, or whether you did one and then updated (e.g., via an MCMC, starting with the first one as a prior)</p>
 <p>Conjugate priors (mentioned before)</p>
 <ul>
-<li>Jeffrey’s priors (??)</li>
+<li>Jeffreys priors (??)</li>
 </ul>
 </div>
 <div id="implementation" class="section level3" number="19.3.5">
 <h3><span class="header-section-number">19.3.5</span> Implementation</h3>
 <p>If you don’t need to do fancy things, and don’t want to (?) generate the full posterior distribution (or something)</p>
 <p>Some Stata/R commands that make Bayesian look frequentist.</p>
-<p>In Jags and Winbugs, we only have to specify the prior… rest is done for us</p>
+<p>In Jags and Winbugs, we only have to specify the model (likelihood and priors)… the sampler is chosen for us</p>
 <p>Jags is great … you only need to do self-coding with lots of data and super complicated models as it can freeze up</p>
 <p>We went through it the fancy way in Probit.R</p>
 <p>Then the easy way with ‘script probit Jags.R’</p>
@@ -1682,7 +1680,7 @@ possibilities
 <p>One solution – multiple imputation</p>
 <ul>
 <li>choose imputation model to predict missings,</li>
-<li>generate many copies of orig data set, imputing missibg value for each</li>
+<li>generate many copies of orig data set, imputing missing value for each</li>
 <li>2 more steps here</li>
 </ul>
 <p>Need a model for X|alpha, because missing variables are random variables</p>
@@ -1692,18 +1690,10 @@ possibilities
 <p>Has some rather simple implementations; e.g., just using commands like <code>bayes: regress y x</code></p>
 </div>
 <div id="r-mcmc-pac" class="section level3" number="19.3.9">
-<h3><span class="header-section-number">19.3.9</span> R mcmc pac</h3>
+<h3><span class="header-section-number">19.3.9</span> R: MCMCpack</h3>
 <p>Also simple code; great for standard use</p>
 <p>Speedup with parallelization; see “script for parallel probit.R” and “parallelprobit.R”</p>
 <p>More advanced: C++; can integrate it with Rcpp, or even use Exeter’s ISCA cluster</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="bayes.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
-<pre><code>##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120</code></pre>
 </div>
 </div>
 <div id="other-resources-and-notes-to-integrate" class="section level2" number="19.4">

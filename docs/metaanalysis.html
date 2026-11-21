@@ -1387,14 +1387,15 @@ div.csl-indent {
 <p><span class="math display">\[\hat{\beta}_{PW}=
 \sum_{j}p_j\hat{\beta}_j/
 \sum_{j}p_j\]</span></p>
-<p>where <span class="math inline">\(p_j\)</span> is the estimated precision for study <span class="math inline">\(j\)</span>: <span class="math inline">\(\frac{1}{\hat{\sigma_i}^2}\)</span></p>
+<p>where <span class="math inline">\(p_j\)</span> is the estimated precision for study <span class="math inline">\(j\)</span>: <span class="math inline">\(\frac{1}{\hat{\sigma}_j^2}\)</span></p>
 <p>Thus the weight <span class="math inline">\(\omega_j\)</span> placed on study <span class="math inline">\(j\)</span> is proportional to it’s precision.</p>
 <div class="marginnote">
 <p>‘implies weight in proportion to sample size?’ I think that’s loosely worded, it must be nonlinear.</p>
 </div>
 <p><span class="math inline">\(\rightarrow\)</span> This minimises the variance in the resulting meta-analytical estimate:</p>
-<p><span class="math display">\[var(\hat{\beta}_{PW}) =\sum_j \omega_j\hat{\sigma_j}^2 = \frac{1}{\sum_j(p_j)}\]</span></p>
+<p><span class="math display">\[var(\hat{\beta}_{PW}) = \sum_j \omega_j^2\,\hat{\sigma}_j^2 = \frac{1}{\sum_j p_j}, \qquad \omega_j = \frac{p_j}{\sum_k p_k},\quad p_j = \frac{1}{\hat{\sigma}_j^2}.\]</span></p>
 <p>‘inclusion of additional estimates always reduces the SE of <span class="math inline">\(\hat{\beta_{PW}}\)</span> [in expectation].’ … so more estimtes can’t hurt as long as you know their precision.</p>
+<p>This requires the added estimate to be unbiased for the same quantity and independent of the others. A biased estimate still lowers the standard error: pooling 0.10 (SE 0.05) with a biased 0.50 (SE 0.05) gives 0.30 with SE 0.035. Several estimates from one study, or several papers using one dataset, share sampling error, so <span class="math inline">\(1/\sum_j p_j\)</span> understates the variance; these need a multilevel model or robust variance estimation (Hedges, Tipton and Johnson 2010).</p>
 <p>(they give a numerical example here with 3 estimates)</p>
 <!-- Todo: add R code explicitly doing these calculations -->
 </div>
@@ -1454,9 +1455,6 @@ div.csl-indent {
 <!-- TODO: some code exercises should be put or linked here? Perhaps drawn from the above references? -->
 <p> The <span class="math inline">\(I^2\)</span> stat is a measure of the proportion of total variation attributed to cross-study variation; if <span class="math inline">\(\hat{\sigma}_j\)</span> is the same across all studies we have: <span class="math inline">\(I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)\)</span></p>
 <!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
-
-https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
-
 -->
 </div>
 </div>
@@ -1484,13 +1482,7 @@ https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/
 <!-- SD:
 Fixed the equations according to https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/fixed.html
 -->
-<p><span class="math display">\[\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} \]</span> <span class="math display">\[\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k \]</span></p>
-<!--
-And (it looks like) the simple average of the variabces for the pooled effect variance:
-
-$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
-
--->
+<p><span class="math display">\[\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} \]</span> <span class="math display">\[\widehat{Var}(\hat{\theta_F})=\frac{1}{\sum\limits_{k=1}^K 1/\hat{\sigma}^2_k} \]</span></p>
 <ul>
 <li>note that this process does not ‘dig in’ to the raw data, it just needs the summary statistics, neither does the “RE model” they refer to:</li>
 </ul>

@@ -1300,7 +1300,7 @@ div.csl-indent {
 <p>Power is the ability to distinguish signal from noise.
 - <a href="https://egap.org/resource/10-things-to-know-about-statistical-power/">Coppock</a></p>
 </blockquote>
-<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of)</p>
+<p>The ‘statistical power’ of an analysis is the probability that this analysis diagnoses that ‘an effect is present’ (or a parameter is nonzero). The power of an analysis can only be considered in light of (as a function of)</p>
 <ul>
 <li>a particular <em>true effect size</em> (parameter magnitude),</li>
 <li>or an effect size stated as relative to the underlying dispersion,</li>
@@ -1330,7 +1330,7 @@ div.csl-indent {
 <p>All else equal, you want to run a study that is <em>as high-powered as possible</em> (or a study that is part of a larger project that collectively yields substantial power) because:</p>
 <ol style="list-style-type: decimal">
 <li><p>you want your study to be informative and to contribute to science (empirical analysis) and</p></li>
-<li><p>‘low powered studies’ (at least in certain publication contexts) can potentially <a href="underpowered">harm the accuracy of our scientific consensus</a>.</p></li>
+<li><p>‘low powered studies’ (at least in certain publication contexts) can potentially <a href="power.html#underpowered">harm the accuracy of our scientific consensus</a>.</p></li>
 </ol>
 <div class="marginnote">
 <p>Other than perhaps being ‘too costly,’ is it bad for a study to be ‘overpowered?’ <a href="https://twitter.com/GivingTools/status/1350259972786057216">I argue that this is <em>not</em> a problem.</a></p>
@@ -1366,7 +1366,7 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <li>The nature of the sampling or assignment to experimental treatments *, **</li>
 </ol>
 <div class="marginnote">
-<p>* E.g., <a href="https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html">"complete random assignment</a> to two a single treatments and a single control, each with probability 1/2".)</p>
+<p>* E.g., <a href="https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html">complete random assignment</a> to a single treatment and a single control, each with probability 1/2.</p>
 <p>** Remember, here we are focusing on power calculations in <em>experimental</em> contexts. However, power calculations are also relevant in other empirical contexts, particularly where data-collection is costly.</p>
 </div>
 <ol start="3" style="list-style-type: decimal">
@@ -1375,7 +1375,7 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <p><br />
 </p>
 <p><em>and perhaps the most important and debated ingredient:</em></p>
-<p>*4. Which ‘metrics of power and effect size’ are we considering, and what are our targets?**</p>
+<p><em>4. Which ‘metrics of power and effect size’ are we considering, and what are our targets?</em></p>
 <ul>
 <li><p>Are we simply seeking ‘precise estimates,’ estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision?</p></li>
 <li><p>Do we seek power to detect some ‘minimal effect size of interest?’</p></li>
@@ -1411,15 +1411,17 @@ Furthermore, if you are trying to do a replication exercise to diagnose the cred
 <blockquote>
 <p>With this small-telescopes approach, the equivalence bounds are thus primarily based on the sample size in the original study. For example, consider a study in which 100 participants answered a question, and the results were analyzed with a one-sample t test. A two-sided test with an alpha of .05 would have had 33% power to detect an effect of d = 0.15. Another example of how previous research can be used to determine the SESOI can be found in Kordsmeyer and Penke (2017), who based the SESOI on the mean of effect sizes reported in the literature. Thus, in their replication study, they tested whether they could reject effects at least as extreme as the average reported in the literature. Given random variation and bias in the literature, a more conservative approach could be to use the lower end of a confidence interval around the meta-analytic estimate of the effect size (cf. Perugini, Gallucci, &amp; Costantini, 2014).</p>
 </blockquote>
-Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than <span class="math inline">\(\alpha\)</span> in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.
+<blockquote>
+<p>Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than <span class="math inline">\(\alpha\)</span> in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.</p>
+</blockquote>
 </div>
 <p><br />
 </p>
 <p>DR response: Why do we assume previous authors considered MESOI?</p>
 
 <div class="fold">
-<p>I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest?”</p>
-<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects,” But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)</p>
+<p>I’m missing the logic in the quotes above as to “why the previously detected effects, or some bounds on these should represent the minimum effect size of interest?”</p>
+<p>Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum effects,” But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run underpowered studies all the time (see the previous discussion on the harm to science)</p>
 </div>
 <p>DR: A second reason why one might see that as the “minimum effect size of interest” simply has to do with being able to publish a paper that can in some way “refute” previous claimed findings.</p>
 
@@ -1428,12 +1430,12 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 </div>
 <p><br />
 </p>
-<p>DR preferred approach - power a study based on policy concerns, also considering it’s use in meta-analysis.</p>
+<p>DR preferred approach - power a study based on policy concerns, also considering its use in meta-analysis.</p>
 
 <div class="fold">
-<p>One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a conference interval or a credible interval if we are thinking of a Bayesian posterior).</p>
+<p>One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a confidence interval or a credible interval if we are thinking of a Bayesian posterior).</p>
 <p>So, in determining how much power I wish to achieve, I need to weigh the benefits of this precision against the cost of a larger sample size.</p>
-<p>This is a very different considerations from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).</p>
+<p>This is a very different consideration from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).</p>
 </div>
 <p>Of course “We should power” is subject to constraints and cost concerns.</p>
 <div class="marginnote">
@@ -1444,7 +1446,7 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <div id="underpowered" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> The ‘harm to science’ from running underpowered studies</h2>
 <blockquote>
-<p>"One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+<p>“One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.”
 - From an anonymous referee report</p>
 </blockquote>
 <p>Perhaps most of us consider power largely in thinking about</p>
@@ -1463,7 +1465,7 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 </div>
 
 <div class="note">
-<p><a href="https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics">Ferraro discussion on magnitude error due to underpowered studies:</a> {-}</p>
+<p><a href="https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics">Ferraro discussion on magnitude error due to underpowered studies:</a></p>
 <p>… if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficient. By using a low powered study you sift through for these kind of effects.</p>
 </div>
 </div>
@@ -1485,11 +1487,14 @@ Another justifiable option when choosing the SESOI on the basis of earlier work 
 <blockquote>
 <p>We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect.’</p>
 </blockquote>
+<div class="marginnote">
+<p>Note (added later): the last sentence overstates it. The calculations avoid committing to one effect size by reporting power over a grid of assumed effect sizes, but each simulation still imposes the same additive or proportional shift on every treated unit. For zero-heavy outcomes like donations, a proportional shift leaves the zeros unchanged, so it assumes no effect on whether people give.</p>
+</div>
 <div id="assign-notes" class="section level4 unnumbered">
 <h4>Assignment procedures to consider</h4>
 <p>We consider three categories of possible assignment criteria: (We are coding these <a href="power.html#assign-functions">below</a>.)</p>
 <p><strong>1. Simple data-based</strong></p>
-<p>(Coded <a href="#power-simple">here</a>)</p>
+<p>(Coded <a href="power.html#assign-functions">here</a>)</p>
 <p>Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.</p>
 <p>We will also consider an unbalanced design, both in this and in other categories, which may achieve greater power, especially considering the differential costs of our treatments.</p>
 <div class="marginnote">
@@ -1524,7 +1529,7 @@ Blocking process (folded)
 </ol>
 <p>(Caveat – this resampling may need to be done based a randomised ‘start time’ to address random time-specific effects. ) <em>Note</em>: Because of this and for feasibility, we may abridge step 5, and just try out a few reasonable large block widths (e.g., quartiles)</p>
 <p>Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure, and estimate an “effect size” for each sample. We then consider the 99% bounds of these simulated effect sizes. The block width (and regularization parameter?) that consistently gives us the tightest bounds should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.</p>
-<p>The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws… the smaller the <em>actual</em> effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time). [Note: these latter notes may bot go with the procedure proposed below; these are older.]</p>
+<p>The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws… the smaller the <em>actual</em> effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time). [Note: these latter notes may not go with the procedure proposed below; these are older.]</p>
 </div>
 <p><strong>Kasy method?</strong></p>
 <p>We may or may not get to considering the method proposed in <span class="citation">(<a href="#ref-kasyWhyExperimentersMight2016" role="doc-biblioref"><strong>kasyWhyExperimentersMight2016?</strong></a>)</span>. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)</p>
@@ -1546,9 +1551,13 @@ Prior: Squared exponential or Linear?
 Re-randomization draws (default=1000); Expected R-sq (default=0.7)
 </li>
 </ul>
-<p>
-Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means without controls or interactions - More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors - But Kasy’s technique makes frequentist inference difficult (Bayesian OK)
-</p>
+<p>Notes:</p>
+<ul>
+<li>Stratify on ‘discrete strata’</li>
+<li>Conservative: difference in means without controls or interactions</li>
+<li>More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors</li>
+<li>But Kasy’s technique makes frequentist inference difficult (Bayesian OK)</li>
+</ul>
 </div>
 <p><strong>See Guidance/code:</strong></p>
 <ul>
@@ -1569,7 +1578,7 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 </p>
 <p><strong>Data-based power calculation: create simulation function</strong> {#power-calc-sim-func}</p>
 <!-- partly from https://stats.stackexchange.com/questions/37796/calculating-necessary-sample-size-using-bootstrap -->
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="power.html#cb40-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, bv) {</span>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="power.html#cb40-1" aria-hidden="true" tabindex="-1"></a>power_data <span class="ot">&lt;-</span> <span class="cf">function</span>(ds, reps, yvar, N, <span class="at">tshare=</span><span class="fl">0.5</span>, <span class="at">linTE=</span><span class="dv">0</span>, <span class="at">propTE=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.05</span>, <span class="at">test_nm=</span> wilcox.test, <span class="at">f_assign=</span>simple_assign, <span class="at">bv=</span><span class="cn">NULL</span>) {</span>
 <span id="cb40-2"><a href="power.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="power.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    results  <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(r) { <span class="co">#TODO - replace with purr::map (Toby)</span></span>
 <span id="cb40-4"><a href="power.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Sample size N from data for each iteration</span></span>
@@ -1580,33 +1589,42 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <span id="cb40-9"><a href="power.html#cb40-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">f_assign</span>(<span class="at">tshare=</span>tshare, <span class="at">blockvar=</span>bv) <span class="sc">%&gt;%</span></span>
 <span id="cb40-10"><a href="power.html#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-11"><a href="power.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Add treatment effects (`propTE` and `linTE`) to treatgroup</span></span>
-<span id="cb40-12"><a href="power.html#cb40-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:</span><span class="er">=</span>   <span class="fu">ifelse</span>(</span>
+<span id="cb40-12"><a href="power.html#cb40-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>({{yvar}} <span class="sc">:=</span>   <span class="fu">ifelse</span>(</span>
 <span id="cb40-13"><a href="power.html#cb40-13" aria-hidden="true" tabindex="-1"></a>        d_t <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span>, {{yvar}} <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> propTE) <span class="sc">+</span> linTE, {{yvar}})) <span class="sc">%&gt;%</span></span>
 <span id="cb40-14"><a href="power.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co">#TODO: Do this for several y-variables in each run; &#39;map&#39; these?</span></span>
-<span id="cb40-15"><a href="power.html#cb40-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}}) <span class="sc">%&gt;%</span>  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
+<span id="cb40-15"><a href="power.html#cb40-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">yv :=</span> {{yvar}})  <span class="co">#reassign variable because I couldn&#39;t figure out how to get the unquoted argument to work in tests below #TODO-fix</span></span>
 <span id="cb40-16"><a href="power.html#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-17"><a href="power.html#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Run chosen test `test_nm`, output p-value</span></span>
-<span id="cb40-18"><a href="power.html#cb40-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t)</span>
-<span id="cb40-19"><a href="power.html#cb40-19" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
-<span id="cb40-20"><a href="power.html#cb40-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">FALSE</span> )))</span>
-<span id="cb40-21"><a href="power.html#cb40-21" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
-<span id="cb40-22"><a href="power.html#cb40-22" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb40-23"><a href="power.html#cb40-23" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb40-24"><a href="power.html#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-25"><a href="power.html#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
-<span id="cb40-26"><a href="power.html#cb40-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
-<span id="cb40-27"><a href="power.html#cb40-27" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<span id="cb40-18"><a href="power.html#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyse as randomised: under block randomisation (`bv` given) condition on the blocks,</span></span>
+<span id="cb40-19"><a href="power.html#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="co"># here with block fixed effects and robust SEs. (`test_nm` ignores the blocks, so it would be</span></span>
+<span id="cb40-20"><a href="power.html#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="co"># conservative and would hide the power gain from blocking.)</span></span>
+<span id="cb40-21"><a href="power.html#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(bv)) {</span>
+<span id="cb40-22"><a href="power.html#cb40-22" aria-hidden="true" tabindex="-1"></a>      test <span class="ot">&lt;-</span> exp_sample <span class="sc">%&gt;%</span></span>
+<span id="cb40-23"><a href="power.html#cb40-23" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(yv, d_t) <span class="sc">%&gt;%</span></span>
+<span id="cb40-24"><a href="power.html#cb40-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">do</span>(<span class="fu">tidy</span>(<span class="fu">test_nm</span>( yv <span class="sc">~</span> d_t, <span class="at">data =</span> . )))</span>
+<span id="cb40-25"><a href="power.html#cb40-25" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb40-26"><a href="power.html#cb40-26" aria-hidden="true" tabindex="-1"></a>      exp_sample<span class="sc">$</span>block <span class="ot">&lt;-</span> <span class="fu">factor</span>(exp_sample[[bv]])</span>
+<span id="cb40-27"><a href="power.html#cb40-27" aria-hidden="true" tabindex="-1"></a>      test <span class="ot">&lt;-</span> <span class="fu">tidy</span>(estimatr<span class="sc">::</span><span class="fu">lm_robust</span>(yv <span class="sc">~</span> d_t, <span class="at">fixed_effects =</span> <span class="sc">~</span> block, <span class="at">data =</span> exp_sample)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-28"><a href="power.html#cb40-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;d_tTRUE&quot;</span>)</span>
+<span id="cb40-29"><a href="power.html#cb40-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb40-30"><a href="power.html#cb40-30" aria-hidden="true" tabindex="-1"></a>    test<span class="sc">$</span>p.value</span>
+<span id="cb40-31"><a href="power.html#cb40-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb40-32"><a href="power.html#cb40-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb40-33"><a href="power.html#cb40-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-34"><a href="power.html#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Output share of p-values below alpha</span></span>
+<span id="cb40-35"><a href="power.html#cb40-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(results <span class="sc">&lt;</span> alpha) <span class="sc">/</span> reps</span>
+<span id="cb40-36"><a href="power.html#cb40-36" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>block_1d_assign: assign treatment dummy to first t-share within each (pre-calculated) one-dimensional block group (<code>blockvar</code>)</li>
 </ol>
 <p><em>Note: I am using ‘randomizr’ here to assign blocks</em></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="power.html#cb41-1" aria-hidden="true" tabindex="-1"></a>block_1d_assign <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">tshare=</span><span class="fl">0.5</span>, blockvar) {</span>
-<span id="cb41-2"><a href="power.html#cb41-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(</span>
+<span id="cb41-2"><a href="power.html#cb41-2" aria-hidden="true" tabindex="-1"></a>      block_rand <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(</span>
 <span id="cb41-3"><a href="power.html#cb41-3" aria-hidden="true" tabindex="-1"></a>        randomizr<span class="sc">::</span><span class="fu">block_ra</span>(</span>
 <span id="cb41-4"><a href="power.html#cb41-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">blocks =</span>  df[[<span class="fu">glue</span>(<span class="st">&quot;{blockvar}&quot;</span>)]], <span class="at">conditions =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>,<span class="st">&quot;treat&quot;</span>), <span class="at">prob_each=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>tshare, tshare)</span>
 <span id="cb41-5"><a href="power.html#cb41-5" aria-hidden="true" tabindex="-1"></a>          )</span>
 <span id="cb41-6"><a href="power.html#cb41-6" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb41-7"><a href="power.html#cb41-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-7"><a href="power.html#cb41-7" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">bind_cols</span>(df, block_rand)) <span class="sc">%&gt;%</span></span>
 <span id="cb41-8"><a href="power.html#cb41-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">d_t=</span>value) <span class="sc">%&gt;%</span></span>
 <span id="cb41-9"><a href="power.html#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
 <span id="cb41-10"><a href="power.html#cb41-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">d_t=</span>(d_t<span class="sc">==</span><span class="st">&quot;treat&quot;</span>)</span>
@@ -1623,8 +1641,8 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <span id="cb43-2"><a href="power.html#cb43-2" aria-hidden="true" tabindex="-1"></a>propTE.try <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.05</span>, <span class="at">to =</span> <span class="fl">0.2</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
 <span id="cb43-3"><a href="power.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-4"><a href="power.html#cb43-4" aria-hidden="true" tabindex="-1"></a>outcomes.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sum_don&quot;</span>,<span class="st">&quot;count_don&quot;</span>)</span>
-<span id="cb43-5"><a href="power.html#cb43-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(t.test, wilcox.test)</span></code></pre></div>
-<p>Testing equicost parings, determine necessary cost</p>
+<span id="cb43-5"><a href="power.html#cb43-5" aria-hidden="true" tabindex="-1"></a>tests.try <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">t.test =</span> t.test, <span class="at">wilcox.test =</span> wilcox.test)</span></code></pre></div>
+<p>Testing equicost pairings, determine necessary cost</p>
 <p>With only control and treatment we have</p>
 <p><span class="math display">\[cost = multiplier \times avgcost \times N \times tshare\]</span>
 <span class="math display">\[\rightarrow N = cost/\big(multiplier \times avgcost \times tshare\big)\]</span></p>
@@ -1663,12 +1681,12 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <span id="cb45-17"><a href="power.html#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OUTCOME &lt;- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven&#39;t got the syntax to work</span></span>
 <span id="cb45-18"><a href="power.html#cb45-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-19"><a href="power.html#cb45-19" aria-hidden="true" tabindex="-1"></a>  df_x <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb45-20"><a href="power.html#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(outcomes.try)</span>
+<span id="cb45-20"><a href="power.html#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">all_of</span>(outcomes.try))</span>
 <span id="cb45-21"><a href="power.html#cb45-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)</span></span>
 <span id="cb45-22"><a href="power.html#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-23"><a href="power.html#cb45-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#loop over tests</span></span>
 <span id="cb45-24"><a href="power.html#cb45-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="fu">seq_along</span>(tests.try)) {</span>
-<span id="cb45-25"><a href="power.html#cb45-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[t]</span>
+<span id="cb45-25"><a href="power.html#cb45-25" aria-hidden="true" tabindex="-1"></a>    TEST <span class="ot">&lt;-</span> tests.try[[t]]</span>
 <span id="cb45-26"><a href="power.html#cb45-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-27"><a href="power.html#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Loop over proportional TE</span></span>
 <span id="cb45-28"><a href="power.html#cb45-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (p <span class="cf">in</span> <span class="fu">seq_along</span>(propTE.try)) {</span>
@@ -1677,19 +1695,21 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <span id="cb45-31"><a href="power.html#cb45-31" aria-hidden="true" tabindex="-1"></a>      <span class="co">#Loop over sample sizes</span></span>
 <span id="cb45-32"><a href="power.html#cb45-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (s <span class="cf">in</span> <span class="fu">seq_along</span>(sample.try)) {</span>
 <span id="cb45-33"><a href="power.html#cb45-33" aria-hidden="true" tabindex="-1"></a>        N <span class="ot">&lt;-</span> sample.try[s]</span>
-<span id="cb45-34"><a href="power.html#cb45-34" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
-<span id="cb45-35"><a href="power.html#cb45-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> dfX, <span class="at">reps =</span> <span class="dv">80</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span></span>
-<span id="cb45-36"><a href="power.html#cb45-36" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb45-37"><a href="power.html#cb45-37" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
-<span id="cb45-38"><a href="power.html#cb45-38" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">as.character</span>(TEST), <span class="at">power_est =</span> PW</span>
-<span id="cb45-39"><a href="power.html#cb45-39" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
-<span id="cb45-40"><a href="power.html#cb45-40" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb45-41"><a href="power.html#cb45-41" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb45-42"><a href="power.html#cb45-42" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb45-43"><a href="power.html#cb45-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-44"><a href="power.html#cb45-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb45-34"><a href="power.html#cb45-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">#reps = 1000 gives a Monte Carlo SE of about 0.013 at 80% power (80 reps: about 0.045)</span></span>
+<span id="cb45-35"><a href="power.html#cb45-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">#TODO: yvar is still hard-coded to sum_don; loop over outcomes.try</span></span>
+<span id="cb45-36"><a href="power.html#cb45-36" aria-hidden="true" tabindex="-1"></a>        PW <span class="ot">&lt;-</span> <span class="fu">power_data</span>(</span>
+<span id="cb45-37"><a href="power.html#cb45-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">ds =</span> df_x, <span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">yvar =</span> sum_don, <span class="at">N =</span> N, <span class="at">tshare =</span> <span class="fl">0.5</span>, <span class="at">linTE =</span> linTE, <span class="at">propTE =</span> PT, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">test_nm =</span> TEST</span>
+<span id="cb45-38"><a href="power.html#cb45-38" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb45-39"><a href="power.html#cb45-39" aria-hidden="true" tabindex="-1"></a>        power_vals <span class="ot">&lt;-</span> <span class="fu">add_row</span>(</span>
+<span id="cb45-40"><a href="power.html#cb45-40" aria-hidden="true" tabindex="-1"></a>            power_vals, <span class="at">n_try =</span> N, <span class="at">prop_te =</span> PT, <span class="at">lin_te =</span> linTE, <span class="at">test =</span> <span class="fu">names</span>(tests.try)[t], <span class="at">power_est =</span> PW</span>
+<span id="cb45-41"><a href="power.html#cb45-41" aria-hidden="true" tabindex="-1"></a>          ) <span class="do">##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)</span></span>
+<span id="cb45-42"><a href="power.html#cb45-42" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb45-43"><a href="power.html#cb45-43" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-44"><a href="power.html#cb45-44" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb45-45"><a href="power.html#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-46"><a href="power.html#cb45-46" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
+<span id="cb45-46"><a href="power.html#cb45-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#}</span></span>
+<span id="cb45-47"><a href="power.html#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-48"><a href="power.html#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="co">#toc()</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -1707,7 +1727,7 @@ Notes: - Stratify on ‘discrete strata’ - Conservative: difference in means w
 <p><strong>Is classical statistical inference the right framing here?</strong></p>
 
 <div class="fold">
-<p>David: I think classical statistical inference is the wrong framing here* o think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling</p>
+<p>David: I think classical statistical inference is the wrong framing here to think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling</p>
 <blockquote>
 <p>Matt: I’m (currently) not sure there is any meaningful alternative (or, therefore, a better alternative)</p>
 </blockquote>
@@ -1797,8 +1817,8 @@ I am claiming that you might gain more value, and indeed substantial value, from
 <div class="marginnote">
 <p>* However, it is not clear why this is the most relevant question. Simply determining ‘there is a difference of some minimum size’ doesn’t tell us how confident we are about the best title, nor how much value is gained by choosing that title. This suggests a reinforcement learning approach.</p>
 </div>
-<p><a href="https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages">Friedman’s Q</a>, is a measure of whether ‘any (at least one?) items are systematically ranked higher or lower.’ <span class="math inline">\(Q\)</span> can be normalized into, <a href="https://en.wikipedia.org/wiki/Kendall%27s_W">Kendall’s W</a>, a measure of ‘inter-rater agreement’ going from 0 to 1. There is a significant test for W “against a null hypothesis of no agreement (i.e. random rankings).”</p>
-<p><a href="https://rdrr.io/cran/rstatix/man/friedman_effsize.html">Kendalls uses the Cohen’s interpretation guidelines of 0.1 to 0.3 being a ‘small effect’</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages">Friedman’s Q</a>, is a measure of whether ‘any (at least one?) items are systematically ranked higher or lower.’ <span class="math inline">\(Q\)</span> can be normalized into, <a href="https://en.wikipedia.org/wiki/Kendall%27s_W">Kendall’s W</a>, a measure of ‘inter-rater agreement’ going from 0 to 1. There is a significance test for W “against a null hypothesis of no agreement (i.e. random rankings).”</p>
+<p><a href="https://rdrr.io/cran/rstatix/man/friedman_effsize.html">Kendall’s W is usually read with Cohen’s guidelines: 0.1 to 0.3 small, 0.3 to 0.5 moderate, above 0.5 large</a></p>
 <p>“A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different,” with multiple testing corrections. <a href="https://www.datanovia.com/en/lessons/friedman-test-in-r/">datanovia website</a></p>
 <p><br />
 </p>
@@ -1817,13 +1837,13 @@ I am claiming that you might gain more value, and indeed substantial value, from
 <p><em>We might frame our test and power calculation as the following:</em></p>
 <p>Suppose the ‘Minimal effect of interest’ that we want to be able to detect is (sort of the ‘alternative hypothesis HA’)…</p>
 <blockquote>
-<p>HA: “One title is ranked by a share of the population that is one and a half times as high as any other title.”</p>
+<p>HA: “One title is ranked first by a share of the population that is one and a half times as high as any other title.”</p>
 </blockquote>
 <p>If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if we assume all other titles share the same average ranking, the computations (below) should <em>underestimate</em> the necessary sample size.</p>
-<p>I.e., defining <span class="math inline">\(r_{k,i}\)</span> as the rank given to title <span class="math inline">\(k\)</span> by subject <span class="math inline">\(i\)</span>, and letting <span class="math inline">\(\bar{R^1_i}=\frac{1}{N}\sum I(r_{k,i}=1)\)</span> be the share of the sampled population (subjects) ranking title <span class="math inline">\(k\)</span> as first…</p>
+<p>I.e., defining <span class="math inline">\(r_{k,i}\)</span> as the rank given to title <span class="math inline">\(k\)</span> by subject <span class="math inline">\(i\)</span>, and letting <span class="math inline">\(\bar{R^1_k}=\frac{1}{N}\sum_{i=1}^{N} I(r_{k,i}=1)\)</span> be the share of the sampled population (subjects) ranking title <span class="math inline">\(k\)</span> as first…</p>
 <p>we may consider a case where <span class="math inline">\(\bar{R^1_j} &gt; \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}\)</span> for some title <span class="math inline">\(j\)</span> relative to all other titles <span class="math inline">\(k\)</span>.*</p>
 <div class="marginnote">
-<p>I think the latter term may simply be <span class="math inline">\(\frac{3}{2}\frac{19}{2}\)</span>, or something similar, the ‘average rank.’</p>
+<p>The right-hand side is 1.5 times the average first-place share of the other 19 titles (not the ‘average rank’). Because the shares sum to one, it equals <span class="math inline">\(\frac{3}{2}\cdot\frac{1-\bar{R^1_j}}{19}\)</span>, so the condition is <span class="math inline">\(\bar{R^1_j}&gt;3/41\approx0.073\)</span>, against <span class="math inline">\(1/20=0.05\)</span> under the null.</p>
 </div>
 <p><br />
 </p>
@@ -1831,13 +1851,13 @@ I am claiming that you might gain more value, and indeed substantial value, from
 <div class="marginnote">
 <p>** However, I don’t really think that that is <em>really</em> what we are looking for, as we are facing a <em>decision</em> problem.</p>
 </div>
-<p><strong>To test for this</strong> we would follow a certain procedure, e.g.,**</p>
+<p><strong>To test for this</strong> we would follow a certain procedure, e.g.,***</p>
 <div class="marginnote">
 <p>*** I am not sure this is an appropriate procedure.</p>
 </div>
 <ol style="list-style-type: decimal">
 <li><p>Find the title ‘j’ that has the most people in our <em>sample</em> who rank it first; call this share <span class="math inline">\(\bar{R^1_j}\)</span></p></li>
-<li><p>Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size <span class="math inline">\(N\)</span> (our actual sample size), the average rank of the highest-ranked title would be as high as <span class="math inline">\(\bar{R^1_j}\)</span>.****</p>
+<li><p>Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size <span class="math inline">\(N\)</span> (our actual sample size), the highest share ranking any one title first would be as high as <span class="math inline">\(\bar{R^1_j}\)</span>.****</p>
 <div class="marginnote">
 <p>**** Ideally there is an analytical formula for this; worth looking up.</p>
 </div></li>
@@ -1851,9 +1871,9 @@ I am claiming that you might gain more value, and indeed substantial value, from
 <li>Draw <span class="math inline">\(N\)</span> observations from an imagined ‘true population,’ i.e.,
 <ul>
 <li>for each of the <span class="math inline">\(N\)</span> subjects drawn, say, ‘subject <span class="math inline">\(i\)</span>,’ for each of their ‘ranks <span class="math inline">\(r=1,2,..,20\)</span>,’ draw a title (by random) to be assigned this rank (<span class="math inline">\(r_{k,i}=r\)</span>),</li>
-<li>with one title (the same one always) having a <span class="math inline">\(\frac{2}{21}\)</span> probability of being drawn for the first rank, and the other 19 titles each having a <span class="math inline">\(\frac{1}{21}\)</span> probability of being drawn for the first rank</li>
+<li>with one title (the same one always) having a <span class="math inline">\(\frac{3}{41}\)</span> probability of being drawn for the first rank, and the other 19 titles each having a <span class="math inline">\(\frac{2}{41}\)</span> probability of being drawn for the first rank</li>
 </ul></li>
-<li>Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span>: the average rank for each title in simulation <span class="math inline">\(t\)</span>,
+<li>Compute <span class="math inline">\([\bar{R^1_j}]^t\)</span>: the share ranking each title first in simulation <span class="math inline">\(t\)</span>,
 <ul>
 <li>and then compute (or simulate) <span class="math inline">\(P(N, [\bar{R^1_j}]^t) \equiv [P]^t\)</span>, the test statistic as defined above, the ‘likelihood of such an extreme result under the null hypothesis of random ranks’</li>
 </ul></li>
@@ -1883,23 +1903,23 @@ Consider a ‘(prior) distribution over parameter <span class="math inline">\(\t
 <p>Perhaps, we want to choose a sample size such that the title we claim has the “best overall ranking in our sample” has a <span class="math inline">\(B=0.8\)</span> or greater chance of being in the top-third of the true most-profitable titles.</p>
 Note that choosing a title that is “most likely to be in the top third” is not necessarily the same as “choosing the title with the greatest expected profit.” Our ranks are a multi-dimensional measure; thus one title need not ‘dominate’ the other title. E.g., in a sample of <span class="math inline">\(N=100\)</span> title <span class="math inline">\(A\)</span> may be ranked first by 10 people and last by 90 people, while title <span class="math inline">\(B\)</span> may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.*
 <div class="marginnote">
-<p>* E.g., perhaps this implies a 90% probability that <span class="math inline">\(B\)</span> will be more profitable than <span class="math inline">\(A\)</span>, but for the 10% of the states-of-the world when is more profitable than <span class="math inline">\(B\)</span>, <span class="math inline">\(A\)</span> is 100 times more profitable. This would imply that title <span class="math inline">\(A\)</span> has a greater expected value profit, but also involves more risk.</p>
+<p>* E.g., perhaps this implies a 90% probability that <span class="math inline">\(B\)</span> will be more profitable than <span class="math inline">\(A\)</span>, but for the 10% of the states-of-the world when <span class="math inline">\(A\)</span> is more profitable than <span class="math inline">\(B\)</span>, <span class="math inline">\(A\)</span> is 100 times more profitable. This would imply that title <span class="math inline">\(A\)</span> has a greater expected value profit, but also involves more risk.</p>
 </div>
 <p><br />
 </p>
 <p><strong>Nonetheless</strong>,</p>
-<p>Consider whether title <span class="math inline">\(k\)</span> is among the titles that is ‘ranked in the top-third’ by the largest share of the population. More specifically, consider <span class="math inline">\(\bar{R}^{7+}_k \equiv E[r_{k}\leq7]\)</span> as the ‘share of the population ranking title <span class="math inline">\(k\)</span> top 7 out of 20 or better. Let <span class="math inline">\(D_k=1\)</span> if <span class="math inline">\(\sum_{k,j}1\big(\bar{R}^{7+}_k&gt;\bar{R}^{7+}_j\big)\geq7\)</span>; i.e., if <span class="math inline">\(k\)</span> is one of the top-7 titles in terms of the measure ’ranked in the top third.’</p>
+<p>Consider whether title <span class="math inline">\(k\)</span> is among the titles that is ‘ranked in the top-third’ by the largest share of the population. More specifically, consider <span class="math inline">\(\bar{R}^{7+}_k \equiv P(r_{k}\leq7)\)</span> as the ‘share of the population ranking title <span class="math inline">\(k\)</span> top 7 out of 20 or better. Let <span class="math inline">\(D_k=1\)</span> if <span class="math inline">\(\sum_{j\neq k}1\big(\bar{R}^{7+}_k&gt;\bar{R}^{7+}_j\big)\geq13\)</span>; i.e., if <span class="math inline">\(k\)</span> is one of the top-7 titles in terms of the measure ’ranked in the top third.’</p>
 <p>We might want to…</p>
 <ol style="list-style-type: decimal">
 <li><p>based on our sample (and some assumptions?) choose the title with the highest chance of being ranked in the top-third by the population as a whole (<span class="math inline">\(k^\ast \equiv argmax_k\big(P(D_k=1)\big)\)</span>), and</p></li>
-<li><p>sample <span class="math inline">\(N\)</span> large enough so that this ‘chosen title’ has a <span class="math inline">\(\beta=0.8\)</span> chance of indeed being ranked in the top-third by the population as a whole, i.e., <span class="math inline">\(P(D_{k^\ast}=1)&gt;\beta=0.8\)</span>.</p></li>
+<li><p>sample <span class="math inline">\(N\)</span> large enough so that this ‘chosen title’ has a <span class="math inline">\(B=0.8\)</span> chance of indeed being ranked in the top-third by the population as a whole, i.e., <span class="math inline">\(P(D_{k^\ast}=1)&gt;B=0.8\)</span>.</p></li>
 </ol>
 <p><br />
 </p>
 <p>I imagine that under certain (overly restrictive?) assumptions about the distribution of rankings, we would be able to calculate:</p>
 <ol style="list-style-type: decimal">
 <li><p>The appropriate procedure for selecting the title that is best by the above metric (<span class="math inline">\(k^\ast\)</span>)</p></li>
-<li><p>Determine the minimum neccesary <span class="math inline">\(N\)</span> to achieve this <span class="math inline">\(\beta=0.8\)</span> chance of …</p></li>
+<li><p>Determine the minimum necessary <span class="math inline">\(N\)</span> to achieve this <span class="math inline">\(B=0.8\)</span> chance of …</p></li>
 </ol>
 <p><em>But do we want to do this?!</em></p>
 </div>
@@ -1927,9 +1947,9 @@ Note that choosing a title that is “most likely to be in the top third” is n
 <p>Outcome: <span class="math inline">\(\bar{y} :=\)</span> Sample mean of numeric-coded responses,</p>
 <p>Measure of dispersion: <span class="math inline">\(\hat{s}\)</span> := Sample standard deviation of y *</p>
 <div class="marginnote">
-<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares/</p>
+<p>Perhaps with the <span class="math inline">\(n-1\)</span> correction, but who cares?</p>
 </div>
-<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span></p>
+<p>Measure of (inverse of) precision: estimated standard error of the mean <span class="math inline">\(\hat{SE_m} = s/\sqrt{n}\)</span></p>
 <p>If we assume <span class="math inline">\(y\)</span> is normally distributed (which obviously can’t be precisely the case)…**</p>
 <div class="marginnote">
 <p>* * but Wiki (Derrick and White 2017?) claim “responses often show a quasi-normal distribution.”</p>
@@ -1944,7 +1964,7 @@ i.e.,</p>
 <div class="marginnote">
 <p>* Or perhaps considering the actual rather than estimated 95% CI this should be “<span class="math inline">\(2 * 1.96 \: SE_m &lt; 1\)</span>.”</p>
 </div>
-<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt(n)\)</span>.</p>
+<p>Recall that <span class="math inline">\(\hat{SE_m} = s/\sqrt{n}\)</span>.</p>
 <p>Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of <span class="math inline">\(s\)</span>, the standard deviation of <span class="math inline">\(y\)</span>, perhaps based on previous data.**</p>
 <div class="marginnote">
 <p>To have (e.g.) an 80% probability of getting these bounds for the actual confidence intervals we would also need a measure of the dispersion of our estimate of this sd. (Hmm, it’s getting complicated).</p>
@@ -1954,9 +1974,9 @@ i.e.,</p>
 <p><strong>B. ‘Relative’ metric?</strong>: Target a 95% CI range below <span class="math inline">\(B\)</span> sd of the Likert-item-integer-response <span class="math inline">\(y\)</span>:
 i.e.,</p>
 <p><span class="math display">\[2*1.96 SE_m &lt; B*sd(y)\]</span></p>
-<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt(n) &lt; B*s\)</span>,
-i.e., <span class="math inline">\(2*1.96/\sqrt(n) &lt; B\)</span>
-i.e., <span class="math inline">\(\sqrt(n) &gt; 2*1.96/B\)</span>
+<p>i.e., <span class="math inline">\(2*1.96 * s/\sqrt{n} &lt; B*s\)</span>,
+i.e., <span class="math inline">\(2*1.96/\sqrt{n} &lt; B\)</span>
+i.e., <span class="math inline">\(\sqrt{n} &gt; 2*1.96/B\)</span>
 i.e.,</p>
 <p><span class="math display">\[n &gt;  15.3664/(B^2)\]</span></p>
 <p>… where <span class="math inline">\(sd(y)\)</span> is the true standard deviation of the outcome.</p>

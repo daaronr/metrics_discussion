@@ -1,6 +1,6 @@
 # Introduction
 
-My goal in putting this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson.)
+My goal in putting together this resource is to focus on the practical tools I use and the challenges I ([David Reinstein](https://daaronr.github.io/markdown-cv/)) face. But I am open to collaboration with others on this. (Other contributors so far include Gerhard Riener, Oska Fentem, and Scott Dickerson.)
 
 \
 
@@ -23,7 +23,7 @@ I will assume familiarity with most basic statistical concepts like 'bias', 'con
 
 ```{block2,  type='note'}
 
-If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content (HERE)[https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html].  This is from a different project but the setup is basically the same.
+If you are involved with this project, you can find a brief guide (somewhat WIP) on how to add content [here](https://daaronr.github.io/ea_giving_barriers/bookdown-appendix.html).  This is from a different project but the setup is basically the same.
 
 ```
 
@@ -43,7 +43,19 @@ Notes: [bayes_notes](bayesian/bayes_notes.Rmd)
 
 -  Theory, restrictions, and 'structural vs reduced form'
 
+## How the notes are organized {-}
+
+- *Frameworks*: [what statistics is for](#conceptual); [hypothesis testing and inference](#hypothesis-testing-statistical-comparisons-and-inferences); [Bayesian approaches](#bayes)
+- *Regression in practice*: [common mistakes](#reg-follies); [robustness and diagnostics](#robust-diag); [control strategies, prediction and machine learning](#control-ml)
+- *Causal inference from observational data*: [IV and its limitations](#iv_limitations); [fixed effects, DiD, RD](#other_paths)
+- *Causal paths*: [mediation](#mediators); [selection, corner solutions and bounds](#selection_cop); [multi-level models](#mlm)
+- *Experiments and surveys*: [survey design and weighting](#surveys); [why run an experiment](#why_experiment_design); [pre-registration and treatment assignment](#quant_design_power); [power calculations](#power); [estimating treatment effects from RCTs](#experimetrics_te); [construct validation and factor analysis](#psychometrics)
+- *Combining evidence*: [meta-analysis](#metaanalysis)
+- *Data science*: [notes on Data Science for Business](#n_ds4bs); [getting, cleaning and using data](#data-sci)
+
+<!-- Earlier draft outline, kept for reference:
 ## [Regression and control approaches, robustness](#reg_control) {-}
+-->
 
 <!--
 
@@ -119,7 +131,7 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 --> 
 
 
-## Causal inference through observation{-#caus_inf_obs} {-}
+<!-- ## Causal inference through observation {- #caus_inf_obs} -->
 
 
 <!-- 
@@ -146,7 +158,7 @@ Bayesian interpretations of results (see also '[Bayesian Approaches](#bayes)')
 -->
 
 
-## Causal paths and levels of aggregation {-}
+<!-- ## Causal paths and levels of aggregation {-} -->
 
 <!-- 
 ## Causal paths: [Mediation modeling and its massive limitations](#mediators) {-}
@@ -165,7 +177,7 @@ Bounding approaches (Lee, Manski, etc). See [Notes on Lee bounds](#notes_lee)
 -->
 
 
-## Experiments and surveys: design and analysis {-} 
+<!-- ## Experiments and surveys: design and analysis {-} -->
 
 <!-- 
 ## [Survey design and implementation; analysis of survey data](-#surveys)
@@ -225,7 +237,8 @@ Generalizability (and heterogeneity)
 
 --> 
 
-# [Other approaches, techniques, and applications](#other_approaches) {-}
+<!-- # [Other approaches, techniques, and applications](#other_approaches) {-}
+(was a level-1 heading, which split the key references onto a page of their own) -->
 
 <!--
 ## [Making inferences from previous work; Meta-analysis, combining studies](-#metaanalysis)
@@ -256,7 +269,7 @@ Tibshirani, Robert. n.d. “Statistical Learning with Sparsity the Lasso and Gen
 
 OSF guides
 
-Christensen ea "Transparent and Reproducable Social Science Research"
+Christensen ea "Transparent and Reproducible Social Science Research"
 
 [@wooldridgeEconometricAnalysisCross2002; @wooldridgeIntroductoryEconometricsModern2008]
 
@@ -265,7 +278,7 @@ Gentzkow and Shapiro (2013) <!-- Add reference -->
 
 An Introduction to Statistical Learning with Applications in R
 
-R for Data Science Garrett Grolemund Hadley Wickhamr r4ds.org
+R for Data Science Garrett Grolemund, Hadley Wickham, r4ds.hadley.nz
 
 Statistical Rethinking: A Bayesian Course with Examples in R and Stan
 

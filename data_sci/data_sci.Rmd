@@ -6,13 +6,13 @@ Some key resources are in a continually updated airtable [HERE](https://airtable
 
 See especially:
 
-[R for data science](r4ds.had.co.nz)
+[R for data science](https://r4ds.had.co.nz)
 
 [Advanced R](https://adv-r.hadley.nz/)
 
 [bookdown: Authoring Books and Technical Documents with R Markdown:](https://bookdown.org/yihui/bookdown/)
 
-[OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research' <https://osf.io/g8yjz/>](OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research' <https://osf.io/g8yjz/>)
+[OSF: 'PhD Toolkit on Transparent, Open, Reproducible Research'](https://osf.io/g8yjz/)
 
 [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
@@ -49,9 +49,11 @@ Hope you are doing well. I've just invited you to a shared Zotero group managing
 On my computer it synchronizes with a .bib (bibtex) file in a dropbox folder ...
 
 For latex files we just refer to this as normal.
-In the Rmd files/bookdown (producing output like [EA barriers](#https://daaronr.github.io/ea_giving_barriers/outline.html) or Metrics notes (present book) this is referenced in the YAML header to the index.Rmd file as
+In the Rmd files/bookdown (producing output like [EA barriers](https://daaronr.github.io/ea_giving_barriers/outline.html) or Metrics notes (present book)) this is referenced in the YAML header to the index.Rmd file as
 
 > bibliography: [reinstein_bibtex.bib]
+
+(That line is from another project; this book's index.Rmd has `bibliography: "references.bib, packages.bib"`.)
 
 Then, to keep this file, I have a "download block" included in that same file (the first line with 'dropbox' is the key one).
 
@@ -81,7 +83,7 @@ A fairly comprehensive discussion of tools for citation in R-markdown:
 
 ### An example of dynamic code
 
-Shapiro Wilk test for normality; professor salaries at some US university from the built in Cars data...
+Shapiro Wilk test for normality; professor salaries at some US university from the `carData` package...
 
 ::: {.marginnote}
 By the way, if anyone wants me to offer me a job at that university, it looks like a great deal!
@@ -98,7 +100,9 @@ prof_sal_shapiro_test <- shapiro.test(carData::Salaries$salary)
 
 The results from the Shapiro Wilk normality test ...
 
-The p-values are `r prof_sal_shapiro_test[2]` suggesting this data `r ifelse(prof_sal_shapiro_test[2]<0.10, "is not", "is")` normal
+The Shapiro--Wilk p-value is `r format.pval(prof_sal_shapiro_test$p.value, digits = 2)`, so the test `r ifelse(prof_sal_shapiro_test$p.value < 0.10, "rejects normality of salaries at the 10% level", "does not reject normality of salaries at the 10% level (which is not evidence that they are normal)")`.
+
+Two caveats. First, the verdict depends on sample size: in small samples the test has little power against clearly non-normal data, and in large samples (there are `r nrow(carData::Salaries)` salaries here) it rejects for departures too small to affect inference. Second, normality of the raw outcome is rarely the assumption of interest. For regression it concerns the errors, and with samples of this size the usual tests rest on the central limit theorem in any case. A Q--Q plot (`qqnorm(carData::Salaries$salary); qqline(carData::Salaries$salary)`) shows the size and form of the departure, which the p-value does not.
 
 ## Project management tools, esp. Git/Github
 
@@ -127,7 +131,7 @@ For students and research assistants, I've been sending first time git users/dev
 
 ### New tools and approaches to data (esp 'tidyverse')
 
-From [Kurtz](https://bookdown.org/content/3890/small-worlds-and-large-worlds.html):
+From [Kurz](https://bookdown.org/content/3890/small-worlds-and-large-worlds.html):
 
 > If you are new to tidyverse-style syntax, possibly the oddest component is the pipe (i.e., `%>%`). I'm not going to explain the `%>%` in this project, but you might learn more about in [this brief clip](https://www.youtube.com/watch?v=9yjhxvu-pDg), starting around [minute 21:25 in this talk by Wickham](https://www.youtube.com/watch?v=K-ss_ag2k9E&t=1285s), or in [section 5.6.1 from Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/transform.html#combining-multiple-operations-with-the-pipe). Really, all of Chapter 5 of *R4DS* is just great for new R and new tidyverse users. And *R4DS* Chapter 3 is a nice introduction to plotting with ggplot2.
 
@@ -141,7 +145,14 @@ Use `lower_snake_case` to name *all* objects (that's my preference anyways) unle
 
 This includes:
 
-`file_names.txt` `folder_names` `function_names` (with few exceptions) `names_of_data_objects_like_vectors` `names_of_data_output_objects_like_correlation_coefficients` `ex_df1` In R you probably should keep data frame names short to avoid excessive typing
+-   `file_names.txt`
+-   `folder_names`
+-   `function_names` (with few exceptions)
+-   `names_of_data_objects_like_vectors`
+-   `names_of_data_output_objects_like_correlation_coefficients`
+-   `ex_df1`
+
+In R you probably should keep data frame names short to avoid excessive typing
 
 \
 
@@ -192,9 +203,8 @@ Making this a function for later use:
 selection_statement <- "Species == 'setosa' & Petal.Width>0.3"
 
 
-filter_parse =  function(df, x) {
-  {{df}} %>%
-   filter(rlang::eval_tidy(rlang::parse_expr({{x}})))
+filter_parse <- function(df, x) {
+  df %>% filter(!!rlang::parse_expr(x))
 }
 
 iris %>%
@@ -203,21 +213,35 @@ iris %>%
 
 ```
 
+`parse_expr()` turns the string into an R expression and `!!` inserts it into `filter()`. (The `{{ }}` 'embracing' operator is not needed here: it is for passing column names through to tidy-eval functions, and both arguments are ordinary values.)
+
 We can do the same for a list of character vectors of filter statements, and apply each filter from the list to the dataframe, and then the output function:
 
 ```{r}
 
 sel_st <- c("Species == 'setosa' & Petal.Width>0.3", "Species == 'virginica' & Petal.Width>2.4")
 
-map(iris, selection_statement)
-
 sel_st %>% map(~ filter_parse(iris, .x))
 
 ```
 
+Naming the filter statements carries the labels through to the results, and `imap()` passes each name to the function as `.y`:
+
+```{r}
+sel_st_named <- c(
+  setosa_wide    = "Species == 'setosa' & Petal.Width > 0.3",
+  virginica_wide = "Species == 'virginica' & Petal.Width > 2.4"
+)
+
+sel_st_named %>%
+  imap(~ filter_parse(iris, .x) %>%
+         summarise(subset = .y, n = n(), mean_sepal = mean(Sepal.Length))) %>%
+  bind_rows()
+```
+
 It works nicely if you have a list of filters aligned with a list of names or other objects 'specific to each filter'
 
-(Code below: adapt to public data and explain)
+(Code below, from a project with non-public data, does the same job as the named-vector `imap()` version above, using `map2()` and a separate vector of names.)
 
      bal_sx <-
         map2(subsets_sx_dur, subsets_sx_dur_name, function(x, y) {
@@ -240,7 +264,7 @@ I indent every line except
 
 -   important comments/flags/to-do's
 
-I only put 'small todo' elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include `#todo` to search for these later (and R has a utility to collect these in a nice way... maybe Stata does too.
+I only put 'small todo' elements having to do with code in a code file itself (and even then there may be better places). If we are going to put todos I suggest we include `#todo` to search for these later (and R has a utility to collect these in a nice way... maybe Stata does too.)
 
 \
 
@@ -269,7 +293,7 @@ Are you teaching/learning <a href="https://twitter.com/hashtag/r?src=hash&amp;re
 ```
 \
 
-**Tools for structuring your workflow for reproducable code with Rmd and Git: The workflowr package**
+**Tools for structuring your workflow for reproducible code with Rmd and Git: The workflowr package**
 
 <blockquote class="twitter-tweet">
 
@@ -294,14 +318,13 @@ Massive data cleaning using the Recipe package
 
 Codebook package
 
-### Some key points from [R for data science](r4ds.had.co.nz) (see my hypothesis notes) {.unnumbered}
+### Some key points from [R for data science](https://r4ds.had.co.nz) (see my hypothesis notes) {.unnumbered}
 
 #### Automating ['many models'](https://r4ds.had.co.nz/many-models.html) {.unnumbered}
 
 ```{block2,  type='note'}
 
 Actually, I think [this](https://stackoverflow.com/questions/46332863/how-to-fit-multiple-models-on-multiple-dataset-in-purrr) is the automation we are usually more interested in, i.e., ''run this on these subsets of the data, for these variable sets.'' 
-)
 ```
 
 ```{r}
@@ -399,15 +422,15 @@ glance <- by_country %>%
   unnest(glance)
 ```
 
-Above, we add a column `glance`, resulting from mapping the `mode`l column to the `broom::glance` function. `glance` gets some key elements of the models' outputs.\
+Above, we add a column `glance`, resulting from mapping the `model` column to the `broom::glance` function. `glance` gets some key elements of the models' outputs.\
 \
-Then we unnest this column. Note that `unnest` spreads out the elements of the `glance` output into columns, but as these are specific to each country (but *not* each year), it doesn't add more rows (while, e,g., unnesting `resids` *would* add more rows).
+Then we unnest this column. Note that `unnest` spreads out the elements of the `glance` output into columns, but as these are specific to each country (but *not* each year), it doesn't add more rows (while, e.g., unnesting `resids` *would* add more rows).
 
-One way of judging the 'fit' of these models... The worst-fitting ones, in terms of R-squared, seem to be in Africa (we save the worst ones as `bad_fit`:
+One way of judging the 'fit' of these models... The worst-fitting ones, in terms of R-squared, seem to be in Africa (we save the worst ones as `bad_fit`):
 
 ```{r}
 
-glance %T>% 
+glance %>% 
   arrange(r.squared) %T>% print() %>%  #look I get both in one pipe flow with T-pipe and the 'print' side effect
   ggplot(aes(continent, r.squared)) + 
     geom_jitter(width = 0.3) 
@@ -415,6 +438,8 @@ glance %T>%
 bad_fit <- filter(glance, r.squared < 0.25)
 
 ```
+
+Note: the tee pipe `%T>%` passes on its *left-hand* side, not the result of the step it feeds, so it belongs only in front of `print()`. Written as `glance %T>% arrange(r.squared)`, the sorted table is thrown away and the table prints unsorted. `%T>%` comes from magrittr, which `library(tidyverse)` does not attach; this book's setup loads it, but if you copy the chunk you need `library(magrittr)`.
 
 \
 
@@ -460,12 +485,11 @@ tibble(
 )
 ```
 
-    <div class="marginnote">
-    But note each column still has to have the same number of rows.
-    </div>
-     
+<div class="marginnote">
+But note each column still has to have the same number of rows.
+</div>
 
-And `tribble()` ([row-wise tibble creation](http://127.0.0.1:28503/help/library/tibble/html/tribble.html)) "can automatically work out that you need a list:"
+And `tribble()` ([row-wise tibble creation](https://tibble.tidyverse.org/reference/tribble.html)) "can automatically work out that you need a list:"
 
 ```{r}
 tribble(
@@ -559,13 +583,29 @@ sim <- tribble(
 
 ##### From multivalued summaries
 
-> f `summarise()` ... only works with summary functions that return a single value. ... not functions like `quantile()` that return a vector of arbitrary length:
+> `summarise()` ... only works with summary functions that return a single value. ... not functions like `quantile()` that return a vector of arbitrary length:
 
 ```{r, error = TRUE}
 mtcars %>% 
   group_by(cyl) %>% 
-  summarise(q = quantile(mpg)) #this now seems to run?
+  summarise(q = quantile(mpg)) # runs with dplyr 1.0.x; deprecated since dplyr 1.1.0 (use reframe(), below)
 ```
+
+The R4DS (first edition) statement above was true before dplyr 1.0.0. From 1.0.0 `summarise()` accepted results with several rows per group, which is why this chunk ran; dplyr 1.1.0 deprecated that again and added `reframe()` for it. `summarise()` returns one row per group; `reframe()` returns any number of rows per group:
+
+```{r}
+mtcars %>%
+  group_by(cyl) %>%
+  reframe(q = quantile(mpg))
+
+# with the probabilities alongside
+probs <- c(0.01, 0.25, 0.5, 0.75, 0.99)
+mtcars %>%
+  group_by(cyl) %>%
+  reframe(p = probs, q = quantile(mpg, probs))
+```
+
+The list-column versions below remain valid, and are the better choice when the quantiles should stay attached to one row per group.
 
 > You can however, wrap the result in a list! This obeys the contract of `summarise()`, because each summary is now a list (a vector) of length 1.
 
@@ -587,9 +627,9 @@ mtcars %>%
   unnest(c(p, q))
 ```
 
-### From a named list
+##### From a named list
 
-Data frames with list-columns provide a solution to a common problem: what do you do if you want to iterate over both the contents of a list and its elements? Instead of trying to jam everything into one object, it's often easier to make a data frame: one column can contain the elements, and one column can contain the list. An easy way to create such a data frame from a list is `tibble::enframe()`.
+> Data frames with list-columns provide a solution to a common problem: what do you do if you want to iterate over both the contents of a list and its elements? Instead of trying to jam everything into one object, it's often easier to make a data frame: one column can contain the elements, and one column can contain the list. An easy way to create such a data frame from a list is `tibble::enframe()`.
 
 ```{r}
 x <- list(
@@ -602,9 +642,9 @@ df <- enframe(x)
 df
 ```
 
-The advantage of this structure is that it generalises in a straightforward way - names are useful if you have character vector of metadata, but don't help if you have other types of data, or multiple vectors.
+> The advantage of this structure is that it generalises in a straightforward way - names are useful if you have character vector of metadata, but don't help if you have other types of data, or multiple vectors.
 
-Now if you want to iterate over names and values in parallel, you can use `map2()`:
+> Now if you want to iterate over names and values in parallel, you can use `map2()`:
 
 ```{r}
 df %>% 
@@ -615,17 +655,17 @@ df %>%
 
 ##### Simplifying list-columns
 
-To apply the techniques of data manipulation and visualisation you've learned in this book, you'll need to simplify the list-column back to a regular column (an atomic vector), or set of columns. The technique you'll use to collapse back down to a simpler structure depends on whether you want a single value per element, or multiple values:
+> To apply the techniques of data manipulation and visualisation you've learned in this book, you'll need to simplify the list-column back to a regular column (an atomic vector), or set of columns. The technique you'll use to collapse back down to a simpler structure depends on whether you want a single value per element, or multiple values:
 
-1.  If you want a single value, use `mutate()` with `map_lgl()`, `map_int()`, `map_dbl()`, and `map_chr()` to create an atomic vector.
+> 1.  If you want a single value, use `mutate()` with `map_lgl()`, `map_int()`, `map_dbl()`, and `map_chr()` to create an atomic vector.
+>
+> 2.  If you want many values, use `unnest()` to convert list-columns back to regular columns, repeating the rows as many times as necessary.
 
-2.  If you want many values, use `unnest()` to convert list-columns back to regular columns, repeating the rows as many times as necessary.
+> These are described in more detail below.
 
-These are described in more detail below.
+##### List to vector
 
-### List to vector
-
-If you can reduce your list column to an atomic vector then it will be a regular column. For example, you can always summarise an object with its type and length, so this code will work regardless of what sort of list-column you have:
+> If you can reduce your list column to an atomic vector then it will be a regular column. For example, you can always summarise an object with its type and length, so this code will work regardless of what sort of list-column you have:
 
 ```{r}
 df <- tribble(
@@ -641,9 +681,9 @@ df %>% mutate(
 )
 ```
 
-This is the same basic information that you get from the default tbl print method, but now you can use it for filtering. This is a useful technique if you have a heterogeneous list, and want to filter out the parts aren't working for you.
+> This is the same basic information that you get from the default tbl print method, but now you can use it for filtering. This is a useful technique if you have a heterogeneous list, and want to filter out the parts aren't working for you.
 
-Don't forget about the `map_*()` shortcuts - you can use `map_chr(x, "apple")` to extract the string stored in `apple` for each element of `x`. This is useful for pulling apart nested lists into regular columns. Use the `.null` argument to provide a value to use if the element is missing (instead of returning `NULL`):
+> Don't forget about the `map_*()` shortcuts - you can use `map_chr(x, "apple")` to extract the string stored in `apple` for each element of `x`. This is useful for pulling apart nested lists into regular columns. Use the `.null` argument to provide a value to use if the element is missing (instead of returning `NULL`):
 
 ```{r}
 df <- tribble(
@@ -657,15 +697,15 @@ df %>% mutate(
 )
 ```
 
-### Unnesting
+##### Unnesting
 
-`unnest()` works by repeating the regular columns once for each element of the list-column. For example, in the following very simple example we repeat the first row 4 times (because there the first element of `y` has length four), and the second row once:
+> `unnest()` works by repeating the regular columns once for each element of the list-column. For example, in the following very simple example we repeat the first row 4 times (because there the first element of `y` has length four), and the second row once:
 
 ```{r}
 tibble(x = 1:2, y = list(1:4, 1)) %>% unnest(y)
 ```
 
-This means that you can't simultaneously unnest two columns that contain different number of elements:
+Within each row, the list-columns being unnested together must have the same number of elements, or length 1, which is recycled. (R4DS, first edition, said they must simply have the same number; tidyr 1.0 added the recycling.)
 
 ```{r, error = TRUE}
 # Ok, because y and z have the same number of elements in
@@ -678,7 +718,7 @@ df1 <- tribble(
 df1
 df1 %>% unnest(c(y, z))
 
-# Doesn't work because y and z have different number of elements
+# Works since tidyr 1.0: the length-1 elements are recycled
 df2 <- tribble(
   ~x, ~y,           ~z,
    1, "a",         1:2,  
@@ -688,9 +728,17 @@ df2
 df2 %>% unnest(c(y, z))
 ```
 
-The same principle applies when unnesting list-columns of data frames. You can unnest multiple list-cols as long as all the data frames in each row have the same number of rows.
+This one does fail, because within the row the sizes 2 and 3 cannot be recycled to a common length:
 
-### 
+```{r, error = TRUE}
+df3 <- tribble(
+  ~x, ~y,           ~z,
+   1, c("a", "b"), 1:3
+)
+df3 %>% unnest(c(y, z))
+```
+
+> The same principle applies when unnesting list-columns of data frames. You can unnest multiple list-cols as long as all the data frames in each row have the same number of rows.
 
 ## Making tidy data with broom
 

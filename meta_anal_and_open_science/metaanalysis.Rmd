@@ -96,7 +96,7 @@ $$\hat{\beta}_{PW}=
 \sum_{j}p_j\hat{\beta}_j/
 \sum_{j}p_j$$
 
-where $p_j$ is the estimated precision for study $j$: $\frac{1}{\hat{\sigma_i}^2}$
+where $p_j$ is the estimated precision for study $j$: $\frac{1}{\hat{\sigma}_j^2}$
 
 Thus the weight $\omega_j$ placed on study $j$ is proportional to it's precision.
 
@@ -106,9 +106,11 @@ Thus the weight $\omega_j$ placed on study $j$ is proportional to it's precision
 
 $\rightarrow$ This minimises the variance in the resulting meta-analytical estimate:
 
-$$var(\hat{\beta}_{PW}) =\sum_j \omega_j\hat{\sigma_j}^2 = \frac{1}{\sum_j(p_j)}$$
+$$var(\hat{\beta}_{PW}) = \sum_j \omega_j^2\,\hat{\sigma}_j^2 = \frac{1}{\sum_j p_j}, \qquad \omega_j = \frac{p_j}{\sum_k p_k},\quad p_j = \frac{1}{\hat{\sigma}_j^2}.$$
 
 'inclusion of additional estimates always reduces the SE of $\hat{\beta_{PW}}$ [in expectation].' ... so more estimtes can't hurt as long as you know their precision.
+
+This requires the added estimate to be unbiased for the same quantity and independent of the others. A biased estimate still lowers the standard error: pooling 0.10 (SE 0.05) with a biased 0.50 (SE 0.05) gives 0.30 with SE 0.035. Several estimates from one study, or several papers using one dataset, share sampling error, so $1/\sum_j p_j$ understates the variance; these need a multilevel model or robust variance estimation (Hedges, Tipton and Johnson 2010).
 
 (they give a numerical example here with 3 estimates)
 
@@ -189,9 +191,6 @@ Coding meta-analyses in R
 
 ```{=html}
 <!-- *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
-
-https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
-
 -->
 ```
 ## Excerpts and notes from ['Doing Meta-Analysis in R: A Hands-on Guide'](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/) (Harrer et al) {#doing-meta}
@@ -225,16 +224,8 @@ load(here("meta_anal_and_open_science", "Doing-Meta-Analysis-in-R-master", "_dat
 Fixed the equations according to https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/fixed.html
 -->
 ```
-$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$ $$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
+$$\hat{\theta_F} = \frac{\sum\limits_{k=1}^K\hat{\theta_k}/\hat{\sigma}^2_k}{\sum\limits_{k=1}^K1/\hat{\sigma}^2_k} $$ $$\widehat{Var}(\hat{\theta_F})=\frac{1}{\sum\limits_{k=1}^K 1/\hat{\sigma}^2_k} $$
 
-```{=html}
-<!--
-And (it looks like) the simple average of the variabces for the pooled effect variance:
-
-$$\hat{\sigma^2_k}=\sum\limits_{k=1}^K \frac{1}{K}\hat{\sigma}^2_k $$
-
--->
-```
 -   note that this process does not 'dig in' to the raw data, it just needs the summary statistics, neither does the "RE model" they refer to:
 
 > Both of these models only require an effect size, and a dispersion (variance) estimate for each study, of which the inverse is taken. This is why the methods are often called generic inverse-variance methods.
@@ -899,4 +890,4 @@ Feldman: [Experimental Studies Meta-Analysis Registered Report template: Main ma
 
 [Cochrane Handbook for Systematic Reviews of Interventions online](https://training.cochrane.org/handbook/current)
 
-## Removed: discussion of meta-analyses of the Paleolithic diet [BELOW](#paleo-example)
+<!-- A worked example (meta-analyses of the Paleolithic diet) used to follow here; removed in 2023. -->

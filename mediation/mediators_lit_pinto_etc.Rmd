@@ -26,7 +26,7 @@ and final outcome $Y$ (e.g., lifetime income.)\
 
 The treatment $T$ is
 
-1. 'asked to donate in the first round' (in Reinstein, Riener and Vance-McMullen, henceforth 'RRV' experiments, and perhaps in Schmitz 2019)',
+1. 'asked to donate in the first round' (in Reinstein, Riener and Vance-McMullen, henceforth 'RRV' experiments, and perhaps in Schmitz 2019),
 
 2. a greater incentive or a nudge to donate in round 1 (Heger and Slonim, 2020; others?),
 
@@ -76,9 +76,9 @@ However, there are two major challenges to this estimation.
 
 Thus we consult the relevant literature, discussed below.
 
-The most influential paper in Economics has been [@Heckman2013].
+The most influential paper in Economics has been Heckman and Pinto's "Econometric Mediation Analyses" [@Heckman2013] (IZA DP 7552, 2013; published as Heckman and Pinto 2015, *Econometric Reviews* 34(1--2), 6--31). Not to be confused with Heckman, Pinto and Savelyev (2013, *AER*) on the Perry Preschool program.
 
-It is cited in more recent applied work such as Fagereng, 2018  (unfold).
+It is cited in more recent applied work such as Fagereng, Mogstad and Rønning (2021), "Why Do Wealthy Parents Have Wealthy Children?", *Journal of Political Economy* 129(3) (unfold).
 
 ```{block2,  type='fold'}
 
@@ -95,7 +95,7 @@ observe are uncorrelated with both $\mathbf{X}$ and the measured mediators for a
 Antonakis, coming from the Psychology and Leadership disciplines, considers the mediation question in a much simpler set of models.
 
 
-## Econometric Mediation Analyses (Heckman and Pinto)
+## Econometric Mediation Analyses (Heckman and Pinto 2015) {#econometric-mediation-analyses-heckman-and-pinto}
 
 **Econometric Mediation Analyses: Identifying the Sources of Treatment Effects from Experimentally Estimated Production Technologies with Unmeasured and Mismeasured Inputs**
 
@@ -140,7 +140,7 @@ Treatments (e.g., RCTs) may affect outcomes through the following channels:
 
 - Cf does the institution itself directly shift the income?, does it change the impact of entering a specialization, does human capital 'matter more' at some institutions?
 
-- Cf Does he treatment affect the impact of having made the first donation on later donations , or the effect of mood on donating.. ; what else?
+- Cf Does the treatment affect the impact of having made the first donation on later donations , or the effect of mood on donating.. ; what else?
 
 
 If treatments affect unmeasured inputs in a way not statistically independent of measured inputs, this biases estimates of the effect of measured inputs.
@@ -157,6 +157,8 @@ Here "we can test some of the strong assumptions implicitly invoked".
 <div class="marginnote">
  DR: Channel 2 isn't really a direct effect imho (what was this?)
 </div>
+
+On that margin question: in the mediation literature "direct" means "not through the mediators the analyst measured". It is a residual category that includes treatment-induced changes in unmeasured inputs (channel 2) and changes in the production function (channel 3). A large "direct effect" can be entirely mediated by things missing from the data; measure one more mediator and part of the direct effect becomes indirect. HP's split of $DE$ into $DE'$ (the map) and $DE''$ (unmeasured inputs), below, is their response to this ambiguity.
 
 \
 
@@ -183,7 +185,9 @@ $$Y_{d,\bar{\theta_{d}}^{p}}=f_{d}(\mathbf{\mathbf{{\bar{{\theta}}}}}_{d}^{p},\m
 
 This allows us to decompose ('as in the mediation literature'):
 
-$$ATE(d)=IE(d)+DE(d)$$
+$$ATE=IE(1)+DE(0)=IE(0)+DE(1),$$
+
+where $IE(d)=E\big(Y_{d,\bar\theta_1^p}-Y_{d,\bar\theta_0^p}\big)$ and $DE(d)=E\big(Y_{1,\bar\theta_d^p}-Y_{0,\bar\theta_d^p}\big)$. (Check: $IE(1)+DE(0)=E(Y_{1,\bar\theta_1^p}-Y_{1,\bar\theta_0^p})+E(Y_{1,\bar\theta_0^p}-Y_{0,\bar\theta_0^p})=E(Y_1-Y_0)$. The indirect effect evaluated at one treatment state pairs with the direct effect evaluated at the other; $IE(d)+DE(d)$ equals the ATE only if $IE(1)=IE(0)$.)
 
 -   *IE, Indirect effect*: allows only the proxied inputs to vary with the treatment (holds the rest fixed at one of the two treatment
     statuses)
@@ -215,7 +219,7 @@ They use this to give two further ways of decomposing the ATE.\
 
 Cf 'winning institution' impacts human capital, social networks,
     etc identically for everyone; e.g., not a greater effect for men
-    then for women, nor a greater effect for those entering particular
+    than for women, nor a greater effect for those entering particular
     specializations.
     
 </div>
@@ -228,7 +232,7 @@ Cf 'winning institution' impacts human capital, social networks,
 Essentially, independent randomization of both treatment status and measured inputs.
 
 <div class="marginnote">
-Cf 'winning institution' does not effect the specialization
+Cf 'winning institution' does not affect the specialization
     entered nor the location of residence, nor are both determined by a
     third factor.
     
@@ -248,13 +252,14 @@ Cf 'winning institution' does not effect the specialization
 
 This assumption yields the 'mediation formulas':
 
-\begin{aligned}
-E(IE(d)|X)= & \int E(Y|\theta^{p}=t,D=d,X)\underbrace{\Big(dF_{(\theta^{p}|D=1,X)}(t)-dF_{(\theta^{p}|D=1,X)}(t)\Big)}_{{\text{Difference in distribution of proxy inputs}}} & (9)\\
-E(DE(d)|X)= & \int\underbrace{\Big(E(Y|\theta^{p}=t,D=1,X)-E(Y|\theta^{p}=t,D=0,X)\Big)}_{\text{Dfc in expectations (unobservables, function) between treatments given proxy inputs }}expe\underbrace{{dF_{(\theta^{p}|D=1,X)}(t)}}_{\text{Distn proxy inputs for D=1}} & (10)
-\end{aligned}
+$$\begin{aligned}
+E(IE(d)|X)= & \int E(Y|\theta^{p}=t,D=d,X)\underbrace{\Big(dF_{(\theta^{p}|D=1,X)}(t)-dF_{(\theta^{p}|D=0,X)}(t)\Big)}_{\text{Difference in distribution of proxy inputs}} & (9)\\
+E(DE(d)|X)= & \int\underbrace{\Big(E(Y|\theta^{p}=t,D=1,X)-E(Y|\theta^{p}=t,D=0,X)\Big)}_{\text{Dfc in expectations (unobservables, function) between treatments given proxy inputs}}\underbrace{dF_{(\theta^{p}|D=d,X)}(t)}_{\text{Distn proxy inputs for }D=d} & (10)
+\end{aligned}$$
 
 *(??F is presumably the distribution over the observables; where did the
-unobservables go? They are in the expectations, I guess.)*\
+unobservables go? They are in the expectations, I guess.)*
+
 [Difference from RCT]{.underline}
 
 *What RCT doesn't do:*
@@ -268,7 +273,7 @@ unobservables go? They are in the expectations, I guess.)*\
 > between counterfactual outputs and measured inputs is assumed in
 > condition (ii).]
 
-Cf, randomizing 'win first-choice institution' does not guarantee that the choice (potential choice under winning/losing institution) to enter a particular specialty is independent of (potential after winning/losing institution) unobserved human capital gains at an institution. The (potential) choiceof specialty is alsonot guaranteed choice independent of potential incomes (holding proxy inputs like specialty constant) if winning/losing institution.
+Cf, randomizing 'win first-choice institution' does not guarantee that the choice (potential choice under winning/losing institution) to enter a particular specialty is independent of (potential after winning/losing institution) unobserved human capital gains at an institution. The (potential) choice of specialty is also not guaranteed to be independent of potential incomes (holding proxy inputs like specialty constant) if winning/losing institution.
 
 *What RCT* *[does]{.underline}* *do:*
 
@@ -293,7 +298,7 @@ outputs like 'income in observed years.'
 
 -   Challenge (here) is to assess impact of *neighborhoods* on outcomes.
 
--   Method here to decompose the TEOT into unambiguously interpreted
+-   Method here to decompose the TOT into unambiguously interpreted
     effects. Method applicable to 'unordered choice models with
     categorical instrumental variables and multiple treatments'
 
@@ -325,7 +330,7 @@ outcomes has seldom been assessed.
 
 -   Experimental: could use voucher to lease in low-poverty neighborhood
 
--   Section 8: Could use voucher in any () neighborhood
+-   Section 8: Could use voucher in any neighborhood
 
 *Many papers evaluate the ITT or TOT effects of MTO.*
 
@@ -391,14 +396,14 @@ institution and course)*\
 **Counterfactuals**
 
 -   $T_{\omega}(z)$: relocation decision $\omega$ would choose if it had
-    been assigned voucher $z\in{0,1}$': vector of potential relocation
+    been assigned voucher $z\in\{0,1\}$: vector of potential relocation
     decisions (*cf education choices)* for each voucher assignment (*cf
     lottery number)*
 
     -   Can partition into never-takers, compliers, always takers, and
         defiers
 
--   $(Y_{\omega}(0);Y_{\omega}(1$)): (Potential counterfactual) outcomes
+-   $(Y_{\omega}(0),Y_{\omega}(1))$: (Potential counterfactual) outcomes
     (*cf income, residence, etc*) when relocation decision is fixed at 0
     and 1, respectively
 
@@ -410,18 +415,22 @@ $$(Y_{\omega}(0),Y_{\omega}(1),T_{\omega}(0),T_{\omega}(1))\perp Z_{\omega}$$
 **Standard result 1: ITT**
 
 $$\begin{aligned}
-ITT=E(Y_{\omega}|Z_{\omega}=1)-(Y_{\omega}|Z_{\omega}=0)\\
-=E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')P(S_{\omega}=[0,1])+E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[1,0]')P(S_{\omega}=[0,1])\end{aligned}$$
+ITT &= E(Y_{\omega}|Z_{\omega}=1)-E(Y_{\omega}|Z_{\omega}=0)\\
+&= E\big(Y_{\omega}(1)-Y_{\omega}(0)\,|\,S_{\omega}=[0,1]'\big)\,P(S_{\omega}=[0,1]')\;-\;E\big(Y_{\omega}(1)-Y_{\omega}(0)\,|\,S_{\omega}=[1,0]'\big)\,P(S_{\omega}=[1,0]')
+\end{aligned}$$
 
-i.e., ITT computation yields the sum of the 'causal effect for
-compliers' and the 'causal effect for defiers, weighted by the
-probability of each.
+i.e., the ITT is the effect for compliers times their share, minus the
+effect for defiers times their share. The voucher moves defiers out of
+treatment, so their effect enters negatively; always-takers and
+never-takers contribute nothing. Example: compliers are 30% with effect
+$+10$ and defiers 10% with effect $+20$. Then $ITT=0.3(10)-0.1(20)=1$
+and $ITT/(0.3-0.1)=5$, below both groups' effects. With a defier effect
+of $+40$ the ITT is $-1$ although every individual effect is positive.
+Ruling this out is the role of monotonicity (no defiers).
 
 **Standard result 2: LATE**
 
-$$\begin{aligned}
-LATE=\frac{{ITT}}{P(T_{\omega}=1|Z_{\omega}=1)-P(T_{\omega}=1|Z_{\omega}=0)}= &  & E(Y_{\omega}(1)-Y_{\omega}(0)|S_{\omega}=[0,1]')\\
-if\:P(S_{\omega}=[0,1])=0\end{aligned}$$
+$$LATE=\frac{ITT}{P(T_{\omega}=1|Z_{\omega}=1)-P(T_{\omega}=1|Z_{\omega}=0)}=E\big(Y_{\omega}(1)-Y_{\omega}(0)\,|\,S_{\omega}=[0,1]'\big)\quad\text{if } P(S_{\omega}=[1,0]')=0 .$$
 
 i.e., the LATE, computed as the ITT divided by the 'first stage' impact
 of the instrument, is the causal effect for compliers if there are no
@@ -429,7 +438,7 @@ defiers.
 
 ### Framework for MTO multiple treatment groups, multiple choices {-}
 
--   $Z_{\omega}\in\{z_{1,}z_{2,}z_{3}\}$ for no voucher, experimental
+-   $Z_{\omega}\in\{z_{1},z_{2},z_{3}\}$ for no voucher, experimental
     voucher, and section 8 voucher, respectively
 
 -   $T_{\omega}\in\{1,2,3\}$ \... no relocation, low poverty
@@ -455,12 +464,12 @@ $\rightarrow$
     -   (I ignore other course at other institution for now)
 
 -   Looking among those who won the course lottery (so we have a binary
-    instrument: wininst $Z_{\omega}\in{0,1\}}$
+    instrument: wininst $Z_{\omega}\in\{0,1\}$)
 
 -   Our reduced-form estimates (regressions on the 'lottery number wins
-    institution' dummy) measures the probablility-weighted sum of:
+    institution' dummy) measures the probability-weighted sum of:
 
-    -   impact of institution within course ($T_{\omega}=$2 versus 3);
+    -   impact of institution within course ($T_{\omega}=2$ versus 3);
         for those who would 'fully comply' (enter course at institution
         if $Z_{\omega}=1$, enter course at other institution if 0)
 

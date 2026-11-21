@@ -26,7 +26,7 @@ In particular, in a charitable giving social-media fundraising context, we might
 
 ### Theory-driven inference about optimizing agents, esp. in strategic settings
 
--   Especially in the context od 'predicted contributions to public goods... and 2nd order beliefs'
+-   Especially in the context of 'predicted contributions to public goods... and 2nd order beliefs'
 
 ### Experimental design
 
@@ -44,7 +44,7 @@ In particular, in a charitable giving social-media fundraising context, we might
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Package loadings from Kurtz:
+Package loadings from Kurz:
 
 ```{r, echo = TRUE, message = F, warning = F, results = "hide"}
 
@@ -56,28 +56,28 @@ library(tidyverse) #adds in next chapter
 
 ```
 
-## 'Statistical thinking' (McElreath) and [AJ Kurtz 'recoded' (bookdown)](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded): highlights and notes
+## *Statistical Rethinking* (McElreath) and [AJ Kurz 'recoded' (bookdown)](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded): highlights and notes {#statistical-thinking-mcelreath-and-aj-kurtz-recoded-bookdown-highlights-and-notes}
 
 ```{block2,  type='note'}
 
 McElreath's course and text looks great. I'm taking selective notes here; I'll try to incorporate content from both text and [youtube video lectures](https://www.youtube.com/watch?v=4WVelCswXo4&list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI).
 
-[AJ Kurtz has re-written the code](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded) using the `brms` package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?
+[AJ Kurz has re-written the code](https://bookdown.org/ajkurz/Statistical_Rethinking_recoded) using the `brms` package, which he finds superior. More crucially for me, he redoes the code using ggplot and tidyverse?
 
-I'm planning to through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
+I'm planning to go through this here, adding my own notes, questions, and considerations and (hopefully) incorporating some of my own work.
 ```
 
 ::: {.marginnote}
-I've also forked Kurtz's repo [here](https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse), which I may play with.
+I've also forked Kurz's repo [here](https://github.com/daaronr/Statistical_Rethinking_with_brms_ggplot2_and_the_tidyverse), which I may play with.
 :::
 
-### 1. The Golem of Prague (map ant the territory)
+### 1. The Golem of Prague (map and the territory) {#the-golem-of-prague-map-ant-the-territory}
 
 Don't let your model or approach turn into a Golem you can't control. Don't 'believe the model'; continuously validate it. The map is not the territory.
 
 'Statistical decision trees' lend a false sense of security... and almost never fit the actual case we are dealing with. (fig 1.1)\
 
-Statistical models are non-unique maps to 'process models' which are non-unique maps to *hypotheses*. (He offers the example of neutral evolutionary selection' example.)
+Statistical models are non-unique maps to 'process models' which are non-unique maps to *hypotheses*. (He offers the example of neutral evolution.)
 
 This makes strict falsification impossible: How can you falsify a hypothesis/theory if it corresponds to a wide set of process models and statistical models, many of which overlap other hypotheses?\
 
@@ -141,7 +141,7 @@ We visualize this in the plot below, where each column is one 'world':
 
 ```{r,  out.width='50%'}
 d %>%
-  gather() %>% #make it long, with an ket variable for the possibility 'world'
+  gather() %>% #make it long, with a key variable for the possibility 'world'
   mutate(x = rep(1:4, times = 5), #an index for 'which ball'
          possibility = rep(1:5, each = 4)) %>% #distributing the 'which world' index
   ggplot(aes(x = x, y = possibility,
@@ -156,7 +156,7 @@ d %>%
 
 \
 
-Simple combinatorics (permutations rule) tells us how many 'ways' we can draw 1, 2, and 3 marbles... Here we think about 'which' marble is drawn, and not just 'which color' it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time... so `possibilities=marbles ^ draw`.
+Simple combinatorics (multiplication rule: ordered draws with replacement, $4^3 = 64$) tells us how many 'ways' we can draw 1, 2, and 3 marbles... Here we think about 'which' marble is drawn, and not just 'which color' it is. We can draw marble 1-4, the first time, then 1-4 the second time, and then 1-4 the third time... so `possibilities=marbles ^ draw`.
 
 ```{r}
 
@@ -204,7 +204,7 @@ You can consider the 'robustness to other priors'
 
 ('restrictions' with some lee-way?)
 
-(ISn't this the same as number 2?)
+(Isn't this the same as number 2?)
 
 6.  Cleaner treatment/imputation of missing values ... these are just parameters
 
@@ -216,17 +216,13 @@ You can consider the 'robustness to other priors'
 
 3.  Computational cost
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
 #### Why more popular today?
 
 -   Starting from around 2005 in Political Science and Sociology
 
 Computational revolution comes from Markov chain Monte Carlo (MCMC) methods ... don't need analytical solutions
 
-Software implementations -- many in R, specialised software like EWinBugs, JAGS, STAN; also increasingly in Stata
+Software implementations -- many in R, specialised software like WinBUGS, JAGS, Stan; also increasingly in Stata
 
 ### Theory
 
@@ -236,9 +232,9 @@ Bayes theorem ... inverting conditional probability thing ... 'inversion' to mak
 
 $$P(A|B)=P(B|A)P(A)/P(B)$$
 
-Frequentist: Point estimates, unknown fixed parameters, data from a hyol repeataable random sample
+Frequentist: Point estimates, unknown fixed parameters, data from a hypothetical repeatable random sample
 
-Bayesian: Fixed data (from the experiment), parameters are random variables ... results based on probability distributions about rthese
+Bayesian: Fixed data (from the experiment), parameters are random variables ... results based on probability distributions about these
 
 Classical statistics: likelihood of data given parameter: $p(y|\theta)$
 
@@ -246,11 +242,11 @@ Bayes we want, $p(\theta|y) = p(y|\theta)p(\theta)/p(y)$
 
 $p(y)$ is a 'constant' in our estimation ... the data is fixed.
 
-So it's proportional to $p(\theta|y) = p(y|\theta)\times p(\theta)$
+So $p(\theta|y) \propto p(y|\theta)\times p(\theta)$
 
 $p(y|\theta)$ is what we max when we do ML
 
-\$ p(\theta)\$: prior distribution capturing beliefs about $\theta$
+$p(\theta)$: prior distribution capturing beliefs about $\theta$
 
 #### So how do we estimate it?
 
@@ -270,7 +266,7 @@ $$Y = x'\beta+\epsilon$$ with n obs
 
 only random term is epsilon ... natural candidate is a normal distribution, so $Y \sim N(x'\beta,\sigma^2_e)$
 
-So we want to find $p(\beta, \sigma^2_\epsilon|Y,X)$. This depends on the choices of $p(\beta)$ and $p(\epsilon)$. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.
+So we want to find $p(\beta, \sigma^2_\epsilon|Y,X)$. This depends on the choices of $p(\beta)$ and $p(\sigma^2_\epsilon)$. Could choose conjugate priors, leading to a particular joint posterior, you can solve it analytically.
 
 Can yield a joint posterior.
 
@@ -319,20 +315,20 @@ Commonly used proposal: random walk sample: $\theta_t=\theta_{t-1}+z_t$, $z_t \s
 
 -   formal:
 
-    -   single-chain tests (Geweke/Heidel) ... is the last part of the chain stable (stationary)... compare simulation at middle and end, is there much variation?
-    -   multiple-chain test... (starting from different values), do they end similar ... Gelman-Rubin diagnosting $\hat{R}$
+    -   single-chain tests (Geweke; Heidelberger-Welch) ... is the last part of the chain stable (stationary)... compare simulation at middle and end, is there much variation?
+    -   multiple-chain test... (starting from different values), do they end similar ... Gelman-Rubin diagnostic $\hat{R}$
     -   typically either a very long chain and use GH convergence, or multiple shorter chains and use $\hat{R}$
 
 Gabriel: Gelman-Rubin is probably preferred; more conservative
 
 ?? What am I iterating towards? Converging on what?
 
-#### Assesing 'fit' in Bayesian
+#### Assessing 'fit' in Bayesian {#assesing-fit-in-bayesian}
 
 -   No r-squared
 -   Typical measure is 'posterior predictive comparisons'
 
-$p(y_{replicated}|y_{observed}= ...$
+$p(y_{replicated}|y_{observed}) = \dots$
 
 1.  Simulate data from estimated parameters
 2.  Compare to observed data
@@ -344,7 +340,7 @@ For each replicate Choose statistic D, compare the replicated
 
 $D(y^s_{replicated})$ against $D(y^s_{observed})$
 
-Quantify the discrepancy ... percent of correct predictions, proportion of times replicated y is below true y ... compute 'bayesian p-value's'
+Quantify the discrepancy ... percent of correct predictions, proportion of times replicated y is below true y ... compute 'Bayesian p-values'
 
 Systematic differences between replicate and actual data indicate model limitations
 
@@ -368,7 +364,7 @@ Same result whether you obtained these together, or whether you did one and then
 
 Conjugate priors (mentioned before)
 
--   Jeffrey's priors (??)
+-   Jeffreys priors (??)
 
 ### Implementation
 
@@ -376,7 +372,7 @@ If you don't need to do fancy things, and don't want to (?) generate the full po
 
 Some Stata/R commands that make Bayesian look frequentist.
 
-In Jags and Winbugs, we only have to specify the prior... rest is done for us
+In Jags and Winbugs, we only have to specify the model (likelihood and priors)... the sampler is chosen for us
 
 Jags is great ... you only need to do self-coding with lots of data and super complicated models as it can freeze up
 
@@ -395,7 +391,7 @@ Prediction: generate a new observation \#note, he is doing one per iteration, bu
 One solution -- multiple imputation
 
 -   choose imputation model to predict missings,
--   generate many copies of orig data set, imputing missibg value for each
+-   generate many copies of orig data set, imputing missing value for each
 -   2 more steps here
 
 Need a model for X\|alpha, because missing variables are random variables
@@ -404,17 +400,13 @@ Need a model for X\|alpha, because missing variables are random variables
 
 Has some rather simple implementations; e.g., just using commands like `bayes: regress y x`
 
-### R mcmc pac
+### R: MCMCpack {#r-mcmc-pac}
 
 Also simple code; great for standard use
 
 Speedup with parallelization; see "script for parallel probit.R" and "parallelprobit.R"
 
 More advanced: C++; can integrate it with Rcpp, or even use Exeter's ISCA cluster
-
-```{r cars}
-summary(cars)
-```
 
 ## Other resources and notes to integrate
 

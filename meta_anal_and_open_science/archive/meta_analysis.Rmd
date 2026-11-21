@@ -167,7 +167,3 @@ Coding meta-analyses in R
 $I^2(.) = \hat{\tau}^2/(\hat{\tau}^2 + \hat{\sigma}^2)$
 
 *DR: more detail would be welcome here. Material from [this syllabus]() may be helpful.
-
-https://docs.google.com/document/d/1oImg-ojUFqak5KyZ-ETD2qGvkvUgx8Ym6b8gG4GwfM8/edit?usp=drivesdk
-
-

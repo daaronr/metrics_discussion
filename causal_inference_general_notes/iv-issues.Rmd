@@ -10,7 +10,7 @@ Ben Balmford:
 
 > ...  IV really is pretty unreliable
 
-> So [@ConsistencyInferenceInstrumental] [Young,  2019](http://scholar.google.co.uk/scholar_url?url=https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf%3Fsequence%3D1&hl=en&sa=X&scisig=AAGBfm05pDW1C-mrVX9Sdp5WUPHeqmXSdQ&nossl=1&oi=scholarr) by Young highlights that the point estimates seem to not differ that much from OLS estimates...
+> So [Young,  2019](https://uh-ir.tdl.org/bitstream/handle/10657/4338/2019_ConsistencyWithoutInferenceInstrumentalVariables.pdf?sequence=1) (published as Young 2022, 'Consistency without Inference: Instrumental Variables in Practical Application', *European Economic Review*) by Young highlights that the point estimates seem to not differ that much from OLS estimates...
 which i think suggests that IV is not (generally) dealing with the problem of OVB that it claims to.
 
 \
@@ -25,11 +25,11 @@ DR: My concerns tend to be more:
 
 BB:
 
-> And then [@brodeurMethodsMatterPhacking2018] ([link](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910)) is I think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much of a surprise. In my chat with one of the authors he pointed out that in IV any changes are less obvious - in DiD (which doesnt perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is  [researcher] discretion in the IV approach.
+> And then [@brodeurMethodsMatterPhacking2018] ([link](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3249910); published as Brodeur, Cook and Heyes 2020, 'Methods Matter: p-Hacking and Publication Bias in Causal Analysis in Economics', *American Economic Review*) is I think quite a neat comparison of IV and other methods. The general point being that IV seems to have more publication bias than the other approaches to causal inference. Not sure that is that much of a surprise. In my chat with one of the authors he pointed out that in IV any changes are less obvious - in DiD (which doesn't perform great either)/RD the assumptions are much clearer to visualise on a graph. I also think that - in kind of a related way - there are many more places where there is  [researcher] discretion in the IV approach.
 
 <div class="marginnote">
  
-BB: Whereas in DiD (which doesn't perform great either)/RD the its really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it's so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don't always trust your eyeballs!
+BB: Whereas in DiD (which doesn't perform great either)/RD it's really easy to just graph the basic data and you can kind of eyeball that to see if there is any effect and if the assumptions are met (I actually think this kind of speaks somewhat for the need to really be able to test the assumptions at the heart of DiD and RD - it's so hard to provide a valid statistical test that just the fact we can eye-ball test the assumptions is useful). DR: Don't always trust your eyeballs!
 
 </div>
 
@@ -40,7 +40,7 @@ BB: Whereas in DiD (which doesn't perform great either)/RD the its really easy t
 - Exogeneity vs. exclusion
 - Very hard to 'powerfully test'
 
-IV not credible?	Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a *direct* effect on the outcome (only an indirect effect through the endogenous variable
+Note that for an instrument to be valid it needs to both be exogenously determined (i.e., not selected in a way related to the outcome of interest) and to also not have a *direct* effect on the outcome (only an indirect effect through the endogenous variable).
 
 ## Heterogeneity and LATE
 
@@ -58,8 +58,11 @@ Focusing on a binary endogenous 'treatment' variable
 
 ## Instrumenting Interactions 
 
-In randomized controlled trials it sometimes arises the issue that one is particularly interested in a potentially endogeneous explanatory variable and its interaction with the experimental treatments, that are exogenous by construction. From the stata list and mostly harmless econometrics [](http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/)
->If you have \(X_1\) endogenous and an exogenous instrument \(Z\) , and your model includes two terms involving \(X_1\) and \(X_1 \times X_2\), then you should use two instruments: \(Z\), and \(Z \times X_2\). 
+In randomized controlled trials one is sometimes interested in a potentially endogenous explanatory variable and its interaction with the experimental treatments, which are exogenous by construction. From the Stata list and the [Mostly Harmless Econometrics blog](http://www.mostlyharmlesseconometrics.com/2010/02/multiple-endogenous-variables-what-now/):
+
+> If you have $X_1$ endogenous and an exogenous instrument $Z$, and your model includes two terms involving $X_1$ and $X_1 \times X_2$, then you should use two instruments: $Z$ and $Z \times X_2$.
+
+This assumes $X_2$ is exogenous (for example a randomized treatment indicator). There are two endogenous regressors, $X_1$ and $X_1 \times X_2$, hence two first stages, each including $Z$, $Z \times X_2$ and $X_2$; check the strength of both. Estimate with a 2SLS routine. Fitting $\hat{X}_1$ by hand and entering $\hat{X}_1 \times X_2$ as a regressor is in general a different estimator, and its standard errors are wrong.
 
 ## Reference to the use of IV in experiments/mediation
 

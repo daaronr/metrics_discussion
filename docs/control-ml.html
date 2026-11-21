@@ -1308,8 +1308,10 @@ remaining unobservable component very small, minimizing the potential
 for bias in the coefficient of interest.” All of the controls must still
 be exogenous, otherwise this itself can lead to a bias. There is some
 discussion of how to validate this approach; see, e.g.,
-<span class="citation">(<a href="#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref"><strong>osterUnobservableSelectionCoefficient2019?</strong></a>)</span>. ## Machine Learning
-(statistical learning): Lasso, Ridge, and more</p>
+<span class="citation">(<a href="#ref-osterUnobservableSelectionCoefficient2019" role="doc-biblioref"><strong>osterUnobservableSelectionCoefficient2019?</strong></a>)</span>.</p>
+</div>
+<div id="machine-learning-statistical-learning-lasso-ridge-and-more" class="section level2 unnumbered">
+<h2>Machine Learning (statistical learning): Lasso, Ridge, and more</h2>
 <p>Machine learning seeks to fit models to data in order to <em>learn</em>
 patterns and thus make predictions about the future. This learning is
 split into categories:</p>
@@ -1378,8 +1380,7 @@ While they are very simple and intuitive to understand, they form the
 basis for a variety of more complex models. Here we will discuss the
 model in the context of a classification problem; however they can also
 be used for continuous outcome (‘regression’) settings.</p>
-<p>Decision trees are a type of supervised machine learning algorithm.
-“Recursive binarry splitting” is used; the algorithm repeatedly splits
+<p>“Recursive binary splitting” is used; the algorithm repeatedly splits
 the data into subsets and subsets of these subsets, finally making a
 prediction based on the dominant group in each subset.
 <!-- Guess who example --> A decision tree consists of:</p>
@@ -1389,7 +1390,7 @@ prediction based on the dominant group in each subset.
 <li><strong>Leaf nodes</strong>: these contain the final classifications made by the
 model.</li>
 </ol>
-<p>In splitting a data set by it’s features (variables) the decision tree
+<p>In splitting a data set by its features (variables) the decision tree
 algorithm seeks to split using the most informative features first. In
 order to calculate which features are the most informative we can
 calculate <strong>information gain</strong> or <strong>Gini impurity</strong>.</p>
@@ -1408,12 +1409,16 @@ when there is more uncertainty around the result if we were to guess a
 member of the set at random. An example of a set with high entropy would
 be a pack of playing cards. Each card in the set has a low probability
 of being picked. This means that we would be very uncertain about the
-outcome of picking a card at random. By graphing the function
-<span class="math inline">\(- P(x_i) \log_2 P(x_i)\)</span> we see that as the probability of an each
-outcome decreases the total entropy increases:</p>
-<p><img src="metrics_and_tools_files/figure-html/unnamed-chunk-33-1.png" width="80%" style="display: block; margin: auto;" /></p>
+outcome of picking a card at random. With <span class="math inline">\(n\)</span> equally likely outcomes
+entropy is <span class="math inline">\(\log_2 n\)</span>, so one card drawn from a shuffled deck has
+<span class="math inline">\(\log_2 52\approx 5.7\)</span> bits. The term <span class="math inline">\(-\log_2 P(x_i)\)</span> alone is the
+‘surprisal’ of outcome <span class="math inline">\(i\)</span>; entropy is its probability-weighted average.</p>
+<p>For a node with two classes in shares <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>, entropy is
+<span class="math inline">\(-p\log_2 p-(1-p)\log_2(1-p)\)</span>: zero when the node is pure (<span class="math inline">\(p=0\)</span> or
+<span class="math inline">\(1\)</span>) and 1 bit at <span class="math inline">\(p=0.5\)</span>:</p>
+<p><img src="images/entropy_two_class.png" width="80%" style="display: block; margin: auto;" alt="Two-class entropy as a function of the share of class 1 in the node" /></p>
 <p>Using the entropy function we are able to compute information gain with
-the following three equations:</p>
+the following two equations:</p>
 <p><span class="math display">\[
 \begin{aligned}&amp;\operatorname{rem}(d, \mathcal{D})=\sum_{I \in \text {levels}(d)} \underbrace{\frac{\left|\mathcal{D}_{d=I}\right|}{|\mathcal{D}|}}_{\text {weighting }} \times \underbrace{H\left(t, \mathcal{D}_{d=I}\right)}_{\text {entropy of partition} \space \mathcal{D}_{d=I}}\\&amp;I G(d, \mathcal{D})=H(t, \mathcal{D})-\operatorname{rem}(d, \mathcal{D})\end{aligned}
 \]</span></p>
@@ -1421,47 +1426,44 @@ the following three equations:</p>
 </div>
 <div id="ensemble-learning" class="section level4" number="6.1.2.2">
 <h4><span class="header-section-number">6.1.2.2</span> Ensemble learning</h4>
-<p>Decision trees provide an easy and intuitive way to represent a complex
+<p>Decision trees provide an easy and intuitive way to represent complex
 relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. While these models have very low bias
 they have high variance. This means that changes in the training data
 may cause large changes in the predictions made by the model.</p>
-<p><strong>Random forests</strong> are a form of ensemble learning. This method works by
-combining multiple weaker classifiers into one strong one. By doing this
-we average the predictions made across all the decision trees, which can
-often result in better performance than a single tree. In a random
-forest we fit multiple decision tree models on random bootstrap
-sub-samples of our data, limiting ourselves, in each forest, to a
-randomly-restricted subset of variables (features). The algorithm works
-as follows:</p>
-<p>For <span class="math inline">\(b=1\)</span> to <span class="math inline">\(B\)</span>:</p>
+<p><strong>Random forests</strong> are an ensemble method. Many deep trees, each with
+low bias and high variance, are fit on bootstrap samples and their
+predictions averaged (or put to a majority vote). At every split a tree
+may choose only among a fresh random subset of <span class="math inline">\(m\)</span> of the <span class="math inline">\(p\)</span> variables.
+The algorithm works as follows:</p>
+<p>For <span class="math inline">\(b = 1,\dots,B\)</span>:</p>
 <ol style="list-style-type: decimal">
-<li><p>Draw a bootstrap sample <span class="math inline">\(Z^*\)</span> of size <span class="math inline">\(N\)</span> from our training data</p>
-<ul>
-<li>Select a subset of <span class="math inline">\(m\)</span> variables by random out of a total of <span class="math inline">\(p\)</span>
-variables</li>
-</ul></li>
-<li><p>Use this sample to fit a tree, <span class="math inline">\(T_b\)</span>:</p>
+<li><p>Draw a bootstrap sample <span class="math inline">\(Z^*\)</span> of size <span class="math inline">\(N\)</span> from the training data.</p></li>
+<li><p>Grow a tree <span class="math inline">\(T_b\)</span> on <span class="math inline">\(Z^*\)</span> by repeating the following steps at each
+terminal node, until the minimum node size is reached:</p>
 <ol style="list-style-type: lower-roman">
-<li><p>Pick the best variable to split the data on out of <span class="math inline">\(m\)</span></p></li>
-<li><p>Split the node</p></li>
+<li><p>select <span class="math inline">\(m\)</span> variables at random from the <span class="math inline">\(p\)</span> variables;</p></li>
+<li><p>pick the best variable and split point among those <span class="math inline">\(m\)</span>;</p></li>
+<li><p>split the node in two.</p></li>
+</ol></li>
+<li><p>Output the ensemble <span class="math inline">\(\{T_b\}_{1}^{B}\)</span>.</p></li>
 </ol>
-<p>Steps i-ii are repeated until the minimum node size is reached.</p></li>
-<li><p>Output ensemble</p></li>
-</ol>
-<p>Note that this procedure is similar to bagging. However, by using a
-random set of <span class="math inline">\(m\)</span> variables to consider for splitting our nodes the
-random forest algorithm achieves lower correlation between the
-individual trees. Standard bagging instead makes use of all <span class="math inline">\(p\)</span>
-variables when deciding on tree splits, which could result in trees that
-are correlated. If we have a collection of identically distributed trees
-then the expectation of all these models is equal to the expectation of
-any one of them. If one tree is more likely to make a wrong prediction
-this is averaged out by the lack of correlation between this and the
-other models.</p>
-<p>As forests contain a collection of smaller trees the prediction process
-is slightly different than for individual trees. Consider that each tree
-gives a prediction <span class="math inline">\(\hat{C}_b(X)\)</span>. Our random forest prediction is thus:
-<span class="math display">\[\hat{C}_{rf}^B = \text{Majority vote} \{ \hat{C}_n)x_i \}^B_1\]</span></p>
+<p>Common defaults are <span class="math inline">\(m\approx\sqrt{p}\)</span> for classification and
+<span class="math inline">\(m\approx p/3\)</span> for regression.</p>
+<p>Note that this procedure is similar to bagging, which instead considers
+all <span class="math inline">\(p\)</span> variables at every split. Averaging identically distributed
+trees leaves bias unchanged. If each tree’s prediction has variance
+<span class="math inline">\(\sigma^2\)</span> and pairwise correlation <span class="math inline">\(\rho\)</span>, the average has variance
+<span class="math inline">\(\rho\sigma^2 + \frac{1-\rho}{B}\sigma^2\)</span>. More trees remove only the
+second term. Bagged trees are highly correlated, because the same few
+strong predictors head every tree; restricting each split to <span class="math inline">\(m&lt;p\)</span>
+variables lowers <span class="math inline">\(\rho\)</span>, and that is the gain over bagging. With
+<span class="math inline">\(\rho=0.6\)</span> the variance floor is 60% of a single tree’s; with <span class="math inline">\(\rho=0.2\)</span>
+it is 20%.</p>
+<p>As forests contain a collection of trees the prediction process is
+slightly different than for individual trees. Consider that each tree
+gives a prediction <span class="math inline">\(\hat{C}_b(x)\)</span>. Our random forest prediction is thus:
+<span class="math display">\[\hat{C}_{rf}^B(x) = \text{majority vote}\,\{\hat{C}_b(x)\}_{b=1}^{B}\]</span>
+(for regression, the average <span class="math inline">\(\frac{1}{B}\sum_b T_b(x)\)</span>).</p>
 <p>Source: <span class="citation">(<a href="#ref-friedmanElementsStatisticalLearning2001" role="doc-biblioref"><strong>friedmanElementsStatisticalLearning2001?</strong></a>)</span></p>
 </div>
 </div>
@@ -1478,8 +1480,12 @@ Loosely speaking, a sparse statistical model is one in which only a
 relatively small number of parameters (or predictors) play an
 important role.</p>
 </blockquote>
-<p>“the <span class="math inline">\(\ell_1\)</span> norm is special” (abs value). Other norms yield nonconvex
-problems, hard to minimize.</p>
+<p>“the <span class="math inline">\(\ell_1\)</span> norm is special” (abs value). Among penalties
+<span class="math inline">\(\sum_j|\beta_j|^q\)</span>, <span class="math inline">\(q=1\)</span> is the only value that gives both sparse
+solutions and a convex problem. For <span class="math inline">\(q&gt;1\)</span> (ridge is <span class="math inline">\(q=2\)</span>) the problem is
+convex, and coefficients are shrunk without being set exactly to zero.
+For <span class="math inline">\(q&lt;1\)</span> solutions are sparse and the problem is nonconvex, hence hard
+to minimize.</p>
 <blockquote>
 <p>“bet on sparsity” principle: Use a procedure that does well in sparse
 problems, since no procedure does well in dense problems.</p>
@@ -1512,7 +1518,7 @@ including the bootstrap, Bayesian methods and more recent stuff</p></li>
 <h3><span class="header-section-number">6.2.2</span> Ch2: Lasso for linear models</h3>
 <ul>
 <li>N samples (?N observations), want to approx the response variable
-using a linear combination of the predoctors</li>
+using a linear combination of the predictors</li>
 </ul>
 <hr />
 <p><strong>OLS</strong> minimizes squared-error loss but</p>
@@ -1536,12 +1542,12 @@ experiments</li>
 </ul>
 <div id="the-lasso-estimator" class="section level4" number="6.2.2.1">
 <h4><span class="header-section-number">6.2.2.1</span> 2.2 The Lasso Estimator</h4>
-<p>Lasso bounds the sum of the abs values of coefficients, an “$_1”
+<p>Lasso bounds the sum of the abs values of coefficients, an “<span class="math inline">\(\ell_1\)</span>”
 constraint.</p>
 <p>Lasso is OLS subject to</p>
 <p><br />
 </p>
-<p><span class="math inline">\(\sum_{j=1..p}{\abs(\beta_j)}\leq t\)</span></p>
+<p><span class="math inline">\(\sum_{j=1}^{p}|\beta_j|\leq t\)</span></p>
 <p><br />
 </p>
 <p>“compactly” <span class="math inline">\(||\beta||_1\leq t\)</span></p>
@@ -1551,7 +1557,7 @@ constraint.</p>
 <ul>
 <li><p>Bound <span class="math inline">\(t\)</span> acts as a ‘budget,’ must be specified by an ‘external
 procedure’ such as cross-validation</p></li>
-<li><p>typically we must <em>standardize the predictors</em> $** so
+<li><p>typically we must <em>standardize the predictors</em> <span class="math inline">\(\mathbf{X}\)</span> so
 that each column is centered with unit variance … as well as the
 outcome variables (?) … can ignore intercept</p>
 <ul>
@@ -1566,8 +1572,8 @@ deriving its properties.</li>
 <p>Aside: Can re-write Lasso minimization st constraint as a Lagrangian.
 <span class="math inline">\(\lambda\)</span> plays the same role as <span class="math inline">\(t\)</span> in the constraint. Thus we can
 speak of the solution to the Lagrangian minimisation problem
-<span class="math inline">\(\hat{\beta)_{\lambda}\)</span> which also solves the bound problem with
-<span class="math inline">\(t=||\hat_{\lambda}||_1\)</span>.</p>
+<span class="math inline">\(\hat{\beta}_{\lambda}\)</span> which also solves the bound problem with
+<span class="math inline">\(t=||\hat{\beta}_{\lambda}||_1\)</span>.</p>
 </div>
 <div class="marginnote">
 <p>Aside: We often remove the <span class="math inline">\(1/2n\)</span> term at the beginning of the
@@ -1589,10 +1595,11 @@ deviations rather than something like an average of this.</p>
 considered variables plotted against their respective norms (as shares
 of maximal bound on coefficient sum measure, i.e., ols, for each)</p>
 <ul>
-<li><p>Note ridge regression penalises <em>squared</em> sums of betas</p>
+<li><p>Note ridge regression penalises the sum of <em>squared</em> betas
+(<span class="math inline">\(\sum_j\beta_j^2\)</span>)</p>
 <ul>
 <li>Fig 2.2., in <span class="math inline">\(\beta_1,\beta_2\)</span> space illustrates the difference
-well: contour lines of Resid SS elipses, ‘budget constraint’ for
+well: contour lines of Resid SS ellipses, ‘budget constraint’ for
 each (disc vs diamond)</li>
 </ul></li>
 </ul>
@@ -1611,7 +1618,7 @@ least-squares estimate.</p>
 should shrink coefficients but not all the way to zero.</p>
 <ul>
 <li>The penalty is linear in the coefficient size, so I would think
-the solution would be bang-bang, either drop a coeficient or
+the solution would be bang-bang, either drop a coefficient or
 leave it unchanged. But it is not.</li>
 <li>Adding an increment to a <span class="math inline">\(\hat{\beta}\)</span> when it is below the OLS
 estimate should have a linear effect on the RSS (according to my
@@ -1625,9 +1632,9 @@ cannot be right!</li>
 <p>I looked up this derivative wrt the beta vector (one needs to set this
 to 0 to get the ols estimates</p>
 <p><a href="https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression">stackexchange</a></p>
-<p><span class="math inline">\(\frac{d RSS}{d \beta}=-2X^{T}(y-X\beta}\)</span></p>
+<p><span class="math inline">\(\frac{d RSS}{d \beta}=-2X^{T}(y-X\beta)\)</span></p>
 <p>or</p>
-<p><span class="math inline">\(−\frac{d e&#39;e}{d b}=2X′y+2X′Xb\)</span></p>
+<p><span class="math inline">\(\frac{d\,e&#39;e}{d b}=-2X&#39;y+2X&#39;Xb\)</span></p>
 <p>The answer to this question: while the impact of changing each
 coefficient on SSR is in fact constant (a constant own-derivative),
 there is <em>also</em> an impact of changing one coefficient on the <em>other</em>
@@ -1661,7 +1668,7 @@ making them exactly zero?</p>
 </p>
 <p>On the other hand if we know the true model is ‘parsimonious’ (as in the
 genes problem) it might boost efficiency to allow inference about
-coefficients that should be exactly zero (edited)</p>
+coefficients that should be exactly zero</p>
 <hr />
 </div>
 <div id="cross-validation-and-inference" class="section level4" number="6.2.2.2">
@@ -1673,7 +1680,7 @@ population</p>
 </dd>
 </dl>
 <p>… find the value of t that does best</p>
-<p>**Cross-validation procedure*</p>
+<p><strong>Cross-validation procedure</strong></p>
 <ol style="list-style-type: decimal">
 <li>randomly divide … dataset into K groups.</li>
 </ol>
@@ -1700,7 +1707,7 @@ range of t values.</li>
 <li>… of the estimated MS prediction error vs the relative bound
 <span class="math inline">\(\tilde{t}\)</span>(summed absolute value of Lasso betas divided by summed
 abs value of OLS betas).</li>
-<li>Also draw dotted line at the 1-std-error rule choice of <span class="math inline">\(\tilde{t\)</span>}</li>
+<li>Also draw dotted line at the 1-std-error rule choice of <span class="math inline">\(\tilde{t}\)</span></li>
 <li>Number of nonzero coefficients plotted at top</li>
 </ul>
 </div>
@@ -1739,7 +1746,8 @@ coefficient paths tend to be erratic and can sometimes show wild
 behavior.</p>
 </blockquote>
 <p>The elastic net makes a compromise between the ridge and the lasso
-penalties (Zou and Hastie 2005)1] is a parameter that can be varied.</p>
+penalties (Zou and Hastie 2005); <span class="math inline">\(\alpha\in[0,1]\)</span> is a parameter that
+can be varied.</p>
 <p>For an individual coefficient the penalty is
 <span class="math inline">\(\frac{1}{2} (1-\alpha)\beta_j^2 + \alpha|\beta_j|\)</span></p>
 <p>(a convex combo of the lasso and ridge penalties)</p>
@@ -1751,7 +1759,7 @@ role (I think) as in lasso</p>
 </div>
 </div>
 <div id="notes-mullainathan" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Notes: Mullainathan</h2>
+<h2><span class="header-section-number">6.3</span> Notes: Mullainathan and Spiess (2017), ‘Machine Learning: An Applied Econometric Approach’, <em>Journal of Economic Perspectives</em> 31(2)</h2>
 <blockquote>
 <p>The fundamental insight behind these breakthroughs is as much
 statistical as computational. Machine intelligence became possible
@@ -1763,9 +1771,11 @@ Instead, these algorithms use a large dataset of photos labeled as
 having a face or not to estimate a function f (x) that predicts the
 presence y of a face from pixels x</p>
 </blockquote>
-<p>(p2) &gt; supervised- machine learning, the focus of this article)
-revolves around the problem of prediction: produce predictions of y from
-x</p>
+<p>(p2)</p>
+<blockquote>
+<p>(supervised machine learning, the focus of this article) revolves
+around the problem of prediction: produce predictions of y from x</p>
+</blockquote>
 <p>…</p>
 <blockquote>
 <p>manages to fit complex and very flexible functional forms to the data
@@ -1774,8 +1784,8 @@ out-of-sample</p>
 </blockquote>
 <blockquote>
 <p>danger in using these tools is taking an algorithm built for
-[predicting <span class="math inline">\(y\)</span>-] and presuming their [parameters <span class="math inline">\(\beta\)</span>] - have the
-properties we typically associate with estimation output</p>
+[predicting <span class="math inline">\(\hat{y}\)</span>] and presuming their [parameters <span class="math inline">\(\hat{\beta}\)</span>]
+have the properties we typically associate with estimation output</p>
 </blockquote>
 <blockquote>
 <p>One category of such applications appears when using new kinds of data
@@ -1843,232 +1853,368 @@ some variables are categorical</p>
 </blockquote>
 <div class="marginnote">
 <p>not sure what’s going on here. is this the random forest thing?</p>
+<p>(No: the figure is one shallow regression tree, shown as the building
+block. The random forest is reported separately, in the paper’s Table
+1.)</p>
 </div>
 <blockquote>
 <p>The prediction function takes the form of a tree that splits in two at
 every node. At each node of the tree, the value of a single variable
 (say, number of bathrooms) determines whether the left (less than two
 bathrooms) or the right (two or more) child node is considered next.
-When a terminal node-a leaf—is reached, a prediction is returned. An</p>
+When a terminal node—a leaf—is reached, a prediction is returned.
+[…]</p>
 </blockquote>
-<p>So how does machine learning manage to do out-of-sample prediction? The
-first part of the solution is regularization. In the tree case, instead
-of choosing the -best" overall tree, we could choose the best tree among
-those of a certain depth.</p>
+<blockquote>
+<p>(p5) So how does machine learning manage to do out-of-sample
+prediction? The first part of the solution is regularization. In the
+tree case, instead of choosing the “best” overall tree, we could
+choose the best tree among those of a certain depth.</p>
+</blockquote>
+<blockquote>
 <p>(p5) Tree depth is an example of a regularizer. It measures the
 complexity of a function. As we regularize less, we do a better job at
 approximating the in-sample variation, but for the same reason, the
-wedge between in-sample and out-of-sample</p>
-<p>(p6) how do we choose the level of regularization (-tune the
-algorithm")? This is the second key insight: empirical tuning.</p>
-<p>(p6) -tuning within the training sample In empirical tuning, we create
-an out-of-sample experiment inside the original sample. We fit on one
-part of the data and ask which level of regularization leads to the best
-performance on the other part of the data.4 We can increase the
-efficiency of this procedure through cross-validation: we randomly
-partition the sample into equally sized subsamples (-folds"). The
-estimation process then involves successively holding out one of the
-folds for evaluation while fitting the prediction function for a range
-of regularization parameters on all remaining folds. Finally, we pick
-the parameter with the best estimated average performance.5 The</p>
-<p>(p6) -! This procedure works because prediction quality is observable:
-both predictions y- and outcomes y are observed. Contrast this with
-parameter estimation, where typically we must rely on assumptions about
-the data-generating process to ensure consistency</p>
-<p>(p7) Some Machine Learning Algorithms Function class - (and its
-parametrization) Regularizer R( f ) Global/parametric predictors Linear
--′x (and generalizations) Subset selection|</p>
-<p>(p7) -very useful table Some Machine Learning Algorithms Function class
-- (and its parametrization) Regularizer R( f ) Global/parametric
-predictors Linear -′x (and generalizations) Subset selection||β|</p>
-<p>(p7) Random forest (linear combination of trees</p>
-<p>(p7) -kernel in an ml framework! Kernel regression</p>
-<p>(p6) -but can we make inferences about the structure? hypothesis
-testing? Regularization combines with the observability of prediction
+wedge between in-sample and out-of-sample […]</p>
+</blockquote>
+<blockquote>
+<p>(p6) how do we choose the level of regularization (“tune the
+algorithm”)? This is the second key insight: empirical tuning.</p>
+</blockquote>
+<p>DR: tuning within the training sample</p>
+<blockquote>
+<p>(p6) In empirical tuning, we create an out-of-sample experiment inside
+the original sample. We fit on one part of the data and ask which
+level of regularization leads to the best performance on the other
+part of the data. We can increase the efficiency of this procedure
+through cross-validation: we randomly partition the sample into
+equally sized subsamples (“folds”). The estimation process then
+involves successively holding out one of the folds for evaluation
+while fitting the prediction function for a range of regularization
+parameters on all remaining folds. Finally, we pick the parameter with
+the best estimated average performance. […]</p>
+</blockquote>
+<p>DR: (!)</p>
+<blockquote>
+<p>(p6) This procedure works because prediction quality is observable:
+both predictions <span class="math inline">\(\hat{y}\)</span> and outcomes <span class="math inline">\(y\)</span> are observed. Contrast
+this with parameter estimation, where typically we must rely on
+assumptions about the data-generating process to ensure consistency</p>
+</blockquote>
+<p>DR: very useful table</p>
+<blockquote>
+<p>(p7) [Table:] Some Machine Learning Algorithms. Function class (and
+its parametrization); Regularizer <span class="math inline">\(R(f)\)</span>. Global/parametric
+predictors: Linear <span class="math inline">\(\beta&#39;x\)</span> (and generalizations); Subset selection
+<span class="math inline">\(\|\beta\|_0\)</span> […]</p>
+</blockquote>
+<blockquote>
+<p>(p7) Random forest (linear combination of trees)</p>
+</blockquote>
+<p>DR: kernel in an ML framework!</p>
+<blockquote>
+<p>(p7) Kernel regression</p>
+</blockquote>
+<p>DR: but can we make inferences about the structure? hypothesis testing?</p>
+<blockquote>
+<p>(p6) Regularization combines with the observability of prediction
 quality to allow us to fit flexible functional forms and still find
 generalizable structure.</p>
-<p>(p7) Picking the prediction function then involves two steps: The first
-step is, conditional on a level of complexity, to pick the best
-in-sample loss-minimizing function.8 The second step is to estimate the
+</blockquote>
+<blockquote>
+<p>(p7) Picking the prediction function then involves two steps: The
+first step is, conditional on a level of complexity, to pick the best
+in-sample loss-minimizing function. The second step is to estimate the
 optimal level of complexity using empirical tuning (as we saw in
 cross-validating the depth of the tree).</p>
-<p>(p8) -but they forgot to mention that others are shrunk linear
-regression in which only a small number of predictors from all possible
-variables are chosen to have nonzero values: the absolute-value
-regularizer encourages a coefficient vector where many are exactly zero.</p>
-<p>(p4) -why no ridge or elastic net? LASSO</p>
-<p>(p8) -ensembles usually win contests While it may be unsurprising that
-such ensembles perform well on average- after all, they can cover a
-wider array of functional forms-it may be more surprising that they come
-on top in virtually every prediction competition</p>
-<p>(p8) -neural nets broadly explained neural nets are popular prediction
-algorithms for image recognition tasks. For one standard implementation
-in binary prediction, the underlying function class is that of nested
-logistic regressions: The final prediction is a logistic transformation
-of a linear combination of variables (-neurons") that are themselves
-such logistic transformations, creating a layered hierarchy of logit
+</blockquote>
+<p>DR: but they forgot to mention that others are shrunk</p>
+<blockquote>
+<p>(p8) … linear regression in which only a small number of predictors
+from all possible variables are chosen to have nonzero values: the
+absolute-value regularizer encourages a coefficient vector where many
+are exactly zero.</p>
+</blockquote>
+<p>DR: why no ridge or elastic net?</p>
+<blockquote>
+<p>(p4) LASSO</p>
+</blockquote>
+<p>DR: ensembles usually win contests</p>
+<blockquote>
+<p>(p8) While it may be unsurprising that such ensembles perform well on
+average—after all, they can cover a wider array of functional
+forms—it may be more surprising that they come on top in virtually
+every prediction competition</p>
+</blockquote>
+<p>DR: neural nets broadly explained</p>
+<blockquote>
+<p>(p8) neural nets are popular prediction algorithms for image
+recognition tasks. For one standard implementation in binary
+prediction, the underlying function class is that of nested logistic
+regressions: The final prediction is a logistic transformation of a
+linear combination of variables (“neurons”) that are themselves such
+logistic transformations, creating a layered hierarchy of logit
 regressions. The complexity of these functions is controlled by the
 number of layers, the number of neurons per layer, and their
 connectivity (that is, how many variables from one level enter each
 logistic regression on the next)</p>
+</blockquote>
+<blockquote>
 <p>(p9) These choices about how to represent the features will interact
 with the regularizer and function class: A linear model can reproduce
 the log base area per room from log base area and log room number
 easily, while a regression tree would require many splits to do so.</p>
-<p>(p9) In a traditional estimator, replacing one set of variables by a set
-of transformed variables from which it could be reconstructed would not
-change the predictions, because the set of functions being chosen from
-has not changed. But with regularization, including these variables can
-improve predictions because-at any given level of regularization-the set
-of functions might change</p>
-<p>(p9) -!! Economic theory and content expertise play a crucial role in
-guiding where the algorithm looks for structure first. This is the sense
-in which -simply throw it all in- is an unreasonable way to understand
-or run these machine learning algorithms</p>
-<p>(p9) -I need hear of using adjusted r square for this Should
-out-ofsample performance be estimated using some known correction for
-overfitting (such as an adjusted R2 when it is available) or using
-cross-validation</p>
-<p>(p9) -big unknowns available finite-sample guidance on its
-implementation-such as heuristics for the number of folds (usually five
-to ten) or the -one standard-error rule" for tuning the LASSO (Hastie,
-Tibshirani, and Friedman 2009)-has a more ad-hoc flavor</p>
+</blockquote>
+<blockquote>
+<p>(p9) In a traditional estimator, replacing one set of variables by a
+set of transformed variables from which it could be reconstructed
+would not change the predictions, because the set of functions being
+chosen from has not changed. But with regularization, including these
+variables can improve predictions because—at any given level of
+regularization—the set of functions might change</p>
+</blockquote>
+<p>DR: (!!)</p>
+<blockquote>
+<p>(p9) Economic theory and content expertise play a crucial role in
+guiding where the algorithm looks for structure first. This is the
+sense in which “simply throw it all in” is an unreasonable way to
+understand or run these machine learning algorithms</p>
+</blockquote>
+<p>DR: I never heard of using adjusted R-squared for this</p>
+<blockquote>
+<p>(p9) Should out-of-sample performance be estimated using some known
+correction for overfitting (such as an adjusted R2 when it is
+available) or using cross-validation</p>
+</blockquote>
+<p>DR: big unknowns</p>
+<blockquote>
+<p>(p9) … available finite-sample guidance on its
+implementation—such as heuristics for the number of folds (usually
+five to ten) or the “one standard-error rule” for tuning the LASSO
+(Hastie, Tibshirani, and Friedman 2009)—has a more ad-hoc flavor</p>
+</blockquote>
+<blockquote>
 <p>(p9) firewall principle: none of the data involved in fitting the
-prediction function-which includes crossvalidation to tune the
-algorithm—is used to evaluate the prediction function that is produced</p>
-<p>(p10) -how? First, econometrics can guide design choices, such as the
-number of folds or the function class</p>
-<p>(p10) with the fitted function. Why not also use it to learn something
-about the -underlying model</p>
-<p>(p10) -!! the lack of standard errors on the coefficients. Even when
+prediction function—which includes crossvalidation to tune the
+algorithm—is used to evaluate the prediction function that is
+produced</p>
+</blockquote>
+<p>DR: how?</p>
+<blockquote>
+<p>(p10) First, econometrics can guide design choices, such as the number
+of folds or the function class</p>
+</blockquote>
+<blockquote>
+<p>(p10) … with the fitted function. Why not also use it to learn
+something about the “underlying model”</p>
+</blockquote>
+<p>DR: (!!)</p>
+<blockquote>
+<p>(p10) the lack of standard errors on the coefficients. Even when
 machine-learning predictors produce familiar output like linear
 functions, forming these standard errors can be more complicated than
 seems at first glance as they would have to account for the model
-selection itself. In fact, Leeb and P-tscher (2006, 2008) develop
-conditions under which it is impossible to obtain (uniformly) consistent
-estimates of the distribution of model parameters after data-driven
-selection</p>
-<p>(p11) -lasso chosen variables are unstable because of multicollinearity.
-a problem for making inferences from estimated coefficients the
-variables are correlated with each other (say the number of rooms of a
-house and its square-footage), then such variables are substitutes in
-predicting house prices. Similar predictions can be produced using very
-different variables. Which variables are actually chosen depends on the
-specific finite sample</p>
-<p>(p11) this creates an Achilles- heel: more functions mean a greater
-chance that two functions with very different</p>
-<p>(p12) coefficients can produce similar prediction quality</p>
+selection itself. In fact, Leeb and Pötscher (2006, 2008) develop
+conditions under which it is impossible to obtain (uniformly)
+consistent estimates of the distribution of model parameters after
+data-driven selection</p>
+</blockquote>
+<p>DR: lasso chosen variables are unstable because of multicollinearity; a
+problem for making inferences from estimated coefficients</p>
+<blockquote>
+<p>(p11) … the variables are correlated with each other (say the number
+of rooms of a house and its square-footage), then such variables are
+substitutes in predicting house prices. Similar predictions can be
+produced using very different variables. Which variables are actually
+chosen depends on the specific finite sample</p>
+</blockquote>
+<blockquote>
+<p>(p11–12) this creates an Achilles’ heel: more functions mean a
+greater chance that two functions with very different coefficients can
+produce similar prediction quality</p>
+</blockquote>
+<blockquote>
 <p>(p12) In econometric terms, while the lack of standard errors
 illustrates the limitations to making inference after model selection,
 the challenge here is (uniform) model selection consistency itself</p>
-<p>(p12) -is this equally a problem for non sparsity based procedures like
-ridge? First, it encourages the choice of less complex, but wrong
-models. Even if the best model uses interactions of number of bathrooms
-with number of rooms, regularization may lead to a choice of a simpler
-(but worse) model that uses only number of fireplaces. Second, it can
-bring with it a cousin of omitted variable bias, where we are typically
-concerned with correlations between observed variables and unobserved
-ones. Here, when regularization excludes some variables, even a
-correlation between observed variables and other observed (but excluded)
-ones can create bias in the estimated coefficients</p>
+</blockquote>
+<p>DR: is this equally a problem for non-sparsity-based procedures like
+ridge?</p>
+<blockquote>
+<p>(p12) First, it encourages the choice of less complex, but wrong
+models. Even if the best model uses interactions of number of
+bathrooms with number of rooms, regularization may lead to a choice of
+a simpler (but worse) model that uses only number of fireplaces.
+Second, it can bring with it a cousin of omitted variable bias, where
+we are typically concerned with correlations between observed
+variables and unobserved ones. Here, when regularization excludes some
+variables, even a correlation between observed variables and other
+observed (but excluded) ones can create bias in the estimated
+coefficients</p>
+</blockquote>
+<blockquote>
 <p>(p12) Some econometric results also show the converse: when there is
 structure, it will be recovered at least asymptotically (for example,
-for prediction consistency of LASSO-type estimators in an approximately
-sparse linear framework, see Belloni, Chernozhukov, and Hansen 2011).</p>
-<p>(p12) -unrealistic for micro economic applications Zhao and Yu (2006)
-who establish asymptotic model-selection consistency for the LASSO.
-Besides assuming that the true model is -sparse“—only a few variables
-are relevant-they also require the”irrepresentable condition" between
-observables: loosely put, none of the irrelevant covariates can be even
-moderately related to the set of relevant ones. In practice, these
-assumptions are strong.</p>
+for prediction consistency of LASSO-type estimators in an
+approximately sparse linear framework, see Belloni, Chernozhukov, and
+Hansen 2011).</p>
+</blockquote>
+<p>DR: unrealistic for microeconomic applications</p>
+<blockquote>
+<p>(p12) … Zhao and Yu (2006) who establish asymptotic model-selection
+consistency for the LASSO. Besides assuming that the true model is
+“sparse”—only a few variables are relevant—they also require the
+“irrepresentable condition” between observables: loosely put, none of
+the irrelevant covariates can be even moderately related to the set of
+relevant ones. In practice, these assumptions are strong.</p>
+</blockquote>
+<blockquote>
 <p>(p13) Machine learning can deal with unconventional data that is too
 high-dimensional for standard estimation methods, including image and
-language information that we conventionally had not even thought of as
-data we can work with, let alone include in a regression</p>
+language information that we conventionally had not even thought of
+as data we can work with, let alone include in a regression</p>
+</blockquote>
+<blockquote>
 <p>(p13) satellite data</p>
+</blockquote>
+<blockquote>
 <p>(p13) they provide us with a large x vector of image-based data; these
-images are then matched (in what we hope is a representative sample) to
-yield data which form the y variable. This translation of satellite
+images are then matched (in what we hope is a representative sample)
+to yield data which form the y variable. This translation of satellite
 images to yield measures is a prediction problem</p>
-<p>(p13) particularly relevant where reliable data on economic outcomes are
-missing, such as in tracking and targeting poverty in developing
-countries (Blumenstock 2016</p>
+</blockquote>
+<blockquote>
+<p>(p13) particularly relevant where reliable data on economic outcomes
+are missing, such as in tracking and targeting poverty in developing
+countries (Blumenstock 2016)</p>
+</blockquote>
+<blockquote>
 <p>(p13) cell-phone data to measure wealth</p>
-<p>(p13) Google Street View to measure block-level income in New York City
-and Boston</p>
-<p>(p13) online posts can be made meaningful by labeling them with machine
-learning</p>
+</blockquote>
+<blockquote>
+<p>(p13) Google Street View to measure block-level income in New York
+City and Boston</p>
+</blockquote>
+<blockquote>
+<p>(p13) online posts can be made meaningful by labeling them with
+machine learning</p>
+</blockquote>
+<blockquote>
 <p>(p14) extract similarity of firms from their 10-K business description
 texts, generating new time-varying industry classifications for these
 firms</p>
+</blockquote>
+<blockquote>
 <p>(p14) and imputing even in traditional datasets. In this vein,
 Feigenbaum (2015a, b) applies machine-learning classifiers to match
 individuals in historical records</p>
-<p>(p13) -the first prediction applications New Data</p>
+</blockquote>
+<p>DR: the first prediction applications</p>
+<blockquote>
+<p>(p13) New Data</p>
+</blockquote>
+<blockquote>
 <p>(p14) Prediction in the Service of Estimation</p>
-<p>(p14) linear instrumental variables understood as a two-stage procedure</p>
+</blockquote>
+<blockquote>
+<p>(p14) linear instrumental variables understood as a two-stage
+procedure</p>
+</blockquote>
+<blockquote>
 <p>(p14) The first stage is typically handled as an estimation step. But
-this is effectively a prediction task: only the predictions x- enter the
-second stage; the coefficients in the first stage are merely a means to
-these fitted values. Understood this way, the finite-sample biases in
-instrumental variables are a consequence of overfitting</p>
-<p>(p14) -ll overfitting. Overfitting means that the in-sample fitted
-values x- pick up not only the signal -′z, but also the noise δ. As a
-consequence, xˆ is biased towards x, and the second-stage instrumental
-variable estimate - - is thus biased towards the ordinary least squares
-estimate of y on x. Since overfit will be larger when sample size is
-low, the number of instruments is high, or the instruments are weak, we
-can see why biases arise in these cases</p>
+this is effectively a prediction task: only the predictions <span class="math inline">\(\hat{x}\)</span>
+enter the second stage; the coefficients in the first stage are merely
+a means to these fitted values. Understood this way, the finite-sample
+biases in instrumental variables are a consequence of overfitting</p>
+</blockquote>
+<p>DR: overfitting</p>
+<blockquote>
+<p>(p14) Overfitting means that the in-sample fitted values <span class="math inline">\(\hat{x}\)</span>
+pick up not only the signal [?]<span class="math inline">\(&#39;z\)</span>, but also the noise <span class="math inline">\(\delta\)</span>. As a
+consequence, <span class="math inline">\(\hat{x}\)</span> is biased towards <span class="math inline">\(x\)</span>, and the second-stage
+instrumental variable estimate [<span class="math inline">\(\hat{\beta}\)</span>] is thus biased towards
+the ordinary least squares estimate of y on x. Since overfit will be
+larger when sample size is low, the number of instruments is high, or
+the instruments are weak, we can see why biases arise in these cases</p>
+</blockquote>
+<blockquote>
 <p>(p14) same techniques applied here result in split-sample instrumental
-variables (Angrist and Krueger 1995) and -jackknife" instrumental
+variables (Angrist and Krueger 1995) and “jackknife” instrumental
 variables (Angrist, Imbens, and Krueger 1999)</p>
-<p>(p15) -worth referencing In particular, a set of papers has already
-introduced regularization into the first stage in a high-dimensional
-setting, including the LASSO (Belloni, Chen, Chernozhukov, and Hansen
-2012) and ridge regression (Carrasco 2012; Hansen and Kozbur 2014). More
-recent extensions include nonlinear functional forms, all the way to
-neural nets (Hartford, Leyton-Brown, and Taddy 2016</p>
-<p>(p15) Practically, even when there appears to be only a few instruments,
-the problem is effectively high-dimensional because there are many
-degrees of freedom in how instruments are actually constructed</p>
-<p>(p15) -a note of caution It allows us to let the data explicitly pick
-effective specifications, and thus allows us to recover more of the
-variation and construct stronger instruments, provided that predictions
-are constructed and used in a way that preserves the exclusion
-restriction</p>
-<p>(p15) -this seems similar to my idea of regularising on a subset
-Chernozhukov, Chetverikov, Demirer, Duflo, Hansen, and Newey (2016) take
-care of high-dimensional controls in treatment effect estimation by
-solving two simultaneous prediction problems, one in the outcome and one
-in the treatment equation</p>
+</blockquote>
+<p>DR: worth referencing</p>
+<blockquote>
+<p>(p15) In particular, a set of papers has already introduced
+regularization into the first stage in a high-dimensional setting,
+including the LASSO (Belloni, Chen, Chernozhukov, and Hansen 2012) and
+ridge regression (Carrasco 2012; Hansen and Kozbur 2014). More recent
+extensions include nonlinear functional forms, all the way to neural
+nets (Hartford, Leyton-Brown, and Taddy 2016)</p>
+</blockquote>
+<blockquote>
+<p>(p15) Practically, even when there appears to be only a few
+instruments, the problem is effectively high-dimensional because there
+are many degrees of freedom in how instruments are actually
+constructed</p>
+</blockquote>
+<p>DR: a note of caution</p>
+<blockquote>
+<p>(p15) It allows us to let the data explicitly pick effective
+specifications, and thus allows us to recover more of the variation
+and construct stronger instruments, provided that predictions are
+constructed and used in a way that preserves the exclusion restriction</p>
+</blockquote>
+<p>DR: this seems similar to my idea of regularising on a subset</p>
+<blockquote>
+<p>(p15) Chernozhukov, Chetverikov, Demirer, Duflo, Hansen, and Newey
+(2016) take care of high-dimensional controls in treatment effect
+estimation by solving two simultaneous prediction problems, one in the
+outcome and one in the treatment equation</p>
+</blockquote>
+<blockquote>
 <p>(p15) the problem of verifying balance between treatment and control
-groups (such as when there is attrition</p>
-<p>(p15) -! Or consider the seemingly different problem of testing for
+groups (such as when there is attrition)</p>
+</blockquote>
+<p>DR: (!)</p>
+<blockquote>
+<p>(p15) Or consider the seemingly different problem of testing for
 effects on many outcomes. Both can be viewed as prediction problems
-(Ludwig, Mullainathan, and Spiess 2017). If treatment assignment can be
-predicted better than chance from pretreatment covariates, this is a
-sign of imbalance. If treatment assignment can be predicted from a set
-of outcomes, the treatment must have had an effect</p>
+(Ludwig, Mullainathan, and Spiess 2017). If treatment assignment can
+be predicted better than chance from pretreatment covariates, this is
+a sign of imbalance. If treatment assignment can be predicted from a
+set of outcomes, the treatment must have had an effect</p>
+</blockquote>
+<blockquote>
 <p>(p15) prediction task of mapping unit-level attributes to individual
 effect estimates</p>
-<p>(p15) Athey and Imbens (2016) use sample-splitting to obtain valid
-(conditional) inference on</p>
-<p>(p16) treatment effects that are estimated using decision trees,</p>
-<p>(p16) -look into the implication for treatment assignment with
-heterogeneity heterogenous treatment effects can be used to assign
-treatments; Misra and Dub- (2016) illustrate this on the problem of
-price targeting, applying Bayesian regularized methods to a large-scale
+</blockquote>
+<blockquote>
+<p>(p15–16) Athey and Imbens (2016) use sample-splitting to obtain valid
+(conditional) inference on treatment effects that are estimated using
+decision trees,</p>
+</blockquote>
+<p>DR: look into the implication for treatment assignment with
+heterogeneity</p>
+<blockquote>
+<p>(p16) heterogenous treatment effects can be used to assign treatments;
+Misra and Dubé (2016) illustrate this on the problem of price
+targeting, applying Bayesian regularized methods to a large-scale
 experiment where prices were randomly assigned</p>
-<p>(p16) -caveat Suppose the algorithm chooses a tree that splits on
-education but not on age. Conditional on this tree, the estimated
-coefficients are consistent. But that does not imply that treatment
-effects do not also vary by age, as education may well covary with age;
-on other draws of the data, in fact, the same procedure could have
-chosen a tree that split on age instead</p>
+</blockquote>
+<p>DR: caveat</p>
+<blockquote>
+<p>(p16) Suppose the algorithm chooses a tree that splits on education
+but not on age. Conditional on this tree, the estimated coefficients
+are consistent. But that does not imply that treatment effects do not
+also vary by age, as education may well covary with age; on other
+draws of the data, in fact, the same procedure could have chosen a
+tree that split on age instead</p>
+</blockquote>
+<p>DR: no … can we predict who will gain most from admission? but even if
+we can, what can we report?</p>
+<blockquote>
 <p>(p16) Prediction in Policy</p>
-<p>(p16) -no .. can we predict who will gain most from admission? but even
-if we can what can we report? Prediction in Policy</p>
+</blockquote>
 
 </div>
 </div>

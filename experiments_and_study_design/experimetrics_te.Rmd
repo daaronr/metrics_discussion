@@ -12,14 +12,17 @@
 
 #### Fligner-Policello test
 
-@randlesAsymptoticallyDistributionfreeTest1980
+Fligner and Policello (1981), 'Robust rank procedures for the Behrens-Fisher problem', *Journal of the American Statistical Association* 76(373).
 
-Null-hypothesis that the medians in the two groups (samples) are the same.
+A rank test of $P(X<Y)=1/2$ that does not require the two groups to have equal variances or the same shape. If both distributions are symmetric, this is a test of the null hypothesis that the medians in the two groups (samples) are the same.
 
-> Note on assumptions: Under the null, it assumes that the the distributions are symmetric It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test.
+> Note on assumptions: Under the null, it assumes that the distributions are symmetric. It does not assume that the shape of the distribution is similar in two groups, contrary to the Mann-Whitney-Wilcoxon test.
+
+More precisely: the Mann-Whitney-Wilcoxon test is valid without shape assumptions as a test of identical distributions. Read as a test of medians, or of $P(X<Y)=1/2$, it needs the two distributions to differ only by a shift, because its null variance is computed assuming identical distributions. The Brunner-Munzel (2000) test targets the same hypothesis as Fligner-Policello and handles ties, which makes it a good choice for discrete or zero-heavy outcomes such as donations.
 
 ```{r Fligner-Policello-test, eval=FALSE, include=FALSE}
   library(RVAideMemoire)
+  # note: Poisson draws are skewed and heavily tied, so they violate the symmetry assumption above
 
   x <- rpois(20,3)
   y <- rpois(20,5)
@@ -37,8 +40,6 @@ Null-hypothesis that the medians in the two groups (samples) are the same.
 
 ## Incorporate above: Notes on "The econometrics of randomised experiments" (Athey and Imbens)
 
-(with an eye towards giving experiments_
-
 
 Page 7
 
@@ -54,7 +55,7 @@ Page 7
 
 - Considering when to use controls (and interactions?)
 
-> the asymptotic variance for $\hat{\tau}}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
+> the asymptotic variance for $\hat{\tau}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
 > If... the covariates have very skewed distributions, the finite sample bias in the linear regression estimates may be substantial
 
 - DR: Could there not ever be a loss from doing interactions dividing up the sample too fine in doing this interactive estimation? This should depend on the true $R^2$ I think. Try to remember what is the real tradeoff?
@@ -68,7 +69,7 @@ Page 7
   </div>
 
 
-** Things to potential incorporate in NL HE lottery paper(s) **
+**Things to potentially incorporate in NL HE lottery paper(s)**
 
 - (When) shall we use covariates (esp those for interactions) in the 'deviations from mean' form?
 
@@ -186,7 +187,7 @@ Aside: see the limitations of the Fisher test when not considering a lady tastin
 
 **Exact p-values for sharp null hypotheses (Fisher etc)**
 
-"Sharp": "Under which we can an for all the missing potential outcomes from the observed data" ... So we can infer the distribution of any statistics under the Null.
+"Sharp": "Under which we can infer all the missing potential outcomes from the observed data" ... So we can infer the distribution of any statistics under the Null.
 
 E.g., $H0$, The treatment has no effect $Y_i(0)=Y_i(1)\forall i$, vs $Ha$, At least one unit i has $Y_i(0)\neq Y_i(1)$
 
@@ -205,7 +206,7 @@ This is done by reassigning what we call the "treatments" to all possible combin
 
 With multiple outcomes, multiple comparisons issues
 
-- Use statistics it takes into account all the outcomes (e.g., F-stat, calculate exact P value using the 'Fisher randomization distribution' as in Young, '16)
+- Use statistics it takes into account all the outcomes (e.g., F-stat, calculate exact P value using the 'Fisher randomization distribution' as in Young 2019, *QJE*)
 
 - Or use adjustments to P values e.g., Bonferroni or tighter bounds (Which are still more conservative than the Fisher thing); Romano ea survey (2010)
 
@@ -215,7 +216,7 @@ With multiple outcomes, multiple comparisons issues
 
 Neyman wanted to estimate the ATE for the sample at hand
 
-$$\tau=\frac{1}{N}\sum_{i=1..N}{(Y_i(1)-Y_i(0)i)}=\bar{Y}(1)-\bar{Y}(0)$$
+$$\tau=\frac{1}{N}\sum_{i=1..N}{(Y_i(1)-Y_i(0))}=\bar{Y}(1)-\bar{Y}(0)$$
 
 - DR: Again, this is really not what we care about particularly not in a small-scale experiment.
 
@@ -229,18 +230,18 @@ Defining $D_i$, a term representing "assignment minus the average assignment"
 
 Allows a restatement of the estimator which makes it clear that this is unbiased for the average treatment effect $\tau$
 
-$$\hat{i\tau}=\tau+\frac{1}{N}\sum_{i=1..N}{(D_i(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)}$$
+$$\hat{\tau}=\tau+\frac{1}{N}\sum_{i=1}^{N}D_i\Big(\frac{N}{N_t}Y_i(1)+\frac{N}{N_c}Y_i(0)\Big),\qquad D_i=W_i-\frac{N_t}{N}$$
 
 
 
 Sampling variance of $\hat{\tau}$ over the randomization distribution decomposed as
 
-$$V({\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}$$
+$$V(\hat{\tau})=\frac{S_c^2}{N_c}+\frac{S_t^2}{N_t}-\frac{S_{tc}^2}{N}$$
 
 Where $S_c^2$ and $S_t^2$ Are the variances of the control and treated outcomes,
 and $S_{tc}^2$ is the variance of the unit level treatment effect (DR: This must be related to the covariance)
 
-We can estimate rhe first two terms but not the latter term as we have no observations with both a control and a treatment.
+We can estimate the first two terms but not the latter term as we have no observations with both a control and a treatment.
 
 \
 
@@ -267,7 +268,7 @@ S-th quantile treatment effect defined as the difference in quantiles between th
 $$\tau_s=q_{Y(1)}(s)-q_{Y(0)}(s)$$ ...
 
 - this is distinct from the "quantile of the differences": $q_{Y(1)-Y(0)}(s)$,  which is in general not identified
-    - DR:  the letter is truly more interesting; we care about the distribution of the *impact of the treatment*  and not so much about the impact of the treatment on the distribution of  outcomes.
+    - DR:  the latter is truly more interesting; we care about the distribution of the *impact of the treatment*  and not so much about the impact of the treatment on the distribution of  outcomes.
 
 -  the two are equal if  there is "perfect rank correlation between the two potential outcomes" (DR: I think this simply means that the unit ranked n'th  if not treated would also be the unit ranked n'th if treated ...  no crossing over).
 
@@ -297,8 +298,8 @@ Why use controls  if a simple difference in means is unbiased for the ATE?
 \
 They give an example with the data from Lalonde where they estimate the average treatment effect for two groups those with and without prior earnings. They then add these up weighted by the estimated probability of being in each group.
 
-- DR:  I understand this correctly, as they do not define all variables
-    - also, how do they compute the standard error of the combined estimator here?!
+- DR: I am not sure I understand this correctly, as they do not define all variables
+    - also, how do they compute the standard error of the combined estimator here?! (Added later: weight each subgroup's Neyman variance by its squared share, treating the shares as fixed, as in the stratified-experiment formula below.)
     - this seems more like an interaction than a standard control here, which would allow a different intercept (control outcome) but not a different treatment effect.
 
 
@@ -313,7 +314,7 @@ $$\hat{p}(\bar{Y}_t|Y^{t-1}=0-\bar{Y}_c|Y^{t-1}=0)+(1-\hat{p})(\bar{Y}_t|Y^{t-1}
 
 They urge caution in using reg. "Since randomization does not justify the models, almost anything can happen" (Freedman 08)
 
-But using only "indicator variables based on partitioning the covariate space" preserves many of the finite simple properties of simple comparisons of means.
+But using only "indicator variables based on partitioning the covariate space" preserves many of the finite sample properties of simple comparisons of means.
 \
 
 **Regression estimators for average treatment effects**
@@ -321,9 +322,9 @@ But using only "indicator variables based on partitioning the covariate space" p
 With a single variable, the least-squares estimate of $\tau$ is identical to the simple difference in means:
 
 
-$$\hat{tau}_{ols} = \bar{Y^o}_t - \bar{Y}^o_c$$
+$$\hat{\tau}_{ols} = \bar{Y}^o_t - \bar{Y}^o_c$$
 
-The intercept is the control value of course: $\hat{\alpha}_{ols}=\bar{Y}^o-\hat{\tau_{ols}}\bar{W}=\bar{Y^0}_c$.
+The intercept is the control value of course: $\hat{\alpha}_{ols}=\bar{Y}^o-\hat{\tau}_{ols}\bar{W}=\bar{Y}^o_c$.
 
 *Conceptually important:*
 
@@ -399,13 +400,13 @@ $Y^{obs}_i=\alpha+\tau W_i + \beta'\dot{X}_i + \gamma'\dot{X}_i W_i + \epsilon_i
 
 \
 
-If $\bar{X}$ is the average value of $X_i$ in the sample, then \hat{\tau}=\hat{\tau}_1\bar{X}+\hat{\tau}_0(1−\bar{X})$, and $\hat{\gamma}=\hat{\tau}_1-\hat{\tau}_0$
+If $\bar{X}$ is the average value of $X_i$ in the sample, then $\hat{\tau}=\hat{\tau}_1\bar{X}+\hat{\tau}_0(1-\bar{X})$, and $\hat{\gamma}=\hat{\tau}_1-\hat{\tau}_0$
 
 \
 
 With large sample approximations we can 'say something about the case with multivalued covariates' ... "$\tau$ [DR: estimated how?] is asymptotically unbiased for the average treatment effect ..."
 
-> the asymptotic variance for $\hat{\tau}}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
+> the asymptotic variance for $\hat{\tau}$ is less than that of the simple difference estimator by a factor equal to $1-R^2$ from including the covariates relative to not including the covariates
 
 - DR: This motivates the use of covariates even in a randomized design, and even if we don't take the 'model of the covariates' seriously.
     - "results do not rely on the regression model being true in the sense that the conditional expectation of Y obs i is actually linear in the covariates and the treatment indicator in the population"
@@ -429,42 +430,42 @@ The presence of non-zero values for γ imply treatment effect heterogeneity.
 
 - DR: Could there not ever be a loss from including interactions and dividing up the sample too fine in doing this interactive estimation? This should depend on the true $R^2$ I think. Try to remember what is the real tradeoff.
 
-**  6 The Analysis of Stratified and paired randomized experiments **
+**6 The Analysis of Stratified and paired randomized experiments**
 
 ### Stratified randomized experiments: analysis
 
 *Case for stratification*
 
-> capture the gains from ex post regression adjustment without the potential costs of linear regression, and the potential costs of linear regression, and therefore stratification is generally preferable over regression adjustment
+> capture the gains from ex post regression adjustment without the potential costs of linear regression, and therefore stratification is generally preferable over regression adjustment
 
-> Within this stratum we can estimate the average effect as the difference in average outcomes for treated and control units: $\tauˆg = \bar{Y}^{obs}_{t,g} − \bar{Y}^{obs}_{c,g}$,
+> Within this stratum we can estimate the average effect as the difference in average outcomes for treated and control units: $\hat{\tau}_g=\bar{Y}^{obs}_{t,g}-\bar{Y}^{obs}_{c,g}$,
 
 > and we can estimate the within-stratum variance, using the Neyman results, as
 
-$\hat{V}(\hat{\tau}) =\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}$
+$\hat{V}(\hat{\tau}_g) =\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}$
 
 > where the g-subscript indexes the stratum [They wrote 'j' but I think its a typo]
 
 Next just average weighted by stratum shares:
 
-$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}$
+$\hat{\tau}=\sum_{g=1}^{G}\hat{\tau}_g\frac{N_g}{N}$
 
-with estimated variance $\sum_{g=1..G}$\hat{V}(\hat{tau}_g)(\frac{N_g}{N})^2$
+with estimated variance $\sum_{g=1}^{G}\hat{V}(\hat{\tau}_g)\big(\frac{N_g}{N}\big)^2$
 
 - DR: Presumably they mean the above mentioned Neyman variance
     - Also note the squared term in the variance estimation, this may be how they computed the variance in the above empirical example
 
 "Special case":  proportion treat units the same in all strata $\rightarrow$ ATE estimator equals difference in means by treatment status:
 
-$$\hat{\tau} = \sum_{g=1..G}{\hat{tau}_g \frac{N_g}{N}}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c$$
+$$\hat{\tau} = \sum_{g=1..G}{\hat{\tau}_g \frac{N_g}{N}}=\bar{Y}^{obs}_t-\bar{Y}^{obs}_c$$
 
 ... same as estimator for completely randomized experiment
 
 But the estimated variance for the latter will be overly conservative.
 
-- DR: But I thought stratifying sometime ends up yielding a larger *estimated* variance?
+- DR: But I thought stratifying sometime ends up yielding a larger *estimated* variance? (Added later: yes, in a given sample; see the end of 'Stratified randomized experiments: Benefits' below. When strata are unrelated to outcomes the two variance estimators have the same expectation, and the stratified one is noisier.)
 
-##Paired randomized experiments: analysis
+### Paired randomized experiments: analysis
 
 (Skipping note-taking for now)
 
@@ -535,14 +536,13 @@ But the estimated variance for the latter will be overly conservative.
 
 > consider two estimators for the variance [both unbiased]
 
-$\hat{V}_C=\frac{s^2_{t,g}}{N_{t,g}} + \frac{s^2_{c,g}}{N_{c,g}}$
-> the natural estimator for the variance under the completely randomized experiment is: $\hat{V}_c=\frac{s^2_{t}}{N_{t}} + \frac{s^2_{c,g}}{N_{c,g}}$
+> the natural estimator for the variance under the completely randomized experiment is: $\hat{V}_C=\frac{s^2_{t}}{N_{t}} + \frac{s^2_{c}}{N_{c}}$
 
 > or a stratified randomized experiment the natural variance estimator, taking into account the stratification, is:
-$\hat{V}_S=\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{fc}}{N_{fc}}\frac{s^2_{ft}}{N_{ft}}\Big)+\frac{N_f}{N_f+N_m}\Big(\frac{s^2_{mc}}{N_{mc}}\frac{s^2_{mt}}{N_{mt}}\Big)$
+$\hat{V}_S=\Big(\frac{N_f}{N}\Big)^2\Big(\frac{s^2_{fc}}{N_{fc}}+\frac{s^2_{ft}}{N_{ft}}\Big)+\Big(\frac{N_m}{N}\Big)^2\Big(\frac{s^2_{mc}}{N_{mc}}+\frac{s^2_{mt}}{N_{mt}}\Big)$, with $N=N_f+N_m$
 
 
-> Hence, $E\hat{V}_S\leq\hat{V}_C$.
+> Hence, $E[\hat{V}_S]\leq E[\hat{V}_C]$.
 
 - DR: Because we know both are unbiased and we know the true variance of $\hat{V}_C$ is larger.
 
@@ -550,7 +550,7 @@ Nevertheless, the reverse may hold in a particular sample
 
 > where the stratification is not related to the potential outcomes ... the two variances are identical in expectation
 
-but the $var\Big(hat{V}_S\Big) < var\Big(hat{V}_C\Big)$
+but the $\mathrm{var}\Big(\hat{V}_S\Big) > \mathrm{var}\Big(\hat{V}_C\Big)$
 
 - DR: This seems contradictory at first but I think it's correct. The expectation of the estimated variance can be smaller or identical, while the *variance of the estimated variance* can still be larger.
 
@@ -597,14 +597,14 @@ They recommend against:
 Multiple splits and tests may lead to overstated statistical significance for differences in TE's.
 
 - Bonferroni "overly conservative in an environment where many covariates are correlated with one another"
-    - List, Shaikh, and Xu (2016) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct
+    - List, Shaikh, and Xu (2019, *Experimental Economics*) propose an approach accounting for this; it uses bootstrapping, and requires pre-specifying list of tests to conduct
 
-** 10.3 Estimating Treatment Effect Heterogeneity **
+**10.3 Estimating Treatment Effect Heterogeneity**
 
 - Parametric estimators, 'all interactions' (presumably with a correction as noted above)
 - Nonparametric estimator of $\tau(x)$
 
->  The approach of List, Shaikh, and Xu (2016) works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.
+>  The approach of List, Shaikh, and Xu (2016) [published 2019, *Experimental Economics*] works for an arbitrary set of null hypotheses, so the researcher could generate a long list of hypotheses using the causal tree approach restricted to different subsets of covariates, and then test them with a correction for multiple testing. Since in datasets with many covariates, there are often many ways to describe what are essentially the same sub-groups, we expect a lot of correlation in test statistics, reducing the magnitude of the correction for multiple hypothesis testing.
 
 ### Data-driven Subgroup Analysis: Recursive Partitioning for Treatment Effects
 
@@ -628,7 +628,7 @@ But here ,,,
 Because unit level TE is not observed, it is difficult to use standard protocols
 \
 
-... suggest transforming outcome from Y_i^{obs} to $Y_i^\ast=Y_i^{obs}\frac{W_i−p}{p(1−p)}$
+... suggest transforming outcome from $Y_i^{obs}$ to $Y_i^\ast=Y_i^{obs}\frac{W_i−p}{p(1−p)}$
 
 ... "so that standard methods for recursive partitioning based on prediction apply"
 
@@ -652,7 +652,7 @@ Wager and W argue for inflating SE's rather than partitioning
 
 - Many allow descriptive evidence and prediction, but few methods available that allow for confidence intervals
 
-- K-nearest neighbors, hurdle methods
+- K-nearest neighbors, kernel methods
     - Do not prioritise 'more important' covariates
 
 
@@ -661,7 +661,7 @@ Wager and W argue for inflating SE's rather than partitioning
 
 > A key problem with kernels and nearest neighbor matching is that all covariates are treated symmetrically; if one unit is close to another in 20 dimensions, the units are probably not particularly similar in any given dimension. We would ideally like to prioritize dimensions that are most important for heterogeneous treatment effects, as is done in many machine learning methods, including the highly successful random forest algorithm.
 
-But these are often "bias-dominated asymptotically" ... except the ones proposed by Wager and Athey  (2015) :)
+But these are often "bias-dominated asymptotically" ... except the ones proposed by Wager and Athey (2018, *JASA*) :)
 
 >  asymptotically normal and centered on the true value of the treatment effect,... consistent estimator for the asymptotic variance.
 
@@ -679,7 +679,7 @@ What does this mean?:
 
 - Also, approaches fitting separately for treatment and control
 
-- Also, Bayesian perspectives on this: Green and Kern (2011), Hill (2012), others ... but unknown asymptotic properties (DR: do we care?)
+- Also, Bayesian perspectives on this: Green and Kern (2012, *Public Opinion Quarterly*), Hill (2011, *JCGS*), others ... but unknown asymptotic properties (DR: do we care?)
 
 ### 10.3.3 Treatment Effect Heterogeneity Using Regularized Regression
 

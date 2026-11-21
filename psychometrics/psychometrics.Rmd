@@ -9,11 +9,11 @@
 
 Reliability [wiki](https://en.wikipedia.org/wiki/Reliability_(statistics)): "similar[ity] of results under similar conditions"
 
-Validity of a tool [wiki]: -- "the degree to which the tool measures what it claims to measure"
+Validity of a tool [wiki](https://en.wikipedia.org/wiki/Validity_(statistics)): -- "the degree to which the tool measures what it claims to measure"
 
 ### Validity: general discussion 
 
-> In psychometrics, validity has a particular application known as test validity: "the degree to which evidence and theory support the interpretations of test scores" ("as entailed by proposed uses of tests").[3]
+> In psychometrics, validity has a particular application known as test validity: "the degree to which evidence and theory support the interpretations of test scores" ("as entailed by proposed uses of tests").
 
 
 > Construct validity refers to the extent to which operationalizations of a construct (e.g., practical tests developed from a theory) measure a construct as defined by a theory. It subsumes all other types of validity.
@@ -29,18 +29,20 @@ Reliability of measurements and multicomponent measuring instruments:
 - Inter-rater reliability
 - Test-retest reliability
 - Inter-method reliability
-- Internal consistency reliability ("across items within a test."[6]")
+- Internal consistency reliability ("across items within a test.")
 
 \
 "Classical test theory"
 
 > measurement errors are essentially random. ... they are not correlated with true scores or with errors on other tests.
 
-> variance of obtained scores is simply the sum of the variance of true scores plus the variance of errors of measurement.[7]
+> variance of obtained scores is simply the sum of the variance of true scores plus the variance of errors of measurement.
 
-$$\sigma_{X}^{2}=\sigma_{T}^{2}+\sigma_{E}^{2}}\sigma_{X}^{2}=\sigma_{T}^{2}+\sigma_{E}^{2}$$
+$$\sigma_{X}^{2}=\sigma_{T}^{2}+\sigma_{E}^{2}$$
 
 > The reliability coefficient is defined as the ratio of true score variance to the total variance of test scores.
+
+$$\rho_{XX'} = \sigma_T^2 / \sigma_X^2 = \sigma_T^2 / (\sigma_T^2 + \sigma_E^2)$$
 
 <div class="marginnote">
 Why is a larger reliability coefficient a good thing? I guess because it indicates that made the measurement error part as small as possible given the true score variance. But wouldn't it be better to choose a measure with a lower 'true score variance'?
@@ -67,7 +69,7 @@ Paraphrasing...
 
 $$X_i= T_i + E_i = \alpha_i + \beta_i \xi + E_i$$
 
-Often used, of concern: the "composite (scale) score" $Z = X_1 + X_2 + ... + X_k$  (e.g., Likert scale index)
+Often used, of concern: the "composite (scale) score" $Z = X_1 + X_2 + \dots + X_p$  (e.g., Likert scale index)
 
 
 \

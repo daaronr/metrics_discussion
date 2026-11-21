@@ -1318,8 +1318,8 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 <p>BB:</p>
 <p>From that Twitter thread i also found this really useful <a href="https://drive.google.com/drive/folders/14VgSFPsmv2H8ZngW-P2xEQE7g4WbWXfH">google drive folder</a> of recent developments.</p>
 <p>This Freyaldenhoven <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20180609">paper</a> might also be handy. And it looks like there is quite a lot by Susan Athey that we should look at too.</p>
-<p>Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of hetergoenous treatment effects in a “better” way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.</p>
-<p>That method (CiC) is applied by <a href="https://www.nber.org/papers/w25636">this Assuncao paper</a> to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targetted municipalities) simply owing to the fact there is very little other forest left to harvest.</p>
+<p>Re Athey, she has a paper with Imbens (2006) which proposes the change in changes approach which allows estimation of heterogeneous treatment effects in a “better” way than quantile DiD. The assumptions of CiC are pretty similar to those of DiD.</p>
+<p>That method (CiC) is applied by <a href="https://www.nber.org/papers/w25636">this Assuncao paper</a> to the Amazon. We actually looked at this paper at the journal club in LEEP and the point was raised that actually you could see the observed effect (reduced deforestation in targeted municipalities) simply owing to the fact there is very little other forest left to harvest.</p>
 <p>On DiD more generally, I think it suffers from the flaw that we have to somehow establish pre-treatment parallel trends which is basically an issue of ‘accepting a null hypothesis’ which is clearly not possible with traditional statistical inference.</p>
 <p>DR: Yes, the problem of <a href="robust-diag.html#robust-diag">diagnostic testing</a> the assumption that the identification entirely relies on. Does CiC suffer from the same issue?</p>
 </div>
@@ -1336,10 +1336,10 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 <li><p>Diagnosing structural breaks… outside of Macroeconomics</p></li>
 </ul>
 <div class="marginnote">
-<p>Ben: Ferraro has a couple of paper which together i think basically just caution against just accepting panel regression approaches on the basis that the covariates are matched well. They are <a href="https://www.journals.uchicago.edu/doi/10.1086/689868">here</a> and <a href="https://www.sciencedirect.com/science/article/pii/S016517651630489X">here</a></p>
+<p>Ben: Ferraro has a couple of papers which together i think basically just caution against just accepting panel regression approaches on the basis that the covariates are matched well. They are <a href="https://www.journals.uchicago.edu/doi/10.1086/689868">here</a> and <a href="https://www.sciencedirect.com/science/article/pii/S016517651630489X">here</a></p>
 </div>
 <div id="lagged-dependent-variable-and-fixed-effects-nickel-bias" class="section level3" number="8.4.1">
-<h3><span class="header-section-number">8.4.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickel bias’</h3>
+<h3><span class="header-section-number">8.4.1</span> Lagged dependent variable and fixed effects –&gt; ‘Nickell bias’</h3>
 </div>
 <div id="apc-effects" class="section level3" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> Age-period-cohort effects</h3>
@@ -1371,7 +1371,7 @@ Ok, let’s say you’ve neither written nor refereed a Diff-in-Diff paper in th
 <p><span class="math display">\[Y_{ij} = \mu  + \alpha_i + \pi_j + \chi_k + \epsilon_{ij} \]</span>
 They refer to the “effect of the ith age group” <span class="math inline">\(\alpha_i\)</span> but this need not be interpreted causally.</p>
 <p><span class="math inline">\(\pi_j\)</span> captures period <span class="math inline">\(j\)</span>, <span class="math inline">\(\chi_k\)</span> the kth cohort <span class="math inline">\(\mu\)</span> the intercept, and <span class="math inline">\(\epsilon_{ij}\)</span> the
-“random disturbance.”</p>
+“random disturbance.” Here cohort <span class="math inline">\(k = j - i + A\)</span> (period minus age, shifted to start at 1, with <span class="math inline">\(A\)</span> age groups).</p>
 <blockquote>
 <p>[The] linear dependency among the variables representing age, period, and cohort, since knowing the values of any two of these variables allows one to know the value of the third … means that we cannot estimate the A – 1 age effects, the P − 1 period effects, and the A + P – 1 cohort effects in a single OLS model.</p>
 </blockquote>

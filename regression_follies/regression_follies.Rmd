@@ -5,66 +5,55 @@
 ## Basic regression and statistical inference: Common mistakes and issues briefly listed
 
 
-Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)	Identification
+- Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)
 
-Random effects estimators show a lack of robustness	Specification	Clustering SE  is more standard practice
+- Random effects estimators show a lack of robustness; clustering SE is more standard practice
+  - (Some notes on multi-level modeling) and RE linked [in this Twitter thread](https://twitter.com/DavidPoe223/status/1239447381172727809)
 
-OLS/IV estimators not 'mean effect' in presence of heterogeneity
+- OLS/IV estimators not 'mean effect' in presence of heterogeneity
 
-Power calculations/underpowered
+- Power calculations/underpowered
 
-Selection bias due to attrition
+- Selection bias due to attrition
 
-Selection bias due to missing variables -- impute these as a solution
+- Selection bias due to missing variables -- impute these as a solution
 
-Signs of p-hacking and specification-hunting
+- Signs of p-hacking and specification-hunting
 
-Weak diagnostic/identification tests
+- Weak diagnostic/identification tests
 
-Dropping zeroes in a "loglinear" model is problematic
+- Dropping zeroes in a "loglinear" model is problematic
 
-Random effects estimators show a lack of robustness
+- P_augmented may *overstate* type-1 error rate
 
-Dropping zeroes in a "loglinear" model is problematic
+- Impact size from regression of "log 1+gift amount"
 
-Random effects estimators show a lack of robustness
+- Lagged dependent variable and fixed effects --> 'Nickell bias'
 
--(Some notes on multi-level modeling) and RE linked [in this Twitter thread](https://twitter.com/DavidPoe223/status/1239447381172727809)
+- Weak IV bias
 
-With heterogeneity the simple OLS estimator is not the 'mean effect'
+- Bias from selecting instruments and estimating using the same data
 
-P_augmented may *overstate* type-1 error rate
-
-Impact size from regression of "log 1+gift amount"
-
-Lagged dependent variable and fixed effects --> 'Nickel bias'
-
-Peer effects: Self-selection, Common environment, simultaneity/reflection (Manski paper)
-
-Weak IV bias
-
-Bias from selecting instruments and estimating using the same data
-
-Failure to adjust for multiple-hypothesis testing
+- Failure to adjust for multiple-hypothesis testing
 
 ### Bad control
 
 From MHE:
 
-> some variables are bad controls and should not be included in a regression model even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notational experiment at hand. That is, bad controls might just as well be dependent variables too."
+> some variables are bad controls and should not be included in a regression model even when their inclusion might be expected to change the short regression coefficients. Bad controls are variables that are themselves outcome variables in the notional experiment at hand. That is, bad controls might just as well be dependent variables too.
 
 – They could also be interpreted as endogenous variables.
 
-Example of looking at a regression of wages in schooling, controlling for college degree completion:
+Example of looking at a regression of wages on college degree completion, controlling for occupation:
 
-> Once we acknowledge the fact that college affects occupation, comparison of wages by college degree status within occupation are no longer apples to apples, even if college degree completion is randomly assigned."
+> Once we acknowledge the fact that college affects occupation, comparison of wages by college degree status within occupation are no longer apples to apples, even if college degree completion is randomly assigned.
 
 – The question here was whether to control for the category of occupation, not the college degree.
 
-> It is also incorrect to say that the conditional comparison captures the part of the effect of college that is 'not explained by occupation' ... so we would do better to control only for variables that are not themselves caused by education."
+> It is also incorrect to say that the conditional comparison captures the part of the effect of college that is 'not explained by occupation' ... so we would do better to control only for variables that are not themselves caused by education.
 
 
-### Does 'controlling for more' increase the probability that a (controlled) difference between too groups represents a causal effect? Not really (Informal discussion in fold)
+### Does 'controlling for more' increase the probability that a (controlled) difference between two groups represents a causal effect? Not really (Informal discussion in fold)
 
 ```{block2,  type='fold'}
 
@@ -75,7 +64,7 @@ Suppose that 90% share of Australians have a university degree, because Australi
 That raises the first issue: do we want to try to get at only ‘direct effects’ of Australian culture (e.g., on generous spirit) without considering the ‘indirect effects’ on education, which itself might increase concern for others and thus charitable giving? This is not clear. But suppose we only wanted to consider the former. And suppose that Australian culture in fact does increase generosity through this direct channel. But how can we measure it?
 We could compare the average donation of Australians and non-Australians overall.  But here we would not be able to disentangle this from  ’“the effect of education --> concern --> giving”
 alternatively
-2. We could compare the  average donation of Australians and non-Australians “with the same levels of education” i.e., down-weight the Australians with a university degree, counting them only 1/5 as much as Australians without a university degree.
+2. We could compare the  average donation of Australians and non-Australians “with the same levels of education” i.e., down-weight the Australians with a university degree, counting them only 1/9 as much as Australians without a university degree.
 However, we would then be overweighting (fivefold!) Australians who, in spite of the big Australian cultural pressure towards university, nonetheless decided not to get a degree. These people may have other (potentially unmeasured) characteristics tied to their hatred for education, that caused them not to go to Uni. these characteristics may also make them less generous.
 The average donations from these ‘extreme anti-education’ Australians may in fact be lower than the the donations of the average non-Australian.  This would then be masking the impact of Australian culture on donations, which (we assumed above) was positive,
 ```
@@ -107,7 +96,7 @@ http://datacolada.org/62
 
 #### OLS does *not* identify the ATE {-}
 
-In general, with heterogeneity, OLS does *not* identify the ATE. It weights observations from different parts of the sample differently. Parts with greater residual variation in the treatment (outcome) variable are more (less) heavily weighted.
+In general, with heterogeneity, OLS does *not* identify the ATE. It weights observations from different parts of the sample differently. Groups with more residual variation in the treatment, after partialling out the controls, get more weight. The variance of the outcome plays no part in the OLS weights (an estimator that down-weights groups with noisy outcomes is GLS).
 
 <div class="marginnote">
 E.g., if the treatment is binary, the estimator will most heavily weight those parts of the sample where the probability of treatment is closest to 1/2.
@@ -126,7 +115,7 @@ Why is this the case?  The OLS type estimators we are taught in Econometrics are
 
 It is 'best' in a minimizing MSE sense under certain assumptions;  in particular, we must also know the true functional form and the set of variables to be included. See 'overfitting' issues.
 
-In  order to have the estimate of the true slope that minimizes the squared errors, OLS (and related estimators like FGLS; as well as 2SLS in a more complicated sense) weights  some observations more than others. The 'influence' of an observation on the estimated slope depends on the nature of the variation in the  dependent and independent variables in the region that observation is drawn from.  Think of drawing a line  through a set of points  that were drawn with some noise from the true distribution.  If you drew it based on a bunch of points (from a region where) the treatment varies very little and the outcomes have a lot of noise,  the line you draw will be very sensitive to the latter noise and thus unreliable. So,  would optimally 'down-weight'  these observations in drawing the line.
+In  order to have the estimate of the true slope that minimizes the squared errors, OLS (and related estimators like FGLS; as well as 2SLS in a more complicated sense) weights  some observations more than others. The 'influence' of an observation on the estimated slope depends on the nature of the variation in the  dependent and independent variables in the region that observation is drawn from.  Think of drawing a line  through a set of points  that were drawn with some noise from the true distribution.  If you drew it based on a bunch of points (from a region where) the treatment varies very little,  the line you draw will be very sensitive to the noise in the outcomes and thus unreliable. So, OLS 'down-weights' these observations in drawing the line. (FGLS is the estimator that additionally down-weights observations with noisy outcomes.)
 
 \
 
@@ -144,11 +133,11 @@ How can we deal with this?  If we think  that the  treatment effect varies with 
 
 However, this does not tell us how to recover the *average* of these slopes (approximately, the ATE).  Should we weight each of the slopes by the share of the population that this group represents?
 
-Mechanically,  the standard way of estimating and representing these  interactions and economics has been with simple dummies (0,1) for each compared group. This yields a 'base group' (e.g., males aged 35-60) --  this obviously does not recover the average slope-- as well as the 'adjustment' coefficients.
+Mechanically,  the standard way of estimating and representing these interactions in economics has been with simple dummies (0,1) for each compared group. This yields a 'base group' (e.g., males aged 35-60) --  this obviously does not recover the average slope-- as well as the 'adjustment' coefficients.
 
 \
 
-Another way of expressing interactions, particularly helpful with multi-level interactions is called 'effect coding': each group is coded as a 'difference from 0' (e.g,. with bunarybinary gender data males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. *But under which conditions is this in fact the case?*
+Another way of expressing interactions, particularly helpful with multi-level interactions is called 'effect coding': each group is coded as a 'difference from 0' (e.g,. with binary gender data males are -1/2 and females +1/2), before doing the interactions. This could allow for a more straightforward interpretation: at each level, the uninteracted term represents the average treatment effects, and the interacted terms represent adjustments relative to this average. *But under which conditions is this in fact the case?*
 
 <div class="marginnote">
 [There are various forms of 'effect coding' of which 'effect contrast coding' is one.](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/#:~:text=Unlike%20dummy%20coding%2C%20effect%20coding,variable%20must%20sum%20to%20zero.)
@@ -166,16 +155,16 @@ A key paper: http://www.jcsuarez.com/Files/Suarez_Serrato-BFE.pdf
 
 By "FE" here I think they mean group dummies; they are focused on cross-sectional and not panel data!
 
-> While fixed effects permit different mean outcomesamong groups,  the estimates of treatment effects are typically required to be the same;  in more colloquial  terms,  the  intercepts  of  the  conditional  expectation  functions  may  differ,  but  not  the slopes
+> While fixed effects permit different mean outcomes among groups,  the estimates of treatment effects are typically required to be the same;  in more colloquial  terms,  the  intercepts  of  the  conditional  expectation  functions  may  differ,  but  not  the slopes
 
 DGP
 
 $$y_i = x_i \beta_{g(i)} + \mathbf{z_i}' \gamma + \epsilon_i$$
 
-> where $y_i is the outcome for observation i among N [N what?],
+> where $y_i$ is the outcome for observation $i$ among $N$ observations,
 $x_i$ is treatment or another variable of interest, and $z_i$ contains control variables, including group-specific fixed effects.
 
-> The treatment effects aregroup-specific  for  each  of  the $g=1,...,G$ groups,  where  group  membership  is  known  for  each observation.
+> The treatment effects are group-specific  for  each  of  the $g=1,...,G$ groups,  where  group  membership  is  known  for  each observation.
 
 Defining ATE
 
@@ -202,13 +191,13 @@ Plus there is this paper – https://www.nber.org/papers/w25636 which applies th
 
 ### "Null effects"
 
-While the classical statistical framework is not terribly clear about when one should 'accept' a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from the evidence and consequent imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely down around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a 'zero or minimal effect' one would want to find these closely bounded around zero under a variety of conditions for generalizability.
+While the classical statistical framework is not terribly clear about when one should 'accept' a null hypothesis, we clearly should distinguish strong evidence for a small or zero effect from weak evidence and consequently imprecise estimates. If our technique and identification strategy is valid, and we find estimates with confidence intervals closely bounded around zero, we may have some confidence that any effect, if it exists, is small, at least in this context. To more robustly assert a 'zero or minimal effect' one would want to find these closely bounded around zero under a variety of conditions for generalizability.
 
 In general it is important to distinguish a lack of statistical power from a “tight” and informative null result; essentially by considering confidence intervals (or Bayesian credible intervals). See, e.g., Harms and Lakens (2018), “Making 'null effects' informative: statistical techniques and inferential frameworks” @harmsMakingNullEffects2018.
 
 
 > Psychologists must be able to test both for the presence of an effect and for the absence of an effect. In addition to testing against zero, researchers can use the two one-sided tests (TOST) procedure to test for equivalence and reject the presence of a smallest effect size of interest (SESOI). The TOST procedure can be used to determine if an observed effect is surprisingly small, given that a true effect at least as extreme as the SESOI exists. We explain a range of approaches to determine the SESOI in psychological science and provide detailed examples of how equivalence tests should be performed and reported. Equivalence tests are an important extension of the statistical tools psychologists currently use and enable researchers to falsify predictions about the presence, and declare the absence, of meaningful effects.
-(Lakens et al, 2018)
+(Abstract of Lakens, Scheel and Isager (2018), 'Equivalence Testing for Psychological Research: A Tutorial')
 
 
 #### Confidence intervals and Bayesian credible intervals
@@ -239,10 +228,10 @@ Other tests look for 'associations' between categorical variables, each potentia
 From a discussion on the appropriate adjustment of Chi-Sq tests for categorical variables, and the possible adjustments to this test for [multiple response categorical variables](https://experts.nebraska.edu/en/publications/mrcv-a-package-for-analyzing-categorical-variables-with-multiple-)
 
 > If I am correct, I don’t see a huge value in doing/adjusting any ‘aggregate tests for association between (e.g.) ethnicity and involve mode’.
-> I say this because I think most people would have a strong belief that there will be at least some association here overall, even if it is a small one, and even if it isn’t ‘caused by ethnicity’, whatever that could mean.o
+> I say this because I think most people would have a strong belief that there will be at least some association here overall, even if it is a small one, and even if it isn’t ‘caused by ethnicity’, whatever that could mean.
 
 
-The general idea that 'we expect an association in most cases, so finding one is not particularly informative (without further results) ... is mentioned [HERE](http://sumsar.net/blog/2014/06/bayesian-first-aid-prop-test/) and discussed by Gelman [here](https://statmodeling.stat.columbia.edu/2011/04/02/so-called_bayes/) (context of 'Bayesian hypothesis testing') and [here](https://statmodeling.stat.columbia.edu/2004/12/29/type_1_type_2_t/) (in terms of a new typeology of 'errors').
+The general idea that 'we expect an association in most cases, so finding one is not particularly informative (without further results) ... is mentioned [HERE](http://sumsar.net/blog/2014/06/bayesian-first-aid-prop-test/) and discussed by Gelman [here](https://statmodeling.stat.columbia.edu/2011/04/02/so-called_bayes/) (context of 'Bayesian hypothesis testing') and [here](https://statmodeling.stat.columbia.edu/2004/12/29/type_1_type_2_t/) (in terms of a new typology of 'errors').
 
 
 ### Multiple hypothesis testing (MHT) {#mht}
@@ -260,7 +249,7 @@ Namely that when we have multiple hypotheses testing in a paper how do we contro
 
 From List et al (2019), discussing experiments reporting tests of multiple treatments, on multiple subgroups, and considering multiple outcomes:
 
->  it is uncommon for the analyses of these data to account for the multiple hypothesis testing. As a result, the probability of a false rejection may be much higher than desired. To illustrate this point, consider testing $N$ null hypotheses simultaneously. Suppose that for each null hypothesis a p value is available whose distribution is uniform on the unit interval when the corresponding null hypothesis is true. Suppose further that all null hypotheses are true and that the p values are independent. In this case, if we were to test each null hypothesis in the usual way at level $\alpha \in  (0, 1)$, then the probability of one or more false rejections equals $1 − (1 − \alpha)N$, which may be much greater than $\alpha$ and in fact tends rapidly to one as $N$ increases. For instance, with $\alpha = 0.05$, it equals $0.226$ when $N = 5$ equals 0.401 when N = 10 and 0.994 when N = 100. In order to control the probability of a false rejection, it is therefore important to account appropriately for multiplicity of null hypotheses being tested.
+>  it is uncommon for the analyses of these data to account for the multiple hypothesis testing. As a result, the probability of a false rejection may be much higher than desired. To illustrate this point, consider testing $N$ null hypotheses simultaneously. Suppose that for each null hypothesis a p value is available whose distribution is uniform on the unit interval when the corresponding null hypothesis is true. Suppose further that all null hypotheses are true and that the p values are independent. In this case, if we were to test each null hypothesis in the usual way at level $\alpha \in  (0, 1)$, then the probability of one or more false rejections equals $1 - (1 - \alpha)^N$, which may be much greater than $\alpha$ and in fact tends rapidly to one as $N$ increases. For instance, with $\alpha = 0.05$, it equals $0.226$ when $N = 5$ equals 0.401 when N = 10 and 0.994 when N = 100. In order to control the probability of a false rejection, it is therefore important to account appropriately for multiplicity of null hypotheses being tested.
 
 \
 
@@ -297,7 +286,7 @@ Frequentist NHST: Understated type-one error rate overall if no adjustment, over
 'FWER Control methods'
 
 - Bonferroni correction: divides the threshold p-value by the number of tests ($k$)
-  -  Extremely conservative, assumes independence of hypotheses/outcomes
+  -  Valid under any dependence between the tests: $P(\text{at least one false rejection}) \le \sum_i \alpha / k = \alpha$ (the union bound). Conservative, most of all when the tests are strongly positively correlated; with independent tests it is close to exact, since $1 - (1 - \alpha/k)^k \approx \alpha$. Holm's step-down version is also valid under any dependence and never rejects less.
 
 - [Holm-Bonferroni](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method#:~:text=The%20Holm%E2%80%93Bonferroni%20method%20is%20%22uniformly%22%20more%20powerful%20than,always%20at%20least%20as%20powerful.&text=Thus%2C%20The%20Hochberg%20procedure%20is,powerful%20than%20the%20Holm%20procedure)
   - slightly less conservative than Bonferroni -- orders p-values, applies Bonferroni to  the "most significant" result (smallest p-value), and the correction reduces the denominator by 1 for each 'remaining result'
@@ -321,6 +310,8 @@ False discovery rate (FDR) Control
 \
 
 Considering some of Nik Vetr's work below (genetics-related)
+
+What this simulation shows: it draws variables with a random correlation structure (`rlkj` samples a correlation matrix from the LKJ distribution) and tests many true nulls. (1) The share of individual tests rejected at 5% stays near 5% however correlated the tests are; dependence does not change each test's own error rate. (2) With a Bonferroni threshold, the probability of any false rejection among the (dependent) correlation tests stays at or below 5%.
 
 ```{r, eval=FALSE}
 
@@ -461,7 +452,7 @@ See also ['Common statistical tests are linear models'](https://lindeloev.github
 
 Suppose we want to do a simple 'descriptive model of income.'  Suppose we have three groups, North, Central, and South (think US regions).
 
-Comparing otherwise similar groups, auppose average income in the North is 130, Central is 80, and South is 60.  Suppose equal group sizes, so mean is 90
+Comparing otherwise similar groups, suppose average income in the North is 130, Central is 80, and South is 60.  Suppose equal group sizes, so mean is 90
 
 There should be a way, in a (linear regression) model, to report coefficients as differences from overall means (in a multivariate context, ‘all else equal’) and get one for each
 .
@@ -495,7 +486,7 @@ set.seed(100)
 
 #later, do this with a list for good code practice
 n_income <- rnorm(pop_per, m_inc + b_n, (m_inc + b_n)*sd_prop)
-c_income <- rnorm(pop_per, m_inc + b_c, (m_inc + b_s)*sd_prop)
+c_income <- rnorm(pop_per, m_inc + b_c, (m_inc + b_c)*sd_prop)
 s_income <- rnorm(pop_per, m_inc + b_s, (m_inc + b_s)*sd_prop)
 
 noise_var <- rnorm(pop_per*3, 0, (m_inc + b_s)*sd_prop)

@@ -4,7 +4,7 @@
 > - [Coppock](https://egap.org/resource/10-things-to-know-about-statistical-power/)
 
 
-The 'statistical power' of an analysis is the probability that this analysis diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only considered in light of (as a function of) 
+The 'statistical power' of an analysis is the probability that this analysis diagnoses that 'an effect is present' (or a parameter is nonzero). The power of an analysis can only be considered in light of (as a function of) 
 
 - a particular *true effect size* (parameter magnitude), 
 - or an effect size stated as relative to the underlying dispersion, 
@@ -47,7 +47,7 @@ All else equal, you want to run a study that is *as high-powered as possible* (o
 
 1. you want your study to be informative and to contribute to science (empirical analysis) and
 
-2. 'low powered studies' (at least in certain publication contexts) can potentially [harm the accuracy of our scientific consensus](underpowered).
+2. 'low powered studies' (at least in certain publication contexts) can potentially [harm the accuracy of our scientific consensus](#underpowered).
 
 <div class="marginnote">
 Other than perhaps being 'too costly', is it bad for a study to be 'overpowered'? [I argue that this is *not* a problem.](https://twitter.com/GivingTools/status/1350259972786057216)
@@ -93,7 +93,7 @@ Also note that for binary outcomes the choice of a 'distribution function' is ob
 2. The nature of the sampling or assignment to experimental treatments \*, \*\*
 
 <div class="marginnote">
-\* E.g., ["complete random assignment](https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html) to two a single treatments and a single control, each with probability 1/2".)
+\* E.g., [complete random assignment](https://cran.r-project.org/web/packages/randomizr/vignettes/randomizr_vignette.html) to a single treatment and a single control, each with probability 1/2.
 
 \*\* Remember, here we are focusing on power calculations in *experimental* contexts. However, power calculations are also relevant in other empirical contexts, particularly where data-collection is costly.
 </div>
@@ -105,7 +105,7 @@ Also note that for binary outcomes the choice of a 'distribution function' is ob
 
 *and perhaps the most important and debated ingredient:* 
 
-*4. Which 'metrics of power and effect size' are we considering, and what are our targets?**
+*4. Which 'metrics of power and effect size' are we considering, and what are our targets?*
 
 - Are we simply seeking 'precise estimates', estimates with small confidence/credible intervals? If so, how precise, and how do we measure this precision? 
 
@@ -145,7 +145,7 @@ Moss, citing Lakens: ... use earlier work to decide which effect sizes are deeme
 
 > With this small-telescopes approach, the equivalence bounds are thus primarily based on the sample size in the original study. For example, consider a study in which 100 participants answered a question, and the results were analyzed with a one-sample t test. A two-sided test with an alpha of .05 would have had 33% power to detect an effect of d = 0.15. Another example of how previous research can be used to determine the SESOI can be found in Kordsmeyer and Penke (2017), who based the SESOI on the mean of effect sizes reported in the literature. Thus, in their replication study, they tested whether they could reject effects at least as extreme as the average reported in the literature. Given random variation and bias in the literature, a more conservative approach could be to use the lower end of a confidence interval around the meta-analytic estimate of the effect size (cf. Perugini, Gallucci, & Costantini, 2014).
 
-Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than $\alpha$ in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.
+> Another justifiable option when choosing the SESOI on the basis of earlier work is to use the smallest observed effect size that could have been statistically significant in a previous study. In other words, the researcher decides that effects that could not have yielded a p less than $\alpha$ in an original study will not be considered meaningful in the replication study either, even if those effects are found to be statistically significant in the replication study. The assumption here is that the original authors were interested in observing a significant effect, and thus were not interested in observed effect sizes that could not have yielded a significant result. It might be likely that the original authors did not consider which effect sizes their study had good statistical power to detect, or that they were interested in smaller effects but gambled on observing an especially large effect in the sample purely as a result of random variation. Even then, when building on earlier research that does not specify a SESOI, a justifiable starting point might be to set the SESOI to the largest effect size that, when observed in the original study, would not have been statistically significant.
 ```
 \
 
@@ -155,9 +155,9 @@ DR response: Why do we assume previous authors considered MESOI?
 ```{block2,  type='fold'}
 
 
-I’m missing the logic in the quotes above as to “why the previously detected affects, or some bounds on these should represent the minimum effect size of interest”?
+I’m missing the logic in the quotes above as to “why the previously detected effects, or some bounds on these should represent the minimum effect size of interest”?
 
-Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum affects”, But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run under powered studies all the time (see the previous discussion on the harm to science)
+Perhaps there is some justification in “assuming that previous authors have powered their study correctly to detect such a minimum effects”, But to me this just seems like kicking the can down the road and I do not assume this in general. We know that people run underpowered studies all the time (see the previous discussion on the harm to science)
 
 ```
 
@@ -170,14 +170,14 @@ But that is flawed, in my view, as a way of doing science. We should power the s
 
 \
 
-DR preferred approach - power a study based on policy concerns, also considering it's use in meta-analysis.
+DR preferred approach - power a study based on policy concerns, also considering its use in meta-analysis.
 
 ```{block2,  type='fold'}
-One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a conference interval or a credible interval if we are thinking of a Bayesian posterior). 
+One basic argument is: I want to power a study as a practical goal based on my policy concerns. Typically the value of the study will depend on how precisely you are able to estimate and “bound” a parameter. (This may be expressed as a confidence interval or a credible interval if we are thinking of a Bayesian posterior). 
 
 So, in determining how much power I wish to achieve, I need to weigh the benefits of this precision against the cost of a larger sample size.
 
-This is a very different considerations from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).
+This is a very different consideration from “what power do I have to detect that a previously estimated effect size, if true, is ‘statistically significant’” (By the standard definition).
 
 ```
 
@@ -194,7 +194,7 @@ So, when I am designing the study I am almost never able to have the power I wan
 
 ## The 'harm to science' from running underpowered studies {#underpowered}
 
-> "One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results.
+> "One worries about underpowered tests. Your result (may have) relatively large effect sizes that are still insignificant, which makes me wonder whether it has low power. Low powered studies undermine the reliability of our results."
 - From an anonymous referee report
 
 Perhaps most of us consider power largely in thinking about
@@ -218,7 +218,7 @@ DR:  However, I speculate that this idea might be less clear-cut than it seems. 
 
 
 ```{block2,  type='note'}
-[Ferraro discussion on magnitude error due to underpowered studies:](https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics) {-}
+[Ferraro discussion on magnitude error due to underpowered studies:](https://www.pauljferraro.com/publications/2020/2/1/is-there-a-replicability-crisis-on-the-horizon-for-environmental-and-resource-economics)
 
 ... if you are looking at an under-powered design then sure, you might pick up a significant result which is actually spurious. But on top of that even if there is a genuine effect there, the effect that you actually pick up as being significant will (likely) be overestimated. The intuition behind that result is (I think) that for an effect to be picked up in a study then it has to be large enough to overcome the issue that you face with power. Low-powered studies can only detect really large effects, and so the large effect you pick up in such a study could be genuine, but it equally could be a poorly-estimated coefficient. By using a low powered study you sift through for these kind of effects.
 
@@ -241,6 +241,10 @@ Adapt example in 'scopingwork.Rmd' to this
 
 > We will consider each design’s power to detect particular ‘treatment effects’ (of a minimum relevant size) on particular outcomes, which may be linear, proportional, or otherwise. Our calculations do not depend on any assumptions over the ‘true treatment effect’.
 
+<div class="marginnote">
+Note (added later): the last sentence overstates it. The calculations avoid committing to one effect size by reporting power over a grid of assumed effect sizes, but each simulation still imposes the same additive or proportional shift on every treated unit. For zero-heavy outcomes like donations, a proportional shift leaves the zeros unchanged, so it assumes no effect on whether people give.
+</div>
+
 
 #### Assignment procedures to consider {-#assign-notes}
 
@@ -248,7 +252,7 @@ We consider three categories of possible assignment criteria: (We are coding the
 
 **1. Simple data-based**
 
-(Coded [here](#power-simple))
+(Coded [here](#assign-functions))
 
 Here we imagine a very simple dynamic assignment to treatments with alternation (or repeated from an urn with one ball per treatment, refilling the urn once empty). This procedure will essentially guarantee an equal share of observations in each treatment.
 
@@ -294,7 +298,7 @@ Blocking process (folded)
 
 Probably the way to do this is, for each proposed block width (e.g., quartiles, deciles, 15 bins, etc) we draw random samples from the set-aside data according to this procedure,  and estimate an "effect size" for each sample. We then consider the 99% bounds of these simulated effect sizes.  The block width (and  regularization parameter?) that consistently gives us the tightest bounds  should be the one that allows us the greatest power to rule out an effect of a certain size, given the null hypothesis of no treatment effect.
 
-The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws... the smaller the *actual* effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time).    [Note: these latter notes may bot go with the procedure proposed below; these are older.]
+The intuition: The smaller the largest difference in mean total donations (between treatment and control) that occurs by chance in 99% of draws... the smaller the *actual* effect that we will be powered to detect (able to judged as statistically significant a reasonable share of the time).    [Note: these latter notes may not go with the procedure proposed below; these are older.]
 
 ```
 
@@ -304,7 +308,7 @@ The intuition: The smaller the largest difference in mean total donations (betwe
 
 We may or may not get to considering the method proposed in @kasyWhyExperimentersMight2016. It is ideal for Bayesian approaches to policy, but it may make frequentist inference difficult (?). (See steps/notes folded below.)
 
-```{block, type='fold'}
+```{block2,  type='fold'}
 
 See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
 
@@ -314,6 +318,7 @@ See kasy_2016_dont_randomise.md; kasy_dynamic.md may also be relevant.
 - Re-randomization draws (default=1000); Expected R-sq (default=0.7)
 
 Notes:
+
 - Stratify on 'discrete strata'
 - Conservative: difference in means without controls or interactions
 - More reasonable, fully general: Make estimator in Power calc regression with strata dummies and interactions with treatment, usual Robust standard errors
@@ -350,7 +355,7 @@ simple_assign <- function(df, tshare=0.5, blockvar="NA") { #note: no blocking he
 
 ```{r power-simulations}
 
-power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0.05, test_nm= wilcox.test, f_assign=simple_assign, bv) {
+power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0.05, test_nm= wilcox.test, f_assign=simple_assign, bv=NULL) {
 
     results  <- sapply(1:reps, function(r) { #TODO - replace with purr::map (Toby)
 #1. Sample size N from data for each iteration
@@ -364,12 +369,21 @@ power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0
       mutate({{yvar}} :=   ifelse(
         d_t == "TRUE", {{yvar}} * (1 + propTE) + linTE, {{yvar}})) %>%
 #TODO: Do this for several y-variables in each run; 'map' these?
-      mutate(yv := {{yvar}}) %>%  #reassign variable because I couldn't figure out how to get the unquoted argument to work in tests below #TODO-fix
+      mutate(yv := {{yvar}})  #reassign variable because I couldn't figure out how to get the unquoted argument to work in tests below #TODO-fix
 
 #4. Run chosen test `test_nm`, output p-value
-      dplyr::select(yv, d_t)
-    test <- exp_sample %>%
-      do(tidy(test_nm( yv ~ d_t, data = ., paired = FALSE )))
+# Analyse as randomised: under block randomisation (`bv` given) condition on the blocks,
+# here with block fixed effects and robust SEs. (`test_nm` ignores the blocks, so it would be
+# conservative and would hide the power gain from blocking.)
+    if (is.null(bv)) {
+      test <- exp_sample %>%
+        dplyr::select(yv, d_t) %>%
+        do(tidy(test_nm( yv ~ d_t, data = . )))
+    } else {
+      exp_sample$block <- factor(exp_sample[[bv]])
+      test <- tidy(estimatr::lm_robust(yv ~ d_t, fixed_effects = ~ block, data = exp_sample)) %>%
+        filter(term == "d_tTRUE")
+    }
     test$p.value
     }
     )
@@ -388,12 +402,12 @@ power_data <- function(ds, reps, yvar, N, tshare=0.5, linTE=0, propTE=0, alpha=0
 ```{r block_1d_assign}
 
 block_1d_assign <- function(df, tshare=0.5, blockvar) {
-      block_rand <- as.tibble(
+      block_rand <- as_tibble(
         randomizr::block_ra(
           blocks =  df[[glue("{blockvar}")]], conditions = c("control","treat"), prob_each=c(1-tshare, tshare)
           )
         )
-      df <- as.tibble(bind_cols(df, block_rand)) %>%
+      df <- as_tibble(bind_cols(df, block_rand)) %>%
         rename(d_t=value) %>%
         mutate(
           d_t=(d_t=="treat")
@@ -418,12 +432,12 @@ linTE.try <- c(0,50,100)
 propTE.try <- seq(from=0.05, to = 0.2, by = 0.05)
 
 outcomes.try <- c("sum_don","count_don")
-tests.try <- c(t.test, wilcox.test)
+tests.try <- c(t.test = t.test, wilcox.test = wilcox.test)
 
 ```
 
 
-Testing equicost parings, determine necessary cost
+Testing equicost pairings, determine necessary cost
 
 With only control and treatment we have
 
@@ -478,12 +492,12 @@ power_vals <- tibble(
   #OUTCOME <- outcomes.try[[o]] #TODO: may be faster to generate all outcomes for each sample ; also, I haven't got the syntax to work
 
   df_x <- df %>%
-    select(outcomes.try)
+    select(all_of(outcomes.try))
     #select(OUTCOME) #Minimal data set to speed it up; (seems to save about 50% of the time)
 
   #loop over tests
   for (t in seq_along(tests.try)) {
-    TEST <- tests.try[t]
+    TEST <- tests.try[[t]]
 
     #Loop over proportional TE
     for (p in seq_along(propTE.try)) {
@@ -492,11 +506,13 @@ power_vals <- tibble(
       #Loop over sample sizes
       for (s in seq_along(sample.try)) {
         N <- sample.try[s]
+        #reps = 1000 gives a Monte Carlo SE of about 0.013 at 80% power (80 reps: about 0.045)
+        #TODO: yvar is still hard-coded to sum_don; loop over outcomes.try
         PW <- power_data(
-            ds = dfX, reps = 80, yvar = sum_don, N = N, tshare = 0.5, linTE = linTE, propTE = PT, alpha = 0.05
+            ds = df_x, reps = 1000, yvar = sum_don, N = N, tshare = 0.5, linTE = linTE, propTE = PT, alpha = 0.05, test_nm = TEST
           )
         power_vals <- add_row(
-            power_vals, n_try = N, prop_te = PT, lin_te = linTE, test = as.character(TEST), power_est = PW
+            power_vals, n_try = N, prop_te = PT, lin_te = linTE, test = names(tests.try)[t], power_est = PW
           ) ##TODO - more efficient to save the results in a list and combine it into a single vector or dataframe at end (see r4ds 21.3.3)
       }
     }
@@ -531,7 +547,7 @@ A long debate on this in the folds below:
 
 ```{block2,  type='fold'}
  
-David: I think classical statistical inference is the wrong framing here* o think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling
+David: I think classical statistical inference is the wrong framing here to think about ‘what sample size (or number of arms) to maximise value’ … even if we don’t do adaptive sampling
 
 > Matt: I’m (currently) not sure there is any meaningful alternative (or, therefore, a better alternative)
 
@@ -638,9 +654,9 @@ How could we **test if there were any 'substantial difference in the title ranki
 </div>
  
 
-[Friedman's Q](https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages), is a measure of whether 'any (at least one?) items are systematically ranked higher or lower'.  $Q$ can be normalized into, [Kendall's W](https://en.wikipedia.org/wiki/Kendall%27s_W), a measure of 'inter-rater agreement' going from 0 to 1. There is a significant test for W "against a null hypothesis of no agreement (i.e. random rankings)".
+[Friedman's Q](https://en.wikipedia.org/wiki/Friedman_test#:~:text=The%20Friedman%20test%20is%20used,by%20many%20statistical%20software%20packages), is a measure of whether 'any (at least one?) items are systematically ranked higher or lower'.  $Q$ can be normalized into, [Kendall's W](https://en.wikipedia.org/wiki/Kendall%27s_W), a measure of 'inter-rater agreement' going from 0 to 1. There is a significance test for W "against a null hypothesis of no agreement (i.e. random rankings)".
 
-[Kendalls uses the Cohen’s interpretation guidelines of 0.1 to 0.3  being a 'small effect'](https://rdrr.io/cran/rstatix/man/friedman_effsize.html)
+[Kendall's W is usually read with Cohen's guidelines: 0.1 to 0.3 small, 0.3 to 0.5 moderate, above 0.5 large](https://rdrr.io/cran/rstatix/man/friedman_effsize.html)
 
 
 "A significant Friedman test can be followed up by pairwise Wilcoxon signed-rank tests for identifying which groups are different", with multiple testing corrections.  [datanovia website](https://www.datanovia.com/en/lessons/friedman-test-in-r/)
@@ -664,16 +680,16 @@ The true population has a large number of subjects (individuals). In our survey 
 
 Suppose the 'Minimal effect of interest' that we want to be able to detect is (sort of the 'alternative hypothesis HA')...
  
-> HA: "One title is ranked by a share of the population that is one and a half times as high as any other title."
+> HA: "One title is ranked first by a share of the population that is one and a half times as high as any other title."
 
 If all the other titles have the same (lower) ranking on average, this should offer the greatest chance of detecting such a difference. Thus, if we assume all other titles share the same average ranking, the computations (below) should *underestimate* the necessary sample size.
 
-I.e., defining $r_{k,i}$ as the rank given to title $k$ by subject $i$, and letting $\bar{R^1_i}=\frac{1}{N}\sum I(r_{k,i}=1)$ be the share of the sampled population (subjects) ranking title $k$ as first...
+I.e., defining $r_{k,i}$ as the rank given to title $k$ by subject $i$, and letting $\bar{R^1_k}=\frac{1}{N}\sum_{i=1}^{N} I(r_{k,i}=1)$ be the share of the sampled population (subjects) ranking title $k$ as first...
 
 we may consider a case where $\bar{R^1_j} > \frac{3}{2}\frac{1}{19}\sum_{k\neq j}\bar{R^1_k}$ for some title $j$ relative to all other titles $k$.\* 
 
 <div class="marginnote">
-I think the latter term may simply be $\frac{3}{2}\frac{19}{2}$, or something similar, the 'average rank'.
+The right-hand side is 1.5 times the average first-place share of the other 19 titles (not the 'average rank'). Because the shares sum to one, it equals $\frac{3}{2}\cdot\frac{1-\bar{R^1_j}}{19}$, so the condition is $\bar{R^1_j}>3/41\approx0.073$, against $1/20=0.05$ under the null.
 </div>
 
 \
@@ -685,7 +701,7 @@ I think the latter term may simply be $\frac{3}{2}\frac{19}{2}$, or something si
 \*\* However,  I don’t really think that that is *really* what we are looking for, as we are facing a *decision* problem.
 </div>
  
-**To test for this** we would follow a certain procedure, e.g.,\*\*
+**To test for this** we would follow a certain procedure, e.g.,\*\*\*
 
 <div class="marginnote">
 \*\*\*  I am not sure this is an appropriate procedure.
@@ -693,7 +709,7 @@ I think the latter term may simply be $\frac{3}{2}\frac{19}{2}$, or something si
  
 1. Find the title 'j' that has the most people in our *sample* who rank it first; call this share $\bar{R^1_j}$
 
-2. Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size $N$ (our actual sample size), the average rank of the highest-ranked title would be as high as $\bar{R^1_j}$.\*\*\*\*
+2. Compute (perhaps through simulation) the probability that, if all titles were randomly ranked by the population, in a sample of size $N$ (our actual sample size), the highest share ranking any one title first would be as high as $\bar{R^1_j}$.\*\*\*\*
 <div class="marginnote">
 \*\*\*\* Ideally there is an analytical formula for this; worth looking up.
 </div>
@@ -708,8 +724,8 @@ Run $T$ simulations $(t=1,...,T)$.  For each simulated sample $t$:
 
 - Draw $N$ observations from an imagined 'true population', i.e., 
   - for each of the $N$ subjects drawn, say, 'subject $i$', for each of their 'ranks $r=1,2,..,20$', draw a title (by random) to be assigned this rank ($r_{k,i}=r$), 
-  - with one title (the same one always) having a $\frac{2}{21}$ probability of being drawn for the first rank, and the other 19 titles each having a $\frac{1}{21}$ probability of being drawn for the first rank
-- Compute $[\bar{R^1_j}]^t$: the average rank for each title in simulation $t$,
+  - with one title (the same one always) having a $\frac{3}{41}$ probability of being drawn for the first rank, and the other 19 titles each having a $\frac{2}{41}$ probability of being drawn for the first rank
+- Compute $[\bar{R^1_j}]^t$: the share ranking each title first in simulation $t$,
   - and then compute (or simulate)  $P(N, [\bar{R^1_j}]^t) \equiv [P]^t$, the test statistic as defined above, the 'likelihood of such an extreme result under the null hypothesis of random ranks'
 
 Over a sufficient number of simulations, determine the average probability of 'rejecting the null' in favor of the above HA (specifically for the 'correct' title $j$).\* This is the estimated power of the test.
@@ -745,21 +761,21 @@ Perhaps, we want to choose a sample size such that the title we claim has the "b
 
 Note that choosing a title that is "most likely to be in the top third" is not necessarily the same as "choosing the title with the greatest expected profit". Our ranks are a multi-dimensional measure; thus one title need not 'dominate' the other title. E.g., in a sample of $N=100$ title $A$ may be ranked first by 10 people and last by 90 people, while title $B$ may be ranked second by all 100 people. Which is more profitable on average will depend on the relationship between ranking and probability of attendance.\*
 <div class="marginnote">
-\* E.g., perhaps this implies a 90% probability that $B$ will be more profitable than $A$, but for the 10% of the states-of-the world when is more profitable than $B$, $A$ is 100 times more profitable. This would imply that title $A$ has a greater expected value profit, but also involves more risk.
+\* E.g., perhaps this implies a 90% probability that $B$ will be more profitable than $A$, but for the 10% of the states-of-the world when $A$ is more profitable than $B$, $A$ is 100 times more profitable. This would imply that title $A$ has a greater expected value profit, but also involves more risk.
 </div>
  
 \
 
 **Nonetheless**,
 
-Consider whether title $k$ is among the titles that is 'ranked in the top-third' by the largest   share of the population. More specifically, consider $\bar{R}^{7+}_k \equiv E[r_{k}\leq7]$ as the  'share of the population ranking title $k$ top 7 out of 20 or better. Let $D_k=1$ if $\sum_{k,j}1\big(\bar{R}^{7+}_k>\bar{R}^{7+}_j\big)\geq7$; i.e., if $k$ is one of the top-7 titles in terms of the measure 'ranked in the top third'.
+Consider whether title $k$ is among the titles that is 'ranked in the top-third' by the largest   share of the population. More specifically, consider $\bar{R}^{7+}_k \equiv P(r_{k}\leq7)$ as the  'share of the population ranking title $k$ top 7 out of 20 or better. Let $D_k=1$ if $\sum_{j\neq k}1\big(\bar{R}^{7+}_k>\bar{R}^{7+}_j\big)\geq13$; i.e., if $k$ is one of the top-7 titles in terms of the measure 'ranked in the top third'.
 
 
 We might want to... 
 
 1. based on our sample (and some assumptions?) choose the title with the highest chance of being ranked in the top-third by the population as a whole ($k^\ast \equiv argmax_k\big(P(D_k=1)\big)$), and
 
-2. sample $N$ large enough so that this 'chosen title' has a $\beta=0.8$ chance of indeed being ranked in the top-third by the population as a whole, i.e., $P(D_{k^\ast}=1)>\beta=0.8$.
+2. sample $N$ large enough so that this 'chosen title' has a $B=0.8$ chance of indeed being ranked in the top-third by the population as a whole, i.e., $P(D_{k^\ast}=1)>B=0.8$.
 
 \
 
@@ -767,7 +783,7 @@ I imagine that under certain (overly restrictive?) assumptions about the distrib
 
 1. The appropriate procedure for selecting the title that is best by the above metric ($k^\ast$)
 
-2. Determine the minimum neccesary $N$ to achieve this $\beta=0.8$ chance of ...
+2. Determine the minimum necessary $N$ to achieve this $B=0.8$ chance of ...
 
 
 *But do we want to do this?!*
@@ -807,11 +823,11 @@ Outcome: $\bar{y} :=$ Sample mean of numeric-coded responses,
 Measure of dispersion:  $\hat{s}$ := Sample standard deviation of y \*
 
 <div class="marginnote">
-Perhaps with the $n-1$ correction, but who cares/
+Perhaps with the $n-1$ correction, but who cares?
 </div>
 
 
-Measure of (inverse of) precision: estimated standard error of the mean $\hat{SE_m} = s/\sqrt(n)$
+Measure of (inverse of) precision: estimated standard error of the mean $\hat{SE_m} = s/\sqrt{n}$
 
 If we assume $y$ is normally distributed (which obviously can’t be precisely the case)...\*\*
 
@@ -835,7 +851,7 @@ $$2 * 1.96 \: \hat{SE_m} < 1$$ \*
 \* Or perhaps considering the actual rather than estimated 95% CI this should be  “$2 * 1.96 \: SE_m < 1$”.
 </div>
  
-Recall that $\hat{SE_m} = s/\sqrt(n)$.
+Recall that $\hat{SE_m} = s/\sqrt{n}$.
 
 Thus, to choose a sample size to achieve these bounds we need to have a measure/guess/estimate of $s$, the standard deviation of $y$, perhaps based on previous data.\*\*
 
@@ -852,9 +868,9 @@ i.e.,
 
 $$2*1.96 SE_m < B*sd(y)$$
 
-i.e., $2*1.96 * s/\sqrt(n) < B*s$,
-i.e., $2*1.96/\sqrt(n) < B$
-i.e., $\sqrt(n) > 2*1.96/B$
+i.e., $2*1.96 * s/\sqrt{n} < B*s$,
+i.e., $2*1.96/\sqrt{n} < B$
+i.e., $\sqrt{n} > 2*1.96/B$
 i.e.,
 
 $$n >  15.3664/(B^2)$$
