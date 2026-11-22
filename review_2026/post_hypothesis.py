@@ -104,6 +104,7 @@ def body_for(x):
         "uri": x["page_url"],
         "group": "__world__",
         "tags": ["claude-review"],
+        "permissions": {"read": ["group:__world__"]},
         "text": text,
         "target": [{"source": x["page_url"], "selector": [
             {"type": "TextQuoteSelector", "exact": sel["exact"],
